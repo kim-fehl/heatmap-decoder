@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 from PIL import Image
 
-from heatmap2matrix import ExtractionConfig, extract, load_raster, write_csv
+from heatmap_decoder import ExtractionConfig, extract, load_raster, write_csv
 
 
 def palette(t, kind):

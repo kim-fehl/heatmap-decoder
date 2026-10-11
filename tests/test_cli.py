@@ -7,8 +7,8 @@ import pytest
 from PIL import Image
 from typer.testing import CliRunner
 
-from heatmap2matrix import __version__
-from heatmap2matrix.cli import app
+from heatmap_decoder import __version__
+from heatmap_decoder.cli import app
 
 EXAMPLES = Path(__file__).resolve().parents[1] / "examples"
 runner = CliRunner()
@@ -31,9 +31,38 @@ def invoke(out, *options):
 
 def test_help_and_version():
     assert "extract" in runner.invoke(app, ["--help"]).output
-    assert runner.invoke(app, ["--version"]).output.strip() == f"heatmap2matrix {__version__}"
+    assert runner.invoke(app, ["--version"]).output.strip() == f"heatmap-decoder {__version__}"
     assert runner.invoke(app, ["extract", "--help"]).exit_code == 0
     assert runner.invoke(app, []).exit_code == 2
+
+
+@pytest.mark.parametrize(
+    "source",
+    [
+        {"source": "ocr", "bbox": [0, 32, 24, 272]},
+        {"source": "file", "path": "genes.txt"},
+    ],
+)
+def test_m4_label_requests_do_not_silently_publish_numeric_outputs(tmp_path, source):
+    settings = json.loads((EXAMPLES / "config.json").read_text())
+    settings["labels"] = {"rows": source}
+    config = tmp_path / "labels.json"
+    config.write_text(json.dumps(settings))
+    out = tmp_path / "results"
+    result = runner.invoke(
+        app,
+        [
+            "extract",
+            str(EXAMPLES / "figure.png"),
+            "--config",
+            str(config),
+            "--out",
+            str(out),
+        ],
+    )
+    assert result.exit_code == 2
+    assert "not available in M4" in result.output
+    assert not out.exists()
 
 
 def test_bundled_example_and_pandas_csv(tmp_path):

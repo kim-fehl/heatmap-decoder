@@ -5,7 +5,7 @@ colourbar. `config.json` gives its exclusive pixel ROIs and endpoint values;
 `truth.csv` is the independently generated numerical matrix, without headers.
 
 ```bash
-uv run heatmap2matrix extract examples/figure.png --config examples/config.json --out results/ --fail-on-qc
+uv run heatmap-decoder extract examples/figure.png --config examples/config.json --out results/ --fail-on-qc
 ```
 
 `generate.py` recreates all three files using seed 2026 and an analytic blue–white–red

@@ -6,9 +6,9 @@ import numpy as np
 import pytest
 from PIL import Image, ImageFilter
 
-from heatmap2matrix import CellFlag, ExtractionConfig, extract, extract_file
-from heatmap2matrix.calibration import match_with_quality
-from heatmap2matrix.diagnostics import diagnostic_image
+from heatmap_decoder import CellFlag, ExtractionConfig, extract, extract_file
+from heatmap_decoder.calibration import match_with_quality
+from heatmap_decoder.diagnostics import diagnostic_image
 
 
 def reference():

@@ -27,7 +27,7 @@ jobs:
       - run: uv run ruff check .
       - run: uv run mypy src
       - name: Run the bundled example through the installed CLI
-        run: uv run heatmap2matrix extract examples/figure.png --config examples/config.json --out work/ci-example --fail-on-qc
+        run: uv run heatmap-decoder extract examples/figure.png --config examples/config.json --out work/ci-example --fail-on-qc
       - run: uv build
       - name: Test the wheel and console entry point outside the source tree
         run: uv run python tests/smoke_distribution.py
@@ -49,7 +49,7 @@ jobs:
       - name: Verify the tag matches the package version
         env:
           RELEASE_TAG: ${{ github.ref_name }}
-        run: uv run python -c "import os; from heatmap2matrix import __version__; assert os.environ['RELEASE_TAG'] == 'v' + __version__"
+        run: uv run python -c "import os; from heatmap_decoder import __version__; assert os.environ['RELEASE_TAG'] == 'v' + __version__"
       - run: uv build
       - run: uv run python tests/smoke_distribution.py
       - name: Publish the tested distributions as a GitHub release
@@ -57,4 +57,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           RELEASE_TAG: ${{ github.ref_name }}
-        run: gh release create "$RELEASE_TAG" dist/*.whl dist/*.tar.gz --verify-tag --title "Heatmap2Matrix $RELEASE_TAG" --notes-file CHANGELOG.md
+        run: gh release create "$RELEASE_TAG" dist/*.whl dist/*.tar.gz --verify-tag --title "heatmap-decoder $RELEASE_TAG" --notes-file CHANGELOG.md

@@ -1,5 +1,3 @@
-"""Enable python -m heatmap2matrix."""
+from .cli import legacy_main
 
-from .cli import app
-
-app()
+legacy_main()

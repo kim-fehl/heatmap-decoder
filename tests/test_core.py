@@ -3,10 +3,10 @@ import pytest
 from PIL import Image
 from pydantic import ValidationError
 
-from heatmap2matrix import ExtractionConfig, extract, load_raster
-from heatmap2matrix.calibration import calibrate_values, match_colours
-from heatmap2matrix.geometry import cell_slices, validate_geometry
-from heatmap2matrix.sampling import sample_cells, sample_colourbar
+from heatmap_decoder import ExtractionConfig, extract, load_raster
+from heatmap_decoder.calibration import calibrate_values, match_colours
+from heatmap_decoder.geometry import cell_slices, validate_geometry
+from heatmap_decoder.sampling import sample_cells, sample_colourbar
 
 
 def config(**changes):

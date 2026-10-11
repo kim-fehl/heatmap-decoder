@@ -2,9 +2,9 @@ import numpy as np
 from hypothesis import given
 from hypothesis import strategies as st
 
-from heatmap2matrix import ExtractionConfig
-from heatmap2matrix.calibration import calibrate_values
-from heatmap2matrix.geometry import cell_slices, validate_geometry
+from heatmap_decoder import ExtractionConfig
+from heatmap_decoder.calibration import calibrate_values
+from heatmap_decoder.geometry import cell_slices, validate_geometry
 
 
 @given(

@@ -1,18 +1,25 @@
-"""Approximate reconstruction with colour matching diagnostics and missing values."""
+"""Deprecated v0.1 import alias. Implementation lives in heatmap_decoder."""
 
-from .extract import extract
-from .io import extract_file, load_raster, write_csv, write_outputs
-from .models import CellFlag, ExtractionConfig, ExtractionResult
-from .version import __version__
+import importlib
+import sys
+import warnings
 
-__all__ = [
-    "CellFlag",
-    "ExtractionConfig",
-    "ExtractionResult",
-    "__version__",
+from heatmap_decoder import *  # noqa: F403
+from heatmap_decoder import __all__, __version__  # noqa: F401
+
+warnings.warn(
+    "heatmap2matrix is deprecated; import heatmap_decoder instead",
+    DeprecationWarning,
+    stacklevel=2,
+)
+for _module in (
+    "calibration",
+    "diagnostics",
     "extract",
-    "extract_file",
-    "load_raster",
-    "write_csv",
-    "write_outputs",
-]
+    "geometry",
+    "io",
+    "models",
+    "sampling",
+    "version",
+):
+    sys.modules[f"{__name__}.{_module}"] = importlib.import_module(f"heatmap_decoder.{_module}")

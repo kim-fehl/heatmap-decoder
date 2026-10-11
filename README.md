@@ -1,4 +1,4 @@
-# Heatmap2Matrix v0.1.0
+# heatmap-decoder — M4 development
 
 Reconstruct an **approximate** numerical matrix from a PNG/JPEG heatmap and its
 observed continuous, linear colourbar. Python 3.11+.
@@ -8,22 +8,29 @@ Supply the grid, heatmap/colourbar bounding boxes and endpoint values; inspect t
 resulting QC before using the estimates scientifically. Supports sequential and
 diverging palettes with continuous linear scales on Linux, macOS and Windows.
 
+This development milestone adds the `heatmap_decoder` package name, validated
+optional label configuration, and an engine-independent label geometry library.
+See [M4 scope and geometry API](M4.md) and the short [migration note](MIGRATION.md).
+OCR execution and review artifacts arrive in M5; labelled reconstruction arrives
+in M6. Numeric extraction with a requested label source currently fails clearly.
+Numeric-only use requires no OCR dependency or engine.
+
 ## Install and use
 
-Install the tagged source release into your own Python environment:
+Install this development checkout into your own Python environment:
 
 ```bash
-python -m pip install "git+https://github.com/kim-fehl/heatmap-decoder.git@v0.1.0"
-heatmap2matrix --version
+python -m pip install -e .
+heatmap-decoder --version
 ```
 
-For the bundled example and development tools, clone the release:
+For the bundled example and development tools, clone the development branch:
 
 ```bash
-git clone --branch v0.1.0 https://github.com/kim-fehl/heatmap-decoder.git
+git clone --branch work https://github.com/kim-fehl/heatmap-decoder.git
 cd heatmap-decoder
 uv sync --locked
-uv run heatmap2matrix extract examples/figure.png --config examples/config.json --out results/
+uv run heatmap-decoder extract examples/figure.png --config examples/config.json --out results/
 ```
 
 The [bundled figure](examples/figure.png) is a clean synthetic 20 × 20 diverging
@@ -36,10 +43,10 @@ with `uv run python examples/generate.py`.
 For your own figure:
 
 ```bash
-heatmap2matrix extract figure.png --config config.json --out results/
+heatmap-decoder extract figure.png --config config.json --out results/
 ```
 
-Use `heatmap2matrix extract --help` for all options. `python -m heatmap2matrix`
+Use `heatmap-decoder extract --help` for all options. `python -m heatmap_decoder`
 provides the same CLI. Outputs are not replaced unless `--overwrite` is passed.
 `--mask mask.npy` accepts a boolean H × W NumPy array saved with `numpy.save`;
 `True` means missing. Object arrays/pickled input are not accepted. `--fail-on-qc`
@@ -51,7 +58,7 @@ Python API:
 
 ```python
 from pathlib import Path
-from heatmap2matrix import ExtractionConfig, extract_file
+from heatmap_decoder import ExtractionConfig, extract_file
 
 config = ExtractionConfig.model_validate_json(Path("config.json").read_text())
 result = extract_file("figure.png", config, "results/")
@@ -118,7 +125,7 @@ The colourbar's central sampling strip must be fully valid or extraction fails.
 For in-memory use:
 
 ```python
-from heatmap2matrix import CellFlag, extract, load_raster
+from heatmap_decoder import CellFlag, extract, load_raster
 
 image = load_raster("figure.png")  # uint8 RGB, or RGBA if transparency is present
 result = extract(image, config, mask=None)  # optional boolean H × W mask
@@ -195,9 +202,8 @@ uv run python tests/smoke_distribution.py
 
 The wheel includes the typed Python package and console entry point. The source
 distribution includes tests and the synthetic example. Version metadata has a
-single source in `src/heatmap2matrix/version.py`. See [CHANGELOG.md](CHANGELOG.md).
-The project has no PyPI publication configured; use the tagged source or the
-wheel attached to the GitHub release. A pushed `v*` tag publishes the wheel and
-source archive only after the entire cross-platform CI matrix passes; the tag
+single source in `src/heatmap_decoder/version.py`. See [CHANGELOG.md](CHANGELOG.md).
+The project has no PyPI publication configured; install this checkout locally.
+A pushed `v*` tag publishes the wheel and source archive only after the entire cross-platform CI matrix passes; the tag
 must match the package version. The release job uses GitHub Actions' built-in
 repository token, with write access limited to that job.

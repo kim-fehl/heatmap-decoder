@@ -24,6 +24,13 @@ def extract(
     """
     validate_rgb(image)
     validate_geometry(config, image.shape)
+    if config.labels is not None and (
+        config.labels.rows is not None or config.labels.columns is not None
+    ):
+        raise ValueError(
+            "labelled reconstruction is not available in M4; "
+            "use the labels geometry library, or omit labels for numeric-only extraction"
+        )
     missing = missing_pixel_mask(image, config, mask)
     validate_bar_data(missing, config)
     cells, fractions = sample_cell_data(image, config, missing)

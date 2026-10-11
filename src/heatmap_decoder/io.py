@@ -81,7 +81,7 @@ def provenance(
     }
     return {
         "schema_version": 1,
-        "software": {"name": "heatmap2matrix", "version": __version__},
+        "software": {"name": "heatmap-decoder", "version": __version__},
         "input": {
             "filename": input_filename,
             "sha256": input_sha256,
