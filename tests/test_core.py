@@ -116,7 +116,7 @@ def test_calibration_and_perceptual_match():
     "image",
     [
         np.zeros((8, 12)),
-        np.zeros((8, 12, 4), dtype=np.uint8),
+        np.zeros((8, 12, 5), dtype=np.uint8),
         np.zeros((0, 12, 3), dtype=np.uint8),
     ],
 )
@@ -137,8 +137,7 @@ def test_raster_loading(tmp_path, image_format):
 def test_unsupported_and_transparent_raster(tmp_path):
     path = tmp_path / "image.png"
     Image.new("RGBA", (2, 2), (255, 0, 0, 0)).save(path)
-    with pytest.raises(ValueError, match="transparent"):
-        load_raster(path)
+    assert load_raster(path).shape == (2, 2, 4)
     Image.new("RGB", (2, 2)).save(path, format="BMP")
     with pytest.raises(ValueError, match="PNG and JPEG"):
         load_raster(path)

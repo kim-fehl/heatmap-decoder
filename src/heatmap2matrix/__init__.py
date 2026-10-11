@@ -1,8 +1,18 @@
-"""Heatmap2Matrix M1: approximate reconstruction from a supplied raster and scale."""
+"""Approximate reconstruction with colour matching diagnostics and missing values."""
 
 from .extract import extract
-from .io import load_raster, write_csv
-from .models import ExtractionConfig, ExtractionResult
+from .io import extract_file, load_raster, write_csv, write_outputs
+from .models import CellFlag, ExtractionConfig, ExtractionResult
+from .version import __version__
 
-__version__ = "0.1.0.dev1"
-__all__ = ["ExtractionConfig", "ExtractionResult", "extract", "load_raster", "write_csv"]
+__all__ = [
+    "CellFlag",
+    "ExtractionConfig",
+    "ExtractionResult",
+    "__version__",
+    "extract",
+    "extract_file",
+    "load_raster",
+    "write_csv",
+    "write_outputs",
+]

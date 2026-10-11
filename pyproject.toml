@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "heatmap2matrix"
-version = "0.1.0.dev1"
+version = "0.1.0.dev2"
 description = "Approximate numerical reconstruction from raster heatmaps"
 requires-python = ">=3.11"
 license = "MIT"

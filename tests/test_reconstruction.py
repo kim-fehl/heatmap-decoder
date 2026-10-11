@@ -60,8 +60,9 @@ def test_synthetic_reconstruction(tmp_path, orientation, kind, cell_size):
     mae, maximum = float(errors.mean()), float(errors.max())
     print(
         f"{kind}/{orientation}/{cell_size}px: MAE={mae:.6f}, max={maximum:.6f}, "
-        f"MAE/range={mae / abs(end - start):.3%}; flags deferred to M2"
+        f"MAE/range={mae / abs(end - start):.3%}; flagged={np.mean(result.flags != 0):.3%}"
     )
+    assert not np.any(result.flags)
     assert mae < 0.02 * abs(end - start)
     assert maximum < 0.02 * abs(end - start)
     np.testing.assert_array_equal(result.values, extract(loaded, config).values)
