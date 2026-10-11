@@ -27,8 +27,10 @@ from .models import (
     FileLabelSource,
     GridConfig,
     LabelExtractionResult,
+    OCRLabelSource,
     ReviewLabels,
     RGBArray,
+    ROIReview,
     SavedDetection,
 )
 from .version import __version__
@@ -228,6 +230,7 @@ def extract_file(
     labels_review: str | Path | None = None,
     roi_review: str | Path | None = None,
     heatmap_candidate: str | None = None,
+    roi_selections: str | Path | None = None,
 ) -> ExtractionResult:
     """Write review evidence first; only resolved labels may publish numeric outputs."""
     path, directory, base = Path(path), Path(directory), Path(base_directory)
@@ -248,10 +251,12 @@ def extract_file(
         inputs += (Path(config_path),)
     if labels_review is not None:
         inputs += (Path(labels_review),)
-    if heatmap_candidate is not None and roi_review is None:
+    if (heatmap_candidate is not None or roi_selections is not None) and roi_review is None:
         raise ValueError("heatmap candidate selection requires --roi-review")
     if roi_review is not None:
         inputs += (Path(roi_review),)
+    if roi_selections is not None:
+        inputs += (Path(roi_selections),)
     check_output_paths(output_paths, inputs, overwrite)
     reviewed, review_hash = (
         load_labels_review(labels_review, config) if labels_review is not None else (None, None)
@@ -267,7 +272,14 @@ def extract_file(
             hashlib.sha256(data).hexdigest(),
             config.model_dump(mode="json"),
             heatmap_candidate,
+            ROIReview.model_validate_json(Path(roi_selections).read_bytes())
+            if roi_selections is not None
+            else None,
         )
+        if roi_selections is not None:
+            detection_review["selections_sha256"] = hashlib.sha256(
+                Path(roi_selections).read_bytes()
+            ).hexdigest()
         if config_path is not None:
             detection_review["config_sha256"] = hashlib.sha256(
                 Path(config_path).read_bytes()
@@ -571,7 +583,11 @@ def detect_file(
     data = path.read_bytes()
     image = _decode_raster(data)
     result = detect(image, hints)
-    proposed = hints.model_dump(mode="json", exclude_none=True, exclude={"requested", "detector"})
+    proposed = hints.model_dump(
+        mode="json",
+        exclude_none=True,
+        exclude={"requested", "detector", "infer_rows", "infer_columns"},
+    )
     if "labels" in proposed:
         for axis in ("rows", "columns"):
             source = proposed["labels"].get(axis)
@@ -583,11 +599,17 @@ def detect_file(
         key for key, field in ExtractionConfig.model_fields.items() if not field.is_required()
     }
     missing = tuple(sorted(required - proposed.keys()))
+    missing += tuple(
+        f"labels.{kind.removeprefix('labels_')}"
+        for kind in hints.requested
+        if kind.startswith("labels_")
+    )
     complete = False
     if not missing:
         validate_geometry(ExtractionConfig.model_validate(proposed), image.shape)
-        complete = True
+        complete = not result.unresolved_requirements
     saved = SavedDetection(
+        schema_version=2,
         image_sha256=hashlib.sha256(data).hexdigest(),
         image_dimensions=(image.shape[1], image.shape[0]),
         detector_version=DETECTOR_VERSION,
@@ -595,7 +617,7 @@ def detect_file(
             asdict(analysis_image(image, maximum)[1])
             for maximum in (hints.detector.max_analysis_size, hints.detector.max_analysis_size // 2)
         )
-        if hints.heatmap_bbox is None
+        if "heatmap" in hints.requested or "colourbar" in hints.requested
         else (),
         hints=hints,
         result=result,
@@ -614,11 +636,34 @@ def detect_file(
     for index, candidate in enumerate(result.candidates, 1):
         left, top, right, bottom = candidate.bbox
         draw.rectangle((left, top, right - 1, bottom - 1), outline="orange", width=2)
-        caption(left, top - 12, f"{index} heatmap ? {candidate.score:.2f}")
+        caption(left, top - 12, f"{index} {candidate.kind} ? {candidate.score:.2f}")
     for kind, region in result.selected.items():
         left, top, right, bottom = region.bbox
         draw.rectangle((left, top, right - 1, bottom - 1), outline="lime", width=2)
         caption(left, top, f"{kind} manual")
+    for proposal in result.count_proposals:
+        if proposal == next(
+            (
+                p
+                for p in result.count_proposals
+                if p.axis == proposal.axis and p.heatmap_id == proposal.heatmap_id
+            ),
+            None,
+        ):
+            left, top, right, bottom = proposal.bbox
+            for index in range(1, proposal.count):
+                position = round(proposal.phase + index * proposal.pitch)
+                line = (
+                    (left, position, right - 1, position)
+                    if proposal.axis == "rows"
+                    else (position, top, position, bottom - 1)
+                )
+                draw.line(line, fill="cyan", width=1)
+            caption(
+                left,
+                bottom if proposal.axis == "rows" else top - 24,
+                f"{proposal.axis} ? {proposal.count}; alternatives in JSON",
+            )
     caption(2, 2, f"{result.status}; supplied {hints.rows} x {hints.columns}")
     directory.mkdir(parents=True, exist_ok=True)
     (directory / "roi_candidates.json").write_text(
@@ -637,9 +682,9 @@ def review_detection(
     image_sha256: str,
     config_payload: dict[str, Any],
     candidate_id: str | None,
+    selections: ROIReview | None = None,
 ) -> tuple[ExtractionConfig, dict[str, Any]]:
-    """Validate saved evidence and explicit review without rerunning localisation."""
-
+    """Validate saved M7/M8 evidence and explicit review without rerunning detection."""
     saved = SavedDetection.model_validate_json(data)
     if saved.image_sha256 != image_sha256 or saved.image_dimensions != (
         image.shape[1],
@@ -647,48 +692,183 @@ def review_detection(
     ):
         raise ValueError("saved detection image hash/dimensions do not match the input figure")
     ids = [candidate.id for candidate in saved.result.candidates]
-    if len(ids) != len(set(ids)):
+    count_ids = [proposal.id for proposal in saved.result.count_proposals]
+    if len(ids + count_ids) != len(set(ids + count_ids)):
         raise ValueError("saved detection has duplicate candidate IDs")
+    candidates = {candidate.id: candidate for candidate in saved.result.candidates}
+    heatmaps = {
+        candidate.id: candidate.bbox
+        for candidate in saved.result.candidates
+        if candidate.kind == "heatmap"
+    }
+    if saved.hints.heatmap_bbox is not None:
+        heatmaps["heatmap-manual"] = saved.hints.heatmap_bbox
+    bars = {candidate.id for candidate in saved.result.candidates if candidate.kind == "colourbar"}
+    if saved.hints.colourbar_bbox is not None:
+        bars.add("colourbar-manual")
+    for box in (saved.hints.heatmap_bbox, saved.hints.colourbar_bbox):
+        if box is not None:
+            _validate_roi_box(box, image.shape)
+    if saved.hints.labels is not None:
+        for source in (saved.hints.labels.rows, saved.hints.labels.columns):
+            if isinstance(source, OCRLabelSource):
+                _validate_roi_box(source.bbox, image.shape)
     for proposal in saved.result.candidates:
         _validate_roi_box(proposal.bbox, image.shape)
-    for region in saved.result.selected.values():
+    for kind, region in saved.result.selected.items():
         _validate_roi_box(region.bbox, image.shape)
-    for region in saved.result.selected.values():
-        if region.candidate_id is not None and region.candidate_id not in ids:
-            raise ValueError("saved selection references an unknown candidate ID")
+        if region.candidate_id is not None:
+            candidate = candidates.get(region.candidate_id)
+            if candidate is None or candidate.kind != kind or candidate.bbox != region.bbox:
+                raise ValueError(
+                    "saved selection references an unknown or conflicting candidate ID"
+                )
+    association_ids = [a.id for a in saved.result.associations]
+    if len(association_ids) != len(set(association_ids)):
+        raise ValueError("saved detection has duplicate association IDs")
+    for association in saved.result.associations:
+        if association.heatmap_id not in heatmaps or association.colourbar_id not in bars:
+            raise ValueError("saved association references an unknown region ID")
+    for count_proposal in saved.result.count_proposals:
+        _validate_roi_box(count_proposal.bbox, image.shape)
+        coordinate = 1 if count_proposal.axis == "rows" else 0
+        if (
+            count_proposal.heatmap_id not in heatmaps
+            or heatmaps[count_proposal.heatmap_id] != count_proposal.bbox
+        ):
+            raise ValueError("count proposal references an unknown/conflicting heatmap")
+        for signal in count_proposal.signals.values():
+            if any(
+                not count_proposal.bbox[coordinate]
+                <= position
+                <= count_proposal.bbox[coordinate + 2]
+                for position in signal.positions
+            ):
+                raise ValueError("count signal position lies outside its heatmap")
+        length = count_proposal.bbox[coordinate + 2] - count_proposal.bbox[coordinate]
+        if abs(count_proposal.pitch - length / count_proposal.count) > 1e-8 or (
+            count_proposal.phase != count_proposal.bbox[coordinate]
+        ):
+            raise ValueError("count proposal has contradictory pitch/phase")
+    for axis, selected_count in saved.result.selected_counts.items():
+        supplied = getattr(saved.hints, axis)
+        if selected_count.origin == "manual" and selected_count.count != supplied:
+            raise ValueError("saved selected count contradicts supplied count")
+        if selected_count.proposal_id is not None:
+            choice = next(
+                (p for p in saved.result.count_proposals if p.id == selected_count.proposal_id),
+                None,
+            )
+            if choice is None or choice.axis != axis or choice.count != selected_count.count:
+                raise ValueError("saved selected count references a conflicting proposal")
     if not isinstance(config_payload, dict):
         raise ValueError("reviewed extraction config must be a JSON object")
-    payload = dict(config_payload)
-    for axis in ("rows", "columns"):
-        if payload.get(axis) != getattr(saved.hints, axis):
-            raise ValueError(f"reviewed {axis} conflicts with supplied detection count")
+    payload = json.loads(json.dumps(config_payload))
+    review = selections or ROIReview()
+    regions = dict(review.regions)
     if candidate_id is not None:
-        candidate = next((c for c in saved.result.candidates if c.id == candidate_id), None)
-        if candidate is None:
-            raise ValueError("unknown heatmap candidate ID in saved detection")
-        if "heatmap_bbox" in payload and tuple(payload["heatmap_bbox"]) != candidate.bbox:
-            raise ValueError("configured heatmap_bbox conflicts with selected candidate")
-        payload["heatmap_bbox"] = candidate.bbox
+        if "heatmap" in regions and regions["heatmap"] != candidate_id:
+            raise ValueError("conflicting heatmap candidate selections")
+        regions["heatmap"] = candidate_id
+    for kind, identifier in regions.items():
+        candidate = candidates.get(identifier)
+        if candidate is None or candidate.kind != kind:
+            raise ValueError(f"unknown {kind} candidate ID or wrong region kind")
+        _apply_roi_region(payload, kind, candidate.bbox)
+        if kind == "colourbar" and candidate.orientation is not None:
+            if payload.get("colourbar_orientation", candidate.orientation) != candidate.orientation:
+                raise ValueError(
+                    "colourbar orientation conflicts with reviewed physical orientation"
+                )
+            payload["colourbar_orientation"] = candidate.orientation
+    selected_counts = {}
+    for axis in ("rows", "columns"):
+        supplied = getattr(saved.hints, axis)
+        count_identifier = review.counts.get(axis)
+        if count_identifier is not None:
+            count_choice = next(
+                (p for p in saved.result.count_proposals if p.id == count_identifier), None
+            )
+            if count_choice is None or count_choice.axis != axis:
+                raise ValueError(f"unknown {axis} count proposal ID")
+            if tuple(payload.get("heatmap_bbox", ())) != count_choice.bbox:
+                raise ValueError("reviewed count conflicts with selected heatmap bounds")
+            if axis in payload and payload[axis] != count_choice.count:
+                raise ValueError(f"reviewed {axis} count conflicts with configured count")
+            payload[axis] = count_choice.count
+        if supplied is not None and payload.get(axis) != supplied:
+            raise ValueError(f"reviewed {axis} conflicts with supplied detection count")
+        selected_counts[axis] = {
+            "count": payload.get(axis),
+            "origin": "reviewed_detection" if count_identifier else "manual",
+            "proposal_id": count_identifier,
+        }
     config = ExtractionConfig.model_validate(payload)
     validate_geometry(config, image.shape)
+    for kind in saved.hints.requested:
+        if kind.startswith("labels_"):
+            requested_axis = kind.removeprefix("labels_")
+            if config.labels is None or getattr(config.labels, requested_axis) is None:
+                raise ValueError(f"requested {kind} is unresolved; supply/review its label source")
+    final_payload = config.model_dump(mode="json")
     for kind, region in saved.result.selected.items():
-        if tuple(getattr(config, f"{kind}_bbox")) != region.bbox:
+        if _roi_config_box(final_payload, kind) != region.bbox:
             raise ValueError(f"review conflicts with fixed manual {kind} bounds")
+    if saved.hints.labels is not None:
+        for axis in ("rows", "columns"):
+            source = getattr(saved.hints.labels, axis)
+            if isinstance(source, FileLabelSource):
+                # Paths may be rebased by export; explicit source type must stay fixed.
+                final_source = getattr(config.labels, axis) if config.labels is not None else None
+                if not isinstance(final_source, FileLabelSource):
+                    raise ValueError(f"review conflicts with fixed labels.{axis} file source")
+    selected_regions = {}
+    for kind in ("heatmap", "colourbar", "labels_rows", "labels_columns"):
+        box = _roi_config_box(final_payload, kind)
+        if box is not None:
+            selected_regions[kind] = {
+                "bbox": list(box),
+                "origin": "reviewed_detection" if kind in regions else "manual",
+                "candidate_id": regions.get(kind),
+            }
     return config, {
         "evidence": saved.model_dump(mode="json"),
         "review_sha256": hashlib.sha256(data).hexdigest(),
-        "origin": "reviewed_detection" if candidate_id else "manual",
-        "candidate_id": candidate_id,
-        "reviewed_config": config.model_dump(mode="json"),
-        "selected_regions": {
-            "heatmap": {
-                "bbox": list(config.heatmap_bbox),
-                "origin": "reviewed_detection" if candidate_id else "manual",
-                "candidate_id": candidate_id,
-            },
-            "colourbar": {"bbox": list(config.colourbar_bbox), "origin": "manual"},
-        },
+        "origin": "reviewed_detection" if regions or review.counts else "manual",
+        "candidate_id": regions.get("heatmap"),
+        "reviewed_config": final_payload,
+        "selected_regions": selected_regions,
+        "selected_counts": selected_counts,
     }
+
+
+def _roi_config_box(payload: dict[str, Any], kind: str) -> tuple[int, int, int, int] | None:
+    if kind.startswith("labels_"):
+        labels = payload.get("labels") or {}
+        if not isinstance(labels, dict):
+            raise ValueError("labels must be an object")
+        source = labels.get(kind.removeprefix("labels_")) or {}
+        if not isinstance(source, dict):
+            raise ValueError("label sources must be objects")
+        box = source.get("bbox")
+    else:
+        box = payload.get(f"{kind}_bbox")
+    return tuple(box) if box is not None else None
+
+
+def _apply_roi_region(payload: dict[str, Any], kind: str, box: tuple[int, int, int, int]) -> None:
+    existing = _roi_config_box(payload, kind)
+    if existing is not None and existing != box:
+        raise ValueError(f"configured {kind}_bbox conflicts with selected candidate")
+    if kind.startswith("labels_"):
+        axis = kind.removeprefix("labels_")
+        labels = payload.get("labels") or {}
+        payload["labels"] = labels
+        if labels.get(axis) is not None and labels[axis].get("source") != "ocr":
+            raise ValueError(f"configured labels.{axis} source conflicts with selected candidate")
+        labels[axis] = {"source": "ocr", "bbox": list(box)}
+    else:
+        payload[f"{kind}_bbox"] = list(box)
 
 
 def _validate_roi_box(box: tuple[int, int, int, int], shape: tuple[int, ...]) -> None:

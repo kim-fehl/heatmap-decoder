@@ -17,7 +17,14 @@ from .io import (
     load_raster,
     review_detection,
 )
-from .models import CellFlag, DetectionHints, ExtractionConfig, GridConfig, LabelExtractionResult
+from .models import (
+    CellFlag,
+    DetectionHints,
+    ExtractionConfig,
+    GridConfig,
+    LabelExtractionResult,
+    ROIReview,
+)
 from .version import __version__
 
 app = typer.Typer(
@@ -78,6 +85,15 @@ def extract_command(
             help="Saved roi_candidates.json to validate and preserve.",
         ),
     ] = None,
+    roi_selections: Annotated[
+        Path | None,
+        typer.Option(
+            "--roi-selections",
+            exists=True,
+            dir_okay=False,
+            help="Reviewed JSON region/count candidate ID selections.",
+        ),
+    ] = None,
     heatmap_candidate: Annotated[
         str | None, typer.Option("--heatmap-candidate", help="Explicit reviewed candidate ID.")
     ] = None,
@@ -95,7 +111,7 @@ def extract_command(
     """Write matrix.csv, quality.csv, provenance.json and diagnostic.png."""
     try:
         payload = json.loads(config.read_text(encoding="utf-8"))
-        if heatmap_candidate is not None and roi_review is None:
+        if (heatmap_candidate is not None or roi_selections is not None) and roi_review is None:
             raise ValueError("--heatmap-candidate requires --roi-review")
         if roi_review is not None:
             settings, _ = review_detection(
@@ -104,6 +120,9 @@ def extract_command(
                 hashlib.sha256(figure.read_bytes()).hexdigest(),
                 payload,
                 heatmap_candidate,
+                ROIReview.model_validate_json(roi_selections.read_bytes())
+                if roi_selections is not None
+                else None,
             )
         else:
             settings = ExtractionConfig.model_validate(payload)
@@ -136,6 +155,7 @@ def extract_command(
             labels_review=labels_review,
             roi_review=roi_review,
             heatmap_candidate=heatmap_candidate,
+            roi_selections=roi_selections,
         )
     except UnresolvedLabelsError as error:
         typer.echo(
@@ -236,7 +256,7 @@ def detect_command(
             "--config",
             exists=True,
             dir_okay=False,
-            help="M7 detection hints JSON; counts required.",
+            help="Detection hints JSON; supply counts or explicitly request inference.",
         ),
     ],
     out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("roi_review"),
@@ -250,7 +270,8 @@ def detect_command(
         typer.echo(f"Error: {error}", err=True)
         raise typer.Exit(code=2) from None
     typer.echo(f"Wrote ROI review artifacts to {out}; {saved.result.status}")
-    typer.echo(f"Heatmap candidates: {len(saved.result.candidates)}; scores are not probabilities.")
+    typer.echo(f"ROI candidates: {len(saved.result.candidates)}; scores are not probabilities.")
+    typer.echo(f"Count proposals: {len(saved.result.count_proposals)}; review required.")
     for warning in saved.result.warnings:
         typer.echo(f"Warning: {warning}", err=True)
     if not saved.proposed_config_complete:
@@ -260,6 +281,8 @@ def detect_command(
             err=True,
         )
     if saved.result.unresolved_requirements:
+        for requirement in saved.result.unresolved_requirements:
+            typer.echo(f"Unresolved: {requirement}", err=True)
         typer.echo(
             "Review the overlay and select a candidate or edit the proposed config.", err=True
         )

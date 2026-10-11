@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — M8
+
+- Add continuous horizontal/vertical colourbar proposals and explicit heatmap associations.
+- Add optional bounded upright OCR label-region searches with raw evidence and unresolved outcomes.
+- Add explicit per-axis count proposals with original-resolution signals, conflicts and harmonics.
+- Extend saved review with region/count ID selections and preserve M7 schema compatibility.
+- Add M8 fixtures, quality report, reviewed CLI example and OCR CI workflow.
+- Keep every inferred region/count review-only; numerical endpoints remain manual.
+
 ## Unreleased — M7
 
 - Add review-only heatmap candidates, exact resize transforms and original-pixel refinement.

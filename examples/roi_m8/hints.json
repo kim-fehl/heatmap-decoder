@@ -1,0 +1,8 @@
+{
+  "rows": 4,
+  "columns": 3,
+  "heatmap_bbox": [220, 140, 1000, 460],
+  "requested": ["colourbar", "labels_rows", "labels_columns"],
+  "colourbar_start_value": 2,
+  "colourbar_end_value": -2
+}

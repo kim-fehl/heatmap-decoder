@@ -231,6 +231,15 @@ class LabelExtractionResult:
         )
 
 
+ROIKind: TypeAlias = Literal["heatmap", "colourbar", "labels_rows", "labels_columns"]
+
+
+class ROIReview(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    regions: dict[ROIKind, str] = Field(default_factory=dict)
+    counts: dict[Axis, str] = Field(default_factory=dict)
+
+
 class DetectorOptions(BaseModel):
     """Bounded heuristic settings, versioned separately from scientific QC."""
 
@@ -241,15 +250,24 @@ class DetectorOptions(BaseModel):
     background_distance: Annotated[float, Field(gt=0, le=100)] = 12.0
     gridline_gap: Annotated[int, Field(strict=True, ge=1, le=7)] = 3
     min_score: Annotated[float, Field(ge=0, le=1)] = 0.65
+    max_count: Annotated[int, Field(strict=True, ge=2, le=512)] = 128
+    max_count_candidates: Annotated[int, Field(strict=True, ge=2, le=32)] = 8
+    label_search_pixels: Annotated[int, Field(strict=True, ge=16, le=1024)] = 256
+    label_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=32)] = 4
+    max_ocr_pixels: Annotated[int, Field(strict=True, ge=1000, le=16000000)] = 4000000
 
 
 class DetectionHints(BaseModel):
-    """M7 counts are authoritative; only heatmap localisation is implemented."""
+    """Supplied counts are authoritative; M8 inference requires an explicit axis request."""
 
     model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
-    rows: Annotated[int, Field(strict=True, gt=0)]
-    columns: Annotated[int, Field(strict=True, gt=0)]
-    requested: tuple[Literal["heatmap"], ...] = ("heatmap",)
+    rows: Annotated[int, Field(strict=True, gt=0)] | None = None
+    columns: Annotated[int, Field(strict=True, gt=0)] | None = None
+    infer_rows: Annotated[bool, Field(strict=True)] = False
+    infer_columns: Annotated[bool, Field(strict=True)] = False
+    requested: tuple[Literal["heatmap", "colourbar", "labels_rows", "labels_columns"], ...] = (
+        "heatmap",
+    )
     heatmap_bbox: BoundingBox | None = None
     colourbar_bbox: BoundingBox | None = None
     colourbar_orientation: Literal["vertical", "horizontal"] | None = None
@@ -260,6 +278,15 @@ class DetectionHints(BaseModel):
 
     @model_validator(mode="after")
     def validate_requests(self) -> "DetectionHints":
+        for axis in ("rows", "columns"):
+            if getattr(self, axis) is None and not getattr(self, f"infer_{axis}"):
+                raise ValueError(f"supply {axis} or explicitly request infer_{axis}")
+        if self.colourbar_bbox is not None and "colourbar" in self.requested:
+            raise ValueError("manual colourbar_bbox conflicts with requested colourbar")
+        if self.labels is not None:
+            for axis in ("rows", "columns"):
+                if getattr(self.labels, axis) is not None and f"labels_{axis}" in self.requested:
+                    raise ValueError(f"fixed labels.{axis} conflicts with requested labels_{axis}")
         if len(set(self.requested)) != len(self.requested):
             raise ValueError("requested region kinds must be unique")
         if self.heatmap_bbox is not None and "heatmap" in self.requested:
@@ -277,9 +304,9 @@ class DetectionHints(BaseModel):
 class ROICandidate(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
     id: str
-    kind: Literal["heatmap"] = "heatmap"
+    kind: Literal["heatmap", "colourbar", "labels_rows", "labels_columns"] = "heatmap"
     bbox: BoundingBox
-    orientation: None = None
+    orientation: Literal["vertical", "horizontal"] | None = None
     score: Annotated[float, Field(ge=0, le=1)]
     score_components: dict[str, float]
     reasons: tuple[str, ...] = ("review_required",)
@@ -293,18 +320,75 @@ class SelectedRegion(BaseModel):
     candidate_id: str | None = None
 
 
+class ROIAssociation(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    id: str
+    heatmap_id: str
+    colourbar_id: str
+    score: Annotated[float, Field(ge=0, le=1)]
+    score_components: dict[str, float]
+    reasons: tuple[str, ...] = ("review_required",)
+
+
+class CountSignal(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    positions: tuple[float, ...]
+    alignment: Annotated[float, Field(ge=0, le=1)]
+    coverage: Annotated[float, Field(ge=0, le=1)]
+    kind: Literal["boundaries", "centres"]
+
+
+class CountProposal(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    id: str
+    axis: Axis
+    count: Annotated[int, Field(strict=True, gt=0)]
+    heatmap_id: str
+    bbox: BoundingBox
+    pitch: Annotated[float, Field(gt=0)]
+    phase: float
+    score: Annotated[float, Field(ge=0, le=1)]
+    signals: dict[str, CountSignal]
+    reasons: tuple[str, ...]
+    conflicts: tuple[str, ...] = ()
+    origin: None = None
+
+
+class SelectedCount(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    count: Annotated[int, Field(strict=True, gt=0)]
+    origin: Literal["manual", "reviewed_detection"] = "manual"
+    proposal_id: str | None = None
+
+
+class LabelLocalisationEvidence(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    axis: Axis
+    side: Literal["left", "right", "above", "below"]
+    search_bbox: BoundingBox
+    preprocessing: OCRConfig = Field(default_factory=OCRConfig)
+    tokens: tuple[OCRToken, ...]
+    unassigned_candidates: tuple[LabelCandidate, ...]
+    assignment: AxisLabelResults | None = None
+    engine: OCRRun
+
+
 class DetectionResult(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     candidates: tuple[ROICandidate, ...]
-    selected: dict[Literal["heatmap", "colourbar"], SelectedRegion]
+    selected: dict[ROIKind, SelectedRegion]
     status: Literal["manual", "review_required", "ambiguous", "unresolved"]
     unresolved_requirements: tuple[str, ...]
     warnings: tuple[str, ...] = ()
+    associations: tuple[ROIAssociation, ...] = ()
+    count_proposals: tuple[CountProposal, ...] = ()
+    selected_counts: dict[Axis, SelectedCount] = Field(default_factory=dict)
+    label_evidence: tuple[LabelLocalisationEvidence, ...] = ()
 
 
 class SavedDetection(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
-    schema_version: Literal[1] = 1
+    schema_version: Literal[1, 2] = 1
     image_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
     image_dimensions: tuple[
         Annotated[int, Field(strict=True, gt=0)], Annotated[int, Field(strict=True, gt=0)]

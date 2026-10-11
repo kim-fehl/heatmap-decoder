@@ -13,6 +13,7 @@ from .io import (
 from .models import (
     AxisLabelResults,
     CellFlag,
+    CountProposal,
     DetectionHints,
     DetectionResult,
     DetectorOptions,
@@ -25,6 +26,8 @@ from .models import (
     LabelsConfig,
     OCRConfig,
     OCRToken,
+    ROIAssociation,
+    ROIReview,
     SavedDetection,
 )
 from .version import __version__
@@ -34,6 +37,9 @@ __all__ = [
     "DetectionHints",
     "DetectionResult",
     "DetectorOptions",
+    "CountProposal",
+    "ROIAssociation",
+    "ROIReview",
     "SavedDetection",
     "detect",
     "detect_file",

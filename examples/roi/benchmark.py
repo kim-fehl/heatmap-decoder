@@ -9,6 +9,7 @@ import numpy as np
 from PIL import Image, ImageFilter
 
 from heatmap_decoder import DetectionHints, detect
+from heatmap_decoder.detection import DETECTOR_VERSION
 
 HERE = Path(__file__).resolve().parent
 fixtures = runpy.run_path(str(HERE / "generate.py"))
@@ -82,7 +83,7 @@ def report():
         np.concatenate((image, image), axis=1), box, rows, columns
     )
     return {
-        "detector_version": "m7.1",
+        "detector_version": DETECTOR_VERSION,
         "automatic_coverage": 0,
         "automatic_correct_acceptance_rate": None,
         "count_inference": "not implemented",

@@ -377,3 +377,32 @@ The six fixed clean regression layouts have exact top-three bounds. JPEG and som
 blurred borders fail or abstain, and multiple panels remain ambiguous. See the
 [complete M7 report](M7.md) and [reproducible fixtures](examples/roi/README.md) for
 actual proposal quality and unsupported layouts. Automatic extraction is unavailable.
+
+## Colourbar, label-region and count proposals (M8)
+
+M8 extends detection with horizontal/vertical continuous-bar proposals, separate
+heatmap–bar associations and optional local OCR searches for upright label regions.
+Fixed coordinates/sources support hybrid workflows. Counts may be omitted only
+with explicit `infer_rows` / `infer_columns` requests; supplied counts remain
+authoritative. Count alternatives record original-resolution observations,
+pitch/phase, missing support, conflicts and integer-multiple ambiguity. They are
+never automatically accepted or inserted into extraction config.
+
+```bash
+uv run --extra ocr heatmap-decoder detect examples/labels/reconstruction.png --config examples/roi_m8/hints.json --out work/m8-roi
+# Expected exit 5. Inspect the overlay and saved evidence before selecting IDs.
+uv run --extra ocr heatmap-decoder extract examples/labels/reconstruction.png --config work/m8-roi/config_proposed.json --roi-review work/m8-roi/roi_candidates.json --roi-selections examples/roi_m8/selections.json --out work/m8-results
+```
+
+`--roi-selections` accepts explicit `regions` and `counts` ID mappings. Existing
+`--heatmap-candidate`, edited ordinary configs and manual label files still work.
+Selecting a label region preserves the ordinary OCR/review gates; it does not
+accept the text. Missing requested OCR/regions save unresolved artefacts and stop
+saved-review extraction. Colourbar/count operation remains independent of OCR.
+Numerical endpoints are never inferred. See [M8.md](M8.md) and the
+[runnable M8 fixtures](examples/roi_m8/README.md) for exact hints and review formats.
+
+The fixed clean bar layouts have exact offered bounds, while the small tested
+blur/JPEG variants abstain. Merged neighbouring colours produce competing counts
+with a misleading first rank. These are review-only proposals with documented
+failures; M9 automatic hand-off and practical validation remain future work.

@@ -1,0 +1,35 @@
+{
+  "source": "Original MIT M6 fixed upright synthetic fixture",
+  "edge_tolerance_pixels": 6,
+  "method": "Independently bounded dark glyph pixels (<128 RGB) within manually annotated text regions",
+  "axes": {
+    "rows": {
+      "text_bounds": [
+        46,
+        168,
+        176,
+        430
+      ],
+      "manual_region": [
+        10,
+        140,
+        210,
+        460
+      ]
+    },
+    "columns": {
+      "text_bounds": [
+        283,
+        79,
+        941,
+        109
+      ],
+      "manual_region": [
+        220,
+        60,
+        1000,
+        125
+      ]
+    }
+  }
+}

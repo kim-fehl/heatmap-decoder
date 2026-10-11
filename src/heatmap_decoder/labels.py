@@ -339,3 +339,32 @@ def apply_review(
         )
         axes.append(replace(axis, slots=slots))
     return replace(result, axes=tuple(axes), unreviewed_axes=result.unreviewed_axes or result.axes)
+
+
+def group_unassigned_tokens(tokens: Sequence[OCRToken]) -> tuple[LabelCandidate, ...]:
+    """Upright geometric grouping without slots or counts, for localisation evidence.
+
+    Complete-link grouping cannot chain across long text rows. This evidence can
+    support a count hypothesis, but no grouping establishes biological identity.
+    """
+    groups: list[list[int]] = []
+    valid = [i for i, token in enumerate(tokens) if token.text.strip() and token.confidence >= 0]
+    for index in sorted(valid, key=lambda i: (tokens[i].bbox[1], tokens[i].bbox[0], i)):
+        token = tokens[index]
+        _validate_box(token.bbox)
+        matched = [group for group in groups if all(_same_line(token, tokens[j]) for j in group)]
+        if len(matched) == 1:
+            matched[0].append(index)
+        else:
+            groups.append([index])
+    return tuple(
+        LabelCandidate(
+            " ".join(
+                tokens[i].text.strip() for i in sorted(group, key=lambda i: tokens[i].bbox[0])
+            ),
+            _union_box([tokens[i].bbox for i in group]),
+            min(tokens[i].confidence for i in group),
+            tuple(group),
+        )
+        for group in groups
+    )

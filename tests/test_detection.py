@@ -92,8 +92,8 @@ def test_manual_bypass_and_bounds(monkeypatch):
     [
         {"rows": 0, "columns": 2},
         {"rows": 1.1, "columns": 2},
-        {"rows": 2, "columns": 2, "infer_rows": True},
-        {"rows": 2, "columns": 2, "requested": ["colourbar"]},
+        {"rows": 2, "columns": 2, "infer_rows": "yes"},
+        {"rows": 2, "columns": 2, "requested": ["categorical_legend"]},
         {"rows": 2, "columns": 2, "heatmap_bbox": [0, 0, 20, 20]},
         {"rows": 2, "columns": 2, "requested": []},
         {"rows": 2, "columns": 2, "requested": ["heatmap", "heatmap"]},
@@ -192,7 +192,7 @@ def test_saved_review_rejects_invalid(tmp_path, mutation, match):
     elif mutation == "dimensions":
         payload["image_dimensions"][0] += 1
     elif mutation == "schema":
-        payload["schema_version"] = 2
+        payload["schema_version"] = 99
     elif mutation == "duplicate":
         payload["result"]["candidates"] *= 2
     elif mutation == "box":
