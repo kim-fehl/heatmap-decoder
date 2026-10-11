@@ -10,6 +10,7 @@ from PIL import Image
 from skimage.measure import label, regionprops
 from skimage.morphology import closing
 
+from .detection_policy import THRESHOLDS as T
 from .geometry import validate_grid_geometry
 from .models import (
     Axis,
@@ -92,12 +93,12 @@ def refine_box(
     right, bottom = left + int(np.max(xs)) + 1, top + int(np.max(ys)) + 1
     left, top = left + int(np.min(xs)), top + int(np.min(ys))
     # Bounded trim: borders are thin; never erode arbitrarily into a uniform panel.
-    for _ in range(4):
+    for _ in range(T.border_trim_pixels):
         crop = image[top:bottom, left:right, :3]
         if min(crop.shape[:2]) <= 2:
             break
         trims = [
-            np.max(np.ptp(edge.astype(float), axis=0)) < 2
+            np.max(np.ptp(edge.astype(float), axis=0)) < T.uniform_rgb_spread
             for edge in (crop[:, 0], crop[0], crop[:, -1], crop[-1])
         ]
         if not any(trims):
@@ -119,17 +120,17 @@ def score_box(
     left, top, right, bottom = box
     if hints.rows is None or hints.columns is None:
         crop = image[top:bottom, left:right, :3].astype(float)
-        variation = min(1.0, float(np.mean(np.std(crop, axis=(0, 1)))) / 25)
+        variation = min(1.0, float(np.mean(np.std(crop, axis=(0, 1)))) / T.variation_normaliser)
         occupancy = float(
             np.mean(foreground(image, hints.detector.background_distance)[top:bottom, left:right])
         )
-        if (hints.rows is not None and (bottom - top) / hints.rows < 3) or (
-            hints.columns is not None and (right - left) / hints.columns < 3
+        if (hints.rows is not None and (bottom - top) / hints.rows < T.minimum_cell_pitch) or (
+            hints.columns is not None and (right - left) / hints.columns < T.minimum_cell_pitch
         ):
             occupancy, variation = 0.0, 0.0
         return {"occupancy": occupancy, "variation": variation, "grid_scoring_available": 0.0}
     pitch_x, pitch_y = (right - left) / hints.columns, (bottom - top) / hints.rows
-    if min(pitch_x, pitch_y) < 3:
+    if min(pitch_x, pitch_y) < T.minimum_cell_pitch:
         return {
             "occupancy": 0.0,
             "piecewise_constant": 0.0,
@@ -138,16 +139,20 @@ def score_box(
             "equal_grid": 0.0,
         }
     # At most 32 slots per axis and 3x3 samples per cell, including both ends.
-    rows = np.unique(np.linspace(0, hints.rows - 1, min(32, hints.rows)).astype(int))
-    columns = np.unique(np.linspace(0, hints.columns - 1, min(32, hints.columns)).astype(int))
+    rows = np.unique(
+        np.linspace(0, hints.rows - 1, min(T.grid_slots_per_axis, hints.rows)).astype(int)
+    )
+    columns = np.unique(
+        np.linspace(0, hints.columns - 1, min(T.grid_slots_per_axis, hints.columns)).astype(int)
+    )
     colours, errors = [], []
     for row in rows:
         for column in columns:
             ys = np.minimum(
-                bottom - 1, (top + (row + np.array([0.3, 0.5, 0.7])) * pitch_y).astype(int)
+                bottom - 1, (top + (row + np.array(T.interior_positions)) * pitch_y).astype(int)
             )
             xs = np.minimum(
-                right - 1, (left + (column + np.array([0.3, 0.5, 0.7])) * pitch_x).astype(int)
+                right - 1, (left + (column + np.array(T.interior_positions)) * pitch_x).astype(int)
             )
             pixels = image[ys[:, None], xs[None, :], :3].astype(float).reshape(-1, 3)
             colour = np.median(pixels, axis=0)
@@ -161,7 +166,9 @@ def score_box(
         for axis in (0, 1)
         if grid_colours.shape[axis] > 1
     ]
-    grid = max(0.0, 1 - 4 * float(np.mean(errors)) / max(max(jumps, default=0), 1))
+    grid = max(
+        0.0, 1 - T.grid_residual_multiplier * float(np.mean(errors)) / max(max(jumps, default=0), 1)
+    )
     occupancy = float(
         np.mean(
             (
@@ -182,7 +189,7 @@ def score_box(
     return {
         "occupancy": occupancy,
         "piecewise_constant": constant,
-        "variation": min(1.0, variation / 25),
+        "variation": min(1.0, variation / T.variation_normaliser),
         "boundary": float(np.mean(boundary)),
         "equal_grid": grid,
     }
@@ -227,7 +234,10 @@ def _detect_heatmap(image: RGBArray, hints: DetectionHints) -> DetectionResult:
             )
         evidence = score_box(image, hints.heatmap_bbox, hints)
         warnings: tuple[str, ...] = ()
-        if evidence["variation"] < 0.2 or evidence.get("equal_grid", 1) < 0.8:
+        if (
+            evidence["variation"] < T.minimum_variation_score
+            or evidence.get("equal_grid", 1) < T.minimum_equal_grid_score
+        ):
             warnings = (
                 "Manual bounds preserved; supplied grid has weak colour/structure evidence.",
             )
@@ -252,7 +262,9 @@ def _detect_heatmap(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         )
         for region in regions[: hints.detector.max_components]:
             top, left, bottom, right = region.bbox
-            if (right - left) < 6 or (bottom - top) < 6:
+            if (right - left) < T.minimum_analysis_extent or (
+                bottom - top
+            ) < T.minimum_analysis_extent:
                 continue
             box = transform.original_box((left, top, right, bottom))
             margin = math.ceil(max(width / small.shape[1], height / small.shape[0]))
@@ -263,18 +275,18 @@ def _detect_heatmap(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         grid_available = hints.rows is not None and hints.columns is not None
         score = (
             (
-                0.15 * components["occupancy"]
-                + 0.45 * components["piecewise_constant"]
-                + 0.25 * components["variation"]
-                + 0.15 * components["boundary"]
+                T.heatmap_score_weights[0] * components["occupancy"]
+                + T.heatmap_score_weights[1] * components["piecewise_constant"]
+                + T.heatmap_score_weights[2] * components["variation"]
+                + T.heatmap_score_weights[3] * components["boundary"]
             )
             if grid_available
             else (components["occupancy"] + components["variation"]) / 2
         )
         if (
             score >= hints.detector.min_score
-            and components["variation"] >= 0.2
-            and (not grid_available or components["equal_grid"] >= 0.8)
+            and components["variation"] >= T.minimum_variation_score
+            and (not grid_available or components["equal_grid"] >= T.minimum_equal_grid_score)
         ):
             scored.append((score, box, components))
     scored.sort(key=lambda item: (-item[0], item[1]))
@@ -334,18 +346,21 @@ def _component_boxes(image: RGBArray, hints: DetectionHints) -> list[BoundingBox
                 continue
             for vertical in (True, False):
                 cross, along = (0, 1) if vertical else (1, 0)
-                if max(abs(a[cross] - b[cross]), abs(a[cross + 2] - b[cross + 2])) > 2:
+                if (
+                    max(abs(a[cross] - b[cross]), abs(a[cross + 2] - b[cross + 2]))
+                    > T.bar_join_cross_tolerance
+                ):
                     continue
                 span = max(a[along + 2], b[along + 2]) - min(a[along], b[along])
                 gap = max(0, max(a[along], b[along]) - min(a[along + 2], b[along + 2]))
-                if gap <= 0.15 * span:
+                if gap <= T.bar_join_gap_fraction * span:
                     joined.add((min(a[0], b[0]), min(a[1], b[1]), max(a[2], b[2]), max(a[3], b[3])))
     return sorted(joined)
 
 
 def _refine_bar(image: RGBArray, box: BoundingBox, mask: NDArray[np.bool_]) -> BoundingBox:
     left, top, right, bottom = box
-    margin = math.ceil(max(image.shape[:2]) / 512) + 1
+    margin = math.ceil(max(image.shape[:2]) / T.bar_refinement_reference_size) + 1
     left, top = max(0, left - margin), max(0, top - margin)
     right, bottom = min(image.shape[1], right + margin), min(image.shape[0], bottom + margin)
     ys, xs = np.nonzero(mask[top:bottom, left:right])
@@ -359,13 +374,13 @@ def _refine_bar(image: RGBArray, box: BoundingBox, mask: NDArray[np.bool_]) -> B
         crop = crop.transpose(1, 0, 2)
     borders = []
     start, end = 0, crop.shape[1]
-    for _ in range(4):
+    for _ in range(T.border_trim_pixels):
         if end - start <= 2:
             break
         changed = False
         for side in (0, 1):
             strip = crop[:, start if side == 0 else end - 1].astype(float)
-            if np.max(np.ptp(strip, axis=0)) < 2:
+            if np.max(np.ptp(strip, axis=0)) < T.uniform_rgb_spread:
                 borders.append(np.median(strip, axis=0))
                 start += int(side == 0)
                 end -= int(side == 1)
@@ -375,14 +390,17 @@ def _refine_bar(image: RGBArray, box: BoundingBox, mask: NDArray[np.bool_]) -> B
     first, last = 0, crop.shape[0]
     if borders:
         colour = borders[0]
-        for _ in range(4):
+        for _ in range(T.border_trim_pixels):
             if last - first <= 2:
                 break
             changed = False
-            if np.max(np.abs(crop[first, start:end].astype(float) - colour)) < 2:
+            if np.max(np.abs(crop[first, start:end].astype(float) - colour)) < T.uniform_rgb_spread:
                 first += 1
                 changed = True
-            if np.max(np.abs(crop[last - 1, start:end].astype(float) - colour)) < 2:
+            if (
+                np.max(np.abs(crop[last - 1, start:end].astype(float) - colour))
+                < T.uniform_rgb_spread
+            ):
                 last -= 1
                 changed = True
             if not changed:
@@ -402,9 +420,9 @@ def colourbar_candidates(image: RGBArray, hints: DetectionHints) -> tuple[ROICan
         left, top, right, bottom = box
         width, height = right - left, bottom - top
         if (
-            min(width, height) < 2
-            or max(width, height) < 24
-            or max(width, height) / min(width, height) < 4
+            min(width, height) < T.bar_minimum_thickness
+            or max(width, height) < T.bar_minimum_length
+            or max(width, height) / min(width, height) < T.bar_minimum_aspect
         ):
             continue
         refined = _refine_bar(image, box, mask)
@@ -419,15 +437,20 @@ def colourbar_candidates(image: RGBArray, hints: DetectionHints) -> tuple[ROICan
         transverse = float(np.mean(np.abs(crop - profile[:, None])))
         variation = float(np.mean(np.std(profile, axis=0)))
         deltas = np.max(np.abs(np.diff(profile, axis=0)), axis=1)
-        continuity = float(np.mean(deltas <= 12))
+        continuity = float(np.mean(deltas <= T.bar_maximum_step))
         changing = float(np.mean(deltas > 0))
-        if variation < 12 or transverse > 8 or continuity < 0.97 or changing < 0.2:
+        if (
+            variation < T.bar_minimum_variation
+            or transverse > T.bar_maximum_transverse_error
+            or continuity < T.bar_minimum_continuity
+            or changing < T.bar_minimum_changing_fraction
+        ):
             continue
         components = {
-            "short_axis_constancy": max(0.0, 1 - transverse / 8),
+            "short_axis_constancy": max(0.0, 1 - transverse / T.bar_maximum_transverse_error),
             "continuity": continuity,
             "changing_fraction": changing,
-            "variation": min(1.0, variation / 25),
+            "variation": min(1.0, variation / T.variation_normaliser),
         }
         score = float(np.mean(list(components.values())))
         reasons = ["review_required", "extent_and_scale_completeness_unverified"]
@@ -468,9 +491,10 @@ def _associate_bars(
     for heatmap_id, box in heatmaps.items():
         left, top, right, bottom = box
         crop = image[top:bottom, left:right, :3]
-        colours = crop[:: max(1, crop.shape[0] // 20), :: max(1, crop.shape[1] // 20)].reshape(
-            -1, 3
-        )
+        colours = crop[
+            :: max(1, crop.shape[0] // T.association_heatmap_samples),
+            :: max(1, crop.shape[1] // T.association_heatmap_samples),
+        ].reshape(-1, 3)
         lab = rgb2lab(colours[None].astype(float) / 255)[0]
         for bar in bars:
             x0, y0, x1, y1 = bar.bbox
@@ -478,17 +502,21 @@ def _associate_bars(
                 continue
             strip = image[y0:y1, x0:x1, :3]
             profile = np.median(strip, axis=1 if bar.orientation == "vertical" else 0)
-            profile = profile[:: max(1, len(profile) // 256)]
+            profile = profile[:: max(1, len(profile) // T.association_bar_samples)]
             bar_lab = rgb2lab(profile[None].astype(float) / 255)[0]
             distances = np.sqrt(np.sum((lab[:, None] - bar_lab[None]) ** 2, axis=2)).min(axis=1)
-            coverage = float(np.mean(distances <= 10))
+            coverage = float(np.mean(distances <= T.association_maximum_delta_e76))
             gap = math.hypot(max(0, x0 - right, left - x1), max(0, y0 - bottom, top - y1))
             proximity = max(0.0, 1 - gap / max(right - left, bottom - top))
             if bar.orientation == "vertical":
                 alignment = max(0, min(bottom, y1) - max(top, y0)) / min(bottom - top, y1 - y0)
             else:
                 alignment = max(0, min(right, x1) - max(left, x0)) / min(right - left, x1 - x0)
-            if coverage < 0.5 or alignment < 0.5 or proximity <= 0:
+            if (
+                coverage < T.association_minimum_palette_coverage
+                or alignment < T.association_minimum_axis_overlap
+                or proximity <= 0
+            ):
                 continue
             result.append(
                 ROIAssociation(
@@ -631,22 +659,26 @@ def _count_signals(image: RGBArray, box: BoundingBox, axis: "Axis") -> dict[str,
     if axis == "columns":
         crop = crop.transpose(1, 0, 2)
     # Entire assignment axis at original resolution; bounded samples across it.
-    pixels = crop[:, :: max(1, crop.shape[1] // 32)].astype(float)
+    pixels = crop[:, :: max(1, crop.shape[1] // T.count_cross_samples)].astype(float)
     origin = top if axis == "rows" else left
     profile = np.mean(np.max(np.abs(np.diff(pixels, axis=0)), axis=2), axis=1)
-    groups = _runs(np.flatnonzero(profile > 8))
-    transitions = tuple(float(origin + group[-1] + 1) for group in groups if len(group) <= 4)
-    uniform = np.max(np.ptp(pixels, axis=1), axis=1) <= 2
+    groups = _runs(np.flatnonzero(profile > T.count_transition_threshold))
+    transitions = tuple(
+        float(origin + group[-1] + 1)
+        for group in groups
+        if len(group) <= T.count_maximum_transition_run
+    )
+    uniform = np.max(np.ptp(pixels, axis=1), axis=1) <= T.uniform_rgb_spread
     line_groups = _runs(np.flatnonzero(uniform))
     lines = []
     for group in line_groups:
         start, end = int(group[0]), int(group[-1]) + 1
-        if len(group) <= 3 and 0 < start and end < len(pixels):
+        if len(group) <= T.count_maximum_stroke_width and 0 < start and end < len(pixels):
             contrast = min(
                 float(np.mean(np.abs(pixels[start] - pixels[start - 1]))),
                 float(np.mean(np.abs(pixels[end - 1] - pixels[end]))),
             )
-            if contrast > 8:
+            if contrast > T.count_minimum_stroke_contrast:
                 lines.append(float(origin + end))
     return {"colour_transitions": transitions, "gridline_strokes": tuple(lines)}
 
@@ -674,17 +706,19 @@ def count_proposals(
             signals[f"ocr_{record.side}"] = positions
     start, end = box[coordinate], box[coordinate + 2]
     hypotheses = []
-    for count in range(1, min(hints.detector.max_count, (end - start) // 3) + 1):
+    for count in range(
+        1, min(hints.detector.max_count, int((end - start) // T.minimum_cell_pitch)) + 1
+    ):
         pitch = (end - start) / count
         components = {}
         for name, positions in signals.items():
-            if len(positions) < 2:
+            if len(positions) < T.count_minimum_observations:
                 continue
             centres = name.startswith("ocr_")
             offsets = (np.asarray(positions) - start) / pitch - (0.5 if centres else 0)
             nearest = np.rint(offsets)
             fits = (
-                (np.abs(offsets - nearest) <= 0.08)
+                (np.abs(offsets - nearest) <= T.count_position_tolerance_fraction)
                 & (nearest >= (0 if centres else 1))
                 & (nearest <= (count - 1))
             )
@@ -698,7 +732,9 @@ def count_proposals(
                 coverage=coverage,
                 kind="centres" if centres else "boundaries",
             )
-        if components and any(signal.alignment >= 0.75 for signal in components.values()):
+        if components and any(
+            signal.alignment >= T.count_minimum_alignment for signal in components.values()
+        ):
             score = max(signal.alignment * signal.coverage for signal in components.values())
             hypotheses.append((score, count, pitch, components))
     hypotheses.sort(key=lambda h: (-h[0], h[1]))
@@ -724,9 +760,9 @@ def count_proposals(
         conflicts += tuple(
             f"{name}: observation alignment {signal.alignment:.3f} disagrees"
             for name, signal in components.items()
-            if signal.alignment < 0.75
+            if signal.alignment < T.count_minimum_alignment
         )
-        if any(signal.alignment < 0.75 for signal in components.values()):
+        if any(signal.alignment < T.count_minimum_alignment for signal in components.values()):
             reasons.append("conflicting_observations")
         proposals.append(
             CountProposal(

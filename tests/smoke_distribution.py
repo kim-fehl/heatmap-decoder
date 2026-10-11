@@ -23,6 +23,9 @@ def smoke() -> None:
             "/examples/labels/reconstruction.png",
             "/examples/labels/workflow.py",
             "/M6.md",
+            "/M9.md",
+            "/benchmarks/m9/manifest.json",
+            "/benchmarks/m9/report.json",
         ):
             assert any(name.endswith(suffix) for name in names), suffix
         assert not any("/work/" in name or "/.venv/" in name for name in names)
@@ -58,6 +61,39 @@ def smoke() -> None:
                 str(root / "examples/config.json"),
                 "--out",
                 str(directory / "results"),
+                "--fail-on-qc",
+            ],
+            check=True,
+            cwd=directory,
+        )
+        roi_figure = root / "benchmarks/m9/figures/grayscale_left-2-clean.png"
+        result = subprocess.run(
+            [
+                str(command),
+                "detect",
+                str(roi_figure),
+                "--config",
+                str(root / "benchmarks/m9/review_hints.json"),
+                "--out",
+                str(directory / "roi"),
+            ],
+            check=False,
+            cwd=directory,
+        )
+        assert result.returncode == 5
+        subprocess.run(
+            [
+                str(command),
+                "extract",
+                str(roi_figure),
+                "--config",
+                str(directory / "roi/config_proposed.json"),
+                "--roi-review",
+                str(directory / "roi/roi_candidates.json"),
+                "--roi-selections",
+                str(root / "benchmarks/m9/review_selections.json"),
+                "--out",
+                str(directory / "reviewed"),
                 "--fail-on-qc",
             ],
             check=True,

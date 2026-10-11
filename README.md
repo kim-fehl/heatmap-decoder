@@ -1,15 +1,17 @@
-# heatmap-decoder v0.2.0
+# heatmap-decoder v0.3.0
 
 Reconstruct an **approximate** numerical matrix from a PNG/JPEG heatmap and its
 observed continuous, linear colourbar. Python 3.11+.
 
 A deterministic Python library and command-line tool for semi-automatic reconstruction.
-Supply the grid, heatmap/colourbar bounding boxes and endpoint values; inspect the
+Supply or review grid counts and heatmap/colourbar bounds, enter endpoint values,
+and inspect the
 resulting QC before using the estimates scientifically. Supports sequential and
 diverging palettes with continuous linear scales on Linux, macOS and Windows.
 
 The optional local OCR adapter extracts upright horizontal gene/sample labels
-from manually supplied regions, preserving displayed order and raw evidence.
+from manually supplied or reviewed regions, preserving displayed order and raw evidence.
+Verify every OCR string against the figure, including accepted high-confidence text.
 Review files can correct any recognised string by its displayed axis/index.
 Labelled matrix publication requires every requested slot to be accepted or
 manually resolved. See the [complete v0.2 workflow](M6.md) and
@@ -24,6 +26,11 @@ uv run --extra ocr heatmap-decoder labels examples/labels/clean.png \
 
 This writes label TSVs, an overlay, and provenance. Exit 4 leaves unresolved
 slots for review; confidence is an OCR heuristic and accepted text can be wrong.
+
+v0.3 ships **review-only** ROI/count proposals. The frozen M9 gates did not
+establish automatic acceptance; `--auto-roi` is unavailable. On the new synthetic
+label challenge, 24 of 48 accepted OCR strings were wrong. Confidence is a heuristic,
+not proof of identity. See [M9 results and supported limits](M9.md).
 
 ## Install and use
 
@@ -406,3 +413,26 @@ The fixed clean bar layouts have exact offered bounds, while the small tested
 blur/JPEG variants abstain. Merged neighbouring colours produce competing counts
 with a misleading first rank. These are review-only proposals with documented
 failures; M9 automatic hand-off and practical validation remain future work.
+
+## v0.3 validation and hand-off policy (M9)
+
+Automatic ROI/count acceptance remains disabled: the required gates are not
+established. All proposals require explicit coordinate/count review. Selecting a
+label region does not verify its text. The new frozen 36-figure synthetic benchmark
+records every case and separates localisation, conditional counts, OCR exact text
+and downstream numerical error. It contains no published real-figure set and
+makes no claim of practical accuracy on arbitrary scientific figures.
+
+The reviewed comparisons match manual extraction in 18 cases. The OCR challenge
+also records 24 wrong strings among 48 accepted, so verify high-confidence strings.
+See [M9.md](M9.md) and the [frozen corpus/report](benchmarks/m9/README.md) for all
+failures, edge tolerances, count ambiguity, provenance and manual override rules.
+
+```bash
+uv run python benchmarks/m9/workflow.py --out work/m9-example
+uv run --extra ocr python benchmarks/m9/evaluate.py --ocr --out work/m9-benchmark.json
+```
+
+Manual-only extraction, optional OCR, file labels and the v0.2 review workflow
+remain supported. No automatic hand-off, tick-value OCR or biological meaning
+inference is provided. Numerical endpoints remain user-supplied.

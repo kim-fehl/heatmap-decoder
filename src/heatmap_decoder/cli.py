@@ -262,7 +262,10 @@ def detect_command(
     out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("roi_review"),
     overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
 ) -> None:
-    """Write ROI candidates, overlay and proposed config; exit 5 when review is required."""
+    """Write review-only ROI/count proposals; exit 5 until explicitly reviewed.
+
+    v0.3 automatic ROI/count acceptance is disabled: M9 gates are not established.
+    """
     try:
         hints = DetectionHints.model_validate_json(config.read_text(encoding="utf-8"))
         saved = detect_file(figure, hints, out, config_path=config, overwrite=overwrite)

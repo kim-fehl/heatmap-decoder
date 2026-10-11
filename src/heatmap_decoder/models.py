@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 from enum import IntFlag
-from typing import Annotated, Literal, TypeAlias
+from typing import Annotated, Any, Literal, TypeAlias
 
 import numpy as np
 from numpy.typing import NDArray
@@ -394,6 +394,8 @@ class SavedDetection(BaseModel):
         Annotated[int, Field(strict=True, gt=0)], Annotated[int, Field(strict=True, gt=0)]
     ]
     detector_version: str
+    detector_thresholds: dict[str, Any] = Field(default_factory=dict)
+    automation_policy: dict[str, Any] = Field(default_factory=dict)
     analysis_transforms: tuple[dict[str, int], ...] = ()
     hints: DetectionHints
     result: DetectionResult

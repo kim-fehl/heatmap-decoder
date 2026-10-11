@@ -1,6 +1,14 @@
 # Changelog
 
-## Unreleased — M8
+## v0.3.0 — Reviewed ROI and count proposals
+
+- Freeze a 36-figure M9 benchmark and publish every attempt, including failures and negatives.
+- Keep automatic ROI and per-axis count acceptance disabled because the required gates are not established.
+- Persist versioned heuristic thresholds and the enforced review-only policy in detection/review provenance.
+- Document OCR false acceptance separately from localisation and numeric reconstruction error.
+- Add a reviewed v0.3 CLI example, frozen-input integrity checks and installed-wheel validation.
+
+### M8
 
 - Add continuous horizontal/vertical colourbar proposals and explicit heatmap associations.
 - Add optional bounded upright OCR label-region searches with raw evidence and unresolved outcomes.
@@ -9,7 +17,7 @@
 - Add M8 fixtures, quality report, reviewed CLI example and OCR CI workflow.
 - Keep every inferred region/count review-only; numerical endpoints remain manual.
 
-## Unreleased — M7
+### M7
 
 - Add review-only heatmap candidates, exact resize transforms and original-pixel refinement.
 - Export ROI JSON/overlay and incomplete proposed extraction configs with manual overrides.

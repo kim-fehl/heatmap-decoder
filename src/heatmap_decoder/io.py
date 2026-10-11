@@ -562,6 +562,7 @@ def detect_file(
     from PIL import Image, ImageDraw
 
     from .detection import DETECTOR_VERSION, analysis_image, detect
+    from .detection_policy import policy_snapshot, threshold_snapshot
 
     path, directory = Path(path), Path(directory)
     check_output_paths(
@@ -613,6 +614,8 @@ def detect_file(
         image_sha256=hashlib.sha256(data).hexdigest(),
         image_dimensions=(image.shape[1], image.shape[0]),
         detector_version=DETECTOR_VERSION,
+        detector_thresholds=threshold_snapshot(),
+        automation_policy=policy_snapshot(),
         analysis_transforms=tuple(
             asdict(analysis_image(image, maximum)[1])
             for maximum in (hints.detector.max_analysis_size, hints.detector.max_analysis_size // 2)
@@ -685,6 +688,8 @@ def review_detection(
     selections: ROIReview | None = None,
 ) -> tuple[ExtractionConfig, dict[str, Any]]:
     """Validate saved M7/M8 evidence and explicit review without rerunning detection."""
+    from .detection_policy import policy_snapshot
+
     saved = SavedDetection.model_validate_json(data)
     if saved.image_sha256 != image_sha256 or saved.image_dimensions != (
         image.shape[1],
@@ -833,6 +838,7 @@ def review_detection(
             }
     return config, {
         "evidence": saved.model_dump(mode="json"),
+        "enforced_automation_policy": policy_snapshot(),
         "review_sha256": hashlib.sha256(data).hexdigest(),
         "origin": "reviewed_detection" if regions or review.counts else "manual",
         "candidate_id": regions.get("heatmap"),

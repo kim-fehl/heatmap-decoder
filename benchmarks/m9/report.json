@@ -1,0 +1,6717 @@
+{
+  "attempts": [
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "sequential_right-0",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            8,
+            16,
+            24,
+            32,
+            40,
+            48,
+            56,
+            64
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 8
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            6,
+            12,
+            18,
+            24,
+            30,
+            36,
+            42,
+            48
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 6
+        }
+      },
+      "family": "sequential_right",
+      "id": "sequential_right-0-clean",
+      "labels": {
+        "axes": {
+          "columns": {
+            "accepted_texts": 6,
+            "association_correct": true,
+            "engine_version": "5.5.0",
+            "exact_accepted": 0,
+            "false_accepted_texts": 6,
+            "raw_exact": 0,
+            "region": {
+              "best_top3": {
+                "bbox": [
+                  283,
+                  53,
+                  937,
+                  81
+                ],
+                "edge_error_cell_pitch": [
+                  0.97,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  97.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_columns-above",
+                "iou": 0.6428994667193364,
+                "within_tolerance": false
+              },
+              "proposal_count": 1,
+              "top1": {
+                "bbox": [
+                  283,
+                  53,
+                  937,
+                  81
+                ],
+                "edge_error_cell_pitch": [
+                  0.97,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  97.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_columns-above",
+                "iou": 0.6428994667193364,
+                "within_tolerance": false
+              },
+              "top3_recall": false,
+              "truth_present": true
+            },
+            "slot_count": 8,
+            "slot_evidence": [
+              {
+                "bbox": [
+                  160.0,
+                  7.0,
+                  232.0,
+                  77.0
+                ],
+                "confidence": 75.0,
+                "expected_text": "S_01",
+                "final_text": null,
+                "geometry_association_correct": true,
+                "index": 0,
+                "raw_text": "e0\nS 01",
+                "status": "ambiguous"
+              },
+              {
+                "bbox": [
+                  287.0,
+                  57.0,
+                  332.0,
+                  77.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_02",
+                "final_text": "S 02",
+                "geometry_association_correct": true,
+                "index": 1,
+                "raw_text": "S 02",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  387.0,
+                  57.0,
+                  432.0,
+                  77.0
+                ],
+                "confidence": 86.0,
+                "expected_text": "S_03",
+                "final_text": "S 03",
+                "geometry_association_correct": true,
+                "index": 2,
+                "raw_text": "S 03",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  487.0,
+                  57.0,
+                  533.0,
+                  77.0
+                ],
+                "confidence": 89.0,
+                "expected_text": "S_04",
+                "final_text": "S 04",
+                "geometry_association_correct": true,
+                "index": 3,
+                "raw_text": "S 04",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  587.0,
+                  57.0,
+                  632.0,
+                  77.0
+                ],
+                "confidence": 34.0,
+                "expected_text": "S_05",
+                "final_text": null,
+                "geometry_association_correct": true,
+                "index": 4,
+                "raw_text": "S05",
+                "status": "low_confidence"
+              },
+              {
+                "bbox": [
+                  687.0,
+                  57.0,
+                  732.6666666666666,
+                  77.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "S_06",
+                "final_text": "S 06",
+                "geometry_association_correct": true,
+                "index": 5,
+                "raw_text": "S 06",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  787.0,
+                  57.0,
+                  832.0,
+                  77.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_07",
+                "final_text": "S 07",
+                "geometry_association_correct": true,
+                "index": 6,
+                "raw_text": "S 07",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  887.0,
+                  57.0,
+                  932.3333333333334,
+                  77.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_08",
+                "final_text": "S 08",
+                "geometry_association_correct": true,
+                "index": 7,
+                "raw_text": "S 08",
+                "status": "accepted"
+              }
+            ],
+            "true_slots": 8,
+            "unresolved": 2,
+            "wrapper_version": "0.3.13"
+          },
+          "rows": {
+            "accepted_texts": 6,
+            "association_correct": true,
+            "engine_version": "5.5.0",
+            "exact_accepted": 6,
+            "false_accepted_texts": 0,
+            "raw_exact": 6,
+            "region": {
+              "best_top3": {
+                "bbox": [
+                  36,
+                  108,
+                  133,
+                  336
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_rows-left",
+                "iou": 0.9052269849882438,
+                "within_tolerance": true
+              },
+              "proposal_count": 1,
+              "top1": {
+                "bbox": [
+                  36,
+                  108,
+                  133,
+                  336
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_rows-left",
+                "iou": 0.9052269849882438,
+                "within_tolerance": true
+              },
+              "top3_recall": true,
+              "truth_present": true
+            },
+            "slot_count": 6,
+            "slot_evidence": [
+              {
+                "bbox": [
+                  40.0,
+                  112.0,
+                  128.0,
+                  132.0
+                ],
+                "confidence": 90.0,
+                "expected_text": "GENE_01",
+                "final_text": "GENE_01",
+                "geometry_association_correct": true,
+                "index": 0,
+                "raw_text": "GENE_01",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  152.0,
+                  128.0,
+                  172.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "GENE_02",
+                "final_text": "GENE_02",
+                "geometry_association_correct": true,
+                "index": 1,
+                "raw_text": "GENE_02",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  192.0,
+                  128.0,
+                  212.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "GENE_03",
+                "final_text": "GENE_03",
+                "geometry_association_correct": true,
+                "index": 2,
+                "raw_text": "GENE_03",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  232.0,
+                  129.0,
+                  252.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_04",
+                "final_text": "GENE_04",
+                "geometry_association_correct": true,
+                "index": 3,
+                "raw_text": "GENE_04",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  272.0,
+                  128.0,
+                  292.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_05",
+                "final_text": "GENE_05",
+                "geometry_association_correct": true,
+                "index": 4,
+                "raw_text": "GENE_05",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  312.0,
+                  128.66666666666666,
+                  332.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_06",
+                "final_text": "GENE_06",
+                "geometry_association_correct": true,
+                "index": 5,
+                "raw_text": "GENE_06",
+                "status": "accepted"
+              }
+            ],
+            "true_slots": 6,
+            "unresolved": 0,
+            "wrapper_version": "0.3.13"
+          }
+        },
+        "condition": "reviewed heatmap and true supplied counts; OCR not used for ROI gate",
+        "status": "review_required",
+        "warnings": []
+      },
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 48,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.0022277864869963263,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              1010,
+              100,
+              1026,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              1010,
+              100,
+              1026,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              960,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              960,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "sequential_right-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27,
+            36,
+            45,
+            54
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "sequential_right",
+      "id": "sequential_right-1-clean",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 45,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.003980918858902017,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              315,
+              100,
+              331,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              315,
+              100,
+              331,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "sequential_right-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "sequential_right",
+      "id": "sequential_right-1-blur",
+      "negative": false,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              159,
+              99,
+              266,
+              281
+            ],
+            "edge_error_cell_pitch": [
+              0.047619047619047616,
+              0.05,
+              0.047619047619047616,
+              0.05
+            ],
+            "edge_error_pixels": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9705248023005032,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              159,
+              99,
+              266,
+              281
+            ],
+            "edge_error_cell_pitch": [
+              0.047619047619047616,
+              0.05,
+              0.047619047619047616,
+              0.05
+            ],
+            "edge_error_pixels": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9705248023005032,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ]
+      },
+      "split": "held_out",
+      "variant": "blur"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "sequential_right-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27,
+            36,
+            45,
+            54
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "sequential_right",
+      "id": "sequential_right-1-jpeg",
+      "negative": false,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              97,
+              268,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.15,
+              0.14285714285714285,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              3,
+              3,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9562841530054644,
+            "within_tolerance": false
+          },
+          "proposal_count": 2,
+          "top1": {
+            "bbox": [
+              160,
+              97,
+              268,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.15,
+              0.14285714285714285,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              3,
+              3,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9562841530054644,
+            "within_tolerance": false
+          },
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ]
+      },
+      "split": "held_out",
+      "variant": "jpeg"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "sequential_right-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "sequential_right",
+      "id": "sequential_right-1-downscaled",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 44,
+        "flagged_fraction": 0.022222222222222223,
+        "missing_or_ambiguous_fraction": 0.022222222222222223,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.005009032659956114,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              157,
+              50,
+              165,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              157,
+              50,
+              165,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              80,
+              50,
+              132,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              80,
+              50,
+              132,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "downscaled"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "sequential_right-2",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "sequential_right",
+      "id": "sequential_right-2-clean",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 53,
+        "flagged_fraction": 0.03636363636363636,
+        "missing_or_ambiguous_fraction": 0.03636363636363636,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.003682193366081088,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "diverging_top-0",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            8,
+            16,
+            24,
+            32,
+            40,
+            48,
+            56,
+            64
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 8
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            6,
+            12,
+            18,
+            24,
+            30,
+            36,
+            42,
+            48
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 6
+        }
+      },
+      "family": "diverging_top",
+      "id": "diverging_top-0-clean",
+      "labels": {
+        "axes": {
+          "columns": {
+            "accepted_texts": 6,
+            "association_correct": true,
+            "engine_version": "5.5.0",
+            "exact_accepted": 0,
+            "false_accepted_texts": 6,
+            "raw_exact": 0,
+            "region": {
+              "best_top3": {
+                "bbox": [
+                  183,
+                  363,
+                  937,
+                  391
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_columns-below",
+                "iou": 0.7086017430845017,
+                "within_tolerance": true
+              },
+              "proposal_count": 1,
+              "top1": {
+                "bbox": [
+                  183,
+                  363,
+                  937,
+                  391
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_columns-below",
+                "iou": 0.7086017430845017,
+                "within_tolerance": true
+              },
+              "top3_recall": true,
+              "truth_present": true
+            },
+            "slot_count": 8,
+            "slot_evidence": [
+              {
+                "bbox": [
+                  187.0,
+                  367.0,
+                  232.0,
+                  387.0
+                ],
+                "confidence": 79.0,
+                "expected_text": "S_01",
+                "final_text": null,
+                "geometry_association_correct": true,
+                "index": 0,
+                "raw_text": "S 01",
+                "status": "low_confidence"
+              },
+              {
+                "bbox": [
+                  287.0,
+                  367.0,
+                  332.0,
+                  387.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_02",
+                "final_text": "S 02",
+                "geometry_association_correct": true,
+                "index": 1,
+                "raw_text": "S 02",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  387.0,
+                  367.0,
+                  432.0,
+                  387.0
+                ],
+                "confidence": 86.0,
+                "expected_text": "S_03",
+                "final_text": "S 03",
+                "geometry_association_correct": true,
+                "index": 2,
+                "raw_text": "S 03",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  487.0,
+                  367.0,
+                  533.0,
+                  387.0
+                ],
+                "confidence": 89.0,
+                "expected_text": "S_04",
+                "final_text": "S 04",
+                "geometry_association_correct": true,
+                "index": 3,
+                "raw_text": "S 04",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  587.0,
+                  367.0,
+                  632.0,
+                  387.0
+                ],
+                "confidence": 34.0,
+                "expected_text": "S_05",
+                "final_text": null,
+                "geometry_association_correct": true,
+                "index": 4,
+                "raw_text": "S05",
+                "status": "low_confidence"
+              },
+              {
+                "bbox": [
+                  687.0,
+                  367.0,
+                  732.6666666666666,
+                  387.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "S_06",
+                "final_text": "S 06",
+                "geometry_association_correct": true,
+                "index": 5,
+                "raw_text": "S 06",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  787.0,
+                  367.0,
+                  832.0,
+                  387.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_07",
+                "final_text": "S 07",
+                "geometry_association_correct": true,
+                "index": 6,
+                "raw_text": "S 07",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  887.0,
+                  367.0,
+                  932.3333333333334,
+                  387.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_08",
+                "final_text": "S 08",
+                "geometry_association_correct": true,
+                "index": 7,
+                "raw_text": "S 08",
+                "status": "accepted"
+              }
+            ],
+            "true_slots": 8,
+            "unresolved": 2,
+            "wrapper_version": "0.3.13"
+          },
+          "rows": {
+            "accepted_texts": 6,
+            "association_correct": true,
+            "engine_version": "5.5.0",
+            "exact_accepted": 6,
+            "false_accepted_texts": 0,
+            "raw_exact": 6,
+            "region": {
+              "best_top3": {
+                "bbox": [
+                  36,
+                  108,
+                  133,
+                  336
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_rows-left",
+                "iou": 0.9052269849882438,
+                "within_tolerance": true
+              },
+              "proposal_count": 1,
+              "top1": {
+                "bbox": [
+                  36,
+                  108,
+                  133,
+                  336
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_rows-left",
+                "iou": 0.9052269849882438,
+                "within_tolerance": true
+              },
+              "top3_recall": true,
+              "truth_present": true
+            },
+            "slot_count": 6,
+            "slot_evidence": [
+              {
+                "bbox": [
+                  40.0,
+                  112.0,
+                  128.0,
+                  132.0
+                ],
+                "confidence": 90.0,
+                "expected_text": "GENE_01",
+                "final_text": "GENE_01",
+                "geometry_association_correct": true,
+                "index": 0,
+                "raw_text": "GENE_01",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  152.0,
+                  128.0,
+                  172.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "GENE_02",
+                "final_text": "GENE_02",
+                "geometry_association_correct": true,
+                "index": 1,
+                "raw_text": "GENE_02",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  192.0,
+                  128.0,
+                  212.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "GENE_03",
+                "final_text": "GENE_03",
+                "geometry_association_correct": true,
+                "index": 2,
+                "raw_text": "GENE_03",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  232.0,
+                  129.0,
+                  252.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_04",
+                "final_text": "GENE_04",
+                "geometry_association_correct": true,
+                "index": 3,
+                "raw_text": "GENE_04",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  272.0,
+                  128.0,
+                  292.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_05",
+                "final_text": "GENE_05",
+                "geometry_association_correct": true,
+                "index": 4,
+                "raw_text": "GENE_05",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  312.0,
+                  128.66666666666666,
+                  332.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_06",
+                "final_text": "GENE_06",
+                "geometry_association_correct": true,
+                "index": 5,
+                "raw_text": "GENE_06",
+                "status": "accepted"
+              }
+            ],
+            "true_slots": 6,
+            "unresolved": 0,
+            "wrapper_version": "0.3.13"
+          }
+        },
+        "condition": "reviewed heatmap and true supplied counts; OCR not used for ROI gate",
+        "status": "review_required",
+        "warnings": []
+      },
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 48,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.0007732154934001122,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              160,
+              32,
+              960,
+              48
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              32,
+              960,
+              48
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              960,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              960,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "diverging_top-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27,
+            36,
+            45,
+            54
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "diverging_top",
+      "id": "diverging_top-1-clean",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 45,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.0029192634283288117,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              160,
+              32,
+              265,
+              48
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              32,
+              265,
+              48
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "diverging_top-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "diverging_top",
+      "id": "diverging_top-1-blur",
+      "negative": false,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              159,
+              99,
+              266,
+              281
+            ],
+            "edge_error_cell_pitch": [
+              0.047619047619047616,
+              0.05,
+              0.047619047619047616,
+              0.05
+            ],
+            "edge_error_pixels": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9705248023005032,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              159,
+              99,
+              266,
+              281
+            ],
+            "edge_error_cell_pitch": [
+              0.047619047619047616,
+              0.05,
+              0.047619047619047616,
+              0.05
+            ],
+            "edge_error_pixels": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9705248023005032,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ]
+      },
+      "split": "held_out",
+      "variant": "blur"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "diverging_top-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 9
+        }
+      },
+      "family": "diverging_top",
+      "id": "diverging_top-1-jpeg",
+      "negative": false,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              96,
+              270,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.2,
+              0.23809523809523808,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              4,
+              5,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9337944664031621,
+            "within_tolerance": false
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              96,
+              270,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.2,
+              0.23809523809523808,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              4,
+              5,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9337944664031621,
+            "within_tolerance": false
+          },
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ]
+      },
+      "split": "held_out",
+      "variant": "jpeg"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "diverging_top-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "diverging_top",
+      "id": "diverging_top-1-downscaled",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 45,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.005682500410702785,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              80,
+              16,
+              132,
+              24
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              80,
+              16,
+              132,
+              24
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              80,
+              50,
+              132,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              80,
+              50,
+              132,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "downscaled"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "diverging_top-2",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "diverging_top",
+      "id": "diverging_top-2-clean",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 55,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.0016003016568507588,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              160,
+              32,
+              424,
+              48
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              32,
+              424,
+              48
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "grayscale_left-0",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            8,
+            16,
+            24,
+            32,
+            40,
+            48,
+            56,
+            64
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 8
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            6,
+            12,
+            18,
+            24,
+            30,
+            36,
+            42,
+            48
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 6
+        }
+      },
+      "family": "grayscale_left",
+      "id": "grayscale_left-0-clean",
+      "labels": {
+        "axes": {
+          "columns": {
+            "accepted_texts": 6,
+            "association_correct": true,
+            "engine_version": "5.5.0",
+            "exact_accepted": 0,
+            "false_accepted_texts": 6,
+            "raw_exact": 0,
+            "region": {
+              "best_top3": {
+                "bbox": [
+                  183,
+                  53,
+                  937,
+                  81
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_columns-above",
+                "iou": 0.7086017430845017,
+                "within_tolerance": true
+              },
+              "proposal_count": 1,
+              "top1": {
+                "bbox": [
+                  183,
+                  53,
+                  937,
+                  81
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_columns-above",
+                "iou": 0.7086017430845017,
+                "within_tolerance": true
+              },
+              "top3_recall": true,
+              "truth_present": true
+            },
+            "slot_count": 8,
+            "slot_evidence": [
+              {
+                "bbox": [
+                  187.0,
+                  57.0,
+                  232.0,
+                  77.0
+                ],
+                "confidence": 79.0,
+                "expected_text": "S_01",
+                "final_text": null,
+                "geometry_association_correct": true,
+                "index": 0,
+                "raw_text": "S 01",
+                "status": "low_confidence"
+              },
+              {
+                "bbox": [
+                  287.0,
+                  57.0,
+                  332.0,
+                  77.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_02",
+                "final_text": "S 02",
+                "geometry_association_correct": true,
+                "index": 1,
+                "raw_text": "S 02",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  387.0,
+                  57.0,
+                  432.0,
+                  77.0
+                ],
+                "confidence": 86.0,
+                "expected_text": "S_03",
+                "final_text": "S 03",
+                "geometry_association_correct": true,
+                "index": 2,
+                "raw_text": "S 03",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  487.0,
+                  57.0,
+                  533.0,
+                  77.0
+                ],
+                "confidence": 89.0,
+                "expected_text": "S_04",
+                "final_text": "S 04",
+                "geometry_association_correct": true,
+                "index": 3,
+                "raw_text": "S 04",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  587.0,
+                  57.0,
+                  632.0,
+                  77.0
+                ],
+                "confidence": 34.0,
+                "expected_text": "S_05",
+                "final_text": null,
+                "geometry_association_correct": true,
+                "index": 4,
+                "raw_text": "S05",
+                "status": "low_confidence"
+              },
+              {
+                "bbox": [
+                  687.0,
+                  57.0,
+                  732.6666666666666,
+                  77.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "S_06",
+                "final_text": "S 06",
+                "geometry_association_correct": true,
+                "index": 5,
+                "raw_text": "S 06",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  787.0,
+                  57.0,
+                  832.0,
+                  77.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_07",
+                "final_text": "S 07",
+                "geometry_association_correct": true,
+                "index": 6,
+                "raw_text": "S 07",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  887.0,
+                  57.0,
+                  932.3333333333334,
+                  77.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_08",
+                "final_text": "S 08",
+                "geometry_association_correct": true,
+                "index": 7,
+                "raw_text": "S 08",
+                "status": "accepted"
+              }
+            ],
+            "true_slots": 8,
+            "unresolved": 2,
+            "wrapper_version": "0.3.13"
+          },
+          "rows": {
+            "accepted_texts": 6,
+            "association_correct": true,
+            "engine_version": "5.5.0",
+            "exact_accepted": 6,
+            "false_accepted_texts": 0,
+            "raw_exact": 6,
+            "region": {
+              "best_top3": {
+                "bbox": [
+                  986,
+                  108,
+                  1083,
+                  336
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_rows-right",
+                "iou": 0.9052269849882438,
+                "within_tolerance": true
+              },
+              "proposal_count": 1,
+              "top1": {
+                "bbox": [
+                  986,
+                  108,
+                  1083,
+                  336
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_rows-right",
+                "iou": 0.9052269849882438,
+                "within_tolerance": true
+              },
+              "top3_recall": true,
+              "truth_present": true
+            },
+            "slot_count": 6,
+            "slot_evidence": [
+              {
+                "bbox": [
+                  990.0,
+                  112.0,
+                  1078.0,
+                  132.0
+                ],
+                "confidence": 90.0,
+                "expected_text": "GENE_01",
+                "final_text": "GENE_01",
+                "geometry_association_correct": true,
+                "index": 0,
+                "raw_text": "GENE_01",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  990.0,
+                  152.0,
+                  1078.0,
+                  172.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "GENE_02",
+                "final_text": "GENE_02",
+                "geometry_association_correct": true,
+                "index": 1,
+                "raw_text": "GENE_02",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  990.0,
+                  192.0,
+                  1078.0,
+                  212.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "GENE_03",
+                "final_text": "GENE_03",
+                "geometry_association_correct": true,
+                "index": 2,
+                "raw_text": "GENE_03",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  990.0,
+                  232.0,
+                  1079.0,
+                  252.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_04",
+                "final_text": "GENE_04",
+                "geometry_association_correct": true,
+                "index": 3,
+                "raw_text": "GENE_04",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  990.0,
+                  272.0,
+                  1078.0,
+                  292.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_05",
+                "final_text": "GENE_05",
+                "geometry_association_correct": true,
+                "index": 4,
+                "raw_text": "GENE_05",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  990.0,
+                  312.0,
+                  1078.6666666666667,
+                  332.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_06",
+                "final_text": "GENE_06",
+                "geometry_association_correct": true,
+                "index": 5,
+                "raw_text": "GENE_06",
+                "status": "accepted"
+              }
+            ],
+            "true_slots": 6,
+            "unresolved": 0,
+            "wrapper_version": "0.3.13"
+          }
+        },
+        "condition": "reviewed heatmap and true supplied counts; OCR not used for ROI gate",
+        "status": "review_required",
+        "warnings": []
+      },
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 48,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.0017561274470501485,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              90,
+              100,
+              106,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              90,
+              100,
+              106,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              960,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              960,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "grayscale_left-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27,
+            36,
+            45,
+            54
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "grayscale_left",
+      "id": "grayscale_left-1-clean",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 45,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.001504927414570991,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              90,
+              100,
+              106,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              90,
+              100,
+              106,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "grayscale_left-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "grayscale_left",
+      "id": "grayscale_left-1-blur",
+      "negative": false,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              159,
+              99,
+              266,
+              281
+            ],
+            "edge_error_cell_pitch": [
+              0.047619047619047616,
+              0.05,
+              0.047619047619047616,
+              0.05
+            ],
+            "edge_error_pixels": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9705248023005032,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              159,
+              99,
+              266,
+              281
+            ],
+            "edge_error_cell_pitch": [
+              0.047619047619047616,
+              0.05,
+              0.047619047619047616,
+              0.05
+            ],
+            "edge_error_pixels": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9705248023005032,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ]
+      },
+      "split": "held_out",
+      "variant": "blur"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "grayscale_left-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27,
+            36,
+            45,
+            54
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "grayscale_left",
+      "id": "grayscale_left-1-jpeg",
+      "negative": false,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              99,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.05,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              1,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 0.994475138121547,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              99,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.05,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              1,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 0.994475138121547,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ]
+      },
+      "split": "held_out",
+      "variant": "jpeg"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "grayscale_left-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "grayscale_left",
+      "id": "grayscale_left-1-downscaled",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 45,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.0032411648203902656,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              45,
+              50,
+              53,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              45,
+              50,
+              53,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              80,
+              50,
+              132,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              80,
+              50,
+              132,
+              140
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "downscaled"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "grayscale_left-2",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "grayscale_left",
+      "id": "grayscale_left-2-clean",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 55,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.002715360616229795,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              90,
+              100,
+              106,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              90,
+              100,
+              106,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "gridlines_below-0",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            8,
+            16,
+            24,
+            32,
+            40,
+            48,
+            56,
+            64
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 8
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            6,
+            12,
+            18,
+            24,
+            30,
+            36,
+            42,
+            48
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 6
+        }
+      },
+      "family": "gridlines_below",
+      "id": "gridlines_below-0-clean",
+      "labels": {
+        "axes": {
+          "columns": {
+            "accepted_texts": 6,
+            "association_correct": true,
+            "engine_version": "5.5.0",
+            "exact_accepted": 0,
+            "false_accepted_texts": 6,
+            "raw_exact": 0,
+            "region": {
+              "best_top3": {
+                "bbox": [
+                  183,
+                  53,
+                  937,
+                  81
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_columns-above",
+                "iou": 0.7086017430845017,
+                "within_tolerance": true
+              },
+              "proposal_count": 1,
+              "top1": {
+                "bbox": [
+                  183,
+                  53,
+                  937,
+                  81
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_columns-above",
+                "iou": 0.7086017430845017,
+                "within_tolerance": true
+              },
+              "top3_recall": true,
+              "truth_present": true
+            },
+            "slot_count": 8,
+            "slot_evidence": [
+              {
+                "bbox": [
+                  187.0,
+                  57.0,
+                  232.0,
+                  77.0
+                ],
+                "confidence": 79.0,
+                "expected_text": "S_01",
+                "final_text": null,
+                "geometry_association_correct": true,
+                "index": 0,
+                "raw_text": "S 01",
+                "status": "low_confidence"
+              },
+              {
+                "bbox": [
+                  287.0,
+                  57.0,
+                  332.0,
+                  77.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_02",
+                "final_text": "S 02",
+                "geometry_association_correct": true,
+                "index": 1,
+                "raw_text": "S 02",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  387.0,
+                  57.0,
+                  432.0,
+                  77.0
+                ],
+                "confidence": 86.0,
+                "expected_text": "S_03",
+                "final_text": "S 03",
+                "geometry_association_correct": true,
+                "index": 2,
+                "raw_text": "S 03",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  487.0,
+                  57.0,
+                  533.0,
+                  77.0
+                ],
+                "confidence": 89.0,
+                "expected_text": "S_04",
+                "final_text": "S 04",
+                "geometry_association_correct": true,
+                "index": 3,
+                "raw_text": "S 04",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  587.0,
+                  57.0,
+                  632.0,
+                  77.0
+                ],
+                "confidence": 34.0,
+                "expected_text": "S_05",
+                "final_text": null,
+                "geometry_association_correct": true,
+                "index": 4,
+                "raw_text": "S05",
+                "status": "low_confidence"
+              },
+              {
+                "bbox": [
+                  687.0,
+                  57.0,
+                  732.6666666666666,
+                  77.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "S_06",
+                "final_text": "S 06",
+                "geometry_association_correct": true,
+                "index": 5,
+                "raw_text": "S 06",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  787.0,
+                  57.0,
+                  832.0,
+                  77.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_07",
+                "final_text": "S 07",
+                "geometry_association_correct": true,
+                "index": 6,
+                "raw_text": "S 07",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  887.0,
+                  57.0,
+                  932.3333333333334,
+                  77.0
+                ],
+                "confidence": 88.0,
+                "expected_text": "S_08",
+                "final_text": "S 08",
+                "geometry_association_correct": true,
+                "index": 7,
+                "raw_text": "S 08",
+                "status": "accepted"
+              }
+            ],
+            "true_slots": 8,
+            "unresolved": 2,
+            "wrapper_version": "0.3.13"
+          },
+          "rows": {
+            "accepted_texts": 6,
+            "association_correct": true,
+            "engine_version": "5.5.0",
+            "exact_accepted": 6,
+            "false_accepted_texts": 0,
+            "raw_exact": 6,
+            "region": {
+              "best_top3": {
+                "bbox": [
+                  36,
+                  108,
+                  133,
+                  336
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_rows-left",
+                "iou": 0.9052269849882438,
+                "within_tolerance": true
+              },
+              "proposal_count": 1,
+              "top1": {
+                "bbox": [
+                  36,
+                  108,
+                  133,
+                  336
+                ],
+                "edge_error_cell_pitch": [
+                  0.03,
+                  0.1,
+                  0.03,
+                  0.1
+                ],
+                "edge_error_pixels": [
+                  3.0,
+                  4.0,
+                  3.0,
+                  4.0
+                ],
+                "id": "labels_rows-left",
+                "iou": 0.9052269849882438,
+                "within_tolerance": true
+              },
+              "top3_recall": true,
+              "truth_present": true
+            },
+            "slot_count": 6,
+            "slot_evidence": [
+              {
+                "bbox": [
+                  40.0,
+                  112.0,
+                  128.0,
+                  132.0
+                ],
+                "confidence": 90.0,
+                "expected_text": "GENE_01",
+                "final_text": "GENE_01",
+                "geometry_association_correct": true,
+                "index": 0,
+                "raw_text": "GENE_01",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  152.0,
+                  128.0,
+                  172.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "GENE_02",
+                "final_text": "GENE_02",
+                "geometry_association_correct": true,
+                "index": 1,
+                "raw_text": "GENE_02",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  192.0,
+                  128.0,
+                  212.0
+                ],
+                "confidence": 91.0,
+                "expected_text": "GENE_03",
+                "final_text": "GENE_03",
+                "geometry_association_correct": true,
+                "index": 2,
+                "raw_text": "GENE_03",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  232.0,
+                  129.0,
+                  252.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_04",
+                "final_text": "GENE_04",
+                "geometry_association_correct": true,
+                "index": 3,
+                "raw_text": "GENE_04",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  272.0,
+                  128.0,
+                  292.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_05",
+                "final_text": "GENE_05",
+                "geometry_association_correct": true,
+                "index": 4,
+                "raw_text": "GENE_05",
+                "status": "accepted"
+              },
+              {
+                "bbox": [
+                  40.0,
+                  312.0,
+                  128.66666666666666,
+                  332.0
+                ],
+                "confidence": 92.0,
+                "expected_text": "GENE_06",
+                "final_text": "GENE_06",
+                "geometry_association_correct": true,
+                "index": 5,
+                "raw_text": "GENE_06",
+                "status": "accepted"
+              }
+            ],
+            "true_slots": 6,
+            "unresolved": 0,
+            "wrapper_version": "0.3.13"
+          }
+        },
+        "condition": "reviewed heatmap and true supplied counts; OCR not used for ROI gate",
+        "status": "review_required",
+        "warnings": []
+      },
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 48,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.0008147444482350597,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              160,
+              410,
+              960,
+              426
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              410,
+              960,
+              426
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              960,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              960,
+              340
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "gridlines_below-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27,
+            36,
+            45,
+            54
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "gridlines_below",
+      "id": "gridlines_below-1-clean",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 45,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.002924672527665452,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              160,
+              350,
+              265,
+              366
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              350,
+              265,
+              366
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              265,
+              280
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "gridlines_below-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "gridlines_below",
+      "id": "gridlines_below-1-blur",
+      "negative": false,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              158,
+              98,
+              267,
+              282
+            ],
+            "edge_error_cell_pitch": [
+              0.09523809523809523,
+              0.1,
+              0.09523809523809523,
+              0.1
+            ],
+            "edge_error_pixels": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9423613881132828,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              158,
+              98,
+              267,
+              282
+            ],
+            "edge_error_cell_pitch": [
+              0.09523809523809523,
+              0.1,
+              0.09523809523809523,
+              0.1
+            ],
+            "edge_error_pixels": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9423613881132828,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ]
+      },
+      "split": "held_out",
+      "variant": "blur"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "gridlines_below-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 9
+        }
+      },
+      "family": "gridlines_below",
+      "id": "gridlines_below-1-jpeg",
+      "negative": false,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: no supported candidate; supply manual coordinates",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ]
+      },
+      "split": "held_out",
+      "variant": "jpeg"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "gridlines_below-1",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            9,
+            18,
+            27
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 9
+        }
+      },
+      "family": "gridlines_below",
+      "id": "gridlines_below-1-downscaled",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 45,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.006369097920265089,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              80,
+              175,
+              132,
+              183
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              80,
+              175,
+              132,
+              183
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              79,
+              49,
+              133,
+              141
+            ],
+            "edge_error_cell_pitch": [
+              0.09615384615384615,
+              0.1,
+              0.09615384615384615,
+              0.1
+            ],
+            "edge_error_pixels": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9420289855072463,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              79,
+              49,
+              133,
+              141
+            ],
+            "edge_error_cell_pitch": [
+              0.09615384615384615,
+              0.1,
+              0.09615384615384615,
+              0.1
+            ],
+            "edge_error_pixels": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "id": "heatmap-001",
+            "iou": 0.9420289855072463,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "downscaled"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "gridlines_below-2",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "gridlines_below",
+      "id": "gridlines_below-2-clean",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 55,
+        "flagged_fraction": 0.0,
+        "missing_or_ambiguous_fraction": 0.0,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.0012638982111847052,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              160,
+              290,
+              424,
+              306
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              290,
+              424,
+              306
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "clean"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "negative-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        }
+      },
+      "family": "confounders",
+      "id": "challenge-uniform",
+      "negative": true,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: no supported candidate; supply manual coordinates",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "uniform"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "negative-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        }
+      },
+      "family": "confounders",
+      "id": "challenge-low_contrast",
+      "negative": true,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: no supported candidate; supply manual coordinates",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "low_contrast"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "negative-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        }
+      },
+      "family": "confounders",
+      "id": "challenge-photographic_noise",
+      "negative": true,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: no supported candidate; supply manual coordinates",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "photographic_noise"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "negative-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        }
+      },
+      "family": "confounders",
+      "id": "challenge-gradient",
+      "negative": true,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: no supported candidate; supply manual coordinates",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "gradient"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "negative-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        }
+      },
+      "family": "confounders",
+      "id": "challenge-categorical_track",
+      "negative": true,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "top3_recall": false,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: no supported candidate; supply manual coordinates",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "categorical_track"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "negative-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "confounders",
+      "id": "challenge-absent_bar",
+      "negative": false,
+      "numerical": {
+        "status": "not_compared_missing_proposals_or_negative"
+      },
+      "roi": {
+        "association_count": 0,
+        "colourbar": {
+          "best_top3": null,
+          "proposal_count": 0,
+          "top1": null,
+          "truth_present": false
+        },
+        "complete_proposal_available": false,
+        "correct_pair_offered": false,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ]
+      },
+      "split": "held_out",
+      "variant": "absent_bar"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "negative-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "confounders",
+      "id": "challenge-multipanel",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 53,
+        "flagged_fraction": 0.03636363636363636,
+        "missing_or_ambiguous_fraction": 0.03636363636363636,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.003682193366081088,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 3,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 2,
+          "top1": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 2,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "ambiguous",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "multipanel"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "negative-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "confounders",
+      "id": "challenge-annotation_dendrogram",
+      "negative": false,
+      "numerical": {
+        "automatically_accepted": false,
+        "finite_overlap_cells": 53,
+        "flagged_fraction": 0.03636363636363636,
+        "missing_or_ambiguous_fraction": 0.03636363636363636,
+        "reviewed_vs_manual_mae": 0.0,
+        "reviewed_vs_manual_max_error": 0.0,
+        "reviewed_vs_truth_mae": 0.003682193366081088,
+        "scale_range": 1.0,
+        "status": "oracle_reviewed_comparison",
+        "true_counts_used": true
+      },
+      "roi": {
+        "association_count": 1,
+        "colourbar": {
+          "best_top3": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              474,
+              100,
+              490,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "colourbar-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "complete_proposal_available": true,
+        "correct_pair_offered": true,
+        "heatmap": {
+          "best_top3": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "proposal_count": 1,
+          "top1": {
+            "bbox": [
+              160,
+              100,
+              424,
+              220
+            ],
+            "edge_error_cell_pitch": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "edge_error_pixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "id": "heatmap-001",
+            "iou": 1.0,
+            "within_tolerance": true
+          },
+          "top3_recall": true,
+          "truth_present": true
+        },
+        "status": "review_required",
+        "unresolved_requirements": [
+          "heatmap: explicitly review/select a candidate",
+          "colourbar: explicitly review/select a candidate"
+        ]
+      },
+      "split": "held_out",
+      "variant": "annotation_dendrogram"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "counts-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "count_challenge",
+      "id": "counts-complete",
+      "negative": false,
+      "roi": {
+        "status": "not_requested_count_challenge"
+      },
+      "split": "held_out",
+      "variant": "complete"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "counts-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions",
+            "gridline_strokes"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "count_challenge",
+      "id": "counts-omitted",
+      "negative": false,
+      "roi": {
+        "status": "not_requested_count_challenge"
+      },
+      "split": "held_out",
+      "variant": "omitted"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "counts-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": true,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": true,
+          "independent_support_validated": false,
+          "proposal_abstention": false,
+          "proposals": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ],
+          "rank1_exact": true,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [
+            "colour_transitions"
+          ],
+          "truth": 5
+        }
+      },
+      "family": "count_challenge",
+      "id": "counts-merged",
+      "negative": false,
+      "roi": {
+        "status": "not_requested_count_challenge"
+      },
+      "split": "held_out",
+      "variant": "merged"
+    },
+    {
+      "automatically_accepted_counts": {
+        "columns": false,
+        "rows": false
+      },
+      "automatically_accepted_layout": false,
+      "base_id": "counts-base",
+      "counts": {
+        "columns": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 11
+        },
+        "rows": {
+          "candidate_recall": false,
+          "condition": "annotated heatmap; no ROI inference",
+          "harmonic_ambiguity": false,
+          "independent_support_validated": false,
+          "proposal_abstention": true,
+          "proposals": [],
+          "rank1_exact": false,
+          "rank1_integer_multiple_error": false,
+          "rank1_off_by_one": false,
+          "rank1_signals": [],
+          "truth": 5
+        }
+      },
+      "family": "count_challenge",
+      "id": "counts-uniform",
+      "negative": false,
+      "roi": {
+        "status": "not_requested_count_challenge"
+      },
+      "split": "held_out",
+      "variant": "uniform"
+    }
+  ],
+  "automation_gates": {
+    "accepted_complete_layouts": 0,
+    "accepted_exact_count_examples": {
+      "columns": 0,
+      "rows": 0
+    },
+    "accepted_layout_families": 0,
+    "automatic_count_axes": {
+      "columns": false,
+      "rows": false
+    },
+    "automatic_roi_enabled": false,
+    "complete_layout_gate_passed": false,
+    "decision": "ship_review_only",
+    "independent_count_gates_passed": {
+      "columns": false,
+      "rows": false
+    },
+    "reason": "No validated complete-layout acceptance policy or independent exact-count acceptance gates; zero coverage cannot establish automation",
+    "required_complete_layouts": 10,
+    "required_exact_count_examples_per_axis": 10,
+    "required_layout_families": 3
+  },
+  "automation_policy": {
+    "automatic_columns_enabled": false,
+    "automatic_roi_enabled": false,
+    "automatic_rows_enabled": false,
+    "maximum_heatmap_edge_error_cell_pitch": 0.1,
+    "mode": "review_only",
+    "negative_auto_acceptances_allowed": 0,
+    "reason": "M9 complete-layout and independent per-axis count gates are not established",
+    "required_complete_layouts": 10,
+    "required_exact_count_examples_per_axis": 10,
+    "required_independent_count_signals": 2,
+    "required_layout_families": 3,
+    "version": "m9-review-only.1"
+  },
+  "corpus_version": "m9-held-out.1",
+  "detector_version": "m8.1",
+  "environment": {
+    "numpy": "2.5.4",
+    "pillow": "12.3.0",
+    "python": "3.12.14"
+  },
+  "evaluation_mode": "whole-image ROI; conditional counts/OCR; oracle-reviewed numerical comparison",
+  "manifest_sha256": "ba1eef99f82ce25c9c3d674257327adfc616be634e5c330c86b8d58f749e6d9a",
+  "practical_coverage_limitation": "No independently annotated published figures; practical coverage is not established",
+  "published_real_figure_count": 0,
+  "schema_version": 1,
+  "software_version": "0.3.0",
+  "summary": {
+    "attempted_figures": 36,
+    "automatic_acceptance_abstention_rate": 1.0,
+    "automatic_correct_acceptance_rate": null,
+    "automatic_false_acceptances": 0,
+    "automatic_layout_acceptances": 0,
+    "automatic_layout_coverage": 0.0,
+    "bar_present_attempts": 26,
+    "bar_top3_recall_count": 18,
+    "complete_proposals_available": 18,
+    "counts": {
+      "columns": {
+        "attempts": 31,
+        "automatic_acceptances": 0,
+        "automatic_coverage": 0.0,
+        "automatic_exact_count_accuracy": null,
+        "candidate_recall_count": 24,
+        "proposal_abstention_count": 7,
+        "proposal_coverage_count": 24,
+        "rank1_exact_count": 24,
+        "rank1_integer_multiple_errors": 0,
+        "rank1_off_by_one_errors": 0
+      },
+      "rows": {
+        "attempts": 31,
+        "automatic_acceptances": 0,
+        "automatic_coverage": 0.0,
+        "automatic_exact_count_accuracy": null,
+        "candidate_recall_count": 28,
+        "proposal_abstention_count": 3,
+        "proposal_coverage_count": 28,
+        "rank1_exact_count": 28,
+        "rank1_integer_multiple_errors": 0,
+        "rank1_off_by_one_errors": 0
+      }
+    },
+    "evaluation_errors": 0,
+    "heatmap_top3_recall_count": 24,
+    "labels": {
+      "accepted_texts": 48,
+      "axis_attempts": 8,
+      "conditional_figure_attempts": 4,
+      "exact_accepted": 24,
+      "false_accepted_texts": 24,
+      "raw_exact": 24,
+      "regions_within_tolerance": 7,
+      "slots": 56,
+      "unresolved": 8
+    },
+    "maximum_reviewed_vs_manual_mae": 0.0,
+    "negative_heatmap_proposals": 0,
+    "negative_roi_attempts": 5,
+    "oracle_reviewed_numeric_comparisons": 18,
+    "positive_roi_attempts": 27,
+    "roi_attempts": 32,
+    "roi_no_proposal_abstentions": 14
+  },
+  "thresholds": {
+    "association_bar_samples": 256,
+    "association_heatmap_samples": 20,
+    "association_maximum_delta_e76": 10.0,
+    "association_minimum_axis_overlap": 0.5,
+    "association_minimum_palette_coverage": 0.5,
+    "bar_join_cross_tolerance": 2,
+    "bar_join_gap_fraction": 0.15,
+    "bar_maximum_step": 12.0,
+    "bar_maximum_transverse_error": 8.0,
+    "bar_minimum_aspect": 4.0,
+    "bar_minimum_changing_fraction": 0.2,
+    "bar_minimum_continuity": 0.97,
+    "bar_minimum_length": 24,
+    "bar_minimum_thickness": 2,
+    "bar_minimum_variation": 12.0,
+    "bar_refinement_reference_size": 512,
+    "border_trim_pixels": 4,
+    "count_cross_samples": 32,
+    "count_maximum_stroke_width": 3,
+    "count_maximum_transition_run": 4,
+    "count_minimum_alignment": 0.75,
+    "count_minimum_observations": 2,
+    "count_minimum_stroke_contrast": 8.0,
+    "count_position_tolerance_fraction": 0.08,
+    "count_transition_threshold": 8.0,
+    "grid_residual_multiplier": 4.0,
+    "grid_slots_per_axis": 32,
+    "heatmap_score_weights": [
+      0.15,
+      0.45,
+      0.25,
+      0.15
+    ],
+    "interior_positions": [
+      0.3,
+      0.5,
+      0.7
+    ],
+    "minimum_analysis_extent": 6,
+    "minimum_cell_pitch": 3.0,
+    "minimum_equal_grid_score": 0.8,
+    "minimum_variation_score": 0.2,
+    "uniform_rgb_spread": 2.0,
+    "variation_normaliser": 25.0
+  }
+}

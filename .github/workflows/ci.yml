@@ -28,6 +28,8 @@ jobs:
       - run: uv run mypy src
       - name: Run the bundled example through the installed CLI
         run: uv run heatmap-decoder extract examples/figure.png --config examples/config.json --out work/ci-example --fail-on-qc
+      - name: Run the reviewed v0.3 example and blocked uniform case
+        run: uv run python benchmarks/m9/workflow.py --out work/ci-m9-example
       - run: uv build
       - name: Test the wheel and console entry point outside the source tree
         run: uv run python tests/smoke_distribution.py
@@ -60,6 +62,8 @@ jobs:
         run: uv run --extra ocr python examples/labels/workflow.py --out work/ci-v0.2
       - name: Run reviewed M8 ROI localisation example
         run: uv run --extra ocr python examples/roi_m8/workflow.py --out work/ci-m8
+      - name: Evaluate the immutable M9 corpus with recorded OCR environment
+        run: uv run --extra ocr python benchmarks/m9/evaluate.py --ocr --out work/ci-m9/report.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -68,6 +72,7 @@ jobs:
             work/ci-labels/
             work/ci-v0.2/
             work/ci-m8/
+            work/ci-m9/
   release:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [test, ocr]
