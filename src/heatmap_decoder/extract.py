@@ -1,10 +1,28 @@
 """Deterministic extraction with no filesystem or CLI dependencies."""
 
+from collections import Counter
+from collections.abc import Mapping, Sequence
+
 import numpy as np
+from PIL import Image
 
 from .calibration import calibrate_values, match_with_quality
-from .geometry import validate_geometry
-from .models import BoolArray, CellFlag, ExtractionConfig, ExtractionResult, RGBArray
+from .geometry import axis_slots, validate_geometry, validate_grid_geometry
+from .labels import crop_label_region, generated_labels, labels_from_tokens, transform_tokens
+from .models import (
+    Axis,
+    AxisLabelResults,
+    BoolArray,
+    CellFlag,
+    ExtractionConfig,
+    ExtractionResult,
+    FileLabelSource,
+    GridConfig,
+    LabelExtractionResult,
+    LabelResult,
+    OCRRun,
+    RGBArray,
+)
 from .sampling import (
     missing_pixel_mask,
     sample_cell_data,
@@ -28,8 +46,8 @@ def extract(
         config.labels.rows is not None or config.labels.columns is not None
     ):
         raise ValueError(
-            "labelled reconstruction is not available in M4; "
-            "use the labels geometry library, or omit labels for numeric-only extraction"
+            "labelled reconstruction is reserved for M6; "
+            "use the labels command for review, or omit labels for numeric-only extraction"
         )
     missing = missing_pixel_mask(image, config, mask)
     validate_bar_data(missing, config)
@@ -73,3 +91,62 @@ def extract(
         config=config,
         image_shape=image.shape,
     )
+
+
+def extract_labels(
+    image: RGBArray,
+    config: GridConfig,
+    *,
+    file_labels: Mapping[Axis, Sequence[str]] | None = None,
+) -> LabelExtractionResult:
+    """Label-only orchestration shared with future reconstruction integration.
+
+    Text-file contents are supplied by I/O, keeping this function filesystem-free.
+    The optional wrapper and engine are used only for explicitly requested OCR.
+    """
+    validate_rgb(image)
+    validate_grid_geometry(config, image.shape)
+    if config.labels is None or (config.labels.rows is None and config.labels.columns is None):
+        raise ValueError("label extraction requires labels.rows or labels.columns with a source")
+    axes = []
+    runs: list[tuple[Axis, OCRRun]] = []
+    for axis in ("rows", "columns"):
+        source = getattr(config.labels, axis)
+        if source is None:
+            axes.append(generated_labels(config, axis))
+        elif isinstance(source, FileLabelSource):
+            supplied = file_labels.get(axis) if file_labels is not None else None
+            if supplied is None:
+                raise ValueError(f"labels.{axis} requires supplied UTF-8 text-file labels")
+            texts = [text.strip() for text in supplied]
+            slots = axis_slots(config, axis)
+            if len(texts) != len(slots) or any(not text for text in texts):
+                raise ValueError(f"labels.{axis} needs exactly {len(slots)} non-empty strings")
+            counts = Counter(texts)
+            axes.append(
+                AxisLabelResults(
+                    axis,
+                    tuple(
+                        LabelResult(
+                            s.index,
+                            text,
+                            text,
+                            None,
+                            None,
+                            "file",
+                            "manual",
+                            duplicate=counts[text] > 1,
+                            issues=("duplicate_text",) if counts[text] > 1 else (),
+                        )
+                        for s, text in zip(slots, texts, strict=True)
+                    ),
+                )
+            )
+        else:
+            from .ocr import recognize
+
+            crop, transform = crop_label_region(Image.fromarray(image), config, axis)
+            run = recognize(crop, config.labels.ocr)
+            runs.append((axis, run))
+            axes.append(labels_from_tokens(transform_tokens(run.tokens, transform), config, axis))
+    return LabelExtractionResult(config, tuple(axes), tuple(runs))

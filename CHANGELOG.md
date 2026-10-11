@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0.dev5 — M5
+
+- Add optional `pytesseract` extra and one fixed local Tesseract OCR pass with
+  grayscale/upscaling, lazy engine checks, actionable installation errors and
+  raw token/version evidence.
+- Add label-only library/CLI, quoted label TSV, editable review template,
+  diagnostic overlay and provenance. Support UTF-8 file sources without OCR;
+  unresolved slots write review artifacts and return CLI exit 4.
+- Add fixed clean/blur/JPEG/unreadable fixtures, mocked core tests and an opt-in
+  OCR integration CI job. Report accuracy and unresolved proportions in `M5.md`.
+- Keep numeric reconstruction unchanged; labelled CSVs and review import remain M6.
+
 ## 0.2.0.dev4 — M4
 
 - Rename distribution/command to `heatmap-decoder` and implementation imports to

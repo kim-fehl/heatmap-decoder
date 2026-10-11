@@ -43,7 +43,7 @@ def test_help_and_version():
         {"source": "file", "path": "genes.txt"},
     ],
 )
-def test_m4_label_requests_do_not_silently_publish_numeric_outputs(tmp_path, source):
+def test_label_requests_do_not_silently_publish_numeric_outputs(tmp_path, source):
     settings = json.loads((EXAMPLES / "config.json").read_text())
     settings["labels"] = {"rows": source}
     config = tmp_path / "labels.json"
@@ -61,7 +61,7 @@ def test_m4_label_requests_do_not_silently_publish_numeric_outputs(tmp_path, sou
         ],
     )
     assert result.exit_code == 2
-    assert "not available in M4" in result.output
+    assert "reserved for M6" in result.output
     assert not out.exists()
 
 

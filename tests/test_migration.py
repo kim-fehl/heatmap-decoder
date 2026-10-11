@@ -1,4 +1,5 @@
 import importlib
+import subprocess
 import sys
 import warnings
 
@@ -19,5 +20,11 @@ def test_legacy_imports_delegate_to_identical_implementation():
 
 
 def test_no_ocr_dependency_is_imported_by_core_or_geometry():
-    importlib.import_module("heatmap_decoder.labels")
-    assert "pytesseract" not in sys.modules
+    subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            "import sys; import heatmap_decoder.labels; assert 'pytesseract' not in sys.modules",
+        ],
+        check=True,
+    )

@@ -1,4 +1,4 @@
-# heatmap-decoder — M4 development
+# heatmap-decoder — M5 development
 
 Reconstruct an **approximate** numerical matrix from a PNG/JPEG heatmap and its
 observed continuous, linear colourbar. Python 3.11+.
@@ -8,12 +8,20 @@ Supply the grid, heatmap/colourbar bounding boxes and endpoint values; inspect t
 resulting QC before using the estimates scientifically. Supports sequential and
 diverging palettes with continuous linear scales on Linux, macOS and Windows.
 
-This development milestone adds the `heatmap_decoder` package name, validated
-optional label configuration, and an engine-independent label geometry library.
-See [M4 scope and geometry API](M4.md) and the short [migration note](MIGRATION.md).
-OCR execution and review artifacts arrive in M5; labelled reconstruction arrives
-in M6. Numeric extraction with a requested label source currently fails clearly.
-Numeric-only use requires no OCR dependency or engine.
+The optional local OCR adapter extracts upright horizontal gene/sample labels
+from manually supplied regions, preserving displayed order and raw evidence.
+See the [M5 example and review artifacts](M5.md), [M4 geometry API](M4.md), and
+[migration note](MIGRATION.md). Labelled reconstruction and review import arrive
+in M6. Numeric-only use requires no OCR dependency or engine.
+
+```bash
+uv sync --locked --extra ocr  # separately install Tesseract and English data
+uv run --extra ocr heatmap-decoder labels examples/labels/clean.png \
+  --config examples/labels/config.json --out review/
+```
+
+This writes label TSVs, an overlay, and provenance. Exit 4 leaves unresolved
+slots for review; confidence is an OCR heuristic and accepted text can be wrong.
 
 ## Install and use
 
@@ -187,8 +195,9 @@ not guarantee an accurate numerical estimate. Endpoint matches cannot reveal
 values clipped beyond the displayed limits; plateau detection cannot recover them.
 
 These values approximate the figure's displayed scale, not exact measurements or
-original pre-transformation biological values. No OCR, automated ROI detection,
-PDF support, web UI or inference of RNA-seq counts is included.
+original pre-transformation biological values. OCR cannot establish biological
+identity; labels need human verification. No automated ROI detection, rotated
+text support, PDF support, web UI or inference of RNA-seq counts is included.
 
 MIT licensed. Input figures remain copyrighted by their respective owners.
 

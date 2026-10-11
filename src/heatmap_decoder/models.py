@@ -189,3 +189,30 @@ class AxisLabelResults:
     tokens: tuple[OCRToken, ...] = ()
     candidates: tuple[LabelCandidate, ...] = ()
     unmatched_candidate_indices: tuple[int, ...] = ()
+
+
+@dataclass(frozen=True)
+class OCRRun:
+    """Raw engine evidence in resized-crop pixels and observed runtime metadata."""
+
+    tokens: tuple[OCRToken, ...]
+    engine_version: str
+    wrapper_version: str
+    language: str
+    available_languages: tuple[str, ...]
+    mode: str
+
+
+@dataclass(frozen=True)
+class LabelExtractionResult:
+    config: GridConfig
+    axes: tuple[AxisLabelResults, ...]
+    ocr_runs: tuple[tuple[Axis, OCRRun], ...] = ()
+
+    @property
+    def unresolved_count(self) -> int:
+        return sum(
+            slot.status not in {"accepted", "manual", "generated"}
+            for axis in self.axes
+            for slot in axis.slots
+        )

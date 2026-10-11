@@ -1,13 +1,14 @@
 """Typer adapter: configuration and filesystem handling stay outside the core."""
 
+import json
 from pathlib import Path
 from typing import Annotated
 
 import numpy as np
 import typer
 
-from .io import extract_file
-from .models import CellFlag, ExtractionConfig
+from .io import extract_file, extract_labels_file
+from .models import CellFlag, ExtractionConfig, GridConfig
 from .version import __version__
 
 app = typer.Typer(
@@ -96,6 +97,63 @@ def extract_command(
         )
         if fail_on_qc:
             raise typer.Exit(code=3)
+
+
+@app.command("labels")
+def labels_command(
+    figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],
+    config: Annotated[
+        Path,
+        typer.Option(
+            "--config",
+            exists=True,
+            dir_okay=False,
+            readable=True,
+            help="JSON grid/label configuration; colourbar optional.",
+        ),
+    ],
+    out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("review"),
+    overwrite: Annotated[
+        bool, typer.Option("--overwrite", help="Replace existing review files.")
+    ] = False,
+) -> None:
+    """Write label TSVs, a diagnostic overlay and provenance; exit 4 for unresolved slots."""
+    try:
+        payload = json.loads(config.read_text(encoding="utf-8"))
+        model = (
+            ExtractionConfig
+            if isinstance(payload, dict) and "colourbar_bbox" in payload
+            else GridConfig
+        )
+        settings = model.model_validate(payload)
+        result = extract_labels_file(
+            figure,
+            settings,
+            out,
+            base_directory=config.parent,
+            config_path=config,
+            overwrite=overwrite,
+        )
+    except (OSError, ValueError) as error:
+        typer.echo(f"Error: {error}", err=True)
+        raise typer.Exit(code=2) from None
+    typer.echo(f"Wrote label review artifacts to {out}")
+    typer.echo(f"Unresolved requested slots: {result.unresolved_count}")
+    unmatched = sum(len(axis.unmatched_candidate_indices) for axis in result.axes)
+    if unmatched:
+        typer.echo(
+            f"Warning: {unmatched} unmatched OCR candidates; inspect provenance and overlay.",
+            err=True,
+        )
+    if any(slot.duplicate for axis in result.axes for slot in axis.slots):
+        typer.echo(
+            "Warning: duplicate label text is preserved; "
+            "some CSV readers rename duplicate headers.",
+            err=True,
+        )
+    typer.echo("Verify all OCR text against the figure, including accepted labels.", err=True)
+    if result.unresolved_count:
+        raise typer.Exit(code=4)
 
 
 if __name__ == "__main__":

@@ -31,9 +31,39 @@ jobs:
       - run: uv build
       - name: Test the wheel and console entry point outside the source tree
         run: uv run python tests/smoke_distribution.py
+  ocr:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+          python-version: '3.12'
+      - name: Install local OCR engine and English data
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-eng
+      - name: Record engine and language environment
+        run: |
+          tesseract --version
+          tesseract --list-langs
+          dpkg-query -W tesseract-ocr tesseract-ocr-eng
+          sha256sum /usr/share/tesseract-ocr/5/tessdata/eng.traineddata
+      - run: uv sync --locked --extra ocr
+      - name: Exact-match clean fixture and degradation report
+        env:
+          HEATMAP_DECODER_OCR_TESTS: '1'
+        run: uv run --extra ocr pytest -q -s -m ocr_integration
+      - name: Run the label-only command
+        run: uv run --extra ocr heatmap-decoder labels examples/labels/clean.png --config examples/labels/config.json --out work/ci-labels
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: label-review
+          path: work/ci-labels/
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: test
+    needs: [test, ocr]
     runs-on: ubuntu-latest
     permissions:
       contents: write

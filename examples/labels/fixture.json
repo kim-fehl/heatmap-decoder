@@ -1,0 +1,9 @@
+{
+  "font": "DejaVu Sans 30 px",
+  "font_file": "DejaVuSans.ttf",
+  "blur_radius": 2,
+  "jpeg_quality": 35,
+  "jpeg_subsampling": 2,
+  "unreadable_blur_radius": 12,
+  "ocr_thresholds": "unchanged engineering defaults (confidence 80, offset 0.4)"
+}

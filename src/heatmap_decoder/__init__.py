@@ -1,7 +1,7 @@
 """Approximate reconstruction with colour matching diagnostics and missing values."""
 
-from .extract import extract
-from .io import extract_file, load_raster, write_csv, write_outputs
+from .extract import extract, extract_labels
+from .io import extract_file, extract_labels_file, load_raster, write_csv, write_outputs
 from .models import (
     AxisLabelResults,
     CellFlag,
@@ -9,6 +9,7 @@ from .models import (
     ExtractionResult,
     GridConfig,
     LabelCandidate,
+    LabelExtractionResult,
     LabelResult,
     LabelsConfig,
     OCRConfig,
@@ -27,9 +28,12 @@ __all__ = [
     "LabelCandidate",
     "LabelResult",
     "AxisLabelResults",
+    "LabelExtractionResult",
     "__version__",
     "extract",
     "extract_file",
+    "extract_labels",
+    "extract_labels_file",
     "load_raster",
     "write_csv",
     "write_outputs",

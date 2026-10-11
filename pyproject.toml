@@ -11,11 +11,15 @@ requires-python = ">=3.11"
 license = "MIT"
 dependencies = ["numpy>=1.26", "Pillow>=10", "scikit-image>=0.22", "pydantic>=2.6", "typer>=0.12", "pandas>=2.2"]
 
+[project.optional-dependencies]
+ocr = ["pytesseract>=0.3.13,<0.4"]
+
 [dependency-groups]
 dev = ["pytest>=8", "hypothesis>=6", "ruff>=0.6", "mypy>=1.11"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = ["ocr_integration: opt-in engine-sensitive tests (set HEATMAP_DECODER_OCR_TESTS=1)"]
 
 [tool.ruff]
 line-length = 100
@@ -45,7 +49,7 @@ path = "src/heatmap_decoder/version.py"
 [tool.hatch.build.targets.sdist]
 include = ["/src", "/tests", "/examples", "/.github", "/README.md", "/CHANGELOG.md",
            "/LICENSE", "/pyproject.toml", "/uv.lock", "/.gitignore",
-           "/MIGRATION.md", "/M4.md", "/spec.md", "/spec_2.md"]
+           "/MIGRATION.md", "/M4.md", "/M5.md", "/spec.md", "/spec_2.md"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/heatmap_decoder", "src/heatmap2matrix"]

@@ -79,14 +79,14 @@ class CropTransform:
 def crop_label_region(
     image: Image.Image, config: GridConfig, axis: Axis
 ) -> tuple[Image.Image, CropTransform]:
-    """Validate before cropping. Resize only; OCR preprocessing belongs to M5."""
+    """Validate before cropping; deterministic grayscale, then bicubic upscale."""
     validate_grid_geometry(config, (image.height, image.width))
     source = getattr(config.labels, axis) if config.labels is not None else None
     if not isinstance(source, OCRLabelSource):
         raise ValueError(f"labels.{axis} must specify an OCR region")
     assert config.labels is not None
     transform = CropTransform(source.bbox, config.labels.ocr.upscale_factor)
-    crop = image.crop(source.bbox)
+    crop = image.crop(source.bbox).convert("L")
     factor = transform.upscale_factor
     return crop.resize(
         (crop.width * factor, crop.height * factor), Image.Resampling.BICUBIC
