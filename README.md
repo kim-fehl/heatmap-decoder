@@ -1,4 +1,4 @@
-# heatmap-decoder — M5 development
+# heatmap-decoder v0.2.0
 
 Reconstruct an **approximate** numerical matrix from a PNG/JPEG heatmap and its
 observed continuous, linear colourbar. Python 3.11+.
@@ -10,9 +10,11 @@ diverging palettes with continuous linear scales on Linux, macOS and Windows.
 
 The optional local OCR adapter extracts upright horizontal gene/sample labels
 from manually supplied regions, preserving displayed order and raw evidence.
-See the [M5 example and review artifacts](M5.md), [M4 geometry API](M4.md), and
-[migration note](MIGRATION.md). Labelled reconstruction and review import arrive
-in M6. Numeric-only use requires no OCR dependency or engine.
+Review files can correct any recognised string by its displayed axis/index.
+Labelled matrix publication requires every requested slot to be accepted or
+manually resolved. See the [complete v0.2 workflow](M6.md) and
+[migration note](MIGRATION.md). Numeric-only and explicit file-label use require
+no OCR dependency or engine.
 
 ```bash
 uv sync --locked --extra ocr  # separately install Tesseract and English data
@@ -25,7 +27,7 @@ slots for review; confidence is an OCR heuristic and accepted text can be wrong.
 
 ## Install and use
 
-Install this development checkout into your own Python environment:
+Install this checkout into your own Python environment:
 
 ```bash
 python -m pip install -e .
@@ -130,6 +132,102 @@ colour, including black or white, is automatically missing. Remaining valid
 pixels determine the median; cells below the coverage threshold are `MISSING`.
 The colourbar's central sampling strip must be fully valid or extraction fails.
 
+## Labels, coordinates and review
+
+Install the optional wrapper with `uv sync --locked --extra ocr` or
+`python -m pip install -e '.[ocr]'`. Install the engine separately:
+
+- Debian/Ubuntu: `sudo apt-get install tesseract-ocr tesseract-ocr-eng`.
+- macOS: `brew install tesseract` (English data is included).
+- Windows: install a Tesseract Windows build with English language data and add
+  the directory containing `tesseract.exe` to PATH; the maintained installers
+  linked from [Tesseract's installation guide](https://tesseract-ocr.github.io/tessdoc/Installation.html)
+  include Windows instructions. Restart your terminal after changing PATH.
+
+Verify `tesseract --version` and `tesseract --list-langs`. The Python extra does
+not install the engine or traineddata. Missing wrapper, engine or language data
+produces installation guidance when OCR is requested. A review with an OCR source
+reruns OCR to preserve evidence; it does not bypass a missing engine. File sources
+are the alternative when OCR is unavailable.
+
+Select regions manually in an image viewer/editor with a pixel-coordinate readout.
+Use the original raster at its actual pixel size. Record the heatmap's outer grid
+bounds, row/column counts, and a separate rectangle tightly containing each axis's
+complete labels with padding. The coordinate origin is the upper-left corner;
+convert inclusive endpoint readouts to exclusive right/bottom bounds. The image
+must have a regular grid. Regions may be left/right for rows and above/below for
+columns. Horizontal, upright, single-line text is required; vertical or angled
+sample labels are unsupported. No rotation, automatic layout detection,
+dendrogram reconstruction or semantic axis inference is performed.
+
+Add this `labels` object to a complete numeric configuration (the regions below
+are coordinate examples; adapt them to your own image):
+
+```json
+{
+  "labels": {
+    "rows": {"source": "ocr", "bbox": [510, 80, 650, 480]},
+    "columns": {"source": "ocr", "bbox": [100, 35, 500, 75]},
+    "ocr": {
+      "language": "eng",
+      "upscale_factor": 3,
+      "min_confidence": 80,
+      "max_axis_offset_fraction": 0.4
+    }
+  }
+}
+```
+
+Each axis has one source: OCR with a `bbox`, or file with a `path`. File sources
+contain exactly one non-empty UTF-8 line per slot; paths resolve relative to the
+config file. Only outer whitespace is trimmed. Omitted axes get `row_0`, `row_1`,
+… or `column_0`, `column_1`, … when the other axis is labelled. With neither axis
+requested, numeric-only output retains its existing format.
+
+OCR uses grayscale, bicubic upscaling, and one `--oem 1 --psm 11` sparse-text pass.
+Geometry assigns candidates to fixed grid bands without shifting missing slots
+or choosing collision winners by confidence. Confidence is a heuristic, not a
+probability or a guarantee of biological identity. Case, digits, punctuation and
+internal spaces are preserved. Low-confidence, missing, spanning or conflicting
+candidates remain unresolved. Inspect **all** OCR labels, including accepted ones.
+
+```bash
+heatmap-decoder labels figure.png --config config.json --out review/
+# Edit review/labels_review.tsv after inspecting labels.tsv and the overlay.
+heatmap-decoder extract figure.png --config config.json \
+  --labels-review review/labels_review.tsv --out results/
+```
+
+`labels` needs grid/label configuration only; no colourbar is required. It writes
+`labels.tsv`, `labels_review.tsv`, `labels_diagnostic.png`, and `provenance.json`.
+The review template contains exactly `axis`, `index`, `text`, with zero-based
+indices and unresolved text empty. Fill every slot of every requested axis; you
+may correct accepted labels too. Keep omitted axes out of the review. Import
+rejects missing/duplicate/out-of-range indices, unexpected axes, wrong field
+counts and empty strings. Duplicate **text** is allowed and flagged separately.
+Reviewed slots become `source=manual`, `status=manual`; raw OCR evidence is retained.
+Use a separate results directory so input review files cannot be overwritten.
+
+`extract` writes review artifacts before publication. Unresolved labels return
+**exit 4** and do not create new matrix/quality outputs. Existing numeric files
+are retained even with `--overwrite`; blocked provenance identifies those older
+files. Inspect the current exit code and publication status before using outputs.
+A complete review permits publication with matching labels and unchanged numeric
+values. Numerical QC still uses exit 3 with `--fail-on-qc`; invalid input, missing
+OCR and I/O errors use exit 2. For a separate numeric-only run, omit label sources.
+
+Run the bundled complete example (local OCR required):
+
+```bash
+uv run --extra ocr python examples/labels/workflow.py --out work/v0.2-example
+```
+
+It verifies a clean labelled export, a blocked unreadable figure, and a reviewed
+export using the fixture's supplied known labels. For real figures, a person must
+verify/fill the review file; the tool does not infer corrections. For a file-only
+example without OCR, use `examples/labels/file_config.json` with
+`examples/labels/reconstruction.png`. See [M6.md](M6.md) for API and validation details.
+
 For in-memory use:
 
 ```python
@@ -140,9 +238,14 @@ result = extract(image, config, mask=None)  # optional boolean H × W mask
 poor = (result.flags & CellFlag.POOR_MATCH) != 0
 ```
 
-Core `extract` performs no I/O and is deterministic. Results contain matrices
+Numeric-only `extract` performs no I/O and is deterministic. Labelled in-memory
+extraction may invoke the local OCR engine; text-file contents and optional
+review mappings can be supplied by the caller. Results contain matrices
 `values`, `inferred_values`, `colour_distance`, `flags`, and `valid_fraction`;
 `sampled_rgb` and `reconstructed_rgb` have shape `(rows, columns, 3)`.
+`result.labels` is absent for numeric-only extraction and contains evidence and
+final fixed slots for labelled extraction. `UnresolvedLabelsError` carries the
+unresolved evidence for in-memory callers.
 
 ## Outputs
 
@@ -159,12 +262,28 @@ byte-reproducible for identical inputs with the same installed dependencies.
 Read the matrix with `pandas.read_csv("results/matrix.csv", header=None)` when
 using pandas. The file adapter prevents outputs from overwriting the input figure.
 
+For labelled extraction, `matrix.csv` has a `gene` index column and sample
+headers; `quality.csv` keeps its indices and numeric diagnostics and adds
+`row_label`, `column_label` with the identical strings. Read labelled matrices
+with `pandas.read_csv(path, index_col=0)`. CSV writers preserve duplicate names
+without suffixes; some readers, including pandas, rename duplicate column headers.
+Use Python's `csv.reader` when exact duplicate headers matter.
+
+Labelled extraction also exports the label TSVs and overlay. Provenance schema 2
+combines the numeric methods/QC/input hash with raw OCR tokens, engine/wrapper
+versions, preprocessing, original assignments, final reviewed slots, source-file
+hashes, and review-file SHA-256. OCR confidence is separate from numerical QC.
+Outputs and input files are protected by explicit overwrite checks, including the
+file adapter's `overwrite=True` option. Neither flag permits overwriting an input.
+
 ## Validation
 
 ```bash
 uv run pytest -q -s
 uv run ruff check .
 uv run mypy src
+uv sync --locked --extra ocr
+HEATMAP_DECODER_OCR_TESTS=1 uv run --extra ocr pytest -q -s -m ocr_integration
 ```
 
 CI runs these checks and the example CLI on Linux, macOS and Windows with
@@ -172,6 +291,11 @@ Python 3.11–3.14. It also builds the distributions and runs the installed whee
 in a fresh environment outside the source checkout. Hypothesis exercises geometry
 and calibration invariants. CLI tests verify exit codes, masks, overwrite protection,
 and pandas CSV reading.
+Core tests use mocked OCR and require no wrapper/engine. A separate Ubuntu 24.04,
+Python 3.12 OCR job installs Tesseract/English data, logs engine/data versions and
+the English traineddata hash, runs fixed OCR integration fixtures and the complete
+v0.2 example. See [M5 measurements](M5.md) and [M6 validation](M6.md) for the
+documented engine environments and distinction between mocked and sensitive tests.
 
 Synthetic tests generate seeded 20 × 20 references independently of extraction,
 using sequential and diverging palettes, both orientations, ascending/descending

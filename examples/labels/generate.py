@@ -4,9 +4,11 @@ Requires DejaVuSans.ttf (Debian/Ubuntu: fonts-dejavu-core). Checked-in fixtures
 are the integration inputs; tests never regenerate or search for better variants.
 """
 
+import csv
 import json
 from pathlib import Path
 
+import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROWS = ["TP53", "HLA-DRA", "Gapdh", "BRCA2"]
@@ -43,6 +45,59 @@ def generate(directory: Path) -> None:
     }
     for name, data in [("config.json", config), ("truth.json", {"rows": ROWS, "columns": COLUMNS})]:
         (directory / name).write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    # M6 reference: keep the M5 OCR images fixed; add an independent numeric scale.
+    positions = np.linspace(0, 1, 12).reshape(4, 3)
+
+    def palette(t: np.ndarray) -> np.ndarray:
+        t = t[..., None]
+        blue, white, red = (
+            np.array([25, 60, 210]),
+            np.array([245, 245, 245]),
+            np.array([210, 35, 25]),
+        )
+        return np.rint(
+            np.where(t <= 0.5, blue + 2 * t * (white - blue), white + (2 * t - 1) * (red - white))
+        ).astype(np.uint8)
+
+    numeric = image.copy()
+    pixels = np.array(numeric)
+    pixels[140:460, 220:1000] = np.repeat(np.repeat(palette(positions), 80, axis=0), 260, axis=1)
+    pixels[140:460, 1040:1060] = palette(np.linspace(0, 1, 320))[:, None, :]
+    numeric = Image.fromarray(pixels)
+    numeric.save(directory / "reconstruction.png")
+    unreadable = numeric.copy()
+    for source in config["labels"].values():
+        box = tuple(source["bbox"])
+        unreadable.paste(numeric.crop(box).filter(ImageFilter.GaussianBlur(12)), box)
+    unreadable.save(directory / "reconstruction_unreadable.png")
+    numeric_config = {key: value for key, value in config.items() if key != "labels"}
+    numeric_config.update(
+        colourbar_bbox=[1040, 140, 1060, 460],
+        colourbar_orientation="vertical",
+        colourbar_start_value=2,
+        colourbar_end_value=-2,
+    )
+    file_sources = {
+        "rows": {"source": "file", "path": "genes.txt"},
+        "columns": {"source": "file", "path": "samples.txt"},
+    }
+    for name, payload in [
+        ("numeric_config.json", numeric_config),
+        ("extract_config.json", {**numeric_config, "labels": config["labels"]}),
+        ("file_config.json", {**numeric_config, "labels": file_sources}),
+    ]:
+        (directory / name).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    np.savetxt(directory / "values.csv", 2 - 4 * positions, delimiter=",", fmt="%.17g")
+    for name, labels in [("genes.txt", ROWS), ("samples.txt", COLUMNS)]:
+        (directory / name).write_text("\n".join(labels) + "\n", encoding="utf-8")
+    with (directory / "reviewed_example.tsv").open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.writer(stream, delimiter="\t")
+        writer.writerow(["axis", "index", "text"])
+        writer.writerows(
+            (axis, i, text)
+            for axis, values in [("rows", ROWS), ("columns", COLUMNS)]
+            for i, text in enumerate(values)
+        )
     # Record generation inputs without requiring a font file at extraction time.
     (directory / "fixture.json").write_text(
         json.dumps(

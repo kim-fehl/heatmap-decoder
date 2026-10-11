@@ -1,0 +1,39 @@
+{
+  "heatmap_bbox": [
+    220,
+    140,
+    1000,
+    460
+  ],
+  "rows": 4,
+  "columns": 3,
+  "colourbar_bbox": [
+    1040,
+    140,
+    1060,
+    460
+  ],
+  "colourbar_orientation": "vertical",
+  "colourbar_start_value": 2,
+  "colourbar_end_value": -2,
+  "labels": {
+    "rows": {
+      "source": "ocr",
+      "bbox": [
+        10,
+        140,
+        210,
+        460
+      ]
+    },
+    "columns": {
+      "source": "ocr",
+      "bbox": [
+        220,
+        60,
+        1000,
+        125
+      ]
+    }
+  }
+}

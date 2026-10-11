@@ -43,7 +43,20 @@ def test_help_and_version():
         {"source": "file", "path": "genes.txt"},
     ],
 )
-def test_label_requests_do_not_silently_publish_numeric_outputs(tmp_path, source):
+def test_label_requests_do_not_silently_publish_numeric_outputs(tmp_path, source, monkeypatch):
+    from heatmap_decoder.models import OCRRun
+
+    monkeypatch.setattr(
+        "heatmap_decoder.ocr.recognize",
+        lambda *args: OCRRun(
+            (),
+            "fake",
+            "fake",
+            "eng",
+            ("eng",),
+            "--oem 1 --psm 11",
+        ),
+    )
     settings = json.loads((EXAMPLES / "config.json").read_text())
     settings["labels"] = {"rows": source}
     config = tmp_path / "labels.json"
@@ -60,9 +73,11 @@ def test_label_requests_do_not_silently_publish_numeric_outputs(tmp_path, source
             str(out),
         ],
     )
-    assert result.exit_code == 2
-    assert "reserved for M6" in result.output
-    assert not out.exists()
+    assert result.exit_code == (4 if source["source"] == "ocr" else 2)
+    assert not (out / "matrix.csv").exists()
+    assert not (out / "quality.csv").exists()
+    if source["source"] == "ocr":
+        assert (out / "labels_review.tsv").exists()
 
 
 def test_bundled_example_and_pandas_csv(tmp_path):

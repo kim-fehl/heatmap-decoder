@@ -18,9 +18,14 @@ renaming. Numeric CSV remains headerless and quality CSV remains long-form.
 Provenance records the new software name and the optional `labels` configuration.
 No text-file label API existed in the inspected baseline, so there is no old
 label option to map. OCR and file label sources now have validated schemas;
-M5's `labels` command accepts OCR and file sources and produces review artifacts.
-Labelled reconstruction will be integrated in M6; until then numeric extraction
-with a requested label source fails explicitly instead of silently ignoring it.
+The `labels` command accepts OCR and file sources and produces review artifacts.
+In v0.2, `extract` integrates these sources and strict review import. With labels
+requested, matrix CSV has a gene index/sample header and quality CSV gains matching
+label fields. Omitted label configuration retains v0.1 numeric CSV formats.
+Unresolved labels write review artifacts and block numeric publication with exit 4.
+See `README.md` and `M6.md` for the full workflow. The file adapter now enforces
+explicit `overwrite=True`, matching the CLI's established overwrite policy.
 
 The `0.2.0.dev4` and `0.2.0.dev5` versions identify milestone development code,
 not a completed v0.2 release. Historical v0.1 artifacts retain their original names.
+M6 sets package metadata to `0.2.0`; a tagged release is handled separately by CI.

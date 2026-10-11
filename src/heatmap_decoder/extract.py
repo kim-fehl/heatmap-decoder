@@ -8,7 +8,14 @@ from PIL import Image
 
 from .calibration import calibrate_values, match_with_quality
 from .geometry import axis_slots, validate_geometry, validate_grid_geometry
-from .labels import crop_label_region, generated_labels, labels_from_tokens, transform_tokens
+from .labels import (
+    apply_review,
+    crop_label_region,
+    generated_labels,
+    labels_from_tokens,
+    transform_tokens,
+    validate_label_slots,
+)
 from .models import (
     Axis,
     AxisLabelResults,
@@ -32,8 +39,25 @@ from .sampling import (
 )
 
 
+class UnresolvedLabelsError(ValueError):
+    """Label evidence exists, but numeric outputs must not be published."""
+
+    def __init__(self, labels: LabelExtractionResult) -> None:
+        self.labels = labels
+        super().__init__(
+            f"{labels.unresolved_count} unresolved label slots; "
+            "complete labels_review.tsv and rerun with --labels-review"
+        )
+
+
 def extract(
-    image: RGBArray, config: ExtractionConfig, *, mask: BoolArray | None = None
+    image: RGBArray,
+    config: ExtractionConfig,
+    *,
+    mask: BoolArray | None = None,
+    label_result: LabelExtractionResult | None = None,
+    file_labels: Mapping[Axis, Sequence[str]] | None = None,
+    reviewed_labels: Mapping[tuple[Axis, int], str] | None = None,
 ) -> ExtractionResult:
     """Reconstruct approximate values, retaining colour diagnostics and QC flags.
 
@@ -45,10 +69,17 @@ def extract(
     if config.labels is not None and (
         config.labels.rows is not None or config.labels.columns is not None
     ):
-        raise ValueError(
-            "labelled reconstruction is reserved for M6; "
-            "use the labels command for review, or omit labels for numeric-only extraction"
-        )
+        if label_result is None:
+            label_result = extract_labels(image, config, file_labels=file_labels)
+        if label_result.config != config:
+            raise ValueError("precomputed labels must use the same extraction configuration")
+        validate_label_slots(label_result)
+        if reviewed_labels is not None:
+            label_result = apply_review(label_result, reviewed_labels)
+        if label_result.unresolved_count:
+            raise UnresolvedLabelsError(label_result)
+    elif label_result is not None or reviewed_labels is not None:
+        raise ValueError("labels or review provided without configured label sources")
     missing = missing_pixel_mask(image, config, mask)
     validate_bar_data(missing, config)
     cells, fractions = sample_cell_data(image, config, missing)
@@ -90,6 +121,7 @@ def extract(
         reconstructed_rgb=reconstructed.reshape(*shape, 3),
         config=config,
         image_shape=image.shape,
+        labels=label_result,
     )
 
 

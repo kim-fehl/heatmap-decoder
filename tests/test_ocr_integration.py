@@ -4,9 +4,19 @@ import json
 import os
 from pathlib import Path
 
+import numpy as np
 import pytest
+from typer.testing import CliRunner
 
-from heatmap_decoder import GridConfig, extract_labels_file
+from heatmap_decoder import (
+    ExtractionConfig,
+    GridConfig,
+    extract,
+    extract_file,
+    extract_labels_file,
+    load_raster,
+)
+from heatmap_decoder.cli import app
 
 pytestmark = [
     pytest.mark.ocr_integration,
@@ -63,3 +73,36 @@ def test_report_degraded_variants_without_universal_accuracy_assertions(tmp_path
     result, _, total = run(variant, tmp_path)
     assert sum(len(axis.slots) for axis in result.axes) == total == 7
     assert len(result.ocr_runs) == 2
+
+
+def test_real_ocr_and_reviewed_reconstruction_end_to_end(tmp_path):
+    config = ExtractionConfig.model_validate_json((FIXTURES / "extract_config.json").read_text())
+    baseline = extract(
+        load_raster(FIXTURES / "reconstruction.png"), config.model_copy(update={"labels": None})
+    )
+    clean = extract_file(FIXTURES / "reconstruction.png", config, tmp_path / "clean")
+    np.testing.assert_array_equal(clean.values, baseline.values)
+    truth = json.loads((FIXTURES / "truth.json").read_text())
+    assert [slot.final_text for slot in clean.labels.axes[0].slots] == truth["rows"]
+    assert [slot.final_text for slot in clean.labels.axes[1].slots] == truth["columns"]
+    args = [
+        "extract",
+        str(FIXTURES / "reconstruction_unreadable.png"),
+        "--config",
+        str(FIXTURES / "extract_config.json"),
+    ]
+    blocked = tmp_path / "blocked"
+    result = CliRunner().invoke(app, args + ["--out", str(blocked)])
+    assert result.exit_code == 4, result.output
+    assert not (blocked / "matrix.csv").exists() and not (blocked / "quality.csv").exists()
+    assert (blocked / "labels_review.tsv").exists()
+    final = tmp_path / "reviewed"
+    result = CliRunner().invoke(
+        app, args + ["--out", str(final), "--labels-review", str(FIXTURES / "reviewed_example.tsv")]
+    )
+    assert result.exit_code == 0, result.output
+    matrix = np.genfromtxt(final / "matrix.csv", delimiter=",", skip_header=1)[:, 1:]
+    np.testing.assert_array_equal(matrix, baseline.values)
+    metadata = json.loads((final / "provenance.json").read_text())
+    assert metadata["labels"]["unreviewed_axes"][0]["slots"][0]["status"] == "missing"
+    assert metadata["labels"]["axes"][0]["slots"][0]["source"] == "manual"

@@ -1,0 +1,29 @@
+{
+  "heatmap_bbox": [
+    220,
+    140,
+    1000,
+    460
+  ],
+  "rows": 4,
+  "columns": 3,
+  "colourbar_bbox": [
+    1040,
+    140,
+    1060,
+    460
+  ],
+  "colourbar_orientation": "vertical",
+  "colourbar_start_value": 2,
+  "colourbar_end_value": -2,
+  "labels": {
+    "rows": {
+      "source": "file",
+      "path": "genes.txt"
+    },
+    "columns": {
+      "source": "file",
+      "path": "samples.txt"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 """Approximate reconstruction with colour matching diagnostics and missing values."""
 
-from .extract import extract, extract_labels
+from .extract import UnresolvedLabelsError, extract, extract_labels
 from .io import extract_file, extract_labels_file, load_raster, write_csv, write_outputs
 from .models import (
     AxisLabelResults,
@@ -29,6 +29,7 @@ __all__ = [
     "LabelResult",
     "AxisLabelResults",
     "LabelExtractionResult",
+    "UnresolvedLabelsError",
     "__version__",
     "extract",
     "extract_file",

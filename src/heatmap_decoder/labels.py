@@ -6,7 +6,7 @@ Geometry cannot establish biological identity. All evidence survives assignment.
 
 import math
 from collections import Counter
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, replace
 
 from PIL import Image
@@ -19,6 +19,7 @@ from .models import (
     BoundingBox,
     GridConfig,
     LabelCandidate,
+    LabelExtractionResult,
     LabelResult,
     LabelStatus,
     OCRConfig,
@@ -275,3 +276,66 @@ def generated_labels(config: GridConfig, axis: Axis) -> AxisLabelResults:
             for s in axis_slots(config, axis)
         ),
     )
+
+
+def requested_review_slots(config: GridConfig) -> set[tuple[Axis, int]]:
+    """Every configured axis must be reviewed completely; omitted axes are excluded."""
+    axes: tuple[Axis, ...] = ("rows", "columns")
+    return {
+        (axis, slot.index)
+        for axis in axes
+        if config.labels is not None and getattr(config.labels, axis) is not None
+        for slot in axis_slots(config, axis)
+    }
+
+
+def validate_label_slots(result: LabelExtractionResult) -> None:
+    """Reject incomplete or reordered precomputed results before matrix publication."""
+    if tuple(axis.axis for axis in result.axes) != ("rows", "columns"):
+        raise ValueError("label results must contain rows then columns")
+    for axis in result.axes:
+        expected = axis_slots(result.config, axis.axis)
+        if tuple(slot.index for slot in axis.slots) != tuple(slot.index for slot in expected):
+            raise ValueError(f"labels.{axis.axis} must preserve every slot index in order")
+
+
+def apply_review(
+    result: LabelExtractionResult,
+    reviewed: Mapping[tuple[Axis, int], str],
+) -> LabelExtractionResult:
+    """Resolve by index only; preserve raw text, boxes, confidence and OCR runs."""
+    expected = requested_review_slots(result.config)
+    validate_label_slots(result)
+    if not expected:
+        raise ValueError("labels review requires at least one configured label axis")
+    if set(reviewed) != expected:
+        raise ValueError("labels review must contain exactly every requested axis/index slot")
+    texts = {key: value.strip() for key, value in reviewed.items()}
+    if any(not text for text in texts.values()):
+        raise ValueError("labels review text must be non-empty for every requested slot")
+    axes = []
+    for axis in result.axes:
+        slots = tuple(
+            replace(
+                slot, final_text=texts[(axis.axis, slot.index)], source="manual", status="manual"
+            )
+            if (axis.axis, slot.index) in texts
+            else slot
+            for slot in axis.slots
+        )
+        counts = Counter(slot.final_text for slot in slots if slot.final_text is not None)
+        slots = tuple(
+            replace(
+                slot,
+                duplicate=slot.final_text is not None and counts[slot.final_text] > 1,
+                issues=tuple(issue for issue in slot.issues if issue != "duplicate_text")
+                + (
+                    ("duplicate_text",)
+                    if slot.final_text is not None and counts[slot.final_text] > 1
+                    else ()
+                ),
+            )
+            for slot in slots
+        )
+        axes.append(replace(axis, slots=slots))
+    return replace(result, axes=tuple(axes), unreviewed_axes=result.unreviewed_axes or result.axes)

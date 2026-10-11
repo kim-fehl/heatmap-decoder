@@ -133,9 +133,11 @@ class ExtractionResult:
     reconstructed_rgb: FloatArray
     config: ExtractionConfig
     image_shape: tuple[int, ...]
+    labels: "LabelExtractionResult | None" = None
 
 
 Axis: TypeAlias = Literal["rows", "columns"]
+ReviewLabels: TypeAlias = dict[tuple[Axis, int], str]
 TextBox: TypeAlias = tuple[float, float, float, float]
 LabelStatus: TypeAlias = Literal[
     "accepted", "low_confidence", "missing", "ambiguous", "manual", "generated"
@@ -208,11 +210,22 @@ class LabelExtractionResult:
     config: GridConfig
     axes: tuple[AxisLabelResults, ...]
     ocr_runs: tuple[tuple[Axis, OCRRun], ...] = ()
+    unreviewed_axes: tuple[AxisLabelResults, ...] | None = None
+    review_sha256: str | None = None
+    review_filename: str | None = None
 
     @property
     def unresolved_count(self) -> int:
         return sum(
-            slot.status not in {"accepted", "manual", "generated"}
+            slot.status
+            not in (
+                {"accepted", "manual"}
+                if self.config.labels is not None
+                and getattr(self.config.labels, axis.axis) is not None
+                else {"generated"}
+            )
+            or slot.final_text is None
+            or not slot.final_text.strip()
             for axis in self.axes
             for slot in axis.slots
         )

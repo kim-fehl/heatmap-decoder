@@ -16,7 +16,14 @@ def smoke() -> None:
     source = root / "dist" / f"heatmap_decoder-{__version__}.tar.gz"
     with tarfile.open(source) as archive:
         names = archive.getnames()
-        for suffix in ("/examples/figure.png", "/examples/config.json", "/tests/test_cli.py"):
+        for suffix in (
+            "/examples/figure.png",
+            "/examples/config.json",
+            "/tests/test_cli.py",
+            "/examples/labels/reconstruction.png",
+            "/examples/labels/workflow.py",
+            "/M6.md",
+        ):
             assert any(name.endswith(suffix) for name in names), suffix
         assert not any("/work/" in name or "/.venv/" in name for name in names)
     with tempfile.TemporaryDirectory(prefix="heatmap_decoder-smoke-") as scratch:
@@ -28,6 +35,20 @@ def smoke() -> None:
         command = scripts / ("heatmap-decoder.exe" if os.name == "nt" else "heatmap-decoder")
         subprocess.run(["uv", "pip", "install", "--python", str(python), str(wheel)], check=True)
         subprocess.run([str(command), "--version"], check=True, cwd=directory)
+        subprocess.run(
+            [
+                str(command),
+                "extract",
+                str(root / "examples/labels/reconstruction.png"),
+                "--config",
+                str(root / "examples/labels/file_config.json"),
+                "--out",
+                str(directory / "file-labels"),
+                "--fail-on-qc",
+            ],
+            check=True,
+            cwd=directory,
+        )
         subprocess.run(
             [
                 str(command),
@@ -48,12 +69,17 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import heatmap_decoder as h
+import importlib.util
 assert h.__version__ == sys.argv[1]
+assert importlib.util.find_spec('pytesseract') is None
 assert Path(h.__file__).resolve().is_relative_to(Path(sys.argv[2]).resolve())
 matrix = pd.read_csv('results/matrix.csv', header=None).to_numpy()
 truth = pd.read_csv(sys.argv[3], header=None).to_numpy()
 assert matrix.shape == (20, 20)
 assert np.abs(matrix - truth).mean() < 0.02 * 4
+labelled = pd.read_csv('file-labels/matrix.csv', index_col=0)
+assert list(labelled.index) == ['TP53', 'HLA-DRA', 'Gapdh', 'BRCA2']
+assert list(labelled.columns) == ['Control-1', 'Tumor_2', 'Sample A']
 """
         subprocess.run(
             [

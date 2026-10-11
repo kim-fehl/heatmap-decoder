@@ -7,8 +7,9 @@ from typing import Annotated
 import numpy as np
 import typer
 
-from .io import extract_file, extract_labels_file
-from .models import CellFlag, ExtractionConfig, GridConfig
+from .extract import UnresolvedLabelsError
+from .io import LABEL_OUTPUT_NAMES, extract_file, extract_labels_file
+from .models import CellFlag, ExtractionConfig, GridConfig, LabelExtractionResult
 from .version import __version__
 
 app = typer.Typer(
@@ -60,6 +61,16 @@ def extract_command(
         bool,
         typer.Option("--fail-on-qc", help="Write outputs, then exit 3 if any cells are flagged."),
     ] = False,
+    labels_review: Annotated[
+        Path | None,
+        typer.Option(
+            "--labels-review",
+            exists=True,
+            dir_okay=False,
+            readable=True,
+            help="Complete UTF-8 review TSV: axis, index, text.",
+        ),
+    ] = None,
 ) -> None:
     """Write matrix.csv, quality.csv, provenance.json and diagnostic.png."""
     try:
@@ -68,6 +79,10 @@ def extract_command(
             out / name
             for name in ("matrix.csv", "quality.csv", "provenance.json", "diagnostic.png")
         ]
+        if settings.labels is not None and (
+            settings.labels.rows is not None or settings.labels.columns is not None
+        ):
+            outputs += [out / name for name in LABEL_OUTPUT_NAMES if name != "provenance.json"]
         inputs = [figure, config] + ([mask] if mask is not None else [])
         if any(output.resolve() == source.resolve() for output in outputs for source in inputs):
             raise ValueError("output paths would overwrite an input figure, configuration or mask")
@@ -78,7 +93,22 @@ def extract_command(
         if pixel_mask is not None and not isinstance(pixel_mask, np.ndarray):
             pixel_mask.close()
             raise ValueError("mask must be a boolean .npy array, not an archive")
-        result = extract_file(figure, settings, out, mask=pixel_mask)
+        result = extract_file(
+            figure,
+            settings,
+            out,
+            mask=pixel_mask,
+            base_directory=config.parent,
+            config_path=config,
+            overwrite=overwrite,
+            labels_review=labels_review,
+        )
+    except UnresolvedLabelsError as error:
+        typer.echo(
+            f"Wrote label review artifacts to {out}. {error}. No new matrix/quality outputs.",
+            err=True,
+        )
+        raise typer.Exit(code=4) from None
     except (OSError, ValueError) as error:
         typer.echo(f"Error: {error}", err=True)
         raise typer.Exit(code=2) from None
@@ -86,6 +116,8 @@ def extract_command(
     flagged = int(np.count_nonzero(result.flags))
     typer.echo(f"Wrote {settings.rows} × {settings.columns} matrix and QC outputs to {out}")
     typer.echo(f"Flagged cells: {flagged}/{total} ({flagged / total:.1%})")
+    if result.labels is not None:
+        label_warnings(result.labels)
     if flagged:
         counts = ", ".join(
             f"{flag.name}={np.count_nonzero(result.flags & flag)}" for flag in CellFlag
@@ -139,6 +171,12 @@ def labels_command(
         raise typer.Exit(code=2) from None
     typer.echo(f"Wrote label review artifacts to {out}")
     typer.echo(f"Unresolved requested slots: {result.unresolved_count}")
+    label_warnings(result)
+    if result.unresolved_count:
+        raise typer.Exit(code=4)
+
+
+def label_warnings(result: LabelExtractionResult) -> None:
     unmatched = sum(len(axis.unmatched_candidate_indices) for axis in result.axes)
     if unmatched:
         typer.echo(
@@ -151,9 +189,8 @@ def labels_command(
             "some CSV readers rename duplicate headers.",
             err=True,
         )
-    typer.echo("Verify all OCR text against the figure, including accepted labels.", err=True)
-    if result.unresolved_count:
-        raise typer.Exit(code=4)
+    if result.ocr_runs:
+        typer.echo("Verify all OCR text against the figure, including accepted labels.", err=True)
 
 
 if __name__ == "__main__":

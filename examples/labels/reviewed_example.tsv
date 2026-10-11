@@ -1,0 +1,8 @@
+axis	index	text
+rows	0	TP53
+rows	1	HLA-DRA
+rows	2	Gapdh
+rows	3	BRCA2
+columns	0	Control-1
+columns	1	Tumor_2
+columns	2	Sample A

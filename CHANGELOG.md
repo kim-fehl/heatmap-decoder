@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0 — M6
+
+- Integrate the shared label pipeline with reconstruction and block matrix/quality
+  publication on unresolved slots while exporting review evidence (exit 4).
+- Import strict axis/index/text review TSVs, permit correction of accepted strings,
+  preserve raw OCR evidence and record review/source hashes and final assignments.
+- Export matching gene/sample strings in matrix and long-form quality CSVs, with
+  duplicate strings preserved and warned. Numeric-only formats/values remain intact.
+- Package the complete clean/unreadable/reviewed example and file-only alternative;
+  document engine installation, manual ROI selection, API, outputs and scientific limits.
+- Extend mocked/core and real OCR tests, the OCR CI workflow and installed wheel checks.
+
 ## 0.2.0.dev5 — M5
 
 - Add optional `pytesseract` extra and one fixed local Tesseract OCR pass with
