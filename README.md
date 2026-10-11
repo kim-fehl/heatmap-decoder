@@ -340,3 +340,40 @@ The project has no PyPI publication configured; install this checkout locally.
 A pushed `v*` tag publishes the wheel and source archive only after the entire cross-platform CI matrix passes; the tag
 must match the package version. The release job uses GitHub Actions' built-in
 repository token, with write access limited to that job.
+
+## Review-only heatmap detection (M7)
+
+M7 adds deterministic heatmap proposals from manually supplied row/column counts.
+Detection scores are heuristics, separate from OCR confidence and numerical QC.
+Colourbars, label localisation and count inference remain manual in this milestone.
+
+```bash
+uv run heatmap-decoder detect examples/figure.png --config examples/roi/hints.json --out work/m7-roi
+```
+
+Expected exit **5** saves `roi_candidates.json`, `roi_diagnostic.png` and
+`config_proposed.json`; inspect them before choosing bounds. Candidates are never
+selected by rank. After reviewing this bundled reference:
+
+```bash
+uv run heatmap-decoder extract examples/figure.png --config work/m7-roi/config_proposed.json --roi-review work/m7-roi/roi_candidates.json --heatmap-candidate heatmap-001 --out work/m7-results
+```
+
+Minimal hints are `{"rows": 20, "columns": 20}`. To preserve a fixed heatmap,
+add `"heatmap_bbox": [24, 32, 264, 272]` and `"requested": []`. Optional fixed
+colourbar fields use the existing extraction names; no endpoints are inferred.
+`detector` accepts the settings documented in [M7.md](M7.md). Unsupported requested
+kinds and unknown fields fail validation. Missing required extraction fields remain
+absent in proposed config and are listed in detection metadata.
+
+You can instead edit the proposed config to add reviewed coordinates, then use
+ordinary `extract --config` without rerunning detection. Include `--roi-review`
+to validate the saved image identity and retain evidence in provenance. Conflicting
+manual bounds/counts and unknown candidate IDs fail. Existing outputs require
+`--overwrite`. Manual detection exits 0 when requested geometry is resolved, even
+if extraction still needs a colourbar or endpoints; invalid input exits 2.
+
+The six fixed clean regression layouts have exact top-three bounds. JPEG and some
+blurred borders fail or abstain, and multiple panels remain ambiguous. See the
+[complete M7 report](M7.md) and [reproducible fixtures](examples/roi/README.md) for
+actual proposal quality and unsupported layouts. Automatic extraction is unavailable.

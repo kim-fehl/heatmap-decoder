@@ -1,0 +1,249 @@
+{
+  "detector_version": "m7.1",
+  "automatic_coverage": 0,
+  "automatic_correct_acceptance_rate": null,
+  "count_inference": "not implemented",
+  "attempts": {
+    "sequential/clean": {
+      "split": "development",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 1.0,
+        "max_edge_pixels": 0,
+        "max_edge_pitch": 0.0
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "sequential/blur": {
+      "split": "development",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 0.9622452388907451,
+        "max_edge_pixels": 1,
+        "max_edge_pitch": 0.1
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "sequential/jpeg": {
+      "split": "development",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_at_0.1_pitch": false,
+      "automatically_accepted": false
+    },
+    "diverging/clean": {
+      "split": "development",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 1.0,
+        "max_edge_pixels": 0,
+        "max_edge_pitch": 0.0
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "diverging/blur": {
+      "split": "development",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 0.9641319942611191,
+        "max_edge_pixels": 1,
+        "max_edge_pitch": 0.1
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "diverging/jpeg": {
+      "split": "development",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_at_0.1_pitch": false,
+      "automatically_accepted": false
+    },
+    "grayscale/clean": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 1.0,
+        "max_edge_pixels": 0,
+        "max_edge_pitch": 0.0
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "grayscale/blur": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 0.9666780471150563,
+        "max_edge_pixels": 1,
+        "max_edge_pitch": 0.09090909090909091
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "grayscale/jpeg": {
+      "split": "held_out",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_at_0.1_pitch": false,
+      "automatically_accepted": false
+    },
+    "gridlines/clean": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 1.0,
+        "max_edge_pixels": 0,
+        "max_edge_pitch": 0.0
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "gridlines/blur": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 0.9674818597151303,
+        "max_edge_pixels": 1,
+        "max_edge_pitch": 0.08333333333333333
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "gridlines/jpeg": {
+      "split": "held_out",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_at_0.1_pitch": false,
+      "automatically_accepted": false
+    },
+    "border/clean": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 1.0,
+        "max_edge_pixels": 0,
+        "max_edge_pitch": 0.0
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "border/blur": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 0.9109316346263224,
+        "max_edge_pixels": 3,
+        "max_edge_pitch": 0.2727272727272727
+      },
+      "recall_at_0.1_pitch": false,
+      "automatically_accepted": false
+    },
+    "border/jpeg": {
+      "split": "held_out",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_at_0.1_pitch": false,
+      "automatically_accepted": false
+    },
+    "large/clean": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 1.0,
+        "max_edge_pixels": 0,
+        "max_edge_pitch": 0.0
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "large/blur": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 0.9834277198211624,
+        "max_edge_pixels": 2,
+        "max_edge_pitch": 0.05128205128205128
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    },
+    "large/jpeg": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 0.9685235507246377,
+        "max_edge_pixels": 5,
+        "max_edge_pitch": 0.1282051282051282
+      },
+      "recall_at_0.1_pitch": false,
+      "automatically_accepted": false
+    },
+    "negative/blank": {
+      "status": "unresolved",
+      "candidates": 0,
+      "automatically_accepted": false
+    },
+    "negative/uniform": {
+      "status": "unresolved",
+      "candidates": 0,
+      "automatically_accepted": false
+    },
+    "negative/noise": {
+      "status": "unresolved",
+      "candidates": 0,
+      "automatically_accepted": false
+    },
+    "negative/gradient": {
+      "status": "unresolved",
+      "candidates": 0,
+      "automatically_accepted": false
+    },
+    "confounded/multipanel": {
+      "status": "ambiguous",
+      "candidates": 2,
+      "best_top3": {
+        "id": "heatmap-001",
+        "iou": 1.0,
+        "max_edge_pixels": 0,
+        "max_edge_pitch": 0.0
+      },
+      "recall_at_0.1_pitch": true,
+      "automatically_accepted": false
+    }
+  }
+}

@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — M7
+
+- Add review-only heatmap candidates, exact resize transforms and original-pixel refinement.
+- Export ROI JSON/overlay and incomplete proposed extraction configs with manual overrides.
+- Validate saved candidate review and preserve evidence/hashes in extraction provenance.
+- Add synthetic regression fixtures and a complete proposal-quality report, including failures.
+- Keep colourbar/label localisation, count inference and automatic hand-off out of M7.
+
 ## 0.2.0 — M6
 
 - Integrate the shared label pipeline with reconstruction and block matrix/quality

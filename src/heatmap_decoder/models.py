@@ -229,3 +229,90 @@ class LabelExtractionResult:
             for axis in self.axes
             for slot in axis.slots
         )
+
+
+class DetectorOptions(BaseModel):
+    """Bounded heuristic settings, versioned separately from scientific QC."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    max_analysis_size: Annotated[int, Field(strict=True, ge=64, le=2048)] = 512
+    max_candidates: Annotated[int, Field(strict=True, ge=1, le=100)] = 12
+    max_components: Annotated[int, Field(strict=True, ge=1, le=256)] = 64
+    background_distance: Annotated[float, Field(gt=0, le=100)] = 12.0
+    gridline_gap: Annotated[int, Field(strict=True, ge=1, le=7)] = 3
+    min_score: Annotated[float, Field(ge=0, le=1)] = 0.65
+
+
+class DetectionHints(BaseModel):
+    """M7 counts are authoritative; only heatmap localisation is implemented."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    rows: Annotated[int, Field(strict=True, gt=0)]
+    columns: Annotated[int, Field(strict=True, gt=0)]
+    requested: tuple[Literal["heatmap"], ...] = ("heatmap",)
+    heatmap_bbox: BoundingBox | None = None
+    colourbar_bbox: BoundingBox | None = None
+    colourbar_orientation: Literal["vertical", "horizontal"] | None = None
+    colourbar_start_value: float | None = None
+    colourbar_end_value: float | None = None
+    labels: LabelsConfig | None = None
+    detector: DetectorOptions = Field(default_factory=DetectorOptions)
+
+    @model_validator(mode="after")
+    def validate_requests(self) -> "DetectionHints":
+        if len(set(self.requested)) != len(self.requested):
+            raise ValueError("requested region kinds must be unique")
+        if self.heatmap_bbox is not None and "heatmap" in self.requested:
+            raise ValueError(
+                "manual heatmap_bbox conflicts with requested heatmap; set requested=[]"
+            )
+        if self.heatmap_bbox is None and "heatmap" not in self.requested:
+            raise ValueError("supply heatmap_bbox or request heatmap detection")
+        for box in (self.heatmap_bbox, self.colourbar_bbox):
+            if box is not None and (box[2] <= box[0] or box[3] <= box[1]):
+                raise ValueError("manual boxes must have positive width and height")
+        return self
+
+
+class ROICandidate(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    id: str
+    kind: Literal["heatmap"] = "heatmap"
+    bbox: BoundingBox
+    orientation: None = None
+    score: Annotated[float, Field(ge=0, le=1)]
+    score_components: dict[str, float]
+    reasons: tuple[str, ...] = ("review_required",)
+    associations: tuple[str, ...] = ()
+
+
+class SelectedRegion(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    bbox: BoundingBox
+    origin: Literal["manual", "reviewed_detection"]
+    candidate_id: str | None = None
+
+
+class DetectionResult(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    candidates: tuple[ROICandidate, ...]
+    selected: dict[Literal["heatmap", "colourbar"], SelectedRegion]
+    status: Literal["manual", "review_required", "ambiguous", "unresolved"]
+    unresolved_requirements: tuple[str, ...]
+    warnings: tuple[str, ...] = ()
+
+
+class SavedDetection(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    schema_version: Literal[1] = 1
+    image_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
+    image_dimensions: tuple[
+        Annotated[int, Field(strict=True, gt=0)], Annotated[int, Field(strict=True, gt=0)]
+    ]
+    detector_version: str
+    analysis_transforms: tuple[dict[str, int], ...] = ()
+    hints: DetectionHints
+    result: DetectionResult
+    associations: tuple[str, ...] = ()
+    proposed_config_complete: bool
+    missing_extraction_fields: tuple[str, ...]

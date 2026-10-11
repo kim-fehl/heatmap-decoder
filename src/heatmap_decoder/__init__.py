@@ -1,10 +1,21 @@
 """Approximate reconstruction with colour matching diagnostics and missing values."""
 
+from .detection import detect
 from .extract import UnresolvedLabelsError, extract, extract_labels
-from .io import extract_file, extract_labels_file, load_raster, write_csv, write_outputs
+from .io import (
+    detect_file,
+    extract_file,
+    extract_labels_file,
+    load_raster,
+    write_csv,
+    write_outputs,
+)
 from .models import (
     AxisLabelResults,
     CellFlag,
+    DetectionHints,
+    DetectionResult,
+    DetectorOptions,
     ExtractionConfig,
     ExtractionResult,
     GridConfig,
@@ -14,11 +25,18 @@ from .models import (
     LabelsConfig,
     OCRConfig,
     OCRToken,
+    SavedDetection,
 )
 from .version import __version__
 
 __all__ = [
     "CellFlag",
+    "DetectionHints",
+    "DetectionResult",
+    "DetectorOptions",
+    "SavedDetection",
+    "detect",
+    "detect_file",
     "ExtractionConfig",
     "ExtractionResult",
     "GridConfig",

@@ -1,5 +1,6 @@
 """Typer adapter: configuration and filesystem handling stay outside the core."""
 
+import hashlib
 import json
 from pathlib import Path
 from typing import Annotated
@@ -8,8 +9,15 @@ import numpy as np
 import typer
 
 from .extract import UnresolvedLabelsError
-from .io import LABEL_OUTPUT_NAMES, extract_file, extract_labels_file
-from .models import CellFlag, ExtractionConfig, GridConfig, LabelExtractionResult
+from .io import (
+    LABEL_OUTPUT_NAMES,
+    detect_file,
+    extract_file,
+    extract_labels_file,
+    load_raster,
+    review_detection,
+)
+from .models import CellFlag, DetectionHints, ExtractionConfig, GridConfig, LabelExtractionResult
 from .version import __version__
 
 app = typer.Typer(
@@ -61,6 +69,18 @@ def extract_command(
         bool,
         typer.Option("--fail-on-qc", help="Write outputs, then exit 3 if any cells are flagged."),
     ] = False,
+    roi_review: Annotated[
+        Path | None,
+        typer.Option(
+            "--roi-review",
+            exists=True,
+            dir_okay=False,
+            help="Saved roi_candidates.json to validate and preserve.",
+        ),
+    ] = None,
+    heatmap_candidate: Annotated[
+        str | None, typer.Option("--heatmap-candidate", help="Explicit reviewed candidate ID.")
+    ] = None,
     labels_review: Annotated[
         Path | None,
         typer.Option(
@@ -74,7 +94,19 @@ def extract_command(
 ) -> None:
     """Write matrix.csv, quality.csv, provenance.json and diagnostic.png."""
     try:
-        settings = ExtractionConfig.model_validate_json(config.read_text(encoding="utf-8"))
+        payload = json.loads(config.read_text(encoding="utf-8"))
+        if heatmap_candidate is not None and roi_review is None:
+            raise ValueError("--heatmap-candidate requires --roi-review")
+        if roi_review is not None:
+            settings, _ = review_detection(
+                roi_review.read_bytes(),
+                load_raster(figure),
+                hashlib.sha256(figure.read_bytes()).hexdigest(),
+                payload,
+                heatmap_candidate,
+            )
+        else:
+            settings = ExtractionConfig.model_validate(payload)
         outputs = [
             out / name
             for name in ("matrix.csv", "quality.csv", "provenance.json", "diagnostic.png")
@@ -102,6 +134,8 @@ def extract_command(
             config_path=config,
             overwrite=overwrite,
             labels_review=labels_review,
+            roi_review=roi_review,
+            heatmap_candidate=heatmap_candidate,
         )
     except UnresolvedLabelsError as error:
         typer.echo(
@@ -191,6 +225,45 @@ def label_warnings(result: LabelExtractionResult) -> None:
         )
     if result.ocr_runs:
         typer.echo("Verify all OCR text against the figure, including accepted labels.", err=True)
+
+
+@app.command("detect")
+def detect_command(
+    figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],
+    config: Annotated[
+        Path,
+        typer.Option(
+            "--config",
+            exists=True,
+            dir_okay=False,
+            help="M7 detection hints JSON; counts required.",
+        ),
+    ],
+    out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("roi_review"),
+    overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
+) -> None:
+    """Write ROI candidates, overlay and proposed config; exit 5 when review is required."""
+    try:
+        hints = DetectionHints.model_validate_json(config.read_text(encoding="utf-8"))
+        saved = detect_file(figure, hints, out, config_path=config, overwrite=overwrite)
+    except (ValueError, OSError) as error:
+        typer.echo(f"Error: {error}", err=True)
+        raise typer.Exit(code=2) from None
+    typer.echo(f"Wrote ROI review artifacts to {out}; {saved.result.status}")
+    typer.echo(f"Heatmap candidates: {len(saved.result.candidates)}; scores are not probabilities.")
+    for warning in saved.result.warnings:
+        typer.echo(f"Warning: {warning}", err=True)
+    if not saved.proposed_config_complete:
+        typer.echo(
+            "Proposed extraction config is incomplete: "
+            + ", ".join(saved.missing_extraction_fields),
+            err=True,
+        )
+    if saved.result.unresolved_requirements:
+        typer.echo(
+            "Review the overlay and select a candidate or edit the proposed config.", err=True
+        )
+        raise typer.Exit(code=5)
 
 
 if __name__ == "__main__":
