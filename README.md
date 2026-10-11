@@ -197,4 +197,7 @@ The wheel includes the typed Python package and console entry point. The source
 distribution includes tests and the synthetic example. Version metadata has a
 single source in `src/heatmap2matrix/version.py`. See [CHANGELOG.md](CHANGELOG.md).
 The project has no PyPI publication configured; use the tagged source or the
-wheel attached to the GitHub release when available.
+wheel attached to the GitHub release. A pushed `v*` tag publishes the wheel and
+source archive only after the entire cross-platform CI matrix passes; the tag
+must match the package version. The release job uses GitHub Actions' built-in
+repository token, with write access limited to that job.
