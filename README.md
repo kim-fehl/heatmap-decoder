@@ -1,17 +1,53 @@
-# Heatmap2Matrix — M1 + M2
+# Heatmap2Matrix v0.1.0
 
 Reconstruct an **approximate** numerical matrix from a PNG/JPEG heatmap and its
 observed continuous, linear colourbar. Python 3.11+.
 
-M1 provides the reconstruction core. M2 adds per-cell colour diagnostics,
-ambiguity detection, missing data, provenance and a diagnostic image. The M3 CLI,
-release examples and cross-platform CI remain unimplemented.
+A deterministic Python library and command-line tool for semi-automatic reconstruction.
+Supply the grid, heatmap/colourbar bounding boxes and endpoint values; inspect the
+resulting QC before using the estimates scientifically. Supports sequential and
+diverging palettes with continuous linear scales on Linux, macOS and Windows.
 
 ## Install and use
 
+Install the tagged source release into your own Python environment:
+
 ```bash
-uv sync
+python -m pip install "git+https://github.com/kim-fehl/heatmap-decoder.git@v0.1.0"
+heatmap2matrix --version
 ```
+
+For the bundled example and development tools, clone the release:
+
+```bash
+git clone --branch v0.1.0 https://github.com/kim-fehl/heatmap-decoder.git
+cd heatmap-decoder
+uv sync --locked
+uv run heatmap2matrix extract examples/figure.png --config examples/config.json --out results/
+```
+
+The [bundled figure](examples/figure.png) is a clean synthetic 20 × 20 diverging
+heatmap with known [truth](examples/truth.csv) and [configuration](examples/config.json).
+Its generator uses a fixed seed and an independent analytic palette. Regenerate it
+with `uv run python examples/generate.py`.
+
+![Synthetic example heatmap and colourbar](examples/figure.png)
+
+For your own figure:
+
+```bash
+heatmap2matrix extract figure.png --config config.json --out results/
+```
+
+Use `heatmap2matrix extract --help` for all options. `python -m heatmap2matrix`
+provides the same CLI. Outputs are not replaced unless `--overwrite` is passed.
+`--mask mask.npy` accepts a boolean H × W NumPy array saved with `numpy.save`;
+`True` means missing. Object arrays/pickled input are not accepted. `--fail-on-qc`
+writes outputs and exits 3 when any cell is flagged, for automated pipelines.
+Exit 0 means outputs were written; exit 2 means invalid input or a filesystem error.
+QC warnings appear on stderr even when `--fail-on-qc` is omitted.
+
+Python API:
 
 ```python
 from pathlib import Path
@@ -116,13 +152,19 @@ uv run ruff check .
 uv run mypy src
 ```
 
+CI runs these checks and the example CLI on Linux, macOS and Windows with
+Python 3.11–3.14. It also builds the distributions and runs the installed wheel
+in a fresh environment outside the source checkout. Hypothesis exercises geometry
+and calibration invariants. CLI tests verify exit codes, masks, overwrite protection,
+and pandas CSV reading.
+
 Synthetic tests generate seeded 20 × 20 references independently of extraction,
 using sequential and diverging palettes, both orientations, ascending/descending
 endpoints and 4/9/16-pixel cells. They exercise PNG loading through CSV round-trip,
 assert MAE <2% of the numerical range, and report MAE, maximum error and flagged
 proportions. Clean references retain M1 accuracy with no flags.
 
-M2 tests cover masks/alpha/sentinels, partial coverage, all-missing matrices,
+QC tests cover masks/alpha/sentinels, partial coverage, all-missing matrices,
 repeated colours, saturated endpoints, incomplete colourbars, provenance hashes,
 combined flags, deterministic exports, gridline avoidance, JPEG compression and
 blur. Degradation tests use a curved colour scale and explicitly stricter QC
@@ -142,3 +184,17 @@ original pre-transformation biological values. No OCR, automated ROI detection,
 PDF support, web UI or inference of RNA-seq counts is included.
 
 MIT licensed. Input figures remain copyrighted by their respective owners.
+
+
+## Release packaging
+
+```bash
+uv build
+uv run python tests/smoke_distribution.py
+```
+
+The wheel includes the typed Python package and console entry point. The source
+distribution includes tests and the synthetic example. Version metadata has a
+single source in `src/heatmap2matrix/version.py`. See [CHANGELOG.md](CHANGELOG.md).
+The project has no PyPI publication configured; use the tagged source or the
+wheel attached to the GitHub release when available.

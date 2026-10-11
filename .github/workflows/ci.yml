@@ -1,0 +1,33 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ['3.11', '3.12', '3.13', '3.14']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: ${{ matrix.python }}
+          version: '0.12.23'
+      - run: uv sync --locked
+      - run: uv run pytest -q
+      - run: uv run ruff check .
+      - run: uv run mypy src
+      - name: Run the bundled example through the installed CLI
+        run: uv run heatmap2matrix extract examples/figure.png --config examples/config.json --out work/ci-example --fail-on-qc
+      - run: uv build
+      - name: Test the wheel and console entry point outside the source tree
+        run: uv run python tests/smoke_distribution.py
