@@ -354,6 +354,9 @@ class DetectorOptions(BaseModel):
     max_ocr_pixels: Annotated[int, Field(strict=True, ge=1000, le=16000000)] = 4000000
 
     count_label_geometry: Annotated[bool, Field(strict=True)] = False
+    propose_column_rotations: Annotated[bool, Field(strict=True)] = False
+    max_label_ocr_calls: Annotated[int, Field(strict=True, ge=1, le=24)] = 12
+    max_label_ocr_seconds: Annotated[float, Field(gt=0, le=120)] = 60.0
 
 
 class DetectionHints(BaseModel):
@@ -410,6 +413,7 @@ class ROICandidate(BaseModel):
     score_components: dict[str, float]
     reasons: tuple[str, ...] = ("review_required",)
     associations: tuple[str, ...] = ()
+    text_rotation_degrees: Literal[0, 90, -90] = 0
 
 
 class SelectedRegion(BaseModel):
@@ -473,6 +477,15 @@ class LabelLocalisationEvidence(BaseModel):
     assignment: AxisLabelResults | None = None
     engine: OCRRun
     heatmap_id: str = "heatmap-manual"
+    trial_id: str | None = None
+    text_rotation_degrees: Literal[0, 90, -90] = 0
+    raw_tokens: tuple[OCRToken, ...] = ()
+    transform: dict[str, Any] = Field(default_factory=dict)
+    ocr_pixels: int = 0
+    ocr_seconds: float = 0.0
+    orientation_status: Literal["legacy", "unique", "ambiguous", "unsupported", "capped"] = "legacy"
+    orientation_reasons: tuple[str, ...] = ()
+    count_geometry_eligible: bool = True
 
 
 class AcceptanceDecision(BaseModel):

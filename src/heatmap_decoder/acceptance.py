@@ -112,7 +112,9 @@ def distinct_candidates(
                 * 2
             )
         if not any(
-            candidate.kind == other.kind and np.all(np.abs(box - other.bbox) <= tolerance)
+            candidate.kind == other.kind
+            and candidate.text_rotation_degrees == other.text_rotation_degrees
+            and np.all(np.abs(box - other.bbox) <= tolerance)
             for other in retained
         ):
             retained.append(candidate)
@@ -533,7 +535,13 @@ def evaluate_acceptance(
                     reasons = [
                         r
                         for r in candidate.reasons
-                        if r in {"incomplete_label_axis", "ambiguous_label_assignment"}
+                        if r
+                        in {
+                            "incomplete_label_axis",
+                            "ambiguous_label_assignment",
+                            "orientation_search_incomplete",
+                            "contradictory_orientation_or_side_hypotheses",
+                        }
                     ]
                     region = decision(kind, reasons, candidate.model_dump(), (candidate.id,))
             decisions.append(region)

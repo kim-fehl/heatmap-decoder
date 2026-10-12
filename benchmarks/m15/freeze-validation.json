@@ -1,0 +1,30 @@
+{
+  "scope": "freeze before recognition of validation partition",
+  "sources": {
+    "src/heatmap_decoder/__init__.py": "f6833fa726e69d7b58f6865b8c6a31be05221d90c5ca3233bb5b36a0e4eef797",
+    "src/heatmap_decoder/__main__.py": "93b604b2d73ba758ff637179c8e45093d32489ee162a63f2e1ea71a6331d5ce7",
+    "src/heatmap_decoder/acceptance.py": "32d2d99675179862beffe69504b4fc4b5591d2b558b20c757bbb69b624c8fc7f",
+    "src/heatmap_decoder/automation.py": "86d0f8ea330dadf29250f0193e3b75afdb5d04470a942d9ac2ec6df19591311a",
+    "src/heatmap_decoder/bar_cores.py": "57f0db82fc2b9acd84dc3e39b2ea361822a8e7d46e56c2e5628109a744911e08",
+    "src/heatmap_decoder/calibration.py": "40259532b1670cd634215453ef86e579f05e6aa936bc2093b7322201d142e43e",
+    "src/heatmap_decoder/cli.py": "83e7fd1f9ac2345397c1a0e38a22ab3b5e116f4a796447c065839e42fb4f5b15",
+    "src/heatmap_decoder/detection.py": "20ae25a31707d74675af87603006501f1f49f453ec658de57fb2e018ab67cbf4",
+    "src/heatmap_decoder/detection_policy.py": "187e529da4b17c99e4ae19f0e0596b198fd80dc8bb7f8fcc7474b1874bc66363",
+    "src/heatmap_decoder/diagnostics.py": "acc4fb0af0b477f9285dcc10bad4b266d39f867bace235826ddffbd557b1230a",
+    "src/heatmap_decoder/edge_profiles.py": "c5a5b05e95258e267d2156a53c7c89e274cfe084719531ccc15a43621bfa6a14",
+    "src/heatmap_decoder/extract.py": "d12f879bbcfb960aaa3ef8511f085f779c6d88a4e79a1357ad580ebc5d95d2bf",
+    "src/heatmap_decoder/geometry.py": "6a6e7f06da3ab23a77380ca3583c27add3b5aaf35fd52f8dd96d6f47161826d5",
+    "src/heatmap_decoder/io.py": "d9bc92c3bb4696da7071cc7cb4ba4f566aafc258a716a0075037c6cd7373782e",
+    "src/heatmap_decoder/labels.py": "699f6a59b85087c0858258c3fdc7b7fbb1aa79ad7139fd1eaf50da4a16a7c3ae",
+    "src/heatmap_decoder/lattice.py": "0b622dd82976aa04b136c5b9b04c7626a923d2d6bc7dcac8e5ec0eaad7846aed",
+    "src/heatmap_decoder/legend.py": "5ba767b50441b0f1299dc720f7a1e34dd4e9f4ecf8fa1393a9452554ddfe0dae",
+    "src/heatmap_decoder/models.py": "281ce9755a566d45550e6459ba898040276a3a15802f699a2156218315e13d09",
+    "src/heatmap_decoder/ocr.py": "ff31bfe03a11671b00ee631663860e3dead755c1ebbf54e5fdc3664b05148698",
+    "src/heatmap_decoder/orientation.py": "9927c49e3614c431b073724f54b5aa3cd6670badb09b362b21722043b7a29419",
+    "src/heatmap_decoder/sampling.py": "c709cfa63c75a1c47c1afd92896d4c39118ca91a2fc53a8b6e8d340caa6131df",
+    "src/heatmap_decoder/version.py": "fbcd96443027ffe7e6324e62f7a79702a6045cdea7416f7fba72883f51c9bcc5",
+    "benchmarks/m15/evaluate.py": "6334206e26c15ee892f285629dfae9d63e05ef7330deb816e72148c14e6952ff",
+    "benchmarks/m15/fixtures.py": "40ad652b122b6a0f744ae0fa0f9b1cdb0230494f7c5463b06f2ddd4ed495732c",
+    "benchmarks/m15/preregister.json": "c58105998b3190ed5d747522f03cee345da8da858ad15a3ea3ee121052d683dc"
+  }
+}

@@ -967,7 +967,21 @@ def review_detection(
         candidate = candidates.get(identifier)
         if candidate is None or candidate.kind != kind:
             raise ValueError(f"unknown {kind} candidate ID or wrong region kind")
+        if kind.startswith("labels_"):
+            label_axis = kind.removeprefix("labels_")
+            configured_source = (payload.get("labels") or {}).get(label_axis)
+            if (
+                configured_source is not None
+                and configured_source.get("source") == "ocr"
+                and configured_source.get("text_rotation_degrees", 0)
+                != candidate.text_rotation_degrees
+            ):
+                raise ValueError(f"review conflicts with configured labels.{label_axis} angle")
         _apply_roi_region(payload, kind, candidate.bbox)
+        if kind.startswith("labels_"):
+            label_axis = kind.removeprefix("labels_")
+            # A selected region carries its reviewed text orientation into OCR.
+            payload["labels"][label_axis]["text_rotation_degrees"] = candidate.text_rotation_degrees
         if kind == "colourbar" and candidate.orientation is not None:
             if payload.get("colourbar_orientation", candidate.orientation) != candidate.orientation:
                 raise ValueError(
@@ -1018,6 +1032,13 @@ def review_detection(
     if saved.hints.labels is not None:
         for axis in ("rows", "columns"):
             source = getattr(saved.hints.labels, axis)
+            if isinstance(source, OCRLabelSource):
+                final_source = getattr(config.labels, axis) if config.labels is not None else None
+                if (
+                    not isinstance(final_source, OCRLabelSource)
+                    or final_source.text_rotation_degrees != source.text_rotation_degrees
+                ):
+                    raise ValueError(f"review conflicts with fixed labels.{axis} angle")
             if isinstance(source, FileLabelSource):
                 # Paths may be rebased by export; explicit source type must stay fixed.
                 final_source = getattr(config.labels, axis) if config.labels is not None else None

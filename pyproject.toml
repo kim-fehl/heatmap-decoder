@@ -50,7 +50,7 @@ path = "src/heatmap_decoder/version.py"
 [tool.hatch.build.targets.sdist]
 include = ["/src", "/tests", "/examples", "/.github", "/README.md", "/CHANGELOG.md",
            "/LICENSE", "/pyproject.toml", "/uv.lock", "/.gitignore",
-           "/MIGRATION.md", "/docs", "/benchmarks"]
+           "/MIGRATION.md", "/.gitattributes", "/docs", "/benchmarks"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/heatmap_decoder", "src/heatmap2matrix"]

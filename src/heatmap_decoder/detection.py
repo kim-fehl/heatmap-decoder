@@ -2,7 +2,7 @@
 
 import math
 from dataclasses import dataclass
-from typing import Literal, cast
+from typing import TYPE_CHECKING, Literal, cast
 
 import numpy as np
 from numpy.typing import NDArray
@@ -33,7 +33,10 @@ from .models import (
 )
 from .sampling import validate_rgb
 
-DETECTOR_VERSION = "grid-strokes.1"
+if TYPE_CHECKING:
+    from .orientation import OrientationBudget
+
+DETECTOR_VERSION = "column-orientation.1"
 
 
 @dataclass(frozen=True)
@@ -733,6 +736,7 @@ def _label_regions(
     hints: DetectionHints,
     heatmap_id: str = "heatmap-manual",
     pixel_budget: list[int] | None = None,
+    orientation_budget: "OrientationBudget | None" = None,
 ) -> tuple[tuple[ROICandidate, ...], tuple["LabelLocalisationEvidence", ...], tuple[str, ...]]:
     from typing import cast
 
@@ -748,6 +752,8 @@ def _label_regions(
     ):
         axis: Axis = "rows" if side in {"left", "right"} else "columns"
         kind = f"labels_{axis}"
+        if axis == "columns" and hints.detector.propose_column_rotations:
+            continue
         if kind not in hints.requested and not (
             hints.detector.count_label_geometry and getattr(hints, f"infer_{axis}")
         ):
@@ -833,6 +839,30 @@ def _label_regions(
                 associations=(heatmap_id,),
             )
         )
+    if hints.detector.propose_column_rotations and (
+        "labels_columns" in hints.requested
+        or hints.detector.count_label_geometry
+        and hints.infer_columns
+    ):
+        from .orientation import OrientationBudget, column_orientation_regions
+
+        if pixel_budget is None:
+            pixel_budget = [A.maximum_total_ocr_pixels]
+        if orientation_budget is None:
+            orientation_budget = OrientationBudget(
+                hints.detector.max_label_ocr_calls, hints.detector.max_label_ocr_seconds
+            )
+        extra, records, notes = column_orientation_regions(
+            image,
+            hints,
+            heatmap_id,
+            _label_searches(hints.heatmap_bbox, image.shape, hints.detector.label_search_pixels),
+            pixel_budget,
+            orientation_budget,
+        )
+        proposals.extend(extra)
+        evidence.extend(records)
+        warnings.extend(notes)
     return tuple(proposals), tuple(evidence), tuple(warnings)
 
 
@@ -861,7 +891,7 @@ def count_proposals(
     signals = _count_signals(image, box, axis)
     coordinate = 1 if axis == "rows" else 0
     for record in label_evidence:
-        if record.axis == axis:
+        if record.axis == axis and record.count_geometry_eligible:
             # Unassigned geometric groups, not labels fitted to a proposed count.
             # Identify the nearest aligned text band before any count fitting.
             # Keep all raw candidates in label_evidence, including rejected bands.
@@ -899,7 +929,10 @@ def count_proposals(
                     or abs(end - raw_centres[-1] - gap / 2) > 0.25 * gap
                 ):
                     continue  # Inconclusive caption/tick band, preserved in raw label evidence.
-            signals[f"ocr_{record.side}"] = positions
+            name = f"ocr_{record.side}"
+            if record.trial_id:
+                name += f"_{record.trial_id}"
+            signals[name] = positions
     start, end = box[coordinate], box[coordinate + 2]
     hypotheses = []
     for count in range(
@@ -1060,6 +1093,11 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         or hints.detector.count_label_geometry
         and (hints.infer_rows or hints.infer_columns)
     ):
+        from .orientation import OrientationBudget
+
+        orientation_budget = OrientationBudget(
+            hints.detector.max_label_ocr_calls, hints.detector.max_label_ocr_seconds
+        )
         budget = [A.maximum_total_ocr_pixels]
         stages = list(heatmaps.items())[: A.max_shortlisted_heatmaps]
         if not stages:
@@ -1067,7 +1105,7 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         for heatmap_id, box in stages:
             staged_hints = hints.model_copy(update={"heatmap_bbox": box})
             labels, records, label_warnings = _label_regions(
-                image, staged_hints, heatmap_id, budget
+                image, staged_hints, heatmap_id, budget, orientation_budget
             )
             label_evidence += records
             proposals.extend(labels)

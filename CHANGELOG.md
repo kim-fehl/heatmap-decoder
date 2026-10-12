@@ -1,5 +1,14 @@
 # Changelog
 
+## M15
+
+- Add opt-in 0/±90° column-label region proposals with raw trial evidence, shared
+  budgets, original-slot geometry, contradictory-angle review and explicit-angle
+  authority. Link independent unassigned count evidence to each orientation trial.
+- Carry reviewed angles into extraction and preserve numeric-only export scope.
+- Add frozen synthetic capability trials and a reviewed angle/name example.
+- Publication-image trials await user-added repository assets; no generalisation claim.
+
 ## Cross-platform evidence
 
 - Preserve LF checkout bytes for text and recorded CSV bytes, so frozen benchmark

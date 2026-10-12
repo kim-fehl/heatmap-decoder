@@ -61,8 +61,11 @@ def recognize(
     settings: OCRConfig,
     *,
     mode: Literal["localisation", "numeric_line", "text_line"] = "localisation",
+    timeout_seconds: float = OCR_TIMEOUT_SECONDS,
 ) -> OCRRun:
     """Sparse localisation or one bounded numeric line; never auto-search OCR variants."""
+    if not math.isfinite(timeout_seconds) or not 0 < timeout_seconds <= OCR_TIMEOUT_SECONDS:
+        raise ValueError("OCR timeout must be positive and at most 30 seconds")
     if mode not in {"localisation", "numeric_line", "text_line"}:
         raise ValueError("unsupported OCR mode")
     engine_mode = OCR_MODE if mode == "localisation" else "--oem 1 --psm 7"
@@ -90,7 +93,7 @@ def recognize(
             lang=settings.language,
             config=engine_mode,
             output_type=wrapper.Output.DICT,
-            timeout=OCR_TIMEOUT_SECONDS,
+            timeout=timeout_seconds,
         )
     except (OSError, RuntimeError) as error:
         raise ValueError(f"Local Tesseract OCR failed: {error}") from error

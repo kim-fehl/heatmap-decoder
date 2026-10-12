@@ -1,0 +1,19 @@
+{
+  "heatmap_bbox": [
+    40,
+    300,
+    1320,
+    444
+  ],
+  "rows": 6,
+  "columns": 8,
+  "colourbar_bbox": [
+    1360,
+    300,
+    1376,
+    444
+  ],
+  "colourbar_orientation": "vertical",
+  "colourbar_start_value": -3,
+  "colourbar_end_value": 5
+}
