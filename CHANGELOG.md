@@ -1,5 +1,10 @@
 # Changelog
 
+## Cross-platform evidence
+
+- Preserve LF checkout bytes for text and recorded CSV bytes, so frozen benchmark
+  manifest hashes remain identical on Windows, macOS and Linux.
+
 ## M14
 
 - Preserve terminal gridlines supported by regular spacing; distinguish measured
