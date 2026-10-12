@@ -1,14 +1,17 @@
 """Deterministic extraction with no filesystem or CLI dependencies."""
 
+import math
+import time
 from collections import Counter
 from collections.abc import Mapping, Sequence
 
 import numpy as np
 from PIL import Image
 
-from .calibration import calibrate_values, match_with_quality
+from .calibration import match_with_quality, scale_values
 from .geometry import axis_slots, validate_geometry, validate_grid_geometry
 from .labels import (
+    CropTransform,
     apply_review,
     crop_label_region,
     generated_labels,
@@ -28,6 +31,7 @@ from .models import (
     LabelExtractionResult,
     LabelResult,
     OCRRun,
+    OCRToken,
     RGBArray,
 )
 from .sampling import (
@@ -84,13 +88,14 @@ def extract(
     validate_bar_data(missing, config)
     cells, fractions = sample_cell_data(image, config, missing)
     bar = sample_colourbar(image[:, :, :3], config)
-    scale = calibrate_values(len(bar), config.colourbar_start_value, config.colourbar_end_value)
+    scale = scale_values(config, len(bar))
     valid = np.isfinite(cells).all(axis=1)
     count = config.rows * config.columns
     inferred = np.full(count, np.nan, dtype=np.float64)
     distances = np.full(count, np.nan, dtype=np.float64)
     reconstructed = np.full((count, 3), np.nan, dtype=np.float64)
     flags = np.zeros(count, dtype=np.uint8)
+    limits = np.zeros(count, dtype=np.int8)
     flags[~valid] = CellFlag.MISSING
     if np.any(valid):
         matches = match_with_quality(
@@ -102,6 +107,10 @@ def extract(
         inferred[valid] = scale[matches.indices]
         distances[valid] = matches.distance
         reconstructed[valid] = bar[matches.indices]
+        at_start = np.all(bar[matches.indices] == bar[0], axis=1)
+        at_end = np.all(bar[matches.indices] == bar[-1], axis=1)
+        direction = 1 if scale[-1] > scale[0] else -1
+        limits[valid] = np.where(at_start, -direction, np.where(at_end, direction, 0))
         quality_flags = np.zeros(int(np.sum(valid)), dtype=np.uint8)
         quality_flags[matches.distance > config.max_colour_distance] |= np.uint8(
             CellFlag.POOR_MATCH
@@ -122,6 +131,7 @@ def extract(
         config=config,
         image_shape=image.shape,
         labels=label_result,
+        range_limit=limits.reshape(shape),
     )
 
 
@@ -142,6 +152,7 @@ def extract_labels(
         raise ValueError("label extraction requires labels.rows or labels.columns with a source")
     axes = []
     runs: list[tuple[Axis, OCRRun]] = []
+    slot_runs: list[tuple[Axis, int, tuple[int, int, int, int], OCRRun]] = []
     for axis in ("rows", "columns"):
         source = getattr(config.labels, axis)
         if source is None:
@@ -177,8 +188,39 @@ def extract_labels(
         else:
             from .ocr import recognize
 
+            if source.recognition == "slots":
+                # Counts/regions are already explicit. One fixed single-line
+                # pass per slot, no dictionaries or confidence-based retries.
+                slots = axis_slots(config, axis)
+                if len(slots) > 128:
+                    raise ValueError("slot OCR call cap exceeded (128 per axis)")
+                coordinate = 1 if axis == "rows" else 0
+                tokens: list[OCRToken] = []
+                pixel_budget = 16000000
+                deadline = time.monotonic() + 60
+                for slot in slots:
+                    box_list = list(source.bbox)
+                    box_list[coordinate] = max(box_list[coordinate], math.floor(slot.start))
+                    box_list[coordinate + 2] = min(box_list[coordinate + 2], math.ceil(slot.end))
+                    box = (box_list[0], box_list[1], box_list[2], box_list[3])
+                    if box[2] <= box[0] or box[3] <= box[1]:
+                        continue
+                    transform = CropTransform(box, config.labels.ocr.upscale_factor)
+                    factor = transform.upscale_factor
+                    pixel_budget -= (box[2] - box[0]) * (box[3] - box[1]) * factor**2
+                    if pixel_budget < 0 or time.monotonic() > deadline:
+                        raise ValueError("slot OCR pixel/runtime cap exceeded")
+                    crop = Image.fromarray(image).crop(box).convert("L")
+                    crop = crop.resize(
+                        (crop.width * factor, crop.height * factor), Image.Resampling.BICUBIC
+                    )
+                    run = recognize(crop, config.labels.ocr, mode="text_line")
+                    slot_runs.append((axis, slot.index, box, run))
+                    tokens.extend(transform_tokens(run.tokens, transform))
+                axes.append(labels_from_tokens(tokens, config, axis))
+                continue
             crop, transform = crop_label_region(Image.fromarray(image), config, axis)
             run = recognize(crop, config.labels.ocr)
             runs.append((axis, run))
             axes.append(labels_from_tokens(transform_tokens(run.tokens, transform), config, axis))
-    return LabelExtractionResult(config, tuple(axes), tuple(runs))
+    return LabelExtractionResult(config, tuple(axes), tuple(runs), slot_ocr_runs=tuple(slot_runs))

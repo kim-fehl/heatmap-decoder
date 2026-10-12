@@ -1,5 +1,51 @@
 # Changelog
 
+
+## Unreleased — M12
+
+- Add a deployed selective pipeline and `automate` diagnostics command, composing
+  supplied counts, inferred-axis abstentions, manual/reviewed scales and OCR ticks.
+  Failed release gates exit 5 before matrix outputs.
+- Keep nearby horizontal tick strings in separate measured-stroke bands. Add
+  bounded single-slot identifier OCR with complete raw crop/run provenance.
+- Preregister new development/validation/test base figures, derivatives, four modes
+  and numerical release criteria; test symmetric and asymmetric scales at biological
+  heatmap sizes. Keep historical reports frozen and identifiers subject to review.
+- Document measured coverage and partial capability results in M12.md and usage docs.
+
+## Unreleased — M11
+
+- Recognise upright numeric ticks with measured stroke positions, bounded sparse
+  localisation and targeted numeric OCR; preserve raw tokens, crops and masks.
+- Add explicit manual endpoint, manual tick and reviewed OCR tick scale sources.
+  Fit all anchors at their physical pixel positions, retaining residuals, span,
+  direction and conditioning. Legacy endpoint matrices remain identical.
+- Add legend-only inspection, diagnostic/TSV exports and image-bound review.
+  Unreviewed/unresolved OCR scales exit 6 before numeric publication. Released
+  automatic scale acceptance remains gated until M12.
+- Record displayed quantity and endpoint colours as potential bounds in QC;
+  do not claim original expression counts or measurement precision.
+- Shorten README around biological expression heatmaps, actual recognition visuals
+  and scientific limitations; move overrides and scale-review details into docs.
+- Add 25×8 genuine row-z-score/clipping references, grammar/geometry/fit/review tests,
+  optional OCR integration and a complete synthetic development report.
+
+## Unreleased — M10
+
+- Add measured, versioned development decisions for supplied-count ROI workflows,
+  unique associations, manual scales and numerical QC. Released export stays off.
+- Refine ordinary JPEG/blur bar edges using measured transverse noise; keep
+  discontinuity, plateau, extent and clipping checks separate.
+- Exclude stroke pixels from colour-count evidence; retain agreement, conflicts
+  and harmonic alternatives. Inferred count acceptance remains off.
+- Stage bounded label localisation against shortlisted heatmaps, preserving raw
+  positions and independent identifier review state.
+- Add 20×6, 25×8 and 30×10 fixtures across label sides and all bar side/orientation
+  combinations, adversarial tests, optional large-scale OCR checks and a recorded
+  development report. M9 benchmark assets remain immutable.
+- Add schema 3 evidence while reading schemas 1/2; expose an experimental
+  `--auto-roi` diagnostics path that exits 5 without publishing a matrix.
+
 ## v0.3.0 — Reviewed ROI and count proposals
 
 - Freeze a 36-figure M9 benchmark and publish every attempt, including failures and negatives.

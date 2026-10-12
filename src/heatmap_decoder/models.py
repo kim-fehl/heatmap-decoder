@@ -40,6 +40,7 @@ class OCRLabelSource(BaseModel):
 
     source: Literal["ocr"]
     bbox: BoundingBox
+    recognition: Literal["sparse", "slots"] = "sparse"
 
     @model_validator(mode="after")
     def validate_extent(self) -> "OCRLabelSource":
@@ -85,6 +86,56 @@ class GridConfig(BaseModel):
         return self
 
 
+class ScaleAnchor(BaseModel):
+    """Original-image axial pixel coordinate; the first/last sampled pixels are endpoints."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    position: Annotated[float, Field(ge=0)]
+    value: float
+    origin: Literal["manual", "ocr", "reviewed"] = "manual"
+    status: Literal["suggested", "reviewed"] = "reviewed"
+
+
+class LegendOptions(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    ocr: OCRConfig = Field(default_factory=OCRConfig)
+    search_pixels: Annotated[int, Field(strict=True, ge=16, le=256)] = 128
+    horizontal_search_pixels: Annotated[int, Field(strict=True, ge=16, le=256)] = 64
+    max_ticks: Annotated[int, Field(strict=True, ge=2, le=32)] = 16
+    max_ocr_pixels: Annotated[int, Field(strict=True, ge=1000, le=16000000)] = 4000000
+    max_ocr_seconds: Annotated[float, Field(gt=0, le=120)] = 60.0
+    max_axis_offset_pixels: Annotated[float, Field(gt=0, le=32)] = 6.0
+    endpoint_tolerance_pixels: Annotated[float, Field(ge=0, le=8)] = 2.0
+    decimal_separator: Literal[".", ","] = "."
+
+
+class ScaleConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    source: Literal["manual_endpoints", "manual_ticks", "ocr_ticks"]
+    anchors: tuple[ScaleAnchor, ...] = ()
+    legend: LegendOptions = Field(default_factory=LegendOptions)
+    quantity: Annotated[str, Field(min_length=1)] = "displayed colourbar values"
+    max_value_residual_fraction: Annotated[float, Field(ge=0, le=0.05)] = 0.01
+    max_position_residual_pixels: Annotated[float, Field(ge=0, le=8)] = 2.0
+
+    @model_validator(mode="after")
+    def validate_source(self) -> "ScaleConfig":
+        if self.source == "manual_ticks" and len(self.anchors) < 2:
+            raise ValueError("manual_ticks requires at least two anchors")
+        if self.source != "manual_ticks" and self.anchors:
+            raise ValueError("anchors belong to manual_ticks; OCR evidence is not configuration")
+        return self
+
+
+class LegendConfig(BaseModel):
+    """Legend-only inspection does not require a heatmap or numerical endpoints."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    colourbar_bbox: BoundingBox
+    colourbar_orientation: Literal["vertical", "horizontal"]
+    legend: LegendOptions = Field(default_factory=LegendOptions)
+
+
 class ExtractionConfig(GridConfig):
     """Exclusive pixel bounds; bar start is top (vertical) or left (horizontal)."""
 
@@ -92,8 +143,9 @@ class ExtractionConfig(GridConfig):
 
     colourbar_bbox: BoundingBox
     colourbar_orientation: Literal["vertical", "horizontal"]
-    colourbar_start_value: float
-    colourbar_end_value: float
+    colourbar_start_value: float | None = None
+    colourbar_end_value: float | None = None
+    scale: ScaleConfig | None = None
     sampling_inset_fraction: Annotated[float, Field(ge=0, lt=0.5)] = 0.25
 
     max_colour_distance: Annotated[float, Field(ge=0)] = 10.0
@@ -109,10 +161,16 @@ class ExtractionConfig(GridConfig):
             left, top, right, bottom = getattr(self, name)
             if right <= left or bottom <= top:
                 raise ValueError(f"{name} must have positive width and height")
-        if not np.isfinite(self.colourbar_end_value - self.colourbar_start_value):
-            raise ValueError("colourbar numeric range must be finite")
-        if self.colourbar_start_value == self.colourbar_end_value:
-            raise ValueError("colourbar endpoints must differ")
+        endpoint_source = self.scale is None or self.scale.source == "manual_endpoints"
+        if endpoint_source:
+            if self.colourbar_start_value is None or self.colourbar_end_value is None:
+                raise ValueError("manual_endpoints requires start and end values")
+            if not np.isfinite(self.colourbar_end_value - self.colourbar_start_value):
+                raise ValueError("colourbar numeric range must be finite")
+            if self.colourbar_start_value == self.colourbar_end_value:
+                raise ValueError("colourbar endpoints must differ")
+        elif self.colourbar_start_value is not None or self.colourbar_end_value is not None:
+            raise ValueError("tick scale conflicts with manual endpoint values")
         return self
 
 
@@ -134,6 +192,7 @@ class ExtractionResult:
     config: ExtractionConfig
     image_shape: tuple[int, ...]
     labels: "LabelExtractionResult | None" = None
+    range_limit: NDArray[np.int8] | None = None
 
 
 Axis: TypeAlias = Literal["rows", "columns"]
@@ -213,6 +272,7 @@ class LabelExtractionResult:
     unreviewed_axes: tuple[AxisLabelResults, ...] | None = None
     review_sha256: str | None = None
     review_filename: str | None = None
+    slot_ocr_runs: tuple[tuple[Axis, int, BoundingBox, OCRRun], ...] = ()
 
     @property
     def unresolved_count(self) -> int:
@@ -336,6 +396,8 @@ class CountSignal(BaseModel):
     alignment: Annotated[float, Field(ge=0, le=1)]
     coverage: Annotated[float, Field(ge=0, le=1)]
     kind: Literal["boundaries", "centres"]
+    observation: str = "legacy_correlated_unknown"
+    excluded_gridline_pixels: bool = False
 
 
 class CountProposal(BaseModel):
@@ -371,6 +433,27 @@ class LabelLocalisationEvidence(BaseModel):
     unassigned_candidates: tuple[LabelCandidate, ...]
     assignment: AxisLabelResults | None = None
     engine: OCRRun
+    heatmap_id: str = "heatmap-manual"
+
+
+class AcceptanceDecision(BaseModel):
+    """A measured development decision, separate from permission to export automatically."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    requirement: str
+    status: Literal["accepted", "review_required", "unresolved"]
+    reasons: tuple[str, ...]
+    evidence: dict[str, Any] = Field(default_factory=dict)
+    candidate_ids: tuple[str, ...] = ()
+    policy_version: str
+
+
+class AcceptanceReport(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    decisions: tuple[AcceptanceDecision, ...]
+    overall: AcceptanceDecision
+    automatic_export_allowed: Literal[False] = False
+    identifier_verification: Literal["not_requested", "review_required", "user_supplied"]
 
 
 class DetectionResult(BaseModel):
@@ -384,11 +467,12 @@ class DetectionResult(BaseModel):
     count_proposals: tuple[CountProposal, ...] = ()
     selected_counts: dict[Axis, SelectedCount] = Field(default_factory=dict)
     label_evidence: tuple[LabelLocalisationEvidence, ...] = ()
+    acceptance: AcceptanceReport | None = None
 
 
 class SavedDetection(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
-    schema_version: Literal[1, 2] = 1
+    schema_version: Literal[1, 2, 3] = 1
     image_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
     image_dimensions: tuple[
         Annotated[int, Field(strict=True, gt=0)], Annotated[int, Field(strict=True, gt=0)]
@@ -402,3 +486,63 @@ class SavedDetection(BaseModel):
     associations: tuple[str, ...] = ()
     proposed_config_complete: bool
     missing_extraction_fields: tuple[str, ...]
+
+
+class LinearScaleFit(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    slope: float
+    intercept: float
+    normalised_positions: tuple[float, ...]
+    value_residuals: tuple[float, ...]
+    position_residuals_pixels: tuple[float, ...]
+    recognised_span: tuple[float, float]
+    condition_number: float
+    tests_linearity: bool
+    endpoint_coverage: bool
+    within_residual_limits: bool = True
+
+
+class LegendTick(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    index: Annotated[int, Field(strict=True, ge=0)]
+    side: Literal["left", "right", "above", "below"]
+    position: float
+    position_source: Literal["stroke", "text_centre"]
+    stroke_bbox: tuple[float, float, float, float] | None = None
+    text_bbox: tuple[float, float, float, float] | None = None
+    raw_text: str = ""
+    normalised_text: str = ""
+    normalisation_actions: tuple[str, ...] = ()
+    parsed_value: float | None = None
+    confidence: float | None = None
+    token_indices: tuple[int, ...] = ()
+    localisation_record_index: int | None = None
+    numeric_record_index: int | None = None
+    numeric_token_indices: tuple[int, ...] = ()
+    status: Literal["suggested", "unresolved", "ambiguous", "reviewed", "excluded"] = "unresolved"
+    reasons: tuple[str, ...] = ()
+
+
+class LegendOCRRecord(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    side: Literal["left", "right", "above", "below"]
+    crop_bbox: BoundingBox
+    purpose: Literal["localisation", "numeric_line"]
+    run: OCRRun
+    masked_stroke_boxes: tuple[tuple[float, float, float, float], ...] = ()
+
+
+class LegendResult(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    config: LegendConfig
+    ticks: tuple[LegendTick, ...]
+    ocr_records: tuple[LegendOCRRecord, ...] = ()
+    fit: LinearScaleFit | None = None
+    status: Literal["review_required", "unresolved", "reviewed"]
+    reasons: tuple[str, ...]
+    development_eligible: bool = False
+    automatic_export_allowed: Literal[False] = False
+    review_sha256: str | None = None
+    reviewed_anchors: tuple[ScaleAnchor, ...] = ()
+    unreviewed_fit: LinearScaleFit | None = None
+    unreviewed_reasons: tuple[str, ...] = ()

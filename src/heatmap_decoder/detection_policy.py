@@ -48,7 +48,44 @@ class DetectorThresholds:
 
 
 THRESHOLDS = DetectorThresholds()
-POLICY_VERSION = "m9-review-only.1"
+POLICY_VERSION = "m10-development.1"
+
+
+@dataclass(frozen=True)
+class AcceptanceThresholds:
+    """Preregistered M10 development checks; M12 release gates remain unestablished."""
+
+    max_image_pixels: int = 16000000
+    max_shortlisted_heatmaps: int = 3
+    maximum_edge_shift_pitch: float = 0.1
+    minimum_pitch: float = 6.0
+    minimum_equal_grid: float = 0.9
+    minimum_piecewise_constant: float = 0.95
+    minimum_boundary_contrast: float = 12.0
+    minimum_phase_alignment: float = 0.95
+    perturbation_threshold_factors: tuple[float, ...] = (0.85, 1.0, 1.15)
+    maximum_bar_noise: float = 4.0
+    maximum_bar_step: float = 12.0
+    bar_noise_multiplier: float = 3.0
+    maximum_plateau_fraction: float = 0.12
+    minimum_association_coverage: float = 0.9
+    minimum_count_alignment: float = 0.98
+    minimum_count_coverage: float = 0.95
+    maximum_numeric_cells: int = 65536
+    maximum_flagged_fraction: float = 0.01
+    maximum_missing_or_ambiguous_fraction: float = 0.0
+    maximum_association_pairs: int = 36
+    maximum_total_ocr_pixels: int = 16000000
+
+
+ACCEPTANCE_THRESHOLDS = AcceptanceThresholds()
+
+
+def acceptance_threshold_snapshot() -> dict[str, Any]:
+    return {
+        key: list(value) if isinstance(value, tuple) else value
+        for key, value in asdict(ACCEPTANCE_THRESHOLDS).items()
+    }
 
 
 def policy_snapshot() -> dict[str, Any]:
@@ -59,13 +96,15 @@ def policy_snapshot() -> dict[str, Any]:
         "automatic_roi_enabled": False,
         "automatic_rows_enabled": False,
         "automatic_columns_enabled": False,
-        "reason": "M9 complete-layout and independent per-axis count gates are not established",
-        "required_complete_layouts": 10,
+        "reason": "M10 decisions are experimental; M12 release gates are not established",
+        "required_complete_layouts": 30,
         "required_layout_families": 3,
         "maximum_heatmap_edge_error_cell_pitch": 0.1,
         "required_exact_count_examples_per_axis": 10,
         "required_independent_count_signals": 2,
         "negative_auto_acceptances_allowed": 0,
+        "minimum_ordinary_acceptance_coverage": 0.7,
+        "acceptance_thresholds": acceptance_threshold_snapshot(),
     }
 
 

@@ -3,7 +3,7 @@
 import importlib
 import math
 from collections.abc import Mapping, Sequence
-from typing import Any
+from typing import Any, Literal
 
 from PIL import Image
 
@@ -56,8 +56,16 @@ def tokens_from_data(data: Mapping[str, Sequence[Any]]) -> tuple[OCRToken, ...]:
     return tuple(tokens)
 
 
-def recognize(image: Image.Image, settings: OCRConfig) -> OCRRun:
-    """One deterministic sparse-text pass, upright only; confidence is a heuristic."""
+def recognize(
+    image: Image.Image,
+    settings: OCRConfig,
+    *,
+    mode: Literal["localisation", "numeric_line", "text_line"] = "localisation",
+) -> OCRRun:
+    """Sparse localisation or one bounded numeric line; never auto-search OCR variants."""
+    if mode not in {"localisation", "numeric_line", "text_line"}:
+        raise ValueError("unsupported OCR mode")
+    engine_mode = OCR_MODE if mode == "localisation" else "--oem 1 --psm 7"
     wrapper = _wrapper()
     try:
         engine_version = str(wrapper.get_tesseract_version())
@@ -80,7 +88,7 @@ def recognize(image: Image.Image, settings: OCRConfig) -> OCRRun:
         data = wrapper.image_to_data(
             image,
             lang=settings.language,
-            config=OCR_MODE,
+            config=engine_mode,
             output_type=wrapper.Output.DICT,
             timeout=OCR_TIMEOUT_SECONDS,
         )
@@ -92,5 +100,5 @@ def recognize(image: Image.Image, settings: OCRConfig) -> OCRRun:
         str(wrapper.__version__),
         settings.language,
         languages,
-        OCR_MODE,
+        engine_mode,
     )

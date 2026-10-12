@@ -1,0 +1,21 @@
+{
+  "heatmap_bbox": [
+    320,
+    220,
+    896,
+    770
+  ],
+  "colourbar_bbox": [
+    1056,
+    220,
+    1070,
+    770
+  ],
+  "colourbar_orientation": "vertical",
+  "rows": 25,
+  "columns": 8,
+  "scale": {
+    "source": "ocr_ticks",
+    "quantity": "row z-score"
+  }
+}

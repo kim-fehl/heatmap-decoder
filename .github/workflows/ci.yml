@@ -44,7 +44,7 @@ jobs:
           version: '0.12.23'
           python-version: '3.12'
       - name: Install local OCR engine and English data
-        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-eng
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-eng fonts-dejavu-core
       - name: Record engine and language environment
         run: |
           tesseract --version
@@ -62,8 +62,16 @@ jobs:
         run: uv run --extra ocr python examples/labels/workflow.py --out work/ci-v0.2
       - name: Run reviewed M8 ROI localisation example
         run: uv run --extra ocr python examples/roi_m8/workflow.py --out work/ci-m8
-      - name: Evaluate the immutable M9 corpus with recorded OCR environment
-        run: uv run --extra ocr python benchmarks/m9/evaluate.py --ocr --out work/ci-m9/report.json
+      - name: Evaluate M10 development decisions and realistic OCR layouts
+        run: uv run --extra ocr python benchmarks/m10/evaluate.py --ocr --out work/ci-m10/report.json
+      - name: Evaluate M11 numeric legend recognition
+        run: uv run --extra ocr python benchmarks/m11/evaluate.py --out work/ci-m11/report.json
+      - name: Run M12 selective development evaluation
+        run: uv run --extra ocr python benchmarks/m12/evaluate.py --split development --out work/ci-m12/report.json
+      - name: Verify M12 abstention and diagnostic example
+        run: uv run --extra ocr python examples/m12/workflow.py --out work/ci-m12/example
+      - name: Run reviewed M11 expression-scale example
+        run: uv run --extra ocr heatmap-decoder extract examples/m11/figure.png --config examples/m11/labelled_config.json --legend-review examples/m11/reviewed_ticks.tsv --out work/ci-m11/results
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -73,6 +81,9 @@ jobs:
             work/ci-v0.2/
             work/ci-m8/
             work/ci-m9/
+            work/ci-m10/
+            work/ci-m11/
+            work/ci-m12/
   release:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [test, ocr]

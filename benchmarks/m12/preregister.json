@@ -1,0 +1,14 @@
+{
+  "version": "m12-preregister.1",
+  "frozen_before_tuning": "2026-10-12",
+  "source": "New MIT synthetic figures; no published or real-figure validation claim",
+  "split_unit": "base figure; every derivative stays in its base split",
+  "seeds": {"development": [120000, 120014], "validation": [121000, 121014], "test": [122000, 122044]},
+  "families": ["vertical_flank", "horizontal_cap", "cross_axis"],
+  "ranges": [[-4,4],[-3,3],[-2,2],[-4,2],[-3,4]],
+  "ordinary": "Single rectangular biological-layout matrix, 20/25/30 genes, 6/8/10 samples, opaque white background, upright separated text, one continuous linear bar, 3/5/7 ticks, no grid or 1px grid. Both colourbar directions. All bar sides and orientations. Clean, Gaussian blur sigma 0.65px and JPEG quality 85 are all ordinary, regardless of detector success.",
+  "derivatives": ["clean", "blur", "jpeg"],
+  "challenges": ["absent_bar", "categorical", "hidden_boundaries", "wrong_counts", "multipanel", "competing_bars", "missing_tick", "nonlinear", "touching_text", "two_ticks"],
+  "gates": {"distinct_accepted_bases":30,"accepted_families":3,"complete_coverage":0.7,"wrong_complete_acceptances":0,"challenge_acceptances":0,"exact_inferred_counts_per_axis":10,"heatmap_edge_pitch":0.1,"bar_edge_pixels":1,"mae_fraction_of_range":0.02,"maximum_error_fraction_of_range":0.05,"finite_fraction":1.0,"flagged_fraction":0.01,"tick_anchors":3,"endpoint_coverage":true},
+  "evaluation_order": "Runtime decisions first, truth scoring afterwards. Test runs only after code/policy freeze. No tuning after test. Four modes use the deployed pipeline; inferred modes receive no true dimensions or boxes."
+}

@@ -11,9 +11,12 @@ import typer
 from .extract import UnresolvedLabelsError
 from .io import (
     LABEL_OUTPUT_NAMES,
+    LEGEND_OUTPUT_NAMES,
+    UnresolvedLegendError,
     detect_file,
     extract_file,
     extract_labels_file,
+    inspect_legend_file,
     load_raster,
     review_detection,
 )
@@ -23,6 +26,7 @@ from .models import (
     ExtractionConfig,
     GridConfig,
     LabelExtractionResult,
+    LegendConfig,
     ROIReview,
 )
 from .version import __version__
@@ -30,6 +34,57 @@ from .version import __version__
 app = typer.Typer(
     no_args_is_help=True, help="Approximate matrix reconstruction from a raster heatmap."
 )
+
+
+@app.command("automate")
+def automate_command(
+    figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],
+    request: Annotated[Path, typer.Option("--request", exists=True, dir_okay=False)],
+    out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("results/automation"),
+    overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
+) -> None:
+    """Compose ROI/count/scale decisions; emit diagnostics when release gates fail."""
+    from PIL import Image, ImageDraw
+
+    from .automation import AutomationRequest, automate
+    from .io import write_legend_outputs
+
+    names = ("automation.json", "roi_diagnostic.png", *LEGEND_OUTPUT_NAMES)
+    try:
+        settings = AutomationRequest.model_validate_json(request.read_bytes())
+        protected = {figure.resolve(), request.resolve()}
+        for name in names:
+            target = out / name
+            if target.resolve() in protected:
+                raise ValueError("automation outputs cannot overwrite an input")
+            if target.exists() and not overwrite:
+                raise ValueError(f"output exists: {target}; use --overwrite")
+        image = load_raster(figure)
+        result = automate(image, settings)
+        payload = result.model_dump(mode="json")
+        payload["input"] = {
+            "filename": figure.name,
+            "sha256": hashlib.sha256(figure.read_bytes()).hexdigest(),
+        }
+        payload["request"] = settings.model_dump(mode="json")
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "automation.json").write_text(json.dumps(payload, indent=2) + "\n")
+        overlay = Image.fromarray(image[:, :, :3]).convert("RGB")
+        painter = ImageDraw.Draw(overlay)
+        for candidate in result.detection.candidates:
+            x, y, r, s = candidate.bbox
+            painter.rectangle((x, y, r - 1, s - 1), outline="orange", width=2)
+            painter.text((x, max(0, y - 14)), f"{candidate.id} {candidate.kind}", fill="black")
+        overlay.save(out / "roi_diagnostic.png")
+        if result.legend is not None:
+            write_legend_outputs(image, result.legend, out, payload["input"]["sha256"], figure.name)
+    except (ValueError, OSError) as error:
+        typer.echo(f"error: {error}", err=True)
+        raise typer.Exit(2) from error
+    typer.echo(f"experimental complete decision: {result.complete.status}; diagnostics: {out}")
+    # This command has no matrix-writing path until measured release gates pass.
+    typer.echo("Automatic export remains review-only; see automation.json for each capability.")
+    raise typer.Exit(5)
 
 
 @app.callback(invoke_without_command=True)
@@ -107,10 +162,65 @@ def extract_command(
             help="Complete UTF-8 review TSV: axis, index, text.",
         ),
     ] = None,
+    legend_review: Annotated[
+        Path | None,
+        typer.Option(
+            "--legend-review",
+            exists=True,
+            dir_okay=False,
+            help="Complete image-bound legend review TSV.",
+        ),
+    ] = None,
+    auto_roi: Annotated[
+        bool,
+        typer.Option("--auto-roi", help="Evaluate M10 ROI decisions; M12 export gate is closed."),
+    ] = False,
+    numeric_only: Annotated[
+        bool, typer.Option("--numeric-only", help="Explicitly request generated positional IDs.")
+    ] = False,
 ) -> None:
     """Write matrix.csv, quality.csv, provenance.json and diagnostic.png."""
     try:
         payload = json.loads(config.read_text(encoding="utf-8"))
+        if numeric_only and not auto_roi:
+            raise ValueError(
+                "--numeric-only requires --auto-roi; manual configs already set labels"
+            )
+        if auto_roi:
+            if any(
+                value is not None
+                for value in (
+                    roi_review,
+                    roi_selections,
+                    heatmap_candidate,
+                    labels_review,
+                    legend_review,
+                    mask,
+                )
+            ):
+                raise ValueError("--auto-roi cannot be combined with saved reviews or a mask")
+            hints = DetectionHints.model_validate(payload)
+            requested_identifiers = any(k.startswith("labels_") for k in hints.requested) or (
+                hints.labels is not None
+                and (hints.labels.rows is not None or hints.labels.columns is not None)
+            )
+            if numeric_only and requested_identifiers:
+                raise ValueError("--numeric-only conflicts with requested gene/sample identities")
+            if not numeric_only and not requested_identifiers:
+                raise ValueError(
+                    "choose --numeric-only explicitly or request gene/sample identities"
+                )
+            saved = detect_file(
+                figure, hints, out / "roi_review", config_path=config, overwrite=overwrite
+            )
+            assert saved.result.acceptance is not None
+            typer.echo(f"M10 development decision: {saved.result.acceptance.overall.status}")
+            typer.echo(
+                f"Wrote diagnostics to {out / 'roi_review'}; M12 release gate is closed. "
+                "No new matrix/quality outputs.",
+                err=True,
+            )
+            raise typer.Exit(code=5)
         if (heatmap_candidate is not None or roi_selections is not None) and roi_review is None:
             raise ValueError("--heatmap-candidate requires --roi-review")
         if roi_review is not None:
@@ -134,6 +244,8 @@ def extract_command(
             settings.labels.rows is not None or settings.labels.columns is not None
         ):
             outputs += [out / name for name in LABEL_OUTPUT_NAMES if name != "provenance.json"]
+        if settings.scale is not None and settings.scale.source == "ocr_ticks":
+            outputs += [out / name for name in LEGEND_OUTPUT_NAMES]
         inputs = [figure, config] + ([mask] if mask is not None else [])
         if any(output.resolve() == source.resolve() for output in outputs for source in inputs):
             raise ValueError("output paths would overwrite an input figure, configuration or mask")
@@ -156,7 +268,14 @@ def extract_command(
             roi_review=roi_review,
             heatmap_candidate=heatmap_candidate,
             roi_selections=roi_selections,
+            legend_review=legend_review,
         )
+    except UnresolvedLegendError as error:
+        typer.echo(
+            f"Wrote legend review artifacts to {out}. {error}. No new matrix/quality outputs.",
+            err=True,
+        )
+        raise typer.Exit(code=6) from None
     except UnresolvedLabelsError as error:
         typer.echo(
             f"Wrote label review artifacts to {out}. {error}. No new matrix/quality outputs.",
@@ -264,7 +383,7 @@ def detect_command(
 ) -> None:
     """Write review-only ROI/count proposals; exit 5 until explicitly reviewed.
 
-    v0.3 automatic ROI/count acceptance is disabled: M9 gates are not established.
+    M10 decisions are experimental. Released automatic export awaits the M12 gate.
     """
     try:
         hints = DetectionHints.model_validate_json(config.read_text(encoding="utf-8"))
@@ -275,6 +394,15 @@ def detect_command(
     typer.echo(f"Wrote ROI review artifacts to {out}; {saved.result.status}")
     typer.echo(f"ROI candidates: {len(saved.result.candidates)}; scores are not probabilities.")
     typer.echo(f"Count proposals: {len(saved.result.count_proposals)}; review required.")
+    if saved.result.acceptance is not None:
+        typer.echo(
+            f"M10 development decision: {saved.result.acceptance.overall.status}; "
+            "automatic export disabled until M12 validation."
+        )
+        for decision in saved.result.acceptance.decisions:
+            typer.echo(
+                f"  {decision.requirement}: {decision.status} ({', '.join(decision.reasons)})"
+            )
     for warning in saved.result.warnings:
         typer.echo(f"Warning: {warning}", err=True)
     if not saved.proposed_config_complete:
@@ -290,6 +418,44 @@ def detect_command(
             "Review the overlay and select a candidate or edit the proposed config.", err=True
         )
         raise typer.Exit(code=5)
+
+
+@app.command("legend")
+def legend_command(
+    figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False)],
+    config: Annotated[Path, typer.Option("--config", exists=True, dir_okay=False)],
+    out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("legend_review"),
+    review: Annotated[Path | None, typer.Option("--review", exists=True, dir_okay=False)] = None,
+    overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
+) -> None:
+    """Recognise upright numeric ticks without requiring a heatmap; exit 6 until reviewed."""
+    try:
+        payload = json.loads(config.read_text(encoding="utf-8"))
+        if isinstance(payload, dict) and "heatmap_bbox" in payload:
+            extraction = ExtractionConfig.model_validate(payload)
+            settings = LegendConfig(
+                colourbar_bbox=extraction.colourbar_bbox,
+                colourbar_orientation=extraction.colourbar_orientation,
+                **({"legend": extraction.scale.legend} if extraction.scale is not None else {}),
+            )
+        else:
+            settings = LegendConfig.model_validate(payload)
+        result = inspect_legend_file(
+            figure, settings, out, config_path=config, review_path=review, overwrite=overwrite
+        )
+    except (OSError, ValueError) as error:
+        typer.echo(f"Error: {error}", err=True)
+        raise typer.Exit(code=2) from None
+    typer.echo(f"Wrote {len(result.ticks)} tick observations to {out}; {result.status}")
+    if result.fit is not None:
+        typer.echo(
+            f"Linear fit: value = {result.fit.slope:.6g} × position "
+            f"+ {result.fit.intercept:.6g}; span={result.fit.recognised_span}"
+        )
+    for reason in result.reasons:
+        typer.echo(f"Scale: {reason}")
+    if result.status != "reviewed":
+        raise typer.Exit(code=6)
 
 
 if __name__ == "__main__":

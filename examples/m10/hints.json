@@ -1,0 +1,10 @@
+{
+  "rows": 30,
+  "columns": 10,
+  "requested": [
+    "heatmap",
+    "colourbar"
+  ],
+  "colourbar_start_value": 2,
+  "colourbar_end_value": -2
+}

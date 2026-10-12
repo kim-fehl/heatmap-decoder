@@ -1,0 +1,9 @@
+{
+  "numeric_only": true,
+  "hints": {
+    "rows": 20,
+    "columns": 6,
+    "requested": ["heatmap", "colourbar"]
+  },
+  "scale": {"source": "ocr_ticks", "quantity": "synthetic displayed score"}
+}

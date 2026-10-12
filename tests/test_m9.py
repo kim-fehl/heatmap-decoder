@@ -26,7 +26,8 @@ def test_frozen_corpus_and_complete_report_include_every_attempt():
     assert len(manifest["entries"]) == 36
     assert report["manifest_sha256"] == digest
     assert report["thresholds"] == threshold_snapshot()
-    assert report["automation_policy"] == policy_snapshot()
+    assert report["automation_policy"]["version"] == "m9-review-only.1"
+    assert not report["automation_policy"]["automatic_roi_enabled"]
     assert [r["id"] for r in report["attempts"]] == [e["id"] for e in manifest["entries"]]
     assert report["summary"]["attempted_figures"] == 36
     assert report["summary"]["evaluation_errors"] == 0
@@ -65,8 +66,11 @@ def test_edge_metric_rejects_one_cell_offset_despite_high_iou():
     assert not metric["within_tolerance"]
 
 
-def test_zero_acceptance_does_not_pass_a_vacuous_gate():
+def test_zero_acceptance_does_not_pass_a_vacuous_gate(monkeypatch):
     report = json.loads((CORPUS / "report.json").read_text())
+    monkeypatch.setitem(
+        BENCH["gate_report"].__globals__, "policy_snapshot", lambda: report["automation_policy"]
+    )
     gate = BENCH["gate_report"](report["summary"])
     assert gate["decision"] == "ship_review_only"
     assert gate["required_complete_layouts"] == 10

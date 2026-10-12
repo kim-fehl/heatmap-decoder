@@ -10,6 +10,7 @@ from PIL import Image
 from skimage.measure import label, regionprops
 from skimage.morphology import closing
 
+from .detection_policy import ACCEPTANCE_THRESHOLDS as A
 from .detection_policy import THRESHOLDS as T
 from .geometry import validate_grid_geometry
 from .models import (
@@ -29,7 +30,7 @@ from .models import (
 )
 from .sampling import validate_rgb
 
-DETECTOR_VERSION = "m8.1"
+DETECTOR_VERSION = "m10.1"
 
 
 @dataclass(frozen=True)
@@ -306,7 +307,12 @@ def _detect_heatmap(image: RGBArray, hints: DetectionHints) -> DetectionResult:
                 if len(scored) > 1
                 else ("review_required",)
             )
-            + grid_unresolved,
+            + grid_unresolved
+            + (
+                ("candidate_limit_hides_competition",)
+                if len(scored) > hints.detector.max_candidates
+                else ()
+            ),
         )
         for index, (score, box, components) in enumerate(scored[: hints.detector.max_candidates])
     )
@@ -426,6 +432,7 @@ def colourbar_candidates(image: RGBArray, hints: DetectionHints) -> tuple[ROICan
         ):
             continue
         refined = _refine_bar(image, box, mask)
+        refined = _refine_noisy_bar(image, refined)
         left, top, right, bottom = refined
         crop = image[top:bottom, left:right, :3].astype(float)
         vertical = bottom - top >= right - left
@@ -433,17 +440,19 @@ def colourbar_candidates(image: RGBArray, hints: DetectionHints) -> tuple[ROICan
             crop = crop.transpose(1, 0, 2)
         if min(crop.shape[:2]) < 2:
             continue
-        profile = np.median(crop, axis=1)
-        transverse = float(np.mean(np.abs(crop - profile[:, None])))
-        variation = float(np.mean(np.std(profile, axis=0)))
-        deltas = np.max(np.abs(np.diff(profile, axis=0)), axis=1)
-        continuity = float(np.mean(deltas <= T.bar_maximum_step))
-        changing = float(np.mean(deltas > 0))
+        measurements = bar_measurements(crop)
+        transverse = measurements["transverse_error"]
+        variation = measurements["variation_rgb"]
+        continuity = measurements["continuity"]
+        changing = measurements["changing_fraction"]
         if (
             variation < T.bar_minimum_variation
             or transverse > T.bar_maximum_transverse_error
             or continuity < T.bar_minimum_continuity
             or changing < T.bar_minimum_changing_fraction
+            or measurements["noise_rgb"] > A.maximum_bar_noise
+            or measurements["longest_plateau_fraction"] > A.maximum_plateau_fraction
+            or measurements["maximum_step_rgb"] > measurements["step_limit_rgb"]
         ):
             continue
         components = {
@@ -451,8 +460,21 @@ def colourbar_candidates(image: RGBArray, hints: DetectionHints) -> tuple[ROICan
             "continuity": continuity,
             "changing_fraction": changing,
             "variation": min(1.0, variation / T.variation_normaliser),
+            **measurements,
         }
-        score = float(np.mean(list(components.values())))
+        score = float(
+            np.mean(
+                [
+                    components[k]
+                    for k in (
+                        "short_axis_constancy",
+                        "continuity",
+                        "changing_fraction",
+                        "variation",
+                    )
+                ]
+            )
+        )
         reasons = ["review_required", "extent_and_scale_completeness_unverified"]
         if left == 0 or top == 0 or right == image.shape[1] or bottom == image.shape[0]:
             reasons.append("touches_image_edge_possible_clipping")
@@ -470,13 +492,97 @@ def colourbar_candidates(image: RGBArray, hints: DetectionHints) -> tuple[ROICan
             score=score,
             score_components=parts,
             orientation=cast(Literal["vertical", "horizontal"], orientation),
-            reasons=reasons,
+            reasons=reasons
+            + (
+                ("candidate_limit_hides_competition",)
+                if len(scored) > hints.detector.max_candidates
+                else ()
+            ),
         )
         for i, (box, (score, parts, orientation, reasons)) in enumerate(
             sorted(scored.items(), key=lambda item: (-item[1][0], item[0]))[
                 : hints.detector.max_candidates
             ]
         )
+    )
+
+
+def bar_measurements(crop: NDArray[np.float64]) -> dict[str, float]:
+    """Original-resolution continuity, with bounded measured transverse noise support.
+
+    The maximum step check is separate from average continuity: a categorical
+    jump cannot hide among hundreds of unchanged pixels. Never smooth along-axis
+    jumps away. Input is long-axis x short-axis x RGB.
+    """
+    profile = np.median(crop, axis=1)
+    transverse = float(np.mean(np.abs(crop - profile[:, None])))
+    inset = crop.shape[1] // 4
+    core = crop[:, inset : crop.shape[1] - inset]
+    noise = float(np.quantile(np.abs(np.diff(core, axis=1)), 0.75))
+    steps = np.max(np.abs(np.diff(profile, axis=0)), axis=1)
+    limit = A.maximum_bar_step + A.bar_noise_multiplier * min(noise, A.maximum_bar_noise)
+    plateaus = _runs(np.flatnonzero(steps <= 0.25))
+    return {
+        "transverse_error": transverse,
+        "noise_rgb": noise,
+        "variation_rgb": float(np.mean(np.std(profile, axis=0))),
+        "continuity": float(np.mean(steps <= limit)),
+        "changing_fraction": float(np.mean(steps > 0.25)),
+        "maximum_step_rgb": float(np.max(steps[2:-2] if len(steps) > 8 else steps)),
+        "endpoint_maximum_step_rgb": float(np.max(steps)),
+        "step_limit_rgb": limit,
+        "longest_plateau_fraction": max((len(run) for run in plateaus), default=0) / len(profile),
+    }
+
+
+def _refine_noisy_bar(image: RGBArray, box: BoundingBox) -> BoundingBox:
+    """Trim peripheral halo/border pixels relative to the unsmoothed central strip.
+
+    Clean bars retain their coordinates. Refinement may leave uncertain edges;
+    acceptance checks completeness and stability separately.
+    """
+    left, top, right, bottom = box
+    vertical = bottom - top >= right - left
+    crop = image[top:bottom, left:right, :3].astype(float)
+    if not vertical:
+        crop = crop.transpose(1, 0, 2)
+    length, width = crop.shape[:2]
+    if min(length, width) < 4:
+        return box
+    central = crop[:, width // 3 : width - width // 3]
+    profile = np.median(central, axis=1)
+    if np.mean(np.abs(crop - profile[:, None])) < 2:
+        return box
+    # Peripheral columns must resemble the central profile throughout the bar,
+    # rather than just share a global mean with a categorical strip.
+    errors = np.median(
+        np.abs(crop[length // 8 : -length // 8] - profile[length // 8 : -length // 8, None]),
+        axis=(0, 2),
+    )
+    noise = float(np.median(np.abs(np.diff(central, axis=1))))
+    tolerance = max(8.0, 3 * min(noise, A.maximum_bar_noise))
+    start, end = width // 2, width // 2 + 1
+    while start > 0 and errors[start - 1] <= tolerance:
+        start -= 1
+    while end < width and errors[end] <= tolerance:
+        end += 1
+    # Locate closure at each end relative to the local interior colour. A halo
+    # differs abruptly; a true continuous palette changes by small steps.
+    p = np.median(crop[:, start:end], axis=1)
+    first, last = 0, length
+    steps = np.max(np.abs(np.diff(p, axis=0)), axis=1)
+    budget = min(8, length // 8)
+    abrupt = np.flatnonzero(steps > max(30, noise * 8))
+    near_start = abrupt[abrupt < budget]
+    near_end = abrupt[abrupt >= length - budget - 1]
+    if len(near_start):
+        first = int(near_start[-1]) + 1
+    if len(near_end):
+        last = int(near_end[0]) + 1
+    return (
+        (left + start, top + first, left + end, top + last)
+        if vertical
+        else (left + first, top + start, left + last, top + end)
     )
 
 
@@ -488,6 +594,7 @@ def _associate_bars(
     from .models import ROIAssociation
 
     result: list[ROIAssociation] = []
+    attempts = 0
     for heatmap_id, box in heatmaps.items():
         left, top, right, bottom = box
         crop = image[top:bottom, left:right, :3]
@@ -497,6 +604,9 @@ def _associate_bars(
         ].reshape(-1, 3)
         lab = rgb2lab(colours[None].astype(float) / 255)[0]
         for bar in bars:
+            if attempts >= A.maximum_association_pairs:
+                return tuple(result)
+            attempts += 1
             x0, y0, x1, y1 = bar.bbox
             if max(left, x0) < min(right, x1) and max(top, y0) < min(bottom, y1):
                 continue
@@ -508,10 +618,11 @@ def _associate_bars(
             coverage = float(np.mean(distances <= T.association_maximum_delta_e76))
             gap = math.hypot(max(0, x0 - right, left - x1), max(0, y0 - bottom, top - y1))
             proximity = max(0.0, 1 - gap / max(right - left, bottom - top))
-            if bar.orientation == "vertical":
-                alignment = max(0, min(bottom, y1) - max(top, y0)) / min(bottom - top, y1 - y0)
-            else:
-                alignment = max(0, min(right, x1) - max(left, x0)) / min(right - left, x1 - x0)
+            # Side and physical orientation are independent: vertical bars can
+            # sit above/below; horizontal bars can sit left/right.
+            overlap_y = max(0, min(bottom, y1) - max(top, y0)) / min(bottom - top, y1 - y0)
+            overlap_x = max(0, min(right, x1) - max(left, x0)) / min(right - left, x1 - x0)
+            alignment = max(overlap_x, overlap_y)
             if (
                 coverage < T.association_minimum_palette_coverage
                 or alignment < T.association_minimum_axis_overlap
@@ -554,7 +665,10 @@ def _label_searches(
 
 
 def _label_regions(
-    image: RGBArray, hints: DetectionHints
+    image: RGBArray,
+    hints: DetectionHints,
+    heatmap_id: str = "heatmap-manual",
+    pixel_budget: list[int] | None = None,
 ) -> tuple[tuple[ROICandidate, ...], tuple["LabelLocalisationEvidence", ...], tuple[str, ...]]:
     from typing import cast
 
@@ -574,9 +688,13 @@ def _label_regions(
             continue
         crop = Image.fromarray(image[:, :, :3]).crop(region).convert("L")
         factor = settings.upscale_factor
-        if crop.width * crop.height * factor**2 > hints.detector.max_ocr_pixels:
+        pixels = crop.width * crop.height * factor**2
+        if pixel_budget is None:
+            pixel_budget = [A.maximum_total_ocr_pixels]
+        if pixels > hints.detector.max_ocr_pixels or pixels > pixel_budget[0]:
             warnings.append(f"{kind}/{side}: OCR pixel cap exceeded; supply a manual label ROI")
             continue
+        pixel_budget[0] -= pixels
         try:
             engine = recognize(
                 crop.resize((crop.width * factor, crop.height * factor), Image.Resampling.BICUBIC),
@@ -608,6 +726,7 @@ def _label_regions(
                 unassigned_candidates=grouped,
                 assignment=assignment,
                 engine=engine,
+                heatmap_id=heatmap_id,
             )
         )
         if assignment is None:
@@ -637,13 +756,15 @@ def _label_regions(
             reasons.append("low_confidence_text")
         proposals.append(
             ROICandidate(
-                id=f"{kind}-{side}",
+                id=f"{kind}-{side}"
+                if heatmap_id == "heatmap-manual"
+                else f"{kind}-{heatmap_id}-{side}",
                 kind=cast(Literal["labels_rows", "labels_columns"], kind),
                 bbox=box,
                 score=len(slots) / count,
                 score_components={"aligned_slot_fraction": len(slots) / count},
                 reasons=tuple(reasons),
-                associations=("heatmap-manual",),
+                associations=(heatmap_id,),
             )
         )
     return tuple(proposals), tuple(evidence), tuple(warnings)
@@ -661,26 +782,44 @@ def _count_signals(image: RGBArray, box: BoundingBox, axis: "Axis") -> dict[str,
     # Entire assignment axis at original resolution; bounded samples across it.
     pixels = crop[:, :: max(1, crop.shape[1] // T.count_cross_samples)].astype(float)
     origin = top if axis == "rows" else left
-    profile = np.mean(np.max(np.abs(np.diff(pixels, axis=0)), axis=2), axis=1)
-    groups = _runs(np.flatnonzero(profile > T.count_transition_threshold))
-    transitions = tuple(
-        float(origin + group[-1] + 1)
-        for group in groups
-        if len(group) <= T.count_maximum_transition_run
-    )
     uniform = np.max(np.ptp(pixels, axis=1), axis=1) <= T.uniform_rgb_spread
-    line_groups = _runs(np.flatnonzero(uniform))
+    line_groups = []
+    for group in _runs(np.flatnonzero(uniform)):
+        changes = np.max(np.abs(np.diff(np.median(pixels[group], axis=1), axis=0)), axis=1)
+        line_groups.extend(np.split(group, np.flatnonzero(changes > 8) + 1))
     lines = []
+    stroke_bands = []
     for group in line_groups:
         start, end = int(group[0]), int(group[-1]) + 1
-        if len(group) <= T.count_maximum_stroke_width and 0 < start and end < len(pixels):
-            contrast = min(
-                float(np.mean(np.abs(pixels[start] - pixels[start - 1]))),
-                float(np.mean(np.abs(pixels[end - 1] - pixels[end]))),
-            )
-            if contrast > T.count_minimum_stroke_contrast:
-                lines.append(float(origin + end))
-    return {"colour_transitions": transitions, "gridline_strokes": tuple(lines)}
+        if len(group) <= T.count_maximum_stroke_width:
+            contrasts = []
+            if start > 0:
+                contrasts.append(float(np.mean(np.abs(pixels[start] - pixels[start - 1]))))
+            if end < len(pixels):
+                contrasts.append(float(np.mean(np.abs(pixels[end - 1] - pixels[end]))))
+            if contrasts and min(contrasts) > T.count_minimum_stroke_contrast:
+                if 0 < start and end < len(pixels):
+                    lines.append(float(origin + end))
+                stroke_bands.append((start, end))
+    # Exclude perpendicular gridlines and every along-axis stroke pixel. Compare
+    # colours on either side of a stroke; the black stroke itself is not colour
+    # evidence. Identical neighbouring cells therefore yield no transition.
+    cross_uniform = np.max(np.ptp(pixels, axis=0), axis=1) <= T.uniform_rgb_spread
+    colour_pixels = pixels[:, ~cross_uniform]
+    transitions: set[float] = set()
+    if colour_pixels.shape[1]:
+        profile = np.mean(np.max(np.abs(np.diff(colour_pixels, axis=0)), axis=2), axis=1)
+        for start, end in stroke_bands:
+            profile[max(0, start - 1) : end] = 0
+            if start == 0 or end == len(pixels):
+                continue
+            jump = np.mean(np.max(np.abs(colour_pixels[start - 1] - colour_pixels[end]), axis=1))
+            if jump > T.count_transition_threshold:
+                transitions.add(float(origin + end))
+        for group in _runs(np.flatnonzero(profile > T.count_transition_threshold)):
+            if len(group) <= T.count_maximum_transition_run:
+                transitions.add(float(origin + group[-1] + 1))
+    return {"colour_transitions": tuple(sorted(transitions)), "gridline_strokes": tuple(lines)}
 
 
 def count_proposals(
@@ -731,6 +870,14 @@ def count_proposals(
                 alignment=alignment,
                 coverage=coverage,
                 kind="centres" if centres else "boundaries",
+                observation=(
+                    "unassigned_text_geometry"
+                    if centres
+                    else "stroke_geometry"
+                    if name == "gridline_strokes"
+                    else "cell_colours_excluding_strokes"
+                ),
+                excluded_gridline_pixels=name == "colour_transitions",
             )
         if components and any(
             signal.alignment >= T.count_minimum_alignment for signal in components.values()
@@ -783,8 +930,12 @@ def count_proposals(
 
 
 def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
-    """M8 hybrid proposals; no automatic box, OCR label or count acceptance."""
+    """Bounded staged proposals and M10 decisions; released automation stays disabled."""
     from .models import SelectedCount
+
+    validate_rgb(image)
+    if image.shape[0] * image.shape[1] > A.max_image_pixels:
+        raise ValueError("detection pixel cap exceeded; crop the figure or supply manual inputs")
 
     # Reuse M7 geometry validation and localisation, without forcing a heatmap
     # detector rerun when fixed coordinates are already supplied.
@@ -831,12 +982,16 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
     warnings = list(heatmap.warnings)
     label_evidence: tuple[LabelLocalisationEvidence, ...] = ()
     if any(kind.startswith("labels_") for kind in hints.requested):
-        if hints.heatmap_bbox is None:
-            warnings.append(
-                "Label localisation requires a fixed/reviewed heatmap_bbox; review it first"
+        budget = [A.maximum_total_ocr_pixels]
+        stages = list(heatmaps.items())[: A.max_shortlisted_heatmaps]
+        if not stages:
+            warnings.append("Label localisation unresolved: no shortlisted heatmap")
+        for heatmap_id, box in stages:
+            staged_hints = hints.model_copy(update={"heatmap_bbox": box})
+            labels, records, label_warnings = _label_regions(
+                image, staged_hints, heatmap_id, budget
             )
-        else:
-            labels, label_evidence, label_warnings = _label_regions(image, hints)
+            label_evidence += records
             proposals.extend(labels)
             warnings.extend(label_warnings)
     counts: list[CountProposal] = []
@@ -851,7 +1006,7 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
                         axis,
                         hints,
                         heatmap_id,
-                        label_evidence if heatmap_id == "heatmap-manual" else (),
+                        tuple(e for e in label_evidence if e.heatmap_id == heatmap_id),
                     )
                 )
     unresolved = []
@@ -882,7 +1037,7 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
             status = "unresolved"
         elif counts and status == "review_required":
             status = "ambiguous"
-    return DetectionResult(
+    result = DetectionResult(
         candidates=tuple(proposals),
         selected=selected,
         status=status,
@@ -897,3 +1052,6 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
             if getattr(hints, axis) is not None
         },
     )
+    from .acceptance import evaluate_acceptance
+
+    return result.model_copy(update={"acceptance": evaluate_acceptance(image, hints, result)})

@@ -27,6 +27,9 @@ from .models import (
     FileLabelSource,
     GridConfig,
     LabelExtractionResult,
+    LegendConfig,
+    LegendResult,
+    LegendTick,
     OCRLabelSource,
     ReviewLabels,
     RGBArray,
@@ -75,7 +78,15 @@ def write_quality_csv(result: ExtractionResult, path: str | Path) -> None:
     validate_export_labels(result)
     with Path(path).open("w", newline="", encoding="utf-8") as stream:
         writer = csv.writer(stream)
-        header = ["row", "column", "delta_e76", "flags", "valid_fraction", "candidate_value"]
+        header = [
+            "row",
+            "column",
+            "delta_e76",
+            "flags",
+            "valid_fraction",
+            "candidate_value",
+            "value_kind",
+        ]
         writer.writerow(
             header + (["row_label", "column_label"] if result.labels is not None else [])
         )
@@ -88,6 +99,13 @@ def write_quality_csv(result: ExtractionResult, path: str | Path) -> None:
                     flag_names(int(result.flags[row, column])),
                     result.valid_fraction[row, column],
                     result.inferred_values[row, column],
+                    "missing_or_ambiguous"
+                    if not np.isfinite(result.values[row, column])
+                    else "possible_upper_bound"
+                    if result.range_limit is not None and result.range_limit[row, column] == -1
+                    else "possible_lower_bound"
+                    if result.range_limit is not None and result.range_limit[row, column] == 1
+                    else "estimate",
                 ]
                 + (
                     [
@@ -129,7 +147,7 @@ def provenance(
         )
     }
     metadata: dict[str, Any] = {
-        "schema_version": 1,
+        "schema_version": 3,
         "software": {"name": "heatmap-decoder", "version": __version__},
         "input": {
             "filename": input_filename,
@@ -160,9 +178,40 @@ def provenance(
             "diagnostic.png": "source sampling / nearest candidates / QC",
         },
         "limitations": "Approximate displayed-scale values, not exact or pre-transformation data.",
+        "recovery": {
+            "quantity": result.config.scale.quantity
+            if result.config.scale is not None
+            else "displayed colourbar values; transformation unspecified",
+            "original_expression_counts_recovered": False,
+            "endpoint_semantics": "Endpoint colours may be clipped: potential bounds, not exact "
+            "values beyond the displayed range; see quality.csv value_kind.",
+            "precision": "CSV digits preserve computation, not measurement precision. "
+            "Colour distances and fit residuals are QC, not uncertainty intervals.",
+        },
     }
+    if result.config.scale is not None and result.config.scale.source == "manual_ticks":
+        from .calibration import fit_linear_scale
+
+        scale = result.config.scale
+        fitted = fit_linear_scale(
+            scale.anchors,
+            result.config.colourbar_bbox,
+            result.config.colourbar_orientation,
+            max_value_residual_fraction=scale.max_value_residual_fraction,
+            max_position_residual_pixels=scale.max_position_residual_pixels,
+        )
+        metadata["schema_version"] = 3
+        metadata["methods"]["calibration"] = "linear least squares on original-position anchors"
+        metadata["scale"] = {
+            "source": scale.source,
+            "quantity": scale.quantity,
+            "fit": fitted.model_dump(mode="json"),
+            "extrapolation": "explicit manual/reviewed mapping"
+            if not fitted.endpoint_coverage
+            else "recognised endpoint coverage",
+        }
     if result.labels is not None:
-        metadata["schema_version"] = 2
+        metadata["schema_version"] = max(2, metadata["schema_version"])
         metadata["operation"] = "extract"
         metadata["publication"] = {"status": "published", "numeric_outputs_written": True}
         metadata["labels"] = label_provenance(
@@ -188,6 +237,7 @@ def write_outputs(
     mask_sha256: str | None = None,
     file_hashes: dict[str, str] | None = None,
     detection_review: dict[str, Any] | None = None,
+    legend_metadata: dict[str, Any] | None = None,
 ) -> None:
     """Write all four M2 outputs. Use extract_file to compute input hashes automatically."""
     directory = Path(directory)
@@ -204,6 +254,9 @@ def write_outputs(
     )
     if detection_review is not None:
         metadata["roi_review"] = detection_review
+    if legend_metadata is not None:
+        metadata["schema_version"] = 3
+        metadata["legend"] = legend_metadata
     if result.labels is not None:
         metadata["outputs"].update(
             {
@@ -231,9 +284,13 @@ def extract_file(
     roi_review: str | Path | None = None,
     heatmap_candidate: str | None = None,
     roi_selections: str | Path | None = None,
+    legend_review: str | Path | None = None,
 ) -> ExtractionResult:
     """Write review evidence first; only resolved labels may publish numeric outputs."""
     path, directory, base = Path(path), Path(directory), Path(base_directory)
+    requested_legend = config.scale is not None and config.scale.source == "ocr_ticks"
+    if legend_review is not None and not requested_legend:
+        raise ValueError("legend review requires scale.source=ocr_ticks")
     requested = config.labels is not None and (
         config.labels.rows is not None or config.labels.columns is not None
     )
@@ -244,6 +301,8 @@ def extract_file(
         output_paths += [
             directory / name for name in LABEL_OUTPUT_NAMES if name != "provenance.json"
         ]
+    if requested_legend:
+        output_paths += [directory / name for name in LEGEND_OUTPUT_NAMES]
     if not requested and any(output.resolve() == path.resolve() for output in output_paths):
         raise ValueError("output directory would overwrite the input figure")
     inputs = (path,) + label_input_paths(config, base)
@@ -251,6 +310,8 @@ def extract_file(
         inputs += (Path(config_path),)
     if labels_review is not None:
         inputs += (Path(labels_review),)
+    if legend_review is not None:
+        inputs += (Path(legend_review),)
     if (heatmap_candidate is not None or roi_selections is not None) and roi_review is None:
         raise ValueError("heatmap candidate selection requires --roi-review")
     if roi_review is not None:
@@ -285,6 +346,33 @@ def extract_file(
                 Path(config_path).read_bytes()
             ).hexdigest()
     mask_hash = hashlib.sha256(mask.tobytes(order="C")).hexdigest() if mask is not None else None
+    legend_metadata = None
+    if requested_legend:
+        from .legend import inspect_legend
+
+        assert config.scale is not None
+        legend_config = LegendConfig(
+            colourbar_bbox=config.colourbar_bbox,
+            colourbar_orientation=config.colourbar_orientation,
+            legend=config.scale.legend,
+        )
+        legend_result = inspect_legend(image, legend_config)
+        digest = hashlib.sha256(data).hexdigest()
+        write_legend_outputs(image, legend_result, directory, digest, path.name)
+        if legend_review is None:
+            raise UnresolvedLegendError(
+                "OCR scale requires explicit --legend-review; " + "; ".join(legend_result.reasons)
+            )
+        raw_evidence = legend_provenance(legend_result, digest, path.name)
+        legend_result = load_legend_review(legend_review, legend_result, digest)
+        write_legend_outputs(image, legend_result, directory, digest, path.name)
+        legend_metadata = legend_provenance(legend_result, digest, path.name)
+        legend_metadata["unreviewed_evidence"] = raw_evidence
+        legend_metadata["requested_config"] = config.model_dump(mode="json")
+        scale = config.scale.model_copy(
+            update={"source": "manual_ticks", "anchors": legend_result.reviewed_anchors}
+        )
+        config = ExtractionConfig.model_validate({**config.model_dump(), "scale": scale})
     label_result = None
     hashes: dict[str, str] = {}
     if requested:
@@ -327,6 +415,7 @@ def extract_file(
         mask_sha256=mask_hash,
         file_hashes=hashes,
         detection_review=detection_review,
+        legend_metadata=legend_metadata,
     )
     return result
 
@@ -474,8 +563,14 @@ def label_provenance(
         },
         "config": result.config.model_dump(mode="json"),
         "ocr": {
-            "availability": "available" if result.ocr_runs else "not_requested",
+            "availability": "available"
+            if result.ocr_runs or result.slot_ocr_runs
+            else "not_requested",
             "runs": {axis: asdict(run) for axis, run in result.ocr_runs},
+            "slot_runs": [
+                {"axis": axis, "index": index, "crop_bbox": box, "run": asdict(run)}
+                for axis, index, box, run in result.slot_ocr_runs
+            ],
             "raw_token_coordinate_frame": "upscaled crop pixels",
             "assigned_text_token_coordinate_frame": "original image pixels",
             "structural_records": "retained in raw coordinates; excluded from assignment",
@@ -558,7 +653,7 @@ def detect_file(
     config_path: str | Path | None = None,
     overwrite: bool = False,
 ) -> "SavedDetection":
-    """Export review-only M7 artefacts; proposed config contains no guessed boxes/values."""
+    """Export proposals and M10 decisions; never insert unreviewed boxes or counts."""
     from PIL import Image, ImageDraw
 
     from .detection import DETECTOR_VERSION, analysis_image, detect
@@ -600,6 +695,10 @@ def detect_file(
         key for key, field in ExtractionConfig.model_fields.items() if not field.is_required()
     }
     missing = tuple(sorted(required - proposed.keys()))
+    if "scale" not in proposed or proposed["scale"]["source"] == "manual_endpoints":
+        missing += tuple(
+            k for k in ("colourbar_start_value", "colourbar_end_value") if k not in proposed
+        )
     missing += tuple(
         f"labels.{kind.removeprefix('labels_')}"
         for kind in hints.requested
@@ -610,7 +709,7 @@ def detect_file(
         validate_geometry(ExtractionConfig.model_validate(proposed), image.shape)
         complete = not result.unresolved_requirements
     saved = SavedDetection(
-        schema_version=2,
+        schema_version=3,
         image_sha256=hashlib.sha256(data).hexdigest(),
         image_dimensions=(image.shape[1], image.shape[0]),
         detector_version=DETECTOR_VERSION,
@@ -720,6 +819,14 @@ def review_detection(
                 _validate_roi_box(source.bbox, image.shape)
     for proposal in saved.result.candidates:
         _validate_roi_box(proposal.bbox, image.shape)
+        if saved.schema_version >= 3 and proposal.kind.startswith("labels_"):
+            if not proposal.associations or any(i not in heatmaps for i in proposal.associations):
+                raise ValueError("label proposal references an unknown heatmap")
+    if saved.schema_version >= 3:
+        for record in saved.result.label_evidence:
+            _validate_roi_box(record.search_bbox, image.shape)
+            if record.heatmap_id not in heatmaps:
+                raise ValueError("label evidence references an unknown heatmap")
     for kind, region in saved.result.selected.items():
         _validate_roi_box(region.bbox, image.shape)
         if region.candidate_id is not None:
@@ -810,6 +917,14 @@ def review_detection(
         }
     config = ExtractionConfig.model_validate(payload)
     validate_geometry(config, image.shape)
+    for kind, identifier in regions.items():
+        proposal = candidates[identifier]
+        if (
+            kind.startswith("labels_")
+            and proposal.associations
+            and not any(heatmaps.get(i) == config.heatmap_bbox for i in proposal.associations)
+        ):
+            raise ValueError("reviewed label region conflicts with selected heatmap")
     for kind in saved.hints.requested:
         if kind.startswith("labels_"):
             requested_axis = kind.removeprefix("labels_")
@@ -881,3 +996,224 @@ def _validate_roi_box(box: tuple[int, int, int, int], shape: tuple[int, ...]) ->
     left, top, right, bottom = box
     if not (0 <= left < right <= shape[1] and 0 <= top < bottom <= shape[0]):
         raise ValueError("saved detection box must lie inside the image")
+
+
+LEGEND_OUTPUT_NAMES = (
+    "legend_ticks.tsv",
+    "legend_review.tsv",
+    "legend_diagnostic.png",
+    "legend_provenance.json",
+)
+
+
+class UnresolvedLegendError(ValueError):
+    """Requested OCR scale is unresolved/unreviewed; no new numeric outputs."""
+
+
+def load_legend_review(
+    path: str | Path,
+    result: "LegendResult",
+    image_sha256: str,
+) -> "LegendResult":
+    from .calibration import fit_linear_scale
+    from .models import ScaleAnchor
+
+    if any(
+        "cap_exceeded" in reason
+        or "OCR unavailable/failed" in reason
+        or "OCR failed" in reason
+        or "cap exceeded" in reason
+        for reason in result.reasons
+    ):
+        raise ValueError(
+            "incomplete/unavailable legend evidence; use manual_ticks or fix OCR limits"
+        )
+    data = Path(path).read_bytes()
+    rows = csv.DictReader(StringIO(data.decode("utf-8-sig")), delimiter="\t", strict=True)
+    expected_fields = ["index", "image_sha256", "include", "position", "value"]
+    if rows.fieldnames != expected_fields:
+        raise ValueError(
+            "legend review columns must be index, image_sha256, include, position, value"
+        )
+    expected = {t.index for t in result.ticks}
+    seen, anchors = set(), []
+    coordinate = 1 if result.config.colourbar_orientation == "vertical" else 0
+    start, last = (
+        result.config.colourbar_bbox[coordinate],
+        result.config.colourbar_bbox[coordinate + 2] - 1,
+    )
+    try:
+        for row in rows:
+            if None in row or any(value is None for value in row.values()):
+                raise ValueError("malformed legend review row")
+            if not re.fullmatch(r"0|[1-9][0-9]*", row["index"]):
+                raise ValueError("invalid legend review index")
+            index = int(row["index"])
+            if index in seen or index not in expected:
+                raise ValueError("duplicate/out-of-range legend review index")
+            seen.add(index)
+            if row["image_sha256"] != image_sha256:
+                raise ValueError("legend review image hash does not match the input image")
+            if row["include"] not in {"yes", "no"}:
+                raise ValueError("legend review include must be yes or no")
+            if row["include"] == "no":
+                continue
+            if not row["position"].strip() or not row["value"].strip():
+                raise ValueError("included legend anchors require non-empty position and value")
+            position, value = float(row["position"]), float(row["value"])
+            if not np.isfinite([position, value]).all() or not start <= position <= last:
+                raise ValueError("legend review requires finite values/positions inside the bar")
+            anchors.append(
+                ScaleAnchor(position=position, value=value, origin="reviewed", status="reviewed")
+            )
+    except csv.Error as error:
+        raise ValueError(f"invalid legend review TSV: {error}") from error
+    if seen != expected:
+        raise ValueError("legend review is missing indices")
+    fit = fit_linear_scale(
+        tuple(anchors), result.config.colourbar_bbox, result.config.colourbar_orientation
+    )
+    return result.model_copy(
+        update={
+            "reviewed_anchors": tuple(anchors),
+            "fit": fit,
+            "status": "reviewed",
+            "development_eligible": False,
+            "review_sha256": hashlib.sha256(data).hexdigest(),
+            "unreviewed_fit": result.fit,
+            "unreviewed_reasons": result.reasons,
+            "reasons": ("explicit_human_scale_review",),
+        }
+    )
+
+
+def legend_provenance(result: "LegendResult", input_sha256: str, filename: str) -> dict[str, Any]:
+    from .legend import legend_policy_snapshot
+
+    return {
+        "schema_version": 1,
+        "operation": "legend",
+        "software_version": __version__,
+        "input": {"filename": filename, "sha256": input_sha256},
+        "policy": legend_policy_snapshot(),
+        "result": result.model_dump(mode="json"),
+        "sample_position_convention": "first top/left pixel = 0; last bottom/right pixel = 1; "
+        "no axial inset; transverse central-half sampling",
+        "ocr_coordinate_frame": "raw tokens in upscaled crop; tick/text boxes in original image",
+        "review": {"sha256": result.review_sha256},
+        "limitations": "Line residuals and OCR confidence do not certify tick values, "
+        "biological meaning, original counts or measurement uncertainty.",
+    }
+
+
+def write_legend_outputs(
+    image: RGBArray, result: "LegendResult", directory: Path, image_sha256: str, filename: str
+) -> None:
+    from PIL import ImageDraw
+
+    from .legend import search_regions
+
+    directory.mkdir(parents=True, exist_ok=True)
+    with (directory / "legend_ticks.tsv").open("w", newline="", encoding="utf-8") as stream:
+        fields = list(LegendTick.model_fields)
+        writer = csv.DictWriter(stream, fieldnames=fields, delimiter="\t")
+        writer.writeheader()
+        for tick in result.ticks:
+            row = tick.model_dump(mode="json")
+            writer.writerow(
+                {
+                    k: json.dumps(v, ensure_ascii=False)
+                    if isinstance(v, (dict, list))
+                    else ""
+                    if v is None
+                    else v
+                    for k, v in row.items()
+                }
+            )
+    with (directory / "legend_review.tsv").open("w", newline="", encoding="utf-8") as stream:
+        review_writer = csv.writer(stream, delimiter="\t")
+        review_writer.writerow(["index", "image_sha256", "include", "position", "value"])
+        selected = {a.position: a.value for a in result.reviewed_anchors}
+        for tick in result.ticks:
+            review_writer.writerow(
+                [
+                    tick.index,
+                    image_sha256,
+                    "yes" if result.status != "reviewed" or tick.position in selected else "no",
+                    tick.position,
+                    selected.get(tick.position, tick.parsed_value),
+                ]
+            )
+    overlay = Image.fromarray(image[:, :, :3]).convert("RGB")
+    draw = ImageDraw.Draw(overlay)
+    x, y, r, s = result.config.colourbar_bbox
+    draw.rectangle((x, y, r - 1, s - 1), outline="cyan", width=2)
+    for side, box in search_regions(image, result.config):
+        draw.rectangle((box[0], box[1], box[2] - 1, box[3] - 1), outline="orange", width=1)
+        draw.text(
+            (box[0], max(0, box[1] - 12)),
+            f"tick search {side}",
+            fill="black",
+            stroke_fill="white",
+            stroke_width=1,
+        )
+    for tick in result.ticks:
+        colour = "lime" if tick.status == "suggested" else "red"
+        for token_box in (tick.stroke_bbox, tick.text_bbox):
+            if token_box is not None:
+                draw.rectangle(token_box, outline=colour, width=2)
+        if result.config.colourbar_orientation == "vertical":
+            draw.line((x, tick.position, r, tick.position), fill=colour)
+            at: tuple[float, float] = (r + 2, tick.position - 12)
+        else:
+            draw.line((tick.position, y, tick.position, s), fill=colour)
+            at = (tick.position, y - 14)
+        draw.text(
+            at,
+            f"{tick.index}: {tick.raw_text or '?'}",
+            fill="black",
+            stroke_fill="white",
+            stroke_width=1,
+        )
+    draw.text(
+        (4, 4),
+        f"{result.status}; eligible={result.development_eligible}; review scale",
+        fill="black",
+        stroke_fill="white",
+        stroke_width=1,
+    )
+    overlay.save(directory / "legend_diagnostic.png")
+    (directory / "legend_provenance.json").write_text(
+        json.dumps(legend_provenance(result, image_sha256, filename), indent=2, allow_nan=False)
+        + "\n",
+        encoding="utf-8",
+    )
+
+
+def inspect_legend_file(
+    path: str | Path,
+    config: "LegendConfig",
+    directory: str | Path,
+    *,
+    config_path: str | Path | None = None,
+    review_path: str | Path | None = None,
+    overwrite: bool = False,
+) -> "LegendResult":
+    from .legend import inspect_legend
+
+    path, directory = Path(path), Path(directory)
+    inputs = (
+        (path,)
+        + ((Path(config_path),) if config_path else ())
+        + ((Path(review_path),) if review_path else ())
+    )
+    check_output_paths([directory / name for name in LEGEND_OUTPUT_NAMES], inputs, overwrite)
+    data = path.read_bytes()
+    image, digest = _decode_raster(data), hashlib.sha256(data).hexdigest()
+    result = inspect_legend(image, config)
+    # Preserve all raw evidence before attempting a possibly invalid review.
+    write_legend_outputs(image, result, directory, digest, path.name)
+    if review_path is not None:
+        result = load_legend_review(review_path, result, digest)
+        write_legend_outputs(image, result, directory, digest, path.name)
+    return result

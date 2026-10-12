@@ -1,0 +1,6 @@
+{
+ "absent_bar":[1,2,3,4], "categorical":[1,2,3,4], "hidden_boundaries":[1,2,3,4],
+ "wrong_counts":[1,3], "multipanel":[1,2,3,4], "competing_bars":[1,2,3,4],
+ "missing_tick":[3,4], "nonlinear":[3,4], "touching_text":[3,4], "two_ticks":[3,4],
+ "reason":"Manual supplied scales do not depend on tick visibility. Wrong supplied hints only apply to supplied-count modes. This mapping is fixed before end-to-end evaluation."
+}

@@ -24,6 +24,22 @@ def smoke() -> None:
             "/examples/labels/workflow.py",
             "/M6.md",
             "/M9.md",
+            "/M10.md",
+            "/M11.md",
+            "/M12.md",
+            "/docs/automation.md",
+            "/docs/images/recognition-m12.png",
+            "/src/heatmap_decoder/automation.py",
+            "/examples/m12/request.json",
+            "/benchmarks/m12/test.json",
+            "/docs/legend.md",
+            "/docs/images/recognition.png",
+            "/src/heatmap_decoder/legend.py",
+            "/examples/m11/figure.png",
+            "/benchmarks/m11/report.json",
+            "/src/heatmap_decoder/acceptance.py",
+            "/examples/m10/figure.png",
+            "/benchmarks/m10/report.json",
             "/benchmarks/m9/manifest.json",
             "/benchmarks/m9/report.json",
         ):
@@ -101,6 +117,7 @@ def smoke() -> None:
         )
         check = """
 import sys
+import json
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -108,6 +125,22 @@ import heatmap_decoder as h
 import importlib.util
 assert h.__version__ == sys.argv[1]
 assert importlib.util.find_spec('pytesseract') is None
+config = json.loads(Path(sys.argv[4]).read_text())
+hints = h.DetectionHints(rows=config['rows'], columns=config['columns'], requested=(),
+    heatmap_bbox=config['heatmap_bbox'], colourbar_bbox=config['colourbar_bbox'],
+    colourbar_orientation=config['colourbar_orientation'],
+    colourbar_start_value=config['colourbar_start_value'],
+    colourbar_end_value=config['colourbar_end_value'])
+selective = h.automate(h.load_raster(sys.argv[5]),
+    h.AutomationRequest(hints=hints, numeric_only=True))
+assert selective.complete.status == 'accepted'
+assert not selective.automatic_export_allowed
+assert selective.diagnostic_config is not None
+from heatmap_decoder.calibration import fit_linear_scale
+anchors = (h.ScaleAnchor(position=0, value=2), h.ScaleAnchor(position=100, value=-2))
+fit = fit_linear_scale(anchors, (0, 0, 14, 101), "vertical")
+assert abs(fit.slope + 4) < 1e-12
+assert not fit.tests_linearity
 assert Path(h.__file__).resolve().is_relative_to(Path(sys.argv[2]).resolve())
 matrix = pd.read_csv('results/matrix.csv', header=None).to_numpy()
 truth = pd.read_csv(sys.argv[3], header=None).to_numpy()
@@ -126,6 +159,8 @@ assert list(labelled.columns) == ['Control-1', 'Tumor_2', 'Sample A']
                 __version__,
                 str(environment),
                 str(root / "examples/truth.csv"),
+                str(root / "examples/config.json"),
+                str(root / "examples/figure.png"),
             ],
             check=True,
             cwd=directory,

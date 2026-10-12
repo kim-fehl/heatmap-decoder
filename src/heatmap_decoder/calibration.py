@@ -1,12 +1,16 @@
 """Linear positional calibration and nearest observed colour in CIELAB."""
 
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 import numpy as np
 from numpy.typing import NDArray
 from skimage.color import rgb2lab
 
 from .models import BoolArray, FloatArray
+
+if TYPE_CHECKING:
+    from .models import BoundingBox, ExtractionConfig, LinearScaleFit, ScaleAnchor
 
 
 def calibrate_values(sample_count: int, start: float, end: float) -> FloatArray:
@@ -78,3 +82,113 @@ def match_with_quality(
 def match_colours(cell_rgb: FloatArray, bar_rgb: FloatArray) -> NDArray[np.intp]:
     """Compatibility primitive: nearest indices, without interpreting QC."""
     return match_with_quality(cell_rgb, bar_rgb).indices
+
+
+def normalise_bar_positions(
+    positions: FloatArray,
+    bbox: "BoundingBox",
+    orientation: str,
+) -> FloatArray:
+    """0 = first top/left sample, 1 = last bottom/right sample; no axial inset."""
+    coordinate = 1 if orientation == "vertical" else 0
+    start, last = bbox[coordinate], bbox[coordinate + 2] - 1
+    if orientation not in {"vertical", "horizontal"} or last <= start:
+        raise ValueError("colourbar requires a valid orientation and at least two axial samples")
+    if not np.isfinite(positions).all():
+        raise ValueError("anchor positions must be finite")
+    return np.asarray((positions - start) / (last - start), dtype=np.float64)
+
+
+def fit_linear_scale(
+    anchors: tuple["ScaleAnchor", ...],
+    bbox: "BoundingBox",
+    orientation: str,
+    *,
+    max_value_residual_fraction: float = 0.01,
+    max_position_residual_pixels: float = 2.0,
+    endpoint_tolerance_pixels: float = 2.0,
+    enforce_residuals: bool = True,
+) -> "LinearScaleFit":
+    """Fit all spatial anchors; never discard an outlier or assume equal spacing."""
+    from .models import LinearScaleFit
+
+    if len(anchors) < 2:
+        raise ValueError("linear scale requires at least two anchors")
+    ordered = sorted(anchors, key=lambda anchor: anchor.position)
+    positions = np.array([anchor.position for anchor in ordered], dtype=np.float64)
+    values = np.array([anchor.value for anchor in ordered], dtype=np.float64)
+    t = normalise_bar_positions(positions, bbox, orientation)
+    coordinate = 1 if orientation == "vertical" else 0
+    length = bbox[coordinate + 2] - bbox[coordinate] - 1
+    tolerance = endpoint_tolerance_pixels / length
+    if np.any(t < -tolerance) or np.any(t > 1 + tolerance):
+        raise ValueError("anchor position lies outside the colourbar")
+    if np.any(np.diff(positions) <= 0):
+        raise ValueError("duplicate/conflicting anchor positions")
+    if not np.isfinite(values).all() or not np.isfinite(np.ptp(values)) or np.ptp(values) == 0:
+        raise ValueError("scale needs finite distinct values with nonzero range")
+    differences = np.diff(values)
+    if not (np.all(differences > 0) or np.all(differences < 0)):
+        raise ValueError("scale anchors must be strictly monotonic")
+    design = np.column_stack((t, np.ones(len(t))))
+    condition = float(np.linalg.cond(design))
+    if condition > 1000 or float(np.ptp(t)) * length < 1:
+        raise ValueError("ill-conditioned scale fit; anchor positions are too close")
+    # Rescale values for fitting to avoid numerical overflow at large finite units.
+    reference, value_range = values[0], float(np.ptp(values))
+    coefficients = np.linalg.lstsq(design, (values - reference) / value_range, rcond=None)[0]
+    slope = float(coefficients[0] * value_range)
+    intercept = float(coefficients[1] * value_range + reference)
+    residual = values - (slope * t + intercept)
+    position_residual = residual / slope * length
+    if not np.isfinite([slope, intercept]).all() or slope == 0:
+        raise ValueError("invalid linear scale coefficients")
+    within_limits = not (
+        np.max(np.abs(residual)) / value_range > max_value_residual_fraction + 1e-12
+        or np.max(np.abs(position_residual)) > max_position_residual_pixels + 1e-8
+    )
+    if enforce_residuals and not within_limits:
+        raise ValueError("anchors contradict a linear scale; inspect values and positions")
+    return LinearScaleFit(
+        slope=slope,
+        intercept=intercept,
+        normalised_positions=tuple(t.tolist()),
+        value_residuals=tuple(residual.tolist()),
+        position_residuals_pixels=tuple(position_residual.tolist()),
+        recognised_span=(float(t[0]), float(t[-1])),
+        condition_number=condition,
+        tests_linearity=len(anchors) >= 3,
+        endpoint_coverage=abs(t[0]) * length <= endpoint_tolerance_pixels + 1e-8
+        and abs(t[-1] - 1) * length <= endpoint_tolerance_pixels + 1e-8,
+        within_residual_limits=within_limits,
+    )
+
+
+def scale_values(config: "ExtractionConfig", sample_count: int) -> FloatArray:
+    """Legacy endpoints stay bit-for-bit identical; tick scales use their fitted line."""
+    if sample_count < 2:
+        raise ValueError("calibration requires at least two samples")
+    if config.scale is None or config.scale.source == "manual_endpoints":
+        if config.colourbar_start_value is None or config.colourbar_end_value is None:
+            raise ValueError("manual scale endpoints are unresolved")
+        return calibrate_values(
+            sample_count, config.colourbar_start_value, config.colourbar_end_value
+        )
+    if config.scale.source == "ocr_ticks":
+        raise ValueError("OCR scale requires legend inspection and explicit --legend-review")
+    if any(a.status != "reviewed" or a.origin == "ocr" for a in config.scale.anchors):
+        raise ValueError("tick anchors must be explicitly supplied/reviewed")
+    fit = fit_linear_scale(
+        config.scale.anchors,
+        config.colourbar_bbox,
+        config.colourbar_orientation,
+        max_value_residual_fraction=config.scale.max_value_residual_fraction,
+        max_position_residual_pixels=config.scale.max_position_residual_pixels,
+    )
+    with np.errstate(over="ignore", invalid="ignore"):
+        values = np.asarray(
+            fit.slope * np.linspace(0, 1, sample_count) + fit.intercept, dtype=np.float64
+        )
+    if not np.isfinite(values).all():
+        raise ValueError("fitted scale exceeds finite numerical range")
+    return values
