@@ -6,7 +6,7 @@ from typing import Annotated, Any, Literal, TypeAlias
 
 import numpy as np
 from numpy.typing import NDArray
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 Pixel: TypeAlias = Annotated[int, Field(strict=True, ge=0)]
 BoundingBox: TypeAlias = tuple[Pixel, Pixel, Pixel, Pixel]
@@ -41,6 +41,14 @@ class OCRLabelSource(BaseModel):
     source: Literal["ocr"]
     bbox: BoundingBox
     recognition: Literal["sparse", "slots"] = "sparse"
+    text_rotation_degrees: Annotated[int, Field(strict=True)] = 0
+
+    @field_validator("text_rotation_degrees")
+    @classmethod
+    def validate_rotation(cls, value: int) -> int:
+        if value not in (0, 90, -90):
+            raise ValueError("text_rotation_degrees must be an integer 0, 90 or -90")
+        return value
 
     @model_validator(mode="after")
     def validate_extent(self) -> "OCRLabelSource":
@@ -66,6 +74,12 @@ class LabelsConfig(BaseModel):
     rows: LabelSource | None = None
     columns: LabelSource | None = None
     ocr: OCRConfig = Field(default_factory=OCRConfig)
+
+    @model_validator(mode="after")
+    def validate_row_rotation(self) -> "LabelsConfig":
+        if isinstance(self.rows, OCRLabelSource) and self.rows.text_rotation_degrees != 0:
+            raise ValueError("quarter-turn text_rotation_degrees is supported for columns only")
+        return self
 
 
 class GridConfig(BaseModel):
@@ -175,6 +189,28 @@ class ExtractionConfig(GridConfig):
 
 
 @dataclass(frozen=True)
+class ColourCandidateComponent:
+    """Inclusive bar sample endpoints and their actual calibrated numeric range."""
+
+    first_index: int
+    last_index: int
+    first_position: float
+    last_position: float
+    minimum_value: float
+    maximum_value: float
+
+
+@dataclass(frozen=True)
+class CellColourEvidence:
+    """Engineering near-match sets, not calibrated statistical confidence intervals."""
+
+    kind: Literal["local", "broad_contiguous", "disconnected_near_matches"]
+    components: tuple[ColourCandidateComponent, ...]
+    position_span_fraction: float
+    value_span: float
+
+
+@dataclass(frozen=True)
 class ExtractionResult:
     """Row-major matrices; ΔE76 is a colour diagnostic, not numeric uncertainty.
 
@@ -193,6 +229,7 @@ class ExtractionResult:
     image_shape: tuple[int, ...]
     labels: "LabelExtractionResult | None" = None
     range_limit: NDArray[np.int8] | None = None
+    colour_evidence: tuple[CellColourEvidence | None, ...] | None = None
 
 
 Axis: TypeAlias = Literal["rows", "columns"]

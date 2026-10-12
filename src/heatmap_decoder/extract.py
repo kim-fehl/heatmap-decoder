@@ -4,6 +4,8 @@ import math
 import time
 from collections import Counter
 from collections.abc import Mapping, Sequence
+from dataclasses import replace
+from typing import Literal
 
 import numpy as np
 from PIL import Image
@@ -13,9 +15,10 @@ from .geometry import axis_slots, validate_geometry, validate_grid_geometry
 from .labels import (
     CropTransform,
     apply_review,
+    assign_candidates,
     crop_label_region,
     generated_labels,
-    labels_from_tokens,
+    group_tokens,
     transform_tokens,
     validate_label_slots,
 )
@@ -23,11 +26,14 @@ from .models import (
     Axis,
     AxisLabelResults,
     BoolArray,
+    CellColourEvidence,
     CellFlag,
+    ColourCandidateComponent,
     ExtractionConfig,
     ExtractionResult,
     FileLabelSource,
     GridConfig,
+    LabelCandidate,
     LabelExtractionResult,
     LabelResult,
     OCRRun,
@@ -96,6 +102,7 @@ def extract(
     reconstructed = np.full((count, 3), np.nan, dtype=np.float64)
     flags = np.zeros(count, dtype=np.uint8)
     limits = np.zeros(count, dtype=np.int8)
+    evidence: list[CellColourEvidence | None] = [None] * count
     flags[~valid] = CellFlag.MISSING
     if np.any(valid):
         matches = match_with_quality(
@@ -104,6 +111,32 @@ def extract(
             ambiguity_colour_tolerance=config.ambiguity_colour_tolerance,
             ambiguity_position_fraction=config.ambiguity_position_fraction,
         )
+        for cell, intervals in zip(np.flatnonzero(valid), matches.candidate_intervals, strict=True):
+            components = tuple(
+                ColourCandidateComponent(
+                    a,
+                    b,
+                    a / (len(bar) - 1),
+                    b / (len(bar) - 1),
+                    float(np.min(scale[a : b + 1])),
+                    float(np.max(scale[a : b + 1])),
+                )
+                for a, b in intervals
+            )
+            span = (intervals[-1][1] - intervals[0][0]) / (len(bar) - 1)
+            kind: Literal["local", "broad_contiguous", "disconnected_near_matches"] = (
+                "local"
+                if span <= config.ambiguity_position_fraction
+                else "broad_contiguous"
+                if len(components) == 1
+                else "disconnected_near_matches"
+            )
+            evidence[int(cell)] = CellColourEvidence(
+                kind,
+                components,
+                span,
+                max(c.maximum_value for c in components) - min(c.minimum_value for c in components),
+            )
         inferred[valid] = scale[matches.indices]
         distances[valid] = matches.distance
         reconstructed[valid] = bar[matches.indices]
@@ -132,6 +165,7 @@ def extract(
         image_shape=image.shape,
         labels=label_result,
         range_limit=limits.reshape(shape),
+        colour_evidence=tuple(evidence),
     )
 
 
@@ -196,6 +230,7 @@ def extract_labels(
                     raise ValueError("slot OCR call cap exceeded (128 per axis)")
                 coordinate = 1 if axis == "rows" else 0
                 tokens: list[OCRToken] = []
+                candidates: list[LabelCandidate] = []
                 pixel_budget = 16000000
                 deadline = time.monotonic() + 60
                 for slot in slots:
@@ -205,22 +240,33 @@ def extract_labels(
                     box = (box_list[0], box_list[1], box_list[2], box_list[3])
                     if box[2] <= box[0] or box[3] <= box[1]:
                         continue
-                    transform = CropTransform(box, config.labels.ocr.upscale_factor)
+                    transform = CropTransform(
+                        box, config.labels.ocr.upscale_factor, source.text_rotation_degrees
+                    )
                     factor = transform.upscale_factor
                     pixel_budget -= (box[2] - box[0]) * (box[3] - box[1]) * factor**2
                     if pixel_budget < 0 or time.monotonic() > deadline:
                         raise ValueError("slot OCR pixel/runtime cap exceeded")
-                    crop = Image.fromarray(image).crop(box).convert("L")
-                    crop = crop.resize(
-                        (crop.width * factor, crop.height * factor), Image.Resampling.BICUBIC
-                    )
+                    crop = transform.prepare(Image.fromarray(image))
                     run = recognize(crop, config.labels.ocr, mode="text_line")
                     slot_runs.append((axis, slot.index, box, run))
+                    offset = len(tokens)
+                    candidates.extend(
+                        replace(c, token_indices=tuple(i + offset for i in c.token_indices))
+                        for c in group_tokens(run.tokens, config, axis, transform=transform)
+                    )
                     tokens.extend(transform_tokens(run.tokens, transform))
-                axes.append(labels_from_tokens(tokens, config, axis))
+                axes.append(assign_candidates(candidates, config, axis, tokens=tokens))
                 continue
             crop, transform = crop_label_region(Image.fromarray(image), config, axis)
             run = recognize(crop, config.labels.ocr)
             runs.append((axis, run))
-            axes.append(labels_from_tokens(transform_tokens(run.tokens, transform), config, axis))
+            axes.append(
+                assign_candidates(
+                    group_tokens(run.tokens, config, axis, transform=transform),
+                    config,
+                    axis,
+                    tokens=transform_tokens(run.tokens, transform),
+                )
+            )
     return LabelExtractionResult(config, tuple(axes), tuple(runs), slot_ocr_runs=tuple(slot_runs))

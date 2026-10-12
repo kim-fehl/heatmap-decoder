@@ -1,7 +1,8 @@
 """Linear positional calibration and nearest observed colour in CIELAB."""
 
+from collections import Counter
 from dataclasses import dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import numpy as np
 from numpy.typing import NDArray
@@ -10,7 +11,7 @@ from skimage.color import rgb2lab
 from .models import BoolArray, FloatArray
 
 if TYPE_CHECKING:
-    from .models import BoundingBox, ExtractionConfig, LinearScaleFit, ScaleAnchor
+    from .models import BoundingBox, ExtractionConfig, ExtractionResult, LinearScaleFit, ScaleAnchor
 
 
 def calibrate_values(sample_count: int, start: float, end: float) -> FloatArray:
@@ -37,6 +38,7 @@ class ColourMatch:
     indices: NDArray[np.intp]
     distance: FloatArray
     ambiguous: BoolArray
+    candidate_intervals: tuple[tuple[tuple[int, int], ...], ...] = ()
 
 
 def match_with_quality(
@@ -51,6 +53,8 @@ def match_with_quality(
     Candidates are within best ΔE76 + tolerance. Flag if their total positional
     span exceeds the configured fraction of the full bar. This catches repeated
     colours and extended saturated plateaus, including those at endpoints.
+    Inclusive sample-index components retain disconnected near-matches separately.
+    This evidence does not relax the total-span rule.
     Chunking bounds temporary cell × bar working memory.
     """
     if not np.isfinite([ambiguity_colour_tolerance, ambiguity_position_fraction]).all():
@@ -63,6 +67,7 @@ def match_with_quality(
     indices = np.empty(len(cells), dtype=np.intp)
     distance = np.empty(len(cells), dtype=np.float64)
     ambiguous = np.empty(len(cells), dtype=np.bool_)
+    intervals: list[tuple[tuple[int, int], ...]] = []
     chunk_size = max(1, 1_000_000 // len(bar))
     for offset in range(0, len(cells), chunk_size):
         chunk = cells[offset : offset + chunk_size]
@@ -70,13 +75,17 @@ def match_with_quality(
         best_index = np.argmin(distances, axis=1)
         best_distance = distances[np.arange(len(chunk)), best_index]
         candidates = distances <= best_distance[:, None] + ambiguity_colour_tolerance
+        for mask in candidates:
+            starts = np.flatnonzero(mask & ~np.r_[False, mask[:-1]])
+            ends = np.flatnonzero(mask & ~np.r_[mask[1:], False])
+            intervals.append(tuple((int(a), int(b)) for a, b in zip(starts, ends, strict=True)))
         first = np.argmax(candidates, axis=1)
         last = len(bar) - 1 - np.argmax(candidates[:, ::-1], axis=1)
         target = slice(offset, offset + len(chunk))
         indices[target] = best_index
         distance[target] = best_distance
         ambiguous[target] = (last - first) / (len(bar) - 1) > ambiguity_position_fraction
-    return ColourMatch(indices, distance, ambiguous)
+    return ColourMatch(indices, distance, ambiguous, tuple(intervals))
 
 
 def match_colours(cell_rgb: FloatArray, bar_rgb: FloatArray) -> NDArray[np.intp]:
@@ -192,3 +201,14 @@ def scale_values(config: "ExtractionConfig", sample_count: int) -> FloatArray:
     if not np.isfinite(values).all():
         raise ValueError("fitted scale exceeds finite numerical range")
     return values
+
+
+def colour_quality_summary(result: "ExtractionResult") -> dict[str, Any]:
+    """Summarise engineering ambiguity evidence without changing acceptance."""
+    evidence = [e for e in result.colour_evidence or () if e is not None]
+    return {
+        "colour_qc_version": "observed-bar-components.1",
+        "ambiguity_kind_counts": dict(Counter(e.kind for e in evidence)),
+        "maximum_candidate_value_span": max((e.value_span for e in evidence), default=None),
+        "components_are_statistical_intervals": False,
+    }

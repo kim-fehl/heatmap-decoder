@@ -23,7 +23,7 @@ In v0.2, `extract` integrates these sources and strict review import. With label
 requested, matrix CSV has a gene index/sample header and quality CSV gains matching
 label fields. Omitted label configuration retains v0.1 numeric CSV formats.
 Unresolved labels write review artifacts and block numeric publication with exit 4.
-See `README.md` and `M6.md` for the full workflow. The file adapter now enforces
+See `README.md` and `docs/progress/M6.md` for the full workflow. The file adapter now enforces
 explicit `overwrite=True`, matching the CLI's established overwrite policy.
 
 The `0.2.0.dev4` and `0.2.0.dev5` versions identify milestone development code,

@@ -10,6 +10,7 @@ from typing import Any, Literal
 
 import numpy as np
 
+from .calibration import colour_quality_summary
 from .detection import (
     bar_measurements,
     foreground,
@@ -47,6 +48,7 @@ class PhaseEvidence:
     alignment: float
     widths: tuple[float, ...] = ()
     support: tuple[float, ...] = ()
+    localisation_uncertainties: tuple[float, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -181,12 +183,16 @@ def grid_decision(
         if count == 1 and not positions:
             agreement = 1.0
         phase[axis] = PhaseEvidence(
-            positions, agreement, observed.transition_widths, observed.transition_support
+            positions,
+            agreement,
+            observed.transition_widths,
+            observed.transition_support,
+            observed.transition_uncertainties,
         )
         minimum_observations = min(2, max(0, count - 1))
         if agreement < A.minimum_phase_alignment or len(positions) < minimum_observations:
             reasons.append(f"{axis}_boundary_phase_unverified")
-        if any(w / 2 > max(1.0, 0.1 * pitch) for w in observed.transition_widths):
+        if any(u > max(1.0, 0.1 * pitch) for u in observed.transition_uncertainties):
             reasons.append(f"{axis}_broad_boundary_peaks")
     from .edge_profiles import refine_measured_box
 
@@ -614,5 +620,6 @@ def numeric_decision(
             "missing_or_ambiguous_fraction": missing,
             "maximum_colour_distance": float(np.max(extracted.colour_distance)),
             "finite_fraction": 1 - missing,
+            **colour_quality_summary(extracted),
         },
     )

@@ -23,7 +23,7 @@ and test. No policy tuning follows test inspection.
 Each split has 10 challenge bases; ordinary bases number 15/15/45 with three
 versions each. Different seeded matrices define base figures. Layout templates,
 font, gene list and renderer are shared across splits, limiting independence;
-this is not validation on unseen publication sources. See [M12.md](../../M12.md)
+this is not validation on unseen publication sources. See [docs/progress/M12.md](../../docs/progress/M12.md)
 for gates, results, commands and limits. Running an inspected test again is a
 regression run, not a new held-out evaluation.
 

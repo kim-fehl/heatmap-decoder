@@ -1,5 +1,27 @@
 # Changelog
 
+## M14
+
+- Preserve terminal gridlines supported by regular spacing; distinguish measured
+  stroke centre uncertainty from its width, and account for bounded local raster
+  noise in grid scoring. Retain numeric ambiguity checks and geometry negatives.
+
+- Retain connected near-match components and actual calibrated numeric ranges in
+  QC evidence, without relaxing ambiguity or export thresholds.
+- Preserve broad dark data bands; use supplied-count cell interiors for association.
+- Recover supported neutral-centred bars and retain suppressed-fragment evidence.
+- Add palette-diverse fixtures, historical per-cell audit, frozen synthetic
+  validation, negatives and worked viridis/teal–black–red examples.
+
+
+## M13
+
+- Add explicit 0/±90° column OCR with exact crop transforms, upright grouping,
+  original-coordinate assignment and linked raw provenance.
+- Add geometry/real-OCR tests, conditional spelling evidence and a reviewed example.
+- Move specs to docs/specs/ and milestone logs to docs/progress/; update links and
+  source-distribution checks.
+
 ## Unreleased — current-phase review corrections
 
 - Recover measured colourbar cores without assuming component midpoints; retain
@@ -24,7 +46,7 @@
 - Preregister new development/validation/test base figures, derivatives, four modes
   and numerical release criteria; test symmetric and asymmetric scales at biological
   heatmap sizes. Keep historical reports frozen and identifiers subject to review.
-- Document measured coverage and partial capability results in M12.md and usage docs.
+- Document measured coverage and partial capability results in docs/progress/M12.md and usage docs.
 
 ## Unreleased — M11
 
@@ -105,7 +127,7 @@
   diagnostic overlay and provenance. Support UTF-8 file sources without OCR;
   unresolved slots write review artifacts and return CLI exit 4.
 - Add fixed clean/blur/JPEG/unreadable fixtures, mocked core tests and an opt-in
-  OCR integration CI job. Report accuracy and unresolved proportions in `M5.md`.
+  OCR integration CI job. Report accuracy and unresolved proportions in `docs/progress/M5.md`.
 - Keep numeric reconstruction unchanged; labelled CSVs and review import remain M6.
 
 ## 0.2.0.dev4 — M4
@@ -116,7 +138,7 @@
 - Add crop transforms, shared fixed slots, deterministic fake-token grouping,
   conservative assignment and typed evidence/results, with engine-independent tests.
 - Preserve numerical reconstruction; explicitly reject label-bearing numeric
-  requests until integration. See `MIGRATION.md` and `M4.md`.
+  requests until integration. See `MIGRATION.md` and `docs/progress/M4.md`.
 
 ## 0.1.0
 

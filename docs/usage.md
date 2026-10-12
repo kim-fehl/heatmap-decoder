@@ -134,9 +134,9 @@ bounds, row/column counts, and a separate rectangle tightly containing each axis
 complete labels with padding. The coordinate origin is the upper-left corner;
 convert inclusive endpoint readouts to exclusive right/bottom bounds. The image
 must have a regular grid. Regions may be left/right for rows and above/below for
-columns. Horizontal, upright, single-line text is required; vertical or angled
-sample labels are unsupported. No rotation, dendrogram reconstruction or semantic
-axis inference is performed. Reviewable ROI proposals and M10 development decisions
+columns. Rows must be upright single-line text. Columns also support explicit
+±90° quarter turns; see [rotation signs and examples](rotated-labels.md).
+Arbitrary angles, dendrogram reconstruction and semantic axis inference remain unsupported. Reviewable ROI proposals and M10 development decisions
 are described below; they do not establish identifier correctness.
 
 Add this `labels` object to a complete numeric configuration (the regions below
@@ -205,7 +205,7 @@ It verifies a clean labelled export, a blocked unreadable figure, and a reviewed
 export using the fixture's supplied known labels. For real figures, a person must
 verify/fill the review file; the tool does not infer corrections. For a file-only
 example without OCR, use `examples/labels/file_config.json` with
-`examples/labels/reconstruction.png`. See [M6.md](../M6.md) for API and validation details.
+`examples/labels/reconstruction.png`. See [docs/progress/M6.md](progress/M6.md) for API and validation details.
 
 For in-memory use:
 
@@ -273,7 +273,7 @@ and pandas CSV reading.
 Core tests use mocked OCR and require no wrapper/engine. A separate Ubuntu 24.04,
 Python 3.12 OCR job installs Tesseract/English data, logs engine/data versions and
 the English traineddata hash, runs fixed OCR integration fixtures and the complete
-v0.2 example. See [M5 measurements](../M5.md) and [M6 validation](../M6.md) for the
+v0.2 example. See [M5 measurements](progress/M5.md) and [M6 validation](progress/M6.md) for the
 documented engine environments and distinction between mocked and sensitive tests.
 
 Synthetic tests generate seeded 20 × 20 references independently of extraction,
@@ -299,8 +299,8 @@ values clipped beyond the displayed limits; plateau detection cannot recover the
 
 These values approximate the figure's displayed scale, not exact measurements or
 original pre-transformation biological values. OCR cannot establish biological
-identity; labels need human verification. No automated ROI detection, rotated
-text support, PDF support, web UI or inference of RNA-seq counts is included.
+identity; labels need human verification. Explicit column-label quarter turns are
+supported; arbitrary angles, PDF support, web UI and RNA-seq count recovery are not.
 
 MIT licensed. Input figures remain copyrighted by their respective owners.
 
@@ -341,7 +341,7 @@ uv run heatmap-decoder extract examples/figure.png --config work/m7-roi/config_p
 Minimal hints are `{"rows": 20, "columns": 20}`. To preserve a fixed heatmap,
 add `"heatmap_bbox": [24, 32, 264, 272]` and `"requested": []`. Optional fixed
 colourbar fields use the existing extraction names; no endpoints are inferred.
-`detector` accepts the settings documented in [M7.md](../M7.md). Unsupported requested
+`detector` accepts the settings documented in [docs/progress/M7.md](progress/M7.md). Unsupported requested
 kinds and unknown fields fail validation. Missing required extraction fields remain
 absent in proposed config and are listed in detection metadata.
 
@@ -354,7 +354,7 @@ if extraction still needs a colourbar or endpoints; invalid input exits 2.
 
 The six fixed clean regression layouts have exact top-three bounds. JPEG and some
 blurred borders fail or abstain, and multiple panels remain ambiguous. See the
-[complete M7 report](../M7.md) and [reproducible fixtures](../examples/roi/README.md) for
+[complete M7 report](progress/M7.md) and [reproducible fixtures](../examples/roi/README.md) for
 actual proposal quality and unsupported layouts. Automatic extraction is unavailable.
 
 ## Colourbar, label-region and count proposals (M8)
@@ -378,7 +378,7 @@ uv run --extra ocr heatmap-decoder extract examples/labels/reconstruction.png --
 Selecting a label region preserves the ordinary OCR/review gates; it does not
 accept the text. Missing requested OCR/regions save unresolved artefacts and stop
 saved-review extraction. Colourbar/count operation remains independent of OCR.
-Numerical endpoints are never inferred. See [M8.md](../M8.md) and the
+Numerical endpoints are never inferred. See [docs/progress/M8.md](progress/M8.md) and the
 [runnable M8 fixtures](../examples/roi_m8/README.md) for exact hints and review formats.
 
 The fixed clean bar layouts have exact offered bounds, while the original M8
@@ -397,7 +397,7 @@ makes no claim of practical accuracy on arbitrary scientific figures.
 
 The reviewed comparisons match manual extraction in 18 cases. The OCR challenge
 also records 24 wrong strings among 48 accepted, so verify high-confidence strings.
-See [M9.md](../M9.md) and the [frozen corpus/report](../benchmarks/m9/README.md) for all
+See [docs/progress/M9.md](progress/M9.md) and the [frozen corpus/report](../benchmarks/m9/README.md) for all
 failures, edge tolerances, count ambiguity, provenance and manual override rules.
 
 ```bash
@@ -451,3 +451,7 @@ independent real figures or M12 release evidence. Tick recognition and scale rev
 See [automation and slot recognition](automation.md) for composable requests,
 per-capability reports, exit status 5 and detailed override schemas. The README
 uses the recognition workflow; manual extraction and reviews remain available.
+
+M14 adds [observed-palette and candidate-component QC documentation](palettes.md)
+and [worked numeric examples](../examples/m14/README.md). Numeric thresholds and
+identifier/experimental export scope remain unchanged.

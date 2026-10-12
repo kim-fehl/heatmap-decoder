@@ -1,6 +1,6 @@
 # Frozen M9 hold-out corpus
 
-See [M9.md](../../M9.md) for results, gates, commands and supported limits.
+See [docs/progress/M9.md](../../docs/progress/M9.md) for results, gates, commands and supported limits.
 
 - `manifest.json` / `manifest.sha256`: frozen base IDs, split, annotations, numeric
   truth, image sources/licences and hashes. All 36 figures/code are original MIT

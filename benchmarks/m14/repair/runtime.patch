@@ -1,0 +1,251 @@
+--- a/src/heatmap_decoder/lattice.py
++++ b/src/heatmap_decoder/lattice.py
+@@ -14,6 +14,44 @@
+     transition_widths: tuple[float, ...]
+     transition_support: tuple[float, ...]
+     strokes: tuple[float, ...]
++    transition_uncertainties: tuple[float, ...] = ()
++
++
++def _stroke_centres(pixels: NDArray[np.float64]) -> list[tuple[int, float]]:
++    """Locate narrow dark troughs corroborated across the transverse samples.
++
++    A blurred stroke is a trough between two independently measured cell
++    interiors; its centre dispersion is distinct from its visible width.
++    """
++    candidates = []
++    for i in range(3, len(pixels) - 3):
++        before = np.median(pixels[i - 3 : i - 1], axis=0)
++        after = np.median(pixels[i + 2 : i + 4], axis=0)
++        centre = pixels[i]
++        depression = np.minimum(np.mean(before - centre, axis=1), np.mean(after - centre, axis=1))
++        supported = depression > 12
++        if np.mean(supported) < 0.85:
++            continue
++        if np.median(np.max(centre, axis=1)) > 0.75 * min(
++            np.median(np.max(before, axis=1)), np.median(np.max(after, axis=1))
++        ):
++            continue
++        candidates.append(i)
++    found = []
++    for group in _groups(np.array(candidates, dtype=np.intp)):
++        if len(group) > 3:
++            continue
++        i = int(group[np.argmin(np.mean(pixels[group], axis=(1, 2)))])
++        # Per-sample quadratic trough localisation, bounded to half a pixel.
++        a, b, c = (np.mean(pixels[j], axis=1) for j in (i - 1, i, i + 1))
++        curvature = a - 2 * b + c
++        usable = (curvature > 12) & (b < a) & (b < c)
++        if np.mean(usable) < 0.8:
++            continue
++        shifts = np.clip((a[usable] - c[usable]) / (2 * curvature[usable]), -0.5, 0.5)
++        uncertainty = 0.5 + float(np.quantile(np.abs(shifts), 0.9))
++        found.append((i, uncertainty))
++    return found
+ 
+ 
+ def observe_axis(image: RGBArray, box: BoundingBox, axis: Axis) -> AxisObservations:
+@@ -56,13 +94,38 @@
+             excluded[a:b] = True
+     step = max(1, crop.shape[1] // 32)
+     colours = pixels[:, ~excluded[::step]]
+-    positions, widths, supports = [], [], []
++    positions, widths, supports, uncertainties = [], [], [], []
+     if colours.shape[1] and len(colours) > 1:
+         differences = np.max(np.abs(np.diff(colours, axis=0)), axis=2)
+         gradient = np.mean(differences, axis=1)
+         noise = float(np.median(gradient))
+         threshold = max(8.0, 4 * noise)
+         cross_support = np.mean(differences > max(6.0, 2 * noise), axis=1)
++        measured_strokes = _stroke_centres(colours)
++        for centre, uncertainty in measured_strokes:
++            before = np.median(colours[max(0, centre - 5) : centre - 2], axis=0)
++            after = np.median(colours[centre + 3 : min(len(colours), centre + 6)], axis=0)
++            jumps = np.max(np.abs(before - after), axis=1)
++            support = float(np.mean(jumps > 8))
++            measured_width = float(
++                max(
++                    1,
++                    int(
++                        np.count_nonzero(
++                            gradient[max(0, centre - 3) : min(len(gradient), centre + 3)]
++                            > threshold
++                        )
++                    ),
++                )
++            )
++            gradient[max(0, centre - 3) : min(len(gradient), centre + 3)] = 0
++            bands = [(u, v) for u, v in bands if not u <= centre < v]
++            strokes.append(float(origin + centre + 1))
++            if np.mean(jumps) > 8 and support >= 0.4:
++                positions.append(float(origin + centre + 1))
++                widths.append(measured_width)
++                supports.append(support)
++                uncertainties.append(uncertainty)
+         for a, b in bands:
+             gradient[max(0, a - 1) : min(len(gradient), b)] = 0
+             before = np.median(colours[max(0, a - 3) : a], axis=0)
+@@ -73,6 +136,7 @@
+                 positions.append(float(origin + (a + b) / 2 + 0.5))
+                 widths.append(float(b - a))
+                 supports.append(support)
++                uncertainties.append(float(b - a) / 2)
+         for group in _groups(np.flatnonzero((gradient > threshold) & (cross_support >= 0.4))):
+             # Broad peaks are preserved, never sharpened to fake a precise boundary.
+             if len(group) > 7:
+@@ -83,12 +147,14 @@
+             positions.append(position)
+             widths.append(float(len(group)))
+             supports.append(float(np.mean(cross_support[group])))
+-    ordered = sorted(zip(positions, widths, supports, strict=True))
++            uncertainties.append(float(len(group)) / 2)
++    ordered = sorted(zip(positions, widths, supports, uncertainties, strict=True))
+     return AxisObservations(
+-        tuple(p for p, w, c in ordered),
+-        tuple(w for p, w, c in ordered),
+-        tuple(c for p, w, c in ordered),
+-        tuple(strokes),
++        tuple(p for p, w, c, u in ordered),
++        tuple(w for p, w, c, u in ordered),
++        tuple(c for p, w, c, u in ordered),
++        tuple(sorted(set(strokes))),
++        tuple(u for p, w, c, u in ordered),
+     )
+ 
+ 
+--- a/src/heatmap_decoder/detection.py
++++ b/src/heatmap_decoder/detection.py
+@@ -33,7 +33,7 @@
+ )
+ from .sampling import validate_rgb
+ 
+-DETECTOR_VERSION = "palette-structure.1"
++DETECTOR_VERSION = "grid-strokes.1"
+ 
+ 
+ @dataclass(frozen=True)
+@@ -70,6 +70,21 @@
+     perimeter = np.concatenate((rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]))
+     background = np.median(perimeter, axis=0)
+     return np.asarray(np.max(np.abs(rgb - background), axis=2) > threshold, dtype=np.bool_)
++
++
++def _terminal_grid_stroke(band: RGBArray) -> bool:
++    """A terminal thin dark line must continue at least three equal spacings."""
++    dark = np.mean(np.max(band, axis=2) < 48, axis=1) >= 0.95
++    indices = np.flatnonzero(dark)
++    groups = np.split(indices, np.flatnonzero(np.diff(indices) > 1) + 1)
++    if len(groups) < 4 or not len(groups[0]) or groups[0][0] != 0:
++        return False
++    groups = groups[:4]
++    if any(len(group) != len(groups[0]) or len(group) > 3 for group in groups):
++        return False
++    centres = np.array([float(np.mean(group)) for group in groups])
++    gaps = np.diff(centres)
++    return bool(np.min(gaps) >= 6 and np.ptp(gaps) <= 0.25)
+ 
+ 
+ def refine_box(
+@@ -112,7 +127,9 @@
+             ]
+             # Evidence of a thin strip requires a nonuniform interior within
+             # the bounded scan. A whole dark cell column must not be eroded.
+-            trims.append(uniform[0] and not all(uniform))
++            trims.append(
++                uniform[0] and not all(uniform) and not (reverse and _terminal_grid_stroke(band))
++            )
+         if not any(trims):
+             break
+         left += int(trims[0])
+@@ -157,7 +174,7 @@
+     columns = np.unique(
+         np.linspace(0, hints.columns - 1, min(T.grid_slots_per_axis, hints.columns)).astype(int)
+     )
+-    colours, errors = [], []
++    colours, errors, local_noise = [], [], []
+     for row in rows:
+         for column in columns:
+             ys = np.minimum(
+@@ -170,6 +187,18 @@
+             colour = np.median(pixels, axis=0)
+             colours.append(colour)
+             errors.append(float(np.mean(np.abs(pixels - colour))))
++            # Independent one-pixel differences estimate raster noise, whereas
++            # the spread across separated interior samples measures structure.
++            neighbours = []
++            for dy, dx in ((0, -1), (0, 1), (-1, 0), (1, 0)):
++                near_y = np.clip(ys + dy, top, bottom - 1)
++                near_x = np.clip(xs + dx, left, right - 1)
++                neighbours.append(
++                    image[near_y[:, None], near_x[None, :], :3].astype(float).reshape(-1, 3)
++                )
++            local_noise.append(
++                float(np.median(np.mean(np.abs(np.asarray(neighbours) - pixels), axis=2)))
++            )
+     variation = float(np.mean(np.std(colours, axis=0)))
+     constant = max(0.0, 1 - float(np.mean(errors)) / max(variation, 1))
+     grid_colours = np.asarray(colours).reshape(len(rows), len(columns), 3)
+@@ -178,8 +207,12 @@
+         for axis in (0, 1)
+         if grid_colours.shape[axis] > 1
+     ]
++    residual = float(np.mean(errors))
++    noise = float(np.mean(local_noise))
++    # Never explain away more than half the observed residual as local noise.
++    structural_residual = residual - min(noise, residual / 2)
+     grid = max(
+-        0.0, 1 - T.grid_residual_multiplier * float(np.mean(errors)) / max(max(jumps, default=0), 1)
++        0.0, 1 - T.grid_residual_multiplier * structural_residual / max(max(jumps, default=0), 1)
+     )
+     occupancy = float(
+         np.mean(
+@@ -204,6 +237,9 @@
+         "variation": min(1.0, variation / T.variation_normaliser),
+         "boundary": float(np.mean(boundary)),
+         "equal_grid": grid,
++        "interior_residual_rgb": residual,
++        "local_pixel_noise_rgb": noise,
++        "structural_residual_rgb": structural_residual,
+     }
+ 
+ 
+--- a/src/heatmap_decoder/acceptance.py
++++ b/src/heatmap_decoder/acceptance.py
+@@ -48,6 +48,7 @@
+     alignment: float
+     widths: tuple[float, ...] = ()
+     support: tuple[float, ...] = ()
++    localisation_uncertainties: tuple[float, ...] = ()
+ 
+ 
+ @dataclass(frozen=True)
+@@ -182,12 +183,16 @@
+         if count == 1 and not positions:
+             agreement = 1.0
+         phase[axis] = PhaseEvidence(
+-            positions, agreement, observed.transition_widths, observed.transition_support
++            positions,
++            agreement,
++            observed.transition_widths,
++            observed.transition_support,
++            observed.transition_uncertainties,
+         )
+         minimum_observations = min(2, max(0, count - 1))
+         if agreement < A.minimum_phase_alignment or len(positions) < minimum_observations:
+             reasons.append(f"{axis}_boundary_phase_unverified")
+-        if any(w / 2 > max(1.0, 0.1 * pitch) for w in observed.transition_widths):
++        if any(u > max(1.0, 0.1 * pitch) for u in observed.transition_uncertainties):
+             reasons.append(f"{axis}_broad_boundary_peaks")
+     from .edge_profiles import refine_measured_box
+ 
+--- a/src/heatmap_decoder/detection_policy.py
++++ b/src/heatmap_decoder/detection_policy.py
+@@ -48,7 +48,7 @@
+ 
+ 
+ THRESHOLDS = DetectorThresholds()
+-POLICY_VERSION = "review-acceptance.2"
++POLICY_VERSION = "review-acceptance.3"
+ 
+ 
+ @dataclass(frozen=True)

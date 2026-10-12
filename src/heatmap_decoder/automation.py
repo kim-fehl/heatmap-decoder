@@ -8,7 +8,7 @@ import numpy as np
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from .acceptance import decision
-from .calibration import fit_linear_scale
+from .calibration import colour_quality_summary, fit_linear_scale
 from .detection import detect
 from .detection_policy import ACCEPTANCE_THRESHOLDS as A
 from .detection_policy import policy_snapshot
@@ -230,7 +230,11 @@ def automate(
                 numeric = decision(
                     "numeric_quality",
                     reasons,
-                    {"flagged_fraction": flagged, "finite_fraction": finite},
+                    {
+                        "flagged_fraction": flagged,
+                        "finite_fraction": finite,
+                        **colour_quality_summary(values),
+                    },
                 )
             except ValueError as error:
                 numeric = decision("numeric_quality", [str(error)], {}, unresolved=True)

@@ -1,0 +1,134 @@
+[
+  {
+    "kind": "expand_original",
+    "padding_pixels": 0,
+    "raw_exact": 0,
+    "total": 8,
+    "raw": [
+      "Sample Alpha-O1",
+      "Sample Bravo-02",
+      "Sample Charlie-03",
+      "Sample Delta-04",
+      "Sample Echo-05",
+      "Sample _Foxtrot-06",
+      "Sample _Golf-07",
+      "Sample _Hotel-08"
+    ],
+    "assigned_geometry": 8
+  },
+  {
+    "kind": "expand_original",
+    "padding_pixels": 3,
+    "raw_exact": 0,
+    "total": 8,
+    "raw": [
+      "Sample Alpha-O1",
+      "Sample Bravo-02",
+      "Sample Charlie-03",
+      "Sample Delta-04",
+      "Sample Echo-05",
+      "Sample _Foxtrot-06",
+      "Sample _Golf-07",
+      "Sample _Hotel-08"
+    ],
+    "assigned_geometry": 8
+  },
+  {
+    "kind": "expand_original",
+    "padding_pixels": 5,
+    "raw_exact": 0,
+    "total": 8,
+    "raw": [
+      "Sample Alpha-O1",
+      "Sample Bravo-02",
+      "Sample Charlie-03",
+      "Sample Delta-04",
+      "Sample Echo-05",
+      "Sample _Foxtrot-06",
+      "Sample _Golf-07",
+      "Sample _Hotel-08"
+    ],
+    "assigned_geometry": 8
+  },
+  {
+    "kind": "expand_original",
+    "padding_pixels": 8,
+    "raw_exact": 0,
+    "total": 8,
+    "raw": [
+      "Sample Alpha-O1",
+      "Sample Bravo-02",
+      "Sample Charlie-03",
+      "Sample Delta-04",
+      "Sample Echo-05",
+      "Sample _Foxtrot-06",
+      "Sample _Golf-07",
+      "Sample _Hotel-08"
+    ],
+    "assigned_geometry": 8
+  },
+  {
+    "kind": "blank_border",
+    "padding_pixels": 0,
+    "raw_exact": 0,
+    "total": 8,
+    "raw": [
+      "Sample Alpha-O1",
+      "Sample Bravo-02",
+      "Sample Charlie-03",
+      "Sample Delta-04",
+      "Sample Echo-05",
+      "Sample _Foxtrot-06",
+      "Sample _Golf-07",
+      "Sample _Hotel-08"
+    ]
+  },
+  {
+    "kind": "blank_border",
+    "padding_pixels": 3,
+    "raw_exact": 0,
+    "total": 8,
+    "raw": [
+      "Sample Alpha-O1",
+      "Sample Bravo-02",
+      "Sample Charlie-03",
+      "Sample Delta-04",
+      "Sample Echo-05",
+      "Sample _Foxtrot-06",
+      "Sample _Golf-07",
+      "Sample _Hotel-08"
+    ]
+  },
+  {
+    "kind": "blank_border",
+    "padding_pixels": 5,
+    "raw_exact": 0,
+    "total": 8,
+    "raw": [
+      "Sample Alpha-O1",
+      "Sample Bravo-02",
+      "Sample Charlie-03",
+      "Sample Delta-04",
+      "Sample Echo-05",
+      "Sample _Foxtrot-06",
+      "Sample _Golf-07",
+      "Sample _Hotel-08"
+    ]
+  },
+  {
+    "kind": "blank_border",
+    "padding_pixels": 8,
+    "raw_exact": 0,
+    "total": 8,
+    "raw": [
+      "Sample Alpha-O1",
+      "Sample Bravo-02",
+      "Sample Charlie-03",
+      "Sample Delta-04",
+      "Sample Echo-05",
+      "Sample _Foxtrot-06",
+      "Sample _Golf-07",
+      "Sample _Hotel-08"
+    ]
+  }
+]

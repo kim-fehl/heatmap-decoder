@@ -1,6 +1,6 @@
 # M8 reviewed regions and count alternatives
 
-See [M8.md](../../M8.md) for the full schema, commands, measured quality and limits.
+See [docs/progress/M8.md](../../docs/progress/M8.md) for the full schema, commands, measured quality and limits.
 `hints.json` requests bar/label regions around the fixed M6 labelled figure.
 `selections.json` is its explicit fixture review; inspect the diagnostic before
 using it. `workflow.py` runs that reviewed CLI example and verifies exact labels

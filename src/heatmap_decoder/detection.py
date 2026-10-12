@@ -33,7 +33,7 @@ from .models import (
 )
 from .sampling import validate_rgb
 
-DETECTOR_VERSION = "review-corrections.1"
+DETECTOR_VERSION = "grid-strokes.1"
 
 
 @dataclass(frozen=True)
@@ -72,6 +72,21 @@ def foreground(image: RGBArray, threshold: float) -> BoolArray:
     return np.asarray(np.max(np.abs(rgb - background), axis=2) > threshold, dtype=np.bool_)
 
 
+def _terminal_grid_stroke(band: RGBArray) -> bool:
+    """A terminal thin dark line must continue at least three equal spacings."""
+    dark = np.mean(np.max(band, axis=2) < 48, axis=1) >= 0.95
+    indices = np.flatnonzero(dark)
+    groups = np.split(indices, np.flatnonzero(np.diff(indices) > 1) + 1)
+    if len(groups) < 4 or not len(groups[0]) or groups[0][0] != 0:
+        return False
+    groups = groups[:4]
+    if any(len(group) != len(groups[0]) or len(group) > 3 for group in groups):
+        return False
+    centres = np.array([float(np.mean(group)) for group in groups])
+    gaps = np.diff(centres)
+    return bool(np.min(gaps) >= 6 and np.ptp(gaps) <= 0.25)
+
+
 def refine_box(
     image: RGBArray,
     box: BoundingBox,
@@ -101,10 +116,20 @@ def refine_box(
         crop = image[top:bottom, left:right, :3]
         if min(crop.shape[:2]) <= 2:
             break
-        trims = [
-            np.max(np.ptp(edge.astype(float), axis=0)) < T.uniform_rgb_spread
-            for edge in (crop[:, 0], crop[0], crop[:, -1], crop[-1])
-        ]
+        trims = []
+        for axis, reverse in ((1, False), (0, False), (1, True), (0, True)):
+            band = crop.transpose(1, 0, 2) if axis == 1 else crop
+            if reverse:
+                band = band[::-1]
+            uniform = [
+                np.max(np.ptp(edge.astype(float), axis=0)) < T.uniform_rgb_spread
+                for edge in band[: T.border_trim_pixels + 1]
+            ]
+            # Evidence of a thin strip requires a nonuniform interior within
+            # the bounded scan. A whole dark cell column must not be eroded.
+            trims.append(
+                uniform[0] and not all(uniform) and not (reverse and _terminal_grid_stroke(band))
+            )
         if not any(trims):
             break
         left += int(trims[0])
@@ -149,7 +174,7 @@ def score_box(
     columns = np.unique(
         np.linspace(0, hints.columns - 1, min(T.grid_slots_per_axis, hints.columns)).astype(int)
     )
-    colours, errors = [], []
+    colours, errors, local_noise = [], [], []
     for row in rows:
         for column in columns:
             ys = np.minimum(
@@ -162,6 +187,18 @@ def score_box(
             colour = np.median(pixels, axis=0)
             colours.append(colour)
             errors.append(float(np.mean(np.abs(pixels - colour))))
+            # Independent one-pixel differences estimate raster noise, whereas
+            # the spread across separated interior samples measures structure.
+            neighbours = []
+            for dy, dx in ((0, -1), (0, 1), (-1, 0), (1, 0)):
+                near_y = np.clip(ys + dy, top, bottom - 1)
+                near_x = np.clip(xs + dx, left, right - 1)
+                neighbours.append(
+                    image[near_y[:, None], near_x[None, :], :3].astype(float).reshape(-1, 3)
+                )
+            local_noise.append(
+                float(np.median(np.mean(np.abs(np.asarray(neighbours) - pixels), axis=2)))
+            )
     variation = float(np.mean(np.std(colours, axis=0)))
     constant = max(0.0, 1 - float(np.mean(errors)) / max(variation, 1))
     grid_colours = np.asarray(colours).reshape(len(rows), len(columns), 3)
@@ -170,8 +207,12 @@ def score_box(
         for axis in (0, 1)
         if grid_colours.shape[axis] > 1
     ]
+    residual = float(np.mean(errors))
+    noise = float(np.mean(local_noise))
+    # Never explain away more than half the observed residual as local noise.
+    structural_residual = residual - min(noise, residual / 2)
     grid = max(
-        0.0, 1 - T.grid_residual_multiplier * float(np.mean(errors)) / max(max(jumps, default=0), 1)
+        0.0, 1 - T.grid_residual_multiplier * structural_residual / max(max(jumps, default=0), 1)
     )
     occupancy = float(
         np.mean(
@@ -196,6 +237,9 @@ def score_box(
         "variation": min(1.0, variation / T.variation_normaliser),
         "boundary": float(np.mean(boundary)),
         "equal_grid": grid,
+        "interior_residual_rgb": residual,
+        "local_pixel_noise_rgb": noise,
+        "structural_residual_rgb": structural_residual,
     }
 
 
@@ -464,6 +508,59 @@ def colourbar_candidates(
             if left == 0 or top == 0 or right == image.shape[1] or bottom == image.shape[0]:
                 reasons.append("touches_image_edge_possible_clipping")
             scored[refined] = (score, components, orientation, tuple(reasons))
+    # Component windows can truncate one physical bar around a neutral centre.
+    # Suppress a contained fragment only when its internal endpoint demonstrably
+    # continues through a smooth, changing profile into a closed full core.
+    # Distinct bars and endpoints with strokes/plateaus remain competitors.
+    from .edge_profiles import measure_edges
+
+    fragments = set()
+    for box, (_, parts, orientation, _) in scored.items():
+        along, cross = (1, 0) if orientation == "vertical" else (0, 1)
+        for parent, (_, parent_parts, parent_orientation, _) in scored.items():
+            if box == parent or orientation != parent_orientation:
+                continue
+            if not (parent[along] <= box[along] < box[along + 2] <= parent[along + 2]):
+                continue
+            if max(abs(parent[cross] - box[cross]), abs(parent[cross + 2] - box[cross + 2])) > 1:
+                continue
+            if parent_parts["longest_plateau_fraction"] > 0.12:
+                continue
+            if not all(edge.closed for edge in measure_edges(image, parent)):
+                continue
+            x, y, r, t = parent
+            crop = image[y:t, x:r, :3].astype(float)
+            if orientation == "horizontal":
+                crop = crop.transpose(1, 0, 2)
+            profile = np.median(crop, axis=1)
+            internal = [
+                end - parent[along]
+                for end in (box[along], box[along + 2])
+                if parent[along] < end < parent[along + 2]
+            ]
+            continued = bool(internal)
+            for end in internal:
+                section = profile[max(0, end - 3) : min(len(profile), end + 3)]
+                steps = np.max(np.abs(np.diff(section, axis=0)), axis=1)
+                if (
+                    not len(steps)
+                    or np.max(steps) > T.bar_maximum_step
+                    or np.mean(steps > 0.25) < 0.5
+                ):
+                    continued = False
+            if continued:
+                fragments.add(box)
+                if audit is not None:
+                    audit.append(
+                        {
+                            "rejection": "continued_core_fragment",
+                            "bbox": box,
+                            "parent_bbox": parent,
+                            "evidence": "closed full core; smooth changing internal endpoint",
+                        }
+                    )
+                break
+    scored = {box: value for box, value in scored.items() if box not in fragments}
     if len(scored) > hints.detector.max_candidates:
         truncated = True
     return tuple(
@@ -513,7 +610,10 @@ def bar_measurements(crop: NDArray[np.float64]) -> dict[str, float]:
 
 
 def _associate_bars(
-    image: RGBArray, heatmaps: dict[str, BoundingBox], bars: tuple[ROICandidate, ...]
+    image: RGBArray,
+    heatmaps: dict[str, BoundingBox],
+    bars: tuple[ROICandidate, ...],
+    hints: DetectionHints | None = None,
 ) -> tuple["ROIAssociation", ...]:
     from skimage.color import rgb2lab
 
@@ -528,7 +628,40 @@ def _associate_bars(
         # strides can land on every grid stroke and miss all cell colours.
         stride_y = max(1, crop.shape[0] // T.association_heatmap_samples)
         stride_x = max(1, crop.shape[1] // T.association_heatmap_samples)
-        colours = crop[stride_y // 2 :: stride_y, stride_x // 2 :: stride_x].reshape(-1, 3)
+        colours: NDArray[np.float64] = (
+            crop[stride_y // 2 :: stride_y, stride_x // 2 :: stride_x].reshape(-1, 3).astype(float)
+        )
+        sampling = "bounded image-bin centres"
+        if hints is not None and hints.rows is not None and hints.columns is not None:
+            from .geometry import axis_slots, interior_slice
+            from .models import GridConfig
+
+            grid = GridConfig(heatmap_bbox=box, rows=hints.rows, columns=hints.columns)
+            row_slots, column_slots = axis_slots(grid, "rows"), axis_slots(grid, "columns")
+            row_indices = np.unique(
+                np.linspace(0, grid.rows - 1, min(grid.rows, T.association_heatmap_samples)).astype(
+                    int
+                )
+            )
+            column_indices = np.unique(
+                np.linspace(
+                    0, grid.columns - 1, min(grid.columns, T.association_heatmap_samples)
+                ).astype(int)
+            )
+            samples = []
+            try:
+                for row_index in row_indices:
+                    row = row_slots[row_index]
+                    ys = interior_slice(row.start, row.end, 0.25)
+                    for column_index in column_indices:
+                        column = column_slots[column_index]
+                        xs = interior_slice(column.start, column.end, 0.25)
+                        samples.append(np.median(image[ys, xs, :3], axis=(0, 1)))
+            except ValueError:
+                samples = []
+            if samples:
+                colours = np.asarray(samples)
+                sampling = "median supplied-count cell interiors; inset 0.25"
         lab = rgb2lab(colours[None].astype(float) / 255)[0]
         for bar in bars:
             if attempts >= A.maximum_association_pairs:
@@ -567,7 +700,11 @@ def _associate_bars(
                         "axis_alignment": alignment,
                         "proximity": proximity,
                     },
-                    reasons=("review_required", "palette_and_proximity_do_not_identify_target"),
+                    reasons=(
+                        "review_required",
+                        "palette_and_proximity_do_not_identify_target",
+                        sampling,
+                    ),
                 )
             )
     return tuple(result)
@@ -915,7 +1052,7 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         )
     else:
         proposals.extend(bars)
-    associations = _associate_bars(image, heatmaps, bars)
+    associations = _associate_bars(image, heatmaps, bars, hints)
     warnings = list(heatmap.warnings)
     label_evidence: tuple[LabelLocalisationEvidence, ...] = ()
     if (

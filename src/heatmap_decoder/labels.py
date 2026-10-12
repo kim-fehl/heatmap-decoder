@@ -1,4 +1,4 @@
-"""Deterministic horizontal-label geometry, with no OCR engine dependency.
+"""Deterministic explicit-orientation label geometry, with no OCR engine dependency.
 
 Rows describe genes, columns describe samples, always in the displayed order.
 Geometry cannot establish biological identity. All evidence survives assignment.
@@ -41,8 +41,15 @@ class CropTransform:
 
     bbox: BoundingBox
     upscale_factor: int = 3
+    text_rotation_degrees: int = 0
 
     def __post_init__(self) -> None:
+        if (
+            isinstance(self.text_rotation_degrees, bool)
+            or not isinstance(self.text_rotation_degrees, int)
+            or self.text_rotation_degrees not in (0, 90, -90)
+        ):
+            raise ValueError("text_rotation_degrees must be an integer 0, 90 or -90")
         _validate_box(self.bbox)
         if self.bbox[0] < 0 or self.bbox[1] < 0:
             raise ValueError("crop origin must be nonnegative")
@@ -51,30 +58,65 @@ class CropTransform:
         if self.upscale_factor < 1:
             raise ValueError("upscale_factor must be an integer >= 1")
 
-    def to_original(self, box: TextBox) -> TextBox:
-        _validate_box(box)
+    @property
+    def crop_size(self) -> tuple[int, int]:
+        width = self.bbox[2] - self.bbox[0]
+        height = self.bbox[3] - self.bbox[1]
+        if self.text_rotation_degrees:
+            width, height = height, width
+        return width * self.upscale_factor, height * self.upscale_factor
+
+    def prepare(self, image: Image.Image) -> Image.Image:
+        """Inverse visual rotation, exactly, before the existing upscale."""
+        crop = image.crop(self.bbox).convert("L")
+        if self.text_rotation_degrees == 90:
+            crop = crop.transpose(Image.Transpose.ROTATE_270)
+        elif self.text_rotation_degrees == -90:
+            crop = crop.transpose(Image.Transpose.ROTATE_90)
+        return crop.resize(self.crop_size, Image.Resampling.BICUBIC)
+
+    def _point(self, x: float, y: float, *, inverse: bool) -> tuple[float, float]:
         left, top, right, bottom = self.bbox
-        x0, y0, x1, y1 = box
+        width, height = right - left, bottom - top
         factor = self.upscale_factor
-        if not (0 <= x0 < x1 <= (right - left) * factor):
-            raise ValueError("token box must lie inside the resized crop")
-        if not (0 <= y0 < y1 <= (bottom - top) * factor):
-            raise ValueError("token box must lie inside the resized crop")
-        return left + x0 / factor, top + y0 / factor, left + x1 / factor, top + y1 / factor
+        angle = self.text_rotation_degrees
+        if inverse:
+            x, y = x / factor, y / factor
+            if angle == 90:
+                x, y = y, height - x
+            elif angle == -90:
+                x, y = width - y, x
+            return left + x, top + y
+        x, y = x - left, y - top
+        if angle == 90:
+            x, y = height - y, x
+        elif angle == -90:
+            x, y = y, width - x
+        return x * factor, y * factor
+
+    def _box(self, box: TextBox, *, inverse: bool) -> TextBox:
+        _validate_box(box)
+        x0, y0, x1, y1 = box
+        bounds = (0, 0, *self.crop_size) if inverse else self.bbox
+        if not (bounds[0] <= x0 < x1 <= bounds[2] and bounds[1] <= y0 < y1 <= bounds[3]):
+            raise ValueError(
+                "token box must lie inside the resized crop"
+                if inverse
+                else "token box must lie inside the original crop"
+            )
+        corners = [self._point(x, y, inverse=inverse) for x in (x0, x1) for y in (y0, y1)]
+        return (
+            min(p[0] for p in corners),
+            min(p[1] for p in corners),
+            max(p[0] for p in corners),
+            max(p[1] for p in corners),
+        )
+
+    def to_original(self, box: TextBox) -> TextBox:
+        return self._box(box, inverse=True)
 
     def to_crop(self, box: TextBox) -> TextBox:
-        _validate_box(box)
-        left, top, right, bottom = self.bbox
-        x0, y0, x1, y1 = box
-        if not (left <= x0 < x1 <= right and top <= y0 < y1 <= bottom):
-            raise ValueError("token box must lie inside the original crop")
-        factor = self.upscale_factor
-        return (
-            (x0 - left) * factor,
-            (y0 - top) * factor,
-            (x1 - left) * factor,
-            (y1 - top) * factor,
-        )
+        return self._box(box, inverse=False)
 
 
 def crop_label_region(
@@ -86,12 +128,12 @@ def crop_label_region(
     if not isinstance(source, OCRLabelSource):
         raise ValueError(f"labels.{axis} must specify an OCR region")
     assert config.labels is not None
-    transform = CropTransform(source.bbox, config.labels.ocr.upscale_factor)
-    crop = image.crop(source.bbox).convert("L")
-    factor = transform.upscale_factor
-    return crop.resize(
-        (crop.width * factor, crop.height * factor), Image.Resampling.BICUBIC
-    ), transform
+    transform = CropTransform(
+        source.bbox, config.labels.ocr.upscale_factor, source.text_rotation_degrees
+    )
+    if math.prod(transform.crop_size) > 16000000:
+        raise ValueError("label OCR pixel cap exceeded")
+    return transform.prepare(image), transform
 
 
 def transform_tokens(tokens: Sequence[OCRToken], transform: CropTransform) -> tuple[OCRToken, ...]:
@@ -131,14 +173,20 @@ def _same_line(a: OCRToken, b: OCRToken) -> bool:
 
 
 def group_tokens(
-    tokens: Sequence[OCRToken], config: GridConfig, axis: Axis
+    tokens: Sequence[OCRToken],
+    config: GridConfig,
+    axis: Axis,
+    *,
+    transform: CropTransform | None = None,
 ) -> tuple[LabelCandidate, ...]:
     """Group upright words geometrically, preserving token membership and spelling.
 
+    With a transform, grouping uses the upright OCR frame and bands use original x.
     Column words are grouped only within the same full column band. A token
     crossing a band is kept intact for ambiguity review, never split to fit.
     """
     slots = axis_slots(config, axis)
+    original = transform_tokens(tokens, transform) if transform else tokens
     valid = []
     for i, token in enumerate(tokens):
         if not token.text.strip() or token.confidence < 0:
@@ -153,9 +201,9 @@ def group_tokens(
         token = tokens[i]
         matches = []
         for group in groups:
-            band = _column_band(token.bbox, slots)
+            band = _column_band(original[i].bbox, slots)
             if axis == "columns" and (
-                band is None or any(_column_band(tokens[j].bbox, slots) != band for j in group)
+                band is None or any(_column_band(original[j].bbox, slots) != band for j in group)
             ):
                 continue
             if all(_same_line(token, tokens[j]) for j in group):
@@ -171,7 +219,7 @@ def group_tokens(
         candidates.append(
             LabelCandidate(
                 text=" ".join(tokens[i].text.strip() for i in group),
-                bbox=_union_box([tokens[i].bbox for i in group]),
+                bbox=_union_box([original[i].bbox for i in group]),
                 confidence=min(tokens[i].confidence for i in group),
                 token_indices=tuple(group),
             )

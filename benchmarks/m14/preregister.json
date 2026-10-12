@@ -1,0 +1,17 @@
+{
+  "phase": "M14",
+  "generator_version": 1,
+  "scope": "synthetic palette development/validation; no publication generalisation",
+  "partitions": "28 bases per split, 3 derivatives each; derivatives remain with base",
+  "palettes": ["viridis", "magma", "cividis", "grayscale", "blue_white_red", "teal_black_red", "asymmetric"],
+  "layout_axes": ["horizontal/vertical bars", "light/dark backgrounds", "grid/no-grid", "ascending/descending fixed scale"],
+  "ordinary": "all generated palette/layout/variant cases remain in coverage denominator",
+  "negatives": ["repeated", "plateau", "categorical", "competing_bars", "off_bar", "quantised", "clipped"],
+  "structural_challenges": ["black_border", "dark_band"],
+  "numeric_checks": {"mae_fraction": 0.02, "maximum_fraction": 0.05, "finite_fraction": 1.0, "flagged_fraction": 0.01},
+  "geometry_checks": {"heatmap_edge_pitch": 0.1, "colourbar_edge_pixels": 1},
+  "recogniser_inputs": "supplied counts and numeric endpoints only; no palette, truth colours, ROIs or truth selection",
+  "manual_geometry_mode": "separate diagnostic experiment with known full ROIs and plotted truth",
+  "qc": "retain previous candidate-span thresholds; components are diagnostics, not permission to accept",
+  "historical": "corrections validation is inspected development regression; reports preserved"
+}

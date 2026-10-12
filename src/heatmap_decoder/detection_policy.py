@@ -48,7 +48,7 @@ class DetectorThresholds:
 
 
 THRESHOLDS = DetectorThresholds()
-POLICY_VERSION = "review-acceptance.1"
+POLICY_VERSION = "review-acceptance.3"
 
 
 @dataclass(frozen=True)

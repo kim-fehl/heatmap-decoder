@@ -21,7 +21,7 @@ truth; `reconstruction_unreadable.png` blurs only label regions so numeric pixel
 stay identical. `extract_config.json` requests OCR, `numeric_config.json` omits
 labels, and `file_config.json` uses UTF-8 `genes.txt`/`samples.txt` without OCR.
 `reviewed_example.tsv` supplies the known fixture labels for the correction demo.
-For real images, verify and fill the review TSV manually. See [M6.md](../../M6.md).
+For real images, verify and fill the review TSV manually. See [docs/progress/M6.md](../../docs/progress/M6.md).
 
 `truth.json` preserves the displayed order. `clean.png` uses upright horizontal
 DejaVu Sans 30 px; `blur.png` applies Gaussian radius 2; `compressed.jpg` uses
@@ -32,4 +32,4 @@ these fixed images. To regenerate, install fonts-dejavu-core and run
 The clean image recovered 7/7 exact labels locally with default settings.
 Blur recovered 6/7 despite zero unresolved slots: accepted OCR can be wrong.
 JPEG left 1/7 unresolved; the unreadable image left 7/7 unresolved. See the
-[M5 report](../../M5.md) for environment versions, measurements and limitations.
+[M5 report](../../docs/progress/M5.md) for environment versions, measurements and limitations.

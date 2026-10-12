@@ -121,7 +121,7 @@ and sample string; no dictionary substitution, underscore restoration, O/0
 conversion or fit-dependent OCR retries are performed.
 
 See [current corrections and validation](corrections.md) and the separate
-[historical M12 measurements](../M12.md). Synthetic testing does not establish
+[historical M12 measurements](progress/M12.md). Synthetic testing does not establish
 reliability on unseen publication figures.
 
 ## Experimental numeric export

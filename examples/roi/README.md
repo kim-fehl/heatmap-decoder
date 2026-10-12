@@ -1,6 +1,6 @@
 # M7 coordinate review
 
-See [M7.md](../../M7.md) for commands, exact schemas, settings and limitations.
+See [docs/progress/M7.md](../../docs/progress/M7.md) for commands, exact schemas, settings and limitations.
 `hints.json` requests the heatmap in `../figure.png`, with manual colourbar
 coordinates and user-supplied endpoints. `detect` exits 5 after writing review
 artefacts. Inspect the overlay, then explicitly select `heatmap-001` or edit the

@@ -1,0 +1,32 @@
+{
+  "heatmap_bbox": [
+    40,
+    380,
+    552,
+    540
+  ],
+  "rows": 4,
+  "columns": 8,
+  "colourbar_bbox": [
+    40,
+    570,
+    296,
+    590
+  ],
+  "colourbar_orientation": "horizontal",
+  "colourbar_start_value": 0,
+  "colourbar_end_value": 1,
+  "labels": {
+    "columns": {
+      "source": "ocr",
+      "bbox": [
+        40,
+        20,
+        552,
+        360
+      ],
+      "text_rotation_degrees": 90,
+      "recognition": "slots"
+    }
+  }
+}

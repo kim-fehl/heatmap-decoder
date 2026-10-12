@@ -188,7 +188,7 @@ HEATMAP_DECODER_OCR_TESTS=1 uv run --extra ocr pytest -q
 uv run --extra ocr python benchmarks/m11/evaluate.py --out work/m11-report.json
 ```
 
-See [M11 results](../M11.md) for actual accuracy/failures and
+See [M11 results](progress/M11.md) for actual accuracy/failures and
 [detailed manual/label/ROI usage](usage.md) for overrides and review formats.
 
 ## M12 association update

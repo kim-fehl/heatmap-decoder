@@ -9,9 +9,10 @@ from typing import Any
 import numpy as np
 from numpy.typing import NDArray
 
+from .detection_policy import THRESHOLDS as T
 from .models import BoundingBox, RGBArray
 
-CORE_SEARCH_VERSION = "core-profile.1"
+CORE_SEARCH_VERSION = "core-profile.2"
 MAX_AXIS_SAMPLES = 512
 MAX_CORES_PER_WINDOW = 16
 
@@ -92,10 +93,17 @@ def search_bar_cores(
                     previous = merged[-1]
                     gap = int(run[0] - previous[-1] - 1)
                     bridge = profile[int(previous[-1]) : int(run[0]) + 1]
-                    if (
-                        gap <= max(4, length // 10)
-                        and np.max(np.abs(np.diff(bridge, axis=0))) <= 20
-                    ):
+                    varying_bridge = (
+                        gap <= T.bar_join_gap_fraction * length
+                        and np.max(np.ptp(bridge, axis=0)) >= background_distance
+                        and np.mean(np.max(np.abs(np.diff(bridge, axis=0)), axis=1) > 0.25) >= 0.5
+                    )
+                    if (gap <= max(4, length // 10) or varying_bridge) and np.max(
+                        np.abs(np.diff(bridge, axis=0))
+                    ) <= 20:
+                        audit.append(
+                            dict(joined_gap_pixels=gap, varying_bridge=bool(varying_bridge))
+                        )
                         merged[-1] = np.arange(previous[0], run[-1] + 1, dtype=np.intp)
                         continue
                 merged.append(run)

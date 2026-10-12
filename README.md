@@ -3,10 +3,10 @@
 Recover **approximate displayed-scale tables** from mainly biological expression
 heatmaps when the original matrix is unavailable. Expect genes on rows, samples
 on columns, a regular rectangular grid and a separate continuous colourbar.
-PNG/JPEG, sequential/diverging/grayscale palettes, bars on any side, and upright
-horizontal labels are supported.
+PNG/JPEG, sequential/diverging/grayscale palettes, bars on any side, and upright row labels
+are supported. Sample labels additionally support explicit ±90° rotations.
 
-**Current phase: M12 with review corrections.** Automatic regions and conditional
+**Current phase: M14 palette-diverse reconstruction and numeric-QC audit.** Automatic regions and conditional
 count inference are implemented. Default automation produces review evidence;
 `--experimental-export` enables numeric tables with supplied counts and a supplied
 or reviewed linear scale when every image check passes. Inferred counts and OCR
@@ -76,6 +76,12 @@ for your own figure. Numeric-only/manual operation can run without OCR.
 
 [Automation, slot OCR and overrides](docs/automation.md) ·
 [Detailed usage](docs/usage.md) · [Scale review](docs/legend.md) ·
-[Historical M12 evidence](M12.md)
+[Historical M12 evidence](docs/progress/M12.md)
 
 MIT code; input figures retain their owners' copyright.
+
+[Rotated sample labels and reviewed example](docs/rotated-labels.md) ·
+[M13 results](docs/progress/M13.md) · [Specifications](docs/specs/) ·
+[Milestone progress logs](docs/progress/)
+
+[Observed palettes and ambiguity](docs/palettes.md) · [M14 results](docs/progress/M14.md) · [Geometry repairs](docs/progress/M14-repair.md)

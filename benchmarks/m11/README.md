@@ -23,4 +23,4 @@ uv run --extra ocr python benchmarks/m11/evaluate.py --out work/m11-report.json
 
 OCR outcomes depend on engine/language/font versions. Raw metadata and every
 failed/unresolved case are retained, including dense seven-tick horizontal labels.
-See [M11](../../M11.md) for observed results and limitations.
+See [M11](../../docs/progress/M11.md) for observed results and limitations.

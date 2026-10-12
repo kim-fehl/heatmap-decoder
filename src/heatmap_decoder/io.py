@@ -13,6 +13,7 @@ from typing import Any, cast
 import numpy as np
 from PIL import Image
 
+from .calibration import colour_quality_summary
 from .diagnostics import diagnostic_image, labels_diagnostic_image
 from .extract import UnresolvedLabelsError, extract, extract_labels
 from .geometry import validate_geometry
@@ -31,6 +32,7 @@ from .models import (
     LegendResult,
     LegendTick,
     OCRLabelSource,
+    OCRRun,
     ReviewLabels,
     RGBArray,
     ROIReview,
@@ -86,11 +88,17 @@ def write_quality_csv(result: ExtractionResult, path: str | Path) -> None:
             "valid_fraction",
             "candidate_value",
             "value_kind",
+            "colour_candidate_evidence",
         ]
         writer.writerow(
             header + (["row_label", "column_label"] if result.labels is not None else [])
         )
         for row, column in np.ndindex(result.values.shape):
+            colour_evidence = (
+                result.colour_evidence[row * result.config.columns + column]
+                if result.colour_evidence is not None
+                else None
+            )
             writer.writerow(
                 [
                     row,
@@ -106,6 +114,7 @@ def write_quality_csv(result: ExtractionResult, path: str | Path) -> None:
                     else "possible_lower_bound"
                     if result.range_limit is not None and result.range_limit[row, column] == 1
                     else "estimate",
+                    json.dumps(asdict(colour_evidence)) if colour_evidence is not None else "",
                 ]
                 + (
                     [
@@ -162,11 +171,15 @@ def provenance(
             "calibration": "linear position; first/last bar pixel = start/end",
             "colour_distance": "CIELAB Delta E 1976 (D65); not numeric uncertainty",
             "ambiguity": "near-best candidates spanning more than positional threshold",
+            "colour_qc_version": "observed-bar-components.1",
+            "candidate_components": "inclusive sample endpoints mapped through calibrated scale",
+            "candidate_intervals": "engineering tolerance sets; not statistical intervals",
             "missing": "explicit mask, nonopaque alpha, configured missing colours",
             "values": "NaN for missing/ambiguous; poor unambiguous estimates retained",
         },
         "quality": {
             "cells": int(result.flags.size),
+            **colour_quality_summary(result),
             "flagged_fraction": float(np.mean(result.flags != 0)),
             "flag_fractions": {
                 item.name: float(np.mean((result.flags & item) != 0)) for item in CellFlag
@@ -548,6 +561,49 @@ def write_labels_review(result: LabelExtractionResult, path: str | Path) -> None
             writer.writerows((axis.axis, slot.index, slot.final_text) for slot in axis.slots)
 
 
+def _label_transform(
+    config: GridConfig, axis: Axis, box: tuple[int, int, int, int]
+) -> dict[str, Any]:
+    from .labels import CropTransform
+
+    source = getattr(config.labels, axis) if config.labels else None
+    angle = source.text_rotation_degrees if isinstance(source, OCRLabelSource) else 0
+    factor = config.labels.ocr.upscale_factor if config.labels else 1
+    transform = CropTransform(box, factor, angle)
+    return {
+        "crop_bbox": box,
+        "text_rotation_degrees": angle,
+        "normalisation_rotation_degrees": -angle,
+        "upscale_factor": factor,
+        "ocr_size": transform.crop_size,
+        "rotation": "Pillow exact transpose",
+        "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+        "grouping_frame": "upright OCR pixels",
+        "assignment_frame": "original image pixels",
+    }
+
+
+def _label_run_geometry(
+    config: GridConfig, axis: Axis, box: tuple[int, int, int, int], run: OCRRun
+) -> dict[str, Any]:
+    """Keep candidate boxes in both frames, linked to the local engine token indices."""
+    from .labels import CropTransform, group_tokens, transform_tokens
+
+    details = _label_transform(config, axis, box)
+    transform = CropTransform(box, details["upscale_factor"], details["text_rotation_degrees"])
+    return {
+        "original_tokens": [asdict(token) for token in transform_tokens(run.tokens, transform)],
+        "candidates": [
+            {
+                **asdict(candidate),
+                "ocr_bbox": transform.to_crop(candidate.bbox),
+                "original_bbox": candidate.bbox,
+            }
+            for candidate in group_tokens(run.tokens, config, axis, transform=transform)
+        ],
+    }
+
+
 def label_provenance(
     result: LabelExtractionResult,
     *,
@@ -572,11 +628,30 @@ def label_provenance(
             if result.ocr_runs or result.slot_ocr_runs
             else "not_requested",
             "runs": {axis: asdict(run) for axis, run in result.ocr_runs},
+            "transforms": {
+                axis: _label_transform(result.config, axis, source.bbox)
+                for axis, _ in result.ocr_runs
+                if result.config.labels is not None
+                and isinstance(source := getattr(result.config.labels, axis), OCRLabelSource)
+            },
+            "run_geometry": {
+                axis: _label_run_geometry(result.config, axis, source.bbox, run)
+                for axis, run in result.ocr_runs
+                if result.config.labels is not None
+                and isinstance(source := getattr(result.config.labels, axis), OCRLabelSource)
+            },
             "slot_runs": [
-                {"axis": axis, "index": index, "crop_bbox": box, "run": asdict(run)}
+                {
+                    "axis": axis,
+                    "index": index,
+                    "crop_bbox": box,
+                    "run": asdict(run),
+                    "transform": _label_transform(result.config, axis, box),
+                    "geometry": _label_run_geometry(result.config, axis, box, run),
+                }
                 for axis, index, box, run in result.slot_ocr_runs
             ],
-            "raw_token_coordinate_frame": "upscaled crop pixels",
+            "raw_token_coordinate_frame": "upright upscaled crop pixels",
             "assigned_text_token_coordinate_frame": "original image pixels",
             "structural_records": "retained in raw coordinates; excluded from assignment",
         },
@@ -598,7 +673,8 @@ def label_provenance(
         "unresolved_slots": result.unresolved_count,
         "outputs": list(LABEL_OUTPUT_NAMES),
         "limitations": "OCR confidence is a heuristic, not a probability or biological identity. "
-        "Verify text and displayed order; only upright horizontal labels are supported.",
+        "Verify text and displayed order; rows must be upright and columns allow "
+        "explicit 0/±90 degrees.",
     }
 
 
