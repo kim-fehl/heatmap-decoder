@@ -163,7 +163,7 @@ def test_inferred_axes_abstain_without_truth():
     decisions = {d.requirement: d for d in result.decisions}
     assert decisions["rows"].status != "accepted"
     assert decisions["columns"].status != "accepted"
-    assert "count_uniqueness_and_outer_completeness_unestablished" in decisions["rows"].reasons
+    assert "insufficient_independent_count_support" in decisions["rows"].reasons
 
 
 def test_cli_abstention_keeps_existing_matrix(tmp_path):

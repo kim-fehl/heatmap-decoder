@@ -28,6 +28,12 @@ def smoke() -> None:
             "/M11.md",
             "/M12.md",
             "/docs/automation.md",
+            "/docs/corrections.md",
+            "/examples/corrections/figure.png",
+            "/examples/corrections/request.json",
+            "/src/heatmap_decoder/bar_cores.py",
+            "/src/heatmap_decoder/edge_profiles.py",
+            "/src/heatmap_decoder/lattice.py",
             "/docs/images/recognition-m12.png",
             "/src/heatmap_decoder/automation.py",
             "/examples/m12/request.json",
@@ -115,6 +121,20 @@ def smoke() -> None:
             check=True,
             cwd=directory,
         )
+        subprocess.run(
+            [
+                str(command),
+                "automate",
+                str(root / "examples/corrections/figure.png"),
+                "--request",
+                str(root / "examples/corrections/request.json"),
+                "--experimental-export",
+                "--out",
+                str(directory / "experimental"),
+            ],
+            check=True,
+            cwd=directory,
+        )
         check = """
 import sys
 import json
@@ -125,6 +145,11 @@ import heatmap_decoder as h
 import importlib.util
 assert h.__version__ == sys.argv[1]
 assert importlib.util.find_spec('pytesseract') is None
+assert importlib.util.find_spec('matplotlib') is None
+experimental = json.loads(Path('experimental/provenance.json').read_text())
+assert experimental['publication']['status'] == 'experimental'
+assert experimental['automation']['stable_release'] is False
+assert pd.read_csv('experimental/matrix.csv', header=None).shape == (20, 6)
 config = json.loads(Path(sys.argv[4]).read_text())
 hints = h.DetectionHints(rows=config['rows'], columns=config['columns'], requested=(),
     heatmap_bbox=config['heatmap_bbox'], colourbar_bbox=config['colourbar_bbox'],

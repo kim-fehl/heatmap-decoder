@@ -11,9 +11,6 @@ from typing import Any, Literal
 import numpy as np
 
 from .detection import (
-    _count_signals,
-    _refine_bar,
-    _refine_noisy_bar,
     bar_measurements,
     foreground,
     refine_box,
@@ -21,6 +18,8 @@ from .detection import (
 )
 from .detection_policy import ACCEPTANCE_THRESHOLDS as A
 from .detection_policy import POLICY_VERSION
+from .edge_profiles import EdgeProfile as BoundaryEdgeEvidence
+from .edge_profiles import measure_edges
 from .models import (
     AcceptanceDecision,
     AcceptanceReport,
@@ -36,12 +35,6 @@ from .models import (
 
 
 @dataclass(frozen=True)
-class BoundaryEdgeEvidence:
-    contrast_rgb: float
-    outside_spread_rgb: float
-
-
-@dataclass(frozen=True)
 class BoundaryEvidence:
     edges: tuple[BoundaryEdgeEvidence, ...]
     touches_image_edge: bool
@@ -52,6 +45,8 @@ class BoundaryEvidence:
 class PhaseEvidence:
     positions: tuple[float, ...]
     alignment: float
+    widths: tuple[float, ...] = ()
+    support: tuple[float, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -122,38 +117,21 @@ def distinct_candidates(
     return tuple(retained)
 
 
-def boundary_evidence(image: RGBArray, box: BoundingBox) -> BoundaryEvidence:
-    """All four edges must close against a separable background or border stroke.
-
-    A strong internal transition alone does not establish the outside of a grid.
-    Work on original pixels, and retain each edge's observation separately.
-    """
+def boundary_evidence(
+    image: RGBArray,
+    box: BoundingBox,
+    tolerance: float = 1.0,
+) -> BoundaryEvidence:
+    """Fit local transitions against robust background samples beyond the halo."""
     left, top, right, bottom = box
-    edges = []
-    pairs = (
-        (image[top:bottom, left, :3], image[top:bottom, max(0, left - 1), :3]),
-        (image[top:bottom, right - 1, :3], image[top:bottom, min(image.shape[1] - 1, right), :3]),
-        (image[top, left:right, :3], image[max(0, top - 1), left:right, :3]),
-        (image[bottom - 1, left:right, :3], image[min(image.shape[0] - 1, bottom), left:right, :3]),
-    )
-    for inside, outside in pairs:
-        a, b = inside.astype(float), outside.astype(float)
-        edges.append(
-            BoundaryEdgeEvidence(
-                contrast_rgb=float(np.mean(np.abs(a - b))),
-                outside_spread_rgb=float(np.max(np.ptp(b, axis=0))),
-            )
-        )
+    edges = measure_edges(image, box, tolerance)
     return BoundaryEvidence(
-        edges=tuple(edges),
+        edges=edges,
         touches_image_edge=left == 0
         or top == 0
         or right == image.shape[1]
         or bottom == image.shape[0],
-        closed=all(
-            e.contrast_rgb >= A.minimum_boundary_contrast and e.outside_spread_rgb <= 8
-            for e in edges
-        ),
+        closed=all(e.closed for e in edges),
     )
 
 
@@ -171,7 +149,7 @@ def grid_decision(
     if hints.rows is None or hints.columns is None:
         return decision(
             "heatmap",
-            ["supplied_counts_required_for_grid_validation"],
+            ["counts_unresolved_for_grid_validation"],
             {"bbox": box},
             (identifier,),
         )
@@ -184,7 +162,7 @@ def grid_decision(
         reasons.append("grid_interior_disagreement")
     if measurements["piecewise_constant"] < A.minimum_piecewise_constant:
         reasons.append("nonconstant_cell_interiors")
-    edges = boundary_evidence(image, box)
+    edges = boundary_evidence(image, box, float(min(pitches) * A.maximum_edge_shift_pitch))
     if edges.touches_image_edge or not edges.closed:
         reasons.append("full_grid_bounds_unverified")
     phase: dict[Axis, PhaseEvidence] = {}
@@ -193,14 +171,30 @@ def grid_decision(
         ("rows", pitches[1], box[1]),
     )
     for axis, pitch, start in axes:
-        positions = _count_signals(image, box, axis)["colour_transitions"]
+        from .lattice import observe_axis
+
+        observed = observe_axis(image, box, axis)
+        positions = observed.transitions
         offsets = (np.asarray(positions) - start) / pitch
         agreement = float(np.mean(np.abs(offsets - np.rint(offsets)) <= 0.1)) if positions else 0.0
-        phase[axis] = PhaseEvidence(positions=positions, alignment=agreement)
-        if agreement < A.minimum_phase_alignment:
+        count = hints.columns if axis == "columns" else hints.rows
+        if count == 1 and not positions:
+            agreement = 1.0
+        phase[axis] = PhaseEvidence(
+            positions, agreement, observed.transition_widths, observed.transition_support
+        )
+        minimum_observations = min(2, max(0, count - 1))
+        if agreement < A.minimum_phase_alignment or len(positions) < minimum_observations:
             reasons.append(f"{axis}_boundary_phase_unverified")
+        if any(w / 2 > max(1.0, 0.1 * pitch) for w in observed.transition_widths):
+            reasons.append(f"{axis}_broad_boundary_peaks")
+    from .edge_profiles import refine_measured_box
+
     refined = [
-        refine_box(image, box, 1, hints.detector.background_distance, mask) for mask in masks
+        refine_measured_box(
+            image, refine_box(image, box, 1, hints.detector.background_distance, mask)
+        )
+        for mask in masks
     ]
     shift = float(np.max(np.abs(np.asarray(refined) - box) / pitches))
     if shift > A.maximum_edge_shift_pitch:
@@ -247,7 +241,21 @@ def bar_decision(
     edges = boundary_evidence(image, box)
     if edges.touches_image_edge or not edges.closed:
         reasons.append("bar_extent_or_clipping_unverified")
-    refined = [_refine_noisy_bar(image, _refine_bar(image, box, mask)) for mask in masks]
+    from .bar_cores import search_bar_cores
+
+    refined = []
+    for factor in A.perturbation_threshold_factors:
+        cores, _ = search_bar_cores(image, box, hints.detector.background_distance * factor)
+        matching = [
+            b
+            for b, o in cores
+            if o == candidate.orientation and np.max(np.abs(np.array(b) - box)) <= 4
+        ]
+        if len(matching) != 1:
+            reasons.append("ambiguous_core_refinement")
+            refined.append(box)
+        else:
+            refined.append(matching[0])
     shift = int(np.max(np.abs(np.asarray(refined) - box)))
     if shift > 1:
         reasons.append("unstable_bar_bounds")
@@ -259,7 +267,12 @@ def bar_decision(
     )
 
 
-def count_decision(result: DetectionResult, hints: DetectionHints, axis: str) -> AcceptanceDecision:
+def count_decision(
+    result: DetectionResult,
+    hints: DetectionHints,
+    axis: str,
+    heatmap_id: str | None = None,
+) -> AcceptanceDecision:
     supplied = getattr(hints, axis)
     if supplied is not None:
         return decision(
@@ -271,16 +284,20 @@ def count_decision(result: DetectionResult, hints: DetectionHints, axis: str) ->
                 "inference_requested": getattr(hints, f"infer_{axis}"),
             },
         )
-    proposals = [p for p in result.count_proposals if p.axis == axis]
+    proposals = [
+        p
+        for p in result.count_proposals
+        if p.axis == axis and (heatmap_id is None or p.heatmap_id == heatmap_id)
+    ]
     if not proposals:
         return decision(axis, ["no_count_observations"], {}, unresolved=True)
     evidence = []
+    eligible = []
     for proposal in proposals:
         support = {
             name: signal
             for name, signal in proposal.signals.items()
-            if signal.alignment >= A.minimum_count_alignment
-            and signal.coverage >= A.minimum_count_coverage
+            if signal.alignment >= A.minimum_count_alignment and signal.coverage >= 0.8
         }
         observations = {
             s.observation for s in support.values() if s.observation != "legacy_correlated_unknown"
@@ -290,6 +307,16 @@ def count_decision(result: DetectionResult, hints: DetectionHints, axis: str) ->
         colour = support.get("colour_transitions")
         if colour is not None and not colour.excluded_gridline_pixels:
             observations.discard(colour.observation)
+        complete = any(s.coverage >= A.minimum_count_coverage for s in support.values())
+        accepted_model = (
+            len(observations) >= 2
+            and complete
+            and not proposal.conflicts
+            and proposal.pitch >= A.minimum_pitch
+            and proposal.count >= 3
+        )
+        if accepted_model:
+            eligible.append(proposal)
         evidence.append(
             {
                 "id": proposal.id,
@@ -297,7 +324,7 @@ def count_decision(result: DetectionResult, hints: DetectionHints, axis: str) ->
                 "pitch": proposal.pitch,
                 "phase": proposal.phase,
                 "supporting_observations": sorted(observations),
-                "agreement": len(observations) >= 2 and not proposal.conflicts,
+                "agreement": accepted_model,
                 "signals": {name: signal.model_dump() for name, signal in proposal.signals.items()},
                 "conflicts": proposal.conflicts,
                 "harmonic_alternatives": [
@@ -308,10 +335,30 @@ def count_decision(result: DetectionResult, hints: DetectionHints, axis: str) ->
                 ],
             }
         )
+    if len(eligible) == 1 and not any(
+        "count_limit_hides_supported_competition" in p.reasons for p in proposals
+    ):
+        selected = eligible[0]
+        return decision(
+            axis,
+            [],
+            {
+                "origin": "measured_inference",
+                "count": selected.count,
+                "model": "regular grid with complete corroborating lattice or label centres",
+                "outer_completeness": "conditional on measured extent and cell-interior validation",
+                "hypotheses": evidence,
+            },
+            (selected.id,),
+        )
     return decision(
         axis,
-        ["count_uniqueness_and_outer_completeness_unestablished"],
-        {"hypotheses": evidence, "automatic_axis_enabled": False},
+        [
+            "competing_count_lattices"
+            if len(eligible) > 1
+            else "insufficient_independent_count_support"
+        ],
+        {"hypotheses": evidence, "model": "regular rectangular grid"},
         tuple(p.id for p in proposals),
     )
 
@@ -331,26 +378,52 @@ def evaluate_acceptance(
         for factor in A.perturbation_threshold_factors
     )
     grid_checks = {}
+    axis_checks = {}
+    boxes = [(c.id, c.bbox) for c in heatmaps[: A.max_shortlisted_heatmaps]]
     if hints.heatmap_bbox is not None:
-        grid_checks["heatmap-manual"] = grid_decision(
-            image, hints, "heatmap-manual", hints.heatmap_bbox, masks, manual=True
+        boxes = [("heatmap-manual", hints.heatmap_bbox)]
+    for identifier, box in boxes:
+        row = count_decision(result, hints, "rows", identifier)
+        column = count_decision(result, hints, "columns", identifier)
+        axis_checks[identifier] = (row, column)
+        resolved = hints
+        if row.status == column.status == "accepted":
+            resolved = hints.model_copy(
+                update={"rows": row.evidence["count"], "columns": column.evidence["count"]}
+            )
+        grid_checks[identifier] = grid_decision(
+            image,
+            resolved,
+            identifier,
+            box,
+            masks,
+            manual=hints.heatmap_bbox is not None
+            and hints.rows is not None
+            and hints.columns is not None,
         )
-    for candidate in heatmaps[: A.max_shortlisted_heatmaps]:
-        grid_checks[candidate.id] = grid_decision(image, hints, candidate.id, candidate.bbox, masks)
-    heatmap_ids = tuple(grid_checks)
-    if not heatmap_ids:
-        heatmap = decision("heatmap", ["no_supported_heatmap"], {}, unresolved=True)
-    elif len(heatmaps) > 1 or any(
-        "candidate_limit_hides_competition" in c.reasons for c in heatmaps
-    ):
+    accepted_grids = [d for d in grid_checks.values() if d.status == "accepted"]
+    truncated = any("candidate_limit_hides_competition" in c.reasons for c in heatmaps)
+    chosen_heatmap = None
+    if len(accepted_grids) == 1 and not truncated:
+        heatmap = accepted_grids[0]
+        chosen_heatmap = heatmap.candidate_ids[0]
+    elif len(accepted_grids) > 1 or truncated:
         heatmap = decision(
             "heatmap",
             ["competing_panels_or_bounds"],
             {"hypotheses": [d.model_dump() for d in grid_checks.values()]},
             tuple(c.id for c in heatmaps),
         )
-    else:
+    elif len(grid_checks) == 1:
         heatmap = next(iter(grid_checks.values()))
+    else:
+        heatmap = decision(
+            "heatmap",
+            ["no_validated_grid"],
+            {"hypotheses": [d.model_dump() for d in grid_checks.values()]},
+            unresolved=True,
+        )
+    heatmap_ids = (chosen_heatmap,) if chosen_heatmap is not None else tuple(grid_checks)
     decisions.append(heatmap)
     bar_required = "colourbar" in hints.requested or hints.colourbar_bbox is not None
     if bar_required:
@@ -420,7 +493,10 @@ def evaluate_acceptance(
                 },
             )
         decisions.append(scale)
-    decisions.extend(count_decision(result, hints, axis) for axis in ("rows", "columns"))
+    selected_axes = axis_checks.get(chosen_heatmap) if chosen_heatmap else None
+    decisions.extend(
+        selected_axes or tuple(count_decision(result, hints, axis) for axis in ("rows", "columns"))
+    )
     if bar_required:
         decisions.append(numeric_decision(image, hints, result, decisions))
     identifiers: Literal["not_requested", "review_required", "user_supplied"] = "not_requested"
@@ -488,8 +564,9 @@ def numeric_decision(
     required = {"heatmap", "colourbar", "association", "rows", "columns", "scale"}
     if any(d.status != "accepted" for d in decisions if d.requirement in required):
         return decision("numeric_quality", ["required_geometry_counts_or_scale_unresolved"], {})
-    assert hints.rows is not None and hints.columns is not None
-    if hints.rows * hints.columns > A.maximum_numeric_cells:
+    axes = {d.requirement: d for d in decisions}
+    rows, columns = axes["rows"].evidence["count"], axes["columns"].evidence["count"]
+    if rows * columns > A.maximum_numeric_cells:
         return decision("numeric_quality", ["numeric_evaluation_cell_cap_exceeded"], {})
     choices = {d.requirement: d.candidate_ids for d in decisions}
     candidates = {c.id: c for c in result.candidates}
@@ -510,8 +587,8 @@ def numeric_decision(
                 "heatmap_bbox": heatmap,
                 "colourbar_bbox": bar,
                 "colourbar_orientation": orientation,
-                "rows": hints.rows,
-                "columns": hints.columns,
+                "rows": rows,
+                "columns": columns,
                 "colourbar_start_value": hints.colourbar_start_value,
                 "colourbar_end_value": hints.colourbar_end_value,
             }

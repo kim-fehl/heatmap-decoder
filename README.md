@@ -6,11 +6,14 @@ on columns, a regular rectangular grid and a separate continuous colourbar.
 PNG/JPEG, sequential/diverging/grayscale palettes, bars on any side, and upright
 horizontal labels are supported.
 
-**Current phase: M12.** Recognition and selective decisions are implemented;
-automatic export remains experimental/review-only under the measured release
-gates. Held-out complete coverage is 8.1% with supplied scale and 5.9% with OCR
-scale; count inference abstains. Rotated text, categorical legends, PDF and
-automatic nonlinear calibration are unsupported. Decoded tables describe the plotted quantity, not exact measurements.
+**Current phase: M12 with review corrections.** Automatic regions and conditional
+count inference are implemented. Default automation produces review evidence;
+`--experimental-export` enables numeric tables with supplied counts and a supplied
+or reviewed linear scale when every image check passes. Inferred counts and OCR
+scales still require export review. Stable release gates remain closed.
+Rotated text, categorical legends, PDF and automatic nonlinear calibration are
+unsupported. Decoded tables describe the plotted quantity, not exact measurements.
+[Current validation and limits](docs/corrections.md) distinguish coverage from safety.
 
 The scientific challenges matter:
 
@@ -59,18 +62,20 @@ uv sync --locked --extra ocr
 # Install local Tesseract + English data separately; see usage docs.
 uv run heatmap-decoder automate examples/m12/figure.png \
   --request examples/m12/request.json --out work/automatic
-uv run heatmap-decoder extract examples/m11/figure.png \
-  --config examples/m11/labelled_config.json \
-  --legend-review examples/m11/reviewed_ticks.tsv --out work/decoded
+uv run heatmap-decoder automate examples/corrections/figure.png \
+  --request examples/corrections/request.json \
+  --experimental-export --out work/decoded
 ```
 
-`automate` exits **5** with per-capability decisions, labelled diagnostics and tick
-review files. The second command exports a reviewed example as `matrix.csv`,
+`automate` normally exits **5** with decisions, labelled diagnostics and tick
+review files. Explicit experimental export exits **0** only within its validated
+scope; see the [worked example](docs/automation.md#experimental-numeric-export).
+The second command exports an experimental numeric example as `matrix.csv`,
 per-cell `quality.csv` and provenance. Verify regions, scale and every identifier
 for your own figure. Numeric-only/manual operation can run without OCR.
 
 [Automation, slot OCR and overrides](docs/automation.md) ·
 [Detailed usage](docs/usage.md) · [Scale review](docs/legend.md) ·
-[M12 tests, coverage and limits](M12.md)
+[Historical M12 evidence](M12.md)
 
 MIT code; input figures retain their owners' copyright.

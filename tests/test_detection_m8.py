@@ -97,7 +97,11 @@ def test_count_true_and_harmonic_retained(kind, axis):
     assert all("integer_multiple_ambiguity" in p.reasons for p in proposals)
     assert all(p.origin is None for p in proposals)
     assert result.status == "ambiguous"
-    assert result.selected_counts == {}
+    if kind == "complete":
+        assert result.selected_counts[axis].count == count
+        assert result.selected_counts[axis].origin == "measured_inference"
+    else:
+        assert result.selected_counts == {}
     if kind == "complete":
         true = next(p for p in proposals if p.count == count)
         assert {"gridline_strokes", "colour_transitions"} <= true.signals.keys()

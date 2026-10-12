@@ -1,0 +1,17 @@
+{
+  "version":"current-phase-corrections-validation.1",
+  "purpose":"Fresh QA-checked synthetic validation for scoped experimental numeric export; not a stable capability release or publication-image benchmark",
+  "base_splits":{"development":{"seed_min":231000,"bases":12},"validation":{"seed_min":241000,"bases":24}},
+  "derivatives_stay_with_base":["clean","blur_sigma_0.65","jpeg_quality_85"],
+  "renderers":["Pillow RGB rectangles","Matplotlib Agg nearest image artists"],
+  "fonts":["DejaVuSans","DejaVuSerif","DejaVuSansMono"],
+  "QA_before_recognition":["no text/text overlap","no text/core overlap","4px exterior text margin","2px text separation","correct box extents","numeric labels at most 6 characters"],
+  "layouts":"20/25/30 genes by 6/8/10 samples; labels left/right and above/below; both bar orientations on every side; continuous diverging/sequential/grayscale; 3/5/7 ticks; both numerical directions; grid/no-grid",
+  "scales":[[-4,4],[-3,3],[-2,2],[-4,2],[-3,4]],
+  "negative_models":{"absent_bar":[1,2,3,4],"categorical":[1,2,3,4],"competing_bars":[1,2,3,4],"multipanel":[1,2,3,4],"hidden_boundaries":[1,2,3,4],"partial_crop":[1,2,3,4],"wrong_counts":[1,3],"missing_tick_text":[3,4],"two_ticks":[3,4],"nonlinear_ticks":[3,4],"touching_core_text":[1,2,3,4]},
+  "experimental_scope":"Explicit runtime opt-in only: numeric-only, supplied counts and supplied/reviewed linear scale, default detector, all per-image requirements accepted. Inferred counts and OCR scales remain diagnostics/export-review-only.",
+  "accuracy_checks":{"heatmap_edge_fraction_of_pitch":0.1,"bar_edge_pixels":1,"maximum_MAE_fraction_of_range":0.02,"maximum_cell_error_fraction_of_range":0.05,"finite_fraction":1,"maximum_flagged_fraction":0.01,"wrong_selected_complete":0,"negative_experimental_exports":0},
+  "coverage":"Report every ordinary input and unnecessary abstention; 70% remains a product target rather than per-image export permission",
+  "evaluation":"Four runtime modes decide before truth scoring. Additionally inspect annotated and detected bars conditionally for stroke/text/value/fit diagnostics. No tuning after frozen validation; previous M12 is inspected development regression only.",
+  "limitations":"Synthetic figures only. Fonts/templates share renderer code between partitions; no unseen-publication/source claim. No real biological matrix or gene database validation. All tick rounding is explicit to 0.01 displayed units."
+}

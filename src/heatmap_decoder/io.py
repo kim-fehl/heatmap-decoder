@@ -238,6 +238,7 @@ def write_outputs(
     file_hashes: dict[str, str] | None = None,
     detection_review: dict[str, Any] | None = None,
     legend_metadata: dict[str, Any] | None = None,
+    automation_metadata: dict[str, Any] | None = None,
 ) -> None:
     """Write all four M2 outputs. Use extract_file to compute input hashes automatically."""
     directory = Path(directory)
@@ -252,6 +253,10 @@ def write_outputs(
         mask_sha256=mask_sha256,
         file_hashes=file_hashes,
     )
+    if automation_metadata is not None:
+        metadata["schema_version"] = max(3, metadata["schema_version"])
+        metadata["automation"] = automation_metadata
+        metadata["publication"] = {"status": "experimental", "numeric_outputs_written": True}
     if detection_review is not None:
         metadata["roi_review"] = detection_review
     if legend_metadata is not None:

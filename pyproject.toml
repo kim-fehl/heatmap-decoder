@@ -16,6 +16,7 @@ ocr = ["pytesseract>=0.3.13,<0.4"]
 
 [dependency-groups]
 dev = ["pytest>=8", "hypothesis>=6", "ruff>=0.6", "mypy>=1.11"]
+benchmark = ["matplotlib>=3.8,<4"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

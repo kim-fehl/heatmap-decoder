@@ -33,6 +33,22 @@ jobs:
       - run: uv build
       - name: Test the wheel and console entry point outside the source tree
         run: uv run python tests/smoke_distribution.py
+  numpy-typing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        numpy: ['numpy==1.26.4', 'numpy>=2']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+          python-version: '3.12'
+      - run: uv sync --locked
+      - name: Check minimum and current NumPy typing
+        run: uv run --with '${{ matrix.numpy }}' mypy src
   ocr:
     runs-on: ubuntu-24.04
     steps:
@@ -51,11 +67,15 @@ jobs:
           tesseract --list-langs
           dpkg-query -W tesseract-ocr tesseract-ocr-eng
           sha256sum /usr/share/tesseract-ocr/5/tessdata/eng.traineddata
-      - run: uv sync --locked --extra ocr
+      - run: uv sync --locked --extra ocr --group benchmark
       - name: Exact-match clean fixture and degradation report
         env:
           HEATMAP_DECODER_OCR_TESTS: '1'
         run: uv run --extra ocr pytest -q -s -m ocr_integration
+      - name: Check correction regressions and renderer layout QA
+        env:
+          HEATMAP_DECODER_OCR_TESTS: '1'
+        run: uv run --extra ocr --group benchmark pytest -q tests/test_review_corrections.py
       - name: Run the label-only command
         run: uv run --extra ocr heatmap-decoder labels examples/labels/clean.png --config examples/labels/config.json --out work/ci-labels
       - name: Run the complete v0.2 reconstruction and review example
@@ -86,7 +106,7 @@ jobs:
             work/ci-m12/
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [test, ocr]
+    needs: [test, numpy-typing, ocr]
     runs-on: ubuntu-latest
     permissions:
       contents: write

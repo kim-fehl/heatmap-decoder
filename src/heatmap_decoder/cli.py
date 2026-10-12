@@ -42,14 +42,33 @@ def automate_command(
     request: Annotated[Path, typer.Option("--request", exists=True, dir_okay=False)],
     out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("results/automation"),
     overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
+    experimental_export: Annotated[
+        bool,
+        typer.Option(
+            "--experimental-export",
+            help="Experimental numeric export: supplied counts and supplied/reviewed scale.",
+        ),
+    ] = False,
 ) -> None:
     """Compose ROI/count/scale decisions; emit diagnostics when release gates fail."""
     from PIL import Image, ImageDraw
 
     from .automation import AutomationRequest, automate
-    from .io import write_legend_outputs
+    from .extract import extract
+    from .io import (
+        NUMERIC_OUTPUT_NAMES,
+        _decode_raster,
+        check_output_paths,
+        write_legend_outputs,
+        write_outputs,
+    )
 
-    names = ("automation.json", "roi_diagnostic.png", *LEGEND_OUTPUT_NAMES)
+    names = (
+        "automation.json",
+        "roi_diagnostic.png",
+        *LEGEND_OUTPUT_NAMES,
+        *(f"legend_candidates/{i}/{name}" for i in range(1, 4) for name in LEGEND_OUTPUT_NAMES),
+    )
     try:
         settings = AutomationRequest.model_validate_json(request.read_bytes())
         protected = {figure.resolve(), request.resolve()}
@@ -59,12 +78,17 @@ def automate_command(
                 raise ValueError("automation outputs cannot overwrite an input")
             if target.exists() and not overwrite:
                 raise ValueError(f"output exists: {target}; use --overwrite")
-        image = load_raster(figure)
-        result = automate(image, settings)
+        data = figure.read_bytes()
+        image = _decode_raster(data)
+        result = automate(image, settings, experimental_export=experimental_export)
+        if result.automatic_export_allowed:
+            check_output_paths(
+                [out / name for name in NUMERIC_OUTPUT_NAMES], (figure, request), overwrite
+            )
         payload = result.model_dump(mode="json")
         payload["input"] = {
             "filename": figure.name,
-            "sha256": hashlib.sha256(figure.read_bytes()).hexdigest(),
+            "sha256": hashlib.sha256(data).hexdigest(),
         }
         payload["request"] = settings.model_dump(mode="json")
         out.mkdir(parents=True, exist_ok=True)
@@ -78,12 +102,46 @@ def automate_command(
         overlay.save(out / "roi_diagnostic.png")
         if result.legend is not None:
             write_legend_outputs(image, result.legend, out, payload["input"]["sha256"], figure.name)
+        elif result.legend_diagnostics:
+            for index, diagnostic in enumerate(result.legend_diagnostics, 1):
+                write_legend_outputs(
+                    image,
+                    diagnostic,
+                    out / "legend_candidates" / str(index),
+                    payload["input"]["sha256"],
+                    figure.name,
+                )
+        if result.automatic_export_allowed:
+            assert result.diagnostic_config is not None
+            numeric = extract(image, result.diagnostic_config)
+            write_outputs(
+                numeric,
+                out,
+                input_filename=figure.name,
+                input_sha256=payload["input"]["sha256"],
+                automation_metadata={
+                    "maturity": "experimental",
+                    "stable_release": False,
+                    "policy_version": result.policy_version,
+                    "runtime_control": "--experimental-export",
+                    "request": settings.model_dump(mode="json"),
+                    "decisions": [d.model_dump(mode="json") for d in result.decisions],
+                    "diagnostic_report_sha256": hashlib.sha256(
+                        (out / "automation.json").read_bytes()
+                    ).hexdigest(),
+                    "resolved_config": result.diagnostic_config.model_dump(mode="json"),
+                },
+            )
     except (ValueError, OSError) as error:
         typer.echo(f"error: {error}", err=True)
         raise typer.Exit(2) from error
     typer.echo(f"experimental complete decision: {result.complete.status}; diagnostics: {out}")
-    # This command has no matrix-writing path until measured release gates pass.
-    typer.echo("Automatic export remains review-only; see automation.json for each capability.")
+    if result.automatic_export_allowed:
+        typer.echo(
+            f"Wrote experimental numeric matrix and QC to {out}; stable release remains off."
+        )
+        return
+    typer.echo("Review required; see automation.json for each capability and export scope.")
     raise typer.Exit(5)
 
 

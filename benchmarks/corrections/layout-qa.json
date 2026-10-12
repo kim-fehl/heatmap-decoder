@@ -1,0 +1,1301 @@
+{
+  "purpose": "Layout QA only; no recognition decisions or validation answers inspected",
+  "cases": [
+    {
+      "id": "development-00-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        980,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-00-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        980,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-00-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        980,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-01-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1284,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-01-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1284,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-01-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1284,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-02-clean",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-02-blur",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-02-jpeg",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-03-clean",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1361,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-03-blur",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1361,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-03-jpeg",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1361,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-04-clean",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1400,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-04-blur",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1400,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-04-jpeg",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1400,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-05-clean",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1380,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-05-blur",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1380,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-05-jpeg",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1380,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-06-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        1185,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-06-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        1185,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-06-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        1185,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-07-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        956,
+        1124,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-07-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        956,
+        1124,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-07-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        956,
+        1124,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-08-clean",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-08-blur",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-08-jpeg",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-09-clean",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1412,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-09-blur",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1412,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-09-jpeg",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1412,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-10-clean",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1240,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-10-blur",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1240,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-10-jpeg",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1240,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-11-clean",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-11-blur",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "development-11-jpeg",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-00-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        980,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-00-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        980,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-00-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        980,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-01-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1284,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-01-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1284,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-01-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1284,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-02-clean",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-02-blur",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-02-jpeg",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-03-clean",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1361,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-03-blur",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1361,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-03-jpeg",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1361,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-04-clean",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1400,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-04-blur",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1400,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-04-jpeg",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1400,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-05-clean",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1380,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-05-blur",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1380,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-05-jpeg",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1380,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-06-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        1185,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-06-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        1185,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-06-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        1185,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-07-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        956,
+        1124,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-07-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        956,
+        1124,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-07-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        956,
+        1124,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-08-clean",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-08-blur",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-08-jpeg",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1110,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-09-clean",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1412,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-09-blur",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1412,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-09-jpeg",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1412,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-10-clean",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1240,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-10-blur",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1240,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-10-jpeg",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1240,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-11-clean",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-11-blur",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-11-jpeg",
+      "renderer": "matplotlib",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-12-clean",
+      "renderer": "matplotlib",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        1169,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-12-blur",
+      "renderer": "matplotlib",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        1169,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-12-jpeg",
+      "renderer": "matplotlib",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        1169,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-13-clean",
+      "renderer": "matplotlib",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1124,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-13-blur",
+      "renderer": "matplotlib",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1124,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-13-jpeg",
+      "renderer": "matplotlib",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1124,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-14-clean",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1290,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-14-blur",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1290,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-14-jpeg",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1290,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-15-clean",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1076,
+        1252,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-15-blur",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1076,
+        1252,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-15-jpeg",
+      "renderer": "matplotlib",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1076,
+        1252,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-16-clean",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1240,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-16-blur",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1240,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-16-jpeg",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1240,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-17-clean",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1565,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-17-blur",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1565,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-17-jpeg",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1180,
+        1565,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-18-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        980,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-18-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        980,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-18-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        980,
+        1172,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-19-clean",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1204,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-19-blur",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1204,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-19-jpeg",
+      "renderer": "pillow",
+      "rows": 20,
+      "columns": 6,
+      "shape": [
+        940,
+        1204,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-20-clean",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1270,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-20-blur",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1270,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-20-jpeg",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1270,
+        1316,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-21-clean",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1252,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-21-blur",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1252,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-21-jpeg",
+      "renderer": "pillow",
+      "rows": 25,
+      "columns": 8,
+      "shape": [
+        1060,
+        1252,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-22-clean",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1485,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-22-blur",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1485,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-22-jpeg",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1485,
+        1460,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-23-clean",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1196,
+        1380,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-23-blur",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1196,
+        1380,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "id": "validation-23-jpeg",
+      "renderer": "pillow",
+      "rows": 30,
+      "columns": 10,
+      "shape": [
+        1196,
+        1380,
+        3
+      ],
+      "passed": true
+    }
+  ]
+}

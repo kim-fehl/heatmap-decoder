@@ -1,6 +1,7 @@
-"""Composable selective decisions. Experimental eligibility never authorises export."""
+"""Composable selective decisions. Explicit runtime opt-in gates scoped experimental export."""
 
 import math
+import time
 from typing import Annotated
 
 import numpy as np
@@ -17,6 +18,7 @@ from .models import (
     AcceptanceDecision,
     DetectionHints,
     DetectionResult,
+    DetectorOptions,
     ExtractionConfig,
     LegendConfig,
     LegendResult,
@@ -24,7 +26,7 @@ from .models import (
     ScaleConfig,
 )
 
-AUTOMATION_POLICY_VERSION = "m12-selective.1"
+AUTOMATION_POLICY_VERSION = "review-selective.1"
 
 
 class AutomationRequest(BaseModel):
@@ -63,14 +65,22 @@ class AutomationResult(BaseModel):
     automatic_export_allowed: bool
     release_reasons: tuple[str, ...]
     diagnostic_config: ExtractionConfig | None = None
+    legend_diagnostics: tuple[LegendResult, ...] = ()
+    experimental_export_requested: bool = False
+    export_maturity: str = "review_only"
 
 
-def automate(image: RGBArray, request: AutomationRequest) -> AutomationResult:
+def automate(
+    image: RGBArray,
+    request: AutomationRequest,
+    *,
+    experimental_export: bool = False,
+) -> AutomationResult:
     """Deployed classifier used by CLI and benchmark; receives no evaluation truth.
 
-    The concrete config is for diagnostics only until independent release gates
-    pass. Supplied/reviewed anchors compose with accepted geometry; OCR identity
-    remains a separate required review. An inferred axis is never silently filled.
+    The concrete config records resolved geometry and counts. Default operation
+    is diagnostic; explicit experimental export requires every per-image decision
+    and the supplied-count/supplied-scale scope. OCR identity requires review.
     """
     hints = request.hints
     detected = detect(image, hints)
@@ -92,7 +102,41 @@ def automate(image: RGBArray, request: AutomationRequest) -> AutomationResult:
         orientation = "vertical" if bar[3] - bar[1] >= bar[2] - bar[0] else "horizontal"
     start, end = hints.colourbar_start_value, hints.colourbar_end_value
     legend = None
+    legend_diagnostics: list[LegendResult] = []
     scale = request.scale
+    if scale is not None and scale.source == "ocr_ticks" and bar is None:
+        # Inspect plausible bars even if geometry/competition remains unresolved.
+        # These runs never replace required per-image decisions or choose a target.
+        pixel_budget = 12000000
+        deadline = time.monotonic() + 60
+        for candidate in (c for c in detected.candidates if c.kind == "colourbar"):
+            if len(legend_diagnostics) >= 3 or time.monotonic() >= deadline or pixel_budget < 1000:
+                break
+            assert candidate.orientation is not None
+            options = scale.legend.model_copy(
+                update={
+                    "max_ocr_pixels": min(scale.legend.max_ocr_pixels, pixel_budget),
+                    "max_ocr_seconds": max(
+                        1, min(scale.legend.max_ocr_seconds, int(deadline - time.monotonic()))
+                    ),
+                }
+            )
+            diagnostic = inspect_legend(
+                image,
+                LegendConfig(
+                    colourbar_bbox=candidate.bbox,
+                    colourbar_orientation=candidate.orientation,
+                    legend=options,
+                ),
+            )
+            legend_diagnostics.append(diagnostic)
+            pixel_budget -= sum(
+                (r.crop_bbox[2] - r.crop_bbox[0])
+                * (r.crop_bbox[3] - r.crop_bbox[1])
+                * options.ocr.upscale_factor**2
+                for r in diagnostic.ocr_records
+            )
+
     if scale is None or scale.source == "manual_endpoints":
         reasons = (
             []
@@ -128,6 +172,7 @@ def automate(image: RGBArray, request: AutomationRequest) -> AutomationResult:
                 colourbar_bbox=bar, colourbar_orientation=orientation, legend=scale.legend
             ),
         )
+        legend_diagnostics.append(legend)
         scale_check = decision(
             "scale",
             []
@@ -146,12 +191,13 @@ def automate(image: RGBArray, request: AutomationRequest) -> AutomationResult:
     concrete = None
     required = {"heatmap", "colourbar", "association", "rows", "columns", "scale"}
     if all(d.status == "accepted" for d in decisions if d.requirement in required):
-        assert hints.rows is not None and hints.columns is not None
+        rows = by_kind["rows"].evidence["count"]
+        columns = by_kind["columns"].evidence["count"]
         assert bar is not None and orientation is not None
         heatmap = hints.heatmap_bbox
         if heatmap is None:
             heatmap = candidates[by_kind["heatmap"].candidate_ids[0]].bbox
-        if hints.rows * hints.columns > A.maximum_numeric_cells:
+        if rows * columns > A.maximum_numeric_cells:
             numeric = decision("numeric_quality", ["numeric_evaluation_cell_cap_exceeded"], {})
         else:
             try:
@@ -159,11 +205,17 @@ def automate(image: RGBArray, request: AutomationRequest) -> AutomationResult:
                     heatmap_bbox=heatmap,
                     colourbar_bbox=bar,
                     colourbar_orientation=orientation,
-                    rows=hints.rows,
-                    columns=hints.columns,
-                    colourbar_start_value=start,
-                    colourbar_end_value=end,
-                    scale=ScaleConfig(source="manual_endpoints", quantity=scale.quantity)
+                    rows=rows,
+                    columns=columns,
+                    colourbar_start_value=None
+                    if scale and scale.source == "manual_ticks"
+                    else start,
+                    colourbar_end_value=None if scale and scale.source == "manual_ticks" else end,
+                    scale=(
+                        scale
+                        if scale.source == "manual_ticks"
+                        else ScaleConfig(source="manual_endpoints", quantity=scale.quantity)
+                    )
                     if scale
                     else None,
                 )
@@ -200,7 +252,19 @@ def automate(image: RGBArray, request: AutomationRequest) -> AutomationResult:
         release.append("inferred_columns_review_required")
     if scale is not None and scale.source == "ocr_ticks":
         release.append("OCR_scale_release_gate_not_met")
-    allowed = not release and complete.status == "accepted"
+    scope_reasons = []
+    if not request.numeric_only:
+        scope_reasons.append("experimental_export_requires_numeric_only")
+    if hints.rows is None or hints.columns is None:
+        scope_reasons.append("experimental_inferred_count_export_not_validated")
+    if scale is not None and scale.source == "ocr_ticks":
+        scope_reasons.append("experimental_OCR_scale_export_not_validated")
+    if hints.detector != DetectorOptions():
+        scope_reasons.append("experimental_export_requires_default_detector")
+    allowed = experimental_export and not scope_reasons and complete.status == "accepted"
+    if experimental_export:
+        release = scope_reasons or ([] if allowed else ["required_per_image_capability_failed"])
+
     if start is not None and end is not None and not all(map(math.isfinite, (start, end))):
         raise ValueError("nonfinite scale")
     return AutomationResult(
@@ -211,4 +275,7 @@ def automate(image: RGBArray, request: AutomationRequest) -> AutomationResult:
         automatic_export_allowed=allowed,
         release_reasons=tuple(release),
         diagnostic_config=concrete,
+        legend_diagnostics=tuple(legend_diagnostics),
+        experimental_export_requested=experimental_export,
+        export_maturity="experimental" if allowed else "review_only",
     )

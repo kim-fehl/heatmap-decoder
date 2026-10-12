@@ -316,6 +316,8 @@ class DetectorOptions(BaseModel):
     label_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=32)] = 4
     max_ocr_pixels: Annotated[int, Field(strict=True, ge=1000, le=16000000)] = 4000000
 
+    count_label_geometry: Annotated[bool, Field(strict=True)] = False
+
 
 class DetectionHints(BaseModel):
     """Supplied counts are authoritative; M8 inference requires an explicit axis request."""
@@ -419,7 +421,7 @@ class CountProposal(BaseModel):
 class SelectedCount(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     count: Annotated[int, Field(strict=True, gt=0)]
-    origin: Literal["manual", "reviewed_detection"] = "manual"
+    origin: Literal["manual", "reviewed_detection", "measured_inference"] = "manual"
     proposal_id: str | None = None
 
 
@@ -468,6 +470,7 @@ class DetectionResult(BaseModel):
     selected_counts: dict[Axis, SelectedCount] = Field(default_factory=dict)
     label_evidence: tuple[LabelLocalisationEvidence, ...] = ()
     acceptance: AcceptanceReport | None = None
+    bar_search_evidence: tuple[dict[str, Any], ...] = ()
 
 
 class SavedDetection(BaseModel):

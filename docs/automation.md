@@ -1,9 +1,8 @@
-# Selective automation (M12)
+# Selective automation
 
-`automate` runs the same request-specific classifier used by the M12 benchmark.
-It composes region, association, count, scale and cell-quality decisions before
-checking the release gate. It writes evidence, never a new matrix while the gate
-is closed. This makes partial success visible: a readable scale does not imply
+`automate` composes region, association, count, scale and cell-quality decisions.
+Default operation writes review evidence. An explicit runtime flag enables scoped
+experimental numeric export after all per-image checks pass. This makes partial success visible: a readable scale does not imply
 that inferred counts or gene identities are trustworthy.
 
 ```bash
@@ -12,9 +11,9 @@ uv run heatmap-decoder automate examples/m12/figure.png \
   --request examples/m12/request.json --out work/automatic
 ```
 
-Expected exit **5**: inspect `automation.json`, `roi_diagnostic.png`, and, when an
-accepted bar permits OCR, `legend_ticks.tsv`, `legend_review.tsv`,
-`legend_diagnostic.png` and `legend_provenance.json`. Existing matrices are kept.
+Expected exit **5**: inspect `automation.json`, `roi_diagnostic.png`, and, when tick OCR is requested, `legend_ticks.tsv`, `legend_review.tsv`,
+`legend_diagnostic.png` and `legend_provenance.json`. Unresolved bars are inspected diagnostically in separate candidate directories;
+those runs cannot select the legend or enable export. Existing matrices are kept.
 Invalid requests/geometry and existing diagnostic outputs exit **2**; use
 `--overwrite` only to replace diagnostics. No OCR installation is needed when
 endpoints or reviewed anchors are supplied and identifier OCR is not requested.
@@ -37,16 +36,19 @@ requirements participate in the complete decision.
    ```
 
 2. **Inferred counts**, supplied scale: replace the two counts with
-   `"infer_rows": true, "infer_columns": true`. The current count classifier
-   abstains because uniqueness and outer-grid completeness are unestablished.
-   It preserves count hypotheses, independent observation types, conflicts and
-   harmonic alternatives. Supplied counts remain authoritative if inference is
+   `"infer_rows": true, "infer_columns": true`. Conditional acceptance requires
+   agreement between independent colour transitions, grid strokes or raw label
+   centres, a complete lattice, measured outer closure and consistent interiors.
+   Enable `"detector": {"count_label_geometry": true}` to observe label centres
+   with OCR independently of identifier assignment. Missing labels retain holes;
+   harmonics, competing counts and insufficient support remain reviewable.
+   Accepted counts appear in a new resolved config; the request stays immutable. Supplied counts remain authoritative if inference is
    also requested; they do not become evidence of correct automatic inference.
 
 3. **Supplied counts**, tick-derived scale: omit endpoint values and add
    `"scale": {"source": "ocr_ticks", "quantity": "row z-score"}` at the root.
-   The bundled request uses this mode. OCR runs only after the runtime selects an
-   accepted bar. Three or more parsed anchors must be associated with measured
+   The bundled M12 request uses this mode. Plausible bars may also receive
+   diagnostic OCR before a target is accepted. Three or more parsed anchors must be associated with measured
    strokes, include endpoints, and satisfy residual limits. Every plausible tick
    participates; an outlier is never removed to make the line fit.
 
@@ -87,7 +89,7 @@ anchors because a person supplies the scale interpretation; extrapolation is
 reported. Suggested OCR anchors are rejected as manual evidence.
 
 `diagnostic_config` in the report is a concrete configuration for numerical
-assessment, not permission to publish. Its endpoints may come from an unreviewed
+assessment; alone it does not permit export. Its endpoints may come from an unreviewed
 OCR fit; the separate scale decision/legend evidence records their origin. To
 export, use the existing [ROI review](usage.md) and [scale review](legend.md)
 workflow with `extract`. Reviewed outputs retain hashes and raw suggestions.
@@ -118,5 +120,29 @@ High confidence does not establish a biological identifier. Review every gene
 and sample string; no dictionary substitution, underscore restoration, O/0
 conversion or fit-dependent OCR retries are performed.
 
-See [M12 measurements and release decisions](../M12.md), including the fixed
-ordinary-image denominator and the synthetic-only scope.
+See [current corrections and validation](corrections.md) and the separate
+[historical M12 measurements](../M12.md). Synthetic testing does not establish
+reliability on unseen publication figures.
+
+## Experimental numeric export
+
+```bash
+uv run heatmap-decoder automate examples/corrections/figure.png \
+  --request examples/corrections/request.json \
+  --experimental-export --out work/experimental
+```
+
+Expected exit **0** with `matrix.csv`, `quality.csv`, provenance and recognition
+reports. The flag is a runtime control; saved request JSON cannot enable it.
+It requires numeric-only operation, supplied row/column counts, supplied endpoints
+or manually reviewed linear anchors, default detector settings and every
+per-image decision accepted. Coverage targets never grant export permission.
+Inferred-count and OCR-scale exports remain blocked even if diagnostically accepted.
+
+Outputs record the experimental policy version, original request, resolved
+configuration, image/report hashes and decisions. Endpoint matches can indicate
+clipping; the matrix contains displayed-scale estimates, not original expression
+counts. Stable release flags remain false. Any failed requirement exits **5** and
+preserves existing matrices even with `--overwrite`; successful replacement of
+existing outputs requires that flag. Inspect diagnostics and use the reviewed
+`extract` workflow for other requests.

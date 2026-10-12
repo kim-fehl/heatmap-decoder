@@ -1,0 +1,28 @@
+{
+  "base_commit": "9efb17574b0e838fc29d7d8a23d432c64f914784",
+  "packages": {
+    "numpy": "2.5.4",
+    "Pillow": "12.3.0",
+    "scikit-image": "0.26.0",
+    "pydantic": "2.14.1",
+    "pytesseract": "0.3.13",
+    "matplotlib": "3.11.2",
+    "mypy": "2.4.0",
+    "ruff": "0.17.0"
+  },
+  "engine": "tesseract 5.5.0",
+  "files": {
+    "examples/corrections/generate.py": "c362243e738507c9a822eb65902902a65c9f436dc2560e87317ee30ab79ccecc",
+    "benchmarks/corrections/preregister.json": "76c60dd40e8d0414efbb727d2f781987ad5a9526ad66451afd0ecaea1e1dbed9",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf": "54bf827eb99404e8f430c330ad30f063334f637eba0109b6a18d4f566a8e9dd8",
+    "/usr/share/tesseract-ocr/5/tessdata/eng.traineddata": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+  },
+  "validation_execution": {
+    "shards": 2,
+    "base_assignment": "index modulo 2; every derivative stays with its base",
+    "cpu_quota": "2 CPUs",
+    "policy_frozen_before_validation": true
+  }
+}

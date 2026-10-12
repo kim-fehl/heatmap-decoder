@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased — current-phase review corrections
+
+- Recover measured colourbar cores without assuming component midpoints; retain
+  competing bars and search-cap evidence, blocking ambiguous export.
+- Measure robust edge profiles beyond blur/JPEG halos and aggregate grid phase
+  evidence; resolve conditional counts from independent observations.
+- Add QA-checked realistic layouts, separate conditional legend OCR evidence and
+  fresh validation without rewriting historical M12 measurements.
+- Add explicit scoped `--experimental-export` for supplied counts and supplied or
+  reviewed scales, retaining experimental provenance and per-cell quality.
+- Fix NumPy-dependent mypy `no-any-return` in foreground masking and test minimum
+  and current NumPy typing in CI. No release or stable capability gate change.
+
 
 ## Unreleased — M12
 

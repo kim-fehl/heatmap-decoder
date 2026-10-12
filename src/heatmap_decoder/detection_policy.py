@@ -48,7 +48,7 @@ class DetectorThresholds:
 
 
 THRESHOLDS = DetectorThresholds()
-POLICY_VERSION = "m10-development.1"
+POLICY_VERSION = "review-acceptance.1"
 
 
 @dataclass(frozen=True)
@@ -96,7 +96,12 @@ def policy_snapshot() -> dict[str, Any]:
         "automatic_roi_enabled": False,
         "automatic_rows_enabled": False,
         "automatic_columns_enabled": False,
-        "reason": "M10 decisions are experimental; M12 release gates are not established",
+        "reason": "Stable capabilities are unestablished; scoped runtime opt-in is experimental",
+        "experimental_export_scope": "numeric-only; supplied counts and supplied/reviewed scale",
+        "coverage_target_is_per_image_permission": False,
+        "count_model": "regular lattice; >=2 observation families, >=1 complete; extent/interiors",
+        "core_search": {"long_axis_samples": 512, "cores_per_window": 16},
+        "edge_profiles": {"outside_band_pixels": 12, "raster_uncertainty_pixels": 0.5},
         "required_complete_layouts": 30,
         "required_layout_families": 3,
         "maximum_heatmap_edge_error_cell_pitch": 0.1,
