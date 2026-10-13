@@ -104,7 +104,12 @@ class LabelGeometryTests(unittest.TestCase):
             validate_grid_geometry(grid(rows=61), (200, 300))
 
     def test_crop_transform_roundtrip(self):
-        config = grid(labels={"rows": {"source": "ocr", "bbox": [220, 80, 300, 140]}})
+        config = grid(
+            labels={
+                "rows": {"source": "ocr", "bbox": [220, 80, 300, 140]},
+                "ocr": {"upscale_factor": 3},
+            }
+        )
         image = Image.new("RGB", (300, 200), "white")
         image.putpixel((220, 80), (0, 0, 0))
         crop, transform = crop_label_region(image, config, "rows")

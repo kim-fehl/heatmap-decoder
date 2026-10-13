@@ -108,10 +108,15 @@ recognition pass per slot instead of sparse OCR of the whole strip:
 
 These regions belong to the bundled M11 figure and require its 25×8 geometry.
 
-The schema defaults to `sparse` for compatibility. `slots` uses PSM 7, grayscale
-and bicubic upscale, with a 128-call/16-million-upscaled-pixel/60-second budget per
-axis (one in-flight engine call can finish after the deadline). Each crop and raw
-run is retained in label provenance; tokens are mapped to original coordinates
+The schema defaults to `sparse` for compatibility. Gene/sample OCR defaults to
+RapidOCR with native-size grayscale input. `slots` recognizes each complete field
+without invoking a text detector; `sparse` uses detected text regions. Set
+`labels.ocr.engine` to `"tesseract"` for legacy PSM 7 slot OCR. Explicit enlargement
+and padding are still supported, with a 128-call/16-million-upscaled-pixel/60-second
+budget per axis. RapidOCR inference runs in a reusable worker stopped on timeout.
+Each crop and raw
+run, model hashes, score semantics and geometry kind are retained in label provenance;
+tokens are mapped to original coordinates
 before ordinary slot assignment. Full tokens crossing slots remain ambiguous.
 The strategy does not establish the counts or invent missing identifiers.
 

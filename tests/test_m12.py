@@ -231,4 +231,6 @@ def test_slot_ocr_confusable_genes_and_raw_provenance():
     )
     assert len(provenance["ocr"]["slot_runs"]) == 20
     assert provenance["ocr"]["availability"] == "available"
-    assert all(r[3].mode == "--oem 1 --psm 7" for r in result.slot_ocr_runs)
+    assert config.labels.ocr.engine == "rapidocr"
+    assert all(r[3].mode == "rapidocr-recognize-field" for r in result.slot_ocr_runs)
+    assert all(r[3].model_sha256 for r in result.slot_ocr_runs)

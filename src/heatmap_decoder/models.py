@@ -30,6 +30,7 @@ class OCRConfig(BaseModel):
 
     model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
 
+    engine: Literal["tesseract", "rapidocr"] = "tesseract"
     language: Annotated[str, Field(strict=True, min_length=1)] = "eng"
     upscale_factor: Annotated[int, Field(strict=True, ge=1)] = 3
     min_confidence: Annotated[float, Field(strict=True, ge=0, le=100)] = 80
@@ -97,7 +98,15 @@ class LabelsConfig(BaseModel):
 
     rows: LabelSource | None = None
     columns: LabelSource | None = None
-    ocr: OCRConfig = Field(default_factory=OCRConfig)
+    ocr: OCRConfig = Field(default_factory=lambda: OCRConfig(engine="rapidocr", upscale_factor=1))
+
+    @field_validator("ocr", mode="before")
+    @classmethod
+    def label_engine_defaults(cls, value: Any) -> Any:
+        if isinstance(value, dict):
+            factor = 3 if value.get("engine") == "tesseract" else 1
+            return {"engine": "rapidocr", "upscale_factor": factor, **value}
+        return value
 
     @model_validator(mode="after")
     def validate_row_rotation(self) -> "LabelsConfig":
@@ -349,6 +358,10 @@ class OCRRun:
     mode: str
     preprocessing: str = "grayscale_bicubic"
     white_padding_pixels: int = 0
+    engine_name: str = "Tesseract"
+    geometry_kind: str = "detected_text"
+    score_kind: str = "engine_confidence_0_100"
+    model_sha256: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(frozen=True)

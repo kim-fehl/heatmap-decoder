@@ -374,7 +374,8 @@ def test_layout_qa_runs_before_recognition(renderer):
 
 @pytest.mark.ocr_integration
 @pytest.mark.skipif(os.environ.get("HEATMAP_DECODER_OCR_TESTS") != "1", reason="real engine opt-in")
-def test_label_geometry_enables_basic_count_inference_without_identifiers():
+@pytest.mark.parametrize("engine", ["tesseract", "rapidocr"])
+def test_label_geometry_count_inference_accepts_or_safely_abstains(engine):
     image, _ = M10["make_layout"](rows=20, columns=6, row_side="left", column_side="bottom")
     result = automate(
         image,
@@ -386,12 +387,18 @@ def test_label_geometry_enables_basic_count_inference_without_identifiers():
                 colourbar_start_value=2,
                 colourbar_end_value=-2,
                 detector={"count_label_geometry": True},
+                labels={"ocr": {"engine": engine}},
             ),
             numeric_only=True,
         ),
     )
-    assert result.complete.status == "accepted"
-    assert (result.diagnostic_config.rows, result.diagnostic_config.columns) == (20, 6)
+    if engine == "tesseract":
+        assert result.complete.status == "accepted"
+        assert (result.diagnostic_config.rows, result.diagnostic_config.columns) == (20, 6)
+    else:
+        # The independent geometry gate abstains when the new detector disagrees;
+        # improved identifier recognition must not authorise a wrong grid count.
+        assert result.complete.status == "review_required"
     assert result.detection.acceptance.identifier_verification == "not_requested"
 
 

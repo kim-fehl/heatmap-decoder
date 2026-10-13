@@ -38,10 +38,12 @@ The supplied **33-gene × 8-time-column Symbiotic crop** illustrates manual heat
 sit outside content in a readable ledger. OCR uses H teal, M yellow, L crimson
 and ? dashed confidence frames; status words remain separate. This illustration
 shows all 33 equal-pitch gene fields, eight sample fields and five aligned tick
-fields, separately from actual OCR glyph boxes. With one-pixel source padding and
-one-pixel white margins, raw exact genes improve to 9/33; samples are 8/8 exact
-and heuristically accepted. Four gene readings pass the confidence threshold, but
-one is wrong, so identity review remains necessary. Automatic ROI selection abstains.
+fields. Gene/sample OCR now defaults to RapidOCR on native-size input; its slot
+boxes describe source fields, not detected glyphs. The default trial recovers
+`EsGalectin1` and **26/33 exact genes**, with **8/8 exact samples**. Six incorrect
+gene readings still pass the existing confidence threshold, so identity review
+remains necessary. Scores are engine-specific and uncalibrated. Earlier automatic
+ROI trials abstained; this comparison uses explicitly supplied regions and counts.
 Credit: Duscher, Vroom and Foster, Scientific Reports 14, 2912 (2024), CC BY 4.0.
 
 The first completed reviewed numeric trial recovered 251/264 cells without
@@ -58,18 +60,24 @@ Observed dash normalization retains raw text and audit actions; confidence and
 conflicts still require review. All five fields are drawn even when recognition fails.
 [Padding trial and limits](benchmarks/m16/ocr-padding/README.md).
 [Numeric constraints and right-margin results](benchmarks/m16/numeric-signs/README.md)
-retain the unresolved Galectin suffix despite four extra right pixels.
+retain the earlier Tesseract suffix failure. The
+[default RapidOCR trial](benchmarks/m16/rapidocr-default/README.md) documents its
+recovery and remaining errors.
 
 ## Try it
 
 ```bash
 uv sync --locked --extra ocr
-# Install local Tesseract + English data separately; see usage docs.
+# RapidOCR labels/models are installed with the main package.
+# Numeric tick OCR still needs local Tesseract + English data; see usage docs.
 uv run heatmap-decoder automate examples/m12/figure.png \
   --request examples/m12/request.json --out work/automatic
 uv run heatmap-decoder automate examples/corrections/figure.png \
   --request examples/corrections/request.json \
   --experimental-export --out work/decoded
+uv run heatmap-decoder labels \
+  examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg \
+  --config examples/m16/labels-default.json --out work/label-review
 ```
 
 `automate` normally exits **5** with decisions, labelled diagnostics and tick

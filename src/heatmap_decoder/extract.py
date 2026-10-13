@@ -323,6 +323,11 @@ def extract_labels(
                             run,
                             preprocessing=variant,
                             white_padding_pixels=source.white_padding_pixels,
+                            tokens=tuple(
+                                replace(token, bbox=transform.to_crop(box)) for token in run.tokens
+                            )
+                            if run.geometry_kind == "source_field"
+                            else run.tokens,
                         )
                         slot_runs.append((axis, slot.index, box, run))
                         offset = len(tokens)

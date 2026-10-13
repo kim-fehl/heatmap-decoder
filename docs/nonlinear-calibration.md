@@ -91,7 +91,9 @@ still checks centre offset and containment with only the recorded source padding
 and one-pixel rounding tolerance; failed evidence stays unresolved in its own slot.
 Multiple readings remain alternatives. Sparse region OCR retains its original
 geometric association policy. Logical field outlines use the uniform grid pitch;
-raw token/candidate outlines still show actual observed glyph bounds separately.
+Tesseract and sparse RapidOCR outlines show detected text bounds separately.
+RapidOCR slot boxes cover the source field rather than detected glyphs, explicitly
+recorded as `geometry_kind=source_field`; artificial white padding is excluded.
 
 Legend options add `align_tick_fields`, `crop_padding_pixels`,
 `white_padding_pixels`, and optional `retry_white_padding_pixels` (at most two

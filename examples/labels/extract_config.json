@@ -34,6 +34,10 @@
         1000,
         125
       ]
+    },
+    "ocr": {
+      "engine": "tesseract",
+      "upscale_factor": 3
     }
   }
 }

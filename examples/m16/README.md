@@ -61,7 +61,29 @@ with audited dash-to-minus normalization. `labels-right-padding.json` adds four
 right-only gene crop pixels. All five canonical tick proposals are exact; the
 Galectin suffix remains unresolved despite wider crops. See
 [the actual trial](../../benchmarks/m16/numeric-signs/README.md).
-## Optional independent OCR comparison
+## Default label OCR
+
+RapidOCR is now installed with the main package and is the default gene/sample
+engine. Run the normal command with native-size input and the existing equal slots:
+
+```bash
+uv run heatmap-decoder labels \
+  examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg \
+  --config examples/m16/labels-default.json --out work/m16/default-labels
+```
+
+The [normal CLI trial](../../benchmarks/m16/rapidocr-default/README.md) retains raw
+readings, model hashes, score semantics and geometry. Set `labels.ocr.engine` to
+`"tesseract"` for the legacy engine. Explicit enlargement remains respected;
+omitting it gives RapidOCR native-size input. Colour-bar tick OCR still uses
+Tesseract with numerical constraints.
+
+## Earlier independent OCR comparison
+
+The earlier `labels.json`, `labels-retries.json`, `labels-padding.json` and
+`labels-right-padding.json` configurations now explicitly name Tesseract to
+preserve their historical measurements. Use `labels-default.json` for the new
+RapidOCR defaults.
 
 [`rapidocr_labels.py`](rapidocr_labels.py) generates review candidates from the
 same explicit equal-row/column fields using RapidOCR. The

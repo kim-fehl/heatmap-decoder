@@ -2,6 +2,14 @@
 
 ## M16
 
+- RapidOCR is now the default gene/sample engine and a main dependency. Label
+  defaults use native-size input; legacy Tesseract remains explicitly selectable
+  and retains numeric tick constraints. A reusable worker enforces inference
+  timeouts. Provenance records model hashes, score semantics and source-field
+  versus detected-text geometry. The normal publication trial recovers
+  `EsGalectin1`, with 26/33 exact genes and 8/8 samples; remaining high-score
+  errors and rotated-label spacing limitations are retained for review.
+
 - Numeric/right-margin follow-up: constrain targeted tick OCR, normalize observed
   numeric dash signs with audit actions, preserve erased glyphs through bounded
   comparisons, and support extra right-only row padding. Retain the failed

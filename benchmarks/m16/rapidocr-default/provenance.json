@@ -1,0 +1,7174 @@
+{
+  "axes": [
+    {
+      "axis": "rows",
+      "candidates": [
+        {
+          "bbox": [
+            857.0,
+            188.0,
+            985.0,
+            211.0
+          ],
+          "confidence": 95.50530314445496,
+          "slot_index": 0,
+          "text": "EsTLR3",
+          "token_indices": [
+            0
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            208.0,
+            985.0,
+            231.0
+          ],
+          "confidence": 94.26579049655369,
+          "slot_index": 1,
+          "text": "EsPGRP5",
+          "token_indices": [
+            1
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            228.0,
+            985.0,
+            252.0
+          ],
+          "confidence": 98.11591744422913,
+          "slot_index": 2,
+          "text": "LYSM3",
+          "token_indices": [
+            2
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            249.0,
+            985.0,
+            272.0
+          ],
+          "confidence": 93.6830222606659,
+          "slot_index": 3,
+          "text": "IKBL",
+          "token_indices": [
+            3
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            269.0,
+            985.0,
+            292.0
+          ],
+          "confidence": 96.84196949005127,
+          "slot_index": 4,
+          "text": "KBRS1",
+          "token_indices": [
+            4
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            289.0,
+            985.0,
+            313.0
+          ],
+          "confidence": 88.50788831710815,
+          "slot_index": 5,
+          "text": "HSP9O",
+          "token_indices": [
+            5
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            310.0,
+            985.0,
+            333.0
+          ],
+          "confidence": 95.83970010280609,
+          "slot_index": 6,
+          "text": "EsRelA",
+          "token_indices": [
+            6
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            330.0,
+            985.0,
+            353.0
+          ],
+          "confidence": 96.28423810005188,
+          "slot_index": 7,
+          "text": "EsSOD",
+          "token_indices": [
+            7
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            350.0,
+            985.0,
+            374.0
+          ],
+          "confidence": 99.35209035873413,
+          "slot_index": 8,
+          "text": "TRAF3",
+          "token_indices": [
+            8
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            371.0,
+            985.0,
+            394.0
+          ],
+          "confidence": 88.4187400341034,
+          "slot_index": 9,
+          "text": "EslkBa",
+          "token_indices": [
+            9
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            391.0,
+            985.0,
+            414.0
+          ],
+          "confidence": 96.71405255794525,
+          "slot_index": 10,
+          "text": "TBK1",
+          "token_indices": [
+            10
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            412.0,
+            985.0,
+            435.0
+          ],
+          "confidence": 81.28001349312919,
+          "slot_index": 11,
+          "text": "EslKKy.",
+          "token_indices": [
+            11
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            432.0,
+            985.0,
+            455.0
+          ],
+          "confidence": 98.74458057539803,
+          "slot_index": 12,
+          "text": "EsPGRP2",
+          "token_indices": [
+            12
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            452.0,
+            985.0,
+            476.0
+          ],
+          "confidence": 88.09553980827332,
+          "slot_index": 13,
+          "text": "B",
+          "token_indices": [
+            13
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            473.0,
+            985.0,
+            496.0
+          ],
+          "confidence": 81.03096336126328,
+          "slot_index": 14,
+          "text": "IKKB",
+          "token_indices": [
+            14
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            493.0,
+            985.0,
+            516.0
+          ],
+          "confidence": 97.95443926538739,
+          "slot_index": 15,
+          "text": "EsPGRP3",
+          "token_indices": [
+            15
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            513.0,
+            985.0,
+            537.0
+          ],
+          "confidence": 97.50279188156128,
+          "slot_index": 16,
+          "text": "TOLIP",
+          "token_indices": [
+            16
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            534.0,
+            985.0,
+            557.0
+          ],
+          "confidence": 67.19588935375214,
+          "slot_index": 17,
+          "text": "KCK",
+          "token_indices": [
+            17
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            554.0,
+            985.0,
+            577.0
+          ],
+          "confidence": 99.4387698173523,
+          "slot_index": 18,
+          "text": "HSP71",
+          "token_indices": [
+            18
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            574.0,
+            985.0,
+            598.0
+          ],
+          "confidence": 90.1156210899353,
+          "slot_index": 19,
+          "text": "MYD88",
+          "token_indices": [
+            19
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            595.0,
+            985.0,
+            618.0
+          ],
+          "confidence": 89.40370787273754,
+          "slot_index": 20,
+          "text": "EsGalectin1",
+          "token_indices": [
+            20
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            615.0,
+            985.0,
+            638.0
+          ],
+          "confidence": 97.06654449303946,
+          "slot_index": 21,
+          "text": "IRAK42",
+          "token_indices": [
+            21
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            636.0,
+            985.0,
+            659.0
+          ],
+          "confidence": 97.68782683781215,
+          "slot_index": 22,
+          "text": "EsTRAF6",
+          "token_indices": [
+            22
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            656.0,
+            985.0,
+            679.0
+          ],
+          "confidence": 97.69204497337341,
+          "slot_index": 23,
+          "text": "TRAF4",
+          "token_indices": [
+            23
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            676.0,
+            985.0,
+            700.0
+          ],
+          "confidence": 98.61867725849152,
+          "slot_index": 24,
+          "text": "TAB3",
+          "token_indices": [
+            24
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            697.0,
+            985.0,
+            720.0
+          ],
+          "confidence": 96.38327956199646,
+          "slot_index": 25,
+          "text": "EsTLR4",
+          "token_indices": [
+            25
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            717.0,
+            985.0,
+            740.0
+          ],
+          "confidence": 97.46772408485413,
+          "slot_index": 26,
+          "text": "NLRC3",
+          "token_indices": [
+            26
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            737.0,
+            985.0,
+            761.0
+          ],
+          "confidence": 90.95443189144135,
+          "slot_index": 27,
+          "text": "EsTLR1",
+          "token_indices": [
+            27
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            758.0,
+            985.0,
+            781.0
+          ],
+          "confidence": 96.87734365463257,
+          "slot_index": 28,
+          "text": "TRAF2",
+          "token_indices": [
+            28
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            778.0,
+            985.0,
+            801.0
+          ],
+          "confidence": 95.88181674480438,
+          "slot_index": 29,
+          "text": "TAB1",
+          "token_indices": [
+            29
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            798.0,
+            985.0,
+            822.0
+          ],
+          "confidence": 93.43917071819305,
+          "slot_index": 30,
+          "text": "TAK1",
+          "token_indices": [
+            30
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            819.0,
+            985.0,
+            842.0
+          ],
+          "confidence": 89.16606647627694,
+          "slot_index": 31,
+          "text": "EsIRAK4",
+          "token_indices": [
+            31
+          ]
+        },
+        {
+          "bbox": [
+            857.0,
+            839.0,
+            985.0,
+            862.0
+          ],
+          "confidence": 97.19408651192984,
+          "slot_index": 32,
+          "text": "EsTLR2",
+          "token_indices": [
+            32
+          ]
+        }
+      ],
+      "slots": [
+        {
+          "bbox": [
+            857.0,
+            188.0,
+            985.0,
+            211.0
+          ],
+          "candidate_indices": [
+            0
+          ],
+          "confidence": 95.50530314445496,
+          "duplicate": false,
+          "final_text": "EsTLR3",
+          "index": 0,
+          "issues": [],
+          "raw_text": "EsTLR3",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            208.0,
+            985.0,
+            231.0
+          ],
+          "candidate_indices": [
+            1
+          ],
+          "confidence": 94.26579049655369,
+          "duplicate": false,
+          "final_text": "EsPGRP5",
+          "index": 1,
+          "issues": [],
+          "raw_text": "EsPGRP5",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            228.0,
+            985.0,
+            252.0
+          ],
+          "candidate_indices": [
+            2
+          ],
+          "confidence": 98.11591744422913,
+          "duplicate": false,
+          "final_text": "LYSM3",
+          "index": 2,
+          "issues": [],
+          "raw_text": "LYSM3",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            249.0,
+            985.0,
+            272.0
+          ],
+          "candidate_indices": [
+            3
+          ],
+          "confidence": 93.6830222606659,
+          "duplicate": false,
+          "final_text": "IKBL",
+          "index": 3,
+          "issues": [],
+          "raw_text": "IKBL",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            269.0,
+            985.0,
+            292.0
+          ],
+          "candidate_indices": [
+            4
+          ],
+          "confidence": 96.84196949005127,
+          "duplicate": false,
+          "final_text": "KBRS1",
+          "index": 4,
+          "issues": [],
+          "raw_text": "KBRS1",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            289.0,
+            985.0,
+            313.0
+          ],
+          "candidate_indices": [
+            5
+          ],
+          "confidence": 88.50788831710815,
+          "duplicate": false,
+          "final_text": "HSP9O",
+          "index": 5,
+          "issues": [],
+          "raw_text": "HSP9O",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            310.0,
+            985.0,
+            333.0
+          ],
+          "candidate_indices": [
+            6
+          ],
+          "confidence": 95.83970010280609,
+          "duplicate": false,
+          "final_text": "EsRelA",
+          "index": 6,
+          "issues": [],
+          "raw_text": "EsRelA",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            330.0,
+            985.0,
+            353.0
+          ],
+          "candidate_indices": [
+            7
+          ],
+          "confidence": 96.28423810005188,
+          "duplicate": false,
+          "final_text": "EsSOD",
+          "index": 7,
+          "issues": [],
+          "raw_text": "EsSOD",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            350.0,
+            985.0,
+            374.0
+          ],
+          "candidate_indices": [
+            8
+          ],
+          "confidence": 99.35209035873413,
+          "duplicate": false,
+          "final_text": "TRAF3",
+          "index": 8,
+          "issues": [],
+          "raw_text": "TRAF3",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            371.0,
+            985.0,
+            394.0
+          ],
+          "candidate_indices": [
+            9
+          ],
+          "confidence": 88.4187400341034,
+          "duplicate": false,
+          "final_text": "EslkBa",
+          "index": 9,
+          "issues": [],
+          "raw_text": "EslkBa",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            391.0,
+            985.0,
+            414.0
+          ],
+          "candidate_indices": [
+            10
+          ],
+          "confidence": 96.71405255794525,
+          "duplicate": false,
+          "final_text": "TBK1",
+          "index": 10,
+          "issues": [],
+          "raw_text": "TBK1",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            412.0,
+            985.0,
+            435.0
+          ],
+          "candidate_indices": [
+            11
+          ],
+          "confidence": 81.28001349312919,
+          "duplicate": false,
+          "final_text": "EslKKy.",
+          "index": 11,
+          "issues": [],
+          "raw_text": "EslKKy.",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            432.0,
+            985.0,
+            455.0
+          ],
+          "candidate_indices": [
+            12
+          ],
+          "confidence": 98.74458057539803,
+          "duplicate": false,
+          "final_text": "EsPGRP2",
+          "index": 12,
+          "issues": [],
+          "raw_text": "EsPGRP2",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            452.0,
+            985.0,
+            476.0
+          ],
+          "candidate_indices": [
+            13
+          ],
+          "confidence": 88.09553980827332,
+          "duplicate": false,
+          "final_text": "B",
+          "index": 13,
+          "issues": [],
+          "raw_text": "B",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            473.0,
+            985.0,
+            496.0
+          ],
+          "candidate_indices": [
+            14
+          ],
+          "confidence": 81.03096336126328,
+          "duplicate": false,
+          "final_text": "IKKB",
+          "index": 14,
+          "issues": [],
+          "raw_text": "IKKB",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            493.0,
+            985.0,
+            516.0
+          ],
+          "candidate_indices": [
+            15
+          ],
+          "confidence": 97.95443926538739,
+          "duplicate": false,
+          "final_text": "EsPGRP3",
+          "index": 15,
+          "issues": [],
+          "raw_text": "EsPGRP3",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            513.0,
+            985.0,
+            537.0
+          ],
+          "candidate_indices": [
+            16
+          ],
+          "confidence": 97.50279188156128,
+          "duplicate": false,
+          "final_text": "TOLIP",
+          "index": 16,
+          "issues": [],
+          "raw_text": "TOLIP",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            534.0,
+            985.0,
+            557.0
+          ],
+          "candidate_indices": [
+            17
+          ],
+          "confidence": 67.19588935375214,
+          "duplicate": false,
+          "final_text": null,
+          "index": 17,
+          "issues": [],
+          "raw_text": "KCK",
+          "source": "ocr",
+          "status": "low_confidence"
+        },
+        {
+          "bbox": [
+            857.0,
+            554.0,
+            985.0,
+            577.0
+          ],
+          "candidate_indices": [
+            18
+          ],
+          "confidence": 99.4387698173523,
+          "duplicate": false,
+          "final_text": "HSP71",
+          "index": 18,
+          "issues": [],
+          "raw_text": "HSP71",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            574.0,
+            985.0,
+            598.0
+          ],
+          "candidate_indices": [
+            19
+          ],
+          "confidence": 90.1156210899353,
+          "duplicate": false,
+          "final_text": "MYD88",
+          "index": 19,
+          "issues": [],
+          "raw_text": "MYD88",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            595.0,
+            985.0,
+            618.0
+          ],
+          "candidate_indices": [
+            20
+          ],
+          "confidence": 89.40370787273754,
+          "duplicate": false,
+          "final_text": "EsGalectin1",
+          "index": 20,
+          "issues": [],
+          "raw_text": "EsGalectin1",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            615.0,
+            985.0,
+            638.0
+          ],
+          "candidate_indices": [
+            21
+          ],
+          "confidence": 97.06654449303946,
+          "duplicate": false,
+          "final_text": "IRAK42",
+          "index": 21,
+          "issues": [],
+          "raw_text": "IRAK42",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            636.0,
+            985.0,
+            659.0
+          ],
+          "candidate_indices": [
+            22
+          ],
+          "confidence": 97.68782683781215,
+          "duplicate": false,
+          "final_text": "EsTRAF6",
+          "index": 22,
+          "issues": [],
+          "raw_text": "EsTRAF6",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            656.0,
+            985.0,
+            679.0
+          ],
+          "candidate_indices": [
+            23
+          ],
+          "confidence": 97.69204497337341,
+          "duplicate": false,
+          "final_text": "TRAF4",
+          "index": 23,
+          "issues": [],
+          "raw_text": "TRAF4",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            676.0,
+            985.0,
+            700.0
+          ],
+          "candidate_indices": [
+            24
+          ],
+          "confidence": 98.61867725849152,
+          "duplicate": false,
+          "final_text": "TAB3",
+          "index": 24,
+          "issues": [],
+          "raw_text": "TAB3",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            697.0,
+            985.0,
+            720.0
+          ],
+          "candidate_indices": [
+            25
+          ],
+          "confidence": 96.38327956199646,
+          "duplicate": false,
+          "final_text": "EsTLR4",
+          "index": 25,
+          "issues": [],
+          "raw_text": "EsTLR4",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            717.0,
+            985.0,
+            740.0
+          ],
+          "candidate_indices": [
+            26
+          ],
+          "confidence": 97.46772408485413,
+          "duplicate": false,
+          "final_text": "NLRC3",
+          "index": 26,
+          "issues": [],
+          "raw_text": "NLRC3",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            737.0,
+            985.0,
+            761.0
+          ],
+          "candidate_indices": [
+            27
+          ],
+          "confidence": 90.95443189144135,
+          "duplicate": false,
+          "final_text": "EsTLR1",
+          "index": 27,
+          "issues": [],
+          "raw_text": "EsTLR1",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            758.0,
+            985.0,
+            781.0
+          ],
+          "candidate_indices": [
+            28
+          ],
+          "confidence": 96.87734365463257,
+          "duplicate": false,
+          "final_text": "TRAF2",
+          "index": 28,
+          "issues": [],
+          "raw_text": "TRAF2",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            778.0,
+            985.0,
+            801.0
+          ],
+          "candidate_indices": [
+            29
+          ],
+          "confidence": 95.88181674480438,
+          "duplicate": false,
+          "final_text": "TAB1",
+          "index": 29,
+          "issues": [],
+          "raw_text": "TAB1",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            798.0,
+            985.0,
+            822.0
+          ],
+          "candidate_indices": [
+            30
+          ],
+          "confidence": 93.43917071819305,
+          "duplicate": false,
+          "final_text": "TAK1",
+          "index": 30,
+          "issues": [],
+          "raw_text": "TAK1",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            819.0,
+            985.0,
+            842.0
+          ],
+          "candidate_indices": [
+            31
+          ],
+          "confidence": 89.16606647627694,
+          "duplicate": false,
+          "final_text": "EsIRAK4",
+          "index": 31,
+          "issues": [],
+          "raw_text": "EsIRAK4",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            857.0,
+            839.0,
+            985.0,
+            862.0
+          ],
+          "candidate_indices": [
+            32
+          ],
+          "confidence": 97.19408651192984,
+          "duplicate": false,
+          "final_text": "EsTLR2",
+          "index": 32,
+          "issues": [],
+          "raw_text": "EsTLR2",
+          "source": "ocr",
+          "status": "accepted"
+        }
+      ],
+      "tokens": [
+        {
+          "bbox": [
+            857.0,
+            188.0,
+            985.0,
+            211.0
+          ],
+          "confidence": 95.50530314445496,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsTLR3"
+        },
+        {
+          "bbox": [
+            857.0,
+            208.0,
+            985.0,
+            231.0
+          ],
+          "confidence": 94.26579049655369,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsPGRP5"
+        },
+        {
+          "bbox": [
+            857.0,
+            228.0,
+            985.0,
+            252.0
+          ],
+          "confidence": 98.11591744422913,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "LYSM3"
+        },
+        {
+          "bbox": [
+            857.0,
+            249.0,
+            985.0,
+            272.0
+          ],
+          "confidence": 93.6830222606659,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "IKBL"
+        },
+        {
+          "bbox": [
+            857.0,
+            269.0,
+            985.0,
+            292.0
+          ],
+          "confidence": 96.84196949005127,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "KBRS1"
+        },
+        {
+          "bbox": [
+            857.0,
+            289.0,
+            985.0,
+            313.0
+          ],
+          "confidence": 88.50788831710815,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "HSP9O"
+        },
+        {
+          "bbox": [
+            857.0,
+            310.0,
+            985.0,
+            333.0
+          ],
+          "confidence": 95.83970010280609,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsRelA"
+        },
+        {
+          "bbox": [
+            857.0,
+            330.0,
+            985.0,
+            353.0
+          ],
+          "confidence": 96.28423810005188,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsSOD"
+        },
+        {
+          "bbox": [
+            857.0,
+            350.0,
+            985.0,
+            374.0
+          ],
+          "confidence": 99.35209035873413,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "TRAF3"
+        },
+        {
+          "bbox": [
+            857.0,
+            371.0,
+            985.0,
+            394.0
+          ],
+          "confidence": 88.4187400341034,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EslkBa"
+        },
+        {
+          "bbox": [
+            857.0,
+            391.0,
+            985.0,
+            414.0
+          ],
+          "confidence": 96.71405255794525,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "TBK1"
+        },
+        {
+          "bbox": [
+            857.0,
+            412.0,
+            985.0,
+            435.0
+          ],
+          "confidence": 81.28001349312919,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EslKKy."
+        },
+        {
+          "bbox": [
+            857.0,
+            432.0,
+            985.0,
+            455.0
+          ],
+          "confidence": 98.74458057539803,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsPGRP2"
+        },
+        {
+          "bbox": [
+            857.0,
+            452.0,
+            985.0,
+            476.0
+          ],
+          "confidence": 88.09553980827332,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "B"
+        },
+        {
+          "bbox": [
+            857.0,
+            473.0,
+            985.0,
+            496.0
+          ],
+          "confidence": 81.03096336126328,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "IKKB"
+        },
+        {
+          "bbox": [
+            857.0,
+            493.0,
+            985.0,
+            516.0
+          ],
+          "confidence": 97.95443926538739,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsPGRP3"
+        },
+        {
+          "bbox": [
+            857.0,
+            513.0,
+            985.0,
+            537.0
+          ],
+          "confidence": 97.50279188156128,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "TOLIP"
+        },
+        {
+          "bbox": [
+            857.0,
+            534.0,
+            985.0,
+            557.0
+          ],
+          "confidence": 67.19588935375214,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "KCK"
+        },
+        {
+          "bbox": [
+            857.0,
+            554.0,
+            985.0,
+            577.0
+          ],
+          "confidence": 99.4387698173523,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "HSP71"
+        },
+        {
+          "bbox": [
+            857.0,
+            574.0,
+            985.0,
+            598.0
+          ],
+          "confidence": 90.1156210899353,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "MYD88"
+        },
+        {
+          "bbox": [
+            857.0,
+            595.0,
+            985.0,
+            618.0
+          ],
+          "confidence": 89.40370787273754,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsGalectin1"
+        },
+        {
+          "bbox": [
+            857.0,
+            615.0,
+            985.0,
+            638.0
+          ],
+          "confidence": 97.06654449303946,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "IRAK42"
+        },
+        {
+          "bbox": [
+            857.0,
+            636.0,
+            985.0,
+            659.0
+          ],
+          "confidence": 97.68782683781215,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsTRAF6"
+        },
+        {
+          "bbox": [
+            857.0,
+            656.0,
+            985.0,
+            679.0
+          ],
+          "confidence": 97.69204497337341,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "TRAF4"
+        },
+        {
+          "bbox": [
+            857.0,
+            676.0,
+            985.0,
+            700.0
+          ],
+          "confidence": 98.61867725849152,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "TAB3"
+        },
+        {
+          "bbox": [
+            857.0,
+            697.0,
+            985.0,
+            720.0
+          ],
+          "confidence": 96.38327956199646,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsTLR4"
+        },
+        {
+          "bbox": [
+            857.0,
+            717.0,
+            985.0,
+            740.0
+          ],
+          "confidence": 97.46772408485413,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "NLRC3"
+        },
+        {
+          "bbox": [
+            857.0,
+            737.0,
+            985.0,
+            761.0
+          ],
+          "confidence": 90.95443189144135,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsTLR1"
+        },
+        {
+          "bbox": [
+            857.0,
+            758.0,
+            985.0,
+            781.0
+          ],
+          "confidence": 96.87734365463257,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "TRAF2"
+        },
+        {
+          "bbox": [
+            857.0,
+            778.0,
+            985.0,
+            801.0
+          ],
+          "confidence": 95.88181674480438,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "TAB1"
+        },
+        {
+          "bbox": [
+            857.0,
+            798.0,
+            985.0,
+            822.0
+          ],
+          "confidence": 93.43917071819305,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "TAK1"
+        },
+        {
+          "bbox": [
+            857.0,
+            819.0,
+            985.0,
+            842.0
+          ],
+          "confidence": 89.16606647627694,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsIRAK4"
+        },
+        {
+          "bbox": [
+            857.0,
+            839.0,
+            985.0,
+            862.0
+          ],
+          "confidence": 97.19408651192984,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "EsTLR2"
+        }
+      ],
+      "unmatched_candidate_indices": []
+    },
+    {
+      "axis": "columns",
+      "candidates": [
+        {
+          "bbox": [
+            334.0,
+            867.0,
+            401.0,
+            905.0
+          ],
+          "confidence": 99.59380626678467,
+          "slot_index": 0,
+          "text": "2",
+          "token_indices": [
+            0
+          ]
+        },
+        {
+          "bbox": [
+            398.0,
+            867.0,
+            466.0,
+            905.0
+          ],
+          "confidence": 94.87184286117554,
+          "slot_index": 1,
+          "text": "6",
+          "token_indices": [
+            1
+          ]
+        },
+        {
+          "bbox": [
+            463.0,
+            867.0,
+            531.0,
+            905.0
+          ],
+          "confidence": 96.86540365219116,
+          "slot_index": 2,
+          "text": "8",
+          "token_indices": [
+            2
+          ]
+        },
+        {
+          "bbox": [
+            528.0,
+            867.0,
+            596.0,
+            905.0
+          ],
+          "confidence": 99.72229599952698,
+          "slot_index": 3,
+          "text": "10",
+          "token_indices": [
+            3
+          ]
+        },
+        {
+          "bbox": [
+            593.0,
+            867.0,
+            661.0,
+            905.0
+          ],
+          "confidence": 99.85297918319702,
+          "slot_index": 4,
+          "text": "12",
+          "token_indices": [
+            4
+          ]
+        },
+        {
+          "bbox": [
+            658.0,
+            867.0,
+            726.0,
+            905.0
+          ],
+          "confidence": 99.80575442314148,
+          "slot_index": 5,
+          "text": "16",
+          "token_indices": [
+            5
+          ]
+        },
+        {
+          "bbox": [
+            723.0,
+            867.0,
+            791.0,
+            905.0
+          ],
+          "confidence": 99.54301118850708,
+          "slot_index": 6,
+          "text": "18",
+          "token_indices": [
+            6
+          ]
+        },
+        {
+          "bbox": [
+            788.0,
+            867.0,
+            855.0,
+            905.0
+          ],
+          "confidence": 99.94652569293976,
+          "slot_index": 7,
+          "text": "24",
+          "token_indices": [
+            7
+          ]
+        }
+      ],
+      "slots": [
+        {
+          "bbox": [
+            334.0,
+            867.0,
+            401.0,
+            905.0
+          ],
+          "candidate_indices": [
+            0
+          ],
+          "confidence": 99.59380626678467,
+          "duplicate": false,
+          "final_text": "2",
+          "index": 0,
+          "issues": [],
+          "raw_text": "2",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            398.0,
+            867.0,
+            466.0,
+            905.0
+          ],
+          "candidate_indices": [
+            1
+          ],
+          "confidence": 94.87184286117554,
+          "duplicate": false,
+          "final_text": "6",
+          "index": 1,
+          "issues": [],
+          "raw_text": "6",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            463.0,
+            867.0,
+            531.0,
+            905.0
+          ],
+          "candidate_indices": [
+            2
+          ],
+          "confidence": 96.86540365219116,
+          "duplicate": false,
+          "final_text": "8",
+          "index": 2,
+          "issues": [],
+          "raw_text": "8",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            528.0,
+            867.0,
+            596.0,
+            905.0
+          ],
+          "candidate_indices": [
+            3
+          ],
+          "confidence": 99.72229599952698,
+          "duplicate": false,
+          "final_text": "10",
+          "index": 3,
+          "issues": [],
+          "raw_text": "10",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            593.0,
+            867.0,
+            661.0,
+            905.0
+          ],
+          "candidate_indices": [
+            4
+          ],
+          "confidence": 99.85297918319702,
+          "duplicate": false,
+          "final_text": "12",
+          "index": 4,
+          "issues": [],
+          "raw_text": "12",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            658.0,
+            867.0,
+            726.0,
+            905.0
+          ],
+          "candidate_indices": [
+            5
+          ],
+          "confidence": 99.80575442314148,
+          "duplicate": false,
+          "final_text": "16",
+          "index": 5,
+          "issues": [],
+          "raw_text": "16",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            723.0,
+            867.0,
+            791.0,
+            905.0
+          ],
+          "candidate_indices": [
+            6
+          ],
+          "confidence": 99.54301118850708,
+          "duplicate": false,
+          "final_text": "18",
+          "index": 6,
+          "issues": [],
+          "raw_text": "18",
+          "source": "ocr",
+          "status": "accepted"
+        },
+        {
+          "bbox": [
+            788.0,
+            867.0,
+            855.0,
+            905.0
+          ],
+          "candidate_indices": [
+            7
+          ],
+          "confidence": 99.94652569293976,
+          "duplicate": false,
+          "final_text": "24",
+          "index": 7,
+          "issues": [],
+          "raw_text": "24",
+          "source": "ocr",
+          "status": "accepted"
+        }
+      ],
+      "tokens": [
+        {
+          "bbox": [
+            334.0,
+            867.0,
+            401.0,
+            905.0
+          ],
+          "confidence": 99.59380626678467,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "2"
+        },
+        {
+          "bbox": [
+            398.0,
+            867.0,
+            466.0,
+            905.0
+          ],
+          "confidence": 94.87184286117554,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "6"
+        },
+        {
+          "bbox": [
+            463.0,
+            867.0,
+            531.0,
+            905.0
+          ],
+          "confidence": 96.86540365219116,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "8"
+        },
+        {
+          "bbox": [
+            528.0,
+            867.0,
+            596.0,
+            905.0
+          ],
+          "confidence": 99.72229599952698,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "10"
+        },
+        {
+          "bbox": [
+            593.0,
+            867.0,
+            661.0,
+            905.0
+          ],
+          "confidence": 99.85297918319702,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "12"
+        },
+        {
+          "bbox": [
+            658.0,
+            867.0,
+            726.0,
+            905.0
+          ],
+          "confidence": 99.80575442314148,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "16"
+        },
+        {
+          "bbox": [
+            723.0,
+            867.0,
+            791.0,
+            905.0
+          ],
+          "confidence": 99.54301118850708,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "18"
+        },
+        {
+          "bbox": [
+            788.0,
+            867.0,
+            855.0,
+            905.0
+          ],
+          "confidence": 99.94652569293976,
+          "line_id": [
+            1,
+            1,
+            1
+          ],
+          "text": "24"
+        }
+      ],
+      "unmatched_candidate_indices": []
+    }
+  ],
+  "config": {
+    "columns": 8,
+    "heatmap_bbox": [
+      335,
+      189,
+      854,
+      861
+    ],
+    "labels": {
+      "columns": {
+        "bbox": [
+          335,
+          868,
+          854,
+          904
+        ],
+        "crop_padding_pixels": 1,
+        "crop_right_padding_pixels": 0,
+        "recognition": "slots",
+        "source": "ocr",
+        "text_rotation_degrees": 0,
+        "white_padding_pixels": 0
+      },
+      "ocr": {
+        "engine": "rapidocr",
+        "high_confidence": 90.0,
+        "language": "eng",
+        "max_axis_offset_fraction": 0.4,
+        "min_confidence": 80.0,
+        "retry_variants": [],
+        "upscale_factor": 1
+      },
+      "rows": {
+        "bbox": [
+          858,
+          189,
+          980,
+          861
+        ],
+        "crop_padding_pixels": 1,
+        "crop_right_padding_pixels": 4,
+        "recognition": "slots",
+        "source": "ocr",
+        "text_rotation_degrees": 0,
+        "white_padding_pixels": 0
+      }
+    },
+    "rows": 33
+  },
+  "config_sha256": "d86c85100adbf0b290063cb1a6c16695d13530908a0579f18ad7a0410ca9bcae",
+  "file_label_sha256": {},
+  "input": {
+    "filename": "10.1038__s41598-024-53477-3__fig4.jpg",
+    "image_shape": [
+      969,
+      1043,
+      3
+    ],
+    "sha256": "085e6a625e36abeea8e239c842b78599a932434e53456bf492b0da1ce228d4ef"
+  },
+  "limitations": "OCR confidence is a heuristic, not a probability or biological identity. Verify text and displayed order; rows must be upright and columns allow explicit 0/\u00b190 degrees.",
+  "ocr": {
+    "assigned_text_token_coordinate_frame": "original image pixels",
+    "availability": "available",
+    "raw_token_coordinate_frame": "upright upscaled crop pixels",
+    "run_geometry": {},
+    "runs": {},
+    "skipped_attempts": [],
+    "slot_runs": [
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          188,
+          985,
+          211
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                188.0,
+                985.0,
+                211.0
+              ],
+              "confidence": 95.50530314445496,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                188.0,
+                985.0,
+                211.0
+              ],
+              "slot_index": null,
+              "text": "EsTLR3",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                188.0,
+                985.0,
+                211.0
+              ],
+              "confidence": 95.50530314445496,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTLR3"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 0,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 95.50530314445496,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTLR3"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            188,
+            985,
+            211
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          208,
+          985,
+          231
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                208.0,
+                985.0,
+                231.0
+              ],
+              "confidence": 94.26579049655369,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                208.0,
+                985.0,
+                231.0
+              ],
+              "slot_index": null,
+              "text": "EsPGRP5",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                208.0,
+                985.0,
+                231.0
+              ],
+              "confidence": 94.26579049655369,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsPGRP5"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 1,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 94.26579049655369,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsPGRP5"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            208,
+            985,
+            231
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          228,
+          985,
+          252
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                228.0,
+                985.0,
+                252.0
+              ],
+              "confidence": 98.11591744422913,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                24.0
+              ],
+              "original_bbox": [
+                857.0,
+                228.0,
+                985.0,
+                252.0
+              ],
+              "slot_index": null,
+              "text": "LYSM3",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                228.0,
+                985.0,
+                252.0
+              ],
+              "confidence": 98.11591744422913,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "LYSM3"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 2,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                24
+              ],
+              "confidence": 98.11591744422913,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "LYSM3"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            228,
+            985,
+            252
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            24
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          249,
+          985,
+          272
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                249.0,
+                985.0,
+                272.0
+              ],
+              "confidence": 93.6830222606659,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                249.0,
+                985.0,
+                272.0
+              ],
+              "slot_index": null,
+              "text": "IKBL",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                249.0,
+                985.0,
+                272.0
+              ],
+              "confidence": 93.6830222606659,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "IKBL"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 3,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 93.6830222606659,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "IKBL"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            249,
+            985,
+            272
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          269,
+          985,
+          292
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                269.0,
+                985.0,
+                292.0
+              ],
+              "confidence": 96.84196949005127,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                269.0,
+                985.0,
+                292.0
+              ],
+              "slot_index": null,
+              "text": "KBRS1",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                269.0,
+                985.0,
+                292.0
+              ],
+              "confidence": 96.84196949005127,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "KBRS1"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 4,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 96.84196949005127,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "KBRS1"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            269,
+            985,
+            292
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          289,
+          985,
+          313
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                289.0,
+                985.0,
+                313.0
+              ],
+              "confidence": 88.50788831710815,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                24.0
+              ],
+              "original_bbox": [
+                857.0,
+                289.0,
+                985.0,
+                313.0
+              ],
+              "slot_index": null,
+              "text": "HSP9O",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                289.0,
+                985.0,
+                313.0
+              ],
+              "confidence": 88.50788831710815,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "HSP9O"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 5,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                24
+              ],
+              "confidence": 88.50788831710815,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "HSP9O"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            289,
+            985,
+            313
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            24
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          310,
+          985,
+          333
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                310.0,
+                985.0,
+                333.0
+              ],
+              "confidence": 95.83970010280609,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                310.0,
+                985.0,
+                333.0
+              ],
+              "slot_index": null,
+              "text": "EsRelA",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                310.0,
+                985.0,
+                333.0
+              ],
+              "confidence": 95.83970010280609,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsRelA"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 6,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 95.83970010280609,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsRelA"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            310,
+            985,
+            333
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          330,
+          985,
+          353
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                330.0,
+                985.0,
+                353.0
+              ],
+              "confidence": 96.28423810005188,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                330.0,
+                985.0,
+                353.0
+              ],
+              "slot_index": null,
+              "text": "EsSOD",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                330.0,
+                985.0,
+                353.0
+              ],
+              "confidence": 96.28423810005188,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsSOD"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 7,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 96.28423810005188,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsSOD"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            330,
+            985,
+            353
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          350,
+          985,
+          374
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                350.0,
+                985.0,
+                374.0
+              ],
+              "confidence": 99.35209035873413,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                24.0
+              ],
+              "original_bbox": [
+                857.0,
+                350.0,
+                985.0,
+                374.0
+              ],
+              "slot_index": null,
+              "text": "TRAF3",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                350.0,
+                985.0,
+                374.0
+              ],
+              "confidence": 99.35209035873413,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TRAF3"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 8,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                24
+              ],
+              "confidence": 99.35209035873413,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TRAF3"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            350,
+            985,
+            374
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            24
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          371,
+          985,
+          394
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                371.0,
+                985.0,
+                394.0
+              ],
+              "confidence": 88.4187400341034,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                371.0,
+                985.0,
+                394.0
+              ],
+              "slot_index": null,
+              "text": "EslkBa",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                371.0,
+                985.0,
+                394.0
+              ],
+              "confidence": 88.4187400341034,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EslkBa"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 9,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 88.4187400341034,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EslkBa"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            371,
+            985,
+            394
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          391,
+          985,
+          414
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                391.0,
+                985.0,
+                414.0
+              ],
+              "confidence": 96.71405255794525,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                391.0,
+                985.0,
+                414.0
+              ],
+              "slot_index": null,
+              "text": "TBK1",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                391.0,
+                985.0,
+                414.0
+              ],
+              "confidence": 96.71405255794525,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TBK1"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 10,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 96.71405255794525,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TBK1"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            391,
+            985,
+            414
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          412,
+          985,
+          435
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                412.0,
+                985.0,
+                435.0
+              ],
+              "confidence": 81.28001349312919,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                412.0,
+                985.0,
+                435.0
+              ],
+              "slot_index": null,
+              "text": "EslKKy.",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                412.0,
+                985.0,
+                435.0
+              ],
+              "confidence": 81.28001349312919,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EslKKy."
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 11,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 81.28001349312919,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EslKKy."
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            412,
+            985,
+            435
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          432,
+          985,
+          455
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                432.0,
+                985.0,
+                455.0
+              ],
+              "confidence": 98.74458057539803,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                432.0,
+                985.0,
+                455.0
+              ],
+              "slot_index": null,
+              "text": "EsPGRP2",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                432.0,
+                985.0,
+                455.0
+              ],
+              "confidence": 98.74458057539803,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsPGRP2"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 12,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 98.74458057539803,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsPGRP2"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            432,
+            985,
+            455
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          452,
+          985,
+          476
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                452.0,
+                985.0,
+                476.0
+              ],
+              "confidence": 88.09553980827332,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                24.0
+              ],
+              "original_bbox": [
+                857.0,
+                452.0,
+                985.0,
+                476.0
+              ],
+              "slot_index": null,
+              "text": "B",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                452.0,
+                985.0,
+                476.0
+              ],
+              "confidence": 88.09553980827332,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "B"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 13,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                24
+              ],
+              "confidence": 88.09553980827332,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "B"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            452,
+            985,
+            476
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            24
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          473,
+          985,
+          496
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                473.0,
+                985.0,
+                496.0
+              ],
+              "confidence": 81.03096336126328,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                473.0,
+                985.0,
+                496.0
+              ],
+              "slot_index": null,
+              "text": "IKKB",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                473.0,
+                985.0,
+                496.0
+              ],
+              "confidence": 81.03096336126328,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "IKKB"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 14,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 81.03096336126328,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "IKKB"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            473,
+            985,
+            496
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          493,
+          985,
+          516
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                493.0,
+                985.0,
+                516.0
+              ],
+              "confidence": 97.95443926538739,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                493.0,
+                985.0,
+                516.0
+              ],
+              "slot_index": null,
+              "text": "EsPGRP3",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                493.0,
+                985.0,
+                516.0
+              ],
+              "confidence": 97.95443926538739,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsPGRP3"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 15,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 97.95443926538739,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsPGRP3"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            493,
+            985,
+            516
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          513,
+          985,
+          537
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                513.0,
+                985.0,
+                537.0
+              ],
+              "confidence": 97.50279188156128,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                24.0
+              ],
+              "original_bbox": [
+                857.0,
+                513.0,
+                985.0,
+                537.0
+              ],
+              "slot_index": null,
+              "text": "TOLIP",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                513.0,
+                985.0,
+                537.0
+              ],
+              "confidence": 97.50279188156128,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TOLIP"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 16,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                24
+              ],
+              "confidence": 97.50279188156128,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TOLIP"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            513,
+            985,
+            537
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            24
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          534,
+          985,
+          557
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                534.0,
+                985.0,
+                557.0
+              ],
+              "confidence": 67.19588935375214,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                534.0,
+                985.0,
+                557.0
+              ],
+              "slot_index": null,
+              "text": "KCK",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                534.0,
+                985.0,
+                557.0
+              ],
+              "confidence": 67.19588935375214,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "KCK"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 17,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 67.19588935375214,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "KCK"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            534,
+            985,
+            557
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          554,
+          985,
+          577
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                554.0,
+                985.0,
+                577.0
+              ],
+              "confidence": 99.4387698173523,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                554.0,
+                985.0,
+                577.0
+              ],
+              "slot_index": null,
+              "text": "HSP71",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                554.0,
+                985.0,
+                577.0
+              ],
+              "confidence": 99.4387698173523,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "HSP71"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 18,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 99.4387698173523,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "HSP71"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            554,
+            985,
+            577
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          574,
+          985,
+          598
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                574.0,
+                985.0,
+                598.0
+              ],
+              "confidence": 90.1156210899353,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                24.0
+              ],
+              "original_bbox": [
+                857.0,
+                574.0,
+                985.0,
+                598.0
+              ],
+              "slot_index": null,
+              "text": "MYD88",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                574.0,
+                985.0,
+                598.0
+              ],
+              "confidence": 90.1156210899353,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "MYD88"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 19,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                24
+              ],
+              "confidence": 90.1156210899353,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "MYD88"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            574,
+            985,
+            598
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            24
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          595,
+          985,
+          618
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                595.0,
+                985.0,
+                618.0
+              ],
+              "confidence": 89.40370787273754,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                595.0,
+                985.0,
+                618.0
+              ],
+              "slot_index": null,
+              "text": "EsGalectin1",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                595.0,
+                985.0,
+                618.0
+              ],
+              "confidence": 89.40370787273754,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsGalectin1"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 20,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 89.40370787273754,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsGalectin1"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            595,
+            985,
+            618
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          615,
+          985,
+          638
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                615.0,
+                985.0,
+                638.0
+              ],
+              "confidence": 97.06654449303946,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                615.0,
+                985.0,
+                638.0
+              ],
+              "slot_index": null,
+              "text": "IRAK42",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                615.0,
+                985.0,
+                638.0
+              ],
+              "confidence": 97.06654449303946,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "IRAK42"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 21,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 97.06654449303946,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "IRAK42"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            615,
+            985,
+            638
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          636,
+          985,
+          659
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                636.0,
+                985.0,
+                659.0
+              ],
+              "confidence": 97.68782683781215,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                636.0,
+                985.0,
+                659.0
+              ],
+              "slot_index": null,
+              "text": "EsTRAF6",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                636.0,
+                985.0,
+                659.0
+              ],
+              "confidence": 97.68782683781215,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTRAF6"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 22,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 97.68782683781215,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTRAF6"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            636,
+            985,
+            659
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          656,
+          985,
+          679
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                656.0,
+                985.0,
+                679.0
+              ],
+              "confidence": 97.69204497337341,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                656.0,
+                985.0,
+                679.0
+              ],
+              "slot_index": null,
+              "text": "TRAF4",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                656.0,
+                985.0,
+                679.0
+              ],
+              "confidence": 97.69204497337341,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TRAF4"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 23,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 97.69204497337341,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TRAF4"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            656,
+            985,
+            679
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          676,
+          985,
+          700
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                676.0,
+                985.0,
+                700.0
+              ],
+              "confidence": 98.61867725849152,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                24.0
+              ],
+              "original_bbox": [
+                857.0,
+                676.0,
+                985.0,
+                700.0
+              ],
+              "slot_index": null,
+              "text": "TAB3",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                676.0,
+                985.0,
+                700.0
+              ],
+              "confidence": 98.61867725849152,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TAB3"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 24,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                24
+              ],
+              "confidence": 98.61867725849152,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TAB3"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            676,
+            985,
+            700
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            24
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          697,
+          985,
+          720
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                697.0,
+                985.0,
+                720.0
+              ],
+              "confidence": 96.38327956199646,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                697.0,
+                985.0,
+                720.0
+              ],
+              "slot_index": null,
+              "text": "EsTLR4",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                697.0,
+                985.0,
+                720.0
+              ],
+              "confidence": 96.38327956199646,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTLR4"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 25,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 96.38327956199646,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTLR4"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            697,
+            985,
+            720
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          717,
+          985,
+          740
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                717.0,
+                985.0,
+                740.0
+              ],
+              "confidence": 97.46772408485413,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                717.0,
+                985.0,
+                740.0
+              ],
+              "slot_index": null,
+              "text": "NLRC3",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                717.0,
+                985.0,
+                740.0
+              ],
+              "confidence": 97.46772408485413,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "NLRC3"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 26,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 97.46772408485413,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "NLRC3"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            717,
+            985,
+            740
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          737,
+          985,
+          761
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                737.0,
+                985.0,
+                761.0
+              ],
+              "confidence": 90.95443189144135,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                24.0
+              ],
+              "original_bbox": [
+                857.0,
+                737.0,
+                985.0,
+                761.0
+              ],
+              "slot_index": null,
+              "text": "EsTLR1",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                737.0,
+                985.0,
+                761.0
+              ],
+              "confidence": 90.95443189144135,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTLR1"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 27,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                24
+              ],
+              "confidence": 90.95443189144135,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTLR1"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            737,
+            985,
+            761
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            24
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          758,
+          985,
+          781
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                758.0,
+                985.0,
+                781.0
+              ],
+              "confidence": 96.87734365463257,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                758.0,
+                985.0,
+                781.0
+              ],
+              "slot_index": null,
+              "text": "TRAF2",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                758.0,
+                985.0,
+                781.0
+              ],
+              "confidence": 96.87734365463257,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TRAF2"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 28,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 96.87734365463257,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TRAF2"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            758,
+            985,
+            781
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          778,
+          985,
+          801
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                778.0,
+                985.0,
+                801.0
+              ],
+              "confidence": 95.88181674480438,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                778.0,
+                985.0,
+                801.0
+              ],
+              "slot_index": null,
+              "text": "TAB1",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                778.0,
+                985.0,
+                801.0
+              ],
+              "confidence": 95.88181674480438,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TAB1"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 29,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 95.88181674480438,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TAB1"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            778,
+            985,
+            801
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          798,
+          985,
+          822
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                798.0,
+                985.0,
+                822.0
+              ],
+              "confidence": 93.43917071819305,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                24.0
+              ],
+              "original_bbox": [
+                857.0,
+                798.0,
+                985.0,
+                822.0
+              ],
+              "slot_index": null,
+              "text": "TAK1",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                798.0,
+                985.0,
+                822.0
+              ],
+              "confidence": 93.43917071819305,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TAK1"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 30,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                24
+              ],
+              "confidence": 93.43917071819305,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "TAK1"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            798,
+            985,
+            822
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            24
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          819,
+          985,
+          842
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                819.0,
+                985.0,
+                842.0
+              ],
+              "confidence": 89.16606647627694,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                819.0,
+                985.0,
+                842.0
+              ],
+              "slot_index": null,
+              "text": "EsIRAK4",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                819.0,
+                985.0,
+                842.0
+              ],
+              "confidence": 89.16606647627694,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsIRAK4"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 31,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 89.16606647627694,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsIRAK4"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            819,
+            985,
+            842
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "rows",
+        "crop_bbox": [
+          857,
+          839,
+          985,
+          862
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                857.0,
+                839.0,
+                985.0,
+                862.0
+              ],
+              "confidence": 97.19408651192984,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                128.0,
+                23.0
+              ],
+              "original_bbox": [
+                857.0,
+                839.0,
+                985.0,
+                862.0
+              ],
+              "slot_index": null,
+              "text": "EsTLR2",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                857.0,
+                839.0,
+                985.0,
+                862.0
+              ],
+              "confidence": 97.19408651192984,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTLR2"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 32,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                128,
+                23
+              ],
+              "confidence": 97.19408651192984,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "EsTLR2"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            857,
+            839,
+            985,
+            862
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            128,
+            23
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "columns",
+        "crop_bbox": [
+          334,
+          867,
+          401,
+          905
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                334.0,
+                867.0,
+                401.0,
+                905.0
+              ],
+              "confidence": 99.59380626678467,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                67.0,
+                38.0
+              ],
+              "original_bbox": [
+                334.0,
+                867.0,
+                401.0,
+                905.0
+              ],
+              "slot_index": null,
+              "text": "2",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                334.0,
+                867.0,
+                401.0,
+                905.0
+              ],
+              "confidence": 99.59380626678467,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "2"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 0,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                67,
+                38
+              ],
+              "confidence": 99.59380626678467,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "2"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            334,
+            867,
+            401,
+            905
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            67,
+            38
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "columns",
+        "crop_bbox": [
+          398,
+          867,
+          466,
+          905
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                398.0,
+                867.0,
+                466.0,
+                905.0
+              ],
+              "confidence": 94.87184286117554,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                68.0,
+                38.0
+              ],
+              "original_bbox": [
+                398.0,
+                867.0,
+                466.0,
+                905.0
+              ],
+              "slot_index": null,
+              "text": "6",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                398.0,
+                867.0,
+                466.0,
+                905.0
+              ],
+              "confidence": 94.87184286117554,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "6"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 1,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                68,
+                38
+              ],
+              "confidence": 94.87184286117554,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "6"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            398,
+            867,
+            466,
+            905
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            68,
+            38
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "columns",
+        "crop_bbox": [
+          463,
+          867,
+          531,
+          905
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                463.0,
+                867.0,
+                531.0,
+                905.0
+              ],
+              "confidence": 96.86540365219116,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                68.0,
+                38.0
+              ],
+              "original_bbox": [
+                463.0,
+                867.0,
+                531.0,
+                905.0
+              ],
+              "slot_index": null,
+              "text": "8",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                463.0,
+                867.0,
+                531.0,
+                905.0
+              ],
+              "confidence": 96.86540365219116,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "8"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 2,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                68,
+                38
+              ],
+              "confidence": 96.86540365219116,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "8"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            463,
+            867,
+            531,
+            905
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            68,
+            38
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "columns",
+        "crop_bbox": [
+          528,
+          867,
+          596,
+          905
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                528.0,
+                867.0,
+                596.0,
+                905.0
+              ],
+              "confidence": 99.72229599952698,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                68.0,
+                38.0
+              ],
+              "original_bbox": [
+                528.0,
+                867.0,
+                596.0,
+                905.0
+              ],
+              "slot_index": null,
+              "text": "10",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                528.0,
+                867.0,
+                596.0,
+                905.0
+              ],
+              "confidence": 99.72229599952698,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "10"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 3,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                68,
+                38
+              ],
+              "confidence": 99.72229599952698,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "10"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            528,
+            867,
+            596,
+            905
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            68,
+            38
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "columns",
+        "crop_bbox": [
+          593,
+          867,
+          661,
+          905
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                593.0,
+                867.0,
+                661.0,
+                905.0
+              ],
+              "confidence": 99.85297918319702,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                68.0,
+                38.0
+              ],
+              "original_bbox": [
+                593.0,
+                867.0,
+                661.0,
+                905.0
+              ],
+              "slot_index": null,
+              "text": "12",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                593.0,
+                867.0,
+                661.0,
+                905.0
+              ],
+              "confidence": 99.85297918319702,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "12"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 4,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                68,
+                38
+              ],
+              "confidence": 99.85297918319702,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "12"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            593,
+            867,
+            661,
+            905
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            68,
+            38
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "columns",
+        "crop_bbox": [
+          658,
+          867,
+          726,
+          905
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                658.0,
+                867.0,
+                726.0,
+                905.0
+              ],
+              "confidence": 99.80575442314148,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                68.0,
+                38.0
+              ],
+              "original_bbox": [
+                658.0,
+                867.0,
+                726.0,
+                905.0
+              ],
+              "slot_index": null,
+              "text": "16",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                658.0,
+                867.0,
+                726.0,
+                905.0
+              ],
+              "confidence": 99.80575442314148,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "16"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 5,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                68,
+                38
+              ],
+              "confidence": 99.80575442314148,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "16"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            658,
+            867,
+            726,
+            905
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            68,
+            38
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "columns",
+        "crop_bbox": [
+          723,
+          867,
+          791,
+          905
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                723.0,
+                867.0,
+                791.0,
+                905.0
+              ],
+              "confidence": 99.54301118850708,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                68.0,
+                38.0
+              ],
+              "original_bbox": [
+                723.0,
+                867.0,
+                791.0,
+                905.0
+              ],
+              "slot_index": null,
+              "text": "18",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                723.0,
+                867.0,
+                791.0,
+                905.0
+              ],
+              "confidence": 99.54301118850708,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "18"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 6,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                68,
+                38
+              ],
+              "confidence": 99.54301118850708,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "18"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            723,
+            867,
+            791,
+            905
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            68,
+            38
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      },
+      {
+        "axis": "columns",
+        "crop_bbox": [
+          788,
+          867,
+          855,
+          905
+        ],
+        "geometry": {
+          "candidates": [
+            {
+              "bbox": [
+                788.0,
+                867.0,
+                855.0,
+                905.0
+              ],
+              "confidence": 99.94652569293976,
+              "ocr_bbox": [
+                0.0,
+                0.0,
+                67.0,
+                38.0
+              ],
+              "original_bbox": [
+                788.0,
+                867.0,
+                855.0,
+                905.0
+              ],
+              "slot_index": null,
+              "text": "24",
+              "token_indices": [
+                0
+              ]
+            }
+          ],
+          "geometry_kind": "source_field",
+          "original_tokens": [
+            {
+              "bbox": [
+                788.0,
+                867.0,
+                855.0,
+                905.0
+              ],
+              "confidence": 99.94652569293976,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "24"
+            }
+          ],
+          "score_kind": "uncalibrated_mean_character_score_x100"
+        },
+        "index": 7,
+        "run": {
+          "available_languages": [
+            "bundled-PP-OCRv4"
+          ],
+          "engine_name": "RapidOCR",
+          "engine_version": "PP-OCRv4 / ONNX Runtime 1.31.0",
+          "geometry_kind": "source_field",
+          "language": "eng",
+          "mode": "rapidocr-recognize-field",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ],
+          "preprocessing": "original",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "tokens": [
+            {
+              "bbox": [
+                0,
+                0,
+                67,
+                38
+              ],
+              "confidence": 99.94652569293976,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "text": "24"
+            }
+          ],
+          "white_padding_pixels": 0,
+          "wrapper_version": "1.4.4"
+        },
+        "transform": {
+          "assignment_frame": "original image pixels",
+          "box_mapping": "all four half-open corners; inverse rotation then crop origin",
+          "crop_bbox": [
+            788,
+            867,
+            855,
+            905
+          ],
+          "grouping_frame": "upright OCR pixels",
+          "normalisation_rotation_degrees": 0,
+          "ocr_size": [
+            67,
+            38
+          ],
+          "rotation": "Pillow exact transpose",
+          "text_rotation_degrees": 0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0
+        }
+      }
+    ],
+    "structural_records": "retained in raw coordinates; excluded from assignment",
+    "transforms": {}
+  },
+  "operation": "labels",
+  "outputs": [
+    "labels.tsv",
+    "labels_review.tsv",
+    "labels_diagnostic.png",
+    "provenance.json",
+    "labels_rows_enlarged.png",
+    "labels_columns_enlarged.png"
+  ],
+  "preprocessing": {
+    "contrast": "Pillow autocontrast cutoff=0",
+    "grayscale": "Pillow L",
+    "resize": "Pillow bicubic",
+    "retry_policy": "opt-in slots only; original + contrast + threshold; shared budgets",
+    "threshold": "fixed luminance >=160 -> 255; otherwise 0",
+    "upscale_factor": 1
+  },
+  "review": null,
+  "schema_version": 2,
+  "software": {
+    "name": "heatmap-decoder",
+    "version": "0.3.0"
+  },
+  "unresolved_slots": 1,
+  "unreviewed_axes": null
+}

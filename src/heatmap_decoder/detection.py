@@ -741,11 +741,11 @@ def _label_regions(
     from typing import cast
 
     from .labels import CropTransform, group_unassigned_tokens, labels_from_tokens, transform_tokens
-    from .models import Axis, LabelLocalisationEvidence, LabelsConfig, OCRConfig
+    from .models import Axis, LabelLocalisationEvidence, LabelsConfig
     from .ocr import recognize
 
     assert hints.heatmap_bbox is not None
-    settings = hints.labels.ocr if hints.labels is not None else OCRConfig()
+    settings = hints.labels.ocr if hints.labels is not None else LabelsConfig().ocr
     evidence, proposals, warnings = [], [], []
     for side, region in _label_searches(
         hints.heatmap_bbox, image.shape, hints.detector.label_search_pixels

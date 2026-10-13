@@ -37,7 +37,7 @@ def runner(monkeypatch, adequate=(90,), missing=(), confidence=1):
         tokens = []
         if side_index == 0 and angle in adequate:
             box = next(b for side, b in searches if side == "above")
-            transform = CropTransform(box, 3, angle)
+            transform = CropTransform(box, settings.upscale_factor, angle)
             for i in range(4):
                 if i in missing:
                     continue

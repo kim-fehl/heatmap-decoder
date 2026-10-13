@@ -1,4 +1,4 @@
-"""Small optional adapter for local Tesseract. No imports or probes until requested."""
+"""Local OCR adapters. No engines are imported until text recognition is requested."""
 
 import importlib
 import math
@@ -71,6 +71,12 @@ def recognize(
         raise ValueError("OCR timeout must be positive and at most 30 seconds")
     if mode not in {"localisation", "numeric_line", "text_line"}:
         raise ValueError("unsupported OCR mode")
+    if settings.engine == "rapidocr":
+        if mode == "numeric_line":
+            raise ValueError("constrained numeric OCR requires engine='tesseract'")
+        from .rapid_ocr import recognize_rapid
+
+        return recognize_rapid(image, settings, mode=mode, timeout_seconds=timeout_seconds)
     engine_mode = OCR_MODE if mode == "localisation" else "--oem 1 --psm 7"
     if mode == "numeric_line" and numeric_characters_only:
         engine_mode += " -c tessedit_char_whitelist=" + NUMERIC_CHARACTERS

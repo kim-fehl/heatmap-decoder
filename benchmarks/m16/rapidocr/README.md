@@ -1,5 +1,10 @@
 # Independent OCR comparison: Galectin suffix recovered
 
+This comparison led to RapidOCR becoming the default gene/sample engine. The
+[normal extraction trial](../rapidocr-default/README.md) records production
+integration and its verification; the standalone experiment below remains
+available for reproducing the original comparison.
+
 **RapidOCR reads `EsGalectin1` correctly from the existing equal-row crop.**
 It requires no manually tightened box, gene dictionary, inserted suffix or
 reference transcription. The strongest tested whole-axis recipe uses native-size

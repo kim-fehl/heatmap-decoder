@@ -39,7 +39,10 @@ class AutomationRequest(BaseModel):
     def consistent_request(self) -> "AutomationRequest":
         if "colourbar" not in self.hints.requested and self.hints.colourbar_bbox is None:
             raise ValueError("automation requires a colourbar request or supplied bar")
-        identifiers = self.hints.labels is not None or any(
+        identifiers = (
+            self.hints.labels is not None
+            and (self.hints.labels.rows is not None or self.hints.labels.columns is not None)
+        ) or any(
             k.startswith("labels_") for k in self.hints.requested
         )
         if self.numeric_only and identifiers:

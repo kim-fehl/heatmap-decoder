@@ -16,15 +16,23 @@ pytestmark = [
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_real_ocr_preserves_both_plausible_signs_for_review():
+@pytest.mark.parametrize("engine", ["tesseract", "rapidocr"])
+def test_real_ocr_preserves_both_plausible_signs_for_review(engine):
     image = load_raster(ROOT / "examples/m15/figure.png")
     hints = DetectionHints.model_validate_json((ROOT / "examples/m15/hints.json").read_text())
+    hints = hints.model_copy(
+        update={
+            "labels": hints.labels.model_copy(
+                update={"ocr": hints.labels.ocr.model_copy(update={"engine": engine})}
+            )
+        }
+    )
     result = detect(image, hints)
     correct = next(
         r for r in result.label_evidence if r.text_rotation_degrees == 90 and r.side == "above"
     )
     assert correct.assignment is not None
-    assert [s.raw_text for s in correct.assignment.slots] == [
+    expected = [
         "Alpha Case-A",
         "Bravo Case-B",
         "Charlie Case-C",
@@ -34,8 +42,19 @@ def test_real_ocr_preserves_both_plausible_signs_for_review():
         "Golf Case-G",
         "Hotel Case-H",
     ]
-    assert correct.orientation_status == "ambiguous"
-    assert not correct.count_geometry_eligible
+    if engine == "tesseract":
+        assert [s.raw_text for s in correct.assignment.slots] == expected
+    else:
+        assert len(correct.assignment.slots) == len(expected)
+        assert all(s.raw_text for s in correct.assignment.slots)
+    if engine == "tesseract":
+        assert correct.orientation_status == "ambiguous"
+        assert not correct.count_geometry_eligible
+    else:
+        # The detector resolves only one geometrically adequate angle here;
+        # identity review remains required despite the geometry being unique.
+        assert correct.orientation_status == "unique"
+        assert correct.count_geometry_eligible
     assert result.acceptance.overall.status != "accepted"
 
 

@@ -31,6 +31,8 @@ def test_reviewed_localisation_keeps_numbers_and_exact_label_order(tmp_path):
         requested=("colourbar", "labels_rows", "labels_columns"),
         colourbar_start_value=2,
         colourbar_end_value=-2,
+        # This fixed ROI annotation is the historical Tesseract reference.
+        labels={"ocr": {"engine": "tesseract"}},
     )
     saved = detect_file(figure, hints, tmp_path / "roi")
     assert saved.result.label_evidence[0].preprocessing.upscale_factor == 3

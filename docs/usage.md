@@ -112,8 +112,18 @@ The colourbar's central sampling strip must be fully valid or extraction fails.
 
 ## Labels, coordinates and review
 
-Install the optional wrapper with `uv sync --locked --extra ocr` or
-`python -m pip install -e '.[ocr]'`. Install the engine separately:
+Gene/sample OCR defaults to **RapidOCR**, installed with the main package,
+including its local PP-OCRv4 models. It uses native-size grayscale input by
+default (`labels.ocr.upscale_factor=1`), with no added white border. No image data
+is sent to an external OCR service. Explicit slot recognition uses each complete
+field; sparse recognition uses RapidOCR's detector. Quarter-turn correction and
+fixed slot ownership still apply.
+
+To select the legacy label engine, set `labels.ocr.engine` to `"tesseract"`.
+Tesseract defaults to 3× enlargement unless explicitly overridden. Colour-bar
+localisation and constrained numeric ticks continue to use Tesseract. For these
+paths, install the optional wrapper with `uv sync --locked --extra ocr` or
+`python -m pip install -e '.[ocr]'`, and install the engine separately:
 
 - Debian/Ubuntu: `sudo apt-get install tesseract-ocr tesseract-ocr-eng`.
 - macOS: `brew install tesseract` (English data is included).
@@ -149,7 +159,8 @@ are coordinate examples; adapt them to your own image):
     "columns": {"source": "ocr", "bbox": [100, 35, 500, 75]},
     "ocr": {
       "language": "eng",
-      "upscale_factor": 3,
+      "engine": "rapidocr",
+      "upscale_factor": 1,
       "min_confidence": 80,
       "max_axis_offset_fraction": 0.4
     }
@@ -163,12 +174,25 @@ config file. Only outer whitespace is trimmed. Omitted axes get `row_0`, `row_1`
 … or `column_0`, `column_1`, … when the other axis is labelled. With neither axis
 requested, numeric-only output retains its existing format.
 
-OCR uses grayscale, bicubic upscaling, and one `--oem 1 --psm 11` sparse-text pass.
+RapidOCR runs on CPU in a reusable isolated worker. A timeout stops the worker;
+model hashes, engine/runtime versions, geometry type and score semantics are
+retained in provenance. Slot boxes describe source fields, not detected glyphs;
+synthetic white padding is excluded from those source boxes. Sparse boxes describe
+detected text. Recognizer scores are multiplied by 100 for the existing confidence
+rules, and are explicitly marked uncalibrated and engine-specific. The bundled
+model currently supports the `eng` setting; use Tesseract for other language packs.
+
+The legacy engine uses grayscale, bicubic upscaling, and one `--oem 1 --psm 11`
+sparse-text pass (PSM 7 for slots).
 Geometry assigns candidates to fixed grid bands without shifting missing slots
 or choosing collision winners by confidence. Confidence is a heuristic, not a
 probability or a guarantee of biological identity. Case, digits, punctuation and
 internal spaces are preserved. Low-confidence, missing, spanning or conflicting
 candidates remain unresolved. Inspect **all** OCR labels, including accepted ones.
+The M16 publication trial recovers `EsGalectin1` and 26/33 exact genes, but six
+incorrect gene names still pass the confidence threshold. RapidOCR can also lose
+internal spaces in rotated sample labels; these observations are preserved rather
+than corrected from a dictionary. See the [default-engine trial](../benchmarks/m16/rapidocr-default/README.md).
 
 ```bash
 heatmap-decoder labels figure.png --config config.json --out review/

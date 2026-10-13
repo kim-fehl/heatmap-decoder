@@ -21,7 +21,6 @@ from .models import (
     GridConfig,
     LabelLocalisationEvidence,
     LabelsConfig,
-    OCRConfig,
     OCRLabelSource,
     OCRRun,
     RGBArray,
@@ -48,7 +47,7 @@ def column_orientation_regions(
 
     assert hints.heatmap_bbox is not None
     options = hints.detector
-    settings = hints.labels.ocr if hints.labels else OCRConfig()
+    settings = hints.labels.ocr if hints.labels else LabelsConfig().ocr
     source = hints.labels.columns if hints.labels else None
     explicit = isinstance(source, OCRLabelSource)
     angles: tuple[int, ...]

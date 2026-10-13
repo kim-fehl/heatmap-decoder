@@ -616,6 +616,8 @@ def _label_run_geometry(
         box, details["upscale_factor"], details["text_rotation_degrees"], run.white_padding_pixels
     )
     return {
+        "geometry_kind": run.geometry_kind,
+        "score_kind": run.score_kind,
         "original_tokens": [asdict(token) for token in transform_tokens(run.tokens, transform)],
         "candidates": [
             {

@@ -102,7 +102,7 @@ def test_group_upright_assign_original_x_and_keep_run_links(monkeypatch, angle, 
             selected = original[index * 2 : index * 2 + 2]
         else:
             selected = original
-        transform = CropTransform(bbox, 3, angle)
+        transform = CropTransform(bbox, settings.upscale_factor, angle)
         assert image.size == transform.crop_size
         calls.append(mode)
         tokens = tuple(replace(t, bbox=transform.to_crop(t.bbox)) for t in selected)

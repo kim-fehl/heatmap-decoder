@@ -1,5 +1,6 @@
 """CI smoke test of the built wheel in a fresh environment outside the source tree."""
 
+import json
 import os
 import subprocess
 import sys
@@ -24,6 +25,8 @@ def smoke() -> None:
             "/docs/nonlinear-calibration.md",
             "/src/heatmap_decoder/gradient.py",
             "/src/heatmap_decoder/ocr_fields.py",
+            "/src/heatmap_decoder/rapid_ocr.py",
+            "/examples/m16/labels-default.json",
             "/examples/m16/config-padding.json",
             "/examples/m16/labels-padding.json",
             "/docs/images/recognition-ticks-m16.png",
@@ -85,6 +88,27 @@ def smoke() -> None:
             check=True,
             cwd=directory,
         )
+        # The main wheel installs the default label engine/models, without [ocr]
+        # or an external Tesseract executable, and its worker runs outside checkout.
+        label_command = subprocess.run(
+            [
+                str(command),
+                "labels",
+                str(root / "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg"),
+                "--config",
+                str(root / "examples/m16/labels-default.json"),
+                "--out",
+                str(directory / "rapid-default"),
+            ],
+            check=False,
+            cwd=directory,
+        )
+        assert label_command.returncode == 4  # one unresolved slot; evidence is written
+        default = json.loads((directory / "rapid-default/provenance.json").read_text())
+        assert default["config"]["labels"]["ocr"]["engine"] == "rapidocr"
+        assert default["axes"][0]["slots"][20]["raw_text"] == "EsGalectin1"
+        assert len(default["ocr"]["slot_runs"]) == 41
+        assert all(r["run"]["model_sha256"] for r in default["ocr"]["slot_runs"])
         subprocess.run(
             [
                 str(command),
