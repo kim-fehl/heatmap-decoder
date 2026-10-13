@@ -8,7 +8,7 @@ import numpy as np
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from .acceptance import decision
-from .calibration import colour_quality_summary, fit_linear_scale
+from .calibration import calibration_evidence, colour_quality_summary, fit_linear_scale
 from .detection import detect
 from .detection_policy import ACCEPTANCE_THRESHOLDS as A
 from .detection_policy import policy_snapshot
@@ -127,6 +127,7 @@ def automate(
                     colourbar_bbox=candidate.bbox,
                     colourbar_orientation=candidate.orientation,
                     legend=options,
+                    scale_model=scale.model,
                 ),
             )
             legend_diagnostics.append(diagnostic)
@@ -152,16 +153,24 @@ def automate(
         try:
             if any(a.origin == "ocr" or a.status != "reviewed" for a in scale.anchors):
                 raise ValueError("supplied ticks must be manually reviewed")
-            fit = fit_linear_scale(
-                scale.anchors,
-                bar,
-                orientation,
-                max_value_residual_fraction=scale.max_value_residual_fraction,
-                max_position_residual_pixels=scale.max_position_residual_pixels,
-            )
-            start, end = fit.intercept, fit.intercept + fit.slope
+            evidence = calibration_evidence(scale, bar, orientation)
+            if scale.model == "linear":
+                fit = fit_linear_scale(
+                    scale.anchors,
+                    bar,
+                    orientation,
+                    max_value_residual_fraction=scale.max_value_residual_fraction,
+                    max_position_residual_pixels=scale.max_position_residual_pixels,
+                )
+                start, end = fit.intercept, fit.intercept + fit.slope
+            else:
+                start, end = scale.anchors[0].value, scale.anchors[-1].value
             scale_check = decision(
-                "scale", [], {"origin": "reviewed_ticks", "fit": fit.model_dump(mode="json")}
+                "scale",
+                ["unsupported_calibration_span"]
+                if scale.model == "piecewise_linear" and not evidence["full_span"]
+                else [],
+                {"origin": "reviewed_ticks", **evidence},
             )
         except ValueError as error:
             scale_check = decision("scale", [str(error)], {}, unresolved=True)
@@ -169,15 +178,23 @@ def automate(
         legend = inspect_legend(
             image,
             LegendConfig(
-                colourbar_bbox=bar, colourbar_orientation=orientation, legend=scale.legend
+                colourbar_bbox=bar,
+                colourbar_orientation=orientation,
+                legend=scale.legend,
+                scale_model=scale.model,
             ),
         )
         legend_diagnostics.append(legend)
         scale_check = decision(
             "scale",
             []
-            if legend.development_eligible
-            else list(r for r in legend.reasons if r != "M12_scale_gate_closed"),
+            if legend.development_eligible and scale.model == "linear"
+            else list(r for r in legend.reasons if r != "M12_scale_gate_closed")
+            + (
+                ["piecewise_OCR_anchors_require_review"]
+                if scale.model == "piecewise_linear"
+                else []
+            ),
             {
                 "origin": "ocr_ticks",
                 "experimental_eligible": legend.development_eligible,
@@ -185,7 +202,7 @@ def automate(
             },
             unresolved=legend.status == "unresolved",
         )
-        if legend.development_eligible and legend.fit is not None:
+        if legend.development_eligible and legend.fit is not None and scale.model == "linear":
             start, end = legend.fit.intercept, legend.fit.intercept + legend.fit.slope
     decisions.append(scale_check)
     concrete = None

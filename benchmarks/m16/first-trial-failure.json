@@ -1,0 +1,1 @@
+{"status":"failed","stage":"label_diagnostic","reason":"Pillow frame failed for subpixel OCR punctuation box; preserved partial outputs","correction":"clamp drawing endpoint for boxes smaller than one pixel; OCR geometry untouched"}

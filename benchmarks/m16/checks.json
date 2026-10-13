@@ -1,0 +1,18 @@
+{
+  "full_suite": {
+    "passed": 571,
+    "subtests": 18,
+    "real_ocr_enabled": true,
+    "seconds": 185.57
+  },
+  "focused_m16_legend_rotation_io": {
+    "passed": 143,
+    "skipped": 1
+  },
+  "ruff": "passed src, tests, benchmarks/m16",
+  "mypy": "passed strict, 27 source files, NumPy 2.5.4 and 1.26.4",
+  "source_wheel": "passed",
+  "isolated_wheel_CLI": "passed, including installed M16 33x8 partial calibration with exactly 251 finite cells",
+  "fresh_validation": "43/48 numeric complete, zero wrong complete, zero of 6 negatives complete",
+  "final_freeze_matches": true
+}

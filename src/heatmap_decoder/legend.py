@@ -28,7 +28,7 @@ from .models import (
 )
 from .sampling import validate_rgb
 
-LEGEND_POLICY_VERSION = "m12-linear-review.1"
+LEGEND_POLICY_VERSION = "m16-reviewed-model.1"
 Side = Literal["left", "right", "above", "below"]
 
 
@@ -159,6 +159,20 @@ def stroke_ticks(
     width = min(14, pixels.shape[1])
     zone = pixels[:, -width:] if side in {"left", "above"} else pixels[:, :width]
     dark = np.max(zone, axis=2) < 110
+    # A connected axial border can merge several genuine strokes into one run.
+    # Ignore only near-edge transverse rows dark over >=80% of the physical bar;
+    # keep the original image and every independently measured stroke box.
+    coordinate = 1 if vertical else 0
+    bar_start = config.colourbar_bbox[coordinate]
+    bar_last = config.colourbar_bbox[coordinate + 2]
+    origin = y if vertical else x
+    axial = slice(max(0, bar_start - origin), min(len(dark), bar_last - origin))
+    near_edge = (
+        range(max(0, width - 3), width) if side in {"left", "above"} else range(min(3, width))
+    )
+    for transverse in near_edge:
+        if np.mean(dark[axial, transverse]) >= 0.8:
+            dark[:, transverse] = False
     occupied = np.flatnonzero(np.sum(dark, axis=1) >= 3)
     groups = np.split(occupied, np.flatnonzero(np.diff(occupied) > 1) + 1) if len(occupied) else []
     results: list[LegendTick] = []

@@ -18,6 +18,12 @@ def smoke() -> None:
         names = archive.getnames()
         for suffix in (
             "/examples/figure.png",
+            "/examples/m16/config.json",
+            "/examples/m16/manifest.json",
+            "/docs/progress/M16.md",
+            "/docs/nonlinear-calibration.md",
+            "/src/heatmap_decoder/gradient.py",
+            "/src/heatmap_decoder/diagnostic_style.py",
             "/examples/config.json",
             "/tests/test_cli.py",
             "/examples/labels/reconstruction.png",
@@ -70,6 +76,30 @@ def smoke() -> None:
         command = scripts / ("heatmap-decoder.exe" if os.name == "nt" else "heatmap-decoder")
         subprocess.run(["uv", "pip", "install", "--python", str(python), str(wheel)], check=True)
         subprocess.run([str(command), "--version"], check=True, cwd=directory)
+        subprocess.run(
+            [
+                str(command),
+                "extract",
+                str(root / "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg"),
+                "--config",
+                str(root / "examples/m16/config.json"),
+                "--out",
+                str(directory / "m16-partial"),
+            ],
+            check=True,
+            cwd=directory,
+        )
+        subprocess.run(
+            [
+                str(python),
+                "-c",
+                "import numpy as np; "
+                f"a=np.loadtxt({str(directory / 'm16-partial/matrix.csv')!r},delimiter=','); "
+                "assert a.shape==(33,8) and np.isfinite(a).sum()==251",
+            ],
+            check=True,
+            cwd=directory,
+        )
         subprocess.run(
             [
                 str(command),

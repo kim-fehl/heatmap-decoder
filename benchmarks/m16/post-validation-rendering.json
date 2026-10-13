@@ -1,0 +1,9 @@
+{
+  "changed_after_validation": "QC rendering only: show uncalibrated cells with U instead of green OK; numerical/acceptance source unchanged",
+  "original_sha256": "40309b264fd47a607dc8c1ab3caa826796bcf313a7f6de32b80042e0269aaf9d",
+  "current_sha256": "101915fa9d2c1726e219070484aefd43aeb51da74535aeb35d1510d4f276dd48",
+  "reproduce": "git apply -R benchmarks/m16/post-validation-rendering.patch; run validation; git apply benchmarks/m16/post-validation-rendering.patch",
+  "readability_fix": "shared diagnostic ledger uses DejaVu Sans 14 where available; Pillow fallback otherwise; no OCR/source geometry changed",
+  "font_source_before": "4af2f8e068698e569dcd1a355eed9d9fae807c853ccfe64aa54415c5beede53e",
+  "font_source_after": "7594342c7346874728608d6ae52e99599297396ce2065d5808ec2ca7a40f37a0"
+}

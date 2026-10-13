@@ -59,7 +59,9 @@ def test_exports_template_evidence_and_image_hash(tmp_path, fake_ocr):
     result = extract_labels_file(FIXTURES / "clean.png", settings(), out)
     assert result.unresolved_count == 3
     assert fake_ocr[0].size == (600, 960)
-    assert set(p.name for p in out.iterdir()) == set(LABEL_OUTPUT_NAMES)
+    assert set(p.name for p in out.iterdir()) == set(LABEL_OUTPUT_NAMES) - {
+        "labels_columns_enlarged.png"
+    }
     rows = read_tsv(out / "labels.tsv")
     assert len(rows) == 7
     assert list(rows[0]) == [

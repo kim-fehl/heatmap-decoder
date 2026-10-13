@@ -1,0 +1,8 @@
+{
+  "ledger_black_on_white_contrast": 21,
+  "minimum_white_background_frame_contrast": 3.9804025924381516,
+  "states_use_text_and_dashes": true,
+  "OCR_bands_use_H_M_L_unknown": true,
+  "original_coordinates_preserved": true,
+  "simulation_limit": "illustrative RGB projections; status letters/dashes carry information independently of hue"
+}

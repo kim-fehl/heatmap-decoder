@@ -11,7 +11,14 @@ from skimage.color import rgb2lab
 from .models import BoolArray, FloatArray
 
 if TYPE_CHECKING:
-    from .models import BoundingBox, ExtractionConfig, ExtractionResult, LinearScaleFit, ScaleAnchor
+    from .models import (
+        BoundingBox,
+        ExtractionConfig,
+        ExtractionResult,
+        LinearScaleFit,
+        ScaleAnchor,
+        ScaleConfig,
+    )
 
 
 def calibrate_values(sample_count: int, start: float, end: float) -> FloatArray:
@@ -173,6 +180,88 @@ def fit_linear_scale(
     )
 
 
+def piecewise_values(
+    anchors: tuple["ScaleAnchor", ...],
+    bbox: "BoundingBox",
+    orientation: str,
+    sample_count: int,
+) -> FloatArray:
+    """Original-coordinate monotonic knots; uncovered samples stay NaN, never extrapolate."""
+    if sample_count < 2 or len(anchors) < 3:
+        raise ValueError("piecewise calibration requires at least three anchors and two samples")
+    if any(a.status != "reviewed" or a.origin == "ocr" for a in anchors):
+        raise ValueError("piecewise anchors must be explicitly supplied/reviewed")
+    positions = np.array([a.position for a in anchors], dtype=np.float64)
+    values = np.array([a.value for a in anchors], dtype=np.float64)
+    t = normalise_bar_positions(positions, bbox, orientation)
+    if np.any((t < 0) | (t > 1)):
+        raise ValueError("anchor position lies outside the colourbar")
+    if np.any(np.diff(positions) <= 0):
+        raise ValueError("anchors require distinct spatially ordered positions")
+    differences = np.diff(values)
+    if not np.isfinite(values).all() or not np.isfinite(differences).all():
+        raise ValueError("piecewise numeric range must be finite")
+    if not np.isfinite(np.ptp(values)) or not (np.all(differences > 0) or np.all(differences < 0)):
+        raise ValueError("scale anchors must be strictly monotonic with finite range")
+    if not np.isfinite(differences / np.diff(positions)).all():
+        raise ValueError("piecewise segment slopes must be finite")
+    return np.asarray(
+        np.interp(np.linspace(0, 1, sample_count), t, values, left=np.nan, right=np.nan),
+        dtype=np.float64,
+    )
+
+
+def calibration_evidence(
+    scale: "ScaleConfig", bbox: "BoundingBox", orientation: str
+) -> dict[str, Any]:
+    """Retain failed linear comparison without using it to choose a model."""
+    if scale.model == "piecewise_linear":
+        coordinate = 1 if orientation == "vertical" else 0
+        piecewise_values(scale.anchors, bbox, orientation, bbox[coordinate + 2] - bbox[coordinate])
+    fit = None
+    comparison_error = None
+    try:
+        fit = fit_linear_scale(
+            scale.anchors,
+            bbox,
+            orientation,
+            max_value_residual_fraction=scale.max_value_residual_fraction,
+            max_position_residual_pixels=scale.max_position_residual_pixels,
+            enforce_residuals=scale.model == "linear",
+        )
+    except ValueError as error:
+        if scale.model == "linear":
+            raise
+        comparison_error = str(error)
+    evidence: dict[str, Any] = {
+        "model": scale.model,
+        "source": scale.source,
+        "anchors": [a.model_dump(mode="json") for a in scale.anchors],
+        "linear_comparison": fit.model_dump(mode="json") if fit else None,
+        "linear_comparison_error": comparison_error,
+        "fit": fit.model_dump(mode="json") if fit else None,
+    }
+    if scale.model == "piecewise_linear":
+        coordinate = 1 if orientation == "vertical" else 0
+        length = bbox[coordinate + 2] - bbox[coordinate]
+        calibrated = piecewise_values(scale.anchors, bbox, orientation, length)
+        positions = [a.position for a in scale.anchors]
+        values = [a.value for a in scale.anchors]
+        evidence.update(
+            {
+                "knots": list(zip(positions, values, strict=True)),
+                "segment_slopes": (np.diff(values) / np.diff(positions)).tolist(),
+                "covered_position_range": [positions[0], positions[-1]],
+                "covered_value_range": [min(values), max(values)],
+                "full_span": bool(np.isfinite(calibrated).all()),
+                "unsupported_samples": int(np.sum(~np.isfinite(calibrated))),
+                "extrapolation": "disabled; supply/review physical edge anchors for full span",
+                "approximation": "zero knot residual does not validate mapping between ticks",
+            }
+        )
+    return evidence
+
+
 def scale_values(config: "ExtractionConfig", sample_count: int) -> FloatArray:
     """Legacy endpoints stay bit-for-bit identical; tick scales use their fitted line."""
     if sample_count < 2:
@@ -187,6 +276,13 @@ def scale_values(config: "ExtractionConfig", sample_count: int) -> FloatArray:
         raise ValueError("OCR scale requires legend inspection and explicit --legend-review")
     if any(a.status != "reviewed" or a.origin == "ocr" for a in config.scale.anchors):
         raise ValueError("tick anchors must be explicitly supplied/reviewed")
+    if config.scale.model == "piecewise_linear":
+        return piecewise_values(
+            config.scale.anchors,
+            config.colourbar_bbox,
+            config.colourbar_orientation,
+            sample_count,
+        )
     fit = fit_linear_scale(
         config.scale.anchors,
         config.colourbar_bbox,
@@ -209,6 +305,8 @@ def colour_quality_summary(result: "ExtractionResult") -> dict[str, Any]:
     return {
         "colour_qc_version": "observed-bar-components.1",
         "ambiguity_kind_counts": dict(Counter(e.kind for e in evidence)),
-        "maximum_candidate_value_span": max((e.value_span for e in evidence), default=None),
+        "maximum_candidate_value_span": max(
+            (e.value_span for e in evidence if e.value_span is not None), default=None
+        ),
         "components_are_statistical_intervals": False,
     }

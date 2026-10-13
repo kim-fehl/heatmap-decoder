@@ -1,0 +1,81 @@
+{
+  "heatmap_bbox": [
+    335,
+    189,
+    854,
+    861
+  ],
+  "rows": 33,
+  "columns": 8,
+  "labels": null,
+  "colourbar_bbox": [
+    18,
+    39,
+    217,
+    103
+  ],
+  "colourbar_orientation": "horizontal",
+  "colourbar_start_value": null,
+  "colourbar_end_value": null,
+  "scale": {
+    "source": "manual_ticks",
+    "anchors": [
+      {
+        "position": 39.0,
+        "value": -2.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 78.0,
+        "value": -1.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 117.0,
+        "value": 0.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 156.0,
+        "value": 1.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 195.0,
+        "value": 2.0,
+        "origin": "manual",
+        "status": "reviewed"
+      }
+    ],
+    "legend": {
+      "ocr": {
+        "language": "eng",
+        "upscale_factor": 3,
+        "min_confidence": 80.0,
+        "max_axis_offset_fraction": 0.4
+      },
+      "search_pixels": 128,
+      "horizontal_search_pixels": 64,
+      "max_ticks": 16,
+      "max_ocr_pixels": 4000000,
+      "max_ocr_seconds": 60.0,
+      "max_axis_offset_pixels": 6.0,
+      "endpoint_tolerance_pixels": 2.0,
+      "decimal_separator": "."
+    },
+    "quantity": "displayed colourbar values",
+    "max_value_residual_fraction": 0.01,
+    "max_position_residual_pixels": 2.0
+  },
+  "sampling_inset_fraction": 0.25,
+  "max_colour_distance": 10.0,
+  "ambiguity_colour_tolerance": 1.0,
+  "ambiguity_position_fraction": 0.05,
+  "minimum_valid_fraction": 0.5,
+  "missing_colours": [],
+  "missing_colour_tolerance": 3.0
+}

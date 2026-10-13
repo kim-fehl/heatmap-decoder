@@ -22,6 +22,7 @@ class CellFlag(IntFlag):
     MISSING = 1
     POOR_MATCH = 2
     AMBIGUOUS = 4
+    UNCALIBRATED = 8
 
 
 class OCRConfig(BaseModel):
@@ -32,6 +33,22 @@ class OCRConfig(BaseModel):
     language: Annotated[str, Field(strict=True, min_length=1)] = "eng"
     upscale_factor: Annotated[int, Field(strict=True, ge=1)] = 3
     min_confidence: Annotated[float, Field(strict=True, ge=0, le=100)] = 80
+    high_confidence: Annotated[float, Field(strict=True, ge=0, le=100)] = 90
+    retry_variants: tuple[Literal["contrast", "threshold"], ...] = ()
+
+    @field_validator("retry_variants")
+    @classmethod
+    def validate_retries(cls, value: tuple[str, ...]) -> tuple[str, ...]:
+        if len(value) > 2 or len(set(value)) != len(value):
+            raise ValueError("at most two distinct OCR retry variants")
+        return value
+
+    @model_validator(mode="after")
+    def validate_confidence_bands(self) -> "OCRConfig":
+        if self.high_confidence < self.min_confidence:
+            raise ValueError("high_confidence must be >= min_confidence")
+        return self
+
     max_axis_offset_fraction: Annotated[float, Field(strict=True, gt=0, le=0.5)] = 0.4
 
 
@@ -125,6 +142,7 @@ class LegendOptions(BaseModel):
 
 class ScaleConfig(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    model: Literal["linear", "piecewise_linear"] = "linear"
     source: Literal["manual_endpoints", "manual_ticks", "ocr_ticks"]
     anchors: tuple[ScaleAnchor, ...] = ()
     legend: LegendOptions = Field(default_factory=LegendOptions)
@@ -134,6 +152,11 @@ class ScaleConfig(BaseModel):
 
     @model_validator(mode="after")
     def validate_source(self) -> "ScaleConfig":
+        if self.model == "piecewise_linear":
+            if self.source == "manual_endpoints":
+                raise ValueError("piecewise_linear requires positional anchors")
+            if self.source == "manual_ticks" and len(self.anchors) < 3:
+                raise ValueError("piecewise_linear requires at least three anchors")
         if self.source == "manual_ticks" and len(self.anchors) < 2:
             raise ValueError("manual_ticks requires at least two anchors")
         if self.source != "manual_ticks" and self.anchors:
@@ -148,6 +171,7 @@ class LegendConfig(BaseModel):
     colourbar_bbox: BoundingBox
     colourbar_orientation: Literal["vertical", "horizontal"]
     legend: LegendOptions = Field(default_factory=LegendOptions)
+    scale_model: Literal["linear", "piecewise_linear"] = "linear"
 
 
 class ExtractionConfig(GridConfig):
@@ -196,8 +220,9 @@ class ColourCandidateComponent:
     last_index: int
     first_position: float
     last_position: float
-    minimum_value: float
-    maximum_value: float
+    minimum_value: float | None
+    maximum_value: float | None
+    calibrated: bool = True
 
 
 @dataclass(frozen=True)
@@ -207,7 +232,7 @@ class CellColourEvidence:
     kind: Literal["local", "broad_contiguous", "disconnected_near_matches"]
     components: tuple[ColourCandidateComponent, ...]
     position_span_fraction: float
-    value_span: float
+    value_span: float | None
 
 
 @dataclass(frozen=True)
@@ -299,6 +324,7 @@ class OCRRun:
     language: str
     available_languages: tuple[str, ...]
     mode: str
+    preprocessing: str = "grayscale_bicubic"
 
 
 @dataclass(frozen=True)
@@ -310,6 +336,7 @@ class LabelExtractionResult:
     review_sha256: str | None = None
     review_filename: str | None = None
     slot_ocr_runs: tuple[tuple[Axis, int, BoundingBox, OCRRun], ...] = ()
+    skipped_ocr_attempts: tuple[dict[str, Any], ...] = ()
 
     @property
     def unresolved_count(self) -> int:
@@ -599,3 +626,4 @@ class LegendResult(BaseModel):
     reviewed_anchors: tuple[ScaleAnchor, ...] = ()
     unreviewed_fit: LinearScaleFit | None = None
     unreviewed_reasons: tuple[str, ...] = ()
+    calibration_evidence: dict[str, Any] | None = None

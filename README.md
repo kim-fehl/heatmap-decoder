@@ -6,14 +6,16 @@ on columns, a regular rectangular grid and a separate continuous colourbar.
 PNG/JPEG, sequential/diverging/grayscale palettes, bars on any side, and upright row labels
 are supported. Sample labels additionally support explicit ±90° rotations.
 
-**Current phase: M15 orientation proposals; real-figure trials await repo-added assets.** Automatic regions and conditional
-count inference are implemented. Default automation produces review evidence;
-`--experimental-export` enables numeric tables with supplied counts and a supplied
-or reviewed linear scale when every image check passes. Inferred counts and OCR
-scales still require export review. Stable release gates remain closed.
-Rotated text, categorical legends, PDF and automatic nonlinear calibration are
-unsupported. Decoded tables describe the plotted quantity, not exact measurements.
-[Current validation and limits](docs/corrections.md) distinguish coverage from safety.
+**Current phase: M16 reviewed calibration and first publication-crop trial.**
+Automatic regions and conditional count inference are implemented; default
+operation produces review evidence. `--experimental-export` supports numeric-only
+requests with supplied counts and supplied/reviewed linear or piecewise-linear
+calibration when every image check passes. Piecewise calibration never extrapolates
+outside reviewed anchors. Inferred counts, OCR scales and identifiers retain their
+export restrictions. Stable release gates remain closed.
+Arbitrary text angles, categorical legends, PDF and automatic numeric-model
+selection remain unsupported. [M16 results](docs/progress/M16.md) report successful
+partial reconstruction and the remaining publication ROI/OCR failures.
 
 The scientific challenges matter:
 
@@ -29,31 +31,20 @@ The scientific challenges matter:
 
 ## Recognition in practice
 
-![Heatmap, gene/sample region proposals, colourbar and recognised tick text](docs/images/recognition-m12.png)
+![M16 manual ROI titles and selected raw OCR observations](docs/images/recognition.png)
 
-This synthetic **20-gene × 6-sample** example shows the proposed grid in blue,
-gene/sample regions in green/orange, and bar/tick text in purple. Genes can be
-left/right, samples above/below, and bars horizontal/vertical on any side.
-Region proposals do not verify biological identity. Tests include −4…4, −3…3,
-−2…2, −4…2 and −3…4 scales, both directions, and 3–7 ticks.
+The supplied **33-gene × 8-time-column Symbiotic crop** illustrates manual heatmap
+(blue), gene (pink), sample (lilac) and colourbar (violet) regions. Titles and states
+sit outside content in a readable ledger. OCR uses H teal, M yellow, L crimson
+and ? dashed confidence frames; status words remain separate. This illustration
+shows selected observations, not automatic ROI success or verified identifiers.
+Credit: Duscher, Vroom and Foster, Scientific Reports 14, 2912 (2024), CC BY 4.0.
 
-A fragment of the actual [recognition evidence](examples/m12/recognition_evidence.json):
-
-```json
-{"automation": {
-  "complete": {"status": "accepted", "evidence": {"experimental_only": true}},
-  "automatic_export_allowed": false,
-  "legend": {"fit": {
-    "slope": 7.999988, "intercept": -4.002778,
-    "recognised_span": [0.0, 1.0], "tests_linearity": true
-  }}
-}}
-```
-
-Ticks use measured stroke positions. Nearby horizontal numbers are grouped in
-separate tick bands; three or more anchors must agree with a line and cover the
-endpoints. Two ticks, unparsed signs and conflicting text need review. A known
-grid can also use single-slot OCR for gene/sample strings.
+The first completed reviewed numeric trial recovered 251/264 cells without
+extrapolating beyond labelled ticks. Automatic ROI and composed requests abstained.
+[Commands, full evidence and reconstruction limits](examples/m16/README.md) include
+the retained failed first rendering attempt, tick errors and optional retry costs.
+See [calibration and diagnostic conventions](docs/nonlinear-calibration.md).
 
 ## Try it
 

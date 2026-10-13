@@ -94,7 +94,7 @@ def test_group_upright_assign_original_x_and_keep_run_links(monkeypatch, angle, 
         )
     calls = []
 
-    def recognize(image, settings, *, mode="localisation"):
+    def recognize(image, settings, *, mode="localisation", timeout_seconds=30):
         index = len(calls)
         bbox = cfg.labels.columns.bbox
         if recognition == "slots":

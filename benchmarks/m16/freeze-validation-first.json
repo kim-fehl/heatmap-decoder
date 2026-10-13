@@ -1,0 +1,40 @@
+{
+  "policy": "manual calibration: MAE <2%, maximum <=5%, all cells finite; flagged <=1%; zero complete negatives; no automatic identifiers or OCR scales",
+  "base_partition": "16 development bases (160101..160116), 16 fresh validation bases (166101..166116); derivatives stay with base",
+  "thresholds": {
+    "mae_fraction": 0.02,
+    "max_fraction": 0.05,
+    "finite_fraction": 1,
+    "maximum_flagged_fraction": 0.01
+  },
+  "sha256": {
+    "benchmarks/m16/validate.py": "be69dc20f876fe481e3579c48a45b29d3fe6a3d376236bc8e7514eb0626bd36c",
+    "src/heatmap2matrix/__init__.py": "ef511579883a1c76d772b76cc31434f6f1319f42235592d9eb2de4e3ca9282a5",
+    "src/heatmap2matrix/__main__.py": "dacacc03eb8b975a43c35ca500666787bb3aa5e68c2f8f715aa4a47a90d434c7",
+    "src/heatmap2matrix/cli.py": "7eb455bebe39c4540efcc593ed873e30e120181ca74cff010a20a10947ef953c",
+    "src/heatmap_decoder/__init__.py": "f6833fa726e69d7b58f6865b8c6a31be05221d90c5ca3233bb5b36a0e4eef797",
+    "src/heatmap_decoder/__main__.py": "93b604b2d73ba758ff637179c8e45093d32489ee162a63f2e1ea71a6331d5ce7",
+    "src/heatmap_decoder/acceptance.py": "32d2d99675179862beffe69504b4fc4b5591d2b558b20c757bbb69b624c8fc7f",
+    "src/heatmap_decoder/automation.py": "f61980a152f335d9293f31ac99c700ced8dfeeab819e6038b183507fd2343d20",
+    "src/heatmap_decoder/bar_cores.py": "57f0db82fc2b9acd84dc3e39b2ea361822a8e7d46e56c2e5628109a744911e08",
+    "src/heatmap_decoder/calibration.py": "24a21f439307b109310fbd03aad41e1d1c437ab3edbb32a6d247086390294e32",
+    "src/heatmap_decoder/cli.py": "aa5c9c9cb31ee83610695c4a0354fc76fbd031610fbda799379ef196e8e20be1",
+    "src/heatmap_decoder/detection.py": "20ae25a31707d74675af87603006501f1f49f453ec658de57fb2e018ab67cbf4",
+    "src/heatmap_decoder/detection_policy.py": "187e529da4b17c99e4ae19f0e0596b198fd80dc8bb7f8fcc7474b1874bc66363",
+    "src/heatmap_decoder/diagnostic_style.py": "4af2f8e068698e569dcd1a355eed9d9fae807c853ccfe64aa54415c5beede53e",
+    "src/heatmap_decoder/diagnostics.py": "40309b264fd47a607dc8c1ab3caa826796bcf313a7f6de32b80042e0269aaf9d",
+    "src/heatmap_decoder/edge_profiles.py": "c5a5b05e95258e267d2156a53c7c89e274cfe084719531ccc15a43621bfa6a14",
+    "src/heatmap_decoder/extract.py": "26b3319bca55e4c8fbb2ee1423dd26e4b67a64c34f1832743444b2209c300900",
+    "src/heatmap_decoder/geometry.py": "6a6e7f06da3ab23a77380ca3583c27add3b5aaf35fd52f8dd96d6f47161826d5",
+    "src/heatmap_decoder/gradient.py": "99d6428e922cf1086af2ecff3dd5e8ce94d716d6dc5140afb3fcf128e6c14bd1",
+    "src/heatmap_decoder/io.py": "f22153c5c59dfc2a7a12a6b21f646ea63cf1e78db094142badac217b5980c5f5",
+    "src/heatmap_decoder/labels.py": "699f6a59b85087c0858258c3fdc7b7fbb1aa79ad7139fd1eaf50da4a16a7c3ae",
+    "src/heatmap_decoder/lattice.py": "0b622dd82976aa04b136c5b9b04c7626a923d2d6bc7dcac8e5ec0eaad7846aed",
+    "src/heatmap_decoder/legend.py": "0d8f1c949991596a27da3fdaa28ae7d3ad1dd4569d9d908fa70f4d77e62510dd",
+    "src/heatmap_decoder/models.py": "6a534ce6556e00b5461be5ff94c78a907065814b0e9892dc32961d6272a0059a",
+    "src/heatmap_decoder/ocr.py": "ff31bfe03a11671b00ee631663860e3dead755c1ebbf54e5fdc3664b05148698",
+    "src/heatmap_decoder/orientation.py": "9927c49e3614c431b073724f54b5aa3cd6670badb09b362b21722043b7a29419",
+    "src/heatmap_decoder/sampling.py": "c709cfa63c75a1c47c1afd92896d4c39118ca91a2fc53a8b6e8d340caa6131df",
+    "src/heatmap_decoder/version.py": "fbcd96443027ffe7e6324e62f7a79702a6045cdea7416f7fba72883f51c9bcc5"
+  }
+}

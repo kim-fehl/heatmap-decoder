@@ -107,7 +107,9 @@ def write_quality_csv(result: ExtractionResult, path: str | Path) -> None:
                     flag_names(int(result.flags[row, column])),
                     result.valid_fraction[row, column],
                     result.inferred_values[row, column],
-                    "missing_or_ambiguous"
+                    "unsupported_calibration_span"
+                    if result.flags[row, column] & CellFlag.UNCALIBRATED
+                    else "missing_or_ambiguous"
                     if not np.isfinite(result.values[row, column])
                     else "possible_upper_bound"
                     if result.range_limit is not None and result.range_limit[row, column] == -1
@@ -165,7 +167,9 @@ def provenance(
             "mask_sha256": mask_sha256,
         },
         "config": result.config.model_dump(mode="json"),
+        "config_sha256": hashlib.sha256(result.config.model_dump_json().encode()).hexdigest(),
         "qc_thresholds": thresholds,
+        "diagnostic_policy": "m16-roi-confidence.1",
         "methods": {
             "sampling": "median RGB of valid inset pixel centres",
             "calibration": "linear position; first/last bar pixel = start/end",
@@ -189,6 +193,8 @@ def provenance(
             "matrix.csv": "headerless row-major matrix",
             "quality.csv": "long-form QC, zero-based row/column",
             "diagnostic.png": "source sampling / nearest candidates / QC",
+            "colourbar_enlarged.png": "observed gradient checkpoints and swatches",
+            "gradient.json": "original-coordinate sampling footprints, RGB/Lab, dispersion",
         },
         "limitations": "Approximate displayed-scale values, not exact or pre-transformation data.",
         "recovery": {
@@ -203,25 +209,16 @@ def provenance(
         },
     }
     if result.config.scale is not None and result.config.scale.source == "manual_ticks":
-        from .calibration import fit_linear_scale
+        from .calibration import calibration_evidence
 
         scale = result.config.scale
-        fitted = fit_linear_scale(
-            scale.anchors,
-            result.config.colourbar_bbox,
-            result.config.colourbar_orientation,
-            max_value_residual_fraction=scale.max_value_residual_fraction,
-            max_position_residual_pixels=scale.max_position_residual_pixels,
-        )
-        metadata["schema_version"] = 3
-        metadata["methods"]["calibration"] = "linear least squares on original-position anchors"
+        metadata["schema_version"] = 4
+        metadata["methods"]["calibration"] = f"{scale.model} on original-position anchors"
         metadata["scale"] = {
-            "source": scale.source,
             "quantity": scale.quantity,
-            "fit": fitted.model_dump(mode="json"),
-            "extrapolation": "explicit manual/reviewed mapping"
-            if not fitted.endpoint_coverage
-            else "recognised endpoint coverage",
+            **calibration_evidence(
+                scale, result.config.colourbar_bbox, result.config.colourbar_orientation
+            ),
         }
     if result.labels is not None:
         metadata["schema_version"] = max(2, metadata["schema_version"])
@@ -373,6 +370,7 @@ def extract_file(
             colourbar_bbox=config.colourbar_bbox,
             colourbar_orientation=config.colourbar_orientation,
             legend=config.scale.legend,
+            scale_model=config.scale.model,
         )
         legend_result = inspect_legend(image, legend_config)
         digest = hashlib.sha256(data).hexdigest()
@@ -425,6 +423,14 @@ def extract_file(
         if label_result.unresolved_count:
             raise UnresolvedLabelsError(label_result)
     result = extract(image, config, mask=mask, label_result=label_result)
+    from .gradient import gradient_diagnostic, inspect_gradient
+
+    directory.mkdir(parents=True, exist_ok=True)
+    gradient = inspect_gradient(
+        image, config, tuple(a.position for a in config.scale.anchors) if config.scale else ()
+    )
+    gradient_diagnostic(image, gradient).save(directory / "colourbar_enlarged.png")
+    (directory / "gradient.json").write_text(json.dumps(gradient, indent=2) + "\n")
     write_outputs(
         result,
         directory,
@@ -438,8 +444,22 @@ def extract_file(
     return result
 
 
-LABEL_OUTPUT_NAMES = ("labels.tsv", "labels_review.tsv", "labels_diagnostic.png", "provenance.json")
-NUMERIC_OUTPUT_NAMES = ("matrix.csv", "quality.csv", "provenance.json", "diagnostic.png")
+LABEL_OUTPUT_NAMES = (
+    "labels.tsv",
+    "labels_review.tsv",
+    "labels_diagnostic.png",
+    "provenance.json",
+    "labels_rows_enlarged.png",
+    "labels_columns_enlarged.png",
+)
+NUMERIC_OUTPUT_NAMES = (
+    "matrix.csv",
+    "quality.csv",
+    "provenance.json",
+    "diagnostic.png",
+    "colourbar_enlarged.png",
+    "gradient.json",
+)
 
 
 def check_output_paths(outputs: list[Path], inputs: tuple[Path, ...], overwrite: bool) -> None:
@@ -623,6 +643,7 @@ def label_provenance(
             "image_shape": list(image_shape),
         },
         "config": result.config.model_dump(mode="json"),
+        "config_sha256": hashlib.sha256(result.config.model_dump_json().encode()).hexdigest(),
         "ocr": {
             "availability": "available"
             if result.ocr_runs or result.slot_ocr_runs
@@ -651,12 +672,16 @@ def label_provenance(
                 }
                 for axis, index, box, run in result.slot_ocr_runs
             ],
+            "skipped_attempts": result.skipped_ocr_attempts,
             "raw_token_coordinate_frame": "upright upscaled crop pixels",
             "assigned_text_token_coordinate_frame": "original image pixels",
             "structural_records": "retained in raw coordinates; excluded from assignment",
         },
         "preprocessing": {
             "grayscale": "Pillow L",
+            "retry_policy": "opt-in slots only; original + contrast + threshold; shared budgets",
+            "contrast": "Pillow autocontrast cutoff=0",
+            "threshold": "fixed luminance >=160 -> 255; otherwise 0",
             "resize": "Pillow bicubic",
             "upscale_factor": result.config.labels.ocr.upscale_factor
             if result.config.labels is not None
@@ -718,6 +743,13 @@ def write_label_outputs(
     write_labels_tsv(result, directory / "labels.tsv")
     write_labels_review(result, directory / "labels_review.tsv")
     labels_diagnostic_image(image, result).save(directory / "labels_diagnostic.png")
+    for axis in ("rows", "columns"):
+        roi = getattr(result.config.labels, axis) if result.config.labels else None
+        if isinstance(roi, OCRLabelSource):
+            crop = Image.fromarray(image).crop(roi.bbox)
+            crop.resize((crop.width * 3, crop.height * 3), Image.Resampling.NEAREST).save(
+                directory / f"labels_{axis}_enlarged.png"
+            )
     (directory / "provenance.json").write_text(
         json.dumps(metadata, indent=2, sort_keys=True, allow_nan=False) + "\n", encoding="utf-8"
     )
@@ -735,7 +767,7 @@ def detect_file(
     overwrite: bool = False,
 ) -> "SavedDetection":
     """Export proposals and M10 decisions; never insert unreviewed boxes or counts."""
-    from PIL import Image, ImageDraw
+    from PIL import Image
 
     from .detection import DETECTOR_VERSION, analysis_image, detect
     from .detection_policy import policy_snapshot, threshold_snapshot
@@ -807,47 +839,49 @@ def detect_file(
         proposed_config_complete=complete,
         missing_extraction_fields=missing,
     )
-    overlay = Image.fromarray(image[:, :, :3]).convert("RGB")
-    draw = ImageDraw.Draw(overlay)
+    from .diagnostic_style import DiagnosticCanvas
 
-    def caption(x: int, y: int, text: str) -> None:
-        extent = draw.textbbox((0, 0), text)
-        x = int(max(0, min(x, overlay.width - (extent[2] - extent[0]) - 2)))
-        y = max(0, min(y, overlay.height - 12))
-        draw.text((x, y), text, fill="black", stroke_width=1, stroke_fill="white")
-
-    for index, candidate in enumerate(result.candidates, 1):
-        left, top, right, bottom = candidate.bbox
-        draw.rectangle((left, top, right - 1, bottom - 1), outline="orange", width=2)
-        caption(left, top - 12, f"{index} {candidate.kind} ? {candidate.score:.2f}")
+    canvas = DiagnosticCanvas(
+        Image.fromarray(image),
+        lines=len(result.candidates)
+        + sum(len(e.tokens) + len(e.unassigned_candidates) for e in result.label_evidence)
+        + 40,
+    )
+    for candidate in result.candidates:
+        canvas.roi(candidate.bbox, candidate.kind, "proposed", candidate.id)
     for kind, region in result.selected.items():
-        left, top, right, bottom = region.bbox
-        draw.rectangle((left, top, right - 1, bottom - 1), outline="lime", width=2)
-        caption(left, top, f"{kind} manual")
-    for proposal in result.count_proposals:
-        if proposal == next(
-            (
-                p
-                for p in result.count_proposals
-                if p.axis == proposal.axis and p.heatmap_id == proposal.heatmap_id
-            ),
-            None,
-        ):
-            left, top, right, bottom = proposal.bbox
-            for index in range(1, proposal.count):
-                position = round(proposal.phase + index * proposal.pitch)
-                line = (
-                    (left, position, right - 1, position)
-                    if proposal.axis == "rows"
-                    else (position, top, position, bottom - 1)
+        canvas.roi(
+            region.bbox,
+            kind,
+            "manual" if region.origin == "manual" else "selected",
+            region.candidate_id or "",
+        )
+    for i, evidence in enumerate(result.label_evidence):
+        for j, token in enumerate(evidence.tokens):
+            if token.text.strip():
+                canvas.ocr(
+                    token.bbox,
+                    token.confidence,
+                    f"L{i}-T{j}",
+                    token.text,
+                    "raw",
+                    evidence.preprocessing.min_confidence,
+                    evidence.preprocessing.high_confidence,
                 )
-                draw.line(line, fill="cyan", width=1)
-            caption(
-                left,
-                bottom if proposal.axis == "rows" else top - 24,
-                f"{proposal.axis} ? {proposal.count}; alternatives in JSON",
+        for j, text_candidate in enumerate(evidence.unassigned_candidates):
+            canvas.ocr(
+                text_candidate.bbox,
+                text_candidate.confidence,
+                f"L{i}-C{j}",
+                text_candidate.text,
+                evidence.orientation_status,
+                evidence.preprocessing.min_confidence,
+                evidence.preprocessing.high_confidence,
             )
-    caption(2, 2, f"{result.status}; supplied {hints.rows} x {hints.columns}")
+    canvas.note(result.status)
+    if hints.rows is not None and hints.columns is not None:
+        canvas.note(f"Supplied dimensions {hints.rows} x {hints.columns}")
+    overlay = canvas.image
     directory.mkdir(parents=True, exist_ok=True)
     (directory / "roi_candidates.json").write_text(
         saved.model_dump_json(indent=2) + "\n", encoding="utf-8"
@@ -1105,6 +1139,8 @@ LEGEND_OUTPUT_NAMES = (
     "legend_review.tsv",
     "legend_diagnostic.png",
     "legend_provenance.json",
+    "colourbar_enlarged.png",
+    "gradient.json",
 )
 
 
@@ -1117,8 +1153,8 @@ def load_legend_review(
     result: "LegendResult",
     image_sha256: str,
 ) -> "LegendResult":
-    from .calibration import fit_linear_scale
-    from .models import ScaleAnchor
+    from .calibration import calibration_evidence, fit_linear_scale
+    from .models import ScaleAnchor, ScaleConfig
 
     if any(
         "cap_exceeded" in reason
@@ -1172,12 +1208,24 @@ def load_legend_review(
         raise ValueError(f"invalid legend review TSV: {error}") from error
     if seen != expected:
         raise ValueError("legend review is missing indices")
-    fit = fit_linear_scale(
-        tuple(anchors), result.config.colourbar_bbox, result.config.colourbar_orientation
+    scale = ScaleConfig(
+        source="manual_ticks", model=result.config.scale_model, anchors=tuple(anchors)
     )
+    evidence = calibration_evidence(
+        scale, result.config.colourbar_bbox, result.config.colourbar_orientation
+    )
+    fit = None
+    if evidence["linear_comparison"] is not None:
+        fit = fit_linear_scale(
+            tuple(anchors),
+            result.config.colourbar_bbox,
+            result.config.colourbar_orientation,
+            enforce_residuals=result.config.scale_model == "linear",
+        )
     return result.model_copy(
         update={
             "reviewed_anchors": tuple(anchors),
+            "calibration_evidence": evidence,
             "fit": fit,
             "status": "reviewed",
             "development_eligible": False,
@@ -1211,7 +1259,6 @@ def legend_provenance(result: "LegendResult", input_sha256: str, filename: str) 
 def write_legend_outputs(
     image: RGBArray, result: "LegendResult", directory: Path, image_sha256: str, filename: str
 ) -> None:
-    from PIL import ImageDraw
 
     from .legend import search_regions
 
@@ -1246,44 +1293,49 @@ def write_legend_outputs(
                     selected.get(tick.position, tick.parsed_value),
                 ]
             )
-    overlay = Image.fromarray(image[:, :, :3]).convert("RGB")
-    draw = ImageDraw.Draw(overlay)
-    x, y, r, s = result.config.colourbar_bbox
-    draw.rectangle((x, y, r - 1, s - 1), outline="cyan", width=2)
-    for side, box in search_regions(image, result.config):
-        draw.rectangle((box[0], box[1], box[2] - 1, box[3] - 1), outline="orange", width=1)
-        draw.text(
-            (box[0], max(0, box[1] - 12)),
-            f"tick search {side}",
-            fill="black",
-            stroke_fill="white",
-            stroke_width=1,
-        )
-    for tick in result.ticks:
-        colour = "lime" if tick.status == "suggested" else "red"
-        for token_box in (tick.stroke_bbox, tick.text_bbox):
-            if token_box is not None:
-                draw.rectangle(token_box, outline=colour, width=2)
-        if result.config.colourbar_orientation == "vertical":
-            draw.line((x, tick.position, r, tick.position), fill=colour)
-            at: tuple[float, float] = (r + 2, tick.position - 12)
-        else:
-            draw.line((tick.position, y, tick.position, s), fill=colour)
-            at = (tick.position, y - 14)
-        draw.text(
-            at,
-            f"{tick.index}: {tick.raw_text or '?'}",
-            fill="black",
-            stroke_fill="white",
-            stroke_width=1,
-        )
-    draw.text(
-        (4, 4),
-        f"{result.status}; eligible={result.development_eligible}; review scale",
-        fill="black",
-        stroke_fill="white",
-        stroke_width=1,
+    from .diagnostic_style import DiagnosticCanvas
+    from .gradient import gradient_diagnostic, inspect_gradient
+    from .labels import CropTransform, transform_tokens
+
+    canvas = DiagnosticCanvas(
+        Image.fromarray(image[:, :, :3]),
+        lines=len(result.ticks) + sum(len(r.run.tokens) for r in result.ocr_records) + 20,
     )
+    canvas.roi(result.config.colourbar_bbox, "colourbar", "manual")
+    for side, box in search_regions(image, result.config):
+        canvas.roi(box, "tick_search", "proposed", side)
+    settings = result.config.legend.ocr
+    for i, record in enumerate(result.ocr_records):
+        for j, token in enumerate(
+            transform_tokens(
+                record.run.tokens, CropTransform(record.crop_bbox, settings.upscale_factor)
+            )
+        ):
+            if token.text.strip():
+                canvas.ocr(
+                    token.bbox,
+                    token.confidence,
+                    f"R{i}-T{j}",
+                    token.text,
+                    "raw",
+                    settings.min_confidence,
+                    settings.high_confidence,
+                )
+    for tick in result.ticks:
+        canvas.ocr(
+            tick.text_bbox,
+            tick.confidence,
+            f"tick-{tick.index}",
+            tick.raw_text,
+            f"{tick.status}: {','.join(tick.reasons)}",
+            settings.min_confidence,
+            settings.high_confidence,
+        )
+    canvas.note(f"{result.status}; review scale; model={result.config.scale_model}")
+    overlay = canvas.image
+    gradient = inspect_gradient(image, result.config, tuple(t.position for t in result.ticks))
+    gradient_diagnostic(image, gradient).save(directory / "colourbar_enlarged.png")
+    (directory / "gradient.json").write_text(json.dumps(gradient, indent=2) + "\n")
     overlay.save(directory / "legend_diagnostic.png")
     (directory / "legend_provenance.json").write_text(
         json.dumps(legend_provenance(result, image_sha256, filename), indent=2, allow_nan=False)

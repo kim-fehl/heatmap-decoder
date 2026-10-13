@@ -27,6 +27,7 @@ from .models import (
     GridConfig,
     LabelExtractionResult,
     LegendConfig,
+    LegendOptions,
     ROIReview,
 )
 from .version import __version__
@@ -494,7 +495,8 @@ def legend_command(
             settings = LegendConfig(
                 colourbar_bbox=extraction.colourbar_bbox,
                 colourbar_orientation=extraction.colourbar_orientation,
-                **({"legend": extraction.scale.legend} if extraction.scale is not None else {}),
+                legend=extraction.scale.legend if extraction.scale else LegendOptions(),
+                scale_model=extraction.scale.model if extraction.scale else "linear",
             )
         else:
             settings = LegendConfig.model_validate(payload)

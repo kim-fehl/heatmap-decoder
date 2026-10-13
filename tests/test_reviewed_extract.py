@@ -119,6 +119,8 @@ def test_unresolved_evidence_and_manual_review_preserve_raw_results(tmp_path, un
         "labels.tsv",
         "labels_review.tsv",
         "labels_diagnostic.png",
+        "labels_rows_enlarged.png",
+        "labels_columns_enlarged.png",
         "provenance.json",
     }
     assert all(row["text"] == "" for row in tsv(out / "labels_review.tsv"))

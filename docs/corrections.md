@@ -1,3 +1,7 @@
+Current M16 extends the reviewed export scope to explicit piecewise-linear
+calibration with full physical-span anchors. Historical evidence below remains
+unchanged; see [M16](progress/M16.md) and [numeric calibration](nonlinear-calibration.md).
+
 # Current-phase review corrections
 
 These corrections address the review of M12 commit `9efb175`. They do not declare

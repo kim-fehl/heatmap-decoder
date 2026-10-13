@@ -1,5 +1,18 @@
 # Changelog
 
+## M16
+
+- Add explicit reviewed monotonic piecewise-linear positional calibration,
+  unsupported-span NaNs/flags and full-span experimental export checks.
+- Preserve dense observed colours with tick/midpoint/edge checkpoint evidence,
+  footprints, RGB/Lab, dispersion and enlarged diagnostics.
+- Share ROI/state and OCR/confidence rendering with external title ledgers,
+  original-coordinate token IDs, missing slots and enlarged label crops.
+- Add optional bounded slot OCR contrast/threshold retries; retain conflicts,
+  raw runs and budget skips. Recover strokes hidden by a near-edge axial border.
+- Record the supplied real-world crop baseline, failed first rendering attempt,
+  completed trial, frozen synthetic validation and unresolved TSV provenance.
+
 ## M15
 
 - Add opt-in 0/±90° column-label region proposals with raw trial evidence, shared

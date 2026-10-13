@@ -8,7 +8,7 @@ from dataclasses import replace
 from typing import Literal
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageOps
 
 from .calibration import match_with_quality, scale_values
 from .geometry import axis_slots, validate_geometry, validate_grid_geometry
@@ -118,8 +118,13 @@ def extract(
                     b,
                     a / (len(bar) - 1),
                     b / (len(bar) - 1),
-                    float(np.min(scale[a : b + 1])),
-                    float(np.max(scale[a : b + 1])),
+                    float(np.min(scale[a : b + 1]))
+                    if np.isfinite(scale[a : b + 1]).all()
+                    else None,
+                    float(np.max(scale[a : b + 1]))
+                    if np.isfinite(scale[a : b + 1]).all()
+                    else None,
+                    bool(np.isfinite(scale[a : b + 1]).all()),
                 )
                 for a, b in intervals
             )
@@ -135,20 +140,32 @@ def extract(
                 kind,
                 components,
                 span,
-                max(c.maximum_value for c in components) - min(c.minimum_value for c in components),
+                max(c.maximum_value for c in components if c.maximum_value is not None)
+                - min(c.minimum_value for c in components if c.minimum_value is not None)
+                if all(c.calibrated for c in components)
+                else None,
             )
         inferred[valid] = scale[matches.indices]
         distances[valid] = matches.distance
         reconstructed[valid] = bar[matches.indices]
         at_start = np.all(bar[matches.indices] == bar[0], axis=1)
         at_end = np.all(bar[matches.indices] == bar[-1], axis=1)
-        direction = 1 if scale[-1] > scale[0] else -1
+        covered = scale[np.isfinite(scale)]
+        direction = (1 if covered[-1] > covered[0] else -1) if len(covered) else 1
         limits[valid] = np.where(at_start, -direction, np.where(at_end, direction, 0))
         quality_flags = np.zeros(int(np.sum(valid)), dtype=np.uint8)
         quality_flags[matches.distance > config.max_colour_distance] |= np.uint8(
             CellFlag.POOR_MATCH
         )
         quality_flags[matches.ambiguous] |= np.uint8(CellFlag.AMBIGUOUS)
+        unsupported = np.array(
+            [
+                any(not np.isfinite(scale[a : b + 1]).all() for a, b in intervals)
+                for intervals in matches.candidate_intervals
+            ]
+        )
+        quality_flags[unsupported] |= np.uint8(CellFlag.UNCALIBRATED)
+        inferred[np.flatnonzero(valid)[unsupported]] = np.nan
         flags[valid] = quality_flags
     values = inferred.copy()
     values[(flags & CellFlag.AMBIGUOUS) != 0] = np.nan
@@ -187,6 +204,7 @@ def extract_labels(
     axes = []
     runs: list[tuple[Axis, OCRRun]] = []
     slot_runs: list[tuple[Axis, int, tuple[int, int, int, int], OCRRun]] = []
+    skipped: list[dict[str, object]] = []
     for axis in ("rows", "columns"):
         source = getattr(config.labels, axis)
         if source is None:
@@ -233,6 +251,7 @@ def extract_labels(
                 candidates: list[LabelCandidate] = []
                 pixel_budget = 16000000
                 deadline = time.monotonic() + 60
+                calls_remaining = 128
                 for slot in slots:
                     box_list = list(source.bbox)
                     box_list[coordinate] = max(box_list[coordinate], math.floor(slot.start))
@@ -244,18 +263,92 @@ def extract_labels(
                         box, config.labels.ocr.upscale_factor, source.text_rotation_degrees
                     )
                     factor = transform.upscale_factor
-                    pixel_budget -= (box[2] - box[0]) * (box[3] - box[1]) * factor**2
-                    if pixel_budget < 0 or time.monotonic() > deadline:
-                        raise ValueError("slot OCR pixel/runtime cap exceeded")
-                    crop = transform.prepare(Image.fromarray(image))
-                    run = recognize(crop, config.labels.ocr, mode="text_line")
-                    slot_runs.append((axis, slot.index, box, run))
-                    offset = len(tokens)
-                    candidates.extend(
-                        replace(c, token_indices=tuple(i + offset for i in c.token_indices))
-                        for c in group_tokens(run.tokens, config, axis, transform=transform)
-                    )
-                    tokens.extend(transform_tokens(run.tokens, transform))
+                    original_crop: Image.Image | None = None
+                    slot_candidates: list[LabelCandidate] = []
+                    # Fixed transforms share the original call/pixel/deadline budgets.
+                    variants = ("original", *config.labels.ocr.retry_variants)
+                    for variant in variants:
+                        pixels = (box[2] - box[0]) * (box[3] - box[1]) * factor**2
+                        remaining_seconds = deadline - time.monotonic()
+                        if pixels > pixel_budget or remaining_seconds <= 0 or calls_remaining <= 0:
+                            skipped.append(
+                                {
+                                    "axis": axis,
+                                    "slot": slot.index,
+                                    "variant": variant,
+                                    "reason": "shared_budget_exhausted",
+                                }
+                            )
+                            continue
+                        if original_crop is None:
+                            original_crop = transform.prepare(Image.fromarray(image))
+                        pixel_budget -= pixels
+                        calls_remaining -= 1
+                        crop = (
+                            ImageOps.autocontrast(original_crop)
+                            if variant == "contrast"
+                            else original_crop.point(lambda p: 255 if p >= 160 else 0)
+                            if variant == "threshold"
+                            else original_crop
+                        )
+                        try:
+                            run = recognize(
+                                crop,
+                                config.labels.ocr,
+                                mode="text_line",
+                                timeout_seconds=min(30, remaining_seconds),
+                            )
+                        except ValueError as error:
+                            if variant == "original" and not config.labels.ocr.retry_variants:
+                                raise
+                            skipped.append(
+                                {
+                                    "axis": axis,
+                                    "slot": slot.index,
+                                    "variant": variant,
+                                    "reason": str(error),
+                                }
+                            )
+                            continue
+                        run = replace(run, preprocessing=variant)
+                        slot_runs.append((axis, slot.index, box, run))
+                        offset = len(tokens)
+                        observed = [
+                            replace(c, token_indices=tuple(i + offset for i in c.token_indices))
+                            for c in group_tokens(run.tokens, config, axis, transform=transform)
+                        ]
+                        tokens.extend(transform_tokens(run.tokens, transform))
+                        if not config.labels.ocr.retry_variants:
+                            slot_candidates.extend(observed)
+                            continue
+                        # Merge only exact same-slot readings; retain all raw runs/tokens.
+                        # A disagreement remains a separate candidate requiring review.
+                        for candidate in observed:
+                            same = next(
+                                (
+                                    i
+                                    for i, c in enumerate(slot_candidates)
+                                    if c.text == candidate.text
+                                ),
+                                None,
+                            )
+                            if same is None:
+                                slot_candidates.append(candidate)
+                            else:
+                                previous = slot_candidates[same]
+                                a, b = previous.bbox, candidate.bbox
+                                slot_candidates[same] = replace(
+                                    previous,
+                                    bbox=(
+                                        min(a[0], b[0]),
+                                        min(a[1], b[1]),
+                                        max(a[2], b[2]),
+                                        max(a[3], b[3]),
+                                    ),
+                                    confidence=min(previous.confidence, candidate.confidence),
+                                    token_indices=previous.token_indices + candidate.token_indices,
+                                )
+                    candidates.extend(slot_candidates)
                 axes.append(assign_candidates(candidates, config, axis, tokens=tokens))
                 continue
             crop, transform = crop_label_region(Image.fromarray(image), config, axis)
@@ -269,4 +362,10 @@ def extract_labels(
                     tokens=transform_tokens(run.tokens, transform),
                 )
             )
-    return LabelExtractionResult(config, tuple(axes), tuple(runs), slot_ocr_runs=tuple(slot_runs))
+    return LabelExtractionResult(
+        config,
+        tuple(axes),
+        tuple(runs),
+        slot_ocr_runs=tuple(slot_runs),
+        skipped_ocr_attempts=tuple(skipped),
+    )

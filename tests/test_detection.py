@@ -229,7 +229,7 @@ def test_cli_review_exit_overwrite_and_no_matrices(tmp_path):
         "roi_diagnostic.png",
     }
     with Image.open(tmp_path / "roi/roi_diagnostic.png") as overlay:
-        assert overlay.size == (350, 576)
+        assert overlay.width == 350 + 520 and overlay.height >= 576
     assert runner.invoke(app, args).exit_code == 2
     assert runner.invoke(app, args + ["--overwrite"]).exit_code == 5
     extract = runner.invoke(

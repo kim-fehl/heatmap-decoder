@@ -28,7 +28,9 @@ def diagnostic_image(result: ExtractionResult) -> Image.Image:
                 flag = int(result.flags[row, column])
                 if panel == 2:
                     colour = (
-                        (150, 150, 150)
+                        (80, 80, 80)
+                        if flag & CellFlag.UNCALIBRATED
+                        else (150, 150, 150)
                         if flag & CellFlag.MISSING
                         else (180, 70, 210)
                         if flag & CellFlag.AMBIGUOUS
@@ -47,6 +49,8 @@ def diagnostic_image(result: ExtractionResult) -> Image.Image:
                     )
                 x, y = x0 + column * size, header + row * size
                 draw.rectangle((x, y, x + size - 1, y + size - 1), fill=colour)
+                if panel == 2 and flag & CellFlag.UNCALIBRATED:
+                    draw.text((x + 3, y + 2), "U", fill="white")
                 if flag & CellFlag.MISSING:
                     draw.line((x, y, x + size - 1, y + size - 1), fill="black")
                 # Outline poor matches even when ambiguity takes colour priority.
@@ -54,7 +58,7 @@ def diagnostic_image(result: ExtractionResult) -> Image.Image:
                     draw.rectangle((x, y, x + size - 1, y + size - 1), outline="black", width=2)
     draw.text(
         (gap, header + height + 8),
-        "QC: green OK; orange poor; purple ambiguous; grey/cross missing",
+        "QC: green OK; orange poor; purple ambiguous; grey/cross missing; U uncalibrated",
         fill="black",
     )
     draw.text(
@@ -67,71 +71,55 @@ def diagnostic_image(result: ExtractionResult) -> Image.Image:
 
 def labels_diagnostic_image(image: RGBArray, result: LabelExtractionResult) -> Image.Image:
     """Original-coordinate ROI, centre, token and candidate overlay plus slot ledger."""
-    source = Image.fromarray(image).convert("RGB")
-    count = sum(len(axis.slots) for axis in result.axes)
-    canvas = Image.new(
-        "RGB", (source.width + 380, max(source.height + 70, 90 + count * 20)), "white"
-    )
-    canvas.paste(source, (0, 0))
-    draw = ImageDraw.Draw(canvas)
-    colours = {
-        "accepted": "green",
-        "low_confidence": "darkorange",
-        "missing": "red",
-        "ambiguous": "purple",
-        "manual": "blue",
-        "generated": "gray",
-    }
-    x, y = source.width + 12, 10
-    draw.text((x, y), "Label review: axis / index / status", fill="black")
-    y += 25
-    left, top, right, bottom = result.config.heatmap_bbox
-    draw.rectangle((left, top, right - 1, bottom - 1), outline="black", width=2)
+    from .diagnostic_style import DiagnosticCanvas
+
+    count = sum(len(a.tokens) + len(a.candidates) + len(a.slots) for a in result.axes)
+    canvas = DiagnosticCanvas(Image.fromarray(image), lines=count + 12)
+    canvas.roi(result.config.heatmap_bbox, "heatmap", "manual")
+    settings = result.config.labels.ocr if result.config.labels is not None else None
+    minimum, high = (settings.min_confidence, settings.high_confidence) if settings else (80, 90)
     for axis in result.axes:
-        roi = getattr(result.config.labels, axis.axis) if result.config.labels is not None else None
+        roi = getattr(result.config.labels, axis.axis) if result.config.labels else None
         if isinstance(roi, OCRLabelSource):
-            x0, y0, x1, y1 = roi.bbox
-            draw.rectangle((x0, y0, x1 - 1, y1 - 1), outline="cyan", width=2)
-            draw.text((x0, max(0, y0 - 14)), f"{axis.axis} ROI", fill="blue")
-        for slot, label in zip(axis_slots(result.config, axis.axis), axis.slots, strict=True):
-            colour = colours[label.status]
-            if axis.axis == "rows":
-                bounds = roi.bbox if isinstance(roi, OCRLabelSource) else result.config.heatmap_bbox
-                draw.line((bounds[0], slot.centre, bounds[2] - 1, slot.centre), fill=colour)
-                draw.ellipse((left - 3, slot.centre - 3, left + 3, slot.centre + 3), fill=colour)
-            else:
-                bounds = roi.bbox if isinstance(roi, OCRLabelSource) else result.config.heatmap_bbox
-                draw.line((slot.centre, bounds[1], slot.centre, bounds[3] - 1), fill=colour)
-                draw.ellipse((slot.centre - 3, top - 3, slot.centre + 3, top + 3), fill=colour)
-            draw.text((x, y), f"{axis.axis} {label.index}: {label.status}", fill=colour)
-            if label.duplicate:
-                draw.text((x + 260, y), "duplicate", fill="purple")
-            y += 20
-        for token in axis.tokens:
-            if token.text.strip() and token.confidence >= 0:
-                draw.rectangle(token.bbox, outline="gray")
+            canvas.roi(roi.bbox, f"labels_{axis.axis}", "manual")
+        for index, token in enumerate(axis.tokens):
+            if token.text.strip():
+                canvas.ocr(
+                    token.bbox,
+                    token.confidence,
+                    f"{axis.axis}-T{index}",
+                    token.text,
+                    "raw",
+                    minimum,
+                    high,
+                )
         for index, candidate in enumerate(axis.candidates):
             labels = [s for s in axis.slots if index in s.candidate_indices]
             status = next(
                 (s.status for s in labels if s.status == "ambiguous"),
-                labels[0].status if labels else "ambiguous",
+                labels[0].status if labels else "unmatched",
             )
-            draw.rectangle(candidate.bbox, outline=colours[status], width=2)
-        if axis.unmatched_candidate_indices:
-            draw.text(
-                (x, y),
-                f"{axis.axis}: unmatched candidates {list(axis.unmatched_candidate_indices)}",
-                fill="purple",
+            canvas.ocr(
+                candidate.bbox,
+                candidate.confidence,
+                f"{axis.axis}-C{index}",
+                candidate.text,
+                status,
+                minimum,
+                high,
             )
-            y += 20
-    draw.text(
-        (10, source.height + 12),
-        "Cyan: configured ROI. Grey: raw tokens. Coloured boxes: candidates.",
-        fill="black",
-    )
-    draw.text(
-        (10, source.height + 32),
-        "Centres and ledger preserve missing/ambiguous slots. Verify all OCR text.",
-        fill="black",
-    )
-    return canvas
+        for slot, label in zip(axis_slots(result.config, axis.axis), axis.slots, strict=True):
+            canvas.note(
+                f"{axis.axis}-S{label.index} [{label.status}] "
+                f"{label.raw_text or label.final_text or 'missing'} "
+                f"{','.join(label.issues)}"
+            )
+            if label.status == "missing":
+                x, y = (
+                    (result.config.heatmap_bbox[0], slot.centre)
+                    if axis.axis == "rows"
+                    else (slot.centre, result.config.heatmap_bbox[1])
+                )
+                canvas.draw.line((x - 3, y - 3, x + 3, y + 3), fill="black", width=2)
+                canvas.draw.line((x - 3, y + 3, x + 3, y - 3), fill="black", width=2)
+    return canvas.image
