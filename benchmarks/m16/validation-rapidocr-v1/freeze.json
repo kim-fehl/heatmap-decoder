@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-13T16:42:06.956344+00:00",
+  "policy": {
+    "mae_fraction": 0.02,
+    "max_fraction": 0.05,
+    "finite_fraction": 1,
+    "maximum_flagged_fraction": 0.01,
+    "minimum_complete_fraction": 0.8,
+    "maximum_wrong_complete": 0,
+    "maximum_negative_complete": 0
+  },
+  "plan": {
+    "seed_start": 176300,
+    "cases": [
+      {
+        "seed": 176301,
+        "trajectory": "diverging",
+        "nonlinear": false,
+        "vertical": false,
+        "reverse": false,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176302,
+        "trajectory": "diverging",
+        "nonlinear": false,
+        "vertical": false,
+        "reverse": true,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176303,
+        "trajectory": "diverging",
+        "nonlinear": false,
+        "vertical": true,
+        "reverse": false,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176304,
+        "trajectory": "diverging",
+        "nonlinear": false,
+        "vertical": true,
+        "reverse": true,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176305,
+        "trajectory": "diverging",
+        "nonlinear": true,
+        "vertical": false,
+        "reverse": false,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176306,
+        "trajectory": "diverging",
+        "nonlinear": true,
+        "vertical": false,
+        "reverse": true,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176307,
+        "trajectory": "diverging",
+        "nonlinear": true,
+        "vertical": true,
+        "reverse": false,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176308,
+        "trajectory": "diverging",
+        "nonlinear": true,
+        "vertical": true,
+        "reverse": true,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176309,
+        "trajectory": "asymmetric",
+        "nonlinear": false,
+        "vertical": false,
+        "reverse": false,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176310,
+        "trajectory": "asymmetric",
+        "nonlinear": false,
+        "vertical": false,
+        "reverse": true,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176311,
+        "trajectory": "asymmetric",
+        "nonlinear": false,
+        "vertical": true,
+        "reverse": false,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176312,
+        "trajectory": "asymmetric",
+        "nonlinear": false,
+        "vertical": true,
+        "reverse": true,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176313,
+        "trajectory": "asymmetric",
+        "nonlinear": true,
+        "vertical": false,
+        "reverse": false,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176314,
+        "trajectory": "asymmetric",
+        "nonlinear": true,
+        "vertical": false,
+        "reverse": true,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176315,
+        "trajectory": "asymmetric",
+        "nonlinear": true,
+        "vertical": true,
+        "reverse": false,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      },
+      {
+        "seed": 176316,
+        "trajectory": "asymmetric",
+        "nonlinear": true,
+        "vertical": true,
+        "reverse": true,
+        "derivatives": [
+          "clean",
+          "jpeg",
+          "blur"
+        ]
+      }
+    ],
+    "negatives": [
+      {
+        "seed": 176317,
+        "challenge": "plateau",
+        "vertical": false
+      },
+      {
+        "seed": 176318,
+        "challenge": "plateau",
+        "vertical": true
+      },
+      {
+        "seed": 176319,
+        "challenge": "repeated",
+        "vertical": false
+      },
+      {
+        "seed": 176320,
+        "challenge": "repeated",
+        "vertical": true
+      },
+      {
+        "seed": 176321,
+        "challenge": "edges",
+        "vertical": false
+      },
+      {
+        "seed": 176322,
+        "challenge": "edges",
+        "vertical": true
+      }
+    ],
+    "label_modes": [
+      "sparse",
+      "slots"
+    ]
+  },
+  "source_sha256": {
+    "benchmarks/m16/current_trial.py": "2bf520ae3b41db3d183a473301773cd3ac96caa5e1b969dff7f02311021a4158",
+    "benchmarks/m16/validate.py": "9c8145896ad8e1af9f0edbc2bf948b403d7183e6168ccb196e4fd6fe44c9b38a",
+    "benchmarks/m16/validate_current.py": "b154e7e88200e07c11ff4149e28c54ad8e67868000f3cc6ef5c6f35a5adda784",
+    "examples/m16/config-linear-baseline.json": "7c9ed0eb8ea30b5247c04d15f4736026b9181ee4c6756adb89e32cbf23532c05",
+    "examples/m16/config-numeric.json": "e5c32dfa1cea71405368dc52d130f4442c21fa7ff7323864976804c9da8e2bc9",
+    "examples/m16/config-padding.json": "1bf0c9ce0c1f6796f0453923c2a5bc90cf2045901f680ab093f36bd8d0e9ce62",
+    "examples/m16/config.json": "219e83d949c799d7ce3a78ead3460433f7a7e3faf98a9f6940654738598fce02",
+    "examples/m16/labels-default.json": "94793055b0ae1fe514c1578f00d1403dcf4c6d3b9ee704061f5c5e44b12b1c65",
+    "examples/m16/labels-padding.json": "281145e8529814a0ef8b7631dc74ce7c3feccb71faaaf02df3902a6b746c32cb",
+    "examples/m16/labels-retries.json": "ee649a22b0150219bffaf578c5d59953ece31b6403223c9b762feaebb62a2c9e",
+    "examples/m16/labels-right-padding.json": "75b59cef392ee67332d3edea23e6acc378f8cfb60af08e3acc57a4fd87a9c23a",
+    "examples/m16/labels.json": "80bc84b2573115491711f5303cc8ff823c1dc64fbebeb02a729d6abe0acb7eb2",
+    "examples/m16/manifest.json": "f3290e22d9965864163c3b47fdb4b6a4785c081a32d7c6565de3fd8af30df99f",
+    "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg": "085e6a625e36abeea8e239c842b78599a932434e53456bf492b0da1ce228d4ef",
+    "examples/real_world/10.1038__s41598-024-53477-3__fig4.tsv": "3a72c209bcf7f0a4623eab80c815aaa40a99d5fba8fb6678b282a03adf6c6c53",
+    "pyproject.toml": "4b698c24b19d987d9686135b37194e8357b83727ee9f62c2abd5f5e272b0287f",
+    "src/heatmap2matrix/__init__.py": "ef511579883a1c76d772b76cc31434f6f1319f42235592d9eb2de4e3ca9282a5",
+    "src/heatmap2matrix/__main__.py": "dacacc03eb8b975a43c35ca500666787bb3aa5e68c2f8f715aa4a47a90d434c7",
+    "src/heatmap2matrix/cli.py": "7eb455bebe39c4540efcc593ed873e30e120181ca74cff010a20a10947ef953c",
+    "src/heatmap_decoder/__init__.py": "f6833fa726e69d7b58f6865b8c6a31be05221d90c5ca3233bb5b36a0e4eef797",
+    "src/heatmap_decoder/__main__.py": "93b604b2d73ba758ff637179c8e45093d32489ee162a63f2e1ea71a6331d5ce7",
+    "src/heatmap_decoder/acceptance.py": "32d2d99675179862beffe69504b4fc4b5591d2b558b20c757bbb69b624c8fc7f",
+    "src/heatmap_decoder/automation.py": "d711fb7b0244d0cba15855d9c6006e8e093c8d27c10c3d7d6d8e63fd65db32e2",
+    "src/heatmap_decoder/bar_cores.py": "57f0db82fc2b9acd84dc3e39b2ea361822a8e7d46e56c2e5628109a744911e08",
+    "src/heatmap_decoder/calibration.py": "24a21f439307b109310fbd03aad41e1d1c437ab3edbb32a6d247086390294e32",
+    "src/heatmap_decoder/cli.py": "aa5c9c9cb31ee83610695c4a0354fc76fbd031610fbda799379ef196e8e20be1",
+    "src/heatmap_decoder/detection.py": "9e226a6c1861737ce50a7dac884efef27407a0f3f16f48866676268beb93de2d",
+    "src/heatmap_decoder/detection_policy.py": "187e529da4b17c99e4ae19f0e0596b198fd80dc8bb7f8fcc7474b1874bc66363",
+    "src/heatmap_decoder/diagnostic_style.py": "cbe0671dd98c238f568d2bc7e8dfb3679de8192aaeabf82ba117545aa7f3cdea",
+    "src/heatmap_decoder/diagnostics.py": "1e7c26305c4b4360f5f8cbabb7e4e4f6df3f6ce75bb156e1caa95217f773a573",
+    "src/heatmap_decoder/edge_profiles.py": "c5a5b05e95258e267d2156a53c7c89e274cfe084719531ccc15a43621bfa6a14",
+    "src/heatmap_decoder/extract.py": "9b2de73028c4dab4383c0ef99a2bde1f124d901f3c52b21f10d3b5da9587c018",
+    "src/heatmap_decoder/geometry.py": "6a6e7f06da3ab23a77380ca3583c27add3b5aaf35fd52f8dd96d6f47161826d5",
+    "src/heatmap_decoder/gradient.py": "99d6428e922cf1086af2ecff3dd5e8ce94d716d6dc5140afb3fcf128e6c14bd1",
+    "src/heatmap_decoder/io.py": "c1a2df9894375067059bb8652e5b34343f0231c3c2009b11e7eb9a066aa4ad59",
+    "src/heatmap_decoder/labels.py": "2a2cad8e9476898469584fcf0a5c91445af77a2aa04b922ac26f42053e6da431",
+    "src/heatmap_decoder/lattice.py": "0b622dd82976aa04b136c5b9b04c7626a923d2d6bc7dcac8e5ec0eaad7846aed",
+    "src/heatmap_decoder/legend.py": "665677d2e90d73bd70cabf4249e9bec0f82e8fbb4ab844814668a1da827ee9e6",
+    "src/heatmap_decoder/models.py": "0a069b64c5c4b663ddaf05bf7d8ba05b51bed3f86628e0a9a918e37fc7f9c7b6",
+    "src/heatmap_decoder/ocr.py": "2a87536d246d3361718df6a692deae48ce2abdf9d2926adcb900ae8f6160cd54",
+    "src/heatmap_decoder/ocr_fields.py": "4d5ad0213e55b669f3c31bd33ba7b2c587c2606d96820b15e2439428affde62c",
+    "src/heatmap_decoder/orientation.py": "dc045b01809e190ca923e377f821845d34d2991959e13f03c982d37d27357e98",
+    "src/heatmap_decoder/rapid_ocr.py": "783e62f14d1af5c80bb96bbc55c55083288bbfcf0dc9e270365c719fe9ef2f7a",
+    "src/heatmap_decoder/sampling.py": "c709cfa63c75a1c47c1afd92896d4c39118ca91a2fc53a8b6e8d340caa6131df",
+    "src/heatmap_decoder/version.py": "fbcd96443027ffe7e6324e62f7a79702a6045cdea7416f7fba72883f51c9bcc5",
+    "uv.lock": "12c3f1ddbac53032a4e88a14177b1473ea5c2616a7a3483425ec0ab48665c7f8"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "packages": {
+      "numpy": "2.5.4",
+      "Pillow": "12.3.0",
+      "scikit-image": "0.26.0",
+      "scipy": "1.18.1",
+      "pydantic": "2.14.1",
+      "rapidocr-onnxruntime": "1.4.4",
+      "onnxruntime": "1.31.0",
+      "opencv-python": "5.0.0.93"
+    },
+    "models": {
+      "ch_PP-OCRv4_det_infer.onnx": "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9",
+      "ch_PP-OCRv4_rec_infer.onnx": "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b",
+      "ch_ppocr_mobile_v2.0_cls_infer.onnx": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+    },
+    "font_sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+  },
+  "note": "Registered before evaluation. Same generator distribution; fresh base seeds. Derivatives stay with each base. No held-out publication claim."
+}
