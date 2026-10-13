@@ -31,13 +31,17 @@ The scientific challenges matter:
 
 ## Recognition in practice
 
-![M16 manual ROI titles and selected raw OCR observations](docs/images/recognition.png)
+![M16 manual ROIs, all 41 OCR label slots and five physical ticks](docs/images/recognition.png)
 
 The supplied **33-gene × 8-time-column Symbiotic crop** illustrates manual heatmap
 (blue), gene (pink), sample (lilac) and colourbar (violet) regions. Titles and states
 sit outside content in a readable ledger. OCR uses H teal, M yellow, L crimson
 and ? dashed confidence frames; status words remain separate. This illustration
-shows selected observations, not automatic ROI success or verified identifiers.
+shows every requested label slot and all five physical tick readings. All 33 gene
+and 8 sample slots were attempted; 4 gene and 6 sample slots were heuristically
+accepted, leaving 31 slots unresolved. Confidence and slot count do not verify
+spelling: evaluation found 2/33 exact gene strings and 8/8 exact sample strings.
+Automatic ROI selection still abstained.
 Credit: Duscher, Vroom and Foster, Scientific Reports 14, 2912 (2024), CC BY 4.0.
 
 The first completed reviewed numeric trial recovered 251/264 cells without
