@@ -28,7 +28,7 @@ from .models import (
 )
 from .sampling import validate_rgb
 
-LEGEND_POLICY_VERSION = "m16-reviewed-model.1"
+LEGEND_POLICY_VERSION = "m16-numeric-signs.1"
 Side = Literal["left", "right", "above", "below"]
 
 
@@ -69,7 +69,7 @@ class _OCRBudget:
 def parse_numeric_tick(raw: str, decimal_separator: str = ".") -> ParsedNumber:
     """Explicit grammar: signed decimal/e notation or 10^signed_integer.
 
-    No identifier substitutions, minus guessing, thousands separators or
+    No identifier substitutions, missing-sign guessing, thousands separators or
     superscript reconstruction. Spaces after an observed sign are grammatical.
     """
     if decimal_separator not in {".", ","}:
@@ -83,6 +83,14 @@ def parse_numeric_tick(raw: str, decimal_separator: str = ".") -> ParsedNumber:
     if "−" in text:
         text = text.replace("−", "-")
         actions.append("unicode_minus_to_ascii")
+
+    # In numeric tick grammar an observed dash in a sign position is a minus,
+    # not a range separator. Never insert a sign or repair a digit/identifier.
+    def dash_sign(match: re.Match[str]) -> str:
+        actions.append(f"observed_dash_to_minus:U+{ord(match.group(2)):04X}")
+        return match.group(1) + "-"
+
+    text = re.sub(r"(^|[eE^])([–—‒‐‑―])(?=\s*(?:\d|[.,]\d))", dash_sign, text)
     if re.match(r"^[+-]\s+\d", text):
         text = re.sub(r"^([+-])\s+", r"\1", text)
         actions.append("join_observed_sign_whitespace")
@@ -217,6 +225,7 @@ def _ocr_crop(
     strokes: tuple[LegendTick, ...] = (),
     *,
     white_padding_pixels: int | None = None,
+    numeric_characters_only: bool = True,
 ) -> LegendOCRRecord:
     from .ocr import recognize
 
@@ -259,6 +268,7 @@ def _ocr_crop(
         config.legend.ocr,
         mode=purpose,
         timeout_seconds=min(30, max(0.001, budget.deadline - time.monotonic())),
+        numeric_characters_only=numeric_characters_only,
     )
     run = replace(run, white_padding_pixels=white)
     return LegendOCRRecord(
@@ -445,6 +455,48 @@ def evaluate_legend(
     )
 
 
+def _numeric_alternative(
+    config: LegendConfig,
+    box: BoundingBox,
+    record: LegendOCRRecord,
+    index: int,
+) -> dict[str, Any]:
+    members = tuple(
+        i
+        for i, token in enumerate(record.run.tokens)
+        if token.text.strip() and token.confidence >= 0
+    )
+    words = [record.run.tokens[i] for i in members]
+    original = transform_tokens(
+        words,
+        CropTransform(
+            box,
+            config.legend.ocr.upscale_factor,
+            white_padding_pixels=record.run.white_padding_pixels,
+        ),
+    )
+    text = " ".join(w.text.strip() for w in words)
+    parsed = parse_numeric_tick(text, config.legend.decimal_separator)
+    return {
+        "record_index": index,
+        "token_indices": members,
+        "raw_text": text,
+        "parsed_value": parsed.value,
+        "confidence": min((w.confidence for w in words), default=0),
+        "normalisation_actions": parsed.actions,
+        "numeric_characters_only": "tessedit_char_whitelist" in record.run.mode,
+        "white_padding_pixels": record.run.white_padding_pixels,
+        "text_bbox": (
+            min(w.bbox[0] for w in original),
+            min(w.bbox[1] for w in original),
+            max(w.bbox[2] for w in original),
+            max(w.bbox[3] for w in original),
+        )
+        if original
+        else None,
+    }
+
+
 def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
     validate_legend_geometry(image, config)
     ticks: list[LegendTick] = []
@@ -602,6 +654,8 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                                 tick.numeric_record_index
                             ].run.white_padding_pixels,
                             "normalisation_actions": tick.normalisation_actions,
+                            "numeric_characters_only": "tessedit_char_whitelist"
+                            in records[tick.numeric_record_index].run.mode,
                         }
                     ]
                     for white in config.legend.retry_white_padding_pixels:
@@ -624,42 +678,34 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                             )
                             continue
                         records.append(retry)
-                        words = [
-                            t for t in retry.run.tokens if t.text.strip() and t.confidence >= 0
-                        ]
-                        original = transform_tokens(
-                            words,
-                            CropTransform(
-                                tick.ocr_bbox,
-                                config.legend.ocr.upscale_factor,
-                                white_padding_pixels=retry.run.white_padding_pixels,
-                            ),
-                        )
-                        text = " ".join(w.text.strip() for w in words)
-                        parsed_retry = parse_numeric_tick(text, config.legend.decimal_separator)
                         alternatives.append(
-                            {
-                                "record_index": len(records) - 1,
-                                "token_indices": tuple(
-                                    i
-                                    for i, token in enumerate(retry.run.tokens)
-                                    if token.text.strip() and token.confidence >= 0
-                                ),
-                                "raw_text": text,
-                                "parsed_value": parsed_retry.value,
-                                "confidence": min((w.confidence for w in words), default=0),
-                                "text_bbox": (
-                                    min(w.bbox[0] for w in original),
-                                    min(w.bbox[1] for w in original),
-                                    max(w.bbox[2] for w in original),
-                                    max(w.bbox[3] for w in original),
-                                )
-                                if original
-                                else None,
-                                "white_padding_pixels": white,
-                                "normalisation_actions": parsed_retry.actions,
-                            }
+                            _numeric_alternative(config, tick.ocr_bbox, retry, len(records) - 1)
                         )
+                    if config.legend.retry_unconstrained_numeric and not any(
+                        a.get("parsed_value") is not None for a in alternatives
+                    ):
+                        # The engine's whitelist can erase a readable glyph (e.g. 0).
+                        # Preserve a bounded raw comparison; its parser stays numeric-only.
+                        try:
+                            retry = _ocr_crop(
+                                image,
+                                config,
+                                side,
+                                tick.ocr_bbox,
+                                "numeric_line",
+                                budget,
+                                numeric_characters_only=False,
+                            )
+                        except (ValueError, OSError) as error:
+                            warnings.append(f"{side}: numeric raw comparison failed: {error}")
+                            alternatives.append(
+                                {"numeric_characters_only": False, "skipped": str(error)}
+                            )
+                        else:
+                            records.append(retry)
+                            alternatives.append(
+                                _numeric_alternative(config, tick.ocr_bbox, retry, len(records) - 1)
+                            )
                     reasons = list(tick.reasons)
                     distinct = {a["raw_text"] for a in alternatives if a.get("raw_text")}
                     numeric_values = {
@@ -690,7 +736,7 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                         )
                         if len(distinct) <= 1:
                             updates["status"] = "unresolved"
-                        reasons.append("padding_retry_proposal_requires_review")
+                        reasons.append("numeric_retry_proposal_requires_review")
                     updates["reasons"] = tuple(dict.fromkeys(reasons))
                     tick = tick.model_copy(update=updates)
                 revised.append(tick)

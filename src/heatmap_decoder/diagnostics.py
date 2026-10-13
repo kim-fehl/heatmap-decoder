@@ -86,14 +86,20 @@ def labels_diagnostic_image(image: RGBArray, result: LabelExtractionResult) -> I
     for axis in result.axes:
         roi = getattr(result.config.labels, axis.axis) if result.config.labels else None
         if isinstance(roi, OCRLabelSource):
-            canvas.roi(roi.bbox, f"labels_{axis.axis}", "manual")
+            expanded = (
+                roi.bbox[0],
+                roi.bbox[1],
+                min(image.shape[1], roi.bbox[2] + roi.crop_right_padding_pixels),
+                roi.bbox[3],
+            )
+            canvas.roi(expanded, f"labels_{axis.axis}", "manual")
         if isinstance(roi, OCRLabelSource):
             for slot in axis_slots(result.config, axis.axis):
                 box = (
                     (
                         roi.bbox[0],
                         max(roi.bbox[1], slot.start),
-                        roi.bbox[2],
+                        min(image.shape[1], roi.bbox[2] + roi.crop_right_padding_pixels),
                         min(roi.bbox[3], slot.end),
                     )
                     if axis.axis == "rows"
@@ -181,7 +187,12 @@ def legend_fields_diagnostic_image(image: RGBArray, result: "LegendResult") -> I
                 mapped(tick.text_bbox) if tick.text_bbox else None,
                 tick.confidence,
                 f"tick-{tick.index}",
-                tick.raw_text or "missing",
+                (
+                    f"{tick.normalised_text} (raw: {tick.raw_text})"
+                    if tick.normalised_text != tick.raw_text
+                    else tick.raw_text
+                )
+                or "missing",
                 tick.status,
                 settings.min_confidence,
                 settings.high_confidence,

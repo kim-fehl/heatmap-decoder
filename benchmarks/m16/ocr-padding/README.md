@@ -1,3 +1,7 @@
+This report describes the earlier trial at `61e51c0`. The later user-authorized
+numeric sign normalization and right-margin results are in
+[the next follow-up](../numeric-signs/README.md); historical readings below remain unchanged.
+
 # M16 follow-up: padded, owned fields and aligned legend text
 
 This is inspected development evidence on the same supplied publication crop.

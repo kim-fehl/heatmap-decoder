@@ -2,6 +2,11 @@
 
 ## M16
 
+- Numeric/right-margin follow-up: constrain targeted tick OCR, normalize observed
+  numeric dash signs with audit actions, preserve erased glyphs through bounded
+  comparisons, and support extra right-only row padding. Retain the failed
+  Galectin suffix trial rather than inventing a name.
+
 - Follow-up: add bounded 1–2 pixel source/white padding, fixed slot ownership,
   opt-in shared tick text bands, retained padding alternatives and all-field
   enlarged diagnostics. Improve inspected gene/sample OCR without relaxing exports.

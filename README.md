@@ -53,9 +53,12 @@ See [calibration and diagnostic conventions](docs/nonlinear-calibration.md).
 ![All five aligned tick OCR fields](docs/images/recognition-ticks-m16.png)
 
 Two-pixel tick-field padding recovers `-2`; a bounded margin retry recovers `1`.
-The proposals are `-2`, `—1`, `0`, `1`, `2`: four parse exactly, and the em dash
-still requires review. All five fields are drawn even when recognition fails.
+Canonical proposals are now `-2`, `-1`, `0`, `1`, `2`: all five parse exactly.
+Observed dash normalization retains raw text and audit actions; confidence and
+conflicts still require review. All five fields are drawn even when recognition fails.
 [Padding trial and limits](benchmarks/m16/ocr-padding/README.md).
+[Numeric constraints and right-margin results](benchmarks/m16/numeric-signs/README.md)
+retain the unresolved Galectin suffix despite four extra right pixels.
 
 ## Try it
 

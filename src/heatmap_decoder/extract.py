@@ -263,7 +263,7 @@ def extract_labels(
                     box = (
                         max(0, box[0] - pad),
                         max(0, box[1] - pad),
-                        min(image.shape[1], box[2] + pad),
+                        min(image.shape[1], box[2] + pad + source.crop_right_padding_pixels),
                         min(image.shape[0], box[3] + pad),
                     )
                     transform = CropTransform(

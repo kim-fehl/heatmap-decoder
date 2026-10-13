@@ -107,8 +107,19 @@ missing or unparseable text. These field ROI frames are distinct from confidence
 frames around actual OCR observations. `numeric_alternatives` preserves every
 padding reading and its run/transform link. Conflicting readings retain review
 status; contradictory numeric values become unresolved. A recovered retry proposal
-also requires review. Dash glyphs such as the observed em dash in `—1` are not
-automatically converted to a mathematical minus.
+also requires review. Observed dash glyphs are normalized to `-` only in numeric sign positions, with
+raw text and Unicode actions retained. Thus `—1` becomes canonical `-1`, while
+standalone/range dashes and identifiers remain invalid. The optional
+`retry_unconstrained_numeric` comparison can preserve readable glyphs erased by
+the OCR whitelist; it stays budgeted, numeric-grammar checked and review-required.
 
 [Measured follow-up](../benchmarks/m16/ocr-padding/README.md) demonstrates improved
 raw OCR without relaxing identifier/scale export guards.
+
+
+Gene slot sources additionally support `crop_right_padding_pixels` (0..16,
+default 0). These extra original pixels extend only the right edge, preserve row
+heights and are clipped to the image and charged to the same budgets. Column and
+sparse sources cannot request this row-specific option. Four extra pixels were
+trialled; they did not recover the Galectin suffix. See the retained
+[numeric/sign and right-margin trial](../benchmarks/m16/numeric-signs/README.md).

@@ -1338,7 +1338,11 @@ def write_legend_outputs(
             tick.text_bbox,
             tick.confidence,
             f"tick-{tick.index}",
-            tick.raw_text,
+            (
+                f"{tick.normalised_text} (raw: {tick.raw_text})"
+                if tick.normalised_text != tick.raw_text
+                else tick.raw_text
+            ),
             f"{tick.status}: {','.join(tick.reasons)}",
             settings.min_confidence,
             settings.high_confidence,

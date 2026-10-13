@@ -59,6 +59,7 @@ class OCRLabelSource(BaseModel):
     bbox: BoundingBox
     recognition: Literal["sparse", "slots"] = "sparse"
     crop_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
+    crop_right_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=16)] = 0
     white_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
     text_rotation_degrees: Annotated[int, Field(strict=True)] = 0
 
@@ -71,7 +72,9 @@ class OCRLabelSource(BaseModel):
 
     @model_validator(mode="after")
     def validate_extent(self) -> "OCRLabelSource":
-        if self.recognition != "slots" and (self.crop_padding_pixels or self.white_padding_pixels):
+        if self.recognition != "slots" and (
+            self.crop_padding_pixels or self.crop_right_padding_pixels or self.white_padding_pixels
+        ):
             raise ValueError("label padding requires explicit slot recognition")
         left, top, right, bottom = self.bbox
         if right <= left or bottom <= top:
@@ -98,6 +101,8 @@ class LabelsConfig(BaseModel):
 
     @model_validator(mode="after")
     def validate_row_rotation(self) -> "LabelsConfig":
+        if isinstance(self.columns, OCRLabelSource) and self.columns.crop_right_padding_pixels:
+            raise ValueError("right-only crop padding is supported for gene/row labels only")
         if isinstance(self.rows, OCRLabelSource) and self.rows.text_rotation_degrees != 0:
             raise ValueError("quarter-turn text_rotation_degrees is supported for columns only")
         return self
@@ -143,6 +148,7 @@ class LegendOptions(BaseModel):
     endpoint_tolerance_pixels: Annotated[float, Field(ge=0, le=8)] = 2.0
     decimal_separator: Literal[".", ","] = "."
     align_tick_fields: bool = False
+    retry_unconstrained_numeric: bool = False
     retry_white_padding_pixels: tuple[Annotated[int, Field(strict=True, ge=0, le=2)], ...] = ()
 
     @field_validator("retry_white_padding_pixels")

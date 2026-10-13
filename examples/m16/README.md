@@ -54,3 +54,10 @@ and recorded white margins, and expose all five aligned tick fields in
 `legend_fields_enlarged.png`. Use the same commands above with the padded config.
 [Measured results](../../benchmarks/m16/ocr-padding/README.md) retain raw conflicts
 and unresolved Greek/sign evidence.
+
+
+`config-numeric.json` adds constrained numeric tick OCR and a bounded raw comparison,
+with audited dash-to-minus normalization. `labels-right-padding.json` adds four
+right-only gene crop pixels. All five canonical tick proposals are exact; the
+Galectin suffix remains unresolved despite wider crops. See
+[the actual trial](../../benchmarks/m16/numeric-signs/README.md).

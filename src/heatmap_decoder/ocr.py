@@ -11,6 +11,8 @@ from .models import OCRConfig, OCRRun, OCRToken
 
 OCR_MODE = "--oem 1 --psm 11"
 OCR_TIMEOUT_SECONDS = 30
+# Exponent notation is permitted; letters outside e/E cannot enter targeted ticks.
+NUMERIC_CHARACTERS = "0123456789+-.,eE^−–—‒‐‑―"
 
 
 class OCRUnavailableError(ValueError):
@@ -62,6 +64,7 @@ def recognize(
     *,
     mode: Literal["localisation", "numeric_line", "text_line"] = "localisation",
     timeout_seconds: float = OCR_TIMEOUT_SECONDS,
+    numeric_characters_only: bool = True,
 ) -> OCRRun:
     """Sparse localisation or one bounded numeric line; never auto-search OCR variants."""
     if not math.isfinite(timeout_seconds) or not 0 < timeout_seconds <= OCR_TIMEOUT_SECONDS:
@@ -69,6 +72,8 @@ def recognize(
     if mode not in {"localisation", "numeric_line", "text_line"}:
         raise ValueError("unsupported OCR mode")
     engine_mode = OCR_MODE if mode == "localisation" else "--oem 1 --psm 7"
+    if mode == "numeric_line" and numeric_characters_only:
+        engine_mode += " -c tessedit_char_whitelist=" + NUMERIC_CHARACTERS
     wrapper = _wrapper()
     try:
         engine_version = str(wrapper.get_tesseract_version())

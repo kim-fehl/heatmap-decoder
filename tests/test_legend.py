@@ -251,7 +251,9 @@ def test_nonlinear_scale_keeps_residuals_and_never_removes_outlier():
 
 def fake_engine(monkeypatch, truth, *, bad_text=None):
     # Geometry-controlled adapter; deterministic tests don't require Tesseract.
-    def recognize(crop, settings, *, mode="localisation", timeout_seconds=30):
+    def recognize(
+        crop, settings, *, mode="localisation", timeout_seconds=30, numeric_characters_only=True
+    ):
         factor = settings.upscale_factor
         if mode == "localisation":
             # Search both sides in fixed order; actual crop origin is inferred from
@@ -654,3 +656,28 @@ def test_legend_job_deadline_is_explicit_and_never_falls_back(monkeypatch):
     assert "legend_ocr_runtime_cap_exceeded" in result.reasons
     assert result.status == "unresolved"
     assert not result.automatic_export_allowed
+
+
+@pytest.mark.parametrize(
+    "raw,value",
+    [
+        ("—1", -1),
+        ("–1.5", -1.5),
+        ("‒2", -2),
+        ("‐.5", -0.5),
+        ("‑ 2", -2),
+        ("1e—2", 0.01),
+        ("10^–3", 0.001),
+    ],
+)
+def test_observed_dash_is_a_minus_only_in_numeric_sign_positions(raw, value):
+    parsed = parse_numeric_tick(raw)
+    assert parsed.raw_text == raw
+    assert parsed.value == value
+    assert "-" in parsed.normalised_text
+    assert any(action.startswith("observed_dash_to_minus:U+") for action in parsed.actions)
+
+
+@pytest.mark.parametrize("raw", ["—", "1—2", "——1", "gene—1", "O.1", "1_2", "—NaN"])
+def test_numeric_sign_constraints_do_not_guess_digits_ranges_or_identifiers(raw):
+    assert parse_numeric_tick(raw).value is None

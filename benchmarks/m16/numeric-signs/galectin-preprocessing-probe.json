@@ -1,0 +1,191 @@
+[
+  {
+    "right": 981,
+    "scale": 3,
+    "variant": "original",
+    "raw": "EsGalectin",
+    "confidence": 2.0
+  },
+  {
+    "right": 981,
+    "scale": 3,
+    "variant": "contrast",
+    "raw": "EsGalectin\u2019",
+    "confidence": 15.0
+  },
+  {
+    "right": 981,
+    "scale": 3,
+    "variant": "threshold",
+    "raw": "\u20ac sGweciini",
+    "confidence": 0.0
+  },
+  {
+    "right": 981,
+    "scale": 4,
+    "variant": "original",
+    "raw": "EsGatectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 981,
+    "scale": 4,
+    "variant": "contrast",
+    "raw": "EsGatectin'",
+    "confidence": 0.0
+  },
+  {
+    "right": 981,
+    "scale": 4,
+    "variant": "threshold",
+    "raw": "F sGiatectin",
+    "confidence": 1.0
+  },
+  {
+    "right": 981,
+    "scale": 5,
+    "variant": "original",
+    "raw": "EsGatectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 981,
+    "scale": 5,
+    "variant": "contrast",
+    "raw": "EsGaiectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 981,
+    "scale": 5,
+    "variant": "threshold",
+    "raw": "f sCiaectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 985,
+    "scale": 3,
+    "variant": "original",
+    "raw": "EsGalectin",
+    "confidence": 2.0
+  },
+  {
+    "right": 985,
+    "scale": 3,
+    "variant": "contrast",
+    "raw": "EsGalectin\u2019",
+    "confidence": 15.0
+  },
+  {
+    "right": 985,
+    "scale": 3,
+    "variant": "threshold",
+    "raw": "\u20ac sGweciini",
+    "confidence": 0.0
+  },
+  {
+    "right": 985,
+    "scale": 4,
+    "variant": "original",
+    "raw": "EsGatectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 985,
+    "scale": 4,
+    "variant": "contrast",
+    "raw": "EsGatectin'",
+    "confidence": 0.0
+  },
+  {
+    "right": 985,
+    "scale": 4,
+    "variant": "threshold",
+    "raw": "F sGiatectin",
+    "confidence": 1.0
+  },
+  {
+    "right": 985,
+    "scale": 5,
+    "variant": "original",
+    "raw": "EsGatectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 985,
+    "scale": 5,
+    "variant": "contrast",
+    "raw": "EsGaiectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 985,
+    "scale": 5,
+    "variant": "threshold",
+    "raw": "f sCiaectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 989,
+    "scale": 3,
+    "variant": "original",
+    "raw": "EsGalectin",
+    "confidence": 2.0
+  },
+  {
+    "right": 989,
+    "scale": 3,
+    "variant": "contrast",
+    "raw": "EsGalectin\u2019",
+    "confidence": 15.0
+  },
+  {
+    "right": 989,
+    "scale": 3,
+    "variant": "threshold",
+    "raw": "\u20ac sGweciini",
+    "confidence": 0.0
+  },
+  {
+    "right": 989,
+    "scale": 4,
+    "variant": "original",
+    "raw": "EsGatectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 989,
+    "scale": 4,
+    "variant": "contrast",
+    "raw": "EsGatectin'",
+    "confidence": 0.0
+  },
+  {
+    "right": 989,
+    "scale": 4,
+    "variant": "threshold",
+    "raw": "F sGiatectin",
+    "confidence": 1.0
+  },
+  {
+    "right": 989,
+    "scale": 5,
+    "variant": "original",
+    "raw": "EsGatectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 989,
+    "scale": 5,
+    "variant": "contrast",
+    "raw": "EsGaiectin",
+    "confidence": 0.0
+  },
+  {
+    "right": 989,
+    "scale": 5,
+    "variant": "threshold",
+    "raw": "f sCiaectin",
+    "confidence": 0.0
+  }
+]

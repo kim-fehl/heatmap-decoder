@@ -241,3 +241,82 @@ def test_vertical_common_band_cannot_drop_a_separate_minus_component():
     assert len(fields) == 5
     assert evidence["reason"] is None
     assert all(box[0] <= 50 and box[2] >= 73 for box in fields.values())
+
+
+def test_right_only_gene_padding_keeps_row_height_and_original_boxes(monkeypatch):
+    from heatmap_decoder.extract import extract_labels
+    from heatmap_decoder.models import OCRConfig, OCRRun, OCRToken
+
+    sizes = []
+
+    def engine(crop, settings, **kwargs):
+        sizes.append(crop.size)
+        return OCRRun(
+            (OCRToken("Gene1", (3, 3, 12, 12), 95),), "fake", "fake", "eng", ("eng",), "text_line"
+        )
+
+    monkeypatch.setattr("heatmap_decoder.ocr.recognize", engine)
+    config = GridConfig(
+        heatmap_bbox=(0, 0, 10, 20),
+        rows=2,
+        columns=1,
+        labels=LabelsConfig(
+            rows=OCRLabelSource(
+                source="ocr", bbox=(10, 0, 20, 20), recognition="slots", crop_right_padding_pixels=4
+            ),
+            ocr=OCRConfig(),
+        ),
+    )
+    result = extract_labels(np.full((20, 30, 3), 255, dtype=np.uint8), config)
+    assert sizes == [(42, 30), (42, 30)]
+    assert [r[2] for r in result.slot_ocr_runs] == [(10, 0, 24, 10), (10, 10, 24, 20)]
+    assert [a.bbox for a in result.axes[0].tokens] == [(11, 1, 14, 4), (11, 11, 14, 14)]
+
+
+def test_raw_numeric_comparison_preserves_readable_zero_under_shared_budget(monkeypatch):
+    from heatmap_decoder.legend import inspect_legend
+    from heatmap_decoder.models import OCRRun, OCRToken
+
+    image, config, _ = field_fixture("horizontal", "below")
+    config = config.model_copy(
+        update={"legend": config.legend.model_copy(update={"retry_unconstrained_numeric": True})}
+    )
+    calls = []
+
+    def engine(crop, settings, **kwargs):
+        mode = kwargs["mode"]
+        constrained = kwargs["numeric_characters_only"]
+        calls.append((mode, constrained))
+        tokens = ()
+        if mode == "numeric_line" and not constrained:
+            tokens = (OCRToken("0", (3, 3, 9, 15), 90),)
+        return OCRRun(tokens, "fake", "fake", "eng", ("eng",), mode)
+
+    monkeypatch.setattr("heatmap_decoder.ocr.recognize", engine)
+    result = inspect_legend(image, config)
+    ticks = [t for t in result.ticks if t.position_source == "stroke"]
+    assert len(ticks) == 5
+    assert all(t.parsed_value == 0 and t.raw_text == "0" for t in ticks)
+    assert all(t.status == "unresolved" for t in ticks)
+    assert calls.count(("numeric_line", False)) == 5
+    assert len(result.ocr_records) == 12
+    assert not result.automatic_export_allowed
+
+
+def test_extra_right_padding_is_bounded_and_row_only():
+    from pydantic import ValidationError
+
+    with pytest.raises(ValidationError):
+        OCRLabelSource(
+            source="ocr", bbox=(0, 0, 20, 20), recognition="slots", crop_right_padding_pixels=17
+        )
+    with pytest.raises(ValidationError):
+        LabelsConfig(
+            columns=OCRLabelSource(
+                source="ocr", bbox=(0, 0, 20, 20), recognition="slots", crop_right_padding_pixels=1
+            )
+        )
+    with pytest.raises(ValidationError):
+        OCRLabelSource(
+            source="ocr", bbox=(0, 0, 20, 20), recognition="sparse", crop_right_padding_pixels=1
+        )

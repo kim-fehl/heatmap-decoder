@@ -109,3 +109,24 @@ def test_missing_language_and_timeout_do_not_fall_back(monkeypatch):
     monkeypatch.setattr(ocr, "_wrapper", lambda: wrapper(image_to_data=timeout))
     with pytest.raises(ValueError, match="OCR failed: process timeout"):
         ocr.recognize(Image.new("L", (10, 10)), OCRConfig())
+
+
+def test_numeric_whitelist_is_targeted_and_raw_observations_are_retained(monkeypatch):
+    calls = []
+
+    def image_to_data(image, **kwargs):
+        calls.append(kwargs["config"])
+        return data()
+
+    monkeypatch.setattr(ocr, "_wrapper", lambda: wrapper(image_to_data=image_to_data))
+    image = Image.new("L", (30, 30))
+    numeric = ocr.recognize(image, OCRConfig(), mode="numeric_line")
+    text = ocr.recognize(image, OCRConfig(), mode="text_line")
+    comparison = ocr.recognize(
+        image, OCRConfig(), mode="numeric_line", numeric_characters_only=False
+    )
+    assert "tessedit_char_whitelist=" + ocr.NUMERIC_CHARACTERS in numeric.mode
+    assert "tessedit_char_whitelist" not in text.mode
+    assert "tessedit_char_whitelist" not in comparison.mode
+    # The adapter never sanitises returned observations or changes gene spelling.
+    assert numeric.tokens[1].text == text.tokens[1].text == " a-0_I1 "
