@@ -1,0 +1,19 @@
+{
+  "registration_commit": "6bddb93",
+  "fresh_acceptance_passed": true,
+  "source_runtime_freeze_verified_before_and_after": true,
+  "full_suite": {
+    "passed": 635,
+    "subtests_passed": 18,
+    "real_ocr_enabled": true
+  },
+  "focused_registration_tests": 8,
+  "ruff": "passed",
+  "mypy": "passed, 29 source files",
+  "local_markdown_file_links": "passed",
+  "readme_quick_start": "passed, 400 finite unflagged cells",
+  "source_wheel_builds": "passed",
+  "isolated_installed_wheel_cli": "passed",
+  "numerical_thresholds_changed_after_evaluation": false,
+  "earlier_freezes_and_failures": "retained"
+}

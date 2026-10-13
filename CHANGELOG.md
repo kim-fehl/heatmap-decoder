@@ -2,6 +2,12 @@
 
 ## M16
 
+- Register and evaluate a fresh current-source validation partition: 43/48
+  complete accurate numeric reconstructions, zero wrong/negative exports, and
+  separate sparse/per-slot default OCR evidence with full denominators and runtime.
+  Repeat all five publication workflows. Simplify the root README, add guide/
+  evidence indexes, consolidate M16 status and archive earlier trial narratives.
+
 - RapidOCR is now the default gene/sample engine and a main dependency. Label
   defaults use native-size input; legacy Tesseract remains explicitly selectable
   and retains numeric tick constraints. A reusable worker enforces inference

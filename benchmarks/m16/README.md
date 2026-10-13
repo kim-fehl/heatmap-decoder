@@ -1,44 +1,37 @@
-# M16 evidence
+# M16 evidence index
 
-Historical M15 and corrections evidence is unchanged. `baseline.json` is the M15
-runtime at `2ec504d29df73636880540e093521c6fb675035f`, run on the supplied crop.
-To reproduce it, archive that commit's `src` into `work/m16/baseline-source`, then
-run `baseline.py` with `PYTHONPATH=work/m16/baseline-source/src`. It writes scratch
-outputs to `work/m16/baseline`. The baseline intentionally measures the historical
-linear extrapolation and does not certify physical edge values.
+## Current implementation
 
-`first-trial-failure.json` retains the initial diagnostic failure from a subpixel
-punctuation box. `first-completed-trial.json` retains the corrected first full run.
-`first-trial-source.json` describes the initial source; the drawing correction
-clamped boxes below one pixel without changing OCR geometry or numerical results.
-`current-trial.json` includes the subsequent narrow border-stroke correction.
-All attempts and abstentions remain visible; no held-out-publication claim applies.
+[Validation with the RapidOCR default](validation-rapidocr-v1/README.md) is the
+current acceptance record. Its source/runtime/model hashes and fresh base seeds
+were registered at commit `6bddb93` before evaluation. It includes both label
+strategies, numerical export gates, negative cases, runtime and an updated
+five-workflow publication trial. See [M16 status](../../docs/progress/M16.md) for
+conclusions and remaining source-data limits.
 
-```bash
-uv run python benchmarks/m16/real_trial.py --out work/m16/new-trial
-uv run python benchmarks/m16/validate.py --split development --out work/m16/new-dev.json
-uv run python benchmarks/m16/validate.py --split validation --out work/m16/new-validation.json
-```
+## Historical evidence
 
-All runners refuse report overwrite. Validation verifies `freeze-validation.json`
-before recognition. `freeze-validation-first.json` / `validation-first-freeze.json`
-retain the earlier evaluation. Before the **final fresh** validation partition,
-QC rendering was corrected to show uncovered cells with U, ledger font readability
-was improved, and the shared pixel budget was moved ahead of crop allocation.
-The final freeze includes all current source/evaluator hashes and thresholds.
-There are 16 fresh validation bases, 48 correlated clean/JPEG85/blur0.65 attempts,
-plus six calibration/ambiguity negatives. Numeric mappings vary separately from
-colour trajectories: both bar orientations and directions, unequal knot spacing,
-asymmetric/diverging palettes, linear and monotonic nonlinear maps. Negatives
-cover physical edge extensions, repeated colours and saturated plateaus. Small
-underscore-bearing labels are evaluated independently using explicit crops.
-Greek and conflicting/sign OCR evidence is in the publication report and focused
-tests. Numeric checks require MAE <2%, max <=5%, full finite coverage and <=1%
-flagged cells. Every failed derivative remains in the denominator. Text heuristics
-are reported; they never enable automatic identifier export.
+| Record | Stage |
+|---|---|
+| `baseline.json` | M15 at `2ec504d`; historical linear extrapolation, not certified physical edge values |
+| `first-trial-failure.json` | Initial M16 diagnostic rendering failure |
+| `first-completed-trial.json` | First completed run after the subpixel-frame fix |
+| `current-trial.json` | Subsequent border-stroke correction; “current” is its original historical filename |
+| `freeze-validation-first.json`, `validation-first-freeze.json` | First frozen evaluation |
+| `freeze-validation.json`, `validation.json` | Earlier final partition, before the later OCR changes |
+| [Padding](ocr-padding/README.md) | Field ownership, source/white padding and shared tick bands |
+| [Numeric signs and margins](numeric-signs/README.md) | Audited dash normalization and the retained Tesseract suffix failure |
+| [White-border probes](white-padding/README.md) | Manually tightened Tesseract recovery and failed generic variants |
+| [Independent OCR comparison](rapidocr/README.md) | Comparison that motivated the default switch |
+| [Default integration](rapidocr-default/README.md) | Production adapter, provenance and packaging verification |
 
-`development.json` is the initial numeric-only development trial;
-`development-with-text.json` is the expanded inspected development trial. The
-validation shares renderer/palettes/fonts/layout with development but changes base
-seeds; it is synthetic evidence with limited distribution diversity. A finite set
-with zero wrong complete numeric decisions cannot establish a production error rate.
+Old `validate.py` and `real_trial.py` runners reproduce their original protocols,
+not the latest default-engine acceptance. Frozen historical validation must run
+with its matching archived source; a hash mismatch is an integrity check, not a
+reason to rewrite an evaluated freeze. Earlier source snapshots, derivatives,
+failures and abstentions remain retained.
+
+All publication comparisons are reconstruction agreement against an undocumented
+TSV recipe. Synthetic and inspected-crop results do not establish a production
+error rate or held-out publication accuracy. Thresholds, complete-case coverage,
+false text acceptances and abstentions must be read together.

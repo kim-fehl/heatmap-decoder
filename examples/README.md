@@ -1,21 +1,27 @@
-# Synthetic reference
+# Worked examples
 
-`figure.png` contains a 20 × 20 heatmap and a vertical continuous diverging
-colourbar. `config.json` gives its exclusive pixel ROIs and endpoint values;
-`truth.csv` is the independently generated numerical matrix, without headers.
+Run examples from the repository root after `uv sync --locked`. Output directories
+should be new or explicitly overwritten with the CLI's overwrite option.
+
+| Example | Purpose |
+|---|---|
+| [`figure.png` and `config.json`](config.json) | Basic numeric extraction with supplied geometry and a linear colourbar |
+| [Labels and review](labels/) | Label evidence, supplied text files and reviewed reconstruction; historical Tesseract configurations are explicitly selected |
+| [Automation](../docs/automation.md#experimental-numeric-export) | Review-oriented proposals and the scoped experimental numeric export |
+| [Rotated labels](../docs/rotated-labels.md) | Explicit sample-label quarter turns and reviewed names |
+| [Publication crop](m16/README.md) | Observed gradients, reviewed multi-anchor calibration and default RapidOCR labels |
+
+## Basic numeric extraction
 
 ```bash
-uv run heatmap-decoder extract examples/figure.png --config examples/config.json --out results/ --fail-on-qc
+uv run heatmap-decoder extract examples/figure.png \
+  --config examples/config.json --out work/example --fail-on-qc
 ```
 
-`generate.py` recreates all three files using seed 2026 and an analytic blue–white–red
-palette. It does not import the extraction library. Run it from the repository:
+The synthetic reference is a 20×20 heatmap with a continuous diverging colourbar.
+`truth.csv` is independently generated and headerless; `generate.py` recreates it
+with seed 2026 and an analytic blue–white–red palette. This example does not
+establish accuracy for published figures.
 
-```bash
-uv run python examples/generate.py
-```
-
-Read both matrices with `pandas.read_csv(path, header=None)`. The numerical range
-is 4, so the acceptance bound for MAE is 0.08. Tests additionally require no flags
-on this clean reference. This synthetic example does not establish accuracy for
-real published figures.
+Other milestone directories retain reproducible development fixtures. Prefer the
+[usage guide](../docs/usage.md) when adapting a configuration to your own image.
