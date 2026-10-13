@@ -1,0 +1,111 @@
+{
+  "source_image": "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg",
+  "image_sha256": "085e6a625e36abeea8e239c842b78599a932434e53456bf492b0da1ce228d4ef",
+  "crop_bbox": [
+    859,
+    597,
+    976,
+    617
+  ],
+  "crop_selection": "manual inspected follow-up; not automatic localisation",
+  "preprocessing": [
+    "grayscale",
+    "autocontrast",
+    "bicubic 5x",
+    "white border 40 output pixels on all sides"
+  ],
+  "engine_version": "5.5.0",
+  "wrapper_version": "0.3.13",
+  "python": "3.12.14",
+  "engine_mode": "--oem 1 --psm 8",
+  "raw_text": "EsGalectin1",
+  "confidence": 27.0,
+  "status": "low_confidence",
+  "final_text": null,
+  "raw_tsv_data": {
+    "level": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "page_num": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "block_num": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "par_num": [
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "line_num": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    "word_num": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "left": [
+      0,
+      50,
+      50,
+      50,
+      50
+    ],
+    "top": [
+      0,
+      45,
+      45,
+      45,
+      45
+    ],
+    "width": [
+      665,
+      554,
+      554,
+      554,
+      554
+    ],
+    "height": [
+      180,
+      90,
+      90,
+      90,
+      90
+    ],
+    "conf": [
+      -1,
+      -1,
+      -1,
+      -1,
+      27
+    ],
+    "text": [
+      "",
+      "",
+      "",
+      "",
+      "EsGalectin1"
+    ]
+  }
+}

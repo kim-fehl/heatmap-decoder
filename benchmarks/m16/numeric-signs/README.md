@@ -1,5 +1,10 @@
 # Numeric tick signs and extra right margin
 
+Later [white-border/crop experiments](../white-padding/README.md) recover the exact
+raw `EsGalectin1` on a manually tightened crop at confidence 27. The earlier
+failures below remain the results of this configuration; a uniform-row change
+regressed recognition and has not replaced these general settings.
+
 This follow-up implements the user's explicit request to constrain tick labels to
 numeric syntax and treat dash glyphs in numeric sign positions as minus signs.
 Original readings remain available; every normalization records its Unicode code

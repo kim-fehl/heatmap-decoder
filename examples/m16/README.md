@@ -61,3 +61,11 @@ with audited dash-to-minus normalization. `labels-right-padding.json` adds four
 right-only gene crop pixels. All five canonical tick proposals are exact; the
 Galectin suffix remains unresolved despite wider crops. See
 [the actual trial](../../benchmarks/m16/numeric-signs/README.md).
+## Optional independent OCR comparison
+
+[`rapidocr_labels.py`](rapidocr_labels.py) generates review candidates from the
+same explicit equal-row/column fields using RapidOCR. The
+[reproducible comparison](../../benchmarks/m16/rapidocr/README.md) recovers
+`EsGalectin1` and improves exact genes from 9/33 to 26/33 while retaining 8/8 exact
+samples. Raw scores are engine-specific; this experiment does not automatically
+accept gene names or change the production OCR default.
