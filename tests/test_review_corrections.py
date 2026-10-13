@@ -392,13 +392,13 @@ def test_label_geometry_count_inference_accepts_or_safely_abstains(engine):
             numeric_only=True,
         ),
     )
-    if engine == "tesseract":
-        assert result.complete.status == "accepted"
-        assert (result.diagnostic_config.rows, result.diagnostic_config.columns) == (20, 6)
-    else:
-        # The independent geometry gate abstains when the new detector disagrees;
-        # improved identifier recognition must not authorise a wrong grid count.
-        assert result.complete.status == "review_required"
+    # M17 measures the regular lattice independently of label spelling/OCR.
+    # Both engines may now complete numeric geometry without identifier acceptance.
+    assert result.complete.status == "accepted"
+    assert (result.diagnostic_config.rows, result.diagnostic_config.columns) == (20, 6)
+    assert result.detection.selected_counts["rows"].origin == "measured_inference"
+    assert result.detection.selected_counts["columns"].origin == "measured_inference"
+    assert not result.automatic_export_allowed
     assert result.detection.acceptance.identifier_verification == "not_requested"
 
 

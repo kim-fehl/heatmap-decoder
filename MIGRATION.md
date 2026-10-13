@@ -29,3 +29,14 @@ explicit `overwrite=True`, matching the CLI's established overwrite policy.
 The `0.2.0.dev4` and `0.2.0.dev5` versions identify milestone development code,
 not a completed v0.2 release. Historical v0.1 artifacts retain their original names.
 M6 sets package metadata to `0.2.0`; a tagged release is handled separately by CI.
+
+## M17 segmented grids
+
+Existing regular-grid configurations and numerical results are preserved. Optional
+`rows_segments` / `columns_segments` describe original-coordinate `{start,end,count}`
+groups. Totals may be inferred from explicit segments; contradictions are errors.
+Numeric and label provenance now include the same resolved grid hash. File extraction
+also writes `grid_diagnostic.png`. Detector decisions use `blocked-acceptance.1`;
+old frozen reports retain their original policies. Reviewed segment configuration
+is authoritative. See [blocked grids](docs/blocked-grids.md) and the
+[M17 report](docs/progress/M17.md) before relying on automatic proposals.

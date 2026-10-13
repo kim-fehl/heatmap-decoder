@@ -118,6 +118,7 @@ def automate_command(
             write_outputs(
                 numeric,
                 out,
+                source_image=image,
                 input_filename=figure.name,
                 input_sha256=payload["input"]["sha256"],
                 automation_metadata={

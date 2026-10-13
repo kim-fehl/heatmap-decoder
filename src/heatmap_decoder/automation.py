@@ -42,9 +42,7 @@ class AutomationRequest(BaseModel):
         identifiers = (
             self.hints.labels is not None
             and (self.hints.labels.rows is not None or self.hints.labels.columns is not None)
-        ) or any(
-            k.startswith("labels_") for k in self.hints.requested
-        )
+        ) or any(k.startswith("labels_") for k in self.hints.requested)
         if self.numeric_only and identifiers:
             raise ValueError("numeric_only conflicts with requested identifiers")
         if not self.numeric_only and not identifiers:
@@ -227,6 +225,12 @@ def automate(
                     colourbar_orientation=orientation,
                     rows=rows,
                     columns=columns,
+                    rows_segments=by_kind["heatmap"].evidence.get(
+                        "rows_segments", hints.rows_segments
+                    ),
+                    columns_segments=by_kind["heatmap"].evidence.get(
+                        "columns_segments", hints.columns_segments
+                    ),
                     colourbar_start_value=None
                     if scale and scale.source == "manual_ticks"
                     else start,

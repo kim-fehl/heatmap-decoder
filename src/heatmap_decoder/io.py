@@ -14,9 +14,9 @@ import numpy as np
 from PIL import Image
 
 from .calibration import colour_quality_summary
-from .diagnostics import diagnostic_image, labels_diagnostic_image
+from .diagnostics import diagnostic_image, grid_diagnostic_image, labels_diagnostic_image
 from .extract import UnresolvedLabelsError, extract, extract_labels
-from .geometry import validate_geometry
+from .geometry import resolve_grid, validate_geometry
 from .labels import apply_review, requested_review_slots, validate_label_slots
 from .models import (
     Axis,
@@ -168,6 +168,8 @@ def provenance(
         },
         "config": result.config.model_dump(mode="json"),
         "config_sha256": hashlib.sha256(result.config.model_dump_json().encode()).hexdigest(),
+        "resolved_grid": resolve_grid(result.config).metadata(),
+        "grid_sha256": resolve_grid(result.config).metadata()["sha256"],
         "qc_thresholds": thresholds,
         "diagnostic_policy": "m16-roi-confidence.1",
         "methods": {
@@ -249,6 +251,7 @@ def write_outputs(
     detection_review: dict[str, Any] | None = None,
     legend_metadata: dict[str, Any] | None = None,
     automation_metadata: dict[str, Any] | None = None,
+    source_image: RGBArray | None = None,
 ) -> None:
     """Write all four M2 outputs. Use extract_file to compute input hashes automatically."""
     directory = Path(directory)
@@ -263,6 +266,11 @@ def write_outputs(
         mask_sha256=mask_sha256,
         file_hashes=file_hashes,
     )
+    if source_image is not None:
+        grid_diagnostic_image(source_image, result.config).save(directory / "grid_diagnostic.png")
+        metadata["outputs"]["grid_diagnostic.png"] = (
+            "resolved source intervals, gaps and group indices"
+        )
     if automation_metadata is not None:
         metadata["schema_version"] = max(3, metadata["schema_version"])
         metadata["automation"] = automation_metadata
@@ -440,6 +448,7 @@ def extract_file(
         file_hashes=hashes,
         detection_review=detection_review,
         legend_metadata=legend_metadata,
+        source_image=image,
     )
     return result
 
@@ -453,6 +462,7 @@ LABEL_OUTPUT_NAMES = (
     "labels_columns_enlarged.png",
 )
 NUMERIC_OUTPUT_NAMES = (
+    "grid_diagnostic.png",
     "matrix.csv",
     "quality.csv",
     "provenance.json",
@@ -650,6 +660,8 @@ def label_provenance(
         },
         "config": result.config.model_dump(mode="json"),
         "config_sha256": hashlib.sha256(result.config.model_dump_json().encode()).hexdigest(),
+        "resolved_grid": resolve_grid(result.config).metadata(),
+        "grid_sha256": resolve_grid(result.config).metadata()["sha256"],
         "ocr": {
             "availability": "available"
             if result.ocr_runs or result.slot_ocr_runs
@@ -884,6 +896,19 @@ def detect_file(
                 evidence.preprocessing.min_confidence,
                 evidence.preprocessing.high_confidence,
             )
+    for proposal in result.block_proposals:
+        canvas.note(f"{proposal.id}: {proposal.status}; {', '.join(proposal.reasons)}")
+        x, y, r, b = proposal.bbox
+        for block_axis in proposal.axes:
+            for start, end in block_axis.gaps:
+                box = (x, start, r, end) if block_axis.axis == "rows" else (start, y, end, b)
+                canvas.roi(box, "heatmap", "proposed", f"{proposal.id} {block_axis.axis} gap")
+            for segment in block_axis.segments:
+                pitch = (segment.end - segment.start) / segment.count
+                for local in range(segment.count):
+                    start, end = segment.start + local * pitch, segment.start + (local + 1) * pitch
+                    box = (x, start, r, end) if block_axis.axis == "rows" else (start, y, end, b)
+                    canvas.roi(box, "heatmap", "proposed", f"{block_axis.axis} cell {local}")
     canvas.note(result.status)
     if hints.rows is not None and hints.columns is not None:
         canvas.note(f"Supplied dimensions {hints.rows} x {hints.columns}")

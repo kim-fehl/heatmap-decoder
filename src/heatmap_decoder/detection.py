@@ -15,6 +15,7 @@ from .detection_policy import THRESHOLDS as T
 from .geometry import validate_grid_geometry
 from .models import (
     Axis,
+    BlockGridProposal,
     BoolArray,
     BoundingBox,
     CountProposal,
@@ -36,7 +37,7 @@ from .sampling import validate_rgb
 if TYPE_CHECKING:
     from .orientation import OrientationBudget
 
-DETECTOR_VERSION = "column-orientation.1"
+DETECTOR_VERSION = "blocked-grid.1"
 
 
 @dataclass(frozen=True)
@@ -280,6 +281,8 @@ def _detect_heatmap(image: RGBArray, hints: DetectionHints) -> DetectionResult:
                     rows=hints.rows,
                     columns=hints.columns,
                     labels=hints.labels,
+                    rows_segments=hints.rows_segments,
+                    columns_segments=hints.columns_segments,
                 ),
                 image.shape,
             )
@@ -327,8 +330,34 @@ def _detect_heatmap(image: RGBArray, hints: DetectionHints) -> DetectionResult:
                     refine_box(image, box, margin, hints.detector.background_distance, full_mask),
                 )
             )
+    from .blocks import aligned_unions, propose_grid
+
+    unions = aligned_unions(boxes)
     scored = []
-    for box in sorted(boxes):
+    for box in sorted(boxes | unions):
+        block = (
+            propose_grid(image, box, "probe", hints.rows, hints.columns) if box in unions else None
+        )
+        if block is not None and any(
+            a.gaps or a.evidence["observed_separator_bands"] for a in block.axes
+        ):
+            supported = all(a.segments for a in block.axes)
+            if supported:
+                scored.append(
+                    (
+                        0.99 if block.status == "accepted" else 0.66,
+                        box,
+                        {
+                            "block_union": 1.0,
+                            "grid_scoring_available": 1.0,
+                            "variation": 1.0,
+                            "occupancy": 1.0,
+                        },
+                    )
+                )
+                continue
+        if box in unions:
+            continue
         if (hints.rows is None or hints.columns is None) and min(
             box[2] - box[0], box[3] - box[1]
         ) < 3 * A.minimum_pitch:
@@ -617,6 +646,7 @@ def _associate_bars(
     heatmaps: dict[str, BoundingBox],
     bars: tuple[ROICandidate, ...],
     hints: DetectionHints | None = None,
+    block_proposals: tuple[BlockGridProposal, ...] = (),
 ) -> tuple["ROIAssociation", ...]:
     from skimage.color import rgb2lab
 
@@ -635,11 +665,25 @@ def _associate_bars(
             crop[stride_y // 2 :: stride_y, stride_x // 2 :: stride_x].reshape(-1, 3).astype(float)
         )
         sampling = "bounded image-bin centres"
-        if hints is not None and hints.rows is not None and hints.columns is not None:
+        block = next(
+            (p for p in block_proposals if p.heatmap_id == heatmap_id and p.status == "accepted"),
+            None,
+        )
+        if block is not None or (
+            hints is not None and hints.rows is not None and hints.columns is not None
+        ):
             from .geometry import axis_slots, interior_slice
             from .models import GridConfig
 
-            grid = GridConfig(heatmap_bbox=box, rows=hints.rows, columns=hints.columns)
+            assert hints is not None
+            assert block is not None or (hints.rows is not None and hints.columns is not None)
+            grid = GridConfig(
+                heatmap_bbox=box,
+                rows=block.axes[0].count if block else int(hints.rows or 0),
+                columns=block.axes[1].count if block else int(hints.columns or 0),
+                rows_segments=block.axes[0].segments if block else hints.rows_segments,
+                columns_segments=block.axes[1].segments if block else hints.columns_segments,
+            )
             row_slots, column_slots = axis_slots(grid, "rows"), axis_slots(grid, "columns")
             row_indices = np.unique(
                 np.linspace(0, grid.rows - 1, min(grid.rows, T.association_heatmap_samples)).astype(
@@ -664,7 +708,11 @@ def _associate_bars(
                 samples = []
             if samples:
                 colours = np.asarray(samples)
-                sampling = "median supplied-count cell interiors; inset 0.25"
+                sampling = (
+                    "median resolved block interiors; inset 0.25"
+                    if block
+                    else "median supplied-count cell interiors; inset 0.25"
+                )
         lab = rgb2lab(colours[None].astype(float) / 255)[0]
         for bar in bars:
             if attempts >= A.maximum_association_pairs:
@@ -1085,7 +1133,17 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         )
     else:
         proposals.extend(bars)
-    associations = _associate_bars(image, heatmaps, bars, hints)
+    from .blocks import check_gap_palette, propose_grid
+
+    block_proposals = tuple(
+        check_gap_palette(
+            image,
+            propose_grid(image, box, identifier, hints.rows, hints.columns),
+            tuple(c.bbox for c in bars),
+        )
+        for identifier, box in heatmaps.items()
+    )
+    associations = _associate_bars(image, heatmaps, bars, hints, block_proposals)
     warnings = list(heatmap.warnings)
     label_evidence: tuple[LabelLocalisationEvidence, ...] = ()
     if (
@@ -1169,6 +1227,7 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
             if getattr(hints, axis) is not None
         },
     )
+    result = result.model_copy(update={"block_proposals": block_proposals})
     from .acceptance import evaluate_acceptance
 
     acceptance = evaluate_acceptance(image, hints, result)
@@ -1180,6 +1239,8 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
                 resolved_counts[axis] = SelectedCount(
                     count=d.evidence["count"],
                     origin="measured_inference",
-                    proposal_id=d.candidate_ids[0],
+                    proposal_id=d.candidate_ids[0]
+                    if d.candidate_ids and not d.evidence.get("block_proposal_id")
+                    else None,
                 )
     return result.model_copy(update={"acceptance": acceptance, "selected_counts": resolved_counts})

@@ -359,6 +359,34 @@ def count_decision(
             },
             (selected.id,),
         )
+    from .blocks import BLOCK_POLICY
+
+    measured = [
+        a
+        for p in result.block_proposals
+        if heatmap_id is None or p.heatmap_id == heatmap_id
+        for a in p.axes
+        if a.axis == axis
+        and a.status == "accepted"
+        and not a.gaps
+        and min(a.evidence["selected"]["transition_coverage"])
+        >= BLOCK_POLICY["minimum_no_gap_transition_coverage"]
+        and not a.evidence["selected"]["strokes"]
+        and a.count >= BLOCK_POLICY["minimum_no_gap_inferred_count"]
+    ]
+    if len(measured) == 1:
+        a = measured[0]
+        return decision(
+            axis,
+            [],
+            {
+                "origin": "measured_inference",
+                "count": a.count,
+                "block_proposal_id": "regular-common-pitch",
+                "observations": a.evidence,
+                "alternatives": a.alternatives,
+            },
+        )
     return decision(
         axis,
         [
@@ -386,11 +414,98 @@ def evaluate_acceptance(
         for factor in A.perturbation_threshold_factors
     )
     grid_checks = {}
-    axis_checks = {}
-    boxes = [(c.id, c.bbox) for c in heatmaps[: A.max_shortlisted_heatmaps]]
+    axis_checks: dict[str, tuple[AcceptanceDecision, ...]] = {}
+    blocks = {p.heatmap_id: p for p in result.block_proposals}
+    parents = [p for p in result.block_proposals if p.status == "accepted"]
+    ordered_heatmaps = sorted(
+        heatmaps,
+        key=lambda c: (
+            0 if c.id in blocks and blocks[c.id].status == "accepted" else 1,
+            -(c.bbox[2] - c.bbox[0]) * (c.bbox[3] - c.bbox[1]),
+            c.id,
+        ),
+    )
+    boxes = [(c.id, c.bbox) for c in ordered_heatmaps[: A.max_shortlisted_heatmaps]]
     if hints.heatmap_bbox is not None:
         boxes = [("heatmap-manual", hints.heatmap_bbox)]
     for identifier, box in boxes:
+        # A whole supported block union supersedes its component search windows.
+        # Keep component proposals in diagnostics; never export a partial block.
+        if any(
+            p.bbox != box
+            and p.bbox[0] <= box[0] < box[2] <= p.bbox[2]
+            and p.bbox[1] <= box[1] < box[3] <= p.bbox[3]
+            for p in parents
+        ):
+            continue
+        block = blocks.get(identifier)
+        if hints.rows_segments is not None or hints.columns_segments is not None:
+            axis_checks[identifier] = (
+                count_decision(result, hints, "rows", identifier),
+                count_decision(result, hints, "columns", identifier),
+            )
+            grid_checks[identifier] = decision(
+                "heatmap", [], {"origin": "manual", "bbox": box}, (identifier,)
+            )
+            continue
+        if (
+            block is not None
+            and block.status == "accepted"
+            and hints.rows_segments is None
+            and hints.columns_segments is None
+        ):
+            from .blocks import BLOCK_POLICY
+
+            block_checks = tuple(
+                decision(
+                    a.axis,
+                    [],
+                    {
+                        "count": a.count,
+                        "origin": "manual" if getattr(hints, a.axis) else "measured_inference",
+                        "segments": [s.model_dump() for s in a.segments],
+                        "block_proposal_id": block.id,
+                        "observations": a.evidence,
+                        "alternatives": a.alternatives,
+                    },
+                    (block.id,),
+                )
+                for a in block.axes
+            )
+            axis_checks[identifier] = block_checks
+            edges = boundary_evidence(image, box)
+            reasons = (
+                []
+                if edges.closed and not edges.touches_image_edge
+                else ["full_grid_bounds_unverified"]
+            )
+            grid_checks[identifier] = decision(
+                "heatmap",
+                reasons,
+                {
+                    "bbox": box,
+                    "origin": "measured_block_union",
+                    "block_proposal_id": block.id,
+                    "rows_segments": [s.model_dump() for s in block.axes[0].segments],
+                    "columns_segments": [s.model_dump() for s in block.axes[1].segments],
+                    "policy_version": BLOCK_POLICY["version"],
+                    "edges": asdict(edges),
+                },
+                (identifier,),
+            )
+            continue
+        if block is not None and any(a.gaps for a in block.axes) and block.status != "accepted":
+            grid_checks[identifier] = decision(
+                "heatmap",
+                list(block.reasons),
+                {"block_proposal": block.model_dump()},
+                (identifier,),
+            )
+            axis_checks[identifier] = (
+                count_decision(result, hints, "rows", identifier),
+                count_decision(result, hints, "columns", identifier),
+            )
+            continue
         row = count_decision(result, hints, "rows", identifier)
         column = count_decision(result, hints, "columns", identifier)
         axis_checks[identifier] = (row, column)
@@ -409,6 +524,40 @@ def evaluate_acceptance(
             and hints.rows is not None
             and hints.columns is not None,
         )
+    for identifier, check in list(grid_checks.items()):
+        if check.status != "accepted" or hints.heatmap_bbox is not None:
+            continue
+        box = next(c.bbox for c in heatmaps if c.id == identifier)
+        fragments = []
+        for other in heatmaps:
+            if other.id == identifier:
+                continue
+            if (
+                other.bbox != box
+                and other.bbox[0] <= box[0] < box[2] <= other.bbox[2]
+                and other.bbox[1] <= box[1] < box[3] <= other.bbox[3]
+            ):
+                fragments.append(other.id)
+            for cross, along in ((0, 1), (1, 0)):
+                aligned = (
+                    max(
+                        abs(box[cross] - other.bbox[cross]),
+                        abs(box[cross + 2] - other.bbox[cross + 2]),
+                    )
+                    <= 2
+                )
+                disjoint = (
+                    box[along + 2] <= other.bbox[along] or other.bbox[along + 2] <= box[along]
+                )
+                if aligned and disjoint:
+                    fragments.append(other.id)
+        if fragments:
+            grid_checks[identifier] = decision(
+                "heatmap",
+                ["aligned_blocks_outside_selected_roi"],
+                {**check.evidence, "fragments": fragments},
+                check.candidate_ids,
+            )
     accepted_grids = [d for d in grid_checks.values() if d.status == "accepted"]
     truncated = any("candidate_limit_hides_competition" in c.reasons for c in heatmaps)
     chosen_heatmap = None
@@ -603,6 +752,10 @@ def numeric_decision(
                 "colourbar_orientation": orientation,
                 "rows": rows,
                 "columns": columns,
+                "rows_segments": axes["heatmap"].evidence.get("rows_segments", hints.rows_segments),
+                "columns_segments": axes["heatmap"].evidence.get(
+                    "columns_segments", hints.columns_segments
+                ),
                 "colourbar_start_value": hints.colourbar_start_value,
                 "colourbar_end_value": hints.colourbar_end_value,
             }

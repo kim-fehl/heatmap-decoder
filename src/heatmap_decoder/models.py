@@ -117,6 +117,51 @@ class LabelsConfig(BaseModel):
         return self
 
 
+class AxisSegment(BaseModel):
+    """Original-coordinate half-open bounds and an explicit cell count."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    start: Annotated[float, Field(strict=True, ge=0)]
+    end: Annotated[float, Field(strict=True, gt=0)]
+    count: Annotated[int, Field(strict=True, gt=0)]
+
+    @model_validator(mode="after")
+    def validate_bounds(self) -> "AxisSegment":
+        if self.end <= self.start:
+            raise ValueError("segment end must exceed start")
+        return self
+
+
+def validate_segments(
+    segments: tuple[AxisSegment, ...] | None, start: float, end: float, count: int, axis: str
+) -> None:
+    if segments is None:
+        return
+    if not segments:
+        raise ValueError(f"{axis}_segments must be nonempty")
+    if segments[0].start != start or segments[-1].end != end:
+        raise ValueError(f"{axis}_segments must span the heatmap ROI endpoints")
+    previous = start
+    for segment in segments:
+        if not start <= segment.start < segment.end <= end or segment.start < previous:
+            raise ValueError(f"{axis}_segments must be ordered, non-overlapping and in bounds")
+        previous = segment.end
+    if sum(segment.count for segment in segments) != count:
+        raise ValueError(f"{axis}_segments counts contradict total {axis}")
+
+
+def segment_totals(value: Any) -> Any:
+    if not isinstance(value, dict):
+        return value
+    value = dict(value)
+    for axis in ("rows", "columns"):
+        segments = value.get(f"{axis}_segments")
+        if value.get(axis) is None and segments:
+            parsed = tuple(AxisSegment.model_validate(s) for s in segments)
+            value[axis] = sum(s.count for s in parsed)
+    return value
+
+
 class GridConfig(BaseModel):
     """One shared heatmap grid for numerical sampling and label assignment."""
 
@@ -126,12 +171,21 @@ class GridConfig(BaseModel):
     rows: Annotated[int, Field(strict=True, gt=0)]
     columns: Annotated[int, Field(strict=True, gt=0)]
     labels: LabelsConfig | None = None
+    rows_segments: tuple[AxisSegment, ...] | None = None
+    columns_segments: tuple[AxisSegment, ...] | None = None
+
+    @model_validator(mode="before")
+    @classmethod
+    def resolve_totals(cls, value: Any) -> Any:
+        return segment_totals(value)
 
     @model_validator(mode="after")
     def validate_grid_extent(self) -> "GridConfig":
         left, top, right, bottom = self.heatmap_bbox
         if right <= left or bottom <= top:
             raise ValueError("heatmap_bbox must have positive width and height")
+        validate_segments(self.rows_segments, top, bottom, self.rows, "rows")
+        validate_segments(self.columns_segments, left, right, self.columns, "columns")
         return self
 
 
@@ -440,11 +494,30 @@ class DetectionHints(BaseModel):
     colourbar_start_value: float | None = None
     colourbar_end_value: float | None = None
     labels: LabelsConfig | None = None
+    rows_segments: tuple[AxisSegment, ...] | None = None
+    columns_segments: tuple[AxisSegment, ...] | None = None
     detector: DetectorOptions = Field(default_factory=DetectorOptions)
+
+    @model_validator(mode="before")
+    @classmethod
+    def resolve_totals(cls, value: Any) -> Any:
+        return segment_totals(value)
 
     @model_validator(mode="after")
     def validate_requests(self) -> "DetectionHints":
         for axis in ("rows", "columns"):
+            segments = getattr(self, f"{axis}_segments")
+            if segments is not None:
+                if self.heatmap_bbox is None:
+                    raise ValueError("explicit segments require a supplied heatmap_bbox")
+                coordinate = 1 if axis == "rows" else 0
+                validate_segments(
+                    segments,
+                    self.heatmap_bbox[coordinate],
+                    self.heatmap_bbox[coordinate + 2],
+                    getattr(self, axis),
+                    axis,
+                )
             if getattr(self, axis) is None and not getattr(self, f"infer_{axis}"):
                 raise ValueError(f"supply {axis} or explicitly request infer_{axis}")
         if self.colourbar_bbox is not None and "colourbar" in self.requested:
@@ -572,6 +645,30 @@ class AcceptanceReport(BaseModel):
     identifier_verification: Literal["not_requested", "review_required", "user_supplied"]
 
 
+class BlockAxisProposal(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+    axis: Axis
+    segments: tuple[AxisSegment, ...]
+    gaps: tuple[tuple[float, float], ...]
+    count: int
+    pitch: float
+    status: Literal["accepted", "review_required", "unresolved"]
+    reasons: tuple[str, ...]
+    evidence: dict[str, Any]
+    alternatives: tuple[dict[str, Any], ...] = ()
+
+
+class BlockGridProposal(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    id: str
+    heatmap_id: str
+    bbox: BoundingBox
+    axes: tuple[BlockAxisProposal, ...]
+    status: Literal["accepted", "review_required", "unresolved"]
+    reasons: tuple[str, ...]
+    evidence: dict[str, Any] = Field(default_factory=dict)
+
+
 class DetectionResult(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
     candidates: tuple[ROICandidate, ...]
@@ -585,6 +682,7 @@ class DetectionResult(BaseModel):
     label_evidence: tuple[LabelLocalisationEvidence, ...] = ()
     acceptance: AcceptanceReport | None = None
     bar_search_evidence: tuple[dict[str, Any], ...] = ()
+    block_proposals: tuple[BlockGridProposal, ...] = ()
 
 
 class SavedDetection(BaseModel):

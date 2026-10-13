@@ -431,7 +431,10 @@ def test_no_joint_box_count_refinement_when_one_axis_unknown():
         p.count == 6 and p.bbox == annotation["heatmap_bbox"] for p in result.count_proposals
     )
     assert all(p.bbox in [c.bbox for c in result.candidates] for p in result.count_proposals)
-    assert result.selected_counts == {"columns": result.selected_counts["columns"]}
+    assert result.selected_counts["columns"].count == 8
+    assert result.selected_counts["rows"].count == 6
+    assert result.selected_counts["rows"].origin == "measured_inference"
+    assert result.acceptance.decisions[0].status == "accepted"
 
 
 def test_conflicting_count_observations_are_retained(monkeypatch):

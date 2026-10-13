@@ -5,7 +5,7 @@ unavailable. The decoder matches cell colours against the observed colourbar and
 recovers values on the **displayed scale**, such as a z-score—not original
 expression counts.
 
-It supports regular PNG/JPEG heatmaps, continuous sequential or diverging
+It supports explicitly configured regular or blocked PNG/JPEG heatmaps, continuous sequential or diverging
 colourbars, reviewed linear or piecewise-linear scales, and gene/sample label OCR.
 RapidOCR is the default label engine; sample labels support explicit quarter turns.
 Automatic region and count detection is experimental and produces review evidence.
@@ -36,6 +36,7 @@ Numeric tick OCR uses Tesseract and requires its additional installation.
 
 - [Usage and installation](docs/usage.md)
 - [Automation and review](docs/automation.md)
+- [Blocked grid configuration](docs/blocked-grids.md)
 - [Scale calibration](docs/nonlinear-calibration.md)
 - [Worked examples](examples/README.md)
 - [Validation evidence and limitations](benchmarks/README.md)

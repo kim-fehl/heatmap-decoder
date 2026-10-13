@@ -219,8 +219,10 @@ def test_inference_failure_does_not_block_supplied_count_roi_validation():
             colourbar_end_value=-2,
         ),
     )
-    assert inferred.acceptance.overall.status != "accepted"
-    assert inferred.selected_counts == {}
+    assert inferred.acceptance.overall.status == "accepted"
+    assert inferred.selected_counts["rows"].count == truth["rows"]
+    assert inferred.selected_counts["columns"].count == truth["columns"]
+    assert not inferred.acceptance.automatic_export_allowed
 
 
 def test_categorical_jump_not_hidden_by_average_continuity():

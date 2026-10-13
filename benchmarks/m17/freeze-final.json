@@ -1,0 +1,535 @@
+{
+  "source_sha256": {
+    "benchmarks/m17/evaluate.py": "efe24a6a0a2117a3d56202ef6845f3240e59f709ec9f3e92e52db1450dec9203",
+    "benchmarks/m17/fixtures.py": "e3f76e788c5c24977a4cdce19468d4defae552aa34115511ed9d22b63f438468",
+    "pyproject.toml": "4b698c24b19d987d9686135b37194e8357b83727ee9f62c2abd5f5e272b0287f",
+    "src/heatmap2matrix/__init__.py": "ef511579883a1c76d772b76cc31434f6f1319f42235592d9eb2de4e3ca9282a5",
+    "src/heatmap2matrix/__main__.py": "dacacc03eb8b975a43c35ca500666787bb3aa5e68c2f8f715aa4a47a90d434c7",
+    "src/heatmap2matrix/cli.py": "7eb455bebe39c4540efcc593ed873e30e120181ca74cff010a20a10947ef953c",
+    "src/heatmap_decoder/__init__.py": "f6833fa726e69d7b58f6865b8c6a31be05221d90c5ca3233bb5b36a0e4eef797",
+    "src/heatmap_decoder/__main__.py": "93b604b2d73ba758ff637179c8e45093d32489ee162a63f2e1ea71a6331d5ce7",
+    "src/heatmap_decoder/acceptance.py": "f3f7808c7abfabefbd2c142add1bf290a89068efac5d40efe74fc6b990a85c78",
+    "src/heatmap_decoder/automation.py": "a602cd8d1abd56e876ebe7dd23a1d816c5e55ac7eb9c7f843dc4a063f9509d52",
+    "src/heatmap_decoder/bar_cores.py": "57f0db82fc2b9acd84dc3e39b2ea361822a8e7d46e56c2e5628109a744911e08",
+    "src/heatmap_decoder/blocks.py": "dd6d73cc016b651f881a89ce035e3430a1f62d18f8a82050117a3453930875fe",
+    "src/heatmap_decoder/calibration.py": "24a21f439307b109310fbd03aad41e1d1c437ab3edbb32a6d247086390294e32",
+    "src/heatmap_decoder/cli.py": "ffcf0bffa93f16c91a891e0b6633e95b114ad99ceccaa7dc4d8b645ff68e2ead",
+    "src/heatmap_decoder/detection.py": "9c06c4d9d32f64dc16c69958b7c5bcb1398be41c7594dc4915581a45045d2e05",
+    "src/heatmap_decoder/detection_policy.py": "bb01d815622b6a63edefac32bd14729730ef032032fd2b69f57543a1c3312e2c",
+    "src/heatmap_decoder/diagnostic_style.py": "cbe0671dd98c238f568d2bc7e8dfb3679de8192aaeabf82ba117545aa7f3cdea",
+    "src/heatmap_decoder/diagnostics.py": "30e021f9e12ab57d73443ecd74585bfbcd987748c2697df343100f783d2263b6",
+    "src/heatmap_decoder/edge_profiles.py": "c5a5b05e95258e267d2156a53c7c89e274cfe084719531ccc15a43621bfa6a14",
+    "src/heatmap_decoder/extract.py": "9b2de73028c4dab4383c0ef99a2bde1f124d901f3c52b21f10d3b5da9587c018",
+    "src/heatmap_decoder/geometry.py": "ed148ce0580ac4fc776cd900d0d5e2c81ff2f9c8bbe5a28bf4dc08a9ffc44159",
+    "src/heatmap_decoder/gradient.py": "99d6428e922cf1086af2ecff3dd5e8ce94d716d6dc5140afb3fcf128e6c14bd1",
+    "src/heatmap_decoder/io.py": "bcb3dd4d0587f8a705b8ffec40f3443f5f01108a6733c44e05d16e1fc689126c",
+    "src/heatmap_decoder/labels.py": "2a2cad8e9476898469584fcf0a5c91445af77a2aa04b922ac26f42053e6da431",
+    "src/heatmap_decoder/lattice.py": "0b622dd82976aa04b136c5b9b04c7626a923d2d6bc7dcac8e5ec0eaad7846aed",
+    "src/heatmap_decoder/legend.py": "665677d2e90d73bd70cabf4249e9bec0f82e8fbb4ab844814668a1da827ee9e6",
+    "src/heatmap_decoder/models.py": "d3371bbda04173227cd399c6ba307520563bd762b488fa5a0ea0135f3182ca84",
+    "src/heatmap_decoder/ocr.py": "2a87536d246d3361718df6a692deae48ce2abdf9d2926adcb900ae8f6160cd54",
+    "src/heatmap_decoder/ocr_fields.py": "4d5ad0213e55b669f3c31bd33ba7b2c587c2606d96820b15e2439428affde62c",
+    "src/heatmap_decoder/orientation.py": "dc045b01809e190ca923e377f821845d34d2991959e13f03c982d37d27357e98",
+    "src/heatmap_decoder/rapid_ocr.py": "783e62f14d1af5c80bb96bbc55c55083288bbfcf0dc9e270365c719fe9ef2f7a",
+    "src/heatmap_decoder/sampling.py": "c709cfa63c75a1c47c1afd92896d4c39118ca91a2fc53a8b6e8d340caa6131df",
+    "src/heatmap_decoder/version.py": "fbcd96443027ffe7e6324e62f7a79702a6045cdea7416f7fba72883f51c9bcc5",
+    "tests/smoke_distribution.py": "1aacf7b618070a3de46dd49a09a7103cb9a973f871096e1d2d8ea2b278a06af6",
+    "tests/test_cli.py": "9bc8895b28f7303252296096100560bf54988a7675649e2f39f4a3495b443054",
+    "tests/test_core.py": "1f3d56dc3d39394500297334f82b50594b07f17bc8759ab1c89292d1737b6784",
+    "tests/test_detection.py": "b5f2d58057b63c34371adc8ca904f4f92acede2e368057c2a8c62018b157dd2a",
+    "tests/test_detection_m8.py": "8c2d9d5dd9dc26a8bdfb78ee554db9da3bf05040fadcab69a9b73ea988b62be3",
+    "tests/test_detection_m8_integration.py": "b505659013b00e26c147898a619148e29dcb8821c5cc7c0259aad608438382f8",
+    "tests/test_labels.py": "1a565398bc0e8faa4dd292fd32a46899740ecd324547b3d2edfcda1c4c71617c",
+    "tests/test_labels_io.py": "b19a4a16025026224a565c6a5a911e5f5a248e8f4eb305b40f7060712c1fb02c",
+    "tests/test_legend.py": "944492698e35b4ebdecdd38e7dbe49383a5e129c297b01c2ca0042e5eb2b8e52",
+    "tests/test_m10.py": "d289a68f779712e735ad3c9aa438dedd26637ac9b83d6efe5853f8de7262fefb",
+    "tests/test_m12.py": "f850ad6595fb6351cfb486fe47d86364f01328a337cd174fadf28b5a062fdb5b",
+    "tests/test_m13.py": "209eadf0fee902e56e14eae72e5580badc5c7774d3a7e0c54ca5ee8ef7e6d707",
+    "tests/test_m13_ocr.py": "753b675abd4a9907c7e638615c52fa29c30cb11416858b3bf79f0fdfe345a7bb",
+    "tests/test_m14.py": "81b8f519aa614564084c480ef1f4ba05e4d63bc5aade4bb9fe5665b71960a549",
+    "tests/test_m14_repair.py": "bd67e14a3fd4bf7f06926c24cb9f39301642502f3b7d9d840f88731b49d37c88",
+    "tests/test_m15.py": "dff8cab5c7a5a808737ddb76be3c649f68194bdbc7c1c27213c23a2bd672f029",
+    "tests/test_m15_ocr.py": "73cacf0bbe6a3990d6565db8c0147e527d0dd3d0102ccef14b06d431b76f75f8",
+    "tests/test_m15_publications.py": "a8cfac96e9421eeca820807fbd39ca83b1f2438cac8763a03c7720212a9d3769",
+    "tests/test_m16.py": "2d60342a46bba80fed6af71a400091c666c3147114eeb512985f1d48f4759e0e",
+    "tests/test_m16_validation.py": "ee39bcc7d09df958e8598a69b67386699d5b60dfec613936ae4d73213303bbc5",
+    "tests/test_m17.py": "962c23bfbe8ca9b81c18a6075a4654a6e22e9b5829e3cc8515e2d3a7e52a690a",
+    "tests/test_m9.py": "252d3ee5d892a73a78b9c4dfcea540940a4edd5ea0225cf13cd9ec149d408634",
+    "tests/test_migration.py": "4e507d90fea05cc1c4c0d2c333c4cdc564b481578c014a07db343deec26988b8",
+    "tests/test_ocr.py": "06b19b992e5c4b7117ad06893533674d21f057c73b86db2cb6942ed4dba09c25",
+    "tests/test_ocr_fields.py": "9147a56e6ebc45bb0ae8732c1309218cf308cc9c1fd534f2b37eb04948bfa8a7",
+    "tests/test_ocr_integration.py": "fdd0b402ac0354d6fcfa65e775f745228bb2f9cba325e1170c9e850e957f7a33",
+    "tests/test_properties.py": "f506beeda7ae3afe769d75578aeaf1d619605f115f55e9ac6e9a9fef55b6bc4e",
+    "tests/test_quality.py": "960587173b06bbf138623565241d4d8e023a0e8adff8d425a9bf9c954c47d176",
+    "tests/test_rapid_ocr.py": "db1e349dcf6d35659a05c5394ade0db2c1dcdaa7dc90444e057486c3b8701f98",
+    "tests/test_reconstruction.py": "bbaadb41bb03bc49e70922f5e8282d0364486e731b158ad15701ac774dc85d3f",
+    "tests/test_review_corrections.py": "115ebd61344a1a8b029304aa8c348d2e767e171a7e3f50216ff8aab174a76e7f",
+    "tests/test_reviewed_extract.py": "864dc10de5e1a31668077270735becb7ffd7de4a603b493124828a3a4fc85535",
+    "uv.lock": "12c3f1ddbac53032a4e88a14177b1473ea5c2616a7a3483425ec0ab48665c7f8"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "packages": {
+      "numpy": "2.5.4",
+      "Pillow": "12.3.0",
+      "scikit-image": "0.26.0",
+      "scipy": "1.18.1",
+      "pydantic": "2.14.1",
+      "rapidocr-onnxruntime": "1.4.4",
+      "onnxruntime": "1.31.0"
+    }
+  },
+  "targets": {
+    "explicit_clean": 1.0,
+    "auto_clean_none": 0.8,
+    "auto_clean_blocked": 0.7,
+    "auto_derivatives": 0.7,
+    "maximum_wrong_complete": 0,
+    "maximum_negative_complete": 0,
+    "maximum_mae": 0.02,
+    "maximum_error": 0.05,
+    "maximum_flagged_fraction": 0.01
+  },
+  "policy": {
+    "version": "blocked-common-pitch.1",
+    "minimum_pitch": 6.0,
+    "minimum_no_gap_inferred_count": 6,
+    "minimum_no_gap_transition_coverage": 0.95,
+    "maximum_count": 128,
+    "maximum_gap_bands": 6,
+    "transverse_spread_rgb": 10.0,
+    "minimum_gap_width": 4,
+    "boundary_tolerance_pixels": 1.5,
+    "minimum_transition_coverage": 0.6,
+    "maximum_interior_error_rgb": 4.0,
+    "maximum_gap_pitch_ratio": 1.5,
+    "integer_gap_tolerance": 0.15,
+    "maximum_block_transition_width": 1.0,
+    "minimum_separator_edge_contrast_ratio": 0.5
+  },
+  "cases": [
+    {
+      "seed": 200001,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200002,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200003,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200004,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200005,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200006,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200007,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200008,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200009,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200010,
+      "family": "none",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200011,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200012,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200013,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200014,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200015,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200016,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200017,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200018,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200019,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200020,
+      "family": "horizontal",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200021,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200022,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200023,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200024,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200025,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200026,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200027,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200028,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200029,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200030,
+      "family": "vertical",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200031,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200032,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200033,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200034,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200035,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200036,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200037,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200038,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200039,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 200040,
+      "family": "both",
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    }
+  ],
+  "negatives": [
+    {
+      "seed": 201001,
+      "challenge": "missing",
+      "family": "both"
+    },
+    {
+      "seed": 201002,
+      "challenge": "missing",
+      "family": "both"
+    },
+    {
+      "seed": 201003,
+      "challenge": "white",
+      "family": "none"
+    },
+    {
+      "seed": 201004,
+      "challenge": "white",
+      "family": "none"
+    },
+    {
+      "seed": 201005,
+      "challenge": "annotation",
+      "family": "both"
+    },
+    {
+      "seed": 201006,
+      "challenge": "annotation",
+      "family": "both"
+    },
+    {
+      "seed": 201007,
+      "challenge": "panels",
+      "family": "vertical"
+    },
+    {
+      "seed": 201008,
+      "challenge": "panels",
+      "family": "vertical"
+    },
+    {
+      "seed": 201009,
+      "challenge": "cropped",
+      "family": "both"
+    },
+    {
+      "seed": 201010,
+      "challenge": "cropped",
+      "family": "both"
+    },
+    {
+      "seed": 201011,
+      "challenge": "wrong_count",
+      "family": "both"
+    },
+    {
+      "seed": 201012,
+      "challenge": "wrong_count",
+      "family": "both"
+    }
+  ],
+  "eligibility": "All 40 preregistered bases and all derivatives; no exclusions. Axis-aligned common-pitch cells, one shared linear reviewed legend. M18 angles/OCR and M19 OCR scales are not tested or qualified here."
+}

@@ -5,11 +5,11 @@ from typing import TYPE_CHECKING
 import numpy as np
 from PIL import Image, ImageDraw
 
-from .geometry import axis_slots
+from .geometry import axis_slots, resolve_grid
 from .models import CellFlag, ExtractionResult, LabelExtractionResult, OCRLabelSource, RGBArray
 
 if TYPE_CHECKING:
-    from .models import LegendResult
+    from .models import GridConfig, LegendResult
 
 
 def diagnostic_image(result: ExtractionResult) -> Image.Image:
@@ -81,6 +81,19 @@ def labels_diagnostic_image(image: RGBArray, result: LabelExtractionResult) -> I
     count = sum(len(a.tokens) + len(a.candidates) + 2 * len(a.slots) for a in result.axes)
     canvas = DiagnosticCanvas(Image.fromarray(image), lines=count + 12)
     canvas.roi(result.config.heatmap_bbox, "heatmap", "manual")
+    grid = resolve_grid(result.config)
+    gx, gy, gr, gb = grid.bbox
+    for name in ("rows", "columns"):
+        axis = getattr(grid, name)
+        for start, end in axis.gaps:
+            gap_box = (gx, start, gr, end) if name == "rows" else (start, gy, end, gb)
+            canvas.roi(gap_box, "heatmap", "manual", f"{name} gap")
+        for slot in axis.slots:
+            cell_box = (
+                (gx, slot.start, gr, slot.end) if name == "rows" else (slot.start, gy, slot.end, gb)
+            )
+            canvas.roi(cell_box, "heatmap", "manual", f"{name} {slot.index}")
+    canvas.note(f"Resolved grid: {grid.metadata()['sha256']}")
     settings = result.config.labels.ocr if result.config.labels is not None else None
     minimum, high = (settings.min_confidence, settings.high_confidence) if settings else (80, 90)
     for axis in result.axes:
@@ -197,4 +210,23 @@ def legend_fields_diagnostic_image(image: RGBArray, result: "LegendResult") -> I
                 settings.min_confidence,
                 settings.high_confidence,
             )
+    return canvas.image
+
+
+def grid_diagnostic_image(image: RGBArray, config: "GridConfig") -> Image.Image:
+    """Original pixels and the exact resolved intervals used by numbers and OCR."""
+    from .diagnostic_style import DiagnosticCanvas
+
+    grid = resolve_grid(config)
+    canvas = DiagnosticCanvas(Image.fromarray(image), lines=config.rows + config.columns + 20)
+    canvas.roi(grid.bbox, "heatmap", "selected")
+    x, y, r, b = grid.bbox
+    for name, axis in (("rows", grid.rows), ("columns", grid.columns)):
+        for slot, (group, local) in zip(axis.slots, axis.ownership, strict=True):
+            box = (x, slot.start, r, slot.end) if name == "rows" else (slot.start, y, slot.end, b)
+            canvas.roi(box, "heatmap", "selected", f"{name} {slot.index} group {group}:{local}")
+        for start, end in axis.gaps:
+            box = (x, start, r, end) if name == "rows" else (start, y, end, b)
+            canvas.roi(box, "heatmap", "selected", f"{name} gap")
+    canvas.note(f"Resolved grid: {grid.metadata()['sha256']}")
     return canvas.image

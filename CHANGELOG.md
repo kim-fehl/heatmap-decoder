@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — M17
+
+- Shared segmented geometry for extraction, OCR ownership and source overlays;
+  original cell/gap bounds, group indices and a consistent grid hash in provenance.
+- Explicit blocked extraction with segment/total/inset validation and no-gap compatibility.
+- Bounded aligned-block unions, common-pitch counts and retained separator alternatives.
+- Frozen M17 validation and failure reports; automatic degradation support remains incomplete.
+- M18 arbitrary-angle OCR and M19 inferred-count export remain separate milestones.
+
 ## M16
 
 - Register and evaluate a fresh current-source validation partition: 43/48

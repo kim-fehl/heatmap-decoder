@@ -7,6 +7,7 @@ been measured and where the decoder abstains.
 
 | Task | Guide |
 |---|---|
+| Configure segments, gaps and group boundaries | [Blocked grids](blocked-grids.md) |
 | Configure extraction and review identifiers | [Usage](usage.md) |
 | Propose regions/counts and review automation decisions | [Automation](automation.md) |
 | Review colourbar ticks | [Legend review](legend.md) |
@@ -21,3 +22,5 @@ retain historical decisions and measurements; they are not the primary user guid
 [M16 status](progress/M16.md) consolidates the current implementation and its
 remaining source-data limitations. Earlier M16 trial narratives are explicitly
 [archived](progress/archive/M16-initial-and-followups.md).
+
+[M17 status](progress/M17.md) records blocked geometry and its current automation limits.

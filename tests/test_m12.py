@@ -144,7 +144,7 @@ def test_supplied_and_reviewed_capabilities_compose_without_export():
     assert not result.automatic_export_allowed
 
 
-def test_inferred_axes_abstain_without_truth():
+def test_inferred_axes_resolve_with_measured_common_pitch():
     base = runpy.run_path(str(ROOT / "examples/m10/generate.py"))
     image, _ = base["make_layout"](rows=20, columns=6)
     request = AutomationRequest(
@@ -158,12 +158,14 @@ def test_inferred_axes_abstain_without_truth():
         numeric_only=True,
     )
     result = automate(image, request)
-    assert result.diagnostic_config is None
+    assert result.diagnostic_config is not None
+    assert result.diagnostic_config.rows == 20
+    assert result.diagnostic_config.columns == 6
     assert not result.automatic_export_allowed
     decisions = {d.requirement: d for d in result.decisions}
-    assert decisions["rows"].status != "accepted"
-    assert decisions["columns"].status != "accepted"
-    assert "insufficient_independent_count_support" in decisions["rows"].reasons
+    assert decisions["rows"].status == "accepted"
+    assert decisions["columns"].status == "accepted"
+    assert decisions["rows"].evidence["observations"]["count_is_confirming_signal"] is False
 
 
 def test_cli_abstention_keeps_existing_matrix(tmp_path):
