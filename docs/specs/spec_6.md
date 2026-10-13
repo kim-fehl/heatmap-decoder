@@ -1,7 +1,10 @@
 # M16 specification — Observed gradients, reviewed nonlinear calibration and readable diagnostics
 
 **Status:** proposed implementation specification  
-**Implementation record:** [M16 status](../progress/M16.md) contains current results and remaining limits; this document retains the original requirements.  
+
+**Implementation record:** [M16 status](../progress/M16.md) contains current results
+and remaining limits; this document retains the original requirements.
+
 **Suggested repository path:** `docs/specs/spec_6.md`  
 **Starting point:** M15 on branch `work`, inspected at commit `2ec504d29df73636880540e093521c6fb675035f`.
 
