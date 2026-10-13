@@ -251,7 +251,7 @@ def test_nonlinear_scale_keeps_residuals_and_never_removes_outlier():
 
 def fake_engine(monkeypatch, truth, *, bad_text=None):
     # Geometry-controlled adapter; deterministic tests don't require Tesseract.
-    def recognize(crop, settings, *, mode="localisation"):
+    def recognize(crop, settings, *, mode="localisation", timeout_seconds=30):
         factor = settings.upscale_factor
         if mode == "localisation":
             # Search both sides in fixed order; actual crop origin is inferred from

@@ -9,7 +9,7 @@ from collections import Counter
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, replace
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 from .geometry import axis_slots, validate_grid_geometry
 from .models import (
@@ -42,6 +42,7 @@ class CropTransform:
     bbox: BoundingBox
     upscale_factor: int = 3
     text_rotation_degrees: int = 0
+    white_padding_pixels: int = 0
 
     def __post_init__(self) -> None:
         if (
@@ -50,6 +51,12 @@ class CropTransform:
             or self.text_rotation_degrees not in (0, 90, -90)
         ):
             raise ValueError("text_rotation_degrees must be an integer 0, 90 or -90")
+        if (
+            isinstance(self.white_padding_pixels, bool)
+            or not isinstance(self.white_padding_pixels, int)
+            or not 0 <= self.white_padding_pixels <= 2
+        ):
+            raise ValueError("white_padding_pixels must be an integer 0..2")
         _validate_box(self.bbox)
         if self.bbox[0] < 0 or self.bbox[1] < 0:
             raise ValueError("crop origin must be nonnegative")
@@ -64,7 +71,10 @@ class CropTransform:
         height = self.bbox[3] - self.bbox[1]
         if self.text_rotation_degrees:
             width, height = height, width
-        return width * self.upscale_factor, height * self.upscale_factor
+        return (
+            (width + 2 * self.white_padding_pixels) * self.upscale_factor,
+            (height + 2 * self.white_padding_pixels) * self.upscale_factor,
+        )
 
     def prepare(self, image: Image.Image) -> Image.Image:
         """Inverse visual rotation, exactly, before the existing upscale."""
@@ -73,6 +83,8 @@ class CropTransform:
             crop = crop.transpose(Image.Transpose.ROTATE_270)
         elif self.text_rotation_degrees == -90:
             crop = crop.transpose(Image.Transpose.ROTATE_90)
+        if self.white_padding_pixels:
+            crop = ImageOps.expand(crop, border=self.white_padding_pixels, fill=255)
         return crop.resize(self.crop_size, Image.Resampling.BICUBIC)
 
     def _point(self, x: float, y: float, *, inverse: bool) -> tuple[float, float]:
@@ -81,7 +93,7 @@ class CropTransform:
         factor = self.upscale_factor
         angle = self.text_rotation_degrees
         if inverse:
-            x, y = x / factor, y / factor
+            x, y = x / factor - self.white_padding_pixels, y / factor - self.white_padding_pixels
             if angle == 90:
                 x, y = y, height - x
             elif angle == -90:
@@ -92,12 +104,17 @@ class CropTransform:
             x, y = height - y, x
         elif angle == -90:
             x, y = y, width - x
-        return x * factor, y * factor
+        return ((x + self.white_padding_pixels) * factor, (y + self.white_padding_pixels) * factor)
 
     def _box(self, box: TextBox, *, inverse: bool) -> TextBox:
         _validate_box(box)
         x0, y0, x1, y1 = box
-        bounds = (0, 0, *self.crop_size) if inverse else self.bbox
+        pad = self.white_padding_pixels
+        bounds = (
+            (0, 0, *self.crop_size)
+            if inverse
+            else (self.bbox[0] - pad, self.bbox[1] - pad, self.bbox[2] + pad, self.bbox[3] + pad)
+        )
         if not (bounds[0] <= x0 < x1 <= bounds[2] and bounds[1] <= y0 < y1 <= bounds[3]):
             raise ValueError(
                 "token box must lie inside the resized crop"
@@ -178,6 +195,7 @@ def group_tokens(
     axis: Axis,
     *,
     transform: CropTransform | None = None,
+    slot_index: int | None = None,
 ) -> tuple[LabelCandidate, ...]:
     """Group upright words geometrically, preserving token membership and spelling.
 
@@ -202,8 +220,13 @@ def group_tokens(
         matches = []
         for group in groups:
             band = _column_band(original[i].bbox, slots)
-            if axis == "columns" and (
-                band is None or any(_column_band(original[j].bbox, slots) != band for j in group)
+            if (
+                axis == "columns"
+                and slot_index is None
+                and (
+                    band is None
+                    or any(_column_band(original[j].bbox, slots) != band for j in group)
+                )
             ):
                 continue
             if all(_same_line(token, tokens[j]) for j in group):
@@ -222,6 +245,7 @@ def group_tokens(
                 bbox=_union_box([original[i].bbox for i in group]),
                 confidence=min(tokens[i].confidence for i in group),
                 token_indices=tuple(group),
+                slot_index=slot_index,
             )
         )
     return tuple(candidates)
@@ -249,6 +273,24 @@ def assign_candidates(
             raise ValueError("candidate confidence must be finite and between 0 and 100")
         start, end = candidate.bbox[coordinate], candidate.bbox[coordinate + 2]
         centre = (start + end) / 2
+        if candidate.slot_index is not None:
+            index = candidate.slot_index
+            if isinstance(index, bool) or not 0 <= index < len(slots):
+                raise ValueError("owned OCR slot index is out of range")
+            slot = slots[index]
+            source = getattr(config.labels, axis) if config.labels else None
+            padding = source.crop_padding_pixels if isinstance(source, OCRLabelSource) else 0
+            tolerance = 1 + padding  # outward raster rounding plus recorded source padding
+            memberships[index].append(i)
+            if (
+                abs(centre - slot.centre)
+                > settings.max_axis_offset_fraction * (slot.end - slot.start)
+                or start < slot.start - tolerance
+                or end > slot.end + tolerance
+            ):
+                problems[i] = "outside_owned_slot_field"
+                unmatched.append(i)
+            continue
         close = [
             s.index
             for s in slots

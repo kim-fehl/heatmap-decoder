@@ -1,0 +1,19 @@
+{
+  "full_regression": {
+    "passed": 588,
+    "subtests": 18,
+    "real_ocr": true,
+    "seconds": 137.79
+  },
+  "final_focused": {
+    "passed": 107,
+    "skipped": 1,
+    "includes_decimal_locale_and_vertical_minus": true
+  },
+  "ruff": "pass",
+  "mypy": "pass current and NumPy 1.26.4, 28 source files",
+  "source_and_wheel_build": "pass",
+  "isolated_CLI": "pass, including imported OCR-field helper and numeric 33x8 partial matrix",
+  "maturity": "experimental; no OCR-scale or identifier export expansion",
+  "numeric": "bit-identical including NaNs to previous 251/264 reconstruction"
+}

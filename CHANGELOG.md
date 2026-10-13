@@ -2,6 +2,10 @@
 
 ## M16
 
+- Follow-up: add bounded 1–2 pixel source/white padding, fixed slot ownership,
+  opt-in shared tick text bands, retained padding alternatives and all-field
+  enlarged diagnostics. Improve inspected gene/sample OCR without relaxing exports.
+
 - Add explicit reviewed monotonic piecewise-linear positional calibration,
   unsupported-span NaNs/flags and full-span experimental export checks.
 - Preserve dense observed colours with tick/midpoint/edge checkpoint evidence,

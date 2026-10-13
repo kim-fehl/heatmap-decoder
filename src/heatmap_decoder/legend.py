@@ -9,7 +9,7 @@ import re
 import time
 from dataclasses import dataclass, replace
 from decimal import Decimal
-from typing import Literal
+from typing import Any, Literal
 
 import numpy as np
 from PIL import Image
@@ -215,11 +215,23 @@ def _ocr_crop(
     purpose: Literal["localisation", "numeric_line"],
     budget: _OCRBudget,
     strokes: tuple[LegendTick, ...] = (),
+    *,
+    white_padding_pixels: int | None = None,
 ) -> LegendOCRRecord:
     from .ocr import recognize
 
     factor = config.legend.ocr.upscale_factor
-    pixels = (box[2] - box[0]) * (box[3] - box[1]) * factor**2
+    white = (
+        (
+            config.legend.white_padding_pixels
+            if white_padding_pixels is None
+            else white_padding_pixels
+        )
+        if purpose == "numeric_line"
+        else 0
+    )
+    transform = CropTransform(box, factor, white_padding_pixels=white)
+    pixels = math.prod(transform.crop_size)
     if time.monotonic() > budget.deadline:
         raise ValueError("legend OCR runtime cap exceeded")
     if purpose == "numeric_line":
@@ -238,11 +250,17 @@ def _ocr_crop(
     painter = ImageDraw.Draw(crop)
     for x, y, r, s in masks:
         painter.rectangle((x - box[0], y - box[1], r - box[0] - 1, s - box[1] - 1), fill=255)
+    if white:
+        from PIL import ImageOps
+
+        crop = ImageOps.expand(crop, border=white, fill=255)
     run = recognize(
-        crop.resize((crop.width * factor, crop.height * factor), Image.Resampling.BICUBIC),
+        crop.resize(transform.crop_size, Image.Resampling.BICUBIC),
         config.legend.ocr,
         mode=purpose,
+        timeout_seconds=min(30, max(0.001, budget.deadline - time.monotonic())),
     )
+    run = replace(run, white_padding_pixels=white)
     return LegendOCRRecord(
         side=side, crop_bbox=box, purpose=purpose, run=run, masked_stroke_boxes=masks
     )
@@ -439,6 +457,12 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
     )
     for side, region in search_regions(image, config):
         strokes = stroke_ticks(image, config, side, region)
+        fields: dict[float, BoundingBox] = {}
+        field_evidence = None
+        if config.legend.align_tick_fields:
+            from .ocr_fields import aligned_tick_fields
+
+            fields, field_evidence = aligned_tick_fields(image, config, side, region, strokes)
         try:
             record = _ocr_crop(image, config, side, region, "localisation", budget, strokes)
             records.append(record)
@@ -455,7 +479,9 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
             for tick in proposals:
                 if tick.position_source == "stroke" and tick.status != "ambiguous":
                     b = tick.text_bbox
-                    if b is not None:
+                    if tick.position in fields:
+                        box = fields[tick.position]
+                    elif b is not None:
                         box = (
                             max(region[0], math.floor(b[0]) - 3),
                             max(region[1], math.floor(b[1]) - 3),
@@ -482,6 +508,9 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                             min(region[2], math.ceil(tick.position) + pad + 1),
                             region[3] - 14 if side == "above" else region[3],
                         )
+                    tick = tick.model_copy(
+                        update={"ocr_bbox": box, "field_evidence": field_evidence}
+                    )
                     try:
                         numeric = _ocr_crop(image, config, side, box, "numeric_line", budget)
                     except (ValueError, OSError) as error:
@@ -503,7 +532,12 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                     )
                     words = [numeric.run.tokens[i] for i in member_indices]
                     original_words = transform_tokens(
-                        words, CropTransform(box, config.legend.ocr.upscale_factor)
+                        words,
+                        CropTransform(
+                            box,
+                            config.legend.ocr.upscale_factor,
+                            white_padding_pixels=numeric.run.white_padding_pixels,
+                        ),
                     )
                     text_box = (
                         (
@@ -525,14 +559,21 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                         if reason == "numeric_text_touches_search_edge"
                     ]
                     coordinate = 1 if config.colourbar_orientation == "vertical" else 0
-                    if (
-                        text_box is not None
-                        and abs(
+                    if text_box is not None and (
+                        not (
+                            text_box[coordinate] - config.legend.max_axis_offset_pixels
+                            <= tick.position
+                            <= text_box[coordinate + 2] + config.legend.max_axis_offset_pixels
+                        )
+                        if tick.position in fields
+                        else abs(
                             (text_box[coordinate] + text_box[coordinate + 2]) / 2 - tick.position
                         )
                         > config.legend.max_axis_offset_pixels
                     ):
                         issues.append("numeric_line_position_conflict")
+                    if config.legend.align_tick_fields and tick.position not in fields:
+                        issues.append("shared_tick_field_unresolved")
                     if confidence < config.legend.ocr.min_confidence:
                         issues.append("low_numeric_ocr_confidence")
                     tick = tick.model_copy(
@@ -549,6 +590,109 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                             "reasons": tuple(issues),
                         }
                     )
+                if tick.ocr_bbox is not None and tick.numeric_record_index is not None:
+                    alternatives: list[dict[str, Any]] = [
+                        {
+                            "record_index": tick.numeric_record_index,
+                            "raw_text": tick.raw_text,
+                            "parsed_value": tick.parsed_value,
+                            "confidence": tick.confidence,
+                            "text_bbox": tick.text_bbox,
+                            "white_padding_pixels": records[
+                                tick.numeric_record_index
+                            ].run.white_padding_pixels,
+                            "normalisation_actions": tick.normalisation_actions,
+                        }
+                    ]
+                    for white in config.legend.retry_white_padding_pixels:
+                        if white == config.legend.white_padding_pixels:
+                            continue
+                        try:
+                            retry = _ocr_crop(
+                                image,
+                                config,
+                                side,
+                                tick.ocr_bbox,
+                                "numeric_line",
+                                budget,
+                                white_padding_pixels=white,
+                            )
+                        except (ValueError, OSError) as error:
+                            warnings.append(f"{side}: numeric padding retry failed: {error}")
+                            alternatives.append(
+                                {"white_padding_pixels": white, "skipped": str(error)}
+                            )
+                            continue
+                        records.append(retry)
+                        words = [
+                            t for t in retry.run.tokens if t.text.strip() and t.confidence >= 0
+                        ]
+                        original = transform_tokens(
+                            words,
+                            CropTransform(
+                                tick.ocr_bbox,
+                                config.legend.ocr.upscale_factor,
+                                white_padding_pixels=retry.run.white_padding_pixels,
+                            ),
+                        )
+                        text = " ".join(w.text.strip() for w in words)
+                        parsed_retry = parse_numeric_tick(text, config.legend.decimal_separator)
+                        alternatives.append(
+                            {
+                                "record_index": len(records) - 1,
+                                "token_indices": tuple(
+                                    i
+                                    for i, token in enumerate(retry.run.tokens)
+                                    if token.text.strip() and token.confidence >= 0
+                                ),
+                                "raw_text": text,
+                                "parsed_value": parsed_retry.value,
+                                "confidence": min((w.confidence for w in words), default=0),
+                                "text_bbox": (
+                                    min(w.bbox[0] for w in original),
+                                    min(w.bbox[1] for w in original),
+                                    max(w.bbox[2] for w in original),
+                                    max(w.bbox[3] for w in original),
+                                )
+                                if original
+                                else None,
+                                "white_padding_pixels": white,
+                                "normalisation_actions": parsed_retry.actions,
+                            }
+                        )
+                    reasons = list(tick.reasons)
+                    distinct = {a["raw_text"] for a in alternatives if a.get("raw_text")}
+                    numeric_values = {
+                        a["parsed_value"] for a in alternatives if a.get("parsed_value") is not None
+                    }
+                    updates: dict[str, Any] = {"numeric_alternatives": tuple(alternatives)}
+                    if len(distinct) > 1:
+                        reasons.append("conflicting_numeric_readings")
+                        updates["status"] = "ambiguous"
+                    if len(numeric_values) > 1:
+                        updates["parsed_value"] = None
+                        reasons.append("contradictory_numeric_values")
+                    elif tick.parsed_value is None and len(numeric_values) == 1:
+                        recovered = next(
+                            a for a in alternatives if a.get("parsed_value") is not None
+                        )
+                        updates.update(
+                            raw_text=recovered["raw_text"],
+                            parsed_value=recovered["parsed_value"],
+                            confidence=recovered["confidence"],
+                            text_bbox=recovered["text_bbox"],
+                            numeric_record_index=recovered["record_index"],
+                            numeric_token_indices=recovered["token_indices"],
+                            normalised_text=parse_numeric_tick(
+                                recovered["raw_text"], config.legend.decimal_separator
+                            ).normalised_text,
+                            normalisation_actions=recovered["normalisation_actions"],
+                        )
+                        if len(distinct) <= 1:
+                            updates["status"] = "unresolved"
+                        reasons.append("padding_retry_proposal_requires_review")
+                    updates["reasons"] = tuple(dict.fromkeys(reasons))
+                    tick = tick.model_copy(update=updates)
                 revised.append(tick)
             ticks.extend(revised)
         except (ValueError, OSError) as error:

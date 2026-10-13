@@ -46,3 +46,11 @@ The image transcription has a visually uncertain Greek suffix at row 17 and is
 used only for evaluation. It never corrects production OCR spelling.
 
 See [results and remaining limits](../../docs/progress/M16.md).
+
+
+The padded follow-up configurations are `labels-padding.json` and
+`config-padding.json`. They preserve equal slot ownership, add 1–2 source pixels
+and recorded white margins, and expose all five aligned tick fields in
+`legend_fields_enlarged.png`. Use the same commands above with the padded config.
+[Measured results](../../benchmarks/m16/ocr-padding/README.md) retain raw conflicts
+and unresolved Greek/sign evidence.

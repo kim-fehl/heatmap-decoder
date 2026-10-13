@@ -37,11 +37,11 @@ The supplied **33-gene × 8-time-column Symbiotic crop** illustrates manual heat
 (blue), gene (pink), sample (lilac) and colourbar (violet) regions. Titles and states
 sit outside content in a readable ledger. OCR uses H teal, M yellow, L crimson
 and ? dashed confidence frames; status words remain separate. This illustration
-shows every requested label slot and all five physical tick readings. All 33 gene
-and 8 sample slots were attempted; 4 gene and 6 sample slots were heuristically
-accepted, leaving 31 slots unresolved. Confidence and slot count do not verify
-spelling: evaluation found 2/33 exact gene strings and 8/8 exact sample strings.
-Automatic ROI selection still abstained.
+shows all 33 equal-pitch gene fields, eight sample fields and five aligned tick
+fields, separately from actual OCR glyph boxes. With one-pixel source padding and
+one-pixel white margins, raw exact genes improve to 9/33; samples are 8/8 exact
+and heuristically accepted. Four gene readings pass the confidence threshold, but
+one is wrong, so identity review remains necessary. Automatic ROI selection abstains.
 Credit: Duscher, Vroom and Foster, Scientific Reports 14, 2912 (2024), CC BY 4.0.
 
 The first completed reviewed numeric trial recovered 251/264 cells without
@@ -49,6 +49,13 @@ extrapolating beyond labelled ticks. Automatic ROI and composed requests abstain
 [Commands, full evidence and reconstruction limits](examples/m16/README.md) include
 the retained failed first rendering attempt, tick errors and optional retry costs.
 See [calibration and diagnostic conventions](docs/nonlinear-calibration.md).
+
+![All five aligned tick OCR fields](docs/images/recognition-ticks-m16.png)
+
+Two-pixel tick-field padding recovers `-2`; a bounded margin retry recovers `1`.
+The proposals are `-2`, `—1`, `0`, `1`, `2`: four parse exactly, and the em dash
+still requires review. All five fields are drawn even when recognition fails.
+[Padding trial and limits](benchmarks/m16/ocr-padding/README.md).
 
 ## Try it
 

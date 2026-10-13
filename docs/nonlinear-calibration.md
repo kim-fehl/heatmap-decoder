@@ -75,3 +75,40 @@ showed fewer false heuristic acceptances but lower accepted coverage, so retries
 remain optional. English traineddata is insufficient to verify Greek glyphs;
 review the per-slot ledger and original enlarged crop, or explicitly configure
 installed language data. Numeric-only reconstruction does not require OCR names.
+
+## Padded OCR fields and regular grid slots
+
+For explicit slot OCR, `crop_padding_pixels` and `white_padding_pixels` are available
+on each `labels.rows` / `labels.columns` source, each limited to 0..2 (default 0).
+The former adds original neighbouring pixels, clipped to the image; the latter
+adds a recorded white border before resizing. The same inverse transform removes
+that border before returning boxes to original-image coordinates, including ±90°
+columns. Expanded pixels count against the existing shared OCR budgets.
+
+Candidates from an explicit slot remain owned by that slot. They cannot be spread
+across neighbours just because a floating grid edge is rounded outwards. Geometry
+still checks centre offset and containment with only the recorded source padding
+and one-pixel rounding tolerance; failed evidence stays unresolved in its own slot.
+Multiple readings remain alternatives. Sparse region OCR retains its original
+geometric association policy. Logical field outlines use the uniform grid pitch;
+raw token/candidate outlines still show actual observed glyph bounds separately.
+
+Legend options add `align_tick_fields`, `crop_padding_pixels`,
+`white_padding_pixels`, and optional `retry_white_padding_pixels` (at most two
+extra white-border variants). Alignment is opt-in. It measures one common text
+band beyond independently measured strokes: shared top/bottom for a horizontal
+bar, shared left/right for a vertical bar. Separate image-ink clusters determine
+field widths/heights, keeping observed signs with digits. No expected tick count,
+equal spacing, OCR confidence or reference values choose the fields. Competing
+bands or clusters require review.
+
+`legend_fields_enlarged.png` draws every attempted tick field, including those with
+missing or unparseable text. These field ROI frames are distinct from confidence
+frames around actual OCR observations. `numeric_alternatives` preserves every
+padding reading and its run/transform link. Conflicting readings retain review
+status; contradictory numeric values become unresolved. A recovered retry proposal
+also requires review. Dash glyphs such as the observed em dash in `—1` are not
+automatically converted to a mathematical minus.
+
+[Measured follow-up](../benchmarks/m16/ocr-padding/README.md) demonstrates improved
+raw OCR without relaxing identifier/scale export guards.

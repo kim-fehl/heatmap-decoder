@@ -1,0 +1,58 @@
+{
+  "rows": {
+    "attempts": 33,
+    "raw_exact": 9,
+    "accepted": 4,
+    "accepted_exact": 3,
+    "states": {
+      "low_confidence": 28,
+      "accepted": 4,
+      "missing": 1
+    }
+  },
+  "columns": {
+    "attempts": 8,
+    "raw_exact": 8,
+    "accepted": 8,
+    "accepted_exact": 8,
+    "states": {
+      "accepted": 8
+    }
+  },
+  "ticks": {
+    "attempts": 5,
+    "fields": 5,
+    "raw": [
+      "-2",
+      "—1",
+      "0",
+      "1",
+      "2"
+    ],
+    "values": [
+      -2.0,
+      null,
+      0.0,
+      1.0,
+      2.0
+    ],
+    "states": [
+      "ambiguous",
+      "ambiguous",
+      "ambiguous",
+      "unresolved",
+      "unresolved"
+    ],
+    "ocr_calls": 12,
+    "automatic_export": false
+  },
+  "numeric": "bit-identical including NaNs: 251/264 finite; no calibration/QC changes",
+  "input_sha256": "085e6a625e36abeea8e239c842b78599a932434e53456bf492b0da1ce228d4ef",
+  "caveat": "inspected development crop; unresolved gene spellings and Unicode dash sign retained; no reference TSV in production",
+  "ownership_only_control": {
+    "raw_exact_rows": 4,
+    "raw_exact_columns": 8,
+    "source_padding_pixels": 0,
+    "white_padding_pixels": 0
+  }
+}

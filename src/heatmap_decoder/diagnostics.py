@@ -1,10 +1,15 @@
 """Pillow rendering of sampled colours, nearest candidates and categorical QC."""
 
+from typing import TYPE_CHECKING
+
 import numpy as np
 from PIL import Image, ImageDraw
 
 from .geometry import axis_slots
 from .models import CellFlag, ExtractionResult, LabelExtractionResult, OCRLabelSource, RGBArray
+
+if TYPE_CHECKING:
+    from .models import LegendResult
 
 
 def diagnostic_image(result: ExtractionResult) -> Image.Image:
@@ -73,7 +78,7 @@ def labels_diagnostic_image(image: RGBArray, result: LabelExtractionResult) -> I
     """Original-coordinate ROI, centre, token and candidate overlay plus slot ledger."""
     from .diagnostic_style import DiagnosticCanvas
 
-    count = sum(len(a.tokens) + len(a.candidates) + len(a.slots) for a in result.axes)
+    count = sum(len(a.tokens) + len(a.candidates) + 2 * len(a.slots) for a in result.axes)
     canvas = DiagnosticCanvas(Image.fromarray(image), lines=count + 12)
     canvas.roi(result.config.heatmap_bbox, "heatmap", "manual")
     settings = result.config.labels.ocr if result.config.labels is not None else None
@@ -82,6 +87,28 @@ def labels_diagnostic_image(image: RGBArray, result: LabelExtractionResult) -> I
         roi = getattr(result.config.labels, axis.axis) if result.config.labels else None
         if isinstance(roi, OCRLabelSource):
             canvas.roi(roi.bbox, f"labels_{axis.axis}", "manual")
+        if isinstance(roi, OCRLabelSource):
+            for slot in axis_slots(result.config, axis.axis):
+                box = (
+                    (
+                        roi.bbox[0],
+                        max(roi.bbox[1], slot.start),
+                        roi.bbox[2],
+                        min(roi.bbox[3], slot.end),
+                    )
+                    if axis.axis == "rows"
+                    else (
+                        max(roi.bbox[0], slot.start),
+                        roi.bbox[1],
+                        min(roi.bbox[2], slot.end),
+                        roi.bbox[3],
+                    )
+                )
+                if box[2] > box[0] and box[3] > box[1]:
+                    canvas.roi(box, f"labels_{axis.axis}", "manual", f"{axis.axis}-F{slot.index}")
+            canvas.note(
+                "Fields follow equal grid pitch; raw glyph boxes are separate observations."
+            )
         for index, token in enumerate(axis.tokens):
             if token.text.strip():
                 canvas.ocr(
@@ -111,7 +138,7 @@ def labels_diagnostic_image(image: RGBArray, result: LabelExtractionResult) -> I
         for slot, label in zip(axis_slots(result.config, axis.axis), axis.slots, strict=True):
             canvas.note(
                 f"{axis.axis}-S{label.index} [{label.status}] "
-                f"{label.raw_text or label.final_text or 'missing'} "
+                f"{(label.raw_text or label.final_text or 'missing').replace(chr(10), ' | ')} "
                 f"{','.join(label.issues)}"
             )
             if label.status == "missing":
@@ -122,4 +149,41 @@ def labels_diagnostic_image(image: RGBArray, result: LabelExtractionResult) -> I
                 )
                 canvas.draw.line((x - 3, y - 3, x + 3, y + 3), fill="black", width=2)
                 canvas.draw.line((x - 3, y + 3, x + 3, y - 3), fill="black", width=2)
+    return canvas.image
+
+
+def legend_fields_diagnostic_image(image: RGBArray, result: "LegendResult") -> Image.Image:
+    """Enlarge actual tick OCR fields, even when no text/value was recognised."""
+    from .diagnostic_style import DiagnosticCanvas
+
+    boxes = [result.config.colourbar_bbox] + [t.ocr_bbox for t in result.ticks if t.ocr_bbox]
+    x = max(0, min(b[0] for b in boxes) - 8)
+    y = max(0, min(b[1] for b in boxes) - 8)
+    r = min(image.shape[1], max(b[2] for b in boxes) + 8)
+    s = min(image.shape[0], max(b[3] for b in boxes) + 8)
+    source = Image.fromarray(image[:, :, :3]).crop((x, y, r, s))
+    source = source.resize((source.width * 4, source.height * 4), Image.Resampling.NEAREST)
+    canvas = DiagnosticCanvas(
+        source, lines=3 * sum(t.ocr_bbox is not None for t in result.ticks) + 8
+    )
+    canvas.note("4x original pixels; fields remain linked to original coordinates.")
+
+    def mapped(box: tuple[float, float, float, float]) -> tuple[float, float, float, float]:
+        return ((box[0] - x) * 4, (box[1] - y) * 4, (box[2] - x) * 4, (box[3] - y) * 4)
+
+    canvas.roi(mapped(result.config.colourbar_bbox), "colourbar", "manual")
+    settings = result.config.legend.ocr
+    for tick in result.ticks:
+        if tick.ocr_bbox is not None:
+            canvas.roi(mapped(tick.ocr_bbox), "tick_search", "proposed", f"tick-{tick.index}-field")
+            canvas.note(f"Original field: {tick.ocr_bbox}")
+            canvas.ocr(
+                mapped(tick.text_bbox) if tick.text_bbox else None,
+                tick.confidence,
+                f"tick-{tick.index}",
+                tick.raw_text or "missing",
+                tick.status,
+                settings.min_confidence,
+                settings.high_confidence,
+            )
     return canvas.image

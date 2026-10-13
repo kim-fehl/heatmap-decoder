@@ -589,13 +589,15 @@ def _label_transform(
     source = getattr(config.labels, axis) if config.labels else None
     angle = source.text_rotation_degrees if isinstance(source, OCRLabelSource) else 0
     factor = config.labels.ocr.upscale_factor if config.labels else 1
-    transform = CropTransform(box, factor, angle)
+    white = source.white_padding_pixels if isinstance(source, OCRLabelSource) else 0
+    transform = CropTransform(box, factor, angle, white)
     return {
         "crop_bbox": box,
         "text_rotation_degrees": angle,
         "normalisation_rotation_degrees": -angle,
         "upscale_factor": factor,
         "ocr_size": transform.crop_size,
+        "white_padding_pixels": white,
         "rotation": "Pillow exact transpose",
         "box_mapping": "all four half-open corners; inverse rotation then crop origin",
         "grouping_frame": "upright OCR pixels",
@@ -610,7 +612,9 @@ def _label_run_geometry(
     from .labels import CropTransform, group_tokens, transform_tokens
 
     details = _label_transform(config, axis, box)
-    transform = CropTransform(box, details["upscale_factor"], details["text_rotation_degrees"])
+    transform = CropTransform(
+        box, details["upscale_factor"], details["text_rotation_degrees"], run.white_padding_pixels
+    )
     return {
         "original_tokens": [asdict(token) for token in transform_tokens(run.tokens, transform)],
         "candidates": [
@@ -1138,6 +1142,7 @@ LEGEND_OUTPUT_NAMES = (
     "legend_ticks.tsv",
     "legend_review.tsv",
     "legend_diagnostic.png",
+    "legend_fields_enlarged.png",
     "legend_provenance.json",
     "colourbar_enlarged.png",
     "gradient.json",
@@ -1308,7 +1313,12 @@ def write_legend_outputs(
     for i, record in enumerate(result.ocr_records):
         for j, token in enumerate(
             transform_tokens(
-                record.run.tokens, CropTransform(record.crop_bbox, settings.upscale_factor)
+                record.run.tokens,
+                CropTransform(
+                    record.crop_bbox,
+                    settings.upscale_factor,
+                    white_padding_pixels=record.run.white_padding_pixels,
+                ),
             )
         ):
             if token.text.strip():
@@ -1322,6 +1332,8 @@ def write_legend_outputs(
                     settings.high_confidence,
                 )
     for tick in result.ticks:
+        if tick.ocr_bbox is not None:
+            canvas.roi(tick.ocr_bbox, "tick_search", "proposed", f"tick-{tick.index}-field")
         canvas.ocr(
             tick.text_bbox,
             tick.confidence,
@@ -1337,6 +1349,9 @@ def write_legend_outputs(
     gradient_diagnostic(image, gradient).save(directory / "colourbar_enlarged.png")
     (directory / "gradient.json").write_text(json.dumps(gradient, indent=2) + "\n")
     overlay.save(directory / "legend_diagnostic.png")
+    from .diagnostics import legend_fields_diagnostic_image
+
+    legend_fields_diagnostic_image(image, result).save(directory / "legend_fields_enlarged.png")
     (directory / "legend_provenance.json").write_text(
         json.dumps(legend_provenance(result, image_sha256, filename), indent=2, allow_nan=False)
         + "\n",

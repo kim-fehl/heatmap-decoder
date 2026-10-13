@@ -23,6 +23,10 @@ def smoke() -> None:
             "/docs/progress/M16.md",
             "/docs/nonlinear-calibration.md",
             "/src/heatmap_decoder/gradient.py",
+            "/src/heatmap_decoder/ocr_fields.py",
+            "/examples/m16/config-padding.json",
+            "/examples/m16/labels-padding.json",
+            "/docs/images/recognition-ticks-m16.png",
             "/src/heatmap_decoder/diagnostic_style.py",
             "/examples/config.json",
             "/tests/test_cli.py",
@@ -76,6 +80,11 @@ def smoke() -> None:
         command = scripts / ("heatmap-decoder.exe" if os.name == "nt" else "heatmap-decoder")
         subprocess.run(["uv", "pip", "install", "--python", str(python), str(wheel)], check=True)
         subprocess.run([str(command), "--version"], check=True, cwd=directory)
+        subprocess.run(
+            [str(python), "-c", "from heatmap_decoder.ocr_fields import aligned_tick_fields"],
+            check=True,
+            cwd=directory,
+        )
         subprocess.run(
             [
                 str(command),

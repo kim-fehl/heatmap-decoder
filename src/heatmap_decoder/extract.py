@@ -259,16 +259,25 @@ def extract_labels(
                     box = (box_list[0], box_list[1], box_list[2], box_list[3])
                     if box[2] <= box[0] or box[3] <= box[1]:
                         continue
-                    transform = CropTransform(
-                        box, config.labels.ocr.upscale_factor, source.text_rotation_degrees
+                    pad = source.crop_padding_pixels
+                    box = (
+                        max(0, box[0] - pad),
+                        max(0, box[1] - pad),
+                        min(image.shape[1], box[2] + pad),
+                        min(image.shape[0], box[3] + pad),
                     )
-                    factor = transform.upscale_factor
+                    transform = CropTransform(
+                        box,
+                        config.labels.ocr.upscale_factor,
+                        source.text_rotation_degrees,
+                        source.white_padding_pixels,
+                    )
                     original_crop: Image.Image | None = None
                     slot_candidates: list[LabelCandidate] = []
                     # Fixed transforms share the original call/pixel/deadline budgets.
                     variants = ("original", *config.labels.ocr.retry_variants)
                     for variant in variants:
-                        pixels = (box[2] - box[0]) * (box[3] - box[1]) * factor**2
+                        pixels = math.prod(transform.crop_size)
                         remaining_seconds = deadline - time.monotonic()
                         if pixels > pixel_budget or remaining_seconds <= 0 or calls_remaining <= 0:
                             skipped.append(
@@ -310,12 +319,18 @@ def extract_labels(
                                 }
                             )
                             continue
-                        run = replace(run, preprocessing=variant)
+                        run = replace(
+                            run,
+                            preprocessing=variant,
+                            white_padding_pixels=source.white_padding_pixels,
+                        )
                         slot_runs.append((axis, slot.index, box, run))
                         offset = len(tokens)
                         observed = [
                             replace(c, token_indices=tuple(i + offset for i in c.token_indices))
-                            for c in group_tokens(run.tokens, config, axis, transform=transform)
+                            for c in group_tokens(
+                                run.tokens, config, axis, transform=transform, slot_index=slot.index
+                            )
                         ]
                         tokens.extend(transform_tokens(run.tokens, transform))
                         if not config.labels.ocr.retry_variants:

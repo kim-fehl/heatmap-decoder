@@ -58,6 +58,8 @@ class OCRLabelSource(BaseModel):
     source: Literal["ocr"]
     bbox: BoundingBox
     recognition: Literal["sparse", "slots"] = "sparse"
+    crop_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
+    white_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
     text_rotation_degrees: Annotated[int, Field(strict=True)] = 0
 
     @field_validator("text_rotation_degrees")
@@ -69,6 +71,8 @@ class OCRLabelSource(BaseModel):
 
     @model_validator(mode="after")
     def validate_extent(self) -> "OCRLabelSource":
+        if self.recognition != "slots" and (self.crop_padding_pixels or self.white_padding_pixels):
+            raise ValueError("label padding requires explicit slot recognition")
         left, top, right, bottom = self.bbox
         if right <= left or bottom <= top:
             raise ValueError("label bbox must have positive width and height")
@@ -138,6 +142,18 @@ class LegendOptions(BaseModel):
     max_axis_offset_pixels: Annotated[float, Field(gt=0, le=32)] = 6.0
     endpoint_tolerance_pixels: Annotated[float, Field(ge=0, le=8)] = 2.0
     decimal_separator: Literal[".", ","] = "."
+    align_tick_fields: bool = False
+    retry_white_padding_pixels: tuple[Annotated[int, Field(strict=True, ge=0, le=2)], ...] = ()
+
+    @field_validator("retry_white_padding_pixels")
+    @classmethod
+    def validate_tick_retries(cls, value: tuple[int, ...]) -> tuple[int, ...]:
+        if len(value) > 2 or len(set(value)) != len(value):
+            raise ValueError("at most two distinct tick padding retries")
+        return value
+
+    crop_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
+    white_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
 
 
 class ScaleConfig(BaseModel):
@@ -281,6 +297,7 @@ class LabelCandidate:
     bbox: TextBox
     confidence: float
     token_indices: tuple[int, ...]
+    slot_index: int | None = None
 
 
 @dataclass(frozen=True)
@@ -325,6 +342,7 @@ class OCRRun:
     available_languages: tuple[str, ...]
     mode: str
     preprocessing: str = "grayscale_bicubic"
+    white_padding_pixels: int = 0
 
 
 @dataclass(frozen=True)
@@ -599,6 +617,9 @@ class LegendTick(BaseModel):
     localisation_record_index: int | None = None
     numeric_record_index: int | None = None
     numeric_token_indices: tuple[int, ...] = ()
+    ocr_bbox: BoundingBox | None = None
+    field_evidence: dict[str, Any] | None = None
+    numeric_alternatives: tuple[dict[str, Any], ...] = ()
     status: Literal["suggested", "unresolved", "ambiguous", "reviewed", "excluded"] = "unresolved"
     reasons: tuple[str, ...] = ()
 
