@@ -257,3 +257,161 @@ def grid_diagnostic_image(image: RGBArray, config: "GridConfig") -> Image.Image:
             canvas.roi(box, "heatmap", "selected", f"{name} gap")
     canvas.note(f"Resolved grid: {grid.metadata()['sha256']}")
     return canvas.image
+
+
+def recognition_diagnostic_image(
+    image: RGBArray,
+    labels: LabelExtractionResult,
+    legend: "LegendResult",
+) -> Image.Image:
+    """Compact source-coordinate overlay and three OCR ledgers, without truth text.
+
+    Geometry is configured/resolved, not necessarily automatically detected. Raw
+    strings and review states come directly from the extraction results.
+    """
+    import textwrap
+
+    from PIL import ImageChops, ImageFont
+
+    from .diagnostic_style import ROI_STYLE
+
+    source = Image.fromarray(image[:, :, :3]).convert("RGB")
+    draw = ImageDraw.Draw(source)
+    grid = resolve_grid(labels.config)
+    x, y, r, b = grid.bbox
+    for name, axis in (("rows", grid.rows), ("columns", grid.columns)):
+        for slot in axis.slots:
+            box = (
+                (x, slot.start, r - 1, slot.end - 1)
+                if name == "rows"
+                else (slot.start, y, slot.end - 1, b - 1)
+            )
+            draw.rectangle(box, outline="#2866c7", width=1)
+        for start, end in axis.gaps:
+            box = (x, start, r - 1, end - 1) if name == "rows" else (start, y, end - 1, b - 1)
+            draw.rectangle(box, outline="#d77c13", width=2)
+    draw.rectangle(legend.config.colourbar_bbox, outline="#6840a8", width=2)
+    tables: list[tuple[str, list[tuple[str, str, str, str]]]] = []
+    for name, title in (("rows", "Row labels"), ("columns", "Column labels")):
+        label_axis = next((a for a in labels.axes if a.axis == name), None)
+        rows: list[tuple[str, str, str, str]] = []
+        if label_axis is not None:
+            for label in label_axis.slots:
+                rows.append(
+                    (
+                        str(label.index),
+                        label.raw_text or "(missing)",
+                        "?" if label.confidence is None else f"{label.confidence:.1f}",
+                        label.status,
+                    )
+                )
+                if label.bbox:
+                    draw.rectangle(label.bbox, outline=ROI_STYLE[f"labels_{name}"][1], width=1)
+            if label_axis.geometry_evidence:
+                for line in label_axis.geometry_evidence.get("lines", []):
+                    polygon = line.get("polygon", ())
+                    if polygon:
+                        draw.line([*polygon, polygon[0]], fill="#007e80", width=2)
+                    baseline = line.get("baseline", ())
+                    if baseline:
+                        draw.line(baseline, fill="#9370bb", width=2)
+                    attachment = line.get("attachment")
+                    if attachment:
+                        ax, ay = attachment
+                        draw.ellipse((ax - 3, ay - 3, ax + 3, ay + 3), fill="#c52647")
+                        index = line.get("slot_index")
+                        if isinstance(index, int) and 0 <= index < len(grid.columns.slots):
+                            centre = grid.columns.slots[index].centre
+                            edge = y if ay < y else b
+                            draw.line((ax, ay, centre, edge), fill="#c52647", width=1)
+        tables.append((title, rows))
+    ticks = []
+    for tick in legend.ticks:
+        ticks.append(
+            (
+                str(tick.index),
+                tick.raw_text or "(missing)",
+                "?" if tick.confidence is None else f"{tick.confidence:.1f}",
+                f"{tick.parsed_value if tick.parsed_value is not None else '?'} / {tick.status}",
+            )
+        )
+        if tick.ocr_bbox:
+            draw.rectangle(tick.ocr_bbox, outline="#a05099", width=1)
+    tables.append(("Colourbar ticks: value / state", ticks))
+    # Trim only the rendered view, after drawing in original pixel coordinates.
+    bounds = ImageChops.difference(source, Image.new("RGB", source.size, "white")).getbbox()
+    if bounds:
+        left, top, right, bottom = bounds
+        source = source.crop(
+            (
+                max(0, left - 12),
+                max(0, top - 12),
+                min(source.width, right + 12),
+                min(source.height, bottom + 12),
+            )
+        )
+    font = ImageFont.load_default(size=14)
+    heading = ImageFont.load_default(size=18)
+    table_width, margin, line_height = 460, 18, 20
+    prepared = []
+    for title, rows in tables:
+        cells = []
+        for row in rows or [("-", "Not requested", "-", "-")]:
+            wrapped = [
+                textwrap.wrap(value.encode("ascii", "backslashreplace").decode(), width) or [""]
+                for value, width in zip(row, (4, 22, 6, 20), strict=True)
+            ]
+            cells.append((wrapped, max(map(len, wrapped)) * line_height + 10))
+        prepared.append((title, cells))
+    width = max(source.width + 2 * margin, 3 * table_width + 4 * margin)
+    zoom = min(2.0, (width - 2 * margin) / source.width)
+    source = source.resize(
+        (round(source.width * zoom), round(source.height * zoom)), Image.Resampling.NEAREST
+    )
+    table_y = source.height + 112
+    height = table_y + max(sum(h for _, h in cells) for _, cells in prepared) + 100
+    canvas = Image.new("RGB", (width, height), "white")
+    canvas.paste(source, (margin, 84))
+    draw = ImageDraw.Draw(canvas)
+    draw.text((margin, 12), "How the decoder sees the heatmap", font=heading, fill="#172b40")
+    draw.text(
+        (margin, 40),
+        "Blue: resolved cells   Orange: block gaps   Teal: oriented lines   Red: attachments",
+        font=font,
+        fill="#172b40",
+    )
+    draw.text(
+        (margin, 61),
+        "Configured regions/counts/angles; OCR strings are observations, not verified identifiers.",
+        font=font,
+        fill="#485568",
+    )
+    for index, (title, cells) in enumerate(prepared):
+        left = margin + index * (table_width + margin)
+        draw.text((left, table_y), title, font=heading, fill="#172b40")
+        offsets = (6, 40, 218, 274)
+        yy = table_y + 30
+        draw.rectangle((left, yy, left + table_width, yy + 28), fill="#e8eef4")
+        for offset, text in zip(
+            offsets, ("ID", "Raw OCR", "Score", "State / parsed value"), strict=True
+        ):
+            draw.text((left + offset, yy + 5), text, font=font, fill="#172b40")
+        yy += 28
+        for row_index, (wrapped, row_height) in enumerate(cells):
+            draw.rectangle(
+                (left, yy, left + table_width, yy + row_height),
+                fill="#f4f7fa" if row_index % 2 == 0 else "white",
+            )
+            for offset, lines in zip(offsets, wrapped, strict=True):
+                for j, text in enumerate(lines):
+                    draw.text(
+                        (left + offset, yy + 5 + j * line_height), text, font=font, fill="#172b40"
+                    )
+            yy += row_height
+    draw.text(
+        (margin, height - 25),
+        "Scores uncalibrated; accepted is heuristic. IDs zero-based; non-ASCII escaped.",
+        font=font,
+        fill="#485568",
+    )
+    return canvas

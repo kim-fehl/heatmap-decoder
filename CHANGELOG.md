@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased — OCR language and diagnostics
+
+- Default numeric tick OCR to English RapidOCR with bounded fields and strict parsing;
+  keep Tesseract as an optional fallback and retain existing scale export gates.
+- Include endpoint signs/glyphs outside the colorbar span in shared tick fields.
+- Add a 1.5-pixel evaluation metric with exact counts/groups and trace mild-blur
+  production rejection separately from ground-truth coordinate scoring.
+
+- Select the packaged English PP-OCRv4 recognizer for RapidOCR `eng`/`en`/`english`,
+  fixing the previous Chinese-model selection despite English configuration.
+- Preserve raw label evidence and offer review-only Latin/Greek character suggestions
+  for unexpected scripts; add `suggested_text` to label TSV/provenance.
+- Show row/column group gaps, rotated attachments and three OCR tables in the README
+  diagnostic; include paired language and blur development probes.
+
 ## Unreleased — M19 implementation
 
 - Independent numeric, label-geometry and identifier completion states, with

@@ -7,7 +7,7 @@ expression counts.
 
 It supports explicitly configured regular or blocked PNG/JPEG heatmaps, continuous sequential or diverging
 colourbars, reviewed linear or piecewise-linear scales, and gene/sample label OCR.
-RapidOCR is the default label engine; sample labels support explicit finite angles
+RapidOCR with an English recognition model is the default label engine; sample labels support explicit finite angles
 and complete-line attachment geometry. Arbitrary-angle identifiers require review.
 Automation reports numeric completion separately from label review and can retain
 positional numeric results. Linear OCR ticks use only their measured calibration
@@ -33,7 +33,18 @@ scale and label regions using the [usage guide](docs/usage.md).
 Compression, repeated colours, saturation and unreadable labels can make recovery
 ambiguous. Unsupported or unreliable values receive flags or NaN. Inspect the
 quality report and every identifier; OCR confidence does not verify gene identity.
-Numeric tick OCR uses Tesseract and requires its additional installation.
+Numeric tick OCR now also defaults to bundled English RapidOCR. Tesseract is an
+optional fallback for other language packs and legacy comparisons.
+RapidOCR can read all five ticks in the inspected publication with padded crops;
+see the [OCR/blur diagnosis and tuning experiment](benchmarks/ocr-review/README.md)
+for current failures, the endpoint-crop fix and numeric-engine comparisons.
+
+![Decoder view: blocked cells, rotated sample labels, attachment points, and three OCR tables](docs/images/recognition-latest.png)
+
+This [reproducible synthetic example](examples/diagnostic/README.md) uses supplied
+regions/counts and a +30° sample angle. The overlay shows resolved cells and the
+row-group and column-group gaps; tables show actual row, column and colourbar OCR, including errors.
+Heuristic acceptance and high scores do not mean identifiers have been reviewed.
 
 ## Documentation
 
@@ -42,6 +53,8 @@ Numeric tick OCR uses Tesseract and requires its additional installation.
 - [Capability decisions and positional numeric results](docs/confident-automation.md)
 - [Arbitrary-angle sample labels](docs/arbitrary-angle-labels.md)
 - [Blocked grid configuration](docs/blocked-grids.md)
+- [OCR language and identifier character policy](docs/ocr-language.md)
+- [Grid tolerance and mild-blur diagnosis](docs/grid-tolerance.md)
 - [Scale calibration](docs/nonlinear-calibration.md)
 - [Worked examples](examples/README.md)
 - [Validation evidence and limitations](benchmarks/README.md)

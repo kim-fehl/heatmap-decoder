@@ -8,7 +8,9 @@ been measured and where the decoder abstains.
 | Task | Guide |
 |---|---|
 | Configure segments, gaps and group boundaries | [Blocked grids](blocked-grids.md) |
+| Understand coordinate tolerance and blur rejection | [Grid tolerance](grid-tolerance.md) |
 | Configure extraction and review identifiers | [Usage](usage.md) |
+| Select an OCR language and review unexpected characters | [OCR languages](ocr-language.md) |
 | Propose regions/counts and review automation decisions | [Automation](automation.md) |
 | Review colourbar ticks | [Legend review](legend.md) |
 | Choose a reviewed numeric model and inspect gradients | [Calibration](nonlinear-calibration.md) |

@@ -86,7 +86,10 @@ def field_fixture(orientation, side, competing=False):
         colourbar_bbox=bbox,
         colourbar_orientation=orientation,
         legend=LegendOptions(
-            align_tick_fields=True, crop_padding_pixels=2, horizontal_search_pixels=128
+            ocr={"engine": "tesseract"},
+            align_tick_fields=True,
+            crop_padding_pixels=2,
+            horizontal_search_pixels=128,
         ),
     )
     pixels = np.array(image)
@@ -322,3 +325,33 @@ def test_extra_right_padding_is_bounded_and_row_only():
         OCRLabelSource(
             source="ocr", bbox=(0, 0, 20, 20), recognition="sparse", crop_right_padding_pixels=1
         )
+
+
+@pytest.mark.parametrize("orientation", ["horizontal", "vertical"])
+def test_endpoint_fields_include_sign_and_glyphs_beyond_both_bar_bounds(orientation):
+    image = Image.new("RGB", (300, 260), "white")
+    draw = ImageDraw.Draw(image)
+    draw.rectangle((30, 30, 229, 39), fill=(80, 110, 130))
+    for position in (30, 130, 229):
+        draw.rectangle((position, 40, position + 1, 48), fill="black")
+        draw.rectangle((position - 4, 60, position + 4, 80), fill="black")
+    draw.rectangle((17, 70, 22, 72), fill="black")
+    bbox = (30, 30, 230, 40)
+    side = "below"
+    if orientation == "vertical":
+        image = image.transpose(Image.Transpose.TRANSPOSE)
+        bbox = (30, 30, 40, 230)
+        side = "right"
+    config = LegendConfig(
+        colourbar_bbox=bbox,
+        colourbar_orientation=orientation,
+        legend={"align_tick_fields": True, "crop_padding_pixels": 2},
+    )
+    pixels = np.asarray(image)
+    region = dict(search_regions(pixels, config))[side]
+    strokes = stroke_ticks(pixels, config, side, region)
+    fields, evidence = aligned_tick_fields(pixels, config, side, region, strokes)
+    assert len(fields) == 3 and evidence["reason"] is None
+    axial = 0 if orientation == "horizontal" else 1
+    assert fields[30.5][axial] <= 17
+    assert fields[229.5][axial + 2] >= 234

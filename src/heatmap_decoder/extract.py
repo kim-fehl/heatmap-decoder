@@ -14,6 +14,7 @@ from .calibration import match_with_quality, scale_values
 from .geometry import axis_slots, validate_geometry, validate_grid_geometry
 from .labels import (
     CropTransform,
+    apply_character_policy,
     apply_review,
     assign_candidates,
     crop_label_region,
@@ -397,7 +398,7 @@ def extract_labels(
             )
     return LabelExtractionResult(
         config,
-        tuple(axes),
+        tuple(apply_character_policy(axis, config) for axis in axes),
         tuple(runs),
         slot_ocr_runs=tuple(slot_runs),
         skipped_ocr_attempts=tuple(skipped),

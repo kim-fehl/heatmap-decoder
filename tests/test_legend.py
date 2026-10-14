@@ -308,7 +308,11 @@ def test_stroke_localisation_and_numeric_adapter_on_all_sides(monkeypatch, orien
 
 
 def test_ambiguous_and_misleading_text_retained_without_scale_guess():
-    config = LegendConfig(colourbar_bbox=(100, 50, 114, 250), colourbar_orientation="vertical")
+    config = LegendConfig(
+        colourbar_bbox=(100, 50, 114, 250),
+        colourbar_orientation="vertical",
+        legend={"ocr": {"engine": "tesseract"}},
+    )
     region = (114, 36, 210, 264)
     strokes = (LegendTick(index=0, side="right", position=100, position_source="stroke"),)
     # Original pixel boxes after factor 3: two different numbers at one stroke.
@@ -628,7 +632,11 @@ def test_targeted_ocr_calls_and_tick_count_are_bounded(monkeypatch):
 
 
 def test_high_confidence_clipped_numeric_text_remains_unresolved():
-    config = LegendConfig(colourbar_bbox=(100, 50, 114, 250), colourbar_orientation="vertical")
+    config = LegendConfig(
+        colourbar_bbox=(100, 50, 114, 250),
+        colourbar_orientation="vertical",
+        legend={"ocr": {"engine": "tesseract"}},
+    )
     region = (114, 36, 178, 264)
     stroke = LegendTick(index=0, side="right", position=100, position_source="stroke")
     token = OCRToken("0.003", (6, 168, 192, 216), 99)

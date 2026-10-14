@@ -5,6 +5,8 @@ Geometry cannot establish biological identity. All evidence survives assignment.
 """
 
 import math
+import string
+import unicodedata
 from collections import Counter
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, replace
@@ -28,6 +30,56 @@ from .models import (
     TextBox,
     normalise_text_angle,
 )
+
+
+def filter_identifier_characters(text: str) -> str:
+    """Keep Latin/Greek letters, numbers, punctuation and spaces; never guess text."""
+    kept = []
+    letter_base = False
+    for character in text:
+        category = unicodedata.category(character)
+        name = unicodedata.name(character, "")
+        letter = category.startswith("L") and (
+            "LATIN" in name or "GREEK" in name or character == "µ"
+        )
+        allowed = (
+            letter
+            or category in {"Nd", "No"}
+            or category.startswith("P")
+            or character in string.punctuation
+            or character in " \t\r\n"
+            or (category.startswith("M") and letter_base)
+        )
+        if allowed:
+            kept.append(character)
+        if not category.startswith("M"):
+            letter_base = letter
+    return "".join(kept)
+
+
+def apply_character_policy(axis: AxisLabelResults, config: GridConfig) -> AxisLabelResults:
+    """Unexpected scripts remain raw evidence; stripped suggestions require review."""
+    if config.labels is None or config.labels.character_policy == "unrestricted":
+        return axis
+    slots = []
+    for slot in axis.slots:
+        if slot.source != "ocr" or slot.raw_text is None:
+            slots.append(slot)
+            continue
+        cleaned = filter_identifier_characters(slot.raw_text)
+        if cleaned == slot.raw_text:
+            slots.append(slot)
+            continue
+        slots.append(
+            replace(
+                slot,
+                final_text=None,
+                suggested_text=cleaned.strip() or None,
+                status="unreviewed" if slot.status == "accepted" else slot.status,
+                issues=tuple(dict.fromkeys((*slot.issues, "unexpected_label_characters"))),
+            )
+        )
+    return replace(axis, slots=tuple(slots))
 
 
 def _validate_box(box: TextBox) -> None:

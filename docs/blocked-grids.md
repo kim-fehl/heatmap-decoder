@@ -21,8 +21,10 @@ outer whitespace. Segments must be finite, ordered, non-overlapping, in bounds,
 and have strictly positive integer counts. Touching segments are allowed and
 retain group metadata. Explicit geometry may use unequal pitches.
 
-Both axes may be segmented. Gaps never become matrix cells. Global indices follow
-displayed row/column order; provenance retains segment-local indices. The original
+Both axes may be segmented. Row gaps can represent gene groups; column gaps can
+represent sample groups. The [README diagnostic example](../examples/diagnostic/README.md)
+shows both, with a +30° sample-label rotation. Gaps never become matrix cells.
+Global indices follow displayed row/column order; provenance retains segment-local indices. The original
 image is sampled inside each cell interval, without deleting/rescaling gap pixels.
 Each cell must span at least one pixel and retain a pixel centre after the sampling
 inset. Insufficient resolution is an error. Default central sampling excludes thin

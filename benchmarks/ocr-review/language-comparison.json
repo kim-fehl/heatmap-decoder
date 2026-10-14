@@ -1,0 +1,949 @@
+{
+  "scope": "Paired inspected development figures; not held-out validation",
+  "cases": [
+    {
+      "name": "diagnostic",
+      "input": "examples/diagnostic/figure.png",
+      "runs": [
+        {
+          "language": "chinese",
+          "axes": [
+            {
+              "axis": "rows",
+              "exact": 2,
+              "total": 4,
+              "records": [
+                {
+                  "index": 0,
+                  "raw": "\u6771BRCA1",
+                  "expected": "BRCA1",
+                  "score": 84.92667923370996,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 1,
+                  "raw": "TP53",
+                  "expected": "TP53",
+                  "score": 92.47516840696335,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 2,
+                  "raw": "EGFR",
+                  "expected": "EGFR",
+                  "score": 99.64976906776428,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 3,
+                  "raw": "\u6771MYC",
+                  "expected": "MYC",
+                  "score": 79.97928634285927,
+                  "status": "low_confidence",
+                  "issues": []
+                }
+              ]
+            },
+            {
+              "axis": "columns",
+              "exact": 0,
+              "total": 4,
+              "records": [
+                {
+                  "index": 0,
+                  "raw": "Sample_1long51",
+                  "expected": "Sample_1 long 51",
+                  "score": 97.49572362218585,
+                  "status": "unreviewed",
+                  "issues": [
+                    "identifier_review_required"
+                  ]
+                },
+                {
+                  "index": 1,
+                  "raw": "Sample_2long51",
+                  "expected": "Sample_2 long 51",
+                  "score": 99.31042875562396,
+                  "status": "unreviewed",
+                  "issues": [
+                    "identifier_review_required"
+                  ]
+                },
+                {
+                  "index": 2,
+                  "raw": "Sample_3long51",
+                  "expected": "Sample_3 long 51",
+                  "score": 99.44069257804325,
+                  "status": "unreviewed",
+                  "issues": [
+                    "identifier_review_required"
+                  ]
+                },
+                {
+                  "index": 3,
+                  "raw": "Sample_4long51",
+                  "expected": "Sample_4 long 51",
+                  "score": 99.43962395191193,
+                  "status": "unreviewed",
+                  "issues": [
+                    "identifier_review_required"
+                  ]
+                }
+              ]
+            }
+          ],
+          "models": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ]
+        },
+        {
+          "language": "eng",
+          "axes": [
+            {
+              "axis": "rows",
+              "exact": 3,
+              "total": 4,
+              "records": [
+                {
+                  "index": 0,
+                  "raw": "BRCA1",
+                  "expected": "BRCA1",
+                  "score": 74.63609874248505,
+                  "status": "low_confidence",
+                  "issues": []
+                },
+                {
+                  "index": 1,
+                  "raw": "P53",
+                  "expected": "TP53",
+                  "score": 59.42424237728119,
+                  "status": "low_confidence",
+                  "issues": []
+                },
+                {
+                  "index": 2,
+                  "raw": "EGFR",
+                  "expected": "EGFR",
+                  "score": 74.34606030583382,
+                  "status": "low_confidence",
+                  "issues": []
+                },
+                {
+                  "index": 3,
+                  "raw": "MYC",
+                  "expected": "MYC",
+                  "score": 65.31220450997353,
+                  "status": "low_confidence",
+                  "issues": []
+                }
+              ]
+            },
+            {
+              "axis": "columns",
+              "exact": 4,
+              "total": 4,
+              "records": [
+                {
+                  "index": 0,
+                  "raw": "Sample_1 long 51",
+                  "expected": "Sample_1 long 51",
+                  "score": 96.06197774410248,
+                  "status": "unreviewed",
+                  "issues": [
+                    "identifier_review_required"
+                  ]
+                },
+                {
+                  "index": 1,
+                  "raw": "Sample_2 long 51",
+                  "expected": "Sample_2 long 51",
+                  "score": 95.17270438373089,
+                  "status": "unreviewed",
+                  "issues": [
+                    "identifier_review_required"
+                  ]
+                },
+                {
+                  "index": 2,
+                  "raw": "Sample_3 long 51",
+                  "expected": "Sample_3 long 51",
+                  "score": 95.59766985476017,
+                  "status": "unreviewed",
+                  "issues": [
+                    "identifier_review_required"
+                  ]
+                },
+                {
+                  "index": 3,
+                  "raw": "Sample_4 long 51",
+                  "expected": "Sample_4 long 51",
+                  "score": 94.97511610388756,
+                  "status": "unreviewed",
+                  "issues": [
+                    "identifier_review_required"
+                  ]
+                }
+              ]
+            }
+          ],
+          "models": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "publication",
+      "input": "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg",
+      "runs": [
+        {
+          "language": "chinese",
+          "axes": [
+            {
+              "axis": "rows",
+              "exact": 26,
+              "total": 33,
+              "records": [
+                {
+                  "index": 0,
+                  "raw": "EsTLR3",
+                  "expected": "EsTLR3",
+                  "score": 95.50530314445496,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 1,
+                  "raw": "EsPGRP5",
+                  "expected": "EsPGRP5",
+                  "score": 94.26579049655369,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 2,
+                  "raw": "LYSM3",
+                  "expected": "LYSM3",
+                  "score": 98.11591744422913,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 3,
+                  "raw": "IKBL",
+                  "expected": "IKBL",
+                  "score": 93.6830222606659,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 4,
+                  "raw": "KBRS1",
+                  "expected": "KBRS1",
+                  "score": 96.84196949005127,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 5,
+                  "raw": "HSP9O",
+                  "expected": "HSP90",
+                  "score": 88.50788831710815,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 6,
+                  "raw": "EsRelA",
+                  "expected": "EsRelA",
+                  "score": 95.83970010280609,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 7,
+                  "raw": "EsSOD",
+                  "expected": "EsSOD",
+                  "score": 96.28423810005188,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 8,
+                  "raw": "TRAF3",
+                  "expected": "TRAF3",
+                  "score": 99.35209035873413,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 9,
+                  "raw": "EslkBa",
+                  "expected": "EsI\u03baB\u03b1",
+                  "score": 88.4187400341034,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 10,
+                  "raw": "TBK1",
+                  "expected": "TBK1",
+                  "score": 96.71405255794525,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 11,
+                  "raw": "EslKKy.",
+                  "expected": "EsIKK\u03b3",
+                  "score": 81.28001349312919,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 12,
+                  "raw": "EsPGRP2",
+                  "expected": "EsPGRP2",
+                  "score": 98.74458057539803,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 13,
+                  "raw": "B",
+                  "expected": "I\u03baB\u03b6",
+                  "score": 88.09553980827332,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 14,
+                  "raw": "IKKB",
+                  "expected": "IKK\u03b2",
+                  "score": 81.03096336126328,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 15,
+                  "raw": "EsPGRP3",
+                  "expected": "EsPGRP3",
+                  "score": 97.95443926538739,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 16,
+                  "raw": "TOLIP",
+                  "expected": "TOLIP",
+                  "score": 97.50279188156128,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 17,
+                  "raw": "KCK",
+                  "expected": "IKK\u03b1",
+                  "score": 67.19588935375214,
+                  "status": "low_confidence",
+                  "issues": []
+                },
+                {
+                  "index": 18,
+                  "raw": "HSP71",
+                  "expected": "HSP71",
+                  "score": 99.4387698173523,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 19,
+                  "raw": "MYD88",
+                  "expected": "MYD88",
+                  "score": 90.1156210899353,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 20,
+                  "raw": "EsGalectin1",
+                  "expected": "EsGalectin1",
+                  "score": 89.40370787273754,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 21,
+                  "raw": "IRAK42",
+                  "expected": "IRAK4_2",
+                  "score": 97.06654449303946,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 22,
+                  "raw": "EsTRAF6",
+                  "expected": "EsTRAF6",
+                  "score": 97.68782683781215,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 23,
+                  "raw": "TRAF4",
+                  "expected": "TRAF4",
+                  "score": 97.69204497337341,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 24,
+                  "raw": "TAB3",
+                  "expected": "TAB3",
+                  "score": 98.61867725849152,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 25,
+                  "raw": "EsTLR4",
+                  "expected": "EsTLR4",
+                  "score": 96.38327956199646,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 26,
+                  "raw": "NLRC3",
+                  "expected": "NLRC3",
+                  "score": 97.46772408485413,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 27,
+                  "raw": "EsTLR1",
+                  "expected": "EsTLR1",
+                  "score": 90.95443189144135,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 28,
+                  "raw": "TRAF2",
+                  "expected": "TRAF2",
+                  "score": 96.87734365463257,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 29,
+                  "raw": "TAB1",
+                  "expected": "TAB1",
+                  "score": 95.88181674480438,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 30,
+                  "raw": "TAK1",
+                  "expected": "TAK1",
+                  "score": 93.43917071819305,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 31,
+                  "raw": "EsIRAK4",
+                  "expected": "EsIRAK4",
+                  "score": 89.16606647627694,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 32,
+                  "raw": "EsTLR2",
+                  "expected": "EsTLR2",
+                  "score": 97.19408651192984,
+                  "status": "accepted",
+                  "issues": []
+                }
+              ]
+            },
+            {
+              "axis": "columns",
+              "exact": 8,
+              "total": 8,
+              "records": [
+                {
+                  "index": 0,
+                  "raw": "2",
+                  "expected": "2",
+                  "score": 99.59380626678467,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 1,
+                  "raw": "6",
+                  "expected": "6",
+                  "score": 94.87184286117554,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 2,
+                  "raw": "8",
+                  "expected": "8",
+                  "score": 96.86540365219116,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 3,
+                  "raw": "10",
+                  "expected": "10",
+                  "score": 99.72229599952698,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 4,
+                  "raw": "12",
+                  "expected": "12",
+                  "score": 99.85297918319702,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 5,
+                  "raw": "16",
+                  "expected": "16",
+                  "score": 99.80575442314148,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 6,
+                  "raw": "18",
+                  "expected": "18",
+                  "score": 99.54301118850708,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 7,
+                  "raw": "24",
+                  "expected": "24",
+                  "score": 99.94652569293976,
+                  "status": "accepted",
+                  "issues": []
+                }
+              ]
+            }
+          ],
+          "models": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_PP-OCRv4_rec_infer.onnx",
+              "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ]
+          ]
+        },
+        {
+          "language": "eng",
+          "axes": [
+            {
+              "axis": "rows",
+              "exact": 26,
+              "total": 33,
+              "records": [
+                {
+                  "index": 0,
+                  "raw": "EsTLR3",
+                  "expected": "EsTLR3",
+                  "score": 96.82912230491638,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 1,
+                  "raw": "EsPGRP5",
+                  "expected": "EsPGRP5",
+                  "score": 96.32781658853803,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 2,
+                  "raw": "LYSM3",
+                  "expected": "LYSM3",
+                  "score": 95.5957543849945,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 3,
+                  "raw": "IKBL",
+                  "expected": "IKBL",
+                  "score": 86.93824708461761,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 4,
+                  "raw": "KBRS1",
+                  "expected": "KBRS1",
+                  "score": 93.88689398765564,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 5,
+                  "raw": "HSP90",
+                  "expected": "HSP90",
+                  "score": 90.9111225605011,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 6,
+                  "raw": "EsRelA",
+                  "expected": "EsRelA",
+                  "score": 88.48510682582855,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 7,
+                  "raw": "EsSOD",
+                  "expected": "EsSOD",
+                  "score": 93.03951859474182,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 8,
+                  "raw": "TRAF3",
+                  "expected": "TRAF3",
+                  "score": 96.92131638526917,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 9,
+                  "raw": "EslkBa",
+                  "expected": "EsI\u03baB\u03b1",
+                  "score": 76.29688084125519,
+                  "status": "low_confidence",
+                  "issues": []
+                },
+                {
+                  "index": 10,
+                  "raw": "TBK1",
+                  "expected": "TBK1",
+                  "score": 85.82074642181396,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 11,
+                  "raw": "EsIKKy.",
+                  "expected": "EsIKK\u03b3",
+                  "score": 78.54638993740082,
+                  "status": "low_confidence",
+                  "issues": []
+                },
+                {
+                  "index": 12,
+                  "raw": "EsPGRP2",
+                  "expected": "EsPGRP2",
+                  "score": 97.793790272304,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 13,
+                  "raw": "B",
+                  "expected": "I\u03baB\u03b6",
+                  "score": 85.3151798248291,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 14,
+                  "raw": "IKK",
+                  "expected": "IKK\u03b2",
+                  "score": 79.94228800137839,
+                  "status": "low_confidence",
+                  "issues": []
+                },
+                {
+                  "index": 15,
+                  "raw": "EsPGRP3",
+                  "expected": "EsPGRP3",
+                  "score": 96.81912405150277,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 16,
+                  "raw": "TOLIP",
+                  "expected": "TOLIP",
+                  "score": 93.89106512069702,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 17,
+                  "raw": "IKKE",
+                  "expected": "IKK\u03b1",
+                  "score": 67.1651765704155,
+                  "status": "low_confidence",
+                  "issues": []
+                },
+                {
+                  "index": 18,
+                  "raw": "HSP71",
+                  "expected": "HSP71",
+                  "score": 96.20709776878357,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 19,
+                  "raw": "MYD88",
+                  "expected": "MYD88",
+                  "score": 95.32399415969849,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 20,
+                  "raw": "EsGalectin1",
+                  "expected": "EsGalectin1",
+                  "score": 96.27784111283042,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 21,
+                  "raw": "IRAK42",
+                  "expected": "IRAK4_2",
+                  "score": 94.33384935061136,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 22,
+                  "raw": "EsTRAF6",
+                  "expected": "EsTRAF6",
+                  "score": 93.97100039890834,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 23,
+                  "raw": "TRAF4",
+                  "expected": "TRAF4",
+                  "score": 88.50445628166199,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 24,
+                  "raw": "TAB3",
+                  "expected": "TAB3",
+                  "score": 96.87018990516663,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 25,
+                  "raw": "EsTLR4",
+                  "expected": "EsTLR4",
+                  "score": 90.43068587779999,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 26,
+                  "raw": "NLRC3",
+                  "expected": "NLRC3",
+                  "score": 91.48483633995056,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 27,
+                  "raw": "EsTLR1",
+                  "expected": "EsTLR1",
+                  "score": 89.76447184880575,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 28,
+                  "raw": "TRAF",
+                  "expected": "TRAF2",
+                  "score": 93.78099292516708,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 29,
+                  "raw": "TAB1",
+                  "expected": "TAB1",
+                  "score": 77.12935656309128,
+                  "status": "low_confidence",
+                  "issues": []
+                },
+                {
+                  "index": 30,
+                  "raw": "TAK1",
+                  "expected": "TAK1",
+                  "score": 90.68534672260284,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 31,
+                  "raw": "EsIRAK4",
+                  "expected": "EsIRAK4",
+                  "score": 87.32874393463135,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 32,
+                  "raw": "EsTLR2",
+                  "expected": "EsTLR2",
+                  "score": 95.99040647347769,
+                  "status": "accepted",
+                  "issues": []
+                }
+              ]
+            },
+            {
+              "axis": "columns",
+              "exact": 8,
+              "total": 8,
+              "records": [
+                {
+                  "index": 0,
+                  "raw": "2",
+                  "expected": "2",
+                  "score": 99.68907237052917,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 1,
+                  "raw": "6",
+                  "expected": "6",
+                  "score": 99.32235479354858,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 2,
+                  "raw": "8",
+                  "expected": "8",
+                  "score": 99.37491416931152,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 3,
+                  "raw": "10",
+                  "expected": "10",
+                  "score": 99.61166083812714,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 4,
+                  "raw": "12",
+                  "expected": "12",
+                  "score": 99.87396895885468,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 5,
+                  "raw": "16",
+                  "expected": "16",
+                  "score": 99.83003437519073,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 6,
+                  "raw": "18",
+                  "expected": "18",
+                  "score": 99.75477159023285,
+                  "status": "accepted",
+                  "issues": []
+                },
+                {
+                  "index": 7,
+                  "raw": "24",
+                  "expected": "24",
+                  "score": 99.7746616601944,
+                  "status": "accepted",
+                  "issues": []
+                }
+              ]
+            }
+          ],
+          "models": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

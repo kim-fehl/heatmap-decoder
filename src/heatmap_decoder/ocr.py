@@ -72,8 +72,6 @@ def recognize(
     if mode not in {"localisation", "numeric_line", "text_line"}:
         raise ValueError("unsupported OCR mode")
     if settings.engine == "rapidocr":
-        if mode == "numeric_line":
-            raise ValueError("constrained numeric OCR requires engine='tesseract'")
         from .rapid_ocr import recognize_rapid
 
         return recognize_rapid(image, settings, mode=mode, timeout_seconds=timeout_seconds)

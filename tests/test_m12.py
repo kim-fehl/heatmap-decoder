@@ -79,8 +79,13 @@ def test_split_and_derivatives_are_fixed_by_base():
     assert prereg["ranges"] == [[-4, 4], [-3, 3], [-2, 2], [-4, 2], [-3, 4]]
 
 
-def test_nearby_horizontal_tick_words_do_not_merge():
-    config = LegendConfig(colourbar_bbox=(20, 30, 91, 46), colourbar_orientation="horizontal")
+@pytest.mark.parametrize("factor", [1, 3])
+def test_nearby_horizontal_tick_words_do_not_merge(factor):
+    config = LegendConfig(
+        colourbar_bbox=(20, 30, 91, 46),
+        colourbar_orientation="horizontal",
+        legend={"ocr": {"upscale_factor": factor}},
+    )
     strokes = tuple(
         LegendTick(index=i, side="below", position=p, position_source="stroke")
         for i, p in enumerate((20, 55, 90))
@@ -88,7 +93,9 @@ def test_nearby_horizontal_tick_words_do_not_merge():
     # Adjacent labels meet the old line-join heuristic but belong to distinct strokes.
     run = OCRRun(
         tuple(
-            OCRToken(text, (3 * (p - 7) - 9, 75, 3 * (p - 7) + 9, 120), 95, (1, 1, 1))
+            OCRToken(
+                text, (factor * (p - 10), 25 * factor, factor * (p - 4), 40 * factor), 95, (1, 1, 1)
+            )
             for text, p in zip(("-4", "0", "2"), (20, 55, 90), strict=True)
         ),
         "mock",

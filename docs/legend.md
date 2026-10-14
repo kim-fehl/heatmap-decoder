@@ -8,7 +8,7 @@ Legend-only inspection needs no heatmap/counts. Label-only work needs no legend.
 ## Inspect before extraction
 
 ```bash
-uv run --extra ocr heatmap-decoder legend examples/m11/figure.png \
+uv run heatmap-decoder legend examples/m11/figure.png \
   --config examples/m11/legend.json --out work/tick-review
 # Expected exit 6. Open the overlay and review every proposed tick.
 ```
@@ -40,17 +40,24 @@ upscale/confidence, association offset and endpoint tolerance:
     "max_axis_offset_pixels": 6,
     "endpoint_tolerance_pixels": 2,
     "decimal_separator": ".",
-    "ocr": {"language": "eng", "upscale_factor": 3, "min_confidence": 80}
+    "ocr": {"engine": "rapidocr", "language": "eng", "upscale_factor": 1, "min_confidence": 80}
   }
 }
 ```
 
-The OCR adapter uses sparse localisation (PSM 11), then one bounded single-line
-pass (PSM 7) per unambiguous measured stroke. Localised text is associated
+The default adapter uses RapidOCR detection, then one bounded whole-field
+recognition pass per unambiguous measured stroke, with two pixels of white padding.
+A strict number parser follows recognition; the model decoder is unconstrained.
+Selecting `legend.ocr.engine="tesseract"` uses legacy PSM 11/7 and its numeric
+character whitelist, with the optional wrapper/engine installation. Localised text is associated
 one-to-one; ambiguous collisions are retained, not resolved by confidence. Only
 independently detected tick-stroke pixels are masked in the OCR copy so they do
 not become minus signs. Observed glyphs are not corrected. Raw runs, mode, crop
 boxes, stroke masks, versions and token membership stay in provenance.
+
+Source-field boxes are input bounds rather than detected glyph bounds; independent
+localisation/strokes provide position evidence. Shared aligned fields include full
+endpoint glyphs and signs beyond the axial bar limits, within the search ROI.
 
 Text centres are a weaker fallback and cannot qualify for development acceptance.
 Clearly outside-span titles/captions are recorded as excluded evidence. Unparsed
@@ -79,7 +86,7 @@ positions/values, strict monotonicity and a valid linear fit. Confidence never
 chooses which observation to drop. Invalid/mismatched reviews stop before matrices.
 
 ```bash
-uv run --extra ocr heatmap-decoder legend figure.png --config legend.json \
+uv run heatmap-decoder legend figure.png --config legend.json \
   --review reviewed_ticks.tsv --out work/confirmed-legend
 uv run --extra ocr heatmap-decoder extract figure.png --config extraction.json \
   --legend-review reviewed_ticks.tsv --out results

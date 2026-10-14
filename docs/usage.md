@@ -113,16 +113,19 @@ The colourbar's central sampling strip must be fully valid or extraction fails.
 ## Labels, coordinates and review
 
 Gene/sample OCR defaults to **RapidOCR**, installed with the main package,
-including its local PP-OCRv4 models. It uses native-size grayscale input by
-default (`labels.ocr.upscale_factor=1`), with no added white border. No image data
+including the local **English PP-OCRv4 recognizer** (`language="eng"`). It uses
+native-size grayscale input by default (`labels.ocr.upscale_factor=1`), with no added white border. No image data
 is sent to an external OCR service. Explicit slot recognition uses each complete
 field; sparse recognition uses RapidOCR's detector. Quarter-turn correction and
-fixed slot ownership still apply.
+fixed slot ownership still apply. The [language and character policy guide](ocr-language.md)
+explains model selection, Greek identifiers and auditable cleaned suggestions.
 
 To select the legacy label engine, set `labels.ocr.engine` to `"tesseract"`.
-Tesseract defaults to 3× enlargement unless explicitly overridden. Colour-bar
-localisation and constrained numeric ticks continue to use Tesseract. For these
-paths, install the optional wrapper with `uv sync --locked --extra ocr` or
+Tesseract defaults to 3× enlargement unless explicitly overridden. Colourbar OCR
+also defaults to English RapidOCR, with native-size fields and two pixels of white
+padding. Its raw strings pass the strict numeric parser; it has no decoder whitelist.
+To use the legacy numeric engine, set `legend.ocr.engine="tesseract"` (or
+`scale.legend.ocr.engine` in an extraction config). For Tesseract paths, install the optional wrapper with `uv sync --locked --extra ocr` or
 `python -m pip install -e '.[ocr]'`, and install the engine separately:
 
 - Debian/Ubuntu: `sudo apt-get install tesseract-ocr tesseract-ocr-eng`.
@@ -143,10 +146,12 @@ Use the original raster at its actual pixel size. Record the heatmap's outer gri
 bounds, row/column counts, and a separate rectangle tightly containing each axis's
 complete labels with padding. The coordinate origin is the upper-left corner;
 convert inclusive endpoint readouts to exclusive right/bottom bounds. The image
-must have a regular grid. Regions may be left/right for rows and above/below for
-columns. Rows must be upright single-line text. Columns also support explicit
+may have a regular or explicitly [blocked grid](blocked-grids.md). Regions may be
+left/right for rows and above/below for columns. Rows must be upright single-line text. Columns also support explicit
 ±90° quarter turns; see [rotation signs and examples](rotated-labels.md).
-Arbitrary angles, dendrogram reconstruction and semantic axis inference remain unsupported. Reviewable ROI proposals and M10 development decisions
+Other finite column angles use [complete-line geometry](arbitrary-angle-labels.md)
+and require identifier review. Dendrogram reconstruction and semantic axis inference
+remain unsupported. Reviewable ROI proposals and M10 development decisions
 are described below; they do not establish identifier correctness.
 
 Add this `labels` object to a complete numeric configuration (the regions below

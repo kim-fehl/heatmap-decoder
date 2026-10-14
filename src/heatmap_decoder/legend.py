@@ -28,7 +28,7 @@ from .models import (
 )
 from .sampling import validate_rgb
 
-LEGEND_POLICY_VERSION = "m16-numeric-signs.1"
+LEGEND_POLICY_VERSION = "rapidocr-numeric-fields.1"
 Side = Literal["left", "right", "above", "below"]
 
 
@@ -42,7 +42,17 @@ def legend_policy_snapshot() -> dict[str, object]:
         "maximum_stroke_width_pixels": 4,
         "maximum_numeric_text_length": 256,
         "maximum_localised_text_tokens": 256,
-        "ocr_modes": ["--oem 1 --psm 11", "--oem 1 --psm 7"],
+        "numeric_engine_default": "rapidocr",
+        "ocr_modes": [
+            "rapidocr-detect-recognize",
+            "rapidocr-recognize-numeric-field-unconstrained",
+            "--oem 1 --psm 11",
+            "--oem 1 --psm 7",
+        ],
+        "numeric_character_constraints": {
+            "rapidocr": "unconstrained model followed by strict numeric grammar",
+            "tesseract": "targeted character whitelist followed by strict numeric grammar",
+        },
         "maximum_fit_value_residual_fraction": 0.01,
         "maximum_fit_position_residual_pixels": 2.0,
         "maximum_fit_condition_number": 1000,
@@ -270,7 +280,13 @@ def _ocr_crop(
         timeout_seconds=min(30, max(0.001, budget.deadline - time.monotonic())),
         numeric_characters_only=numeric_characters_only,
     )
-    run = replace(run, white_padding_pixels=white)
+    run = replace(
+        run,
+        white_padding_pixels=white,
+        tokens=tuple(replace(token, bbox=transform.to_crop(box)) for token in run.tokens)
+        if run.geometry_kind == "source_field"
+        else run.tokens,
+    )
     return LegendOCRRecord(
         side=side, crop_bbox=box, purpose=purpose, run=run, masked_stroke_boxes=masks
     )
@@ -492,8 +508,10 @@ def _numeric_alternative(
             max(w.bbox[2] for w in original),
             max(w.bbox[3] for w in original),
         )
-        if original
+        if original and record.run.geometry_kind != "source_field"
         else None,
+        "geometry_kind": record.run.geometry_kind,
+        "source_field_bbox": box if record.run.geometry_kind == "source_field" else None,
     }
 
 
@@ -592,14 +610,18 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                         ),
                     )
                     text_box = (
-                        (
-                            min(t.bbox[0] for t in original_words),
-                            min(t.bbox[1] for t in original_words),
-                            max(t.bbox[2] for t in original_words),
-                            max(t.bbox[3] for t in original_words),
+                        tick.text_bbox
+                        if numeric.run.geometry_kind == "source_field"
+                        else (
+                            (
+                                min(t.bbox[0] for t in original_words),
+                                min(t.bbox[1] for t in original_words),
+                                max(t.bbox[2] for t in original_words),
+                                max(t.bbox[3] for t in original_words),
+                            )
+                            if original_words
+                            else tick.text_bbox
                         )
-                        if original_words
-                        else tick.text_bbox
                     )
                     text = " ".join(t.text.strip() for t in words)
                     parsed = parse_numeric_tick(text, config.legend.decimal_separator)
@@ -681,8 +703,10 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                         alternatives.append(
                             _numeric_alternative(config, tick.ocr_bbox, retry, len(records) - 1)
                         )
-                    if config.legend.retry_unconstrained_numeric and not any(
-                        a.get("parsed_value") is not None for a in alternatives
+                    if (
+                        config.legend.retry_unconstrained_numeric
+                        and config.legend.ocr.engine == "tesseract"
+                        and not any(a.get("parsed_value") is not None for a in alternatives)
                     ):
                         # The engine's whitelist can erase a readable glyph (e.g. 0).
                         # Preserve a bounded raw comparison; its parser stays numeric-only.

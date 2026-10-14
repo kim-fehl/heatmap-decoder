@@ -53,7 +53,11 @@ def request(c, *, ocr=False):
         colourbar_end_value=None if ocr else c.colourbar_end_value,
     )
     return AutomationRequest(
-        hints=hints, numeric_only=True, scale=ScaleConfig(source="ocr_ticks") if ocr else None
+        hints=hints,
+        numeric_only=True,
+        scale=ScaleConfig(source="ocr_ticks", legend={"ocr": {"engine": "tesseract"}})
+        if ocr
+        else None,
     )
 
 

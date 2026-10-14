@@ -6,7 +6,7 @@ experimental numeric export after all per-image checks pass. This makes partial 
 that inferred counts or gene identities are trustworthy.
 
 ```bash
-uv sync --locked --extra ocr
+uv sync --locked
 uv run heatmap-decoder automate examples/m12/figure.png \
   --request examples/m12/request.json --out work/automatic
 ```

@@ -50,10 +50,13 @@ def aligned_tick_fields(
     if cross_end <= cross_start:
         evidence["reason"] = "no_space_beyond_strokes"
         return {}, evidence
+    # Endpoint labels can extend beyond the physical bar in either direction.
+    # Their complete glyph/sign cluster must stay inside the search ROI, not bar bounds.
+    axial_start, axial_end = region[axial], region[axial + 2]
     x0, y0, x1, y1 = (
-        (cross_start, bar[1], cross_end, bar[3])
+        (cross_start, axial_start, cross_end, axial_end)
         if vertical
-        else (bar[0], cross_start, bar[2], cross_end)
+        else (axial_start, cross_start, axial_end, cross_end)
     )
     grayscale = np.asarray(Image.fromarray(image[:, :, :3]).convert("L"))
     mask = grayscale[y0:y1, x0:x1] < 140
@@ -78,14 +81,14 @@ def aligned_tick_fields(
             "cross_band": [cross_start + a, cross_start + b],
             "glyph_gap_pixels": gap,
             "dark_luminance_threshold": 140,
-            "clusters": [[bar[axial] + int(g[0]), bar[axial] + int(g[-1]) + 1] for g in groups],
+            "clusters": [[axial_start + int(g[0]), axial_start + int(g[-1]) + 1] for g in groups],
         }
     )
     fields: dict[float, BoundingBox] = {}
     matches: dict[float, list[tuple[int, int]]] = {t.position: [] for t in relevant}
     offset = config.legend.max_axis_offset_pixels
     for group in groups:
-        first, last = bar[axial] + int(group[0]), bar[axial] + int(group[-1]) + 1
+        first, last = axial_start + int(group[0]), axial_start + int(group[-1]) + 1
         owners = [t for t in relevant if first - offset <= t.position <= last + offset]
         if len(owners) == 1:
             matches[owners[0].position].append((first, last))

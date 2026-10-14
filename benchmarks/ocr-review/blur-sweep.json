@@ -1,0 +1,290 @@
+[
+  {
+    "family": "none",
+    "seed": 291001,
+    "radius": 0,
+    "explicit": {
+      "shape": [
+        9,
+        6
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 2.467162276944792e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": true
+    },
+    "automatic_correct": true,
+    "blocker": null
+  },
+  {
+    "family": "none",
+    "seed": 291001,
+    "radius": 0.3,
+    "explicit": {
+      "shape": [
+        9,
+        6
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 2.467162276944792e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": true
+    },
+    "automatic_correct": false,
+    "blocker": "heatmap:full_grid_bounds_unverified"
+  },
+  {
+    "family": "none",
+    "seed": 291001,
+    "radius": 0.6,
+    "explicit": {
+      "shape": [
+        9,
+        6
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 2.467162276944792e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": true
+    },
+    "automatic_correct": false,
+    "blocker": "heatmap:no_validated_grid"
+  },
+  {
+    "family": "none",
+    "seed": 291001,
+    "radius": 1.0,
+    "explicit": {
+      "shape": [
+        9,
+        6
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 2.467162276944792e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": true
+    },
+    "automatic_correct": false,
+    "blocker": "heatmap:no_validated_grid"
+  },
+  {
+    "family": "horizontal",
+    "seed": 291002,
+    "radius": 0,
+    "explicit": {
+      "shape": [
+        7,
+        9
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 1.527290933346776e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": true
+    },
+    "automatic_correct": true,
+    "blocker": null
+  },
+  {
+    "family": "horizontal",
+    "seed": 291002,
+    "radius": 0.3,
+    "explicit": {
+      "shape": [
+        7,
+        9
+      ],
+      "finite_fraction": 0.9841269841269841,
+      "flagged_fraction": 0.015873015873015872,
+      "mae": 1.5519246580781757e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": false
+    },
+    "automatic_correct": false,
+    "blocker": "numeric_quality:excessive_colour_matching_flags"
+  },
+  {
+    "family": "horizontal",
+    "seed": 291002,
+    "radius": 0.6,
+    "explicit": {
+      "shape": [
+        7,
+        9
+      ],
+      "finite_fraction": 0.9841269841269841,
+      "flagged_fraction": 0.015873015873015872,
+      "mae": 1.4922352481520923e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": false
+    },
+    "automatic_correct": false,
+    "blocker": "heatmap:no_validated_grid"
+  },
+  {
+    "family": "horizontal",
+    "seed": 291002,
+    "radius": 1.0,
+    "explicit": {
+      "shape": [
+        7,
+        9
+      ],
+      "finite_fraction": 0.9523809523809523,
+      "flagged_fraction": 0.047619047619047616,
+      "mae": 1.603655480014115e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": false
+    },
+    "automatic_correct": false,
+    "blocker": "heatmap:no_validated_grid"
+  },
+  {
+    "family": "vertical",
+    "seed": 291003,
+    "radius": 0,
+    "explicit": {
+      "shape": [
+        8,
+        6
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 3.623644594262663e-17,
+      "maximum": 7.401486830834377e-17,
+      "accurate": true
+    },
+    "automatic_correct": true,
+    "blocker": null
+  },
+  {
+    "family": "vertical",
+    "seed": 291003,
+    "radius": 0.3,
+    "explicit": {
+      "shape": [
+        8,
+        6
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 3.623644594262663e-17,
+      "maximum": 7.401486830834377e-17,
+      "accurate": true
+    },
+    "automatic_correct": true,
+    "blocker": null
+  },
+  {
+    "family": "vertical",
+    "seed": 291003,
+    "radius": 0.6,
+    "explicit": {
+      "shape": [
+        8,
+        6
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 3.623644594262663e-17,
+      "maximum": 7.401486830834377e-17,
+      "accurate": true
+    },
+    "automatic_correct": false,
+    "blocker": "heatmap:no_validated_grid"
+  },
+  {
+    "family": "vertical",
+    "seed": 291003,
+    "radius": 1.0,
+    "explicit": {
+      "shape": [
+        8,
+        6
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 3.623644594262663e-17,
+      "maximum": 7.401486830834377e-17,
+      "accurate": true
+    },
+    "automatic_correct": false,
+    "blocker": "heatmap:no_validated_grid"
+  },
+  {
+    "family": "both",
+    "seed": 291004,
+    "radius": 0,
+    "explicit": {
+      "shape": [
+        6,
+        7
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 1.850371707708594e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": true
+    },
+    "automatic_correct": true,
+    "blocker": null
+  },
+  {
+    "family": "both",
+    "seed": 291004,
+    "radius": 0.3,
+    "explicit": {
+      "shape": [
+        6,
+        7
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 1.850371707708594e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": true
+    },
+    "automatic_correct": true,
+    "blocker": null
+  },
+  {
+    "family": "both",
+    "seed": 291004,
+    "radius": 0.6,
+    "explicit": {
+      "shape": [
+        6,
+        7
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 1.850371707708594e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": true
+    },
+    "automatic_correct": false,
+    "blocker": "heatmap:no_validated_grid"
+  },
+  {
+    "family": "both",
+    "seed": 291004,
+    "radius": 1.0,
+    "explicit": {
+      "shape": [
+        6,
+        7
+      ],
+      "finite_fraction": 1.0,
+      "flagged_fraction": 0.0,
+      "mae": 1.850371707708594e-17,
+      "maximum": 1.4802973661668753e-16,
+      "accurate": true
+    },
+    "automatic_correct": false,
+    "blocker": "heatmap:no_validated_grid"
+  }
+]

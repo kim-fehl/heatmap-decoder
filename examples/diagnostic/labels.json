@@ -1,0 +1,78 @@
+{
+  "heatmap_bbox": [
+    240,
+    360,
+    697,
+    497
+  ],
+  "rows": 4,
+  "columns": 4,
+  "labels": {
+    "rows": {
+      "source": "ocr",
+      "bbox": [
+        110,
+        360,
+        235,
+        497
+      ],
+      "recognition": "slots",
+      "crop_padding_pixels": 0,
+      "crop_right_padding_pixels": 0,
+      "white_padding_pixels": 0,
+      "text_rotation_degrees": 0.0,
+      "attachment_endpoint": "nearest",
+      "max_attachment_distance_pixels": 40.0
+    },
+    "columns": {
+      "source": "ocr",
+      "bbox": [
+        100,
+        20,
+        907,
+        358
+      ],
+      "recognition": "lines",
+      "crop_padding_pixels": 0,
+      "crop_right_padding_pixels": 0,
+      "white_padding_pixels": 0,
+      "text_rotation_degrees": 30.0,
+      "attachment_endpoint": "nearest",
+      "max_attachment_distance_pixels": 40.0
+    },
+    "character_policy": "latin_greek",
+    "ocr": {
+      "engine": "rapidocr",
+      "language": "eng",
+      "upscale_factor": 1,
+      "min_confidence": 80.0,
+      "high_confidence": 90.0,
+      "retry_variants": [],
+      "max_axis_offset_fraction": 0.4
+    }
+  },
+  "rows_segments": [
+    {
+      "start": 360.0,
+      "end": 420.0,
+      "count": 2
+    },
+    {
+      "start": 437.0,
+      "end": 497.0,
+      "count": 2
+    }
+  ],
+  "columns_segments": [
+    {
+      "start": 240.0,
+      "end": 460.0,
+      "count": 2
+    },
+    {
+      "start": 477.0,
+      "end": 697.0,
+      "count": 2
+    }
+  ]
+}

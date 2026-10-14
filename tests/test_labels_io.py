@@ -69,6 +69,7 @@ def test_exports_template_evidence_and_image_hash(tmp_path, fake_ocr):
         "index",
         "raw_text",
         "final_text",
+        "suggested_text",
         "confidence",
         "bbox",
         "source",

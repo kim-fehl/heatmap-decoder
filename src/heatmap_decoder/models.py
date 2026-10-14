@@ -106,6 +106,7 @@ class LabelsConfig(BaseModel):
 
     rows: LabelSource | None = None
     columns: LabelSource | None = None
+    character_policy: Literal["latin_greek", "unrestricted"] = "latin_greek"
     ocr: OCRConfig = Field(default_factory=lambda: OCRConfig(engine="rapidocr", upscale_factor=1))
 
     @field_validator("ocr", mode="before")
@@ -211,7 +212,7 @@ class ScaleAnchor(BaseModel):
 
 class LegendOptions(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
-    ocr: OCRConfig = Field(default_factory=OCRConfig)
+    ocr: OCRConfig = Field(default_factory=lambda: OCRConfig(engine="rapidocr", upscale_factor=1))
     search_pixels: Annotated[int, Field(strict=True, ge=16, le=256)] = 128
     horizontal_search_pixels: Annotated[int, Field(strict=True, ge=16, le=256)] = 64
     max_ticks: Annotated[int, Field(strict=True, ge=2, le=32)] = 16
@@ -223,6 +224,27 @@ class LegendOptions(BaseModel):
     align_tick_fields: bool = False
     retry_unconstrained_numeric: bool = False
     retry_white_padding_pixels: tuple[Annotated[int, Field(strict=True, ge=0, le=2)], ...] = ()
+
+    @field_validator("ocr", mode="before")
+    @classmethod
+    def tick_engine_defaults(cls, value: Any) -> Any:
+        if isinstance(value, dict):
+            factor = 3 if value.get("engine") == "tesseract" else 1
+            return {"engine": "rapidocr", "upscale_factor": factor, **value}
+        return value
+
+    @model_validator(mode="before")
+    @classmethod
+    def tick_padding_defaults(cls, value: Any) -> Any:
+        if isinstance(value, dict) and "white_padding_pixels" not in value:
+            ocr = value.get("ocr")
+            engine = (
+                ocr.get("engine", "rapidocr")
+                if isinstance(ocr, dict)
+                else (ocr.engine if isinstance(ocr, OCRConfig) else "rapidocr")
+            )
+            return {"white_padding_pixels": 2 if engine == "rapidocr" else 0, **value}
+        return value
 
     @field_validator("retry_white_padding_pixels")
     @classmethod
@@ -404,6 +426,7 @@ class LabelResult:
     candidate_indices: tuple[int, ...] = ()
     duplicate: bool = False
     issues: tuple[str, ...] = ()
+    suggested_text: str | None = None
 
 
 @dataclass(frozen=True)

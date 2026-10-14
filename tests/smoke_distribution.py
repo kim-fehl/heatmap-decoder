@@ -26,6 +26,8 @@ def smoke() -> None:
             "/src/heatmap_decoder/gradient.py",
             "/src/heatmap_decoder/ocr_fields.py",
             "/src/heatmap_decoder/rapid_ocr.py",
+            "/src/heatmap_decoder/ocr_models/en_PP-OCRv4_rec_infer.onnx",
+            "/src/heatmap_decoder/ocr_models/LICENSE",
             "/examples/m16/labels-default.json",
             "/examples/m16/config-padding.json",
             "/examples/m16/labels-padding.json",
@@ -103,12 +105,37 @@ def smoke() -> None:
             check=False,
             cwd=directory,
         )
-        assert label_command.returncode == 4  # one unresolved slot; evidence is written
+        assert label_command.returncode == 4  # unresolved identifiers; evidence is written
         default = json.loads((directory / "rapid-default/provenance.json").read_text())
         assert default["config"]["labels"]["ocr"]["engine"] == "rapidocr"
         assert default["axes"][0]["slots"][20]["raw_text"] == "EsGalectin1"
         assert len(default["ocr"]["slot_runs"]) == 41
         assert all(r["run"]["model_sha256"] for r in default["ocr"]["slot_runs"])
+        assert all(
+            any(name == "en_PP-OCRv4_rec_infer.onnx" for name, _ in r["run"]["model_sha256"])
+            for r in default["ocr"]["slot_runs"]
+        )
+        tick_command = subprocess.run(
+            [
+                str(command),
+                "legend",
+                str(root / "examples/diagnostic/figure.png"),
+                "--config",
+                str(root / "examples/diagnostic/legend.json"),
+                "--out",
+                str(directory / "rapid-ticks"),
+            ],
+            check=False,
+            cwd=directory,
+        )
+        assert tick_command.returncode == 6  # proposals require explicit scale review
+        ticks = json.loads((directory / "rapid-ticks/legend_provenance.json").read_text())["result"]
+        assert [t["parsed_value"] for t in ticks["ticks"] if t["position_source"] == "stroke"] == [
+            -3,
+            0,
+            3,
+        ]
+        assert all(r["run"]["engine_name"] == "RapidOCR" for r in ticks["ocr_records"])
         subprocess.run(
             [
                 str(command),
