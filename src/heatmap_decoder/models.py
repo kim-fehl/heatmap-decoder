@@ -1,5 +1,6 @@
 """Validated external configuration and simple in-memory results."""
 
+import math
 from dataclasses import dataclass
 from enum import IntFlag
 from typing import Annotated, Any, Literal, TypeAlias
@@ -53,30 +54,37 @@ class OCRConfig(BaseModel):
     max_axis_offset_fraction: Annotated[float, Field(strict=True, gt=0, le=0.5)] = 0.4
 
 
+def normalise_text_angle(value: Any) -> float:
+    """Finite numeric degrees in [-180,180), preserving visual CCW direction."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+        raise ValueError("text_rotation_degrees must be a finite numeric angle")
+    return float((value + 180) % 360 - 180)
+
+
 class OCRLabelSource(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     source: Literal["ocr"]
     bbox: BoundingBox
-    recognition: Literal["sparse", "slots"] = "sparse"
+    recognition: Literal["sparse", "slots", "lines"] = "sparse"
     crop_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
     crop_right_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=16)] = 0
     white_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
-    text_rotation_degrees: Annotated[int, Field(strict=True)] = 0
+    text_rotation_degrees: Annotated[float, Field(strict=True, allow_inf_nan=False)] = 0
+    attachment_endpoint: Literal["nearest", "start", "end"] = "nearest"
+    max_attachment_distance_pixels: Annotated[float, Field(gt=0, le=256)] = 40.0
 
-    @field_validator("text_rotation_degrees")
+    @field_validator("text_rotation_degrees", mode="before")
     @classmethod
-    def validate_rotation(cls, value: int) -> int:
-        if value not in (0, 90, -90):
-            raise ValueError("text_rotation_degrees must be an integer 0, 90 or -90")
-        return value
+    def validate_rotation(cls, value: Any) -> float:
+        return normalise_text_angle(value)
 
     @model_validator(mode="after")
     def validate_extent(self) -> "OCRLabelSource":
-        if self.recognition != "slots" and (
+        if self.recognition not in ("slots", "lines") and (
             self.crop_padding_pixels or self.crop_right_padding_pixels or self.white_padding_pixels
         ):
-            raise ValueError("label padding requires explicit slot recognition")
+            raise ValueError("label padding requires explicit slot or line recognition")
         left, top, right, bottom = self.bbox
         if right <= left or bottom <= top:
             raise ValueError("label bbox must have positive width and height")
@@ -110,10 +118,12 @@ class LabelsConfig(BaseModel):
 
     @model_validator(mode="after")
     def validate_row_rotation(self) -> "LabelsConfig":
+        if isinstance(self.rows, OCRLabelSource) and self.rows.recognition == "lines":
+            raise ValueError("oriented line recognition is supported for columns only")
         if isinstance(self.columns, OCRLabelSource) and self.columns.crop_right_padding_pixels:
             raise ValueError("right-only crop padding is supported for gene/row labels only")
         if isinstance(self.rows, OCRLabelSource) and self.rows.text_rotation_degrees != 0:
-            raise ValueError("quarter-turn text_rotation_degrees is supported for columns only")
+            raise ValueError("text_rotation_degrees is supported for columns only")
         return self
 
 
@@ -346,7 +356,7 @@ Axis: TypeAlias = Literal["rows", "columns"]
 ReviewLabels: TypeAlias = dict[tuple[Axis, int], str]
 TextBox: TypeAlias = tuple[float, float, float, float]
 LabelStatus: TypeAlias = Literal[
-    "accepted", "low_confidence", "missing", "ambiguous", "manual", "generated"
+    "accepted", "low_confidence", "missing", "ambiguous", "manual", "generated", "unreviewed"
 ]
 
 
@@ -358,6 +368,7 @@ class OCRToken:
     bbox: TextBox
     confidence: float
     line_id: tuple[int, ...] | None = None
+    polygon: tuple[tuple[float, float], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -367,6 +378,10 @@ class LabelCandidate:
     confidence: float
     token_indices: tuple[int, ...]
     slot_index: int | None = None
+    polygon: tuple[tuple[float, float], ...] = ()
+    baseline: tuple[tuple[float, float], ...] = ()
+    attachment: tuple[float, float] | None = None
+    geometry_issues: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -398,6 +413,7 @@ class AxisLabelResults:
     tokens: tuple[OCRToken, ...] = ()
     candidates: tuple[LabelCandidate, ...] = ()
     unmatched_candidate_indices: tuple[int, ...] = ()
+    geometry_evidence: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -428,6 +444,7 @@ class LabelExtractionResult:
     review_filename: str | None = None
     slot_ocr_runs: tuple[tuple[Axis, int, BoundingBox, OCRRun], ...] = ()
     skipped_ocr_attempts: tuple[dict[str, Any], ...] = ()
+    oriented_ocr_records: tuple[dict[str, Any], ...] = ()
 
     @property
     def unresolved_count(self) -> int:
@@ -473,6 +490,8 @@ class DetectorOptions(BaseModel):
 
     count_label_geometry: Annotated[bool, Field(strict=True)] = False
     propose_column_rotations: Annotated[bool, Field(strict=True)] = False
+    propose_arbitrary_column_angles: Annotated[bool, Field(strict=True)] = False
+    column_attachment_endpoint: Literal["nearest", "start", "end"] = "nearest"
     max_label_ocr_calls: Annotated[int, Field(strict=True, ge=1, le=24)] = 12
     max_label_ocr_seconds: Annotated[float, Field(gt=0, le=120)] = 60.0
 
@@ -550,7 +569,7 @@ class ROICandidate(BaseModel):
     score_components: dict[str, float]
     reasons: tuple[str, ...] = ("review_required",)
     associations: tuple[str, ...] = ()
-    text_rotation_degrees: Literal[0, 90, -90] = 0
+    text_rotation_degrees: float = 0
 
 
 class SelectedRegion(BaseModel):
@@ -615,7 +634,7 @@ class LabelLocalisationEvidence(BaseModel):
     engine: OCRRun
     heatmap_id: str = "heatmap-manual"
     trial_id: str | None = None
-    text_rotation_degrees: Literal[0, 90, -90] = 0
+    text_rotation_degrees: float = 0
     raw_tokens: tuple[OCRToken, ...] = ()
     transform: dict[str, Any] = Field(default_factory=dict)
     ocr_pixels: int = 0
@@ -683,6 +702,7 @@ class DetectionResult(BaseModel):
     acceptance: AcceptanceReport | None = None
     bar_search_evidence: tuple[dict[str, Any], ...] = ()
     block_proposals: tuple[BlockGridProposal, ...] = ()
+    heatmap_search_boxes: tuple[BoundingBox, ...] = ()
 
 
 class SavedDetection(BaseModel):

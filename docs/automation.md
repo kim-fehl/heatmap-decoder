@@ -49,7 +49,8 @@ requirements participate in the complete decision.
    `"scale": {"source": "ocr_ticks", "quantity": "row z-score"}` at the root.
    The bundled M12 request uses this mode. Plausible bars may also receive
    diagnostic OCR before a target is accepted. Three or more parsed anchors must be associated with measured
-   strokes, include endpoints, and satisfy residual limits. Every plausible tick
+   strokes and satisfy residual limits. Only positions within the outer tick span
+   are calibrated; unsupported cells remain NaN. Every plausible tick
    participates; an outlier is never removed to make the line fit.
 
 4. **Fully requested automatic geometry/counts/scale**: combine modes 2 and 3.
@@ -89,8 +90,8 @@ anchors because a person supplies the scale interpretation; extrapolation is
 reported. Suggested OCR anchors are rejected as manual evidence.
 
 `diagnostic_config` in the report is a concrete configuration for numerical
-assessment; alone it does not permit export. Its endpoints may come from an unreviewed
-OCR fit; the separate scale decision/legend evidence records their origin. To
+assessment; alone it does not permit export. OCR configurations retain their source and runtime anchors; they do not become
+manual endpoints. The separate scale decision/legend evidence records the fit. To
 export, use the existing [ROI review](usage.md) and [scale review](legend.md)
 workflow with `extract`. Reviewed outputs retain hashes and raw suggestions.
 
@@ -139,15 +140,18 @@ uv run heatmap-decoder automate examples/corrections/figure.png \
 
 Expected exit **0** with `matrix.csv`, `quality.csv`, provenance and recognition
 reports. The flag is a runtime control; saved request JSON cannot enable it.
-It requires numeric-only operation, supplied row/column counts, supplied endpoints
-or manually reviewed linear anchors, default detector settings and every
-per-image decision accepted. Coverage targets never grant export permission.
-Inferred-count and OCR-scale exports remain blocked even if diagnostically accepted.
+Complete root `matrix.csv` requires numeric-only operation. Numeric capabilities
+require supplied or qualified sharp measured counts, a supplied/reviewed scale or
+a qualified linear physical-tick OCR scale, evaluated geometry detector settings
+and passing numeric decisions. Broad inferred-count/degradation export remains
+closed when its registered coverage gate fails. Composed requests can retain
+positional numeric results while identifier work remains unfinished; partial
+numeric results remain explicitly partial. See [M19 policy](confident-automation.md).
 
 Outputs record the experimental policy version, original request, resolved
 configuration, image/report hashes and decisions. Endpoint matches can indicate
 clipping; the matrix contains displayed-scale estimates, not original expression
-counts. Stable release flags remain false. Any failed requirement exits **5** and
-preserves existing matrices even with `--overwrite`; successful replacement of
+counts. Stable release flags remain false. Any unfinished composed or numeric requirement exits **5**, preserving a root
+labelled matrix while qualified retained numbers use a separate positional directory; successful replacement of
 existing outputs requires that flag. Inspect diagnostics and use the reviewed
 `extract` workflow for other requests.

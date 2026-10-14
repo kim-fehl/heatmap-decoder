@@ -79,7 +79,13 @@ def labels_diagnostic_image(image: RGBArray, result: LabelExtractionResult) -> I
     from .diagnostic_style import DiagnosticCanvas
 
     count = sum(len(a.tokens) + len(a.candidates) + 2 * len(a.slots) for a in result.axes)
-    canvas = DiagnosticCanvas(Image.fromarray(image), lines=count + 12)
+    extra = sum(
+        len(a.geometry_evidence.get("lines", [])) if a.geometry_evidence else 0 for a in result.axes
+    )
+    canvas = DiagnosticCanvas(
+        Image.fromarray(image),
+        lines=count + result.config.rows + result.config.columns + extra + 24,
+    )
     canvas.roi(result.config.heatmap_bbox, "heatmap", "manual")
     grid = resolve_grid(result.config)
     gx, gy, gr, gb = grid.bbox
@@ -97,6 +103,27 @@ def labels_diagnostic_image(image: RGBArray, result: LabelExtractionResult) -> I
     settings = result.config.labels.ocr if result.config.labels is not None else None
     minimum, high = (settings.min_confidence, settings.high_confidence) if settings else (80, 90)
     for axis in result.axes:
+        if axis.geometry_evidence:
+            for line in axis.geometry_evidence.get("lines", []):
+                polygon = line.get("polygon", ())
+                if polygon:
+                    canvas.draw.line([*polygon, polygon[0]], fill="#007e80", width=2)
+                baseline = line.get("baseline", ())
+                if baseline:
+                    canvas.draw.line(baseline, fill="#9370bb", width=2)
+                attachment = line.get("attachment")
+                if attachment:
+                    ax, ay = attachment
+                    canvas.draw.ellipse(
+                        (ax - 3, ay - 3, ax + 3, ay + 3), outline="#c52647", width=2
+                    )
+                canvas.note(
+                    f"Line {line['index']} -> column {line.get('slot_index')} {line.get('issues')}"
+                )
+            canvas.note(
+                f"Label geometry: {axis.geometry_evidence.get('status')}; "
+                "identifiers require review"
+            )
         roi = getattr(result.config.labels, axis.axis) if result.config.labels else None
         if isinstance(roi, OCRLabelSource):
             expanded = (

@@ -262,7 +262,12 @@ def calibration_evidence(
     return evidence
 
 
-def scale_values(config: "ExtractionConfig", sample_count: int) -> FloatArray:
+def scale_values(
+    config: "ExtractionConfig",
+    sample_count: int,
+    *,
+    ocr_anchors: tuple["ScaleAnchor", ...] | None = None,
+) -> FloatArray:
     """Legacy endpoints stay bit-for-bit identical; tick scales use their fitted line."""
     if sample_count < 2:
         raise ValueError("calibration requires at least two samples")
@@ -273,7 +278,27 @@ def scale_values(config: "ExtractionConfig", sample_count: int) -> FloatArray:
             sample_count, config.colourbar_start_value, config.colourbar_end_value
         )
     if config.scale.source == "ocr_ticks":
-        raise ValueError("OCR scale requires legend inspection and explicit --legend-review")
+        if ocr_anchors is None:
+            raise ValueError("OCR scale requires legend inspection and explicit --legend-review")
+        if config.scale.model != "linear" or len(ocr_anchors) < 3:
+            raise ValueError("automatic OCR calibration requires three linear physical anchors")
+        if any(a.origin != "ocr" or a.status != "suggested" for a in ocr_anchors):
+            raise ValueError("runtime OCR anchors must retain their observed origin/status")
+        fit = fit_linear_scale(
+            ocr_anchors,
+            config.colourbar_bbox,
+            config.colourbar_orientation,
+            max_value_residual_fraction=min(0.01, config.scale.max_value_residual_fraction),
+            max_position_residual_pixels=min(2.0, config.scale.max_position_residual_pixels),
+        )
+        positions = np.linspace(0, 1, sample_count)
+        values = np.asarray(fit.slope * positions + fit.intercept, dtype=np.float64)
+        # Every near-colour candidate must be supported, not just the best match.
+        lo, hi = fit.recognised_span
+        values[(positions < lo) | (positions > hi)] = np.nan
+        return values
+    if ocr_anchors is not None:
+        raise ValueError("runtime OCR anchors require an OCR scale")
     if any(a.status != "reviewed" or a.origin == "ocr" for a in config.scale.anchors):
         raise ValueError("tick anchors must be explicitly supplied/reviewed")
     if config.scale.model == "piecewise_linear":

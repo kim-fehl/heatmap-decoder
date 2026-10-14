@@ -2,12 +2,14 @@
 
 Genes remain rows and samples remain columns. Only the label crop rotates;
 matrix pixels, values and column order remain unchanged. Rows and legend ticks
-must stay upright. Arbitrary angles, automatic orientation selection, perspective
-correction and multiline text remain unsupported.
+must stay upright. Perspective
+correction and multiline text remain unsupported in this legacy path. M18 adds
+[arbitrary-angle line geometry](arbitrary-angle-labels.md) and bounded proposals.
 
-Add integer text_rotation_degrees to a column OCR source: 0 (default), 90 or -90.
+For this exact path, set text_rotation_degrees to a column OCR source: 0 (default), 90 or -90.
 The sign is the visual counter-clockwise rotation from upright in the original
-figure. Strings, floats, bools and other angles are rejected. File labels have no angle.
+figure. Integral floats are also accepted. Strings, bools and non-finite values are rejected.
+Other finite angles select the M18 line path. File labels have no angle.
 
 | Value | Reading direction in original figure | Crop normalisation |
 | --- | --- | --- |
@@ -37,7 +39,7 @@ Add this columns object within your existing labels configuration:
 
 Bounds remain original-image [left, top, right, bottom], right/bottom exclusive.
 Use a region tall enough for complete names with padding, above or below the
-matrix. Explicit counts and regular column bands are required.
+matrix. Resolved counts and column intervals are required; M17 blocked columns are supported.
 
 Both sparse (whole region) and slots (single upright line per original column
 band) use exact Pillow transposes before existing grayscale/bicubic upscale.

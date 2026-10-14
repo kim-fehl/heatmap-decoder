@@ -428,12 +428,12 @@ def evaluate_legend(
             reasons.append(str(error))
     if fit is not None and not fit.within_residual_limits:
         reasons.append("anchors_contradict_linear_scale")
-    eligible = not reasons and fit is not None and fit.tests_linearity and fit.endpoint_coverage
+    eligible = not reasons and fit is not None and fit.tests_linearity
     if fit is not None:
         if not fit.tests_linearity:
             reasons.append("two_ticks_cannot_test_linearity")
         if not fit.endpoint_coverage:
-            reasons.append("interior_ticks_require_extrapolation_review")
+            reasons.append("interior_ticks_limit_calibration_span")
     if any(t.position_source != "stroke" for t in plausible):
         reasons.append("text_centres_are_weaker_position_evidence")
         eligible = False
@@ -734,9 +734,41 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
                             ).normalised_text,
                             normalisation_actions=recovered["normalisation_actions"],
                         )
-                        if len(distinct) <= 1:
-                            updates["status"] = "unresolved"
-                        reasons.append("numeric_retry_proposal_requires_review")
+                        # A bounded raw retry may replace an empty whitelist result.
+                        # Conflicting nonempty readings, caps, geometry problems and
+                        # low confidence remain blockers; all alternatives are retained.
+                        retry_box = recovered["text_bbox"]
+                        coordinate = 1 if config.colourbar_orientation == "vertical" else 0
+                        offset_ok = (
+                            retry_box is not None
+                            and abs(
+                                (retry_box[coordinate] + retry_box[coordinate + 2]) / 2
+                                - tick.position
+                            )
+                            <= config.legend.max_axis_offset_pixels
+                        )
+                        remaining = [
+                            r
+                            for r in reasons
+                            if r
+                            not in {
+                                "unparsed_numeric_tick",
+                                "empty_numeric_tick",
+                                "low_numeric_ocr_confidence",
+                            }
+                        ]
+                        if (
+                            len(distinct) == 1
+                            and not remaining
+                            and offset_ok
+                            and recovered["confidence"] >= config.legend.ocr.min_confidence
+                            and not any(a.get("skipped") for a in alternatives)
+                        ):
+                            reasons = ["bounded_consistent_numeric_retry"]
+                            updates["status"] = "suggested"
+                        else:
+                            updates["status"] = "ambiguous" if len(distinct) > 1 else "unresolved"
+                            reasons.append("numeric_retry_proposal_requires_review")
                     updates["reasons"] = tuple(dict.fromkeys(reasons))
                     tick = tick.model_copy(update=updates)
                 revised.append(tick)

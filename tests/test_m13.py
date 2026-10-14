@@ -61,7 +61,7 @@ def test_transpose_pixels_and_border_boxes(angle):
             assert expected[int(v), int(u)] == pixels[y, x]
 
 
-@pytest.mark.parametrize("angle", [True, False, 45, 180, 90.0, "90", None])
+@pytest.mark.parametrize("angle", [True, False, float("inf"), float("nan"), "90", None])
 def test_rotation_schema_rejects_unsupported_types_and_values(angle):
     with pytest.raises(ValidationError, match="text_rotation_degrees"):
         OCRLabelSource(source="ocr", bbox=(0, 0, 10, 20), text_rotation_degrees=angle)

@@ -252,12 +252,13 @@ def write_outputs(
     legend_metadata: dict[str, Any] | None = None,
     automation_metadata: dict[str, Any] | None = None,
     source_image: RGBArray | None = None,
+    matrix_filename: str = "matrix.csv",
 ) -> None:
     """Write all four M2 outputs. Use extract_file to compute input hashes automatically."""
     directory = Path(directory)
     validate_export_labels(result)
     directory.mkdir(parents=True, exist_ok=True)
-    write_csv(result, directory / "matrix.csv")
+    write_csv(result, directory / matrix_filename)
     write_quality_csv(result, directory / "quality.csv")
     metadata = provenance(
         result,
@@ -608,7 +609,8 @@ def _label_transform(
         "upscale_factor": factor,
         "ocr_size": transform.crop_size,
         "white_padding_pixels": white,
-        "rotation": "Pillow exact transpose",
+        "rotation": transform.metadata()["interpolation"],
+        "affine": transform.metadata(),
         "box_mapping": "all four half-open corners; inverse rotation then crop origin",
         "grouping_frame": "upright OCR pixels",
         "assignment_frame": "original image pixels",
@@ -664,7 +666,7 @@ def label_provenance(
         "grid_sha256": resolve_grid(result.config).metadata()["sha256"],
         "ocr": {
             "availability": "available"
-            if result.ocr_runs or result.slot_ocr_runs
+            if result.ocr_runs or result.slot_ocr_runs or result.oriented_ocr_records
             else "not_requested",
             "runs": {axis: asdict(run) for axis, run in result.ocr_runs},
             "transforms": {
@@ -690,6 +692,7 @@ def label_provenance(
                 }
                 for axis, index, box, run in result.slot_ocr_runs
             ],
+            "oriented_lines": result.oriented_ocr_records,
             "skipped_attempts": result.skipped_ocr_attempts,
             "raw_token_coordinate_frame": "upright upscaled crop pixels",
             "assigned_text_token_coordinate_frame": "original image pixels",
@@ -717,7 +720,7 @@ def label_provenance(
         "outputs": list(LABEL_OUTPUT_NAMES),
         "limitations": "OCR confidence is a heuristic, not a probability or biological identity. "
         "Verify text and displayed order; rows must be upright and columns allow "
-        "explicit 0/±90 degrees.",
+        "finite explicit angles; arbitrary-angle line identifiers require review.",
     }
 
 
@@ -1374,6 +1377,16 @@ def write_legend_outputs(
             settings.min_confidence,
             settings.high_confidence,
         )
+    if result.fit is not None:
+        x, y, r, b = result.config.colourbar_bbox
+        lo, hi = result.fit.recognised_span
+        span_box: tuple[float, float, float, float]
+        if result.config.colourbar_orientation == "vertical":
+            span_box = (x, y + lo * (b - y - 1), r, y + hi * (b - y - 1) + 1)
+        else:
+            span_box = (x + lo * (r - x - 1), y, x + hi * (r - x - 1) + 1, b)
+        canvas.roi(span_box, "calibration_span", "proposed", "no implicit extrapolation")
+        canvas.note(f"Observed tick span: {lo:.5g}..{hi:.5g}; outside span unresolved")
     canvas.note(f"{result.status}; review scale; model={result.config.scale_model}")
     overlay = canvas.image
     gradient = inspect_gradient(image, result.config, tuple(t.position for t in result.ticks))
@@ -1417,3 +1430,43 @@ def inspect_legend_file(
         result = load_legend_review(review_path, result, digest)
         write_legend_outputs(image, result, directory, digest, path.name)
     return result
+
+
+def write_positional_outputs(
+    result: ExtractionResult,
+    directory: Path,
+    *,
+    input_filename: str,
+    input_sha256: str,
+    source_image: RGBArray,
+    automation_metadata: dict[str, Any],
+) -> None:
+    """Retain numeric results without fulfilling a request for reviewed names."""
+    name = (
+        "numeric_partial.csv"
+        if automation_metadata["numeric_state"] != "complete"
+        else "numeric_positional.csv"
+    )
+    write_outputs(
+        result,
+        directory,
+        input_filename=input_filename,
+        input_sha256=input_sha256,
+        source_image=source_image,
+        automation_metadata=automation_metadata,
+        matrix_filename=name,
+    )
+    with (directory / name).open("w", newline="", encoding="utf-8") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(
+            ["positional_row_id"] + [f"column_{i}" for i in range(result.config.columns)]
+        )
+        for i, values in enumerate(result.values):
+            writer.writerow([f"row_{i}"] + [format(value, ".17g") for value in values])
+    path = directory / "provenance.json"
+    metadata = json.loads(path.read_text())
+    metadata["outputs"].pop("matrix.csv", None)
+    metadata["outputs"][name] = "positional IDs, zero-based; these are not recognized names"
+    metadata["publication"]["numeric_state"] = automation_metadata["numeric_state"]
+    metadata["publication"]["labelled_request_fulfilled"] = False
+    path.write_text(json.dumps(metadata, indent=2) + "\n")

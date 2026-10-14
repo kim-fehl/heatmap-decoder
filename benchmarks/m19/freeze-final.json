@@ -1,0 +1,607 @@
+{
+  "source_sha256": {
+    "benchmarks/m18/evaluate.py": "2680cfaaea81584defbb24c93880933e26ec861f17f894effb3d67794fd221db",
+    "benchmarks/m18/fixtures.py": "b03d93e17cb53ed886aab5d07226e8450f677614de01c7fefc6bb5103cdc9c41",
+    "pyproject.toml": "fe91223e2e4141b7c62077dfaefd4d85374738f84fbcde994243248fe334adbf",
+    "src/heatmap2matrix/__init__.py": "ef511579883a1c76d772b76cc31434f6f1319f42235592d9eb2de4e3ca9282a5",
+    "src/heatmap2matrix/__main__.py": "dacacc03eb8b975a43c35ca500666787bb3aa5e68c2f8f715aa4a47a90d434c7",
+    "src/heatmap2matrix/cli.py": "7eb455bebe39c4540efcc593ed873e30e120181ca74cff010a20a10947ef953c",
+    "src/heatmap_decoder/__init__.py": "f6833fa726e69d7b58f6865b8c6a31be05221d90c5ca3233bb5b36a0e4eef797",
+    "src/heatmap_decoder/__main__.py": "93b604b2d73ba758ff637179c8e45093d32489ee162a63f2e1ea71a6331d5ce7",
+    "src/heatmap_decoder/acceptance.py": "fe2640a28e47d9b3215e3d56dc121046a88d91d94b4d537cd06dcb510a8d975c",
+    "src/heatmap_decoder/angle_search.py": "448f5188f9ebedb2e648840ea86f90139a5bd7f48839c9c426ae7d26cedd0877",
+    "src/heatmap_decoder/automation.py": "3dae935752b04dac23839eddeabab7fdfc1b327bb15ce73d42771cf6e4fc0870",
+    "src/heatmap_decoder/bar_cores.py": "57f0db82fc2b9acd84dc3e39b2ea361822a8e7d46e56c2e5628109a744911e08",
+    "src/heatmap_decoder/blocks.py": "dd6d73cc016b651f881a89ce035e3430a1f62d18f8a82050117a3453930875fe",
+    "src/heatmap_decoder/calibration.py": "c8ebbf9e491fbd0b559c6f0ee1f68fb7366de1e59b6a3edb91abdb82079c669a",
+    "src/heatmap_decoder/cli.py": "b6cfa68af5a409990934a411eb9823fa9b9f54f4065dd3d2e0663e9ff0b48fc4",
+    "src/heatmap_decoder/detection.py": "cddaf9f94bec0e4c6e31cfde61458bf261b9eb893c98f85233337aed9329e635",
+    "src/heatmap_decoder/detection_policy.py": "bb01d815622b6a63edefac32bd14729730ef032032fd2b69f57543a1c3312e2c",
+    "src/heatmap_decoder/diagnostic_style.py": "a2e7051769296994d880d484a24fae32856e4bf3938845230a97e9921a44cae5",
+    "src/heatmap_decoder/diagnostics.py": "ff41b84c54477173a8048944ff55246baf3354eeae44d83b7eee0126a1e6c948",
+    "src/heatmap_decoder/edge_profiles.py": "c5a5b05e95258e267d2156a53c7c89e274cfe084719531ccc15a43621bfa6a14",
+    "src/heatmap_decoder/extract.py": "c6a5059ea2701d6173a9a51fad8f95898d23d82c8b798ba9d920dabe38a7ad80",
+    "src/heatmap_decoder/geometry.py": "ed148ce0580ac4fc776cd900d0d5e2c81ff2f9c8bbe5a28bf4dc08a9ffc44159",
+    "src/heatmap_decoder/gradient.py": "99d6428e922cf1086af2ecff3dd5e8ce94d716d6dc5140afb3fcf128e6c14bd1",
+    "src/heatmap_decoder/io.py": "96741f11c9961d6088b85ce547ca16a928abdd2ff97a2c9befbff013ca839e47",
+    "src/heatmap_decoder/labels.py": "f860e70a3085f707827bd1e159dc347bd23cc0f7f6aa2f0a0e53a7b13f6d0817",
+    "src/heatmap_decoder/lattice.py": "0b622dd82976aa04b136c5b9b04c7626a923d2d6bc7dcac8e5ec0eaad7846aed",
+    "src/heatmap_decoder/legend.py": "e6e0400baf08249c2b1e78c6af4e7bdf067fdfc2fa8cd305987a167e78d26336",
+    "src/heatmap_decoder/models.py": "a85724ec5b2197d0e72e8184d2869d10efb71018245564de3a88b0ac9481c134",
+    "src/heatmap_decoder/ocr.py": "2a87536d246d3361718df6a692deae48ce2abdf9d2926adcb900ae8f6160cd54",
+    "src/heatmap_decoder/ocr_fields.py": "4d5ad0213e55b669f3c31bd33ba7b2c587c2606d96820b15e2439428affde62c",
+    "src/heatmap_decoder/orientation.py": "cb3a38718c2c92705aef7d7ae76d2f163adf68ec4dd2fa2b7908a774f71519de",
+    "src/heatmap_decoder/oriented_labels.py": "43734d171e3ea8a722dd0b47036e8c139a537cfda99b024fb8d9ddae8ef53786",
+    "src/heatmap_decoder/rapid_ocr.py": "783e62f14d1af5c80bb96bbc55c55083288bbfcf0dc9e270365c719fe9ef2f7a",
+    "src/heatmap_decoder/sampling.py": "c709cfa63c75a1c47c1afd92896d4c39118ca91a2fc53a8b6e8d340caa6131df",
+    "src/heatmap_decoder/version.py": "fbcd96443027ffe7e6324e62f7a79702a6045cdea7416f7fba72883f51c9bcc5",
+    "tests/smoke_distribution.py": "1aacf7b618070a3de46dd49a09a7103cb9a973f871096e1d2d8ea2b278a06af6",
+    "tests/test_cli.py": "9bc8895b28f7303252296096100560bf54988a7675649e2f39f4a3495b443054",
+    "tests/test_core.py": "1f3d56dc3d39394500297334f82b50594b07f17bc8759ab1c89292d1737b6784",
+    "tests/test_detection.py": "b5f2d58057b63c34371adc8ca904f4f92acede2e368057c2a8c62018b157dd2a",
+    "tests/test_detection_m8.py": "8c2d9d5dd9dc26a8bdfb78ee554db9da3bf05040fadcab69a9b73ea988b62be3",
+    "tests/test_detection_m8_integration.py": "b505659013b00e26c147898a619148e29dcb8821c5cc7c0259aad608438382f8",
+    "tests/test_labels.py": "1a565398bc0e8faa4dd292fd32a46899740ecd324547b3d2edfcda1c4c71617c",
+    "tests/test_labels_io.py": "b19a4a16025026224a565c6a5a911e5f5a248e8f4eb305b40f7060712c1fb02c",
+    "tests/test_legend.py": "abe0a1ffb4288ea554955c6c34605f65be07c61462e5cd8e572fe56bdcd06acd",
+    "tests/test_m10.py": "d289a68f779712e735ad3c9aa438dedd26637ac9b83d6efe5853f8de7262fefb",
+    "tests/test_m12.py": "f850ad6595fb6351cfb486fe47d86364f01328a337cd174fadf28b5a062fdb5b",
+    "tests/test_m13.py": "8ac4f70c7ab225e72d4a367fb81c8b2afea1f3389f9337f46c8875a2c35f7779",
+    "tests/test_m13_ocr.py": "753b675abd4a9907c7e638615c52fa29c30cb11416858b3bf79f0fdfe345a7bb",
+    "tests/test_m14.py": "81b8f519aa614564084c480ef1f4ba05e4d63bc5aade4bb9fe5665b71960a549",
+    "tests/test_m14_repair.py": "bd67e14a3fd4bf7f06926c24cb9f39301642502f3b7d9d840f88731b49d37c88",
+    "tests/test_m15.py": "dff8cab5c7a5a808737ddb76be3c649f68194bdbc7c1c27213c23a2bd672f029",
+    "tests/test_m15_ocr.py": "73cacf0bbe6a3990d6565db8c0147e527d0dd3d0102ccef14b06d431b76f75f8",
+    "tests/test_m15_publications.py": "a8cfac96e9421eeca820807fbd39ca83b1f2438cac8763a03c7720212a9d3769",
+    "tests/test_m16.py": "2d60342a46bba80fed6af71a400091c666c3147114eeb512985f1d48f4759e0e",
+    "tests/test_m16_validation.py": "ee39bcc7d09df958e8598a69b67386699d5b60dfec613936ae4d73213303bbc5",
+    "tests/test_m17.py": "962c23bfbe8ca9b81c18a6075a4654a6e22e9b5829e3cc8515e2d3a7e52a690a",
+    "tests/test_m18.py": "f8039ddac960709aaa243d14fee0adc1b5ac80a0f3aac47d8b3c5b521215ad1b",
+    "tests/test_m19.py": "1f20bf037d18eeb81064ee2de4101cb57df73f9aa63015f4d33ae8c703a28d61",
+    "tests/test_m9.py": "252d3ee5d892a73a78b9c4dfcea540940a4edd5ea0225cf13cd9ec149d408634",
+    "tests/test_migration.py": "4e507d90fea05cc1c4c0d2c333c4cdc564b481578c014a07db343deec26988b8",
+    "tests/test_ocr.py": "06b19b992e5c4b7117ad06893533674d21f057c73b86db2cb6942ed4dba09c25",
+    "tests/test_ocr_fields.py": "0e96079b70341415efa935cf636c803500f2dcc77ecc92f2f106b2e6a92ffb4b",
+    "tests/test_ocr_integration.py": "fdd0b402ac0354d6fcfa65e775f745228bb2f9cba325e1170c9e850e957f7a33",
+    "tests/test_properties.py": "f506beeda7ae3afe769d75578aeaf1d619605f115f55e9ac6e9a9fef55b6bc4e",
+    "tests/test_quality.py": "960587173b06bbf138623565241d4d8e023a0e8adff8d425a9bf9c954c47d176",
+    "tests/test_rapid_ocr.py": "db1e349dcf6d35659a05c5394ade0db2c1dcdaa7dc90444e057486c3b8701f98",
+    "tests/test_reconstruction.py": "bbaadb41bb03bc49e70922f5e8282d0364486e731b158ad15701ac774dc85d3f",
+    "tests/test_review_corrections.py": "1821f79a0f00d3fdbf31466ea8da699e14d7ee87b60afafb66fd0174a2c0d64e",
+    "tests/test_reviewed_extract.py": "864dc10de5e1a31668077270735becb7ffd7de4a603b493124828a3a4fc85535",
+    "uv.lock": "711799dd55d0dec5363096feed03fde023e1688b3de6b29120cc62663a6aed54",
+    "benchmarks/m19/evaluate.py": "995b0d1fa0394c2f1b2ac74ceec12cb048f33384f1c0a69d954814650db055ba",
+    "benchmarks/m19/fixtures.py": "607ff66830e210347354243b2125d1495d6845726e0697edab6c9116523e1d0f",
+    "benchmarks/m17/fixtures.py": "e3f76e788c5c24977a4cdce19468d4defae552aa34115511ed9d22b63f438468"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "packages": {
+      "numpy": "2.5.4",
+      "Pillow": "12.3.0",
+      "scipy": "1.18.1",
+      "scikit-image": "0.26.0",
+      "pydantic": "2.14.1",
+      "pytesseract": "0.3.13",
+      "rapidocr-onnxruntime": "1.4.4",
+      "onnxruntime": "1.31.0"
+    },
+    "font_sha256": {
+      "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+      "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf": "54bf827eb99404e8f430c330ad30f063334f637eba0109b6a18d4f566a8e9dd8"
+    },
+    "model_sha256": {
+      "ch_PP-OCRv4_det_infer.onnx": "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9",
+      "ch_PP-OCRv4_rec_infer.onnx": "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b",
+      "ch_ppocr_mobile_v2.0_cls_infer.onnx": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+    },
+    "tesseract": "tesseract 5.5.0"
+  },
+  "plan": [
+    {
+      "seed": 296001,
+      "family": "none",
+      "angle": 15,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296002,
+      "family": "none",
+      "angle": -15,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296003,
+      "family": "none",
+      "angle": 30,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296004,
+      "family": "none",
+      "angle": -30,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296005,
+      "family": "none",
+      "angle": 45,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296006,
+      "family": "none",
+      "angle": -45,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296007,
+      "family": "none",
+      "angle": 60,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296008,
+      "family": "none",
+      "angle": -60,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296009,
+      "family": "none",
+      "angle": 75,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296010,
+      "family": "none",
+      "angle": -75,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296011,
+      "family": "horizontal",
+      "angle": 15,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296012,
+      "family": "horizontal",
+      "angle": -15,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296013,
+      "family": "horizontal",
+      "angle": 30,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296014,
+      "family": "horizontal",
+      "angle": -30,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296015,
+      "family": "horizontal",
+      "angle": 45,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296016,
+      "family": "horizontal",
+      "angle": -45,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296017,
+      "family": "horizontal",
+      "angle": 60,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296018,
+      "family": "horizontal",
+      "angle": -60,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296019,
+      "family": "horizontal",
+      "angle": 75,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296020,
+      "family": "horizontal",
+      "angle": -75,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296021,
+      "family": "vertical",
+      "angle": 15,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296022,
+      "family": "vertical",
+      "angle": -15,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296023,
+      "family": "vertical",
+      "angle": 30,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296024,
+      "family": "vertical",
+      "angle": -30,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296025,
+      "family": "vertical",
+      "angle": 45,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296026,
+      "family": "vertical",
+      "angle": -45,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296027,
+      "family": "vertical",
+      "angle": 60,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296028,
+      "family": "vertical",
+      "angle": -60,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296029,
+      "family": "vertical",
+      "angle": 75,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296030,
+      "family": "vertical",
+      "angle": -75,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296031,
+      "family": "both",
+      "angle": 15,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296032,
+      "family": "both",
+      "angle": -15,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296033,
+      "family": "both",
+      "angle": 30,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296034,
+      "family": "both",
+      "angle": -30,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296035,
+      "family": "both",
+      "angle": 45,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296036,
+      "family": "both",
+      "angle": -45,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296037,
+      "family": "both",
+      "angle": 60,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296038,
+      "family": "both",
+      "angle": -60,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296039,
+      "family": "both",
+      "angle": 75,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    },
+    {
+      "seed": 296040,
+      "family": "both",
+      "angle": -75,
+      "derivatives": [
+        "clean",
+        "jpeg",
+        "blur"
+      ]
+    }
+  ],
+  "negatives": [
+    {
+      "seed": 297001,
+      "family": "both",
+      "challenge": "missing"
+    },
+    {
+      "seed": 297002,
+      "family": "both",
+      "challenge": "white"
+    },
+    {
+      "seed": 297003,
+      "family": "both",
+      "challenge": "annotation"
+    },
+    {
+      "seed": 297004,
+      "family": "both",
+      "challenge": "panels"
+    },
+    {
+      "seed": 297005,
+      "family": "both",
+      "challenge": "wrong_count"
+    },
+    {
+      "seed": 297006,
+      "family": "both",
+      "challenge": "truncated"
+    },
+    {
+      "seed": 297007,
+      "family": "both",
+      "challenge": "competing_legends"
+    },
+    {
+      "seed": 297008,
+      "family": "both",
+      "challenge": "inconsistent_ticks"
+    },
+    {
+      "seed": 297009,
+      "family": "both",
+      "challenge": "unsupported_edges"
+    },
+    {
+      "seed": 297010,
+      "family": "both",
+      "challenge": "inconsistent_ticks"
+    },
+    {
+      "seed": 297011,
+      "family": "both",
+      "challenge": "competing_legends"
+    },
+    {
+      "seed": 297012,
+      "family": "both",
+      "challenge": "unsupported_edges"
+    }
+  ],
+  "targets": {
+    "explicit_clean": 1.0,
+    "auto_clean_none": 0.8,
+    "auto_clean_blocked": 0.7,
+    "auto_all_derivatives": 0.7,
+    "full_auto_clean": 0.7,
+    "explicit_ocr_clean": 0.7,
+    "explicit_angle_clean": 1.0,
+    "auto_angle_clean": 0.8,
+    "wrong_complete": 0,
+    "mae": 0.02,
+    "maximum": 0.05,
+    "flagged_fraction": 0.01
+  },
+  "legend_options": {
+    "ocr": {
+      "engine": "tesseract",
+      "language": "eng",
+      "upscale_factor": 3,
+      "min_confidence": 80.0,
+      "high_confidence": 90.0,
+      "retry_variants": [],
+      "max_axis_offset_fraction": 0.4
+    },
+    "search_pixels": 128,
+    "horizontal_search_pixels": 64,
+    "max_ticks": 16,
+    "max_ocr_pixels": 4000000,
+    "max_ocr_seconds": 60.0,
+    "max_axis_offset_pixels": 6.0,
+    "endpoint_tolerance_pixels": 2.0,
+    "decimal_separator": ".",
+    "align_tick_fields": false,
+    "retry_unconstrained_numeric": true,
+    "retry_white_padding_pixels": [
+      1,
+      2
+    ],
+    "crop_padding_pixels": 0,
+    "white_padding_pixels": 0
+  },
+  "eligibility": "All 40 bases, all three derivatives, no retrospective exclusions. Dark Sans/Mono 18-20px three physical signed integer ticks, common-pitch regular/blocked matrices, three palettes, both bar directions/orientations. Label workflows use paired independent wide-pitch M18 renderings; their ROI/counts are supplied and do not qualify full-figure label localisation.",
+  "qualification": "No export gate changes during validation. Per-image capability decisions measured separately."
+}

@@ -136,8 +136,9 @@ def test_automatic_common_pitch_accepts_entire_matrix(family):
     assert axis_slots(r.diagnostic_config, "rows") == axis_slots(c, "rows")
     assert axis_slots(r.diagnostic_config, "columns") == axis_slots(c, "columns")
     assert np.abs(extract(image, r.diagnostic_config).values - truth).max() < 0.05
-    # M19 export qualification remains separate from M17 measured geometry.
-    assert not r.automatic_export_allowed
+    # M19 qualifies the sharp measured common-pitch scope with passing QC.
+    assert r.automatic_export_allowed
+    assert r.numeric_complete.status == "accepted"
 
 
 def test_missing_band_is_ambiguous():

@@ -3,7 +3,7 @@
 import math
 import time
 from dataclasses import dataclass, field, replace
-from typing import Literal, cast
+from typing import Any, Literal, cast
 
 import numpy as np
 from PIL import Image
@@ -45,12 +45,18 @@ def column_orientation_regions(
 ) -> tuple[tuple[ROICandidate, ...], tuple[LabelLocalisationEvidence, ...], tuple[str, ...]]:
     from .ocr import recognize
 
+    if hints.detector.propose_arbitrary_column_angles or (
+        hints.labels
+        and isinstance(hints.labels.columns, OCRLabelSource)
+        and hints.labels.columns.text_rotation_degrees not in (0, 90, -90)
+    ):
+        return arbitrary_column_regions(image, hints, heatmap_id, searches, pixels_left, budget)
     assert hints.heatmap_bbox is not None
     options = hints.detector
     settings = hints.labels.ocr if hints.labels else LabelsConfig().ocr
     source = hints.labels.columns if hints.labels else None
     explicit = isinstance(source, OCRLabelSource)
-    angles: tuple[int, ...]
+    angles: tuple[float, ...]
     if isinstance(source, OCRLabelSource):
         searches = (("above" if source.bbox[3] <= hints.heatmap_bbox[1] else "below", source.bbox),)
         angles = (source.text_rotation_degrees,)
@@ -98,6 +104,8 @@ def column_orientation_regions(
                     rows=hints.rows or 1,
                     columns=hints.columns,
                     labels=LabelsConfig(ocr=settings),
+                    rows_segments=hints.rows_segments,
+                    columns_segments=hints.columns_segments,
                 )
                 assignment = assign_candidates(
                     group_tokens(raw.tokens, grid, "columns", transform=transform),
@@ -237,3 +245,208 @@ def column_orientation_regions(
         elif final_reasons:
             warnings.append(f"{record.trial_id}: " + "; ".join(final_reasons))
     return tuple(proposals), tuple(final), tuple(warnings)
+
+
+def arbitrary_column_regions(
+    image: RGBArray,
+    hints: DetectionHints,
+    heatmap_id: str,
+    searches: tuple[tuple[str, BoundingBox], ...],
+    pixels_left: list[int],
+    budget: OrientationBudget,
+) -> tuple[tuple[ROICandidate, ...], tuple[LabelLocalisationEvidence, ...], tuple[str, ...]]:
+    """M18 path: geometric angle evidence precedes bounded isolated line OCR."""
+    from .angle_search import estimate_angle
+    from .models import OCRRun
+    from .oriented_labels import LabelBudget, recognise_lines
+
+    assert hints.heatmap_bbox is not None
+    settings = hints.labels.ocr if hints.labels else LabelsConfig().ocr
+    configured = hints.labels.columns if hints.labels else None
+    if isinstance(configured, OCRLabelSource):
+        searches = (
+            ("above" if configured.bbox[3] <= hints.heatmap_bbox[1] else "below", configured.bbox),
+        )
+    if not isinstance(configured, OCRLabelSource):
+        padding = hints.detector.label_search_pixels
+        searches = tuple(
+            (
+                side,
+                (max(0, box[0] - padding), box[1], min(image.shape[1], box[2] + padding), box[3]),
+            )
+            for side, box in searches
+            if side in ("above", "below")
+        )
+    shared = LabelBudget(budget.calls, pixels_left[0], budget.seconds, budget.started)
+    records = []
+    for side, box in searches:
+        if side not in ("above", "below"):
+            continue
+        if isinstance(configured, OCRLabelSource):
+            estimation: dict[str, Any] = {
+                "status": "explicit",
+                "angle": configured.text_rotation_degrees,
+                "angle_alternatives": (configured.text_rotation_degrees,),
+                "reading_direction": "explicit_angle",
+            }
+        else:
+            estimation = estimate_angle(image, box, shared)
+        angles = estimation.get("angle_alternatives", ())
+        if not angles:
+            # Keep exhausted/unsupported geometric trials as an auditable skipped record.
+            records.append(
+                LabelLocalisationEvidence(
+                    axis="columns",
+                    side=cast(Literal["above", "below"], side),
+                    search_bbox=box,
+                    preprocessing=settings,
+                    tokens=(),
+                    unassigned_candidates=(),
+                    engine=OCRRun((), "not_run", "not_run", settings.language, (), "not_run"),
+                    heatmap_id=heatmap_id,
+                    orientation_status="capped"
+                    if shared.remaining_seconds <= 0 or shared.pixels <= 0
+                    else "unsupported",
+                    orientation_reasons=(estimation.get("reason", "unresolved_orientation"),),
+                    transform={"angle_estimation": estimation},
+                    count_geometry_eligible=False,
+                )
+            )
+        for angle in angles:
+            source = OCRLabelSource(
+                source="ocr",
+                bbox=box,
+                recognition="lines",
+                text_rotation_degrees=angle,
+                attachment_endpoint=configured.attachment_endpoint
+                if isinstance(configured, OCRLabelSource)
+                else hints.detector.column_attachment_endpoint,
+                max_attachment_distance_pixels=configured.max_attachment_distance_pixels
+                if isinstance(configured, OCRLabelSource)
+                else 40,
+            )
+            identifier = f"labels_columns-{heatmap_id}-{side}-angle{angle:g}"
+            reasons = []
+            if (
+                math.prod(CropTransform(box, settings.upscale_factor, angle).crop_size)
+                > hints.detector.max_ocr_pixels
+            ):
+                reasons.append("orientation_resource_cap_exceeded")
+            if hints.columns is None or reasons:
+                reasons.append("resolved_columns_required_for_attachment")
+                assignment = None
+                line_records: tuple[dict[str, Any], ...] = ()
+                skipped: tuple[dict[str, Any], ...] = ()
+            else:
+                config = GridConfig(
+                    heatmap_bbox=hints.heatmap_bbox,
+                    rows=hints.rows or 1,
+                    columns=hints.columns,
+                    rows_segments=hints.rows_segments,
+                    columns_segments=hints.columns_segments,
+                    labels=LabelsConfig(columns=source, ocr=settings),
+                )
+                assignment, line_records, skipped = recognise_lines(image, config, source, shared)
+                geometry = assignment.geometry_evidence or {}
+                if geometry.get("status") != "accepted" or geometry.get("resolved_lines", 0) < max(
+                    2, math.ceil(0.75 * hints.columns)
+                ):
+                    reasons.append("insufficient_attachment_geometry")
+                if (
+                    not isinstance(configured, OCRLabelSource)
+                    and source.attachment_endpoint == "nearest"
+                    and geometry.get("reading_direction_evidence", {}).get("status") == "inverted"
+                ):
+                    reasons.append("geometric_upside_down_baseline")
+                if any(
+                    s["reason"] != "geometry_requires_review" or s.get("slot") is not None
+                    for s in skipped
+                ):
+                    reasons.append("orientation_search_incomplete")
+            if estimation["status"] not in ("unique_axis", "explicit"):
+                reasons.append("orientation_geometry_requires_review")
+            records.append(
+                LabelLocalisationEvidence(
+                    axis="columns",
+                    side=cast(Literal["above", "below"], side),
+                    search_bbox=box,
+                    preprocessing=settings,
+                    tokens=assignment.tokens if assignment else (),
+                    unassigned_candidates=assignment.candidates if assignment else (),
+                    assignment=assignment,
+                    engine=OCRRun(
+                        (),
+                        "oriented_line_aggregate",
+                        "see_line_records",
+                        settings.language,
+                        (),
+                        "isolated_lines",
+                    ),
+                    heatmap_id=heatmap_id,
+                    trial_id=identifier,
+                    text_rotation_degrees=source.text_rotation_degrees,
+                    transform={
+                        "angle_estimation": estimation,
+                        "line_records": line_records,
+                        "skipped_attempts": skipped,
+                        "source_transform": CropTransform(
+                            box, settings.upscale_factor, angle
+                        ).metadata(),
+                    },
+                    ocr_pixels=sum(r["ocr_pixels"] for r in line_records),
+                    ocr_seconds=sum(r["ocr_seconds"] for r in line_records),
+                    orientation_status="unsupported" if reasons else "unique",
+                    orientation_reasons=tuple(reasons),
+                    count_geometry_eligible=False,
+                )
+            )
+    supported = [r for r in records if not r.orientation_reasons]
+    exhaustive = all(
+        not any(
+            t.get("status") == "skipped"
+            for t in r.transform.get("angle_estimation", {}).get("trials", [])
+        )
+        and "orientation_search_incomplete" not in r.orientation_reasons
+        for r in records
+    )
+    unique = len(supported) == 1 and exhaustive
+    proposals = []
+    final = []
+    for record in records:
+        if record not in supported:
+            final.append(record)
+            continue
+        final_reasons = (
+            ()
+            if unique
+            else (
+                "contradictory_orientation_or_side_hypotheses",
+                "upside_down_or_side_alternative_unresolved",
+            )
+        )
+        final_record = record.model_copy(
+            update={
+                "orientation_status": "unique" if unique else "ambiguous",
+                "orientation_reasons": final_reasons + ("text_identity_unverified",),
+            }
+        )
+        final.append(final_record)
+        proposals.append(
+            ROICandidate(
+                id=record.trial_id or "",
+                kind="labels_columns",
+                bbox=record.search_bbox,
+                score=1 if unique else 0.5,
+                score_components={"unique_attachment_geometry": float(unique)},
+                reasons=("review_required", *final_record.orientation_reasons),
+                associations=(heatmap_id,),
+                text_rotation_degrees=record.text_rotation_degrees,
+            )
+        )
+    budget.calls = shared.calls
+    pixels_left[0] = shared.pixels
+    return (
+        tuple(proposals),
+        tuple(final),
+        tuple(f"{r.trial_id}: {r.orientation_reasons}" for r in final if r.orientation_reasons),
+    )

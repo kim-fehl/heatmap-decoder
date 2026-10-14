@@ -47,7 +47,7 @@ def automate_command(
         bool,
         typer.Option(
             "--experimental-export",
-            help="Experimental numeric export: supplied counts and supplied/reviewed scale.",
+            help="Export qualified experimental numeric results; identifiers remain separate.",
         ),
     ] = False,
 ) -> None:
@@ -62,11 +62,13 @@ def automate_command(
         check_output_paths,
         write_legend_outputs,
         write_outputs,
+        write_positional_outputs,
     )
 
     names = (
         "automation.json",
         "roi_diagnostic.png",
+        "label_evidence.json",
         *LEGEND_OUTPUT_NAMES,
         *(f"legend_candidates/{i}/{name}" for i in range(1, 4) for name in LEGEND_OUTPUT_NAMES),
     )
@@ -82,9 +84,17 @@ def automate_command(
         data = figure.read_bytes()
         image = _decode_raster(data)
         result = automate(image, settings, experimental_export=experimental_export)
-        if result.automatic_export_allowed:
+        positional = not settings.numeric_only or result.numeric_state != "complete"
+        numeric_out = out / "numeric_positional" if positional else out
+        if result.numeric_retention_allowed:
+            numeric_names = (
+                tuple(n for n in NUMERIC_OUTPUT_NAMES if n != "matrix.csv")
+                + ("numeric_positional.csv", "numeric_partial.csv")
+                if positional
+                else NUMERIC_OUTPUT_NAMES
+            )
             check_output_paths(
-                [out / name for name in NUMERIC_OUTPUT_NAMES], (figure, request), overwrite
+                [numeric_out / name for name in numeric_names], (figure, request), overwrite
             )
         payload = result.model_dump(mode="json")
         payload["input"] = {
@@ -94,6 +104,19 @@ def automate_command(
         payload["request"] = settings.model_dump(mode="json")
         out.mkdir(parents=True, exist_ok=True)
         (out / "automation.json").write_text(json.dumps(payload, indent=2) + "\n")
+        (out / "label_evidence.json").write_text(
+            json.dumps(
+                {
+                    "identifiers": result.identifier_state,
+                    "labelled_request_fulfilled": False if not settings.numeric_only else None,
+                    "positional_ids_are_names": False,
+                    "evidence": list(result.label_evidence),
+                    "geometry_decision": result.label_geometry_complete.model_dump(mode="json"),
+                },
+                indent=2,
+            )
+            + "\n"
+        )
         overlay = Image.fromarray(image[:, :, :3]).convert("RGB")
         painter = ImageDraw.Draw(overlay)
         for candidate in result.detection.candidates:
@@ -112,17 +135,24 @@ def automate_command(
                     payload["input"]["sha256"],
                     figure.name,
                 )
-        if result.automatic_export_allowed:
+        if result.numeric_retention_allowed:
             assert result.diagnostic_config is not None
-            numeric = extract(image, result.diagnostic_config)
-            write_outputs(
+            numeric = extract(
+                image, result.diagnostic_config, ocr_anchors=result.ocr_anchors or None
+            )
+            writer = write_positional_outputs if positional else write_outputs
+            writer(
                 numeric,
-                out,
+                numeric_out,
                 source_image=image,
                 input_filename=figure.name,
                 input_sha256=payload["input"]["sha256"],
                 automation_metadata={
                     "maturity": "experimental",
+                    "numeric_state": result.numeric_state,
+                    "identifiers": "positional",
+                    "ocr_anchors": [a.model_dump(mode="json") for a in result.ocr_anchors],
+                    "calibration": result.numeric_complete.evidence,
                     "stable_release": False,
                     "policy_version": result.policy_version,
                     "runtime_control": "--experimental-export",
@@ -143,6 +173,18 @@ def automate_command(
             f"Wrote experimental numeric matrix and QC to {out}; stable release remains off."
         )
         return
+    if result.numeric_retention_allowed:
+        remaining = (
+            "Identifier review remains unfinished."
+            if not settings.numeric_only
+            else "Numeric output remains partial; inspect quality.csv."
+        )
+        typer.echo(
+            f"Retained {result.numeric_state} positional results in {numeric_out}. {remaining}"
+        )
+    if not experimental_export and result.complete.status == "accepted":
+        typer.echo("Diagnostic mode; use --experimental-export for qualified numeric output.")
+        raise typer.Exit(5)
     typer.echo("Review required; see automation.json for each capability and export scope.")
     raise typer.Exit(5)
 

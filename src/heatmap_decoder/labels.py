@@ -26,6 +26,7 @@ from .models import (
     OCRLabelSource,
     OCRToken,
     TextBox,
+    normalise_text_angle,
 )
 
 
@@ -41,16 +42,13 @@ class CropTransform:
 
     bbox: BoundingBox
     upscale_factor: int = 3
-    text_rotation_degrees: int = 0
+    text_rotation_degrees: float = 0
     white_padding_pixels: int = 0
 
     def __post_init__(self) -> None:
-        if (
-            isinstance(self.text_rotation_degrees, bool)
-            or not isinstance(self.text_rotation_degrees, int)
-            or self.text_rotation_degrees not in (0, 90, -90)
-        ):
-            raise ValueError("text_rotation_degrees must be an integer 0, 90 or -90")
+        object.__setattr__(
+            self, "text_rotation_degrees", normalise_text_angle(self.text_rotation_degrees)
+        )
         if (
             isinstance(self.white_padding_pixels, bool)
             or not isinstance(self.white_padding_pixels, int)
@@ -69,8 +67,14 @@ class CropTransform:
     def crop_size(self) -> tuple[int, int]:
         width = self.bbox[2] - self.bbox[0]
         height = self.bbox[3] - self.bbox[1]
-        if self.text_rotation_degrees:
+        if self.text_rotation_degrees in (90, -90):
             width, height = height, width
+        elif self.text_rotation_degrees != 0:
+            c, s, _, _ = self.affine
+            width, height = (
+                math.ceil(abs(c) * width + abs(s) * height - 1e-9),
+                math.ceil(abs(s) * width + abs(c) * height - 1e-9),
+            )
         return (
             (width + 2 * self.white_padding_pixels) * self.upscale_factor,
             (height + 2 * self.white_padding_pixels) * self.upscale_factor,
@@ -83,6 +87,18 @@ class CropTransform:
             crop = crop.transpose(Image.Transpose.ROTATE_270)
         elif self.text_rotation_degrees == -90:
             crop = crop.transpose(Image.Transpose.ROTATE_90)
+        elif self.text_rotation_degrees != 0:
+            c, s, tx, ty = self.affine
+            width, height = self.crop_size
+            pad = self.white_padding_pixels
+            size = (width // self.upscale_factor - 2 * pad, height // self.upscale_factor - 2 * pad)
+            crop = crop.transform(
+                size,
+                Image.Transform.AFFINE,
+                (c, s, -c * tx - s * ty, -s, c, s * tx - c * ty),
+                resample=Image.Resampling.BICUBIC,
+                fillcolor=255,
+            )
         if self.white_padding_pixels:
             crop = ImageOps.expand(crop, border=self.white_padding_pixels, fill=255)
         return crop.resize(self.crop_size, Image.Resampling.BICUBIC)
@@ -98,13 +114,80 @@ class CropTransform:
                 x, y = y, height - x
             elif angle == -90:
                 x, y = width - y, x
+            elif angle != 0:
+                c, s, tx, ty = self.affine
+                x, y = c * (x - tx) + s * (y - ty), -s * (x - tx) + c * (y - ty)
             return left + x, top + y
         x, y = x - left, y - top
         if angle == 90:
             x, y = height - y, x
         elif angle == -90:
             x, y = y, width - x
+        elif angle != 0:
+            c, s, tx, ty = self.affine
+            x, y = c * x - s * y + tx, s * x + c * y + ty
         return ((x + self.white_padding_pixels) * factor, (y + self.white_padding_pixels) * factor)
+
+    @property
+    def affine(self) -> tuple[float, float, float, float]:
+        """Forward local continuous coordinates to expanded deskewed canvas."""
+        angle = math.radians(self.text_rotation_degrees)
+        c, s = math.cos(angle), math.sin(angle)
+        width, height = self.bbox[2] - self.bbox[0], self.bbox[3] - self.bbox[1]
+        corners = [(c * x - s * y, s * x + c * y) for x in (0, width) for y in (0, height)]
+        return c, s, -min(x for x, y in corners), -min(y for x, y in corners)
+
+    def point_to_original(self, point: tuple[float, float]) -> tuple[float, float]:
+        if not all(math.isfinite(v) for v in point):
+            raise ValueError("point must be finite")
+        return self._point(*point, inverse=True)
+
+    def point_to_crop(self, point: tuple[float, float]) -> tuple[float, float]:
+        if not all(math.isfinite(v) for v in point):
+            raise ValueError("point must be finite")
+        return self._point(*point, inverse=False)
+
+    def polygon_to_original(
+        self, polygon: Sequence[tuple[float, float]]
+    ) -> tuple[tuple[float, float], ...]:
+        return tuple(self.point_to_original(p) for p in polygon)
+
+    def polygon_to_crop(
+        self, polygon: Sequence[tuple[float, float]]
+    ) -> tuple[tuple[float, float], ...]:
+        return tuple(self.point_to_crop(p) for p in polygon)
+
+    def metadata(self) -> dict[str, object]:
+        origin = self.point_to_crop((0, 0))
+        px, py = self.point_to_crop((1, 0)), self.point_to_crop((0, 1))
+        inverse = self.point_to_original((0, 0))
+        ix, iy = self.point_to_original((1, 0)), self.point_to_original((0, 1))
+        return {
+            "bbox": self.bbox,
+            "angle": self.text_rotation_degrees,
+            "upscale_factor": self.upscale_factor,
+            "white_padding_pixels": self.white_padding_pixels,
+            "crop_size": self.crop_size,
+            "forward_affine": [
+                px[0] - origin[0],
+                py[0] - origin[0],
+                origin[0],
+                px[1] - origin[1],
+                py[1] - origin[1],
+                origin[1],
+            ],
+            "inverse_affine": [
+                ix[0] - inverse[0],
+                iy[0] - inverse[0],
+                inverse[0],
+                ix[1] - inverse[1],
+                iy[1] - inverse[1],
+                inverse[1],
+            ],
+            "interpolation": "exact transpose"
+            if self.text_rotation_degrees in (0, 90, -90)
+            else "Pillow affine bicubic; expanded white canvas",
+        }
 
     def _box(self, box: TextBox, *, inverse: bool) -> TextBox:
         _validate_box(box)
@@ -156,7 +239,20 @@ def crop_label_region(
 def transform_tokens(tokens: Sequence[OCRToken], transform: CropTransform) -> tuple[OCRToken, ...]:
     """Keep raw text/confidence/line IDs; ignore geometry of structural records."""
     return tuple(
-        replace(token, bbox=transform.to_original(token.bbox))
+        replace(
+            token,
+            bbox=transform.to_original(token.bbox),
+            polygon=transform.polygon_to_original(
+                (
+                    (token.bbox[0], token.bbox[1]),
+                    (token.bbox[2], token.bbox[1]),
+                    (token.bbox[2], token.bbox[3]),
+                    (token.bbox[0], token.bbox[3]),
+                )
+            )
+            if transform.text_rotation_degrees not in (0, 90, -90)
+            else token.polygon,
+        )
         if token.text.strip() and token.confidence >= 0
         else token
         for token in tokens

@@ -1,0 +1,8 @@
+{
+  "freeze": "freeze-repair.json",
+  "status": "interrupted; not qualification evidence",
+  "reason": "Focused M14 regression found that raw components inside a known colourbar were incorrectly treated as competing matrix fragments. The run was stopped before further source changes; partial stdout is retained.",
+  "partial_output": "validation-repair-interrupted.log",
+  "inspected_validation_seeds": [294001],
+  "replacement_partition": "freeze-final.json; seeds 296001-296040 and 297001-297012"
+}

@@ -17,3 +17,5 @@ Read [M16 status](../docs/progress/M16.md) for consolidated conclusions and the
 freezes bind their original implementations; source mismatch is intentional and
 must not be bypassed by rewriting completed freezes. New changes require a new
 registered partition or an explicitly scoped regression run.
+
+[M19](m19/README.md) records fresh full-workflow evidence, scoped qualification and retained failures.

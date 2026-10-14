@@ -551,6 +551,41 @@ def evaluate_acceptance(
                 )
                 if aligned and disjoint:
                     fragments.append(other.id)
+        # Scoring filters must not erase small aligned matrix fragments. A one-row
+        # component or narrow neighbouring panel can reveal a truncated target
+        # even when its own counts cannot be accepted. Known bars are excluded.
+        axes = axis_checks.get(identifier, ())
+        counts = {d.requirement: d.evidence.get("count") for d in axes}
+        if counts.get("rows") and counts.get("columns"):
+            pitches = (
+                (box[2] - box[0]) / int(counts["columns"] or 1),
+                (box[3] - box[1]) / int(counts["rows"] or 1),
+            )
+            bar_boxes = [c.bbox for c in bars]
+            if hints.colourbar_bbox is not None:
+                bar_boxes.append(hints.colourbar_bbox)
+            for raw in result.heatmap_search_boxes:
+                if any(
+                    (raw[0] <= b[0] < b[2] <= raw[2] and raw[1] <= b[1] < b[3] <= raw[3])
+                    or (b[0] <= raw[0] < raw[2] <= b[2] and b[1] <= raw[1] < raw[3] <= b[3])
+                    for b in bar_boxes
+                ):
+                    continue
+                for cross, along in ((0, 1), (1, 0)):
+                    disjoint = box[along + 2] <= raw[along] or raw[along + 2] <= box[along]
+                    cross_overlap = min(box[cross + 2], raw[cross + 2]) - max(
+                        box[cross], raw[cross]
+                    )
+                    aligned = (
+                        min(abs(box[cross] - raw[cross]), abs(box[cross + 2] - raw[cross + 2])) <= 2
+                    )
+                    if (
+                        disjoint
+                        and aligned
+                        and cross_overlap >= 2 * pitches[cross] - 2
+                        and raw[along + 2] - raw[along] >= pitches[along] - 2
+                    ):
+                        fragments.append(f"unscored_component:{raw}")
         if fragments:
             grid_checks[identifier] = decision(
                 "heatmap",

@@ -1,0 +1,8 @@
+294001 none clean True True True
+294001 none jpeg False False True
+294001 none blur False False True
+294002 none clean True True True
+294002 none jpeg True True True
+294002 none blur False False False
+294003 none clean True True True
+294003 none jpeg False False True

@@ -40,3 +40,23 @@ also writes `grid_diagnostic.png`. Detector decisions use `blocked-acceptance.1`
 old frozen reports retain their original policies. Reviewed segment configuration
 is authoritative. See [blocked grids](docs/blocked-grids.md) and the
 [M17 report](docs/progress/M17.md) before relying on automatic proposals.
+
+## M18 arbitrary angles
+
+Finite numeric sample angles now normalize modulo 360 to `[-180,180)`; integral
+floats are accepted. Boolean/string/non-finite angles and rotated gene labels remain
+errors. Existing 0/±90° paths keep exact transposes. `recognition: "lines"` or any
+other angle uses complete oriented lines and matrix-side attachment ownership. New
+line-based identifiers have `unreviewed` status and require a complete review TSV
+before labelled extraction, regardless of OCR confidence. New provenance includes
+polygons, baselines, attachments, line crops and affine inverses. SciPy is now an
+explicit dependency (previously transitive through scikit-image). See
+[configuration](docs/arbitrary-angle-labels.md) and [M18 status](docs/progress/M18.md).
+
+M19 `automate` reports separate numeric/label-geometry/identifier completion.
+Default diagnostics remain unchanged. Eligible experimental composed requests
+retain `numeric_positional/numeric_positional.csv` and return 5 while names need
+review; partial numeric results use `numeric_partial.csv`. Positional IDs are
+explicitly marked and never presented as OCR names. OCR scales keep their
+physical anchors/span instead of being converted into manual endpoints. A saved
+OCR diagnostic config still needs legend review for ordinary `extract`.

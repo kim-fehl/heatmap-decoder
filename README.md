@@ -7,8 +7,11 @@ expression counts.
 
 It supports explicitly configured regular or blocked PNG/JPEG heatmaps, continuous sequential or diverging
 colourbars, reviewed linear or piecewise-linear scales, and gene/sample label OCR.
-RapidOCR is the default label engine; sample labels support explicit quarter turns.
-Automatic region and count detection is experimental and produces review evidence.
+RapidOCR is the default label engine; sample labels support explicit finite angles
+and complete-line attachment geometry. Arbitrary-angle identifiers require review.
+Automation reports numeric completion separately from label review and can retain
+positional numeric results. Linear OCR ticks use only their measured calibration
+span. Automatic region/count detection remains experimental with bounded export gates.
 
 ## Quick start
 
@@ -36,6 +39,8 @@ Numeric tick OCR uses Tesseract and requires its additional installation.
 
 - [Usage and installation](docs/usage.md)
 - [Automation and review](docs/automation.md)
+- [Capability decisions and positional numeric results](docs/confident-automation.md)
+- [Arbitrary-angle sample labels](docs/arbitrary-angle-labels.md)
 - [Blocked grid configuration](docs/blocked-grids.md)
 - [Scale calibration](docs/nonlinear-calibration.md)
 - [Worked examples](examples/README.md)

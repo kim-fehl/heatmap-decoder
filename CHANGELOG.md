@@ -1,5 +1,24 @@
 # Changelog
 
+## Unreleased — M19 implementation
+
+- Independent numeric, label-geometry and identifier completion states, with
+  retained positional and explicitly partial numeric outputs.
+- All-anchor linear OCR calibration without implicit extrapolation; bounded
+  consistent numeric retries retain raw alternatives and physical positions.
+- Fresh 40-base/120-attempt workflow validation and 12 negative bases; failed
+  capability gates remain closed and publication coverage is recorded separately.
+
+## Unreleased — M18
+
+- Finite-angle normalization and expanded affine sample-label transforms with
+  inverse polygon mapping; exact quarter-turn paths retained.
+- Whole-region line segmentation, matrix-side attachment ownership and retained
+  raw/unreviewed identifier evidence for blocked or regular columns.
+- Bounded geometric angle/flip proposals with glyph baseline evidence and shared
+  call/pixel/time limits; OCR confidence does not choose orientation or names.
+- Frozen 42-base angle validation and real-engine spelling/error reports.
+
 ## Unreleased — M17
 
 - Shared segmented geometry for extraction, OCR ownership and source overlays;

@@ -1,0 +1,64 @@
+{
+  "numeric_only": false,
+  "hints": {
+    "heatmap_bbox": [
+      240,
+      360,
+      697,
+      480
+    ],
+    "rows": 4,
+    "columns": 4,
+    "colourbar_bbox": [
+      40,
+      360,
+      54,
+      541
+    ],
+    "colourbar_orientation": "vertical",
+    "rows_segments": null,
+    "columns_segments": [
+      {
+        "start": 240.0,
+        "end": 460.0,
+        "count": 2
+      },
+      {
+        "start": 477.0,
+        "end": 697.0,
+        "count": 2
+      }
+    ],
+    "colourbar_start_value": 0.0,
+    "colourbar_end_value": 1.0,
+    "requested": [],
+    "labels": {
+      "rows": null,
+      "columns": {
+        "source": "ocr",
+        "bbox": [
+          100,
+          20,
+          907,
+          358
+        ],
+        "recognition": "lines",
+        "crop_padding_pixels": 0,
+        "crop_right_padding_pixels": 0,
+        "white_padding_pixels": 0,
+        "text_rotation_degrees": 30.0,
+        "attachment_endpoint": "nearest",
+        "max_attachment_distance_pixels": 40.0
+      },
+      "ocr": {
+        "engine": "rapidocr",
+        "language": "eng",
+        "upscale_factor": 1,
+        "min_confidence": 80.0,
+        "high_confidence": 90.0,
+        "retry_variants": [],
+        "max_axis_offset_fraction": 0.4
+      }
+    }
+  }
+}

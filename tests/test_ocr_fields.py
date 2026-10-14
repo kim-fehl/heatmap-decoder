@@ -217,7 +217,8 @@ def test_recovered_tick_preserves_explicit_decimal_separator(monkeypatch):
     assert len(ticks) == 5
     assert all(t.parsed_value == -1.5 and t.normalised_text == "-1.5" for t in ticks)
     assert all("explicit_decimal_comma" in t.normalisation_actions for t in ticks)
-    assert all(t.status == "unresolved" for t in ticks)
+    assert all(t.status == "suggested" for t in ticks)
+    assert not result.development_eligible  # repeated values cannot define a scale
 
 
 def test_vertical_common_band_cannot_drop_a_separate_minus_component():
@@ -297,7 +298,8 @@ def test_raw_numeric_comparison_preserves_readable_zero_under_shared_budget(monk
     ticks = [t for t in result.ticks if t.position_source == "stroke"]
     assert len(ticks) == 5
     assert all(t.parsed_value == 0 and t.raw_text == "0" for t in ticks)
-    assert all(t.status == "unresolved" for t in ticks)
+    assert any(t.status == "suggested" for t in ticks)
+    assert not result.development_eligible  # identical zero values contradict calibration
     assert calls.count(("numeric_line", False)) == 5
     assert len(result.ocr_records) == 12
     assert not result.automatic_export_allowed

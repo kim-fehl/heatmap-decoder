@@ -217,8 +217,8 @@ def test_tick_number_endpoint_coverage_and_release_gates(count):
         config,
         ticks_from_anchors(anchors_for(config.colourbar_bbox, "vertical", count, interior=True)),
     )
-    assert not interior.development_eligible
-    assert "interior_ticks_require_extrapolation_review" in interior.reasons
+    assert interior.development_eligible == (count >= 3)
+    assert "interior_ticks_limit_calibration_span" in interior.reasons
 
 
 def test_unparsed_tick_and_text_centre_fallback_block_eligibility():

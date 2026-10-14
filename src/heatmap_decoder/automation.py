@@ -11,8 +11,7 @@ from .acceptance import decision
 from .calibration import calibration_evidence, colour_quality_summary, fit_linear_scale
 from .detection import detect
 from .detection_policy import ACCEPTANCE_THRESHOLDS as A
-from .detection_policy import policy_snapshot
-from .extract import extract
+from .extract import extract, extract_labels
 from .legend import inspect_legend
 from .models import (
     AcceptanceDecision,
@@ -23,10 +22,35 @@ from .models import (
     LegendConfig,
     LegendResult,
     RGBArray,
+    ScaleAnchor,
     ScaleConfig,
 )
 
-AUTOMATION_POLICY_VERSION = "review-selective.1"
+AUTOMATION_POLICY_VERSION = "capability-selective.3"
+
+# Frozen M19 clean/negative gates qualify sharp measured grids and linear ticks.
+# Broad degradation coverage failed and remains closed. Qualification never
+# substitutes for the per-image checks; see benchmarks/m19/validation-final.json.
+M19_QUALIFICATION = {
+    "inferred_counts": False,
+    "sharp_measured_counts": True,
+    "linear_ocr_scale": True,
+}
+
+
+def sharp_measured_count_scope(decisions: list[AcceptanceDecision]) -> bool:
+    """Registered sharp common-pitch support, not a claim about all degradations."""
+    from .blocks import BLOCK_POLICY
+
+    for d in decisions:
+        if d.requirement not in {"rows", "columns"} or d.evidence.get("origin") == "manual":
+            continue
+        selected = d.evidence.get("observations", {}).get("selected")
+        if d.status != "accepted" or not selected:
+            return False
+        if selected["maximum_transition_width"] > BLOCK_POLICY["maximum_block_transition_width"]:
+            return False
+    return True
 
 
 class AutomationRequest(BaseModel):
@@ -69,6 +93,15 @@ class AutomationResult(BaseModel):
     legend_diagnostics: tuple[LegendResult, ...] = ()
     experimental_export_requested: bool = False
     export_maturity: str = "review_only"
+    numeric_complete: AcceptanceDecision
+    label_geometry_complete: AcceptanceDecision
+    identifiers_complete: AcceptanceDecision
+    numeric_retention_allowed: bool = False
+    numeric_state: str = "unresolved"
+    identifier_state: str = "not_requested"
+    ocr_anchors: tuple[ScaleAnchor, ...] = ()
+    label_evidence: tuple[dict[str, object], ...] = ()
+    qualification: dict[str, bool] = Field(default_factory=lambda: dict(M19_QUALIFICATION))
 
 
 def automate(
@@ -81,7 +114,7 @@ def automate(
 
     The concrete config records resolved geometry and counts. Default operation
     is diagnostic; explicit experimental export requires every per-image decision
-    and the supplied-count/supplied-scale scope. OCR identity requires review.
+    and qualified evidence scope. OCR identity requires review.
     """
     hints = request.hints
     detected = detect(image, hints)
@@ -105,6 +138,7 @@ def automate(
     legend = None
     legend_diagnostics: list[LegendResult] = []
     scale = request.scale
+    ocr_anchors: tuple[ScaleAnchor, ...] = ()
     if scale is not None and scale.source == "ocr_ticks" and bar is None:
         # Inspect plausible bars even if geometry/competition remains unresolved.
         # These runs never replace required per-image decisions or choose a target.
@@ -190,7 +224,11 @@ def automate(
             "scale",
             []
             if legend.development_eligible and scale.model == "linear"
-            else list(r for r in legend.reasons if r != "M12_scale_gate_closed")
+            else list(
+                r
+                for r in legend.reasons
+                if r not in {"M12_scale_gate_closed", "interior_ticks_limit_calibration_span"}
+            )
             + (
                 ["piecewise_OCR_anchors_require_review"]
                 if scale.model == "piecewise_linear"
@@ -204,7 +242,24 @@ def automate(
             unresolved=legend.status == "unresolved",
         )
         if legend.development_eligible and legend.fit is not None and scale.model == "linear":
-            start, end = legend.fit.intercept, legend.fit.intercept + legend.fit.slope
+            ocr_anchors = tuple(
+                ScaleAnchor(
+                    position=t.position, value=t.parsed_value, origin="ocr", status="suggested"
+                )
+                for t in legend.ticks
+                if t.status != "excluded" and t.parsed_value is not None
+            )
+    if ocr_anchors and scale is not None and bar is not None and orientation is not None:
+        try:
+            fit_linear_scale(
+                ocr_anchors,
+                bar,
+                orientation,
+                max_value_residual_fraction=min(0.01, scale.max_value_residual_fraction),
+                max_position_residual_pixels=min(2.0, scale.max_position_residual_pixels),
+            )
+        except ValueError as error:
+            scale_check = decision("scale", [str(error)], scale_check.evidence, unresolved=True)
     decisions.append(scale_check)
     concrete = None
     required = {"heatmap", "colourbar", "association", "rows", "columns", "scale"}
@@ -232,24 +287,26 @@ def automate(
                         "columns_segments", hints.columns_segments
                     ),
                     colourbar_start_value=None
-                    if scale and scale.source == "manual_ticks"
+                    if scale and scale.source != "manual_endpoints"
                     else start,
-                    colourbar_end_value=None if scale and scale.source == "manual_ticks" else end,
+                    colourbar_end_value=None
+                    if scale and scale.source != "manual_endpoints"
+                    else end,
                     scale=(
                         scale
-                        if scale.source == "manual_ticks"
+                        if scale.source != "manual_endpoints"
                         else ScaleConfig(source="manual_endpoints", quantity=scale.quantity)
                     )
                     if scale
                     else None,
                 )
-                values = extract(image, concrete)
+                values = extract(image, concrete, ocr_anchors=ocr_anchors or None)
                 flagged = float(np.mean(values.flags != 0))
                 finite = float(np.mean(np.isfinite(values.values)))
                 reasons = []
                 if flagged > A.maximum_flagged_fraction:
                     reasons.append("excessive_colour_matching_flags")
-                if 1 - finite > A.maximum_missing_or_ambiguous_fraction:
+                if not np.isfinite(values.values).all():
                     reasons.append("missing_or_ambiguous_numeric_cells")
                 numeric = decision(
                     "numeric_quality",
@@ -257,14 +314,112 @@ def automate(
                     {
                         "flagged_fraction": flagged,
                         "finite_fraction": finite,
+                        "unresolved_cells": int(np.sum(~np.isfinite(values.values))),
                         **colour_quality_summary(values),
                     },
                 )
             except ValueError as error:
                 numeric = decision("numeric_quality", [str(error)], {}, unresolved=True)
+                concrete = None
     else:
         numeric = decision("numeric_quality", ["required_capability_unresolved"], {})
     decisions.append(numeric)
+    label_evidence: list[dict[str, object]] = []
+    if not request.numeric_only:
+        for localisation in detected.label_evidence:
+            if localisation.assignment is not None:
+                for slot in localisation.assignment.slots:
+                    label_evidence.append(
+                        {
+                            "axis": localisation.axis,
+                            "index": slot.index,
+                            "raw_text": slot.raw_text,
+                            "identifier_status": "review_required",
+                            "trial_id": localisation.trial_id,
+                            "geometry": localisation.assignment.geometry_evidence,
+                        }
+                    )
+        if concrete is not None and hints.labels is not None:
+            # Explicit OCR fields need actual assignment evidence, not just a supplied ROI.
+            sources = [getattr(hints.labels, axis) for axis in ("rows", "columns")]
+            if all(source is None or source.source == "ocr" for source in sources):
+                try:
+                    labels = extract_labels(
+                        image, concrete.model_copy(update={"labels": hints.labels})
+                    )
+                    for axis in labels.axes:
+                        source = getattr(hints.labels, axis.axis)
+                        if source is None:
+                            continue
+                        geometry = axis.geometry_evidence
+                        problems = []
+                        if geometry is not None:
+                            if geometry.get("status") != "accepted" or not geometry.get("complete"):
+                                problems.append("incomplete_or_ambiguous_label_attachments")
+                        elif any(not slot.candidate_indices for slot in axis.slots):
+                            problems.append("incomplete_label_axis")
+                        replacement = decision(
+                            f"labels_{axis.axis}",
+                            problems,
+                            {"geometry": geometry, "identifier_review_independent": True},
+                        )
+                        decisions = [
+                            replacement if d.requirement == replacement.requirement else d
+                            for d in decisions
+                        ]
+                        for slot in axis.slots:
+                            label_evidence.append(
+                                {
+                                    "axis": axis.axis,
+                                    "index": slot.index,
+                                    "raw_text": slot.raw_text,
+                                    "identifier_status": "review_required",
+                                    "geometry": geometry,
+                                }
+                            )
+                except (ValueError, OSError, RuntimeError) as error:
+                    for axis_name in ("rows", "columns"):
+                        if getattr(hints.labels, axis_name) is not None:
+                            replacement = decision(
+                                f"labels_{axis_name}",
+                                [f"label_evidence_unavailable:{error}"],
+                                {},
+                                unresolved=True,
+                            )
+                            decisions = [
+                                replacement if d.requirement == replacement.requirement else d
+                                for d in decisions
+                            ]
+        if not any(d.requirement.startswith("identifiers") for d in decisions):
+            decisions.append(
+                decision("identifiers", ["supplied_identifiers_require_file_validation"], {})
+            )
+    numeric_decisions = [d for d in decisions if d.requirement in required | {"numeric_quality"}]
+    numeric_failures = [
+        f"{d.requirement}:{d.status}" for d in numeric_decisions if d.status != "accepted"
+    ]
+    numeric_complete = decision(
+        "numeric_complete",
+        numeric_failures,
+        {
+            "identifiers": "positional",
+            "heuristic_scores_are_probabilities": False,
+            "calibration_span": legend.fit.recognised_span if legend and legend.fit else None,
+            "sharp_measured_count_scope": sharp_measured_count_scope(decisions),
+        },
+    )
+    geometry_decisions = [d for d in decisions if d.requirement.startswith("labels_")]
+    identifier_decisions = [d for d in decisions if d.requirement.startswith("identifiers")]
+    label_geometry_complete = decision(
+        "label_geometry_complete",
+        [f"{d.requirement}:{d.status}" for d in geometry_decisions if d.status != "accepted"],
+        {"requested": not request.numeric_only, "region_acceptance_is_identifier_review": False},
+    )
+    identifiers_complete = decision(
+        "identifiers_complete",
+        [f"{d.requirement}:{d.status}" for d in identifier_decisions if d.status != "accepted"],
+        {"requested": not request.numeric_only, "OCR_confidence_authorizes_names": False},
+    )
     failures = [f"{d.requirement}:{d.status}" for d in decisions if d.status != "accepted"]
     complete = decision(
         "complete",
@@ -272,24 +427,51 @@ def automate(
         {"experimental_only": True},
         unresolved=any(d.status == "unresolved" for d in decisions),
     )
-    policy = policy_snapshot()
-    release = ["M12_release_gates_not_met"] if not policy["automatic_roi_enabled"] else []
-    if hints.infer_rows and hints.rows is None and not policy["automatic_rows_enabled"]:
-        release.append("inferred_rows_review_required")
-    if hints.infer_columns and hints.columns is None and not policy["automatic_columns_enabled"]:
-        release.append("inferred_columns_review_required")
-    if scale is not None and scale.source == "ocr_ticks":
-        release.append("OCR_scale_release_gate_not_met")
+    release = ["experimental_export_not_requested", "stable_release_not_enabled"]
     scope_reasons = []
-    if not request.numeric_only:
-        scope_reasons.append("experimental_export_requires_numeric_only")
-    if hints.rows is None or hints.columns is None:
-        scope_reasons.append("experimental_inferred_count_export_not_validated")
-    if scale is not None and scale.source == "ocr_ticks":
+    if (hints.rows is None or hints.columns is None) and not M19_QUALIFICATION["inferred_counts"]:
+        if not (
+            M19_QUALIFICATION["sharp_measured_counts"] and sharp_measured_count_scope(decisions)
+        ):
+            scope_reasons.append("experimental_inferred_count_export_not_validated")
+    if (
+        scale is not None
+        and scale.source == "ocr_ticks"
+        and not M19_QUALIFICATION["linear_ocr_scale"]
+    ):
         scope_reasons.append("experimental_OCR_scale_export_not_validated")
-    if hints.detector != DetectorOptions():
+    geometry_options = (
+        "max_analysis_size",
+        "max_candidates",
+        "max_components",
+        "background_distance",
+        "gridline_gap",
+        "min_score",
+        "max_count",
+        "max_count_candidates",
+    )
+    defaults = DetectorOptions()
+    if any(getattr(hints.detector, key) != getattr(defaults, key) for key in geometry_options):
         scope_reasons.append("experimental_export_requires_default_detector")
-    allowed = experimental_export and not scope_reasons and complete.status == "accepted"
+    if scale is not None and scale.source == "ocr_ticks":
+        ocr = scale.legend.ocr
+        if (
+            ocr.engine != "tesseract"
+            or ocr.language != "eng"
+            or ocr.upscale_factor != 3
+            or ocr.min_confidence < 80
+            or scale.legend.max_axis_offset_pixels > 6
+        ):
+            scope_reasons.append("experimental_OCR_settings_outside_validated_scope")
+    retained = experimental_export and not scope_reasons and concrete is not None
+    allowed = retained and complete.status == "accepted" and numeric_complete.status == "accepted"
+    numeric_state = (
+        "complete"
+        if numeric_complete.status == "accepted"
+        else "partial"
+        if concrete is not None
+        else "unresolved"
+    )
     if experimental_export:
         release = scope_reasons or ([] if allowed else ["required_per_image_capability_failed"])
 
@@ -298,12 +480,49 @@ def automate(
     return AutomationResult(
         detection=detected,
         legend=legend,
-        decisions=tuple(decisions),
+        decisions=tuple(
+            d.model_copy(
+                update={
+                    "policy_version": AUTOMATION_POLICY_VERSION,
+                    "evidence": {
+                        **d.evidence,
+                        "scores_are_probabilities": False,
+                        "support_scope": "aligned common-pitch grids; linear ticks; experimental",
+                        "assumptions": ["displayed scale only", "no OCR identifier authorization"],
+                        "alternatives_reference": "detection candidates/blocks; legend ticks",
+                        "evidence_class": "supported"
+                        if d.status == "accepted"
+                        else "contradiction"
+                        if any(
+                            any(
+                                word in reason
+                                for word in ("contradict", "conflict", "competing", "ambiguous")
+                            )
+                            for reason in d.reasons
+                        )
+                        else "incomplete_or_weak",
+                    },
+                }
+            )
+            for d in decisions
+        ),
         complete=complete,
         automatic_export_allowed=allowed,
         release_reasons=tuple(release),
         diagnostic_config=concrete,
         legend_diagnostics=tuple(legend_diagnostics),
         experimental_export_requested=experimental_export,
-        export_maturity="experimental" if allowed else "review_only",
+        export_maturity="experimental" if retained else "review_only",
+        numeric_complete=numeric_complete,
+        label_geometry_complete=label_geometry_complete,
+        identifiers_complete=identifiers_complete,
+        numeric_retention_allowed=retained,
+        numeric_state=numeric_state,
+        identifier_state="not_requested"
+        if request.numeric_only
+        else "review_required"
+        if identifier_decisions
+        else "user_supplied",
+        ocr_anchors=ocr_anchors,
+        label_evidence=tuple(label_evidence),
     )

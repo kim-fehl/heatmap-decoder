@@ -1,0 +1,170 @@
+{
+  "bases": 40,
+  "correlated_attempts": 120,
+  "negative_bases": 12,
+  "families": {
+    "none": {
+      "clean": {
+        "explicit": 10,
+        "geometry": 10,
+        "full_ocr": 10,
+        "explicit_ocr": 10
+      },
+      "jpeg": {
+        "explicit": 10,
+        "geometry": 3,
+        "full_ocr": 3,
+        "explicit_ocr": 10
+      },
+      "blur": {
+        "explicit": 7,
+        "geometry": 3,
+        "full_ocr": 3,
+        "explicit_ocr": 7
+      }
+    },
+    "horizontal": {
+      "clean": {
+        "explicit": 10,
+        "geometry": 10,
+        "full_ocr": 10,
+        "explicit_ocr": 10
+      },
+      "jpeg": {
+        "explicit": 10,
+        "geometry": 3,
+        "full_ocr": 3,
+        "explicit_ocr": 9
+      },
+      "blur": {
+        "explicit": 7,
+        "geometry": 0,
+        "full_ocr": 0,
+        "explicit_ocr": 7
+      }
+    },
+    "vertical": {
+      "clean": {
+        "explicit": 10,
+        "geometry": 10,
+        "full_ocr": 9,
+        "explicit_ocr": 9
+      },
+      "jpeg": {
+        "explicit": 10,
+        "geometry": 3,
+        "full_ocr": 3,
+        "explicit_ocr": 9
+      },
+      "blur": {
+        "explicit": 7,
+        "geometry": 0,
+        "full_ocr": 0,
+        "explicit_ocr": 7
+      }
+    },
+    "both": {
+      "clean": {
+        "explicit": 10,
+        "geometry": 10,
+        "full_ocr": 10,
+        "explicit_ocr": 10
+      },
+      "jpeg": {
+        "explicit": 10,
+        "geometry": 2,
+        "full_ocr": 2,
+        "explicit_ocr": 9
+      },
+      "blur": {
+        "explicit": 7,
+        "geometry": 0,
+        "full_ocr": 0,
+        "explicit_ocr": 7
+      }
+    }
+  },
+  "gates": {
+    "explicit_clean": true,
+    "geometry_clean_none": true,
+    "geometry_clean_blocked": true,
+    "geometry_all_derivatives": false,
+    "full_ocr_clean": true,
+    "explicit_ocr_clean": true,
+    "explicit_angle_clean": true,
+    "auto_angle_clean": true,
+    "zero_wrong_complete": true,
+    "zero_negative_complete": true,
+    "identifiers_never_automatic": true
+  },
+  "counts": {
+    "geometry": 54,
+    "full_ocr": 53,
+    "explicit_ocr": 104
+  },
+  "blockers": {
+    "geometry": {
+      "accepted": 54,
+      "heatmap:no_validated_grid": 60,
+      "heatmap:full_grid_bounds_unverified": 2,
+      "numeric_quality:excessive_colour_matching_flags": 1,
+      "heatmap:rows_broad_boundary_peaks": 2,
+      "colourbar:competing_bars": 1
+    },
+    "full_ocr": {
+      "accepted": 53,
+      "heatmap:no_validated_grid": 60,
+      "heatmap:full_grid_bounds_unverified": 2,
+      "numeric_quality:excessive_colour_matching_flags": 1,
+      "heatmap:rows_broad_boundary_peaks": 2,
+      "scale:unresolved_or_conflicting_plausible_ticks": 1,
+      "colourbar:competing_bars": 1
+    },
+    "explicit_ocr": {
+      "accepted": 104,
+      "numeric_quality:excessive_colour_matching_flags": 12,
+      "scale:unresolved_or_conflicting_plausible_ticks": 4
+    }
+  },
+  "manual_recovery": "Supplied geometry/counts are measured by explicit_ocr. One-field recovery and blind six-publication coverage are not established.",
+  "current_report": "validation-final.json",
+  "initial_failed_report": "validation.json",
+  "numeric_error": {
+    "geometry": {
+      "maximum_mae": 0.00500000000000002,
+      "maximum_error": 0.022222222222222216
+    },
+    "full_ocr": {
+      "maximum_mae": 0.005000000000000051,
+      "maximum_error": 0.02222222222222185
+    },
+    "explicit_ocr": {
+      "maximum_mae": 0.007760141093474416,
+      "maximum_error": 0.027777777777777384
+    }
+  },
+  "base_uncertainty_95_percent_wilson": {
+    "clean_geometry": [
+      0.9123754607496077,
+      1
+    ],
+    "clean_full_ocr": [
+      0.8711834051199223,
+      0.9955732825922052
+    ],
+    "negative_wrong_complete": [
+      0,
+      0.2425007574992425
+    ]
+  },
+  "label_workflow": {
+    "paired_clean_bases": 40,
+    "explicit_correct": 40,
+    "automatic_correct": 40,
+    "numeric_retained": 40,
+    "raw_exact": 160,
+    "raw_total": 160,
+    "identifiers_authorized": 0,
+    "supplied_matrix_and_label_rois_and_counts": true
+  }
+}

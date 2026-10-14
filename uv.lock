@@ -378,6 +378,8 @@ dependencies = [
     { name = "pydantic" },
     { name = "rapidocr-onnxruntime" },
     { name = "scikit-image" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "typer" },
 ]
 
@@ -406,6 +408,7 @@ requires-dist = [
     { name = "pytesseract", marker = "extra == 'ocr'", specifier = ">=0.3.13,<0.4" },
     { name = "rapidocr-onnxruntime", specifier = ">=1.4.4,<2" },
     { name = "scikit-image", specifier = ">=0.22" },
+    { name = "scipy", specifier = ">=1.12" },
     { name = "typer", specifier = ">=0.12" },
 ]
 provides-extras = ["ocr"]

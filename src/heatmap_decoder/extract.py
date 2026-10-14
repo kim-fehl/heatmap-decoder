@@ -39,6 +39,7 @@ from .models import (
     OCRRun,
     OCRToken,
     RGBArray,
+    ScaleAnchor,
 )
 from .sampling import (
     missing_pixel_mask,
@@ -65,6 +66,7 @@ def extract(
     config: ExtractionConfig,
     *,
     mask: BoolArray | None = None,
+    ocr_anchors: tuple[ScaleAnchor, ...] | None = None,
     label_result: LabelExtractionResult | None = None,
     file_labels: Mapping[Axis, Sequence[str]] | None = None,
     reviewed_labels: Mapping[tuple[Axis, int], str] | None = None,
@@ -94,7 +96,7 @@ def extract(
     validate_bar_data(missing, config)
     cells, fractions = sample_cell_data(image, config, missing)
     bar = sample_colourbar(image[:, :, :3], config)
-    scale = scale_values(config, len(bar))
+    scale = scale_values(config, len(bar), ocr_anchors=ocr_anchors)
     valid = np.isfinite(cells).all(axis=1)
     count = config.rows * config.columns
     inferred = np.full(count, np.nan, dtype=np.float64)
@@ -205,6 +207,7 @@ def extract_labels(
     runs: list[tuple[Axis, OCRRun]] = []
     slot_runs: list[tuple[Axis, int, tuple[int, int, int, int], OCRRun]] = []
     skipped: list[dict[str, object]] = []
+    oriented_records: list[dict[str, object]] = []
     for axis in ("rows", "columns"):
         source = getattr(config.labels, axis)
         if source is None:
@@ -240,6 +243,16 @@ def extract_labels(
         else:
             from .ocr import recognize
 
+            if axis == "columns" and (
+                source.recognition == "lines" or source.text_rotation_degrees not in (0, 90, -90)
+            ):
+                from .oriented_labels import recognise_lines
+
+                assigned, records, attempts = recognise_lines(image, config, source)
+                axes.append(assigned)
+                oriented_records.extend(records)
+                skipped.extend(attempts)
+                continue
             if source.recognition == "slots":
                 # Counts/regions are already explicit. One fixed single-line
                 # pass per slot, no dictionaries or confidence-based retries.
@@ -388,4 +401,5 @@ def extract_labels(
         tuple(runs),
         slot_ocr_runs=tuple(slot_runs),
         skipped_ocr_attempts=tuple(skipped),
+        oriented_ocr_records=tuple(oriented_records),
     )

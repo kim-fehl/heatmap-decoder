@@ -9,6 +9,7 @@ ROI_STYLE = {
     "labels_rows": ("Gene labels", "#bd4189"),
     "labels_columns": ("Sample labels", "#9370bb"),
     "colourbar": ("Colourbar", "#6840a8"),
+    "calibration_span": ("Calibrated tick span", "#14846f"),
     "tick_search": ("Tick search", "#a05099"),
 }
 

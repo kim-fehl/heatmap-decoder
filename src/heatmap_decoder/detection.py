@@ -306,6 +306,7 @@ def _detect_heatmap(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         raise ValueError("ROI localisation requires an opaque image; supply manual boxes")
     full_mask = foreground(image, hints.detector.background_distance)
     boxes: set[BoundingBox] = set()
+    search_boxes: set[BoundingBox] = set()
     for maximum in (hints.detector.max_analysis_size, hints.detector.max_analysis_size // 2):
         small, transform = analysis_image(image, maximum)
         mask = foreground(small, hints.detector.background_distance)
@@ -316,6 +317,13 @@ def _detect_heatmap(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         )
         for region in regions[: hints.detector.max_components]:
             top, left, bottom, right = region.bbox
+            # Keep thin/weak components as competition evidence even when they
+            # cannot independently support a full grid/count proposal.
+            if min(right - left, bottom - top) >= 6:
+                raw = transform.original_box((left, top, right, bottom))
+                search_boxes.add(
+                    refine_box(image, raw, 2, hints.detector.background_distance, full_mask)
+                )
             if (right - left) < T.minimum_analysis_extent or (
                 bottom - top
             ) < T.minimum_analysis_extent:
@@ -414,6 +422,7 @@ def _detect_heatmap(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         status = "ambiguous"
     return DetectionResult(
         candidates=candidates,
+        heatmap_search_boxes=tuple(sorted(search_boxes)),
         selected=selected,
         status=status,
         unresolved_requirements=("heatmap: select a candidate or supply bounds",),
@@ -800,7 +809,10 @@ def _label_regions(
     ):
         axis: Axis = "rows" if side in {"left", "right"} else "columns"
         kind = f"labels_{axis}"
-        if axis == "columns" and hints.detector.propose_column_rotations:
+        if axis == "columns" and (
+            hints.detector.propose_column_rotations
+            or hints.detector.propose_arbitrary_column_angles
+        ):
             continue
         if kind not in hints.requested and not (
             hints.detector.count_label_geometry and getattr(hints, f"infer_{axis}")
@@ -834,6 +846,8 @@ def _label_regions(
                 rows=hints.rows or 1,
                 columns=hints.columns or 1,
                 labels=LabelsConfig(ocr=settings),
+                rows_segments=hints.rows_segments,
+                columns_segments=hints.columns_segments,
             )
             assignment = labels_from_tokens(tokens, config, axis)
         evidence.append(
@@ -887,7 +901,9 @@ def _label_regions(
                 associations=(heatmap_id,),
             )
         )
-    if hints.detector.propose_column_rotations and (
+    if (
+        hints.detector.propose_column_rotations or hints.detector.propose_arbitrary_column_angles
+    ) and (
         "labels_columns" in hints.requested
         or hints.detector.count_label_geometry
         and hints.infer_columns
@@ -900,7 +916,14 @@ def _label_regions(
             orientation_budget = OrientationBudget(
                 hints.detector.max_label_ocr_calls, hints.detector.max_label_ocr_seconds
             )
-        extra, records, notes = column_orientation_regions(
+        from .orientation import arbitrary_column_regions
+
+        proposer = (
+            arbitrary_column_regions
+            if hints.detector.propose_arbitrary_column_angles
+            else column_orientation_regions
+        )
+        extra, records, notes = proposer(
             image,
             hints,
             heatmap_id,
@@ -1221,6 +1244,7 @@ def detect(image: RGBArray, hints: DetectionHints) -> DetectionResult:
         count_proposals=tuple(counts),
         label_evidence=label_evidence,
         bar_search_evidence=tuple(bar_audit),
+        heatmap_search_boxes=heatmap.heatmap_search_boxes,
         selected_counts={
             axis: SelectedCount(count=getattr(hints, axis))
             for axis in ("rows", "columns")

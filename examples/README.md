@@ -25,3 +25,5 @@ establish accuracy for published figures.
 
 Other milestone directories retain reproducible development fixtures. Prefer the
 [usage guide](../docs/usage.md) when adapting a configuration to your own image.
+
+[M19](m19/README.md) demonstrates separate numeric, partial and identifier completion states.
