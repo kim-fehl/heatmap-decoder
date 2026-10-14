@@ -37,6 +37,56 @@ app = typer.Typer(
 )
 
 
+@app.command("group-labels")
+def group_labels_command(
+    figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],
+    request: Annotated[Path, typer.Option("--request", exists=True, dir_okay=False)],
+    out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("results/groups"),
+    overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
+) -> None:
+    """Name display positions from color strips and reviewed categorical swatches."""
+    import csv
+
+    from .group_labels import GroupLabelsRequest, infer_group_labels
+    from .io import check_output_paths
+
+    try:
+        settings = GroupLabelsRequest.model_validate_json(request.read_bytes())
+        names = ("groups.json", "groups.tsv", f"{settings.axis}.txt")
+        check_output_paths([out / name for name in names], (figure, request), overwrite)
+        result = infer_group_labels(load_raster(figure), settings)
+        result["input_sha256"] = hashlib.sha256(figure.read_bytes()).hexdigest()
+        result["request"] = settings.model_dump(mode="json")
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "groups.json").write_text(json.dumps(result, indent=2) + "\n")
+        with (out / "groups.tsv").open("w", newline="", encoding="utf-8") as stream:
+            writer = csv.writer(stream, delimiter="\t", lineterminator="\n")
+            writer.writerow(["index", "generated_name", *(t.name for t in settings.tracks)])
+            for record in result["records"]:
+                writer.writerow(
+                    [
+                        record["index"],
+                        record["generated_name"],
+                        *(t["category"] for t in record["tracks"]),
+                    ]
+                )
+        label_path = out / f"{settings.axis}.txt"
+        if result["complete"]:
+            label_path.write_text(
+                "\n".join(r["generated_name"] for r in result["records"]) + "\n",
+                encoding="utf-8",
+            )
+        elif label_path.exists():
+            label_path.unlink()  # Remove a stale complete file on an explicit overwrite.
+    except (ValueError, OSError) as error:
+        typer.echo(f"error: {error}", err=True)
+        raise typer.Exit(2) from error
+    if not result["complete"]:
+        typer.echo(f"Unresolved categorical assignments; review {out / 'groups.json'}")
+        raise typer.Exit(4)
+    typer.echo(f"Wrote {settings.count} group/position names to {label_path}")
+
+
 @app.command("automate")
 def automate_command(
     figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],

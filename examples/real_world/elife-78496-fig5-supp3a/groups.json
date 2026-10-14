@@ -1,0 +1,584 @@
+{
+  "axis": "columns",
+  "complete": true,
+  "name_kind": "category_combination_plus_display_ordinal",
+  "original_sample_ids_recovered": false,
+  "legend_labels_are_reviewed_inputs": true,
+  "records": [
+    {
+      "index": 0,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            82,
+            64,
+            123,
+            75
+          ],
+          "category": "AL",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 1.0,
+            "CR": 0.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            82,
+            91,
+            123,
+            102
+          ],
+          "category": "Pnpla2+/+",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 1.0,
+            "Pnpla2-/-": 0.0
+          }
+        }
+      ],
+      "generated_name": "AL__Pnpla2+/+__01"
+    },
+    {
+      "index": 1,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            150,
+            64,
+            191,
+            75
+          ],
+          "category": "AL",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 1.0,
+            "CR": 0.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            150,
+            91,
+            191,
+            102
+          ],
+          "category": "Pnpla2+/+",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 1.0,
+            "Pnpla2-/-": 0.0
+          }
+        }
+      ],
+      "generated_name": "AL__Pnpla2+/+__02"
+    },
+    {
+      "index": 2,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            218,
+            64,
+            259,
+            75
+          ],
+          "category": "AL",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 1.0,
+            "CR": 0.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            218,
+            91,
+            259,
+            102
+          ],
+          "category": "Pnpla2+/+",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 1.0,
+            "Pnpla2-/-": 0.0
+          }
+        }
+      ],
+      "generated_name": "AL__Pnpla2+/+__03"
+    },
+    {
+      "index": 3,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            286,
+            64,
+            327,
+            75
+          ],
+          "category": "AL",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 1.0,
+            "CR": 0.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            286,
+            91,
+            327,
+            102
+          ],
+          "category": "Pnpla2+/+",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 1.0,
+            "Pnpla2-/-": 0.0
+          }
+        }
+      ],
+      "generated_name": "AL__Pnpla2+/+__04"
+    },
+    {
+      "index": 4,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            354,
+            64,
+            395,
+            75
+          ],
+          "category": "CR",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 0.0,
+            "CR": 1.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            354,
+            91,
+            395,
+            102
+          ],
+          "category": "Pnpla2+/+",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 1.0,
+            "Pnpla2-/-": 0.0
+          }
+        }
+      ],
+      "generated_name": "CR__Pnpla2+/+__01"
+    },
+    {
+      "index": 5,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            422,
+            64,
+            463,
+            75
+          ],
+          "category": "CR",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 0.0,
+            "CR": 1.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            422,
+            91,
+            463,
+            102
+          ],
+          "category": "Pnpla2+/+",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 1.0,
+            "Pnpla2-/-": 0.0
+          }
+        }
+      ],
+      "generated_name": "CR__Pnpla2+/+__02"
+    },
+    {
+      "index": 6,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            491,
+            64,
+            531,
+            75
+          ],
+          "category": "CR",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 0.0,
+            "CR": 1.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            491,
+            91,
+            531,
+            102
+          ],
+          "category": "Pnpla2+/+",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 1.0,
+            "Pnpla2-/-": 0.0
+          }
+        }
+      ],
+      "generated_name": "CR__Pnpla2+/+__03"
+    },
+    {
+      "index": 7,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            559,
+            64,
+            599,
+            75
+          ],
+          "category": "CR",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 0.0,
+            "CR": 1.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            559,
+            91,
+            599,
+            102
+          ],
+          "category": "Pnpla2+/+",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 1.0,
+            "Pnpla2-/-": 0.0
+          }
+        }
+      ],
+      "generated_name": "CR__Pnpla2+/+__04"
+    },
+    {
+      "index": 8,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            627,
+            64,
+            668,
+            75
+          ],
+          "category": "AL",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 1.0,
+            "CR": 0.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            627,
+            91,
+            668,
+            102
+          ],
+          "category": "Pnpla2-/-",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 0.0,
+            "Pnpla2-/-": 0.9977827050997783
+          }
+        }
+      ],
+      "generated_name": "AL__Pnpla2-/-__01"
+    },
+    {
+      "index": 9,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            695,
+            64,
+            736,
+            75
+          ],
+          "category": "AL",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 1.0,
+            "CR": 0.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            695,
+            91,
+            736,
+            102
+          ],
+          "category": "Pnpla2-/-",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 0.0,
+            "Pnpla2-/-": 1.0
+          }
+        }
+      ],
+      "generated_name": "AL__Pnpla2-/-__02"
+    },
+    {
+      "index": 10,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            763,
+            64,
+            804,
+            75
+          ],
+          "category": "AL",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 1.0,
+            "CR": 0.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            763,
+            91,
+            804,
+            102
+          ],
+          "category": "Pnpla2-/-",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 0.0,
+            "Pnpla2-/-": 1.0
+          }
+        }
+      ],
+      "generated_name": "AL__Pnpla2-/-__03"
+    },
+    {
+      "index": 11,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            831,
+            64,
+            872,
+            75
+          ],
+          "category": "CR",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 0.0,
+            "CR": 1.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            831,
+            91,
+            872,
+            102
+          ],
+          "category": "Pnpla2-/-",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 0.0,
+            "Pnpla2-/-": 1.0
+          }
+        }
+      ],
+      "generated_name": "CR__Pnpla2-/-__01"
+    },
+    {
+      "index": 12,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            899,
+            64,
+            940,
+            75
+          ],
+          "category": "CR",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 0.0,
+            "CR": 1.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            899,
+            91,
+            940,
+            102
+          ],
+          "category": "Pnpla2-/-",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 0.0,
+            "Pnpla2-/-": 1.0
+          }
+        }
+      ],
+      "generated_name": "CR__Pnpla2-/-__02"
+    },
+    {
+      "index": 13,
+      "tracks": [
+        {
+          "track": "treatment",
+          "sample_bbox": [
+            967,
+            64,
+            1008,
+            75
+          ],
+          "category": "CR",
+          "status": "matched",
+          "category_fractions": {
+            "AL": 0.0,
+            "CR": 1.0
+          }
+        },
+        {
+          "track": "genotype",
+          "sample_bbox": [
+            967,
+            91,
+            1008,
+            102
+          ],
+          "category": "Pnpla2-/-",
+          "status": "matched",
+          "category_fractions": {
+            "Pnpla2+/+": 0.0,
+            "Pnpla2-/-": 1.0
+          }
+        }
+      ],
+      "generated_name": "CR__Pnpla2-/-__03"
+    }
+  ],
+  "input_sha256": "67b39b8af161f31fb38a1f635ad2a8bf60fb5c8034b4ca708b52767dbd9e0f22",
+  "request": {
+    "axis": "columns",
+    "start": 68,
+    "end": 1021,
+    "count": 14,
+    "segments": null,
+    "tracks": [
+      {
+        "name": "treatment",
+        "bbox": [
+          68,
+          59,
+          1021,
+          80
+        ],
+        "swatches": [
+          {
+            "label": "AL",
+            "bbox": [
+              1139,
+              150,
+              1160,
+              166
+            ]
+          },
+          {
+            "label": "CR",
+            "bbox": [
+              1139,
+              174,
+              1160,
+              191
+            ]
+          }
+        ]
+      },
+      {
+        "name": "genotype",
+        "bbox": [
+          68,
+          86,
+          1021,
+          107
+        ],
+        "swatches": [
+          {
+            "label": "Pnpla2+/+",
+            "bbox": [
+              1139,
+              239,
+              1160,
+              255
+            ]
+          },
+          {
+            "label": "Pnpla2-/-",
+            "bbox": [
+              1139,
+              266,
+              1160,
+              282
+            ]
+          }
+        ]
+      }
+    ],
+    "max_colour_distance": 12.0,
+    "min_colour_margin": 3.0,
+    "minimum_match_fraction": 0.8
+  }
+}

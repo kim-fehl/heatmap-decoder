@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Published source tables and categorical labels
+
+- Add `group-labels` for reviewed categorical swatches and annotation strips,
+  generating group/position names with retained per-track evidence and an
+  unresolved-color gate.
+- Add attached publication crops and original workbooks under `examples/real_world`,
+  including a source-verified 49×14 Figure 5E matrix in displayed gene order,
+  a 598-record CRISPR source export, extraction/OCR measurements and regression checks.
+
 ## Unreleased — OCR language and diagnostics
 
 - Bundle deterministic benchmark fonts for Windows/macOS CI and pass runtime

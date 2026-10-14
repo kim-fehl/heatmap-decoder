@@ -9,6 +9,7 @@ should be new or explicitly overwritten with the CLI's overwrite option.
 | [Labels and review](labels/) | Label evidence, supplied text files and reviewed reconstruction; historical Tesseract configurations are explicitly selected |
 | [Automation](../docs/automation.md#experimental-numeric-export) | Review-oriented proposals and the scoped experimental numeric export |
 | [Rotated labels](../docs/rotated-labels.md) | Explicit sample-label quarter turns and reviewed names |
+| [Published heatmaps and source truth](real_world/README.md) | Aligned article source tables, image estimates and categorical group naming |
 | [Publication crop](m16/README.md) | Observed gradients, reviewed multi-anchor calibration and default RapidOCR labels |
 
 ## Basic numeric extraction

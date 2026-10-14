@@ -1,0 +1,13 @@
+{
+  "doi": "10.7554/eLife.17290",
+  "attribution": "DeJesus et al., eLife 5:e17290 (2016)",
+  "license": "CC BY",
+  "source_workbook_sha256": "e58b933c9eb91c73ebc20afc4cd9a11ebd44b58fe64f589a19544586ba4ee52f",
+  "source_url": "https://cdn.elifesciences.org/articles/17290/elife-17290-fig2-data2-v1.xlsx",
+  "source_table_sha256": "2ba085f8113410f5e6c63fbc2e99bf47191883b6be8febc421c88207fe6d42bb",
+  "records": 598,
+  "status": "source_table_only_no_corresponding_image_attached",
+  "source_direction": "high versus low",
+  "row_order_verified": false,
+  "note": "Retains sgRNA and gene keys, source order and signs; no guide aggregation."
+}

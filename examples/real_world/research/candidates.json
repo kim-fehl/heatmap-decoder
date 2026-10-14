@@ -1,0 +1,110 @@
+{
+  "research_date": "2026-10-14",
+  "candidates": [
+    {
+      "id": "elife-17290",
+      "doi": "10.7554/eLife.17290",
+      "panels": [
+        "2F",
+        "2G"
+      ],
+      "value_type": "log2_fold_change",
+      "status": "source_workbook_supplied_image_missing",
+      "table_contents_verified": true,
+      "transformation_verified": false,
+      "row_order_verified": false,
+      "column_order_verified": false,
+      "assets": [
+        {
+          "url": "https://cdn.elifesciences.org/articles/17290/elife-17290-fig2-data2-v1.xlsx",
+          "filename": "elife-17290-fig2-data2-v1.xlsx"
+        },
+        {
+          "url": "https://cdn.elifesciences.org/articles/17290/elife-17290-fig2-data1-v1.xlsx",
+          "filename": "elife-17290-fig2-data1-v1.xlsx"
+        },
+        {
+          "url": "https://cdn.elifesciences.org/elife-articles/17290/figures-pdf/elife17290-figures.pdf",
+          "filename": "elife17290-figures.pdf"
+        }
+      ]
+    },
+    {
+      "id": "elife-78496",
+      "doi": "10.7554/eLife.78496",
+      "panels": [
+        "5D",
+        "5E",
+        "5F"
+      ],
+      "value_type": "z_score",
+      "status": "figure_5E_truth_prepared",
+      "table_contents_verified": true,
+      "transformation_verified": false,
+      "row_order_verified": false,
+      "column_order_verified": false,
+      "assets": [
+        {
+          "url": "https://cdn.elifesciences.org/articles/78496/elife-78496-fig5-data1-v2.xlsx",
+          "filename": "elife-78496-fig5-data1-v2.xlsx"
+        },
+        {
+          "url": "https://cdn.elifesciences.org/articles/78496/elife-78496-v2.pdf",
+          "filename": "elife-78496-v2.pdf"
+        }
+      ],
+      "prepared_panels": {
+        "5E": {
+          "row_order_verified": true,
+          "value_type": "author_supplied_plotted_z_score"
+        }
+      }
+    },
+    {
+      "id": "elife-97830",
+      "doi": "10.7554/eLife.97830.3",
+      "panels": [
+        "2B",
+        "3C",
+        "4E",
+        "4F"
+      ],
+      "value_type": "z_score",
+      "status": "figure_4E_image_supplied_source_workbook_missing",
+      "table_contents_verified": false,
+      "transformation_verified": false,
+      "row_order_verified": false,
+      "column_order_verified": false,
+      "assets": [
+        {
+          "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-fig2-data1-v1.xlsx",
+          "filename": "elife-97830-fig2-data1-v1.xlsx"
+        },
+        {
+          "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-fig3-data1-v1.xlsx",
+          "filename": "elife-97830-fig3-data1-v1.xlsx"
+        },
+        {
+          "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-fig4-data1-v1.xlsx",
+          "filename": "elife-97830-fig4-data1-v1.xlsx"
+        },
+        {
+          "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-supp1-v1.xlsx",
+          "filename": "elife-97830-supp1-v1.xlsx"
+        },
+        {
+          "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-supp2-v1.xlsx",
+          "filename": "elife-97830-supp2-v1.xlsx"
+        },
+        {
+          "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-supp3-v1.xlsx",
+          "filename": "elife-97830-supp3-v1.xlsx"
+        },
+        {
+          "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-v1.pdf",
+          "filename": "elife-97830-v1.pdf"
+        }
+      ]
+    }
+  ]
+}

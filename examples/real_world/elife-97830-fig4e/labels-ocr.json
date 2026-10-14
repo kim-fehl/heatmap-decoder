@@ -1,0 +1,82 @@
+{
+  "heatmap_bbox": [
+    178,
+    107,
+    1108,
+    573
+  ],
+  "rows": 25,
+  "columns": 26,
+  "colourbar_bbox": [
+    1220,
+    110,
+    1235,
+    416
+  ],
+  "colourbar_orientation": "vertical",
+  "scale": {
+    "source": "manual_ticks",
+    "quantity": "displayed z-score",
+    "anchors": [
+      {
+        "position": 123.5,
+        "value": 3.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 170.0,
+        "value": 2.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 216.0,
+        "value": 1.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 262.5,
+        "value": 0.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 309.0,
+        "value": -1.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 356.0,
+        "value": -2.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 402.0,
+        "value": -3.0,
+        "origin": "manual",
+        "status": "reviewed"
+      }
+    ],
+    "model": "piecewise_linear"
+  },
+  "labels": {
+    "rows": {
+      "source": "ocr",
+      "bbox": [
+        1110,
+        107,
+        1215,
+        573
+      ],
+      "recognition": "slots"
+    },
+    "ocr": {
+      "engine": "rapidocr",
+      "upscale_factor": 1
+    }
+  }
+}

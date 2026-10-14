@@ -1,0 +1,32 @@
+{
+  "doi": "10.7554/eLife.78496",
+  "panel": "Figure 5\u2014figure supplement 3A (cluster 2/3 region)",
+  "status": "image_only_source_matrix_and_row_order_missing",
+  "image_sha256": "67b39b8af161f31fb38a1f635ad2a8bf60fb5c8034b4ca708b52767dbd9e0f22",
+  "source_matrix_available": false,
+  "independent_numeric_truth_available": false,
+  "needed": "gene-by-sample matrix and clustered row order for supplement 3A; absent from attached Figure 5 workbook",
+  "column_group_order_verified": true,
+  "sample_identity": "generated group plus display ordinal, not original sample ID",
+  "license": "CC BY",
+  "attribution": "Li et al., eLife 11:e78496 (2022)",
+  "image_origin": "User-supplied default.jpg crop",
+  "column_count": 14,
+  "row_count": null,
+  "row_order_verified": false,
+  "visible_block_bboxes": [
+    [
+      68,
+      122,
+      1021,
+      465
+    ],
+    [
+      68,
+      488,
+      1021,
+      616
+    ]
+  ],
+  "row_count_note": "unlabelled compressed gene rows; pixel rows are not gene counts"
+}

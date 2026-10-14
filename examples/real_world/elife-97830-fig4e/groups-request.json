@@ -1,0 +1,37 @@
+{
+  "axis": "columns",
+  "start": 178,
+  "end": 1108,
+  "count": 26,
+  "tracks": [
+    {
+      "name": "infection_glucose_group",
+      "bbox": [
+        178,
+        578,
+        1108,
+        604
+      ],
+      "swatches": [
+        {
+          "label": "High_SE",
+          "bbox": [
+            1120,
+            53,
+            1129,
+            61
+          ]
+        },
+        {
+          "label": "Low_SE",
+          "bbox": [
+            1120,
+            73,
+            1129,
+            81
+          ]
+        }
+      ]
+    }
+  ]
+}

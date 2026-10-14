@@ -54,6 +54,7 @@ Heuristic acceptance and high scores do not mean identifiers have been reviewed.
 - [Arbitrary-angle sample labels](docs/arbitrary-angle-labels.md)
 - [Blocked grid configuration](docs/blocked-grids.md)
 - [OCR language and identifier character policy](docs/ocr-language.md)
+- [Categorical group labels and published source tables](examples/real_world/README.md)
 - [Grid tolerance and mild-blur diagnosis](docs/grid-tolerance.md)
 - [Scale calibration](docs/nonlinear-calibration.md)
 - [Worked examples](examples/README.md)
