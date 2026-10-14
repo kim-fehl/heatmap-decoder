@@ -243,3 +243,35 @@ def test_slot_ocr_confusable_genes_and_raw_provenance():
     assert config.labels.ocr.engine == "rapidocr"
     assert all(r[3].mode == "rapidocr-recognize-field" for r in result.slot_ocr_runs)
     assert all(r[3].model_sha256 for r in result.slot_ocr_runs)
+
+
+@pytest.mark.skipif(not FONT_AVAILABLE, reason="synthetic renderer requires DejaVuSans")
+def test_selective_evaluator_reconstructs_with_runtime_ocr_anchors(monkeypatch):
+    evaluator = runpy.run_path(str(ROOT / "benchmarks/m12/evaluate.py"))
+    case = case_for(0)
+    image, truth = FIXTURE["make_fixture"](case)
+    result = automate(
+        image,
+        AutomationRequest(
+            hints=DetectionHints(
+                requested=["heatmap", "colourbar"],
+                rows=truth["rows"],
+                columns=truth["columns"],
+                colourbar_start_value=truth["start_value"],
+                colourbar_end_value=truth["end_value"],
+            ),
+            numeric_only=True,
+        ),
+    )
+    assert result.diagnostic_config is not None
+    anchors = tuple(
+        ScaleAnchor(position=t["position"], value=t["value"], origin="ocr", status="suggested")
+        for t in truth["ticks"]
+    )
+    config = result.diagnostic_config.model_copy(update={"scale": ScaleConfig(source="ocr_ticks")})
+    result = result.model_copy(update={"diagnostic_config": config, "ocr_anchors": anchors})
+    attempt = evaluator["attempt"]
+    monkeypatch.setitem(attempt.__globals__, "automate", lambda *_: result)
+    report = attempt(case, image, truth, 3)
+    assert report["numeric"] is not None
+    assert report["numeric"]["mae"] < 0.02

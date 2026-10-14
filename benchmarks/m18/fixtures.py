@@ -2,13 +2,14 @@
 
 import math
 from io import BytesIO
+from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 from heatmap_decoder.models import AxisSegment, ExtractionConfig, GridConfig
 
-FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+FONT = str(Path(__file__).resolve().parents[1] / "fonts/DejaVuSans.ttf")
 
 
 def fixture(

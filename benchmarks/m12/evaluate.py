@@ -164,7 +164,9 @@ def attempt(case, image, truth, mode):
     )
     numeric = None
     if result.diagnostic_config is not None:
-        reconstructed = extract(image, result.diagnostic_config)
+        reconstructed = extract(
+            image, result.diagnostic_config, ocr_anchors=result.ocr_anchors or None
+        )
         expected = np.asarray(truth["expected_matrix"])
         if reconstructed.values.shape == expected.shape:
             finite = np.isfinite(reconstructed.values)

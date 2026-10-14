@@ -9,8 +9,8 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 matrix_fixture = runpy.run_path(str(Path(__file__).parents[1] / "m17/fixtures.py"))["fixture"]
 
-FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-MONO = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+FONT = str(Path(__file__).resolve().parents[1] / "fonts/DejaVuSans.ttf")
+MONO = str(Path(__file__).resolve().parents[1] / "fonts/DejaVuSansMono.ttf")
 
 
 def fixture(seed=290001, family="both", derivative="clean", challenge=None):

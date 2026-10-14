@@ -29,7 +29,7 @@ from heatmap_decoder.oriented_labels import (  # noqa: E402
 )
 
 ANGLES = [0, 15, -15, 30, -30, 45, -45, 60, -60, 75, -75, 90, -90, 37.25]
-MONO = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+MONO = str(ROOT / "benchmarks/fonts/DejaVuSansMono.ttf")
 PLAN = [
     dict(
         seed=230001 + i,

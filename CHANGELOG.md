@@ -2,6 +2,9 @@
 
 ## Unreleased — OCR language and diagnostics
 
+- Bundle deterministic benchmark fonts for Windows/macOS CI and pass runtime
+  OCR anchors when the M12 evaluator reconstructs diagnostic matrices.
+
 - Default numeric tick OCR to English RapidOCR with bounded fields and strict parsing;
   keep Tesseract as an optional fallback and retain existing scale export gates.
 - Include endpoint signs/glyphs outside the colorbar span in shared tick fields.
