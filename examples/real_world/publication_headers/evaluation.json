@@ -1,0 +1,206 @@
+{
+  "figure-1c": {
+    "rows": 46,
+    "image_derived_columns": 31,
+    "expected_columns": null,
+    "status": "decoded",
+    "groups": [
+      [
+        {
+          "label": "Severe Covid-19",
+          "start": 0,
+          "end": 16
+        },
+        {
+          "label": "Mild Covid-19",
+          "start": 16,
+          "end": 24
+        },
+        {
+          "label": "HC",
+          "start": 24,
+          "end": 31
+        }
+      ],
+      [
+        {
+          "label": "LDG",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "label": "PMN",
+          "start": 6,
+          "end": 31
+        }
+      ]
+    ],
+    "colorbar_values": [
+      -4.0,
+      0.0,
+      4.0
+    ],
+    "anchor_sources": [
+      "tick"
+    ],
+    "row_labels_read": 46,
+    "value_quality": {
+      "median_rgb_distance": 0.5,
+      "max_rgb_distance": 4.153311931459037,
+      "cells_outside_labeled_range": 1
+    }
+  },
+  "figure-7c": {
+    "rows": 100,
+    "image_derived_columns": 18,
+    "expected_columns": null,
+    "status": "decoded",
+    "groups": [
+      [
+        {
+          "label": "CMV",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "CMV+TGF-B",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "label": "Col1a1",
+          "start": 6,
+          "end": 9
+        },
+        {
+          "label": "Col1a1+TGF-B",
+          "start": 9,
+          "end": 12
+        },
+        {
+          "label": "Con",
+          "start": 12,
+          "end": 15
+        },
+        {
+          "label": "Con + TGF-B",
+          "start": 15,
+          "end": 18
+        }
+      ]
+    ],
+    "colorbar_values": [
+      2.0,
+      1.0,
+      0.0,
+      -1.0
+    ],
+    "anchor_sources": [
+      "label_center"
+    ],
+    "row_labels_read": 90,
+    "value_quality": {
+      "median_rgb_distance": 0.0,
+      "max_rgb_distance": 3.7416573867739413,
+      "cells_outside_labeled_range": 296
+    }
+  },
+  "figure-4a": {
+    "rows": 65,
+    "image_derived_columns": null,
+    "expected_columns": 1237,
+    "status": "resolution_limited",
+    "groups": [
+      [
+        {
+          "label": "cluster1",
+          "start": null,
+          "end": null
+        },
+        {
+          "label": "cluster2",
+          "start": null,
+          "end": null
+        },
+        {
+          "label": "cluster3",
+          "start": null,
+          "end": null
+        }
+      ]
+    ],
+    "colorbar_values": [
+      2.0,
+      1.0,
+      0.0,
+      -1.0,
+      -2.0
+    ],
+    "anchor_sources": [
+      "label_center"
+    ],
+    "row_labels_read": 65,
+    "value_quality": null
+  },
+  "figure-4a-0155215": {
+    "rows": 75,
+    "image_derived_columns": 50,
+    "expected_columns": null,
+    "status": "decoded",
+    "groups": [
+      [
+        {
+          "label": "Acral",
+          "start": 0,
+          "end": 16
+        },
+        {
+          "label": "Non-Acral",
+          "start": 16,
+          "end": 50
+        }
+      ],
+      [
+        {
+          "label": "Normal",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "label": "PP",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "label": "PPPP",
+          "start": 10,
+          "end": 16
+        },
+        {
+          "label": "Normal",
+          "start": 16,
+          "end": 40
+        },
+        {
+          "label": "Psoriasis",
+          "start": 40,
+          "end": 50
+        }
+      ]
+    ],
+    "colorbar_values": [
+      -2.0,
+      0.0,
+      2.0
+    ],
+    "anchor_sources": [
+      "tick"
+    ],
+    "row_labels_read": 75,
+    "value_quality": {
+      "median_rgb_distance": 1.4142135623730951,
+      "max_rgb_distance": 1.4142135623730951,
+      "cells_outside_labeled_range": 147
+    }
+  }
+}

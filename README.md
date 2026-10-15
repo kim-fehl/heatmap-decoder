@@ -62,3 +62,10 @@ Heuristic acceptance and high scores do not mean identifiers have been reviewed.
 - [Documentation index](docs/README.md)
 
 MIT-licensed code. Input figures retain their owners' copyright.
+
+## Publication header examples
+
+The experimental `publication` command handles unnamed samples, tickless colorbars,
+short grouping rules, and stacked rectangle labels with light or dark text.
+See [usage and limits](docs/publication-headers.md) and the
+[four additional real figures](docs/real-world-examples.md).

@@ -161,3 +161,13 @@ existing calibration and provenance notes are in [`../m16/README.md`](../m16/REA
 `research/` retains the earlier article shortlist and download script. Publisher
 access in the managed workspace is still blocked; the supplied attachments and GitHub commits provide
 the workbooks used here.
+
+## Additional publication header cases
+
+Four additional original figures and annotation references are under
+[`publication_headers`](publication_headers/): COVID-19 neutrophils, miR-29b,
+gastric regulon activity, and palmoplantar disease groups. They exercise unnamed
+samples, tickless scales, short grouping rules, dense columns, and two-track
+light/dark rectangle labels. See the [catalogue](../../docs/real-world-examples.md)
+and [experimental CLI usage](../../docs/publication-headers.md). Biological numeric
+ground truth remains unverified for these four images.

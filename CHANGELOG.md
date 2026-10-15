@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — Publication header extraction
+
+- Add an experimental `publication` command for unnamed sample columns, tickless
+  colorbars, short grouping rules, and stacked light/dark rectangle labels.
+- Add four original figures and annotation references to the real-world examples,
+  with image regression tests, CLI output protection, and controlled OCR/value tests.
+- Keep article-derived sample totals separate from pixel-derived geometry; the
+  subpixel gastric-cancer example reports unresolved individual samples and values.
+- Preserve the existing extraction, categorical labeling, and automation commands.
+
 ## Unreleased — Published source tables and categorical labels
 
 - Add `group-labels` for reviewed categorical swatches and annotation strips,

@@ -9,3 +9,6 @@ work/
 .hypothesis/
 results/
 .test-deps/
+
+artifacts/
+*.egg-info/

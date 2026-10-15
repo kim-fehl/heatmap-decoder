@@ -37,6 +37,32 @@ app = typer.Typer(
 )
 
 
+@app.command("publication")
+def publication_command(
+    figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],
+    out: Annotated[Path, typer.Option("--out", dir_okay=False)] = Path("results/publication.json"),
+    expected_columns: Annotated[int | None, typer.Option("--expected-columns", min=1)] = None,
+    overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
+) -> None:
+    """Experimentally decode publication headers; requires the publications extra."""
+    from .io import check_output_paths
+
+    try:
+        from .publication import DecodeError, decode
+    except ImportError as error:
+        typer.echo("Install the publications extra and Tesseract to use this command.", err=True)
+        raise typer.Exit(2) from error
+    try:
+        check_output_paths([out], (figure,), overwrite)
+        result = decode(figure, expected_columns=expected_columns)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    except (DecodeError, OSError, ValueError) as error:
+        typer.echo(f"error: {error}", err=True)
+        raise typer.Exit(2) from error
+    typer.echo(f"Wrote publication extraction to {out}")
+
+
 @app.command("group-labels")
 def group_labels_command(
     figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],

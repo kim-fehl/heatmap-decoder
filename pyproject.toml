@@ -13,6 +13,7 @@ dependencies = ["numpy>=1.26", "Pillow>=10", "scikit-image>=0.22", "scipy>=1.12"
 
 [project.optional-dependencies]
 ocr = ["pytesseract>=0.3.13,<0.4"]
+publications = ["pytesseract>=0.3.13,<0.4", "opencv-python-headless>=4.8"]
 
 [dependency-groups]
 dev = ["pytest>=8", "hypothesis>=6", "ruff>=0.6", "mypy>=1.11"]
@@ -50,7 +51,7 @@ path = "src/heatmap_decoder/version.py"
 [tool.hatch.build.targets.sdist]
 include = ["/src", "/tests", "/examples", "/.github", "/README.md", "/CHANGELOG.md",
            "/LICENSE", "/pyproject.toml", "/uv.lock", "/.gitignore",
-           "/MIGRATION.md", "/.gitattributes", "/docs", "/benchmarks"]
+           "/MIGRATION.md", "/.gitattributes", "/docs", "/benchmarks", "/scripts"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/heatmap_decoder", "src/heatmap2matrix"]

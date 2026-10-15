@@ -1,0 +1,91 @@
+{
+  "figure": "10.1016/j.isci.2024.108897, Fig. 4A",
+  "reference_status": "visual_panel_reference_and_article_derived_total",
+  "image": "figure-4a.jpg",
+  "n_rows": 65,
+  "expected_n_columns": 1237,
+  "sample_count_evidence": {
+    "status": "inferred_from_training_cohort_definition_not_pixel_count",
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10839690/",
+    "sections": [
+      "Experimental model and study participant details",
+      "Supervised cluster analysis incorporating survival information weights"
+    ],
+    "training_cohorts": [
+      {
+        "name": "TCGA-STAD",
+        "n": 350
+      },
+      {
+        "name": "GSE13861",
+        "n": 64
+      },
+      {
+        "name": "GSE15459",
+        "n": 192
+      },
+      {
+        "name": "GSE26899",
+        "n": 93
+      },
+      {
+        "name": "GSE62254",
+        "n": 283
+      },
+      {
+        "name": "Tianjin",
+        "n": 90
+      },
+      {
+        "name": "GSE34942",
+        "n": 56
+      },
+      {
+        "name": "GSE26901",
+        "n": 109
+      }
+    ],
+    "reasoning": "Fig. 4A says Train Regulon; the listed eight cohorts define the subtype training set. Their reported sample counts sum to 1237. Panel-specific exclusions or sample IDs were not independently verified."
+  },
+  "column_labels_visible": false,
+  "column_annotations": [
+    {
+      "track_id": "track_1",
+      "display_name": "cluster",
+      "kind": "colored_panel",
+      "segments": [
+        {
+          "label": "cluster1",
+          "start": null,
+          "end": null,
+          "sample_count": null
+        },
+        {
+          "label": "cluster2",
+          "start": null,
+          "end": null,
+          "sample_count": null
+        },
+        {
+          "label": "cluster3",
+          "start": null,
+          "end": null,
+          "sample_count": null
+        }
+      ]
+    }
+  ],
+  "edge_cases": [
+    "labels_inside_discrete_color_panels_without_a_legend",
+    "subpixel_sample_width",
+    "white_separators_between_matrix_blocks"
+  ],
+  "values": null,
+  "unresolved": [
+    "Exact sample count per cluster",
+    "Individual sample boundaries and order",
+    "Panel-specific exclusions",
+    "Regulon activity matrix and exact numeric ground truth"
+  ],
+  "license": "CC BY-NC-ND 4.0; Zhang et al., 2024; original user-supplied crop retained unchanged"
+}
