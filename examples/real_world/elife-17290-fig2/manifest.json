@@ -6,8 +6,19 @@
   "source_url": "https://cdn.elifesciences.org/articles/17290/elife-17290-fig2-data2-v1.xlsx",
   "source_table_sha256": "2ba085f8113410f5e6c63fbc2e99bf47191883b6be8febc421c88207fe6d42bb",
   "records": 598,
-  "status": "source_table_only_no_corresponding_image_attached",
+  "status": "panel_G_image_and_exact_guide_records_attached",
+  "image_sha256": "fbc95c91690ec02d5a050e179b6c1d2486f614bbab053d34fbf499989f26e278",
   "source_direction": "high versus low",
-  "row_order_verified": false,
-  "note": "Retains sgRNA and gene keys, source order and signs; no guide aggregation."
+  "row_order_verified": true,
+  "note": "Retains sgRNA and gene keys, source order and signs; no guide aggregation.",
+  "panel": "Figure 2G",
+  "shape": [
+    20,
+    3
+  ],
+  "truth_sha256": "41bee0ecd30c4f0f2a9a7e893b48e58fd4c4db6960eba605f09013ec36cefcea",
+  "value_type": "author_supplied_guide_log2FC",
+  "additional_transformation": "none",
+  "calibration_note": "0 and 6 assigned to visible bar endpoints; endpoint positions are manually estimated",
+  "shared_guide_note": "MAP1LC3B and MAP1LC3B2 share a guide and identical source values; retained separately"
 }

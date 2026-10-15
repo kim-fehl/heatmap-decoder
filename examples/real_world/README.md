@@ -7,8 +7,8 @@ and XLSX files are preserved byte-for-byte; manifests record hashes and attribut
 |---|---|---|---|
 | [`elife-78496-fig5e`](elife-78496-fig5e/) | Li et al., Figure **5E**, skeletal system development | 49 × 14 `truth.tsv`, displayed row/column mappings, configs, decoded estimates, reviewed labels | Author-supplied plotted z-scores; all 49 genes joined to the workbook in the **image's order** |
 | [`elife-78496-fig5-supp3a`](elife-78496-fig5-supp3a/) | Li et al., Figure **5—figure supplement 3A**, visible cluster 2/3 region | Original crop, 14 generated column names, two-track categorical evidence | Gene matrix and clustered row order missing; no numeric truth |
-| [`elife-97830-fig4e`](elife-97830-fig4e/) | Bæk/Muk et al., Figure **4E**, DEGs–Immune Response | Original crop, 25 reviewed row names, 26 generated column names, configs, decoded estimates | Matching blood-transcriptome workbook missing; estimates are not ground truth |
-| [`elife-17290-fig2`](elife-17290-fig2/) | DeJesus et al., Figure 2 source data 2 | All **598** source records as TSV, preserving guide sequence, gene, source row, log2 FC signs | No corresponding Figure 2F/G image was attached; displayed subset/order cannot be certified |
+| [`elife-97830-fig4e`](elife-97830-fig4e/) | Bæk/Muk et al., Figure **4E**, DEGs–Immune Response | Original crop, 25 reviewed row names, 26 generated column names, configs, decoded estimates | Blood workbook supplied; 25 × 39 source export verified. Image shows 26 samples; selection/order and plotted transformation unresolved |
+| [`elife-17290-fig2`](elife-17290-fig2/) | DeJesus et al., Figure 2 source data 2 | All **598** source records as TSV, preserving guide sequence, gene, source row, log2 FC signs | Figure 2G screenshot supplied; 20 × 3 truth matched to exact guide records, reviewed labels, extraction and OCR tests |
 
 The first attached image's filename says `fig5`, but the crop is specifically
 **5E**, not all of Figure 5. The second image has a three-cluster legend and shows
@@ -16,8 +16,8 @@ the cluster 2/3 region of supplement 3A; it must not be matched to the main Figu
 5A's four-cluster analysis. Its gene rows are unlabeled and compressed, so counting
 raster scanlines does not establish gene counts. The third image visibly carries
 panel **E** and the immune-response title. The CRISPR workbook belongs to a
-separate article and contains a single `high versus low` worksheet; it is not the
-source matrix for any attached JPEG.
+separate article and contains a single `high versus low` worksheet; its first
+20 records match the newly supplied Figure 2G screenshot in displayed order.
 
 Article/caption sources: [Li et al., eLife 11:e78496 (2022)](https://doi.org/10.7554/eLife.78496),
 [Li figures](https://journal-symfony7.elifesciences.org/articles/78496/figures),
@@ -55,8 +55,9 @@ uv run python examples/real_world/evaluate.py
 uv run --group dev pytest tests/test_real_world.py tests/test_group_labels.py -q
 ```
 
-`build_tables.py` rebuilds the source truth and CRISPR source export.
-`evaluate.py` writes `evaluation.json` and the two `decoded_estimates.tsv` files;
+`build_tables.py` rebuilds the source truth, CRISPR source export, blood-expression
+source export, and uploaded-workbook inventory (`workbooks.json`).
+`evaluate.py` writes `evaluation.json` and the three `decoded_estimates.tsv` files;
 it also measures actual RapidOCR row-label accuracy. Tests independently read
 cells from the XLSX XML, verify hashes/order, compare decoded colors to the 5E
 source values, and check categorical naming on both real images.
@@ -113,15 +114,50 @@ file. Existing outputs require `--overwrite`.
 
 ## Remaining source material
 
-For independent immune-response truth, supply
-[`elife-97830-fig4-data1-v1.xlsx`](https://cdn.elifesciences.org/articles/97830/elife-97830-fig4-data1-v1.xlsx)
-and the exact sample order, if absent from that file. For supplement 3A, supply
-its clustered gene-by-sample matrix and gene order; the attached main Figure 5
-workbook has sheets 5B/5D/5E/5F only. For CRISPR panel truth, supply the actual
-Figure 2F/G crop so gene/guide selection, direction and order can be checked.
+Figure 4 source data is now supplied as `elife-97830-fig4-data1-v1.xlsx`.
+All 25 displayed genes match uniquely in `DEGSEhighvsLow`; their 39 source
+expression columns are preserved in `source_expression.tsv`, with original sample
+IDs, group labels and source row/column mappings. There are **13 HIGH_SE and 14
+LOW_SE** records, whereas the image shows 13 per group. The omitted Low_SE sample,
+within-group display order and plotted transformation remain unverified. This
+export is source expression, not plotted z-score truth; no `truth.tsv` is claimed.
+The Figure 2 workbook for this article is liver data, not the blood-panel source;
+it is inventoried and checked for integrity rather than matched to Figure 4.
+
+Figure 2G now has a byte-preserved user screenshot and **20 × 3** guide-level
+truth, using source rows 2–21 with no aggregation or transformation. MAP1LC3B and
+MAP1LC3B2 share one guide and identical values in the source; both displayed names
+are preserved. The 0–6 legend uses manually estimated bar endpoints, not tick
+centers (the two endpoint labels sit outside the bar). All 60 cells are finite;
+RMSE is **0.176 log2 FC**, maximum absolute error **0.325**, correlation **0.9994**.
+`config.json` and `config-linear.json` use the same two-anchor linear fit; there
+are no interior ticks to justify a separate piecewise calibration.
+
+Panel G OCR accepts only **9/20** names at native size, despite **18/20** raw
+strings being exact. Eleven slots remain unresolved; `WIPI2` becomes `IPI2` and
+`SBDS` becomes `BDS`. No accepted Panel G name is wrong in this run. Upscaling by
+2 or 3 accepts **10/20**, with raw accuracy unchanged. This demonstrates a problem
+with this label layout, but does not isolate font compression as its cause.
+Angled column labels are manually reviewed; automatic column OCR is not validated.
+Use `rows.txt` and `columns.txt` for numeric extraction.
+
+Run the actual publication OCR regression tests explicitly:
+
+```bash
+HEATMAP_DECODER_OCR_TESTS=1 uv run pytest tests/test_real_world.py -q
+```
+
+The numeric/source tests run without OCR and independently read XLSX XML. The
+real-engine tests enforce minimum observed accuracy while allowing improvements;
+`evaluate.py` records raw/accepted accuracy, accepted wrong names, unresolved slots,
+and the panel G upscale comparison. These remain development fixtures, not a
+held-out benchmark. See [`PROBLEMS.md`](PROBLEMS.md) for known limitations.
+
+For supplement 3A, its clustered gene-by-sample matrix and gene order are still
+missing; the main Figure 5 workbook has sheets 5B/5D/5E/5F only.
 
 The earlier Scientific Reports image/TSV pair remains under this directory; its
 existing calibration and provenance notes are in [`../m16/README.md`](../m16/README.md).
 `research/` retains the earlier article shortlist and download script. Publisher
-access in the managed workspace is still blocked; local attachments supplied
-the two workbooks used here.
+access in the managed workspace is still blocked; the supplied attachments and GitHub commits provide
+the workbooks used here.

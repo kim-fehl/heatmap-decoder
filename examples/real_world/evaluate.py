@@ -40,7 +40,7 @@ def main():
         },
         "panels": {},
     }
-    for folder in ["elife-78496-fig5e", "elife-97830-fig4e"]:
+    for folder in ["elife-78496-fig5e", "elife-97830-fig4e", "elife-17290-fig2"]:
         path = ROOT / folder
         image = load_raster(path / "figure.jpg")
         genes = (path / "rows.txt").read_text().splitlines()
@@ -70,7 +70,9 @@ def main():
                     for flag in CellFlag
                     if flag != CellFlag.OK
                 },
-                "calibration": "reviewed ticks only; no extrapolation"
+                "calibration": "manual endpoint fit (0–6); bar positions estimated"
+                if folder == "elife-17290-fig2"
+                else "reviewed ticks only; no extrapolation"
                 if config_name == "config.json"
                 else "affine fit to visible ticks; extrapolates to bar edges",
             }
@@ -102,10 +104,40 @@ def main():
         ]
         panel["row_ocr"] = {
             "exact_correct": len(genes) - len(mismatches),
+            "raw_exact_correct": sum(
+                gene == slot.raw_text for gene, slot in zip(genes, slots, strict=True)
+            ),
+            "accepted_wrong": sum(
+                slot.final_text is not None and gene != slot.final_text
+                for gene, slot in zip(genes, slots, strict=True)
+            ),
             "total": len(genes),
             "unresolved": sum(slot.final_text is None for slot in slots),
             "mismatches": mismatches,
         }
+        if folder == "elife-17290-fig2":
+            variants = {}
+            for factor in [2, 3]:
+                request = json.loads((path / "labels-ocr.json").read_text())
+                request["labels"]["ocr"]["upscale_factor"] = factor
+                variant = extract_labels(image, ExtractionConfig.model_validate(request))
+                observed = variant.axes[0].slots
+                variants[str(factor)] = {
+                    "exact_correct": sum(
+                        g == s.final_text for g, s in zip(genes, observed, strict=True)
+                    ),
+                    "raw_exact_correct": sum(
+                        g == s.raw_text for g, s in zip(genes, observed, strict=True)
+                    ),
+                    "unresolved": sum(s.final_text is None for s in observed),
+                    "accepted_wrong": sum(
+                        s.final_text is not None and g != s.final_text
+                        for g, s in zip(genes, observed, strict=True)
+                    ),
+                }
+            panel["row_ocr_upscale_comparison"] = variants
+        if folder == "elife-97830-fig4e":
+            panel["source_data"] = json.loads((path / "source_manifest.json").read_text())
         report["panels"][folder] = panel
     for folder in ["elife-78496-fig5-supp3a", "elife-97830-fig4e"]:
         path = ROOT / folder

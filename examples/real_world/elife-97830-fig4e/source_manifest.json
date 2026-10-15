@@ -1,0 +1,22 @@
+{
+  "doi": "10.7554/eLife.97830.3",
+  "panel": "Figure 4E",
+  "attribution": "B\u00e6k/Muk et al., eLife 13:RP97830",
+  "license": "CC BY",
+  "source_workbook": "elife-97830-fig4-data1-v1.xlsx",
+  "source_workbook_sha256": "d695ff1a55761980f882d37bb4b5841199e6c331f6f50db476f8daf44bcef64b",
+  "source_expression_sha256": "2a3a12ce1da5f1ecd635a2414bd0760bd215bb78f5124de2f0e390b5358ccbbe",
+  "shape": [
+    25,
+    39
+  ],
+  "display_shape": [
+    25,
+    26
+  ],
+  "status": "source_expression_available_display_transform_and_order_unverified",
+  "row_order_verified": true,
+  "column_order_verified": false,
+  "additional_transformation": "none; source expression is not plotted z-score truth",
+  "note": "All 25 genes matched uniquely; 13 HIGH_SE and 14 LOW_SE samples available, but image shows 13 per group. Low-group selection, within-group image order and plotted transformation are not supplied by the workbook. No color-fitted ordering is treated as independent truth."
+}
