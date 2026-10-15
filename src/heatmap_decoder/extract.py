@@ -37,6 +37,7 @@ from .models import (
     LabelCandidate,
     LabelExtractionResult,
     LabelResult,
+    OCRLabelSource,
     OCRRun,
     OCRToken,
     RGBArray,
@@ -273,6 +274,20 @@ def extract_labels(
                     box = (box_list[0], box_list[1], box_list[2], box_list[3])
                     if box[2] <= box[0] or box[3] <= box[1]:
                         continue
+                    if source.trim_whitespace:
+                        # A configured light-background field can contain a short
+                        # label beside much longer neighbors. Crop observed ink,
+                        # preserving original-coordinate geometry before rotation.
+                        gray = np.asarray(Image.fromarray(image).crop(box).convert("L"))
+                        ink_y, ink_x = np.where(gray < 160)
+                        if ink_x.size:
+                            left, top, right, bottom = box
+                            box = (
+                                max(left, left + int(np.min(ink_x)) - 1),
+                                max(top, top + int(np.min(ink_y)) - 1),
+                                min(right, left + int(np.max(ink_x)) + 2),
+                                min(bottom, top + int(np.max(ink_y)) + 2),
+                            )
                     pad = source.crop_padding_pixels
                     box = (
                         max(0, box[0] - pad),
@@ -396,9 +411,29 @@ def extract_labels(
                     tokens=transform_tokens(run.tokens, transform),
                 )
             )
+    reviewed_axes = []
+    for result_axis in axes:
+        result_axis = apply_character_policy(result_axis, config)
+        source = getattr(config.labels, result_axis.axis) if config.labels is not None else None
+        if isinstance(source, OCRLabelSource) and source.require_review:
+            result_axis = replace(
+                result_axis,
+                slots=tuple(
+                    replace(
+                        slot,
+                        final_text=None,
+                        status="unreviewed",
+                        issues=(*slot.issues, "configured_identifier_review_required"),
+                    )
+                    if slot.status == "accepted"
+                    else slot
+                    for slot in result_axis.slots
+                ),
+            )
+        reviewed_axes.append(result_axis)
     return LabelExtractionResult(
         config,
-        tuple(apply_character_policy(axis, config) for axis in axes),
+        tuple(reviewed_axes),
         tuple(runs),
         slot_ocr_runs=tuple(slot_runs),
         skipped_ocr_attempts=tuple(skipped),

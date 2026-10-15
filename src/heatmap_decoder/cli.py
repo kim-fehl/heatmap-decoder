@@ -37,32 +37,6 @@ app = typer.Typer(
 )
 
 
-@app.command("publication")
-def publication_command(
-    figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],
-    out: Annotated[Path, typer.Option("--out", dir_okay=False)] = Path("results/publication.json"),
-    expected_columns: Annotated[int | None, typer.Option("--expected-columns", min=1)] = None,
-    overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
-) -> None:
-    """Experimentally decode publication headers; requires the publications extra."""
-    from .io import check_output_paths
-
-    try:
-        from .publication import DecodeError, decode
-    except ImportError as error:
-        typer.echo("Install the publications extra and Tesseract to use this command.", err=True)
-        raise typer.Exit(2) from error
-    try:
-        check_output_paths([out], (figure,), overwrite)
-        result = decode(figure, expected_columns=expected_columns)
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    except (DecodeError, OSError, ValueError) as error:
-        typer.echo(f"error: {error}", err=True)
-        raise typer.Exit(2) from error
-    typer.echo(f"Wrote publication extraction to {out}")
-
-
 @app.command("group-labels")
 def group_labels_command(
     figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],
@@ -70,36 +44,59 @@ def group_labels_command(
     out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("results/groups"),
     overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
 ) -> None:
-    """Name display positions from color strips and reviewed categorical swatches."""
+    """Read group tracks independently of optional individual sample names."""
     import csv
 
     from .group_labels import GroupLabelsRequest, infer_group_labels
-    from .io import check_output_paths
+    from .io import check_output_paths, load_file_labels
+    from .models import FileLabelSource
 
     try:
         settings = GroupLabelsRequest.model_validate_json(request.read_bytes())
         names = ("groups.json", "groups.tsv", f"{settings.axis}.txt")
-        check_output_paths([out / name for name in names], (figure, request), overwrite)
-        result = infer_group_labels(load_raster(figure), settings)
+        protected = [figure, request]
+        file_labels, hashes = (
+            ({}, {}) if settings.grid is None else load_file_labels(settings.grid, request.parent)
+        )
+        if settings.grid is not None and settings.grid.labels is not None:
+            for axis in ("rows", "columns"):
+                source = getattr(settings.grid.labels, axis)
+                if isinstance(source, FileLabelSource):
+                    protected.append(request.parent / source.path)
+        check_output_paths([out / name for name in names], tuple(protected), overwrite)
+        result = infer_group_labels(load_raster(figure), settings, file_labels=file_labels)
+        result["file_label_sha256"] = hashes
         result["input_sha256"] = hashlib.sha256(figure.read_bytes()).hexdigest()
         result["request"] = settings.model_dump(mode="json")
         out.mkdir(parents=True, exist_ok=True)
         (out / "groups.json").write_text(json.dumps(result, indent=2) + "\n")
         with (out / "groups.tsv").open("w", newline="", encoding="utf-8") as stream:
             writer = csv.writer(stream, delimiter="\t", lineterminator="\n")
-            writer.writerow(["index", "generated_name", *(t.name for t in settings.tracks)])
+            writer.writerow(
+                [
+                    "index",
+                    "display_name",
+                    "generated_name",
+                    "sample_name",
+                    "sample_status",
+                    *result["track_names"],
+                ]
+            )
             for record in result["records"]:
                 writer.writerow(
                     [
                         record["index"],
+                        record["display_name"],
                         record["generated_name"],
+                        record["sample_name"],
+                        record["sample_status"],
                         *(t["category"] for t in record["tracks"]),
                     ]
                 )
         label_path = out / f"{settings.axis}.txt"
         if result["complete"]:
             label_path.write_text(
-                "\n".join(r["generated_name"] for r in result["records"]) + "\n",
+                "\n".join(r["display_name"] for r in result["records"]) + "\n",
                 encoding="utf-8",
             )
         elif label_path.exists():

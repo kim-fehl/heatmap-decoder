@@ -67,6 +67,8 @@ class OCRLabelSource(BaseModel):
     source: Literal["ocr"]
     bbox: BoundingBox
     recognition: Literal["sparse", "slots", "lines"] = "sparse"
+    trim_whitespace: Annotated[bool, Field(strict=True)] = False
+    require_review: Annotated[bool, Field(strict=True)] = False
     crop_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
     crop_right_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=16)] = 0
     white_padding_pixels: Annotated[int, Field(strict=True, ge=0, le=2)] = 0
@@ -85,6 +87,8 @@ class OCRLabelSource(BaseModel):
             self.crop_padding_pixels or self.crop_right_padding_pixels or self.white_padding_pixels
         ):
             raise ValueError("label padding requires explicit slot or line recognition")
+        if self.trim_whitespace and self.recognition != "slots":
+            raise ValueError("whitespace trimming requires explicit slot recognition")
         left, top, right, bottom = self.bbox
         if right <= left or bottom <= top:
             raise ValueError("label bbox must have positive width and height")
@@ -213,6 +217,8 @@ class ScaleAnchor(BaseModel):
 class LegendOptions(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
     ocr: OCRConfig = Field(default_factory=lambda: OCRConfig(engine="rapidocr", upscale_factor=1))
+    tick_position_source: Literal["strokes", "text_centres"] = "strokes"
+    label_side: Literal["left", "right", "above", "below"] | None = None
     search_pixels: Annotated[int, Field(strict=True, ge=16, le=256)] = 128
     horizontal_search_pixels: Annotated[int, Field(strict=True, ge=16, le=256)] = 64
     max_ticks: Annotated[int, Field(strict=True, ge=2, le=32)] = 16
@@ -289,6 +295,15 @@ class LegendConfig(BaseModel):
     colourbar_orientation: Literal["vertical", "horizontal"]
     legend: LegendOptions = Field(default_factory=LegendOptions)
     scale_model: Literal["linear", "piecewise_linear"] = "linear"
+
+    @model_validator(mode="after")
+    def validate_label_side(self) -> "LegendConfig":
+        allowed = (
+            {"left", "right"} if self.colourbar_orientation == "vertical" else {"above", "below"}
+        )
+        if self.legend.label_side is not None and self.legend.label_side not in allowed:
+            raise ValueError("legend label_side must match colourbar orientation")
+        return self
 
 
 class ExtractionConfig(GridConfig):

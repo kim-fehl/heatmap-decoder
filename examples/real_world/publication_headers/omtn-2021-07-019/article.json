@@ -1,0 +1,78 @@
+{
+  "doi": "10.1016/j.omtn.2021.07.019",
+  "title": "Chromatin accessibility regulates chemotherapy-induced dormancy and reactivation",
+  "authors": "Wang et al., 2021",
+  "article_url": "https://www.cell.com/molecular-therapy-family/nucleic-acids/fulltext/S2162-2531(21)00187-6",
+  "pmc_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8413835/",
+  "license": "CC BY-NC-ND 4.0",
+  "status": "tested_original_image_with_explicit_geometry",
+  "test_requirements": [
+    "Recover individual sample names separately from sample group annotations",
+    "Keep sample order and raw OCR evidence",
+    "Measure exact gene-name OCR accuracy against a reviewed transcription at native raster resolution",
+    "Report unreadable or ambiguous identifiers rather than filling them from biological expectations",
+    "Preserve original source pixels"
+  ],
+  "rna_seq_deposit": "PRJNA730205",
+  "source_notes": "Original user-supplied panel preserved unchanged. Article identifies three biological states with three replicates each. RNA-seq is deposited in SRA; counts are not the plotted scaled matrix.",
+  "image": "figure-3a.jpg",
+  "panel": "3A",
+  "n_rows": 128,
+  "n_columns": 9,
+  "samples": [
+    "NC1",
+    "NC2",
+    "NC3",
+    "Dormancy1",
+    "Dormancy2",
+    "Dormancy3",
+    "Reactivation1",
+    "Reactivation2",
+    "Reactivation3"
+  ],
+  "groups": [
+    "A",
+    "A",
+    "A",
+    "C",
+    "C",
+    "C",
+    "B",
+    "B",
+    "B"
+  ],
+  "gene_names": {
+    "path": "genes.txt",
+    "status": "manual_visual_transcription_for_review_and_exact_match_evaluation",
+    "independent_accession_validation": false
+  },
+  "values": null,
+  "validation_status": "All nine visible sample names and A/C/B group memberships tested through the existing group-label workflow. Full-resolution gene OCR evaluated separately; all gene OCR requires explicit review. Numeric values are image-derived estimates, not deposited biological ground truth.",
+  "image_provenance": {
+    "received_width": 939,
+    "received_height": 3039,
+    "received_bytes": 504248,
+    "received_sha256": "4b613f7642909253764a75aaf41173cbf28180aa0c4367647d4e2d8e568c1b84",
+    "stored_unchanged": true,
+    "full_resolution_received": true,
+    "transport": "User-supplied ZIP; JPEG bytes extracted unchanged",
+    "reduced_attachment": "figure-3a-reduced.jpg"
+  },
+  "scale_reference": {
+    "source": "visually_reviewed_white_tick_centres",
+    "positions": [
+      410,
+      541.5,
+      673,
+      804,
+      935.5
+    ],
+    "values": [
+      4,
+      2,
+      0,
+      -2,
+      -4
+    ]
+  }
+}

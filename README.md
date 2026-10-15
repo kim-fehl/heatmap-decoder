@@ -65,7 +65,7 @@ MIT-licensed code. Input figures retain their owners' copyright.
 
 ## Publication header examples
 
-The experimental `publication` command handles unnamed samples, tickless colorbars,
-short grouping rules, and stacked rectangle labels with light or dark text.
-See [usage and limits](docs/publication-headers.md) and the
-[four additional real figures](docs/real-world-examples.md).
+The existing `group-labels`, `labels`, `legend`, and `extract` workflows support
+unnamed samples, multiple annotation tracks, tickless colorbars, short grouping
+rules, and light/dark text in colored headers. See [usage and limits](docs/publication-headers.md)
+and the [five additional real figures](docs/real-world-examples.md).

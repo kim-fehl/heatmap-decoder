@@ -1,0 +1,9 @@
+{
+  "colourbar_bbox": [1387, 91, 1410, 374],
+  "colourbar_orientation": "vertical",
+  "legend": {
+    "tick_position_source": "text_centres",
+    "label_side": "right",
+    "ocr": {"engine": "tesseract", "upscale_factor": 3}
+  }
+}

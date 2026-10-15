@@ -1,0 +1,41 @@
+{
+  "heatmap_bbox": [
+    162,
+    48,
+    851,
+    2677
+  ],
+  "rows": 128,
+  "columns": 9,
+  "labels": {
+    "rows": {
+      "source": "ocr",
+      "bbox": [
+        854,
+        48,
+        939,
+        2677
+      ],
+      "recognition": "slots",
+      "white_padding_pixels": 0,
+      "require_review": true
+    },
+    "columns": {
+      "source": "ocr",
+      "bbox": [
+        162,
+        2680,
+        851,
+        3023
+      ],
+      "recognition": "slots",
+      "text_rotation_degrees": 90,
+      "white_padding_pixels": 2,
+      "trim_whitespace": true
+    },
+    "ocr": {
+      "engine": "rapidocr",
+      "upscale_factor": 3
+    }
+  }
+}

@@ -1,203 +1,200 @@
-"""Real-image regressions: decode pixels first, then compare independent references."""
+"""Original image regressions through the established extraction/group-label APIs."""
 
+import hashlib
 import json
 import os
 import re
-import shutil
 from pathlib import Path
 
 import numpy as np
 import pytest
+from typer.testing import CliRunner
 
-cv2 = pytest.importorskip("cv2")
-pytest.importorskip("pytesseract")
-if os.environ.get("HEATMAP_DECODER_OCR_TESTS") != "1" or not shutil.which("tesseract"):
-    pytest.skip(
-        "Set HEATMAP_DECODER_OCR_TESTS=1 with publication OCR dependencies", allow_module_level=True
-    )
+from heatmap_decoder.cli import app
+from heatmap_decoder.extract import UnresolvedLabelsError, extract, extract_labels
+from heatmap_decoder.group_labels import GroupLabelsRequest, infer_group_labels
+from heatmap_decoder.io import load_file_labels, load_raster
+from heatmap_decoder.legend import inspect_legend
+from heatmap_decoder.models import ExtractionConfig, GridConfig, LegendConfig
+
+BASE = Path(__file__).resolve().parents[1] / "examples/real_world/publication_headers"
 pytestmark = pytest.mark.ocr_integration
-publication = pytest.importorskip("heatmap_decoder.publication")
-decode = publication.decode
-DecodeError = publication.DecodeError
-
-ROOT = Path(__file__).resolve().parents[1]
-
-
-@pytest.fixture(scope="module")
-def decoded():
-    return {
-        "covid": decode(
-            ROOT / "examples/real_world/publication_headers/plos-ppat-1012368/figure-1c.png"
-        ),
-        "mir29": decode(
-            ROOT / "examples/real_world/publication_headers/plos-pone-0244065/figure-7c.png"
-        ),
-        "tight": decode(
-            ROOT / "examples/real_world/publication_headers/iscience-108897/figure-4a.jpg",
-            expected_columns=1237,
-        ),
-        "psoriasis": decode(
-            ROOT / "examples/real_world/publication_headers/plos-pone-0155215/figure-4a.png"
-        ),
-    }
+if os.environ.get("HEATMAP_DECODER_OCR_TESTS") != "1":
+    pytest.skip("Set HEATMAP_DECODER_OCR_TESTS=1 for original image OCR", allow_module_level=True)
 
 
 def canonical(text):
-    # Tesseract's English model reads Greek beta as Latin B; retain raw OCR in output.
     return re.sub(r"\s+", "", text).replace("β", "B").casefold()
 
 
+@pytest.fixture(scope="module")
+def groups():
+    result = {}
+    for path in sorted(BASE.glob("*/groups-request.json")):
+        folder = path.parent
+        source = next(
+            p
+            for p in folder.glob("figure-*.*")
+            if p.suffix in {".jpg", ".png"} and "reduced" not in p.name
+        )
+        result[folder.name] = infer_group_labels(
+            load_raster(source), GroupLabelsRequest.model_validate_json(path.read_bytes())
+        )
+    return result
+
+
 @pytest.mark.parametrize(
-    "key,folder,stem,rows",
+    "folder,stem",
     [
-        ("covid", "plos-ppat-1012368", "figure-1c", 46),
-        ("mir29", "plos-pone-0244065", "figure-7c", 100),
-        ("psoriasis", "plos-pone-0155215", "figure-4a", 75),
+        ("plos-ppat-1012368", "figure-1c"),
+        ("plos-pone-0244065", "figure-7c"),
+        ("plos-pone-0155215", "figure-4a"),
     ],
 )
-def test_actual_images_recover_grid_and_annotation_tracks(decoded, key, folder, stem, rows):
-    result = decoded[key]
-    reference = json.loads(
-        (
-            ROOT / "examples/real_world/publication_headers" / folder / f"{stem}.annotations.json"
-        ).read_text()
-    )
-    assert result["n_rows"] == rows
-    assert result["n_columns"] == reference["n_columns"]
-    assert len(result["column_annotations"]) == len(reference["column_annotations"])
-    for actual, expected in zip(result["column_annotations"], reference["column_annotations"]):
-        assert [(s["start"], s["end"]) for s in actual["segments"]] == [
-            (s["start"], s["end"]) for s in expected["segments"]
+def test_group_ocr_and_geometry_against_independent_visual_reference(groups, folder, stem):
+    actual = groups[folder]
+    reference = json.loads((BASE / folder / f"{stem}.annotations.json").read_text())
+    assert actual["complete"]
+    for i, track in enumerate(reference["column_annotations"]):
+        expected = [s["label"] for s in track["segments"] for _ in range(s["start"], s["end"])]
+        assert [canonical(r["tracks"][i]["category"]) for r in actual["records"]] == [
+            canonical(x) for x in expected
         ]
-        assert [canonical(s["label"]) for s in actual["segments"]] == [
-            canonical(s["label"]) for s in expected["segments"]
-        ]
-    assert all(c["display_label"] is None and c["geo_sample_id"] is None for c in result["columns"])
-    matrix = np.array(result["reconstructed_values"])
-    assert matrix.shape == (rows, reference["n_columns"])
-    assert np.isfinite(matrix).all()
-    # This is palette agreement, not validation against biological expression values.
-    assert result["value_quality"]["median_rgb_distance"] < 5
+    assert all(r["sample_name"] is None for r in actual["records"])
+    assert not actual["original_sample_ids_recovered"]
+    assert not actual["legend_labels_are_reviewed_inputs"]
 
 
-def test_tickless_colorbar_uses_label_centers_and_preserves_unlabeled_extremes(decoded):
-    bar = decoded["mir29"]["colorbar"]
-    assert [a["value"] for a in bar["anchors"]] == [2, 1, 0, -1]
-    assert {a["anchor_source"] for a in bar["anchors"]} == {"label_center"}
-    for anchor in bar["anchors"]:
-        assert anchor["pixel"] == pytest.approx((anchor["bbox"][1] + anchor["bbox"][3]) / 2)
-    f = bar["calibration"]
-    top_value = f["slope"] * bar["bbox"][1] + f["intercept"]
-    bottom_value = f["slope"] * (bar["bbox"][3] - 1) + f["intercept"]
-    assert top_value > 2.4  # Outer labels are NOT the endpoints of this gradient.
-    assert bottom_value < -1.4
-    assert f["max_label_residual"] < 0.01
-
-
-def test_ticked_colorbar_reads_negative_label_and_uses_ticks(decoded):
-    anchors = decoded["covid"]["colorbar"]["anchors"]
-    assert [a["value"] for a in anchors] == [-4, 0, 4]
-    assert {a["anchor_source"] for a in anchors} == {"tick"}
-
-
-def test_short_lines_are_extended_to_all_three_columns(decoded):
-    result = decoded["mir29"]
-    segments = result["column_annotations"][0]["segments"]
-    # The second printed rule ends before the final column center. A literal
-    # line-coverage/center test would lose that column; the inferred span must not.
-    second = segments[1]
-    center_of_last = np.mean(result["column_edges"][5:7])
-    assert second["line_bbox"][2] < center_of_last
-    assert second["end"] == 6
-    assert second["inferred_span_pixels"][1] > second["line_bbox"][2]
-    assert [i for s in segments for i in range(s["start"], s["end"])] == list(range(18))
-
-
-def test_labels_inside_colored_panels_need_no_legend(decoded):
-    result = decoded["tight"]
-    assert result["n_rows"] == 65
-    track = result["column_annotations"][0]
-    assert track["kind"] == "colored_panel"
-    assert track["display_name"] == "cluster"
-    assert [s["label"] for s in track["segments"]] == ["cluster1", "cluster2", "cluster3"]
-    assert len({tuple(s["color_rgb"]) for s in track["segments"]}) == 3
-    for s in track["segments"]:
-        assert s["ocr_words"]
-        x0, y0, x1, y1 = s["header_bbox"]
-        for word in s["ocr_words"]:
-            assert x0 <= np.mean(word["bbox"][::2]) <= x1
-            assert y0 <= np.mean(word["bbox"][1::2]) <= y1
-
-
-def test_subpixel_samples_are_not_fabricated_from_pixel_width(decoded):
-    result = decoded["tight"]
-    assert result["status"] == "resolution_limited"
-    assert result["expected_n_columns"] == 1237
-    assert result["sample_count_source"] == "caller_provided_metadata"
-    assert result["n_columns"] is None
-    assert result["column_edges"] is None
-    assert result["columns"] is None
-    assert result["reconstructed_values"] is None
-    assert all(
-        s["start"] is None and s["end"] is None for s in result["column_annotations"][0]["segments"]
+def test_short_rule_extension_ignores_label_width(groups):
+    regions = groups["plos-pone-0244065"]["track_evidence"][0]["regions"]
+    assert regions[1]["inferred_span"][1] > regions[1]["bbox"][2]
+    assert regions[1]["text_bbox"][0] < regions[1]["bbox"][0]
+    assert (
+        sum(r["tracks"][0]["region_index"] == 1 for r in groups["plos-pone-0244065"]["records"])
+        == 3
     )
-    assert len(result["matrix_blocks"]) == 3
-    for a, b in zip(result["matrix_blocks"], result["matrix_blocks"][1:]):
-        assert a[2] < b[0]  # Separators are not counted as data columns.
 
 
-def test_external_count_cannot_silently_override_visible_grid():
-    with pytest.raises(DecodeError, match="conflicts"):
-        decode(
-            ROOT / "examples/real_world/publication_headers/plos-pone-0244065/figure-7c.png",
-            expected_columns=19,
-        )
+def test_two_tracks_white_text_and_repeated_normal(groups):
+    result = groups["plos-pone-0155215"]
+    assert len(result["track_evidence"]) == 2
+    assert [r["text_polarity"] for r in result["track_evidence"][1]["regions"]] == ["light"] * 5
+    assert result["track_evidence"][1]["regions"][1]["raw_text"] == "PP"
+    assert [r["tracks"][1]["region_index"] for r in result["records"]] == [0] * 7 + [1] * 3 + [
+        2
+    ] * 6 + [3] * 24 + [4] * 10
 
 
-def test_white_text_and_outlined_rectangles_are_two_independent_tracks(decoded):
-    result = decoded["psoriasis"]
-    tracks = result["column_annotations"]
-    assert len(tracks) == 2  # Outline borders must not create extra line tracks.
-    assert [s["text_polarity"] for s in tracks[0]["segments"]] == ["dark", "dark"]
-    assert [s["text_polarity"] for s in tracks[1]["segments"]] == ["light"] * 5
-    assert [(s["label"], s["start"], s["end"]) for s in tracks[0]["segments"]] == [
-        ("Acral", 0, 16),
-        ("Non-Acral", 16, 50),
+def test_dense_clusters_read_headers_but_abstain_from_individual_samples(groups):
+    result = groups["iscience-108897"]
+    assert not result["complete"]
+    assert [r["raw_text"] for r in result["track_evidence"][0]["regions"]] == [
+        "cluster1",
+        "cluster2",
+        "cluster3",
     ]
-    # Repeated category names are distinct spans, not dictionary keys to merge.
-    normals = [s for s in tracks[1]["segments"] if s["label"] == "Normal"]
-    assert [(s["start"], s["end"]) for s in normals] == [(0, 7), (16, 40)]
-    assert tracks[1]["segments"][1]["raw_text"] == "PP"  # Do not invent a clipped P.
+    assert all(r["inferred_span"] is None for r in result["track_evidence"][0]["regions"])
+    assert all(r["generated_name"] is None for r in result["records"])
+    assert (
+        "subpixel_group_boundaries_require_reviewed_counts"
+        in result["records"][0]["tracks"][0]["reasons"]
+    )
 
 
-def test_row_side_strip_is_not_used_as_the_color_key(decoded):
-    result = decoded["psoriasis"]
-    bar = result["colorbar"]
-    assert bar["orientation"] == "horizontal"
-    assert [a["value"] for a in bar["anchors"]] == [-2, 0, 2]
-    assert bar["bbox"][0] < 100  # Actual key at upper left, not the tall row strip.
-    assert result["matrix_bbox"][3] == 1530  # Preserve the bottom white margin.
+def test_original_zip_image_hash_and_named_samples(groups):
+    folder = BASE / "omtn-2021-07-019"
+    source = folder / "figure-3a.jpg"
+    provenance = json.loads((folder / "article.json").read_text())["image_provenance"]
+    assert load_raster(source).shape[:2] == (3039, 939)
+    assert len(source.read_bytes()) == 504248
+    assert hashlib.sha256(source.read_bytes()).hexdigest() == provenance["received_sha256"]
+    result = groups[folder.name]
+    assert result["complete"]
+    assert [r["display_name"] for r in result["records"]] == (
+        folder / "samples.txt"
+    ).read_text().splitlines()
+    assert [r["tracks"][0]["category"] for r in result["records"]] == ["A"] * 3 + ["C"] * 3 + [
+        "B"
+    ] * 3
+    assert result["visible_sample_names_recovered"]
 
 
-def test_publication_cli_extracts_and_protects_existing_files(tmp_path):
-    from typer.testing import CliRunner
+@pytest.mark.parametrize(
+    "folder,stem,shape",
+    [
+        ("plos-ppat-1012368", "figure-1c.png", (46, 31)),
+        ("plos-pone-0244065", "figure-7c.png", (100, 18)),
+        ("plos-pone-0155215", "figure-4a.png", (75, 50)),
+        ("omtn-2021-07-019", "figure-3a.jpg", (128, 9)),
+    ],
+)
+def test_core_numeric_extraction_from_reviewed_geometry(folder, stem, shape):
+    p = BASE / folder
+    config = ExtractionConfig.model_validate_json((p / "config.json").read_bytes())
+    labels, _ = load_file_labels(config, p)
+    result = extract(load_raster(p / stem), config, file_labels=labels)
+    assert result.values.shape == shape
+    assert np.isfinite(result.values).mean() > 0.97
+    assert np.median(result.colour_distance) < 5
+    # Color matching is a raster reconstruction diagnostic, not GEO validation.
 
-    from heatmap_decoder.cli import app
 
+def test_tickless_legend_uses_numeric_text_centres_with_review_gate():
+    folder = BASE / "plos-pone-0244065"
+    config = LegendConfig.model_validate_json((folder / "legend-config.json").read_bytes())
+    result = inspect_legend(load_raster(folder / "figure-7c.png"), config)
+    ticks = sorted(
+        (t for t in result.ticks if t.parsed_value is not None), key=lambda t: t.position
+    )
+    assert [t.parsed_value for t in ticks] == [2, 1, 0, -1]
+    for tick in ticks:
+        assert tick.position_source == "text_centre"
+        assert tick.position == pytest.approx((tick.text_bbox[1] + tick.text_bbox[3]) / 2)
+    assert not result.development_eligible
+    assert "text_centres_are_weaker_position_evidence" in result.reasons
+    assert result.fit is not None
+    assert not result.fit.endpoint_coverage
+
+
+def test_tiny_gene_identifiers_are_measured_and_require_review():
+    folder = BASE / "omtn-2021-07-019"
+    config = GridConfig.model_validate_json((folder / "labels-config.json").read_bytes())
+    image = load_raster(folder / "figure-3a.jpg")
+    result = extract_labels(image, config)
+    refs = (folder / "genes.txt").read_text().splitlines()
+    rows = result.axes[0].slots
+    exact = sum(s.raw_text == ref for s, ref in zip(rows, refs, strict=True))
+    assert len(rows) == len(refs) == 128
+    assert exact >= 80  # Minimum full-resolution regression; not a claim of perfect OCR.
+    assert not any(s.status == "accepted" for s in rows)
+    assert result.unresolved_count >= 128
+    assert [s.raw_text for s in result.axes[1].slots] == (
+        folder / "samples.txt"
+    ).read_text().splitlines()
+    numeric = json.loads((folder / "config.json").read_text())
+    numeric["labels"] = config.labels.model_dump(mode="json")
+    numeric = ExtractionConfig.model_validate(numeric)
+    with pytest.raises(UnresolvedLabelsError):
+        extract(image, numeric, label_result=extract_labels(image, numeric))
+    reviewed = ExtractionConfig.model_validate_json((folder / "config-reviewed.json").read_bytes())
+    files, _ = load_file_labels(reviewed, folder)
+    complete = extract(image, reviewed, file_labels=files)
+    assert [s.final_text for s in complete.labels.axes[0].slots] == refs
+
+
+def test_existing_group_cli_writes_sample_names_and_protects_inputs(tmp_path):
+    folder = BASE / "omtn-2021-07-019"
+    command = [
+        "group-labels",
+        str(folder / "figure-3a.jpg"),
+        "--request",
+        str(folder / "groups-request.json"),
+        "--out",
+        str(tmp_path),
+    ]
     runner = CliRunner()
-    source = ROOT / "examples/real_world/publication_headers/plos-pone-0155215/figure-4a.png"
-    out = tmp_path / "publication.json"
-    command = ["publication", str(source), "--out", str(out)]
     result = runner.invoke(app, command)
     assert result.exit_code == 0, result.output
-    original = out.read_bytes()
-    extraction = json.loads(original)
-    assert (extraction["n_rows"], extraction["n_columns"]) == (75, 50)
-    assert len(extraction["column_annotations"]) == 2
-    refused = runner.invoke(app, command)
-    assert refused.exit_code == 2
-    assert out.read_bytes() == original
-    protected = runner.invoke(
-        app, ["publication", str(source), "--out", str(source), "--overwrite"]
-    )
-    assert protected.exit_code == 2
+    assert (tmp_path / "columns.txt").read_text() == (folder / "samples.txt").read_text()
+    assert runner.invoke(app, command).exit_code == 2
+    assert "publication" not in runner.invoke(app, ["--help"]).output

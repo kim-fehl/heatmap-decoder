@@ -67,11 +67,11 @@ jobs:
           tesseract --list-langs
           dpkg-query -W tesseract-ocr tesseract-ocr-eng
           sha256sum /usr/share/tesseract-ocr/5/tessdata/eng.traineddata
-      - run: uv sync --locked --extra ocr --extra publications --group benchmark
+      - run: uv sync --locked --extra ocr --group benchmark
       - name: Exact-match fixtures, publication headers, and degradation report
         env:
           HEATMAP_DECODER_OCR_TESTS: '1'
-        run: uv run --extra ocr --extra publications pytest -q -s -m ocr_integration
+        run: uv run --extra ocr pytest -q -s -m ocr_integration
       - name: Check correction regressions and renderer layout QA
         env:
           HEATMAP_DECODER_OCR_TESTS: '1'

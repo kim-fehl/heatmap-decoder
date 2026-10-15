@@ -162,7 +162,13 @@ def search_regions(image: RGBArray, config: LegendConfig) -> tuple[tuple[Side, B
             ("below", (max(0, x - pad), s, min(w, r + pad), min(h, s + distance))),
         )
     )
-    return tuple((side, box) for side, box in choices if box[2] > box[0] and box[3] > box[1])
+    return tuple(
+        (side, box)
+        for side, box in choices
+        if box[2] > box[0]
+        and box[3] > box[1]
+        and (config.legend.label_side is None or side == config.legend.label_side)
+    )
 
 
 def stroke_ticks(
@@ -306,6 +312,15 @@ def associate_tokens(
     # numbers must not become one line merely because their word gap is small.
     # A token crossing a band remains intact and ambiguous; never split glyphs.
     positions = sorted(t.position for t in strokes)
+    text_centres = config.legend.tick_position_source == "text_centres"
+    if text_centres:
+        # Numeric word centers establish bands without inventing tick strokes.
+        # An independently observed sign can join its number within the band.
+        positions = sorted(
+            (t.bbox[coordinate] + t.bbox[coordinate + 2]) / 2
+            for t in tokens
+            if parse_numeric_tick(t.text, config.legend.decimal_separator).value is not None
+        )
     bands = [-math.inf] + [(a + b) / 2 for a, b in zip(positions, positions[1:])] + [math.inf]
     buckets: dict[int, list[int]] = {}
     for i, token in enumerate(tokens):
@@ -384,7 +399,9 @@ def associate_tokens(
             continue
         centre = (c.bbox[coordinate] + c.bbox[coordinate + 2]) / 2
         parsed = parse_numeric_tick(c.text, config.legend.decimal_separator)
-        reasons = ["unassociated_text_requires_review"]
+        reasons = [] if text_centres else ["unassociated_text_requires_review"]
+        if c.confidence < config.legend.ocr.min_confidence:
+            reasons.append("low_numeric_ocr_confidence")
         if not start <= centre <= last:
             reasons.append("outside_bar_span_title_or_caption")
         if parsed.reason:
@@ -405,7 +422,9 @@ def associate_tokens(
                 status="excluded"
                 if centre < start - config.legend.max_axis_offset_pixels
                 or centre > last + config.legend.max_axis_offset_pixels
-                else "unresolved",
+                else "unresolved"
+                if reasons
+                else "suggested",
                 reasons=tuple(reasons),
             )
         )
@@ -515,6 +534,72 @@ def _numeric_alternative(
     }
 
 
+def _tickless_vertical_fields(
+    image: RGBArray,
+    config: LegendConfig,
+    side: Side,
+    region: BoundingBox,
+    budget: _OCRBudget,
+    records: list[LegendOCRRecord],
+) -> tuple[LegendTick, ...]:
+    """Localize separate upright numeric lines before OCR; never infer bar endpoints."""
+    left, top, right, bottom = region
+    dark = image[top:bottom, left:right, :3].max(axis=2) < 160
+    occupied = dark.any(axis=1)
+    edges = np.flatnonzero(np.diff(np.r_[False, occupied, False]))
+    results: list[LegendTick] = []
+    for start, end in zip(edges[::2], edges[1::2]):
+        if end - start < 2:
+            continue
+        if len(results) >= config.legend.max_ticks:
+            raise ValueError("tickless numeric field cap exceeded")
+        xs = np.flatnonzero(dark[start:end].any(axis=0))
+        text_box = (left + int(xs[0]), top + int(start), left + int(xs[-1]) + 1, top + int(end))
+        box = (
+            max(left, text_box[0] - 2),
+            max(top, text_box[1] - 2),
+            min(right, text_box[2] + 2),
+            min(bottom, text_box[3] + 2),
+        )
+        record = _ocr_crop(image, config, side, box, "numeric_line", budget)
+        records.append(record)
+        members = tuple(
+            i for i, t in enumerate(record.run.tokens) if t.text.strip() and t.confidence >= 0
+        )
+        raw = " ".join(record.run.tokens[i].text.strip() for i in members)
+        parsed = parse_numeric_tick(raw, config.legend.decimal_separator)
+        confidence = min((record.run.tokens[i].confidence for i in members), default=0)
+        reasons = []
+        if parsed.reason:
+            reasons.append(parsed.reason)
+        if confidence < config.legend.ocr.min_confidence:
+            reasons.append("low_numeric_ocr_confidence")
+        centre = (text_box[1] + text_box[3]) / 2
+        outside = not config.colourbar_bbox[1] <= centre <= config.colourbar_bbox[3] - 1
+        if outside:
+            reasons.append("outside_bar_span_title_or_caption")
+        results.append(
+            LegendTick(
+                index=len(results),
+                side=side,
+                position=centre,
+                position_source="text_centre",
+                text_bbox=text_box,
+                ocr_bbox=box,
+                raw_text=raw,
+                normalised_text=parsed.normalised_text,
+                normalisation_actions=parsed.actions,
+                parsed_value=parsed.value,
+                confidence=confidence,
+                numeric_record_index=len(records) - 1,
+                numeric_token_indices=members,
+                status="excluded" if outside else "unresolved" if reasons else "suggested",
+                reasons=tuple(reasons),
+            )
+        )
+    return tuple(results)
+
+
 def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
     validate_legend_geometry(image, config)
     ticks: list[LegendTick] = []
@@ -526,7 +611,22 @@ def inspect_legend(image: RGBArray, config: LegendConfig) -> LegendResult:
         time.monotonic() + config.legend.max_ocr_seconds,
     )
     for side, region in search_regions(image, config):
-        strokes = stroke_ticks(image, config, side, region)
+        if (
+            config.legend.tick_position_source == "text_centres"
+            and config.colourbar_orientation == "vertical"
+        ):
+            try:
+                ticks.extend(
+                    _tickless_vertical_fields(image, config, side, region, budget, records)
+                )
+            except (ValueError, OSError) as error:
+                warnings.append(f"{side}: tickless field recognition failed: {error}")
+            continue
+        strokes = (
+            ()
+            if config.legend.tick_position_source == "text_centres"
+            else stroke_ticks(image, config, side, region)
+        )
         fields: dict[float, BoundingBox] = {}
         field_evidence = None
         if config.legend.align_tick_fields:
