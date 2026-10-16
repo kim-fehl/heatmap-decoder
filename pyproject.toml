@@ -44,7 +44,6 @@ ignore_missing_imports = true
 
 [project.scripts]
 heatmap-decoder = "heatmap_decoder.cli:app"
-heatmap2matrix = "heatmap2matrix.cli:legacy_main"
 
 [project.urls]
 Repository = "https://github.com/kim-fehl/heatmap-decoder"
@@ -59,4 +58,4 @@ include = ["/src", "/tests", "/examples", "/.github", "/README.md", "/CHANGELOG.
            "/MIGRATION.md", "/.gitattributes", "/docs", "/benchmarks", "/scripts", "/AGENTS.md"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/heatmap_decoder", "src/heatmap2matrix"]
+packages = ["src/heatmap_decoder"]

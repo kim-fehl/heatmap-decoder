@@ -1,5 +1,8 @@
 """Core contracts and fixtures."""
 
+import subprocess
+import sys
+
 import numpy as np
 import pytest
 from PIL import Image
@@ -143,3 +146,14 @@ def test_unsupported_and_transparent_raster(tmp_path):
     Image.new("RGB", (2, 2)).save(path, format="BMP")
     with pytest.raises(ValueError, match="PNG and JPEG"):
         load_raster(path)
+
+
+def test_no_ocr_dependency_is_imported_by_core_or_geometry():
+    subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            "import sys; import heatmap_decoder.labels; assert 'pytesseract' not in sys.modules",
+        ],
+        check=True,
+    )

@@ -1,4 +1,4 @@
-# Naming migration (M4)
+# Supported interface
 
 The project and distribution are now `heatmap-decoder`, the primary command is
 `heatmap-decoder`, and the implementation and Python imports use
@@ -6,12 +6,10 @@ The project and distribution are now `heatmap-decoder`, the primary command is
 remains `heatmap-decoder`. Install the development checkout with `uv sync --locked`
 or `python -m pip install -e .`.
 
-Replace `from heatmap2matrix import ...` with `from heatmap_decoder import ...`,
-and `python -m heatmap2matrix` with `python -m heatmap_decoder`. Existing public
-library functions and numeric CLI options retain their signatures and behavior.
-Thin deprecated import/submodule and command aliases preserve v0.1 callers;
-they delegate to the same implementation. Imports emit a `DeprecationWarning`,
-and the old command emits a visible `FutureWarning`.
+Use `from heatmap_decoder import ...`, `python -m heatmap_decoder`, or the
+`heatmap-decoder` command. The former `heatmap2matrix` package, submodule aliases,
+and command have been removed. The v0.1 interface is unsupported; callers must
+use the current package and CLI directly.
 
 Input files, numeric configuration keys, and existing output filenames need no
 renaming. Numeric CSV remains headerless and quality CSV remains long-form.

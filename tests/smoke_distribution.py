@@ -1,11 +1,13 @@
 """CI smoke test of the built wheel in a fresh environment outside the source tree."""
 
+import configparser
 import json
 import os
 import subprocess
 import sys
 import tarfile
 import tempfile
+import zipfile
 from pathlib import Path
 
 from heatmap_decoder import __version__
@@ -15,6 +17,16 @@ def smoke() -> None:
     root = Path(__file__).resolve().parents[1]
     wheel = root / "dist" / f"heatmap_decoder-{__version__}-py3-none-any.whl"
     source = root / "dist" / f"heatmap_decoder-{__version__}.tar.gz"
+    with zipfile.ZipFile(wheel) as archive:
+        assert not any(name.startswith("heatmap2matrix/") for name in archive.namelist())
+        entry_points_path = next(
+            name for name in archive.namelist() if name.endswith(".dist-info/entry_points.txt")
+        )
+        entry_points = configparser.ConfigParser()
+        entry_points.read_string(archive.read(entry_points_path).decode("utf-8"))
+        assert dict(entry_points["console_scripts"]) == {
+            "heatmap-decoder": "heatmap_decoder.cli:app"
+        }
     with tarfile.open(source) as archive:
         names = archive.getnames()
         for suffix in (
@@ -80,6 +92,7 @@ def smoke() -> None:
         ):
             assert any(name.endswith(suffix) for name in names), suffix
         assert not any("/work/" in name or "/.venv/" in name for name in names)
+        assert not any("/src/heatmap2matrix/" in name for name in names)
     with tempfile.TemporaryDirectory(prefix="heatmap_decoder-smoke-") as scratch:
         directory = Path(scratch)
         environment = directory / "venv"
@@ -88,6 +101,8 @@ def smoke() -> None:
         python = scripts / ("python.exe" if os.name == "nt" else "python")
         command = scripts / ("heatmap-decoder.exe" if os.name == "nt" else "heatmap-decoder")
         subprocess.run(["uv", "pip", "install", "--python", str(python), str(wheel)], check=True)
+        legacy_command = scripts / ("heatmap2matrix.exe" if os.name == "nt" else "heatmap2matrix")
+        assert not legacy_command.exists()
         subprocess.run([str(command), "--version"], check=True, cwd=directory)
         subprocess.run(
             [str(python), "-c", "from heatmap_decoder.ocr_fields import aligned_tick_fields"],
@@ -248,6 +263,7 @@ import pandas as pd
 import heatmap_decoder as h
 import importlib.util
 assert h.__version__ == sys.argv[1]
+assert importlib.util.find_spec('heatmap2matrix') is None
 assert importlib.util.find_spec('pytesseract') is None
 assert importlib.util.find_spec('matplotlib') is None
 experimental = json.loads(Path('experimental/provenance.json').read_text())

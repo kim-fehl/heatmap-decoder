@@ -8,13 +8,15 @@ must be consolidated and removed before the change is finished; see
 
 | Tier | Scope | Collected cases |
 |---|---|---:|
-| `unit` | Focused component contracts and property tests; external engines mocked | 244 |
+| `unit` | Focused component contracts and property tests; external engines mocked | 243 |
 | `pipeline` | Deterministic synthetic images, file adapters, CLI and composed workflows | 587 |
 | `ocr` | Real local engine/model execution, synthetic and original publication images | 47 |
 | `qualification` | Benchmark machinery, frozen evidence and independent publication references | 35 |
-| **Total** | Parameterized pytest cases, including opt-in OCR | **913** |
+| **Total** | Parameterized pytest cases, including opt-in OCR | **912** |
 
-Counts are a snapshot of this consolidation, not a quota. Hypothesis examples and
+Counts reflect the current suite after removing the v0.1 import-alias test;
+the independent lazy OCR import check now belongs to `unit/test_core.py`.
+Counts are an inventory, not a quota. Hypothesis examples and
 unittest subtests run within collected cases. OCR cases remain visible in collection
 and are skipped unless explicitly enabled. Four numeric publication cases formerly
 hidden by a module-wide OCR skip now run with qualification tests.
@@ -59,8 +61,7 @@ boundary or evaluation purpose decides which file owns the case.
 
 | File | Behavior owned | Cases |
 |---|---|---:|
-| [test_compatibility.py](../tests/unit/test_compatibility.py) | Deprecated imports and lazy OCR dependency loading | 2 |
-| [test_core.py](../tests/unit/test_core.py) | Configuration, regular geometry, sampling, calibration, raster validation | 27 |
+| [test_core.py](../tests/unit/test_core.py) | Configuration, regular geometry, sampling, calibration, raster validation and lazy OCR loading | 28 |
 | [test_label_characters.py](../tests/unit/test_label_characters.py) | Scientific characters, raw text preservation, suggestion policies | 8 |
 | [test_label_geometry.py](../tests/unit/test_label_geometry.py) | Coordinate transforms, angle schemas, pixel/slot ownership | 70 |
 | [test_labels.py](../tests/unit/test_labels.py) | Token grouping, assignment, missing/duplicate/colliding candidates | 15 |
@@ -149,9 +150,11 @@ vary by index rather than forming a full Cartesian product.
 
 ## Consolidation and overlap review
 
-The migration retained all **913 test names/parameter IDs** and all **1,229 Python
+The test-layout migration retained all **913 test names/parameter IDs** and all **1,229 Python
 `assert` statements unchanged. Existing unittest assertions and subtests are also
-retained. No test was deleted as a duplicate. Related former milestone modules
+retained. No test was deleted as a duplicate during that migration. The subsequent v0.1
+interface removal deleted its alias-compatibility case; current counts above
+reflect that intentional removal. Related former milestone modules
 now share behavior owners; real engines and benchmark machinery have separate tiers.
 
 | Apparent overlap | Distinct behavior retained |

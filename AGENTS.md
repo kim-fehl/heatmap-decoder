@@ -44,6 +44,9 @@ than treating the default scaffold as the complete repository.
   is not implementation. Clearly identify work that remains unimplemented or
   unverified. Keep reproducible extraction results separate from ground truth.
 
+The supported package is `heatmap_decoder` and the command is `heatmap-decoder`.
+Do not restore the removed `heatmap2matrix` package, CLI, or compatibility aliases.
+
 ## Maintain tests by functionality
 
 - Read [the test ownership table](docs/testing.md) before adding or changing tests.

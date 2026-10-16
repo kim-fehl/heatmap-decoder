@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Remove v0.1 interface
+
+- Remove the deprecated `heatmap2matrix` package, submodule aliases and CLI.
+  Use `heatmap_decoder`, `python -m heatmap_decoder` and `heatmap-decoder`.
+- Remove compatibility-only tests and check built distributions for the absence
+  of the old package and console script.
+
 ## Unreleased — Publication header extraction
 
 - Add an experimental `publication` command for unnamed sample columns, tickless
