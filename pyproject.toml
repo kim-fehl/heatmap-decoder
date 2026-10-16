@@ -20,7 +20,13 @@ benchmark = ["matplotlib>=3.8,<4"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-markers = ["ocr_integration: opt-in engine-sensitive tests (set HEATMAP_DECODER_OCR_TESTS=1)"]
+markers = [
+    "unit: focused contracts with mocked external engines",
+    "pipeline: deterministic synthetic and file/CLI workflows",
+    "ocr: opt-in tests that execute real OCR engines",
+    "qualification: benchmark integrity, evaluation gates, and publication references",
+    "ocr_integration: opt-in engine-sensitive tests (set HEATMAP_DECODER_OCR_TESTS=1)",
+]
 
 [tool.ruff]
 line-length = 100
@@ -50,7 +56,7 @@ path = "src/heatmap_decoder/version.py"
 [tool.hatch.build.targets.sdist]
 include = ["/src", "/tests", "/examples", "/.github", "/README.md", "/CHANGELOG.md",
            "/LICENSE", "/pyproject.toml", "/uv.lock", "/.gitignore",
-           "/MIGRATION.md", "/.gitattributes", "/docs", "/benchmarks", "/scripts"]
+           "/MIGRATION.md", "/.gitattributes", "/docs", "/benchmarks", "/scripts", "/AGENTS.md"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/heatmap_decoder", "src/heatmap2matrix"]

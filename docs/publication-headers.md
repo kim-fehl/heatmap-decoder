@@ -17,7 +17,9 @@ uv run --extra ocr heatmap-decoder labels examples/real_world/publication_header
 uv run --extra ocr heatmap-decoder extract examples/real_world/publication_headers/omtn-2021-07-019/figure-3a.jpg --config examples/real_world/publication_headers/omtn-2021-07-019/config-reviewed.json --out artifacts/omtn-reviewed
 uv run --extra ocr heatmap-decoder legend examples/real_world/publication_headers/plos-pone-0244065/figure-7c.png --config examples/real_world/publication_headers/plos-pone-0244065/legend-config.json --out artifacts/mir29-legend
 uv run --extra ocr python scripts/check_real_examples.py
-HEATMAP_DECODER_OCR_TESTS=1 uv run --extra ocr pytest tests/test_publication_headers.py tests/test_publication_geometry.py tests/test_header_workflow.py -q
+HEATMAP_DECODER_OCR_TESTS=1 uv run --extra ocr pytest -q \
+  tests/ocr/test_publication_headers.py tests/pipeline/test_group_labels.py \
+  tests/pipeline/test_label_geometry.py tests/pipeline/test_legend.py
 ```
 
 Label/legend inspection can exit 4 when review remains outstanding. The new

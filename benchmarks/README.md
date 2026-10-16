@@ -19,3 +19,9 @@ must not be bypassed by rewriting completed freezes. New changes require a new
 registered partition or an explicitly scoped regression run.
 
 [M19](m19/README.md) records fresh full-workflow evidence, scoped qualification and retained failures.
+
+Benchmark integrity and publication-reference tests live in
+`tests/qualification`; real engine regressions live in `tests/ocr`. See the
+[test ownership and execution guide](../docs/testing.md). Qualification tests
+check the evaluation machinery and references; they do not rerun or renew a
+complete frozen benchmark qualification.

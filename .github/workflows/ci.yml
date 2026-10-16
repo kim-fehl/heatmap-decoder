@@ -75,7 +75,7 @@ jobs:
       - name: Check correction regressions and renderer layout QA
         env:
           HEATMAP_DECODER_OCR_TESTS: '1'
-        run: uv run --extra ocr --group benchmark pytest -q tests/test_review_corrections.py
+        run: uv run --extra ocr --group benchmark pytest -q tests/pipeline/test_detection_regressions.py tests/ocr/test_count_inference.py
       - name: Run the label-only command
         run: uv run --extra ocr heatmap-decoder labels examples/labels/clean.png --config examples/labels/config.json --out work/ci-labels
       - name: Run the complete v0.2 reconstruction and review example

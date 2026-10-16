@@ -52,7 +52,7 @@ From the repository root:
 uv sync --locked
 uv run --with openpyxl python examples/real_world/build_tables.py
 uv run python examples/real_world/evaluate.py
-uv run --group dev pytest tests/test_real_world.py tests/test_group_labels.py -q
+uv run --group dev pytest tests/qualification/test_publication_sources.py tests/pipeline/test_group_labels.py -q
 ```
 
 `build_tables.py` rebuilds the source truth, CRISPR source export, blood-expression
@@ -144,7 +144,7 @@ Use `rows.txt` and `columns.txt` for numeric extraction.
 Run the actual publication OCR regression tests explicitly:
 
 ```bash
-HEATMAP_DECODER_OCR_TESTS=1 uv run pytest tests/test_real_world.py -q
+HEATMAP_DECODER_OCR_TESTS=1 uv run pytest tests/ocr/test_publication_labels.py -q
 ```
 
 The numeric/source tests run without OCR and independently read XLSX XML. The

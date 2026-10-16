@@ -69,3 +69,6 @@ The existing `group-labels`, `labels`, `legend`, and `extract` workflows support
 unnamed samples, multiple annotation tracks, tickless colorbars, short grouping
 rules, and light/dark text in colored headers. See [usage and limits](docs/publication-headers.md)
 and the [five additional real figures](docs/real-world-examples.md).
+
+Test categories, file ownership, and execution commands are documented in
+[the testing guide](docs/testing.md).
