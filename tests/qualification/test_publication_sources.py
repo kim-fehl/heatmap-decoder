@@ -255,3 +255,58 @@ def test_core_numeric_extraction_from_reviewed_geometry(folder, stem, shape):
     assert result.values.shape == shape
     assert np.isfinite(result.values).mean() > 0.97
     assert np.median(result.colour_distance) < 5
+
+
+def test_range_example_images_and_independent_annotation_axes():
+    from collections import Counter
+
+    from heatmap_decoder.range_scale import RangeExtractionRequest, extract_ranges
+
+    base = ROOT
+    for name in ["elife-87930-response15b", "lsa-e202302332-fig7a"]:
+        folder = base / name
+        manifest = json.loads((folder / "manifest.json").read_text())
+        assert (
+            hashlib.sha256((folder / "figure.jpg").read_bytes()).hexdigest()
+            == manifest["image_sha256"]
+        )
+        assert not manifest["numeric_ground_truth"]
+    folder = base / "lsa-e202302332-fig7a"
+    image = load_raster(folder / "figure.jpg")
+    annotations = json.loads((folder / "annotations.json").read_text())
+    for filename, axis, entity, total in [
+        ("groups-request.json", "columns", "sample", 30),
+        ("row-groups-request.json", "rows", "gene", 66),
+    ]:
+        request = GroupLabelsRequest.model_validate_json((folder / filename).read_bytes())
+        names = {} if request.grid is None else load_file_labels(request.grid, folder)[0]
+        result = infer_group_labels(image, request, file_labels=names)
+        assert result["complete"] and result["axis"] == axis
+        assert result["entity_kind"] == entity and len(result["records"]) == total
+        categories = [r["tracks"][0]["category"] for r in result["records"]]
+        if axis == "rows":
+            reference = [
+                s["label"]
+                for s in annotations["row_annotation"]["segments"]
+                for _ in range(s["start"], s["end"])
+            ]
+            assert categories == reference
+            assert [r["display_name"] for r in result["records"]] == (
+                folder / "rows.txt"
+            ).read_text().splitlines()
+            assert all(r["sample_name"] is None for r in result["records"])
+        else:
+            assert Counter(categories) == {"CD45low LDN": 9, "CD45high LDN": 9, "NDN": 9, "TAN": 3}
+    folder = base / "elife-87930-response15b"
+    request = RangeExtractionRequest.model_validate_json(
+        (folder / "ranges-request.json").read_bytes()
+    )
+    result = extract_ranges(load_raster(folder / "figure.jpg"), request)
+    assert result["shape"] == [5, 160]  # Explicit image-derived geometry, not source truth.
+    assert not result["point_values_recovered"]
+    assert Counter(r["status"] for r in result["records"]) == {
+        "matched": 784,
+        "range_ambiguous": 11,
+        "poor_colour_match": 5,
+    }
+    assert result["bands"][-1]["upper"] is None

@@ -1,0 +1,52 @@
+{
+  "position_config": {
+    "heatmap_bbox": [
+      48,
+      194,
+      1157,
+      391
+    ],
+    "rows": 5,
+    "columns": 160,
+    "colourbar_bbox": [
+      724,
+      39,
+      1141,
+      53
+    ],
+    "colourbar_orientation": "horizontal",
+    "colourbar_start_value": 0,
+    "colourbar_end_value": 1
+  },
+  "quantity": "TPM; displayed bracket ranges",
+  "bands": [
+    {
+      "label": "below cutoff",
+      "start": 0.0,
+      "end": 0.11057692307692307,
+      "lower": 0,
+      "upper": 0.5
+    },
+    {
+      "label": "low",
+      "start": 0.11057692307692307,
+      "end": 0.33653846153846156,
+      "lower": 0.5,
+      "upper": 11
+    },
+    {
+      "label": "medium",
+      "start": 0.33653846153846156,
+      "end": 0.5625,
+      "lower": 11,
+      "upper": 1001
+    },
+    {
+      "label": "high",
+      "start": 0.5625,
+      "end": 1,
+      "lower": 1001,
+      "upper": null
+    }
+  ]
+}

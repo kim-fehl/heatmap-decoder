@@ -32,3 +32,5 @@ remaining source-data limitations. Earlier M16 trial narratives are explicitly
 
 [M19 status](progress/M19.md) records capability decisions and remaining gates.
 See [confident automation](confident-automation.md) for separate numeric/identifier states.
+
+- [TPM ranges and independent gene categories](range-scales.md): reviewed range outputs, reused legend colors, and two publication examples.

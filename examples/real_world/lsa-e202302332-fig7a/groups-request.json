@@ -1,0 +1,58 @@
+{
+  "axis": "columns",
+  "entity_kind": "sample",
+  "start": 36,
+  "end": 314,
+  "count": 30,
+  "tracks": [
+    {
+      "name": "Condition",
+      "bbox": [
+        36,
+        164,
+        314,
+        188
+      ],
+      "swatches": [
+        {
+          "label": "CD45high LDN",
+          "bbox": [
+            470,
+            174,
+            490,
+            192
+          ]
+        },
+        {
+          "label": "TAN",
+          "bbox": [
+            470,
+            202,
+            490,
+            220
+          ]
+        },
+        {
+          "label": "CD45low LDN",
+          "bbox": [
+            470,
+            230,
+            490,
+            248
+          ]
+        },
+        {
+          "label": "NDN",
+          "bbox": [
+            470,
+            258,
+            490,
+            276
+          ]
+        }
+      ]
+    }
+  ],
+  "max_colour_distance": 15,
+  "minimum_match_fraction": 0.65
+}

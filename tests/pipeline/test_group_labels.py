@@ -288,3 +288,40 @@ def test_group_ocr_pixel_budget_abstains_without_engine_call(monkeypatch):
     result = infer_group_labels(np.full((20, 40, 3), 255, np.uint8), request)
     assert not result["complete"]
     assert result["track_evidence"][0]["regions"][0]["status"] == "ocr_budget_exhausted"
+
+
+def test_duplicate_colour_candidates_can_abstain_without_losing_other_categories():
+    image, payload = fixture()
+    image[20:30, 20:30] = image[20:30, 0:10]
+    payload["tracks"][0]["swatches"].append({"label": "same red", "bbox": [20, 20, 30, 30]})
+    payload["indistinguishable_swatches"] = "unresolved"
+    result = infer_group_labels(image, GroupLabelsRequest.model_validate(payload))
+    assert not result["complete"]
+    assert result["records"][0]["tracks"][0]["category"] is None
+    assert result["records"][0]["tracks"][0]["candidate_categories"] == ["High_SE", "same red"]
+    assert result["records"][-1]["tracks"][0]["category"] == "Low_SE"
+
+
+def test_gene_row_categories_preserve_gene_names_without_sample_identity_claims():
+    image, payload = fixture()
+    payload.update(axis="rows", entity_kind="gene", start=0, end=40, count=2)
+    payload["tracks"][0]["bbox"] = [0, 0, 10, 40]
+    image[:20, :10] = [230, 20, 20]
+    image[20:, :10] = [20, 180, 20]
+    image[20:30, 40:50] = [230, 20, 20]
+    payload["tracks"][0]["swatches"][0]["bbox"] = [40, 20, 50, 30]
+    payload["grid"] = {
+        "heatmap_bbox": [10, 0, 40, 40],
+        "rows": 2,
+        "columns": 2,
+        "labels": {"rows": {"source": "file", "path": "genes.txt"}},
+    }
+    result = infer_group_labels(
+        image, GroupLabelsRequest.model_validate(payload), file_labels={"rows": ["CCL3", "MPO"]}
+    )
+    assert result["complete"] and result["entity_kind"] == "gene"
+    assert result["name_kind"] == "visible_gene_names"
+    assert [r["display_name"] for r in result["records"]] == ["CCL3", "MPO"]
+    assert result["visible_entity_names_recovered"]
+    assert not result["visible_sample_names_recovered"]
+    assert all(r["sample_name"] is None for r in result["records"])

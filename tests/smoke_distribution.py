@@ -207,6 +207,45 @@ def smoke() -> None:
             check=True,
             cwd=directory,
         )
+        tpm_folder = root / "examples/real_world/elife-87930-response15b"
+        ranges = subprocess.run(
+            [
+                str(command),
+                "extract-ranges",
+                str(tpm_folder / "figure.jpg"),
+                "--request",
+                str(tpm_folder / "ranges-request.json"),
+                "--out",
+                str(directory / "tpm-ranges"),
+            ],
+            check=False,
+            cwd=directory,
+        )
+        assert ranges.returncode == 4
+        range_result = json.loads((directory / "tpm-ranges/ranges.json").read_text())
+        assert range_result["shape"] == [5, 160]
+        assert not range_result["point_values_recovered"]
+        assert sum(r["status"] == "matched" for r in range_result["records"]) == 784
+        gene_folder = root / "examples/real_world/lsa-e202302332-fig7a"
+        subprocess.run(
+            [
+                str(command),
+                "group-labels",
+                str(gene_folder / "figure.jpg"),
+                "--request",
+                str(gene_folder / "row-groups-request.json"),
+                "--out",
+                str(directory / "gene-categories"),
+            ],
+            check=True,
+            cwd=directory,
+        )
+        gene_result = json.loads((directory / "gene-categories/groups.json").read_text())
+        assert gene_result["entity_kind"] == "gene" and gene_result["complete"]
+        assert all(r["sample_name"] is None for r in gene_result["records"])
+        assert (directory / "gene-categories/rows.txt").read_bytes() == (
+            gene_folder / "rows.txt"
+        ).read_bytes()
         roi_figure = root / "benchmarks/m9/figures/grayscale_left-2-clean.png"
         result = subprocess.run(
             [

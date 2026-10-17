@@ -1,0 +1,250 @@
+{
+  "axis": "rows",
+  "entity_kind": "gene",
+  "start": 195,
+  "end": 1278,
+  "count": 66,
+  "segments": [
+    {
+      "start": 195,
+      "end": 362,
+      "count": 11
+    },
+    {
+      "start": 372,
+      "end": 432,
+      "count": 4
+    },
+    {
+      "start": 441,
+      "end": 487,
+      "count": 3
+    },
+    {
+      "start": 497,
+      "end": 573,
+      "count": 5
+    },
+    {
+      "start": 582,
+      "end": 612,
+      "count": 2
+    },
+    {
+      "start": 622,
+      "end": 759,
+      "count": 9
+    },
+    {
+      "start": 769,
+      "end": 859,
+      "count": 6
+    },
+    {
+      "start": 866,
+      "end": 956,
+      "count": 6
+    },
+    {
+      "start": 965,
+      "end": 1053,
+      "count": 6
+    },
+    {
+      "start": 1060,
+      "end": 1239,
+      "count": 12
+    },
+    {
+      "start": 1248,
+      "end": 1278,
+      "count": 2
+    }
+  ],
+  "grid": {
+    "heatmap_bbox": [
+      36,
+      195,
+      314,
+      1278
+    ],
+    "rows": 66,
+    "columns": 30,
+    "rows_segments": [
+      {
+        "start": 195,
+        "end": 362,
+        "count": 11
+      },
+      {
+        "start": 372,
+        "end": 432,
+        "count": 4
+      },
+      {
+        "start": 441,
+        "end": 487,
+        "count": 3
+      },
+      {
+        "start": 497,
+        "end": 573,
+        "count": 5
+      },
+      {
+        "start": 582,
+        "end": 612,
+        "count": 2
+      },
+      {
+        "start": 622,
+        "end": 759,
+        "count": 9
+      },
+      {
+        "start": 769,
+        "end": 859,
+        "count": 6
+      },
+      {
+        "start": 866,
+        "end": 956,
+        "count": 6
+      },
+      {
+        "start": 965,
+        "end": 1053,
+        "count": 6
+      },
+      {
+        "start": 1060,
+        "end": 1239,
+        "count": 12
+      },
+      {
+        "start": 1248,
+        "end": 1278,
+        "count": 2
+      }
+    ],
+    "labels": {
+      "rows": {
+        "source": "file",
+        "path": "rows.txt"
+      }
+    }
+  },
+  "tracks": [
+    {
+      "name": "Category",
+      "bbox": [
+        2,
+        195,
+        29,
+        1278
+      ],
+      "swatches": [
+        {
+          "label": "Chemotaxis",
+          "bbox": [
+            470,
+            330,
+            490,
+            348
+          ]
+        },
+        {
+          "label": "Immune defense",
+          "bbox": [
+            470,
+            358,
+            490,
+            376
+          ]
+        },
+        {
+          "label": "Inflammation",
+          "bbox": [
+            470,
+            386,
+            490,
+            404
+          ]
+        },
+        {
+          "label": "Lung neutrophils",
+          "bbox": [
+            470,
+            414,
+            490,
+            432
+          ]
+        },
+        {
+          "label": "Maturity",
+          "bbox": [
+            470,
+            442,
+            490,
+            460
+          ]
+        },
+        {
+          "label": "Phagocytosis",
+          "bbox": [
+            470,
+            470,
+            490,
+            488
+          ]
+        },
+        {
+          "label": "Primary granules",
+          "bbox": [
+            470,
+            498,
+            490,
+            516
+          ]
+        },
+        {
+          "label": "Secondary granules",
+          "bbox": [
+            470,
+            526,
+            490,
+            544
+          ]
+        },
+        {
+          "label": "Tertiary granules",
+          "bbox": [
+            470,
+            554,
+            490,
+            572
+          ]
+        },
+        {
+          "label": "ROS biosynthesis",
+          "bbox": [
+            470,
+            582,
+            490,
+            600
+          ]
+        },
+        {
+          "label": "S or G2M phases",
+          "bbox": [
+            470,
+            610,
+            490,
+            628
+          ]
+        }
+      ]
+    }
+  ],
+  "max_colour_distance": 15
+}

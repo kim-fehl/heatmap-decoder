@@ -1,0 +1,104 @@
+{
+  "method": "rank regular-grid hypotheses by mean distance of observed transitions to edges",
+  "observations": [
+    53.0,
+    138.5029868578256,
+    144.0,
+    318.00822481151476,
+    332.3064327485381,
+    346.45215311004785,
+    484.5456453305352,
+    664.7578378378379,
+    672.0,
+    720.0,
+    726.9743947858472,
+    754.508108108108,
+    775.1299004026276,
+    782.0,
+    802.5158831003812,
+    809.9150467962562,
+    817.435307431158,
+    880.0,
+    1066.0142021720972,
+    1142.5375
+  ],
+  "ranked_candidates": [
+    {
+      "count": 160,
+      "pitch": 6.93125,
+      "mean_phase_residual_in_cells": 0.07513173527404689,
+      "fraction_within_0.2_cells": 0.95
+    },
+    {
+      "count": 320,
+      "pitch": 3.465625,
+      "mean_phase_residual_in_cells": 0.14453759137766994,
+      "fraction_within_0.2_cells": 0.75
+    },
+    {
+      "count": 3,
+      "pitch": 369.6666666666667,
+      "mean_phase_residual_in_cells": 0.16184302734980224,
+      "fraction_within_0.2_cells": 0.6
+    },
+    {
+      "count": 23,
+      "pitch": 48.21739130434783,
+      "mean_phase_residual_in_cells": 0.16530506161042888,
+      "fraction_within_0.2_cells": 0.65
+    },
+    {
+      "count": 304,
+      "pitch": 3.648026315789474,
+      "mean_phase_residual_in_cells": 0.16722772516819628,
+      "fraction_within_0.2_cells": 0.65
+    },
+    {
+      "count": 12,
+      "pitch": 92.41666666666667,
+      "mean_phase_residual_in_cells": 0.1710314969139099,
+      "fraction_within_0.2_cells": 0.55
+    },
+    {
+      "count": 137,
+      "pitch": 8.094890510948906,
+      "mean_phase_residual_in_cells": 0.1815974467535451,
+      "fraction_within_0.2_cells": 0.6
+    },
+    {
+      "count": 234,
+      "pitch": 4.739316239316239,
+      "mean_phase_residual_in_cells": 0.18196311931978135,
+      "fraction_within_0.2_cells": 0.55
+    },
+    {
+      "count": 231,
+      "pitch": 4.800865800865801,
+      "mean_phase_residual_in_cells": 0.1829076797086502,
+      "fraction_within_0.2_cells": 0.6
+    },
+    {
+      "count": 219,
+      "pitch": 5.063926940639269,
+      "mean_phase_residual_in_cells": 0.18308566661405332,
+      "fraction_within_0.2_cells": 0.55
+    },
+    {
+      "count": 157,
+      "pitch": 7.063694267515924,
+      "mean_phase_residual_in_cells": 0.18322525400665288,
+      "fraction_within_0.2_cells": 0.6
+    },
+    {
+      "count": 183,
+      "pitch": 6.060109289617486,
+      "mean_phase_residual_in_cells": 0.18333451856157174,
+      "fraction_within_0.2_cells": 0.6
+    }
+  ],
+  "count_is_image_derived": true,
+  "sample_identities_recovered": false,
+  "production_detector_proposals": [],
+  "automatic_count_accepted": false,
+  "limitation": "Sparse transitions and harmonics do not independently prove sample count."
+}

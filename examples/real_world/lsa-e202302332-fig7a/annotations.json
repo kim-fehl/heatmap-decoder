@@ -1,0 +1,89 @@
+{
+  "sample_columns": 30,
+  "sample_count_source": "image-derived regular grid, corroborated by dendrogram leaves; original identities unresolved",
+  "gene_rows": 66,
+  "column_annotation": {
+    "axis": "columns",
+    "entity_kind": "sample",
+    "name": "Condition",
+    "labels": [
+      "CD45high LDN",
+      "TAN",
+      "CD45low LDN",
+      "NDN"
+    ]
+  },
+  "row_annotation": {
+    "axis": "rows",
+    "entity_kind": "gene",
+    "name": "Category",
+    "segments": [
+      {
+        "label": "Chemotaxis",
+        "start": 0,
+        "end": 11
+      },
+      {
+        "label": "Immune defense",
+        "start": 11,
+        "end": 15
+      },
+      {
+        "label": "Inflammation",
+        "start": 15,
+        "end": 18
+      },
+      {
+        "label": "Lung neutrophils",
+        "start": 18,
+        "end": 23
+      },
+      {
+        "label": "Maturity",
+        "start": 23,
+        "end": 25
+      },
+      {
+        "label": "Phagocytosis",
+        "start": 25,
+        "end": 34
+      },
+      {
+        "label": "Primary granules",
+        "start": 34,
+        "end": 40
+      },
+      {
+        "label": "Secondary granules",
+        "start": 40,
+        "end": 46
+      },
+      {
+        "label": "Tertiary granules",
+        "start": 46,
+        "end": 52
+      },
+      {
+        "label": "ROS biosynthesis",
+        "start": 52,
+        "end": 64
+      },
+      {
+        "label": "S or G2M phases",
+        "start": 64,
+        "end": 66
+      }
+    ]
+  },
+  "white_horizontal_gaps_are_data": false,
+  "visible_tick_values": [
+    4,
+    2,
+    0,
+    -2,
+    -4
+  ],
+  "plotted_scale": "displayed colourbar values; exact normalization unresolved",
+  "publisher_filename_is_not_figure_number": true,
+  "caption_source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10628041/#F7"
+}

@@ -143,3 +143,42 @@ ambiguous colors are retained as normal QC flags/NaNs, not invented values.
 The checked-in [evaluation](../examples/real_world/publication_headers/evaluation.json)
 records the actual original-image measurements. Deposited expression values and
 individual GEO identities are not asserted as ground truth.
+
+## TPM ranges and a four-column tissue legend — eLife author response image 15B
+
+Urbanska, Ge et al., [De novo identification of universal cell mechanics gene
+signatures](https://elifesciences.org/articles/87930/figures#sa2fig15),
+doi:10.7554/eLife.87930.3, CC BY 4.0.
+
+![Original uploaded TPM heatmap](../examples/real_world/elife-87930-response15b/figure.jpg)
+
+The inspected grid has five genes and an **image-derived 160-column hypothesis**.
+The four printed legend columns describe **one** tissue track with 42 categories.
+Some categories reuse colors; 79/160 positions resolve uniquely and the remainder
+retain candidates or unresolved status. The TPM scale has unequal brackets and
+an open upper range. `extract-ranges` resolves 784/800 cells to supplied broad
+TPM ranges without claiming exact expression values. Neither sample count nor
+sample identities are verified against a plotted source matrix. GXD columns can
+represent bioreplicate sets rather than individual samples.
+
+[Fixture, count evidence, commands and limitations](../examples/real_world/elife-87930-response15b/README.md).
+
+## Gene groups separate from sample groups — Life Science Alliance Figure 7A
+
+Vanhaver et al., [Immunosuppressive low-density neutrophils in the blood of cancer
+patients display a mature phenotype](https://www.life-science-alliance.org/content/7/1/e202302332),
+doi:10.26508/lsa.202302332, CC BY 4.0. The publisher asset `F13.large.jpg` is Figure
+**7A**, not Figure 13.
+
+![Original uploaded heatmap with independent annotation axes](../examples/real_world/lsa-e202302332-fig7a/figure.jpg)
+
+The reviewed grid has **66 genes × 30 sample columns**, with eleven row segments
+excluding white gaps. `Condition` is a sample-column track (four categories);
+`Category` is a gene-row track (eleven categories). Separate `group-labels`
+requests retain axis and entity metadata, preserve visible gene names, and resolve
+all 30 column and 66 row memberships. Gene category colors are not interpreted as
+sample groups or expression colors. Within-group sample order remains the image's
+dendrogram order. Numeric extraction returns displayed colorbar estimates with
+normal QC; exact normalization and author-supplied plotted truth are unresolved.
+
+[Fixture, commands, explicit JPEG thresholds and results](../examples/real_world/lsa-e202302332-fig7a/README.md).

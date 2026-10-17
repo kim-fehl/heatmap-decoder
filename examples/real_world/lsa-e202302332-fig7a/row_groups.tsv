@@ -1,0 +1,67 @@
+index	entity_kind	visible_name	category	candidates	status
+0	gene	CCL3	Chemotaxis	Chemotaxis	matched
+1	gene	CCL4	Chemotaxis	Chemotaxis	matched
+2	gene	AGER	Chemotaxis	Chemotaxis	matched
+3	gene	JAML	Chemotaxis	Chemotaxis	matched
+4	gene	TNFSF14	Chemotaxis	Chemotaxis	matched
+5	gene	DOCK2	Chemotaxis	Chemotaxis	matched
+6	gene	ALCAM	Chemotaxis	Chemotaxis	matched
+7	gene	PIP5K1C	Chemotaxis	Chemotaxis	matched
+8	gene	CXCR3	Chemotaxis	Chemotaxis	matched
+9	gene	CCR1	Chemotaxis	Chemotaxis	matched
+10	gene	CCRL2	Chemotaxis	Chemotaxis	matched
+11	gene	CCL5	Immune defense	Immune defense	matched
+12	gene	CXCR2	Immune defense	Immune defense	matched
+13	gene	IL1B	Immune defense	Immune defense	matched
+14	gene	CSF3R	Immune defense	Immune defense	matched
+15	gene	CXCR4	Inflammation	Inflammation	matched
+16	gene	XBP1	Inflammation	Inflammation	matched
+17	gene	NFKB1	Inflammation	Inflammation	matched
+18	gene	PTGS2	Lung neutrophils	Lung neutrophils	matched
+19	gene	VEGFA	Lung neutrophils	Lung neutrophils	matched
+20	gene	TNFAIP3	Lung neutrophils	Lung neutrophils	matched
+21	gene	APLN	Lung neutrophils	Lung neutrophils	matched
+22	gene	ITGA4	Lung neutrophils	Lung neutrophils	matched
+23	gene	MME	Maturity	Maturity	matched
+24	gene	SELL	Maturity	Maturity	matched
+25	gene	SYK	Phagocytosis	Phagocytosis	matched
+26	gene	SIRPA	Phagocytosis	Phagocytosis	matched
+27	gene	FCGR3A	Phagocytosis	Phagocytosis	matched
+28	gene	FCGR3B	Phagocytosis	Phagocytosis	matched
+29	gene	CDC42SE1	Phagocytosis	Phagocytosis	matched
+30	gene	FGR	Phagocytosis	Phagocytosis	matched
+31	gene	RAB7A	Phagocytosis	Phagocytosis	matched
+32	gene	ABCA1	Phagocytosis	Phagocytosis	matched
+33	gene	ABR	Phagocytosis	Phagocytosis	matched
+34	gene	MPO	Primary granules	Primary granules	matched
+35	gene	ELANE	Primary granules	Primary granules	matched
+36	gene	CTSG	Primary granules	Primary granules	matched
+37	gene	CTSC	Primary granules	Primary granules	matched
+38	gene	HEXA	Primary granules	Primary granules	matched
+39	gene	PRTN3	Primary granules	Primary granules	matched
+40	gene	LTF	Secondary granules	Secondary granules	matched
+41	gene	LCN2	Secondary granules	Secondary granules	matched
+42	gene	CAMP	Secondary granules	Secondary granules	matched
+43	gene	CEBPE	Secondary granules	Secondary granules	matched
+44	gene	LYZ	Secondary granules	Secondary granules	matched
+45	gene	CYBB	Secondary granules	Secondary granules	matched
+46	gene	MMP25	Tertiary granules	Tertiary granules	matched
+47	gene	MMP8	Tertiary granules	Tertiary granules	matched
+48	gene	MMP9	Tertiary granules	Tertiary granules	matched
+49	gene	ITGAM	Tertiary granules	Tertiary granules	matched
+50	gene	CFP	Tertiary granules	Tertiary granules	matched
+51	gene	ADAM8	Tertiary granules	Tertiary granules	matched
+52	gene	AKT1	ROS biosynthesis	ROS biosynthesis	matched
+53	gene	TLR2	ROS biosynthesis	ROS biosynthesis	matched
+54	gene	TLR4	ROS biosynthesis	ROS biosynthesis	matched
+55	gene	TLR5	ROS biosynthesis	ROS biosynthesis	matched
+56	gene	PTK2B	ROS biosynthesis	ROS biosynthesis	matched
+57	gene	FOXO3	ROS biosynthesis	ROS biosynthesis	matched
+58	gene	KLF2	ROS biosynthesis	ROS biosynthesis	matched
+59	gene	SOD2	ROS biosynthesis	ROS biosynthesis	matched
+60	gene	P2RX4	ROS biosynthesis	ROS biosynthesis	matched
+61	gene	SOD1	ROS biosynthesis	ROS biosynthesis	matched
+62	gene	SPR	ROS biosynthesis	ROS biosynthesis	matched
+63	gene	KLRK1	ROS biosynthesis	ROS biosynthesis	matched
+64	gene	MKI67	S or G2M phases	S or G2M phases	matched
+65	gene	CDK1	S or G2M phases	S or G2M phases	matched

@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — TPM ranges and independent gene categories
+
+- Add `extract-ranges` and a Python API for reviewed expression ranges, open upper
+  bounds, and ambiguity across range boundaries using the existing color evidence.
+- Add explicit gene/sample entity metadata to categorical outputs, and an opt-in
+  unresolved-candidate policy for reused legend colors.
+- Preserve two original publication crops with attributed fixtures, a pixel-derived
+  160-column hypothesis, separate gene/sample annotations, and reproducible results.
+
 ## Unreleased — Remove v0.1 interface
 
 - Remove the deprecated `heatmap2matrix` package, submodule aliases and CLI.

@@ -57,6 +57,7 @@ Heuristic acceptance and high scores do not mean identifiers have been reviewed.
 - [Categorical group labels and published source tables](examples/real_world/README.md)
 - [Grid tolerance and mild-blur diagnosis](docs/grid-tolerance.md)
 - [Scale calibration](docs/nonlinear-calibration.md)
+- [TPM ranges and independent gene categories](docs/range-scales.md)
 - [Worked examples](examples/README.md)
 - [Validation evidence and limitations](benchmarks/README.md)
 - [Documentation index](docs/README.md)

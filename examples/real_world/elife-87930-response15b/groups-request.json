@@ -1,0 +1,399 @@
+{
+  "axis": "columns",
+  "entity_kind": "sample",
+  "start": 48,
+  "end": 1157,
+  "count": 160,
+  "tracks": [
+    {
+      "name": "tissue structure",
+      "bbox": [
+        48,
+        410,
+        1157,
+        430
+      ],
+      "swatches": [
+        {
+          "label": "arcuate nucleus",
+          "bbox": [
+            51,
+            473,
+            71,
+            486
+          ]
+        },
+        {
+          "label": "ascending colon",
+          "bbox": [
+            51,
+            499,
+            71,
+            512
+          ]
+        },
+        {
+          "label": "brain",
+          "bbox": [
+            51,
+            525,
+            71,
+            538
+          ]
+        },
+        {
+          "label": "brown fat",
+          "bbox": [
+            51,
+            552,
+            71,
+            565
+          ]
+        },
+        {
+          "label": "cerebellar hemisphere",
+          "bbox": [
+            51,
+            578,
+            71,
+            591
+          ]
+        },
+        {
+          "label": "cerebellum",
+          "bbox": [
+            51,
+            604,
+            71,
+            617
+          ]
+        },
+        {
+          "label": "cerebral cortex",
+          "bbox": [
+            51,
+            630,
+            71,
+            643
+          ]
+        },
+        {
+          "label": "cerebral hemisphere",
+          "bbox": [
+            51,
+            656,
+            71,
+            669
+          ]
+        },
+        {
+          "label": "cochlea",
+          "bbox": [
+            51,
+            683,
+            71,
+            696
+          ]
+        },
+        {
+          "label": "colon",
+          "bbox": [
+            51,
+            709,
+            71,
+            722
+          ]
+        },
+        {
+          "label": "corpus striatum",
+          "bbox": [
+            51,
+            735,
+            71,
+            748
+          ]
+        },
+        {
+          "label": "crypt of lieberkuhn",
+          "bbox": [
+            342,
+            470,
+            362,
+            483
+          ]
+        },
+        {
+          "label": "dorsal raphe nucleus",
+          "bbox": [
+            342,
+            496,
+            362,
+            509
+          ]
+        },
+        {
+          "label": "heart",
+          "bbox": [
+            342,
+            522,
+            362,
+            535
+          ]
+        },
+        {
+          "label": "heart left ventricle",
+          "bbox": [
+            342,
+            549,
+            362,
+            562
+          ]
+        },
+        {
+          "label": "heart ventricle",
+          "bbox": [
+            342,
+            575,
+            362,
+            588
+          ]
+        },
+        {
+          "label": "hippocampus",
+          "bbox": [
+            342,
+            601,
+            362,
+            614
+          ]
+        },
+        {
+          "label": "hypothalamus",
+          "bbox": [
+            342,
+            627,
+            362,
+            640
+          ]
+        },
+        {
+          "label": "ileum",
+          "bbox": [
+            342,
+            653,
+            362,
+            666
+          ]
+        },
+        {
+          "label": "intestine smooth muscle",
+          "bbox": [
+            342,
+            680,
+            362,
+            693
+          ]
+        },
+        {
+          "label": "islets of Langerhans",
+          "bbox": [
+            342,
+            706,
+            362,
+            719
+          ]
+        },
+        {
+          "label": "liver",
+          "bbox": [
+            342,
+            732,
+            362,
+            745
+          ]
+        },
+        {
+          "label": "lung",
+          "bbox": [
+            655,
+            471,
+            675,
+            484
+          ]
+        },
+        {
+          "label": "main olfactory bulb",
+          "bbox": [
+            655,
+            497,
+            675,
+            510
+          ]
+        },
+        {
+          "label": "metanephros",
+          "bbox": [
+            655,
+            523,
+            675,
+            536
+          ]
+        },
+        {
+          "label": "midbrain",
+          "bbox": [
+            655,
+            550,
+            675,
+            563
+          ]
+        },
+        {
+          "label": "ovary",
+          "bbox": [
+            655,
+            576,
+            675,
+            589
+          ]
+        },
+        {
+          "label": "secondary oocyte",
+          "bbox": [
+            655,
+            602,
+            675,
+            615
+          ]
+        },
+        {
+          "label": "skin",
+          "bbox": [
+            655,
+            628,
+            675,
+            641
+          ]
+        },
+        {
+          "label": "small intestine",
+          "bbox": [
+            655,
+            654,
+            675,
+            667
+          ]
+        },
+        {
+          "label": "spermatid",
+          "bbox": [
+            655,
+            681,
+            675,
+            694
+          ]
+        },
+        {
+          "label": "spermatocyte",
+          "bbox": [
+            655,
+            707,
+            675,
+            720
+          ]
+        },
+        {
+          "label": "spinal cord",
+          "bbox": [
+            655,
+            733,
+            675,
+            746
+          ]
+        },
+        {
+          "label": "spleen",
+          "bbox": [
+            919,
+            465,
+            939,
+            478
+          ]
+        },
+        {
+          "label": "suprachiasmatic nucleus",
+          "bbox": [
+            919,
+            491,
+            939,
+            504
+          ]
+        },
+        {
+          "label": "testis",
+          "bbox": [
+            919,
+            517,
+            939,
+            530
+          ]
+        },
+        {
+          "label": "thalamus",
+          "bbox": [
+            919,
+            544,
+            939,
+            557
+          ]
+        },
+        {
+          "label": "thymus",
+          "bbox": [
+            919,
+            570,
+            939,
+            583
+          ]
+        },
+        {
+          "label": "tibia",
+          "bbox": [
+            919,
+            596,
+            939,
+            609
+          ]
+        },
+        {
+          "label": "upper leg muscle",
+          "bbox": [
+            919,
+            622,
+            939,
+            635
+          ]
+        },
+        {
+          "label": "vomeronasal organ",
+          "bbox": [
+            919,
+            648,
+            939,
+            661
+          ]
+        },
+        {
+          "label": "white fat",
+          "bbox": [
+            919,
+            675,
+            939,
+            688
+          ]
+        }
+      ]
+    }
+  ],
+  "indistinguishable_swatches": "unresolved"
+}

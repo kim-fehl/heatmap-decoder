@@ -1,0 +1,161 @@
+index	entity_kind	visible_name	category	candidates	status
+0	sample				unresolved
+1	sample			ovary	unresolved
+2	sample		ascending colon	ascending colon	matched
+3	sample			ascending colon	unresolved
+4	sample			white fat	unresolved
+5	sample				unresolved
+6	sample		brain	brain	matched
+7	sample		brain	brain	matched
+8	sample		brain	brain	matched
+9	sample		brain	brain	matched
+10	sample				unresolved
+11	sample		brown fat	brown fat	matched
+12	sample		brown fat	brown fat	matched
+13	sample		brown fat	brown fat	matched
+14	sample		brown fat	brown fat	matched
+15	sample		cerebellar hemisphere	cerebellar hemisphere	matched
+16	sample			cerebellum | secondary oocyte	unresolved
+17	sample			cerebellum | secondary oocyte	unresolved
+18	sample			cerebellum | secondary oocyte	unresolved
+19	sample			cerebellum | secondary oocyte	unresolved
+20	sample				unresolved
+21	sample				unresolved
+22	sample			cerebral cortex | skin	unresolved
+23	sample			cerebral cortex | skin	unresolved
+24	sample				unresolved
+25	sample				unresolved
+26	sample				unresolved
+27	sample		cochlea	cochlea	matched
+28	sample				unresolved
+29	sample			heart ventricle	unresolved
+30	sample			corpus striatum | spinal cord	unresolved
+31	sample			corpus striatum | spinal cord	unresolved
+32	sample			corpus striatum | spinal cord	unresolved
+33	sample			corpus striatum | spinal cord	unresolved
+34	sample			corpus striatum | spinal cord	unresolved
+35	sample			corpus striatum | spinal cord	unresolved
+36	sample			corpus striatum | spinal cord	unresolved
+37	sample			corpus striatum | spinal cord	unresolved
+38	sample			corpus striatum | spinal cord	unresolved
+39	sample			crypt of lieberkuhn | spleen	unresolved
+40	sample				unresolved
+41	sample				unresolved
+42	sample				unresolved
+43	sample				unresolved
+44	sample		heart	heart	matched
+45	sample		heart	heart	matched
+46	sample		heart left ventricle	heart left ventricle	matched
+47	sample				unresolved
+48	sample				unresolved
+49	sample		hippocampus	hippocampus	matched
+50	sample		hippocampus	hippocampus	matched
+51	sample		hippocampus	hippocampus	matched
+52	sample		hippocampus	hippocampus	matched
+53	sample		hippocampus	hippocampus	matched
+54	sample		hippocampus	hippocampus	matched
+55	sample		hippocampus	hippocampus	matched
+56	sample		hippocampus	hippocampus	matched
+57	sample		hippocampus	hippocampus	matched
+58	sample		hippocampus	hippocampus	matched
+59	sample		hippocampus	hippocampus	matched
+60	sample		hippocampus	hippocampus	matched
+61	sample		hypothalamus	hypothalamus	matched
+62	sample		hypothalamus	hypothalamus	matched
+63	sample		ileum	ileum	matched
+64	sample		ileum	ileum	matched
+65	sample			ileum	unresolved
+66	sample		intestine smooth muscle	intestine smooth muscle	matched
+67	sample				unresolved
+68	sample				unresolved
+69	sample		islets of Langerhans	islets of Langerhans	matched
+70	sample		islets of Langerhans	islets of Langerhans	matched
+71	sample		islets of Langerhans	islets of Langerhans	matched
+72	sample		islets of Langerhans	islets of Langerhans	matched
+73	sample		islets of Langerhans	islets of Langerhans	matched
+74	sample		islets of Langerhans	islets of Langerhans	matched
+75	sample		islets of Langerhans	islets of Langerhans	matched
+76	sample		islets of Langerhans	islets of Langerhans	matched
+77	sample		islets of Langerhans	islets of Langerhans	matched
+78	sample		islets of Langerhans	islets of Langerhans	matched
+79	sample				unresolved
+80	sample				unresolved
+81	sample		liver	liver	matched
+82	sample			liver	unresolved
+83	sample			liver	unresolved
+84	sample			liver	unresolved
+85	sample		liver	liver	matched
+86	sample		liver	liver	matched
+87	sample		liver	liver	matched
+88	sample		liver	liver	matched
+89	sample		lung	lung	matched
+90	sample			cerebellum | metanephros | secondary oocyte	unresolved
+91	sample			metanephros	unresolved
+92	sample			cerebellum | metanephros	unresolved
+93	sample		midbrain	midbrain	matched
+94	sample			midbrain	unresolved
+95	sample		midbrain	midbrain	matched
+96	sample				unresolved
+97	sample				unresolved
+98	sample				unresolved
+99	sample			cerebellum | metanephros | secondary oocyte	unresolved
+100	sample			cerebellum | metanephros | secondary oocyte	unresolved
+101	sample				unresolved
+102	sample				unresolved
+103	sample			cerebral hemisphere | small intestine	unresolved
+104	sample			testis	unresolved
+105	sample				unresolved
+106	sample			colon | spermatid	unresolved
+107	sample			colon | spermatid	unresolved
+108	sample			heart ventricle	unresolved
+109	sample		spermatocyte	spermatocyte	matched
+110	sample		spermatocyte	spermatocyte	matched
+111	sample			corpus striatum | spinal cord	unresolved
+112	sample			corpus striatum | spinal cord	unresolved
+113	sample			corpus striatum | spinal cord	unresolved
+114	sample			crypt of lieberkuhn | spleen	unresolved
+115	sample			crypt of lieberkuhn | spleen	unresolved
+116	sample			crypt of lieberkuhn | spleen	unresolved
+117	sample			crypt of lieberkuhn | spleen	unresolved
+118	sample			crypt of lieberkuhn | spleen	unresolved
+119	sample			crypt of lieberkuhn | spleen	unresolved
+120	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+121	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+122	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+123	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+124	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+125	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+126	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+127	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+128	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+129	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+130	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+131	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+132	sample		suprachiasmatic nucleus	suprachiasmatic nucleus	matched
+133	sample				unresolved
+134	sample				unresolved
+135	sample			testis	unresolved
+136	sample			testis	unresolved
+137	sample			testis	unresolved
+138	sample			testis	unresolved
+139	sample			testis	unresolved
+140	sample			testis	unresolved
+141	sample			testis	unresolved
+142	sample		thalamus	thalamus	matched
+143	sample		thalamus	thalamus	matched
+144	sample		thalamus	thalamus	matched
+145	sample		thymus	thymus	matched
+146	sample				unresolved
+147	sample		upper leg muscle	upper leg muscle	matched
+148	sample				unresolved
+149	sample		vomeronasal organ	vomeronasal organ	matched
+150	sample			vomeronasal organ	unresolved
+151	sample		white fat	white fat	matched
+152	sample		white fat	white fat	matched
+153	sample		white fat	white fat	matched
+154	sample		white fat	white fat	matched
+155	sample		white fat	white fat	matched
+156	sample		white fat	white fat	matched
+157	sample		white fat	white fat	matched
+158	sample		white fat	white fat	matched
+159	sample		brown fat	brown fat	matched

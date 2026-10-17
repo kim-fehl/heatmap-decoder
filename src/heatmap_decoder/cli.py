@@ -37,6 +37,77 @@ app = typer.Typer(
 )
 
 
+@app.command("extract-ranges")
+def extract_ranges_command(
+    figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],
+    request: Annotated[Path, typer.Option("--request", exists=True, dir_okay=False)],
+    out: Annotated[Path, typer.Option("--out", file_okay=False)] = Path("results/ranges"),
+    overwrite: Annotated[bool, typer.Option("--overwrite")] = False,
+) -> None:
+    """Recover reviewed expression ranges, including open-ended ranges."""
+    import csv
+
+    from .io import check_output_paths, load_file_labels
+    from .models import FileLabelSource
+    from .range_scale import RangeExtractionRequest, extract_ranges
+
+    try:
+        settings = RangeExtractionRequest.model_validate_json(request.read_bytes())
+        protected = [figure, request]
+        config = settings.position_config
+        labels, hashes = load_file_labels(config, request.parent)
+        if config.labels is not None:
+            for axis in ("rows", "columns"):
+                source = getattr(config.labels, axis)
+                if isinstance(source, FileLabelSource):
+                    protected.append(request.parent / source.path)
+        check_output_paths([out / "ranges.json", out / "ranges.tsv"], tuple(protected), overwrite)
+        result = extract_ranges(load_raster(figure), settings, file_labels=labels)
+        result.update(
+            input_sha256=hashlib.sha256(figure.read_bytes()).hexdigest(),
+            file_label_sha256=hashes,
+            request=settings.model_dump(mode="json"),
+        )
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "ranges.json").write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
+        with (out / "ranges.tsv").open("w", newline="", encoding="utf-8") as stream:
+            writer = csv.writer(stream, delimiter="\t", lineterminator="\n")
+            writer.writerow(
+                [
+                    "row",
+                    "column",
+                    "status",
+                    "range",
+                    "lower",
+                    "upper",
+                    "lower_inclusive",
+                    "upper_inclusive",
+                    "colour_distance",
+                ]
+            )
+            for record in result["records"]:
+                band = record["range"] or {}
+                writer.writerow(
+                    [
+                        record["row"],
+                        record["column"],
+                        record["status"],
+                        band.get("label"),
+                        band.get("lower"),
+                        band.get("upper"),
+                        band.get("lower_inclusive"),
+                        band.get("upper_inclusive"),
+                        record["colour_distance"],
+                    ]
+                )
+    except (ValueError, OSError) as error:
+        typer.echo(f"error: {error}", err=True)
+        raise typer.Exit(2) from error
+    typer.echo(f"Wrote expression ranges to {out}")
+    if not result["complete"]:
+        raise typer.Exit(4)
+
+
 @app.command("group-labels")
 def group_labels_command(
     figure: Annotated[Path, typer.Argument(exists=True, dir_okay=False, readable=True)],
@@ -79,6 +150,9 @@ def group_labels_command(
                     "generated_name",
                     "sample_name",
                     "sample_status",
+                    "entity_kind",
+                    "entity_name",
+                    "entity_status",
                     *result["track_names"],
                 ]
             )
@@ -90,6 +164,9 @@ def group_labels_command(
                         record["generated_name"],
                         record["sample_name"],
                         record["sample_status"],
+                        result["entity_kind"],
+                        record["entity_name"],
+                        record["entity_status"],
                         *(t["category"] for t in record["tracks"]),
                     ]
                 )

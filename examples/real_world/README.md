@@ -8,6 +8,8 @@ and XLSX files are preserved byte-for-byte; manifests record hashes and attribut
 | [`elife-78496-fig5e`](elife-78496-fig5e/) | Li et al., Figure **5E**, skeletal system development | 49 × 14 `truth.tsv`, displayed row/column mappings, configs, decoded estimates, reviewed labels | Author-supplied plotted z-scores; all 49 genes joined to the workbook in the **image's order** |
 | [`elife-78496-fig5-supp3a`](elife-78496-fig5-supp3a/) | Li et al., Figure **5—figure supplement 3A**, visible cluster 2/3 region | Original crop, 14 generated column names, two-track categorical evidence | Gene matrix and clustered row order missing; no numeric truth |
 | [`elife-97830-fig4e`](elife-97830-fig4e/) | Bæk/Muk et al., Figure **4E**, DEGs–Immune Response | Original crop, 25 reviewed row names, 26 generated column names, configs, decoded estimates | Blood workbook supplied; 25 × 39 source export verified. Image shows 26 samples; selection/order and plotted transformation unresolved |
+| [`elife-87930-response15b`](elife-87930-response15b/) | Urbanska, Ge et al., author response image 15B | 5 × 160 image-derived grid hypothesis, four-column tissue legend, TPM range extraction | No point-value truth; ambiguous tissue colors preserved; 784/800 cells assigned ranges |
+| [`lsa-e202302332-fig7a`](lsa-e202302332-fig7a/) | Vanhaver et al., Figure 7A (asset F13) | 66 × 30 segmented grid, separate sample Condition and gene Category annotations, decoded estimates | Annotation references only; plotted numeric matrix and sample identities unresolved |
 | [`elife-17290-fig2`](elife-17290-fig2/) | DeJesus et al., Figure 2 source data 2 | All **598** source records as TSV, preserving guide sequence, gene, source row, log2 FC signs | Figure 2G screenshot supplied; 20 × 3 truth matched to exact guide records, reviewed labels, extraction and OCR tests |
 
 The first attached image's filename says `fig5`, but the crop is specifically
@@ -171,3 +173,10 @@ samples, tickless scales, short grouping rules, dense columns, and two-track
 light/dark rectangle labels. See the [catalogue](../../docs/real-world-examples.md)
 and [experimental CLI usage](../../docs/publication-headers.md). Biological numeric
 ground truth remains unverified for these four images.
+
+## TPM ranges and gene categories
+
+The two additional examples have [reproduction commands and results](../../docs/range-scales.md).
+Run `uv run python scripts/check_range_examples.py` to regenerate their separate
+[`range_examples_evaluation.json`](range_examples_evaluation.json), image-derived
+estimates/ranges and group assignments. Original images remain unchanged.

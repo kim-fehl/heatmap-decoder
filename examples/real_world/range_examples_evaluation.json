@@ -1,0 +1,59 @@
+{
+  "elife-87930-response15b": {
+    "image_sha256": "bf1682792b0d2016db482ede9ac579cb8f5fc11dda25c2d14caba242a1cdb448",
+    "numeric_ground_truth": false,
+    "columns": {
+      "axis": "columns",
+      "entity_kind": "sample",
+      "complete": false,
+      "matched": 79,
+      "total": 160,
+      "visible_sample_names_recovered": false,
+      "original_sample_ids_recovered": false
+    },
+    "ranges": {
+      "shape": [
+        5,
+        160
+      ],
+      "quantity": "TPM; displayed bracket ranges",
+      "statuses": {
+        "matched": 784,
+        "poor_colour_match": 5,
+        "range_ambiguous": 11
+      },
+      "point_values_recovered": false
+    }
+  },
+  "lsa-e202302332-fig7a": {
+    "image_sha256": "e42c27624458f27cbc9cb5f111620d63b57f8e796af9813be49ee5c5f9d8bd83",
+    "numeric_ground_truth": false,
+    "columns": {
+      "axis": "columns",
+      "entity_kind": "sample",
+      "complete": true,
+      "matched": 30,
+      "total": 30,
+      "visible_sample_names_recovered": false,
+      "original_sample_ids_recovered": false
+    },
+    "rows": {
+      "axis": "rows",
+      "entity_kind": "gene",
+      "complete": true,
+      "matched": 66,
+      "total": 66,
+      "visible_sample_names_recovered": false,
+      "original_sample_ids_recovered": false
+    },
+    "numeric": {
+      "shape": [
+        66,
+        30
+      ],
+      "finite_cells": 1939,
+      "total_cells": 1980,
+      "quantity": "displayed colourbar values; normalization not established from crop"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "rows": [
+    "CAV1",
+    "FHL2",
+    "IGFBP7",
+    "TAGLN",
+    "THBS1"
+  ],
+  "sample_columns": 160,
+  "sample_count_source": "image-derived regular-grid hypothesis; not stated panel membership",
+  "legend_columns": 4,
+  "sample_annotation_tracks": 1,
+  "legend_categories": 42,
+  "range_source": "manually reviewed printed brackets; boundaries at 0.5, 11 and 1001; source documentation rounds low/medium as 0.5\u201310 and 11\u20131000",
+  "open_ended_high_range": true,
+  "exact_TPM_recovered": false,
+  "caption_url": "https://elifesciences.org/articles/87930/figures",
+  "GXD_help_url": "https://www.informatics.jax.org/userhelp/EXPRESSION_help.shtml",
+  "GXD_column_meaning": "bioreplicate sets; not necessarily individual biological samples",
+  "caption": "Panel B: young mice, ages P42-84 / P w6-w12 / P m1.5-3.0; generated with GXD RNASeq Heatmap, accessed 2 October 2024."
+}

@@ -1,0 +1,112 @@
+{
+  "heatmap_bbox": [
+    36,
+    195,
+    314,
+    1278
+  ],
+  "rows": 66,
+  "columns": 30,
+  "rows_segments": [
+    {
+      "start": 195,
+      "end": 362,
+      "count": 11
+    },
+    {
+      "start": 372,
+      "end": 432,
+      "count": 4
+    },
+    {
+      "start": 441,
+      "end": 487,
+      "count": 3
+    },
+    {
+      "start": 497,
+      "end": 573,
+      "count": 5
+    },
+    {
+      "start": 582,
+      "end": 612,
+      "count": 2
+    },
+    {
+      "start": 622,
+      "end": 759,
+      "count": 9
+    },
+    {
+      "start": 769,
+      "end": 859,
+      "count": 6
+    },
+    {
+      "start": 866,
+      "end": 956,
+      "count": 6
+    },
+    {
+      "start": 965,
+      "end": 1053,
+      "count": 6
+    },
+    {
+      "start": 1060,
+      "end": 1239,
+      "count": 12
+    },
+    {
+      "start": 1248,
+      "end": 1278,
+      "count": 2
+    }
+  ],
+  "colourbar_bbox": [
+    402,
+    192,
+    421,
+    449
+  ],
+  "colourbar_orientation": "vertical",
+  "scale": {
+    "source": "manual_ticks",
+    "model": "piecewise_linear",
+    "quantity": "displayed colourbar values; normalization not established from crop",
+    "anchors": [
+      {
+        "position": 223,
+        "value": 4,
+        "origin": "reviewed"
+      },
+      {
+        "position": 272,
+        "value": 2,
+        "origin": "reviewed"
+      },
+      {
+        "position": 321,
+        "value": 0,
+        "origin": "reviewed"
+      },
+      {
+        "position": 370,
+        "value": -2,
+        "origin": "reviewed"
+      },
+      {
+        "position": 419,
+        "value": -4,
+        "origin": "reviewed"
+      }
+    ]
+  },
+  "labels": {
+    "rows": {
+      "source": "file",
+      "path": "rows.txt"
+    }
+  }
+}

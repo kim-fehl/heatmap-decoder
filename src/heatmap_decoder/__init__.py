@@ -40,9 +40,13 @@ from .models import (
     ScaleAnchor,
     ScaleConfig,
 )
+from .range_scale import RangeBand, RangeExtractionRequest, extract_ranges
 from .version import __version__
 
 __all__ = [
+    "RangeBand",
+    "RangeExtractionRequest",
+    "extract_ranges",
     "AutomationRequest",
     "AutomationResult",
     "automate",

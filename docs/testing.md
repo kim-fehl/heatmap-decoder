@@ -9,10 +9,10 @@ must be consolidated and removed before the change is finished; see
 | Tier | Scope | Collected cases |
 |---|---|---:|
 | `unit` | Focused component contracts and property tests; external engines mocked | 243 |
-| `pipeline` | Deterministic synthetic images, file adapters, CLI and composed workflows | 587 |
+| `pipeline` | Deterministic synthetic images, file adapters, CLI and composed workflows | 601 |
 | `ocr` | Real local engine/model execution, synthetic and original publication images | 47 |
-| `qualification` | Benchmark machinery, frozen evidence and independent publication references | 35 |
-| **Total** | Parameterized pytest cases, including opt-in OCR | **912** |
+| `qualification` | Benchmark machinery, frozen evidence and independent publication references | 36 |
+| **Total** | Parameterized pytest cases, including opt-in OCR | **927** |
 
 Counts reflect the current suite after removing the v0.1 import-alias test;
 the independent lazy OCR import check now belongs to `unit/test_core.py`.
@@ -82,7 +82,7 @@ boundary or evaluation purpose decides which file owns the case.
 | [test_detection_policy.py](../tests/pipeline/test_detection_policy.py) | Runtime publication policy, diagnostics and review-only handoff | 5 |
 | [test_detection_regressions.py](../tests/pipeline/test_detection_regressions.py) | Bar cores, count competition, renderer QA and export regressions | 25 |
 | [test_gridlines.py](../tests/pipeline/test_gridlines.py) | Gridline centres, terminal extents, degradation and adverse geometry | 10 |
-| [test_group_labels.py](../tests/pipeline/test_group_labels.py) | Categorical swatches, unequal groups, repeated labels and sample naming | 21 |
+| [test_group_labels.py](../tests/pipeline/test_group_labels.py) | Categorical swatches, unequal groups, repeated labels, independent gene/sample entities | 23 |
 | [test_label_geometry.py](../tests/pipeline/test_label_geometry.py) | Rotated/arbitrary-angle lines, attachment order, raw evidence and review gates | 112 |
 | [test_labels_io.py](../tests/pipeline/test_labels_io.py) | Label artifacts, file sources, provenance and input protection | 9 |
 | [test_layout_detection.py](../tests/pipeline/test_layout_detection.py) | Omics layout matrix, count/ROI association and staged localization | 62 |
@@ -92,6 +92,7 @@ boundary or evaluation purpose decides which file owns the case.
 | [test_palettes.py](../tests/pipeline/test_palettes.py) | Palette independence, dark data preservation and ambiguity negatives | 28 |
 | [test_piecewise_calibration.py](../tests/pipeline/test_piecewise_calibration.py) | Piecewise knots, interpolation, confidence and export scope | 5 |
 | [test_quality.py](../tests/pipeline/test_quality.py) | Colour distance, ambiguity, missing data, QC and exports | 16 |
+| [test_range_scale.py](../tests/pipeline/test_range_scale.py) | Range-valued extraction, open bounds, plateau/cross-band ambiguity and CLI output | 12 |
 | [test_reconstruction.py](../tests/pipeline/test_reconstruction.py) | Synthetic numeric reconstruction across palettes and cell sizes | 12 |
 | [test_reviewed_extract.py](../tests/pipeline/test_reviewed_extract.py) | Label review, numeric invariance, matching QC labels and export gates | 21 |
 | [test_roi_association.py](../tests/pipeline/test_roi_association.py) | Colourbar/label association, counts, saved evidence and review conflicts | 36 |
@@ -119,7 +120,7 @@ boundary or evaluation purpose decides which file owns the case.
 |---|---|---:|
 | [test_detection_evidence.py](../tests/qualification/test_detection_evidence.py) | Frozen corpus hashes, denominators, error summaries and release gates | 6 |
 | [test_geometry_metrics.py](../tests/qualification/test_geometry_metrics.py) | Boundary tolerances, exact counts and group membership scoring | 5 |
-| [test_publication_sources.py](../tests/qualification/test_publication_sources.py) | Workbook/reference integrity and numeric image correspondence | 12 |
+| [test_publication_sources.py](../tests/qualification/test_publication_sources.py) | Workbook/reference integrity, independent annotation axes and numeric image correspondence | 13 |
 | [test_publication_trials.py](../tests/qualification/test_publication_trials.py) | Publication annotation audit and unavailable-scale abstention | 2 |
 | [test_validation.py](../tests/qualification/test_validation.py) | Fresh partitions, immutable freezes, source/runtime checks and evaluator anchors | 10 |
 

@@ -84,6 +84,7 @@ class CategoryTrack(BaseModel):
 class GroupLabelsRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
     axis: Literal["rows", "columns"] = "columns"
+    entity_kind: Literal["sample", "gene", "unspecified"] | None = None
     start: Annotated[int, Field(strict=True, ge=0)]
     end: Annotated[int, Field(strict=True, gt=0)]
     count: Annotated[int, Field(strict=True, gt=0, le=10000)]
@@ -94,6 +95,7 @@ class GroupLabelsRequest(BaseModel):
     max_colour_distance: Annotated[float, Field(gt=0)] = 12.0
     min_colour_margin: Annotated[float, Field(gt=0)] = 3.0
     minimum_match_fraction: Annotated[float, Field(gt=0.5, le=1)] = 0.8
+    indistinguishable_swatches: Literal["error", "unresolved"] = "error"
 
     @model_validator(mode="after")
     def validate_request(self) -> "GroupLabelsRequest":
@@ -326,7 +328,10 @@ def infer_group_labels(
         labs = to_lab(np.asarray(colours))
         pairwise = np.linalg.norm(labs[:, None] - labs[None, :], axis=2)
         np.fill_diagonal(pairwise, np.inf)
-        if np.min(pairwise) < request.min_colour_margin:
+        if (
+            np.min(pairwise) < request.min_colour_margin
+            and request.indistinguishable_swatches == "error"
+        ):
             raise ValueError("legend swatches are too similar to distinguish")
         references.append(labs)
     records: list[dict[str, Any]] = []
@@ -366,6 +371,12 @@ def infer_group_labels(
             if image.shape[2] == 4:
                 valid &= pixels[:, 3] == 255
             fractions = [float(np.mean(valid & (nearest == i))) for i in range(len(labs))]
+            candidate_pixels = (distances <= request.max_colour_distance) & (
+                distances <= ordered[:, :1] + request.min_colour_margin
+            )
+            if image.shape[2] == 4:
+                candidate_pixels &= pixels[:, 3:4] == 255
+            candidate_fractions = np.mean(candidate_pixels, axis=0)
             winner = int(np.argmax(fractions))
             accepted = fractions[winner] >= request.minimum_match_fraction
             categories.append(track.swatches[winner].label if accepted else None)
@@ -378,6 +389,11 @@ def infer_group_labels(
                     "category_fractions": {
                         s.label: f for s, f in zip(track.swatches, fractions, strict=True)
                     },
+                    "candidate_categories": [
+                        s.label
+                        for s, fraction in zip(track.swatches, candidate_fractions, strict=True)
+                        if fraction >= request.minimum_match_fraction
+                    ],
                 }
             )
         combinations.append(tuple(categories))
@@ -390,11 +406,18 @@ def infer_group_labels(
             record["generated_name"] = "__".join(str(c) for c in group) + f"__{ordinals[group]:02d}"
         if len({r["generated_name"] for r in records}) != len(records):
             raise ValueError("category text produces colliding names; use distinct legend labels")
+    entity_kind = request.entity_kind or ("sample" if request.axis == "columns" else "unspecified")
     for index, record in enumerate(records):
         sample = sample_slots[index] if sample_slots is not None else None
-        record["sample_name"] = sample.final_text if sample is not None else None
-        record["sample_raw_text"] = sample.raw_text if sample is not None else None
-        record["sample_status"] = sample.status if sample is not None else "not_requested"
+        record["entity_name"] = sample.final_text if sample is not None else None
+        record["entity_raw_text"] = sample.raw_text if sample is not None else None
+        record["entity_status"] = sample.status if sample is not None else "not_requested"
+        # Compatibility fields describe samples only, never row gene identities.
+        record["sample_name"] = record["entity_name"] if entity_kind == "sample" else None
+        record["sample_raw_text"] = record["entity_raw_text"] if entity_kind == "sample" else None
+        record["sample_status"] = (
+            record["entity_status"] if entity_kind == "sample" else "not_applicable"
+        )
         record["display_name"] = (
             sample.final_text if sample is not None else record["generated_name"]
         )
@@ -404,13 +427,17 @@ def infer_group_labels(
         )
     return {
         "axis": request.axis,
+        "entity_kind": entity_kind,
         "complete": complete,
-        "name_kind": "visible_sample_names"
+        "name_kind": f"visible_{entity_kind}_names"
         if sample_slots is not None
         else "category_combination_plus_display_ordinal",
         "original_sample_ids_recovered": False,
-        "visible_sample_names_recovered": sample_slots is not None
+        "visible_sample_names_recovered": entity_kind == "sample"
+        and sample_slots is not None
         and all(r["sample_name"] for r in records),
+        "visible_entity_names_recovered": sample_slots is not None
+        and all(r["entity_name"] for r in records),
         "legend_labels_are_reviewed_inputs": all(
             t.source == "swatches" or all(r.label is not None for r in t.regions)
             for t in request.tracks
