@@ -1,0 +1,74 @@
+{
+  "sequential": {
+    "split": "development",
+    "heatmap_bbox": [
+      37,
+      29,
+      181,
+      109
+    ],
+    "rows": 8,
+    "columns": 12,
+    "licence": "MIT"
+  },
+  "diverging": {
+    "split": "development",
+    "heatmap_bbox": [
+      37,
+      29,
+      117,
+      197
+    ],
+    "rows": 12,
+    "columns": 8,
+    "licence": "MIT"
+  },
+  "grayscale": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      37,
+      29,
+      180,
+      128
+    ],
+    "rows": 9,
+    "columns": 11,
+    "licence": "MIT"
+  },
+  "gridlines": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      37,
+      29,
+      157,
+      149
+    ],
+    "rows": 10,
+    "columns": 8,
+    "licence": "MIT"
+  },
+  "border": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      37,
+      29,
+      180,
+      141
+    ],
+    "rows": 7,
+    "columns": 13,
+    "licence": "MIT"
+  },
+  "large": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      37,
+      29,
+      460,
+      575
+    ],
+    "rows": 14,
+    "columns": 9,
+    "licence": "MIT"
+  }
+}

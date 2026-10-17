@@ -1,0 +1,64 @@
+{
+  "rows": 4,
+  "columns": 4,
+  "infer_rows": false,
+  "infer_columns": false,
+  "requested": [
+    "labels_columns"
+  ],
+  "heatmap_bbox": [
+    240,
+    360,
+    697,
+    480
+  ],
+  "colourbar_bbox": null,
+  "colourbar_orientation": null,
+  "colourbar_start_value": null,
+  "colourbar_end_value": null,
+  "labels": {
+    "rows": null,
+    "columns": null,
+    "ocr": {
+      "engine": "rapidocr",
+      "language": "eng",
+      "upscale_factor": 1,
+      "min_confidence": 80.0,
+      "high_confidence": 90.0,
+      "retry_variants": [],
+      "max_axis_offset_fraction": 0.4
+    }
+  },
+  "rows_segments": null,
+  "columns_segments": [
+    {
+      "start": 240.0,
+      "end": 460.0,
+      "count": 2
+    },
+    {
+      "start": 477.0,
+      "end": 697.0,
+      "count": 2
+    }
+  ],
+  "detector": {
+    "max_analysis_size": 512,
+    "max_candidates": 12,
+    "max_components": 64,
+    "background_distance": 12.0,
+    "gridline_gap": 3,
+    "min_score": 0.65,
+    "max_count": 128,
+    "max_count_candidates": 8,
+    "label_search_pixels": 256,
+    "label_padding_pixels": 4,
+    "max_ocr_pixels": 4000000,
+    "count_label_geometry": false,
+    "propose_column_rotations": false,
+    "propose_arbitrary_column_angles": true,
+    "column_attachment_endpoint": "nearest",
+    "max_label_ocr_calls": 12,
+    "max_label_ocr_seconds": 60.0
+  }
+}

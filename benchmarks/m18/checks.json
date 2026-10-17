@@ -1,0 +1,85 @@
+{
+  "baseline_commit": "ef8636c",
+  "focused_m18": {
+    "passed": 155,
+    "seconds": 8.65
+  },
+  "full_suite": {
+    "command": "HEATMAP_DECODER_OCR_TESTS=1 uv run pytest -q",
+    "passed": 828,
+    "skipped": 0,
+    "subtests": 18,
+    "seconds": 124.12
+  },
+  "real_legacy_ocr": {
+    "passed": 36,
+    "seconds": 20.72
+  },
+  "ruff": "passed",
+  "strict_mypy": {
+    "status": "passed",
+    "source_files": 32
+  },
+  "numeric_baseline": {
+    "figures": 3,
+    "value_and_flag_hashes_unchanged": true
+  },
+  "examples": {
+    "numeric_exit": 0,
+    "labels_exit": 4,
+    "reviewed_extract_exit": 0,
+    "detect_exit": 5,
+    "numeric_and_reviewed_values_identical": true
+  },
+  "distribution": {
+    "build": "passed",
+    "existing_isolated_wheel_smoke": "passed",
+    "m18_installed_wheel_smoke": "passed",
+    "polygons_and_unreviewed_ids_retained": true,
+    "reviewed_matrix_shape": [
+      4,
+      4
+    ]
+  },
+  "validation": {
+    "bases": 42,
+    "correlated_attempts": 126,
+    "summary": {
+      "clean": {
+        "attempts": 42,
+        "explicit_correct": 42,
+        "automatic_correct": 42
+      },
+      "jpeg": {
+        "attempts": 42,
+        "explicit_correct": 42,
+        "automatic_correct": 42
+      },
+      "blur": {
+        "attempts": 42,
+        "explicit_correct": 42,
+        "automatic_correct": 42
+      }
+    },
+    "gates": {
+      "explicit_clean": true,
+      "auto_clean": true,
+      "no_wrong_accepted": true,
+      "no_wrong_negative_acceptance": true
+    },
+    "negative_bases": 5
+  },
+  "spelling": {
+    "tesseract_raw_exact": 56,
+    "tesseract_total": 56,
+    "rapidocr_raw_exact": 2,
+    "rapidocr_total": 16,
+    "rapidocr_wrong_high_heuristic_confidence": 14,
+    "automatically_authorised_identifiers": 0
+  },
+  "limitations": [
+    "Selected label/matrix regions and resolved counts are supplied to the angle benchmark.",
+    "Validated renderer scope is dark separable single-line Sans/Mono text; no new publication claim.",
+    "M17 derivative numeric automation remains incomplete; M19 export/scale changes are pending."
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "s41598-024-53477-3-fig4-symbiotic-crop",
+  "publication": "10.1038/s41598-024-53477-3",
+  "source_url": "https://www.nature.com/articles/s41598-024-53477-3",
+  "attribution": "Duscher, Vroom and Foster, Scientific Reports 14, 2912 (2024)",
+  "license": "CC BY 4.0; article image policy checked 2026-10-13; supplied crop, not full figure",
+  "image": "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg",
+  "image_sha256": "085e6a625e36abeea8e239c842b78599a932434e53456bf492b0da1ce228d4ef",
+  "image_dimensions": [
+    1043,
+    969
+  ],
+  "preprocessing": "none; supplied JPEG used unchanged; enlargements diagnostic only",
+  "evaluation_tsv": "examples/real_world/10.1038__s41598-024-53477-3__fig4.tsv",
+  "evaluation_tsv_sha256": "3a72c209bcf7f0a4623eab80c815aaa40a99d5fba8fb6678b282a03adf6c6c53",
+  "rois": {
+    "heatmap": [
+      335,
+      189,
+      854,
+      861
+    ],
+    "colourbar": [
+      18,
+      39,
+      217,
+      103
+    ],
+    "gene_labels": [
+      858,
+      189,
+      980,
+      861
+    ],
+    "sample_labels": [
+      335,
+      868,
+      854,
+      904
+    ]
+  },
+  "dimensions": [
+    33,
+    8
+  ],
+  "displayed_rows": [
+    "EsTLR3",
+    "EsPGRP5",
+    "LYSM3",
+    "IKBL",
+    "KBRS1",
+    "HSP90",
+    "EsRelA",
+    "EsSOD",
+    "TRAF3",
+    "EsIκBα",
+    "TBK1",
+    "EsIKKγ",
+    "EsPGRP2",
+    "IκBζ",
+    "IKKβ",
+    "EsPGRP3",
+    "TOLIP",
+    "IKKα",
+    "HSP71",
+    "MYD88",
+    "EsGalectin1",
+    "IRAK4_2",
+    "EsTRAF6",
+    "TRAF4",
+    "TAB3",
+    "EsTLR4",
+    "NLRC3",
+    "EsTLR1",
+    "TRAF2",
+    "TAB1",
+    "TAK1",
+    "EsIRAK4",
+    "EsTLR2"
+  ],
+  "displayed_columns": [
+    "2",
+    "6",
+    "8",
+    "10",
+    "12",
+    "16",
+    "18",
+    "24"
+  ],
+  "ordering": "clustered image row order; time order as displayed; original experimental order unavailable",
+  "tick_anchors": [
+    {
+      "position": 39.0,
+      "value": -2.0,
+      "origin": "manual",
+      "status": "reviewed"
+    },
+    {
+      "position": 78.0,
+      "value": -1.0,
+      "origin": "manual",
+      "status": "reviewed"
+    },
+    {
+      "position": 117.0,
+      "value": 0.0,
+      "origin": "manual",
+      "status": "reviewed"
+    },
+    {
+      "position": 156.0,
+      "value": 1.0,
+      "origin": "manual",
+      "status": "reviewed"
+    },
+    {
+      "position": 195.0,
+      "value": 2.0,
+      "origin": "manual",
+      "status": "reviewed"
+    }
+  ],
+  "edge_coverage": "physical x=18..216; reviewed ticks x=39..195; no edge values supplied; no extrapolation",
+  "assumptions": [
+    "regular grid on supplied crop",
+    "tick centres have roughly 1px manual uncertainty",
+    "between-tick mapping approximated piecewise; five near-uniform ticks do not demonstrate nonlinear numeric scale",
+    "row 17 Greek suffix visually uncertain (alpha/epsilon); transcription remains evaluation-only"
+  ],
+  "reconstruction": {
+    "status": "unestablished",
+    "tpm_source": null,
+    "log_transform": null,
+    "standardisation_axis": null,
+    "standardisation_population": null,
+    "variance_convention": null,
+    "clipping": null,
+    "comparison_name": "reconstruction agreement",
+    "note": "TSV supplied without generation recipe. Paper describes NanoString; TPM origin is not established. Do not assume eight displayed columns are the full population."
+  },
+  "annotation_history": [
+    {
+      "pass": 1,
+      "method": "visual inspection of unchanged crop before TSV comparison",
+      "heatmap": [
+        335,
+        189,
+        854,
+        861
+      ],
+      "ticks": [
+        39,
+        78,
+        117,
+        156,
+        195
+      ]
+    },
+    {
+      "pass": 2,
+      "method": "same analyst second-pass enlarged bar and labels audit; not independent annotation",
+      "result": "all 33 row slots, 8 time labels checked; central core excludes borders; tick centres within ~1px; edge values withheld; Greek suffix uncertainty retained"
+    }
+  ]
+}

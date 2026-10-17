@@ -1,0 +1,48 @@
+{
+  "start": 5,
+  "end": 633,
+  "count": 1237,
+  "tracks": [
+    {
+      "bbox": [
+        5,
+        36,
+        633,
+        58
+      ],
+      "source": "rectangles",
+      "regions": [
+        {
+          "bbox": [
+            6,
+            37,
+            278,
+            58
+          ]
+        },
+        {
+          "bbox": [
+            283,
+            36,
+            503,
+            58
+          ]
+        },
+        {
+          "bbox": [
+            508,
+            37,
+            632,
+            57
+          ]
+        }
+      ],
+      "name": "cluster"
+    }
+  ],
+  "ocr": {
+    "engine": "tesseract",
+    "upscale_factor": 3,
+    "min_confidence": 70
+  }
+}

@@ -1,0 +1,14 @@
+BMAd-Pnpla2+/+__Ad libitum__01
+BMAd-Pnpla2+/+__Ad libitum__02
+BMAd-Pnpla2+/+__Ad libitum__03
+BMAd-Pnpla2+/+__Ad libitum__04
+BMAd-Pnpla2+/+__CR__01
+BMAd-Pnpla2+/+__CR__02
+BMAd-Pnpla2+/+__CR__03
+BMAd-Pnpla2+/+__CR__04
+BMAd-Pnpla2-/-__Ad libitum__01
+BMAd-Pnpla2-/-__Ad libitum__02
+BMAd-Pnpla2-/-__Ad libitum__03
+BMAd-Pnpla2-/-__CR__01
+BMAd-Pnpla2-/-__CR__02
+BMAd-Pnpla2-/-__CR__03

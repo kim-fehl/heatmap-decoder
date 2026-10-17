@@ -1,0 +1,27 @@
+{
+  "doi": "10.7554/eLife.78496",
+  "panel": "Figure 5E",
+  "attribution": "Li et al., eLife 11:e78496 (2022)",
+  "license": "CC BY",
+  "source_url": "https://cdn.elifesciences.org/articles/78496/elife-78496-fig5-data1-v2.xlsx",
+  "image_origin": "User-supplied crop named elife-78496-fig5-v2.jpg",
+  "source_workbook_sha256": "9bd972443aa26d12e132e634984c426582451c49e2da7c583ed58d9b342aa95c",
+  "image_sha256": "6fe9f9d7928c2f8a4d5b896e78e0bc001e90bb50baa12e6da5df3de39f0e46bf",
+  "truth_sha256": "8c40ce1dc2e4ff74921a0d9421827d6cc61ae4a9342b911f934162dff6be9b28",
+  "shape": [
+    49,
+    14
+  ],
+  "value_type": "author_supplied_plotted_z_score",
+  "additional_transformation": "none",
+  "row_order": "visually transcribed top to bottom; exact symbol join to Figure 5E sheet",
+  "column_order": "left to right, C:F H:K M:O Q:S; 4/4/3/3 samples",
+  "sample_identity": "original sample IDs absent; names use group plus display ordinal",
+  "row_order_verified": true,
+  "column_group_order_verified": true,
+  "column_within_group_order_check": "color agreement to supplied table; no sample IDs visible",
+  "truth_range": [
+    -1.5610977,
+    3.16309223
+  ]
+}

@@ -1,0 +1,628 @@
+[
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "pad": 0,
+    "scale": 5,
+    "raw": "Estiaiectin 1",
+    "confidence": 26.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "manual-tight-crop-ablation"
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "pad": 1,
+    "scale": 5,
+    "raw": "Estialectin1",
+    "confidence": 7.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "manual-tight-crop-ablation"
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "pad": 2,
+    "scale": 5,
+    "raw": "EsGatectin",
+    "confidence": 0.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "manual-tight-crop-ablation"
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "pad": 4,
+    "scale": 5,
+    "raw": "EsGatectin'",
+    "confidence": 0.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "manual-tight-crop-ablation"
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsGakectin\u2019",
+    "confidence": 0.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "manual-tight-crop-ablation"
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "pad": 12,
+    "scale": 5,
+    "raw": "EsGakectin\u2019",
+    "confidence": 0.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "manual-tight-crop-ablation"
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "pad": 16,
+    "scale": 5,
+    "raw": "EsGalectin1",
+    "confidence": 12.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "manual-tight-crop-ablation"
+  },
+  {
+    "box": [
+      859,
+      190,
+      983,
+      209
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsTLRd",
+    "confidence": 57.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 0,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      210,
+      983,
+      229
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsPGRPS",
+    "confidence": 65.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 1,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      230,
+      983,
+      250
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "LYSM3",
+    "confidence": 18.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 2,
+    "exact": true
+  },
+  {
+    "box": [
+      859,
+      251,
+      983,
+      270
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "IKBL",
+    "confidence": 76.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 3,
+    "exact": true
+  },
+  {
+    "box": [
+      859,
+      271,
+      983,
+      290
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "KBRS1",
+    "confidence": 86.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 4,
+    "exact": true
+  },
+  {
+    "box": [
+      859,
+      291,
+      983,
+      311
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "HSPs0",
+    "confidence": 0.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 5,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      312,
+      983,
+      331
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EshelA",
+    "confidence": 54.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 6,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      332,
+      983,
+      351
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "Fss00",
+    "confidence": 20.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 7,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      352,
+      983,
+      372
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "TRAFS",
+    "confidence": 85.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 8,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      373,
+      983,
+      392
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsixBa",
+    "confidence": 79.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 9,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      393,
+      983,
+      412
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "TBK1",
+    "confidence": 65.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 10,
+    "exact": true
+  },
+  {
+    "box": [
+      859,
+      414,
+      983,
+      433
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsikKy",
+    "confidence": 0.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 11,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      434,
+      983,
+      453
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsPGRP2",
+    "confidence": 86.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 12,
+    "exact": true
+  },
+  {
+    "box": [
+      859,
+      454,
+      983,
+      474
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "in Be",
+    "confidence": 15.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 13,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      475,
+      983,
+      494
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "IKKB",
+    "confidence": 0.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 14,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      495,
+      983,
+      514
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsPGRP3",
+    "confidence": 78.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 15,
+    "exact": true
+  },
+  {
+    "box": [
+      859,
+      515,
+      983,
+      535
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "TOLP",
+    "confidence": 63.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 16,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      536,
+      983,
+      555
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "IKKe",
+    "confidence": 35.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 17,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      556,
+      983,
+      575
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "HSPr1",
+    "confidence": 17.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 18,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      576,
+      983,
+      596
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "MY Des",
+    "confidence": 0.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 19,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      597,
+      983,
+      616
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsGatectin'",
+    "confidence": 0.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 20,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      617,
+      983,
+      636
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "IRAKA 2",
+    "confidence": 57.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 21,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      638,
+      983,
+      657
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "FeTRAFA",
+    "confidence": 29.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 22,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      658,
+      983,
+      677
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "",
+    "confidence": null,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 23,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      678,
+      983,
+      698
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "TARA",
+    "confidence": 17.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 24,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      699,
+      983,
+      718
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "E\u00abTiRa",
+    "confidence": 28.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 25,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      719,
+      983,
+      738
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "NLACS",
+    "confidence": 61.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 26,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      739,
+      983,
+      759
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "FeTi Rt",
+    "confidence": 35.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 27,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      760,
+      983,
+      779
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "7RAES",
+    "confidence": 31.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 28,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      780,
+      983,
+      799
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "TAR",
+    "confidence": 57.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 29,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      800,
+      983,
+      820
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "TAR",
+    "confidence": 77.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 30,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      821,
+      983,
+      840
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsIRAR4",
+    "confidence": 35.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 31,
+    "exact": false
+  },
+  {
+    "box": [
+      859,
+      841,
+      983,
+      860
+    ],
+    "pad": 8,
+    "scale": 5,
+    "raw": "EsTLR2",
+    "confidence": 76.0,
+    "engine_mode": "--oem 1 --psm 7",
+    "trial": "uniform-slot-inset",
+    "row": 32,
+    "exact": true
+  }
+]

@@ -1,0 +1,133 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ['3.11', '3.12', '3.13', '3.14']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: ${{ matrix.python }}
+          version: '0.12.23'
+      - run: uv sync --locked
+      - run: uv run pytest -q
+      - run: uv run ruff check .
+      - run: uv run mypy src
+      - name: Run the bundled example through the installed CLI
+        run: uv run heatmap-decoder extract examples/figure.png --config examples/config.json --out work/ci-example --fail-on-qc
+      - name: Run the reviewed v0.3 example and blocked uniform case
+        run: uv run python benchmarks/m9/workflow.py --out work/ci-m9-example
+      - run: uv build
+      - name: Test the wheel and console entry point outside the source tree
+        run: uv run python tests/smoke_distribution.py
+  numpy-typing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        numpy: ['numpy==1.26.4', 'numpy>=2']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+          python-version: '3.12'
+      - run: uv sync --locked
+      - name: Check minimum and current NumPy typing
+        run: uv run --with '${{ matrix.numpy }}' mypy src
+  ocr:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+          python-version: '3.12'
+      - name: Install local OCR engine and English data
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-eng fonts-dejavu-core
+      - name: Record engine and language environment
+        run: |
+          tesseract --version
+          tesseract --list-langs
+          dpkg-query -W tesseract-ocr tesseract-ocr-eng
+          sha256sum /usr/share/tesseract-ocr/5/tessdata/eng.traineddata
+      - run: uv sync --locked --extra ocr --group benchmark
+      - name: Exact-match fixtures, publication headers, and degradation report
+        env:
+          HEATMAP_DECODER_OCR_TESTS: '1'
+        run: uv run --extra ocr pytest -q -s -m ocr_integration
+      - name: Check correction regressions and renderer layout QA
+        env:
+          HEATMAP_DECODER_OCR_TESTS: '1'
+        run: uv run --extra ocr --group benchmark pytest -q tests/pipeline/test_detection_regressions.py tests/ocr/test_count_inference.py
+      - name: Run the label-only command
+        run: uv run --extra ocr heatmap-decoder labels examples/labels/clean.png --config examples/labels/config.json --out work/ci-labels
+      - name: Run the complete v0.2 reconstruction and review example
+        run: uv run --extra ocr python examples/labels/workflow.py --out work/ci-v0.2
+      - name: Run reviewed M8 ROI localisation example
+        run: uv run --extra ocr python examples/roi_m8/workflow.py --out work/ci-m8
+      - name: Evaluate M10 development decisions and realistic OCR layouts
+        run: uv run --extra ocr python benchmarks/m10/evaluate.py --ocr --out work/ci-m10/report.json
+      - name: Evaluate M11 numeric legend recognition
+        run: uv run --extra ocr python benchmarks/m11/evaluate.py --out work/ci-m11/report.json
+      - name: Run M12 selective development evaluation
+        run: uv run --extra ocr python benchmarks/m12/evaluate.py --split development --out work/ci-m12/report.json
+      - name: Verify M12 abstention and diagnostic example
+        run: uv run --extra ocr python examples/m12/workflow.py --out work/ci-m12/example
+      - name: Run reviewed M11 expression-scale example
+        run: uv run --extra ocr heatmap-decoder extract examples/m11/figure.png --config examples/m11/labelled_config.json --legend-review examples/m11/reviewed_ticks.tsv --out work/ci-m11/results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: label-review
+          path: |
+            work/ci-labels/
+            work/ci-v0.2/
+            work/ci-m8/
+            work/ci-m9/
+            work/ci-m10/
+            work/ci-m11/
+            work/ci-m12/
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [test, numpy-typing, ocr]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+          python-version: '3.12'
+      - run: uv sync --locked
+      - name: Verify the tag matches the package version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: uv run python -c "import os; from heatmap_decoder import __version__; assert os.environ['RELEASE_TAG'] == 'v' + __version__"
+      - run: uv build
+      - run: uv run python tests/smoke_distribution.py
+      - name: Publish the tested distributions as a GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: gh release create "$RELEASE_TAG" dist/*.whl dist/*.tar.gz --verify-tag --title "heatmap-decoder $RELEASE_TAG" --notes-file CHANGELOG.md

@@ -1,0 +1,2720 @@
+{
+  "attempts": [
+    {
+      "id": "development-00-clean",
+      "exact": 1,
+      "total": 3,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "away 4",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "TOA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "1OB",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "10D",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "\\1",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "\\2",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": ". 0",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "DH",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "DRA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-00-blur",
+      "exact": 1,
+      "total": 3,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "THA -",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "TOA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "0B",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "oD",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "\\1",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "\\2",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": ". 0",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "~",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "DH",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "DRA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-00-jpeg",
+      "exact": 1,
+      "total": 3,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "away =",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "TOA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "1OB",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "10D",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "\\1",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "\\2",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "i 0",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "i",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "DH",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": ":",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "DRA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "f",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "BI",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-01-clean",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-01-blur",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-01-jpeg",
+      "exact": 3,
+      "total": 3,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "Cee",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "are",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "\u2014\u2014\u2014\u2014\u2014",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "So",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-02-clean",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-02-blur",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-02-jpeg",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-03-clean",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-03-blur",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-03-jpeg",
+      "exact": 2,
+      "total": 3,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "development-04-clean",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-04-blur",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-04-jpeg",
+      "exact": 3,
+      "total": 3,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-05-clean",
+      "exact": 2,
+      "total": 5,
+      "eligible": false,
+      "strings": [
+        {
+          "text": ",",
+          "status": "unresolved",
+          "reasons": [
+            "ambiguous_locale_separator",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ":",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_line_position_conflict",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "\u2014| rar",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_text_touches_search_edge",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ".",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "BRAT",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_text_touches_search_edge",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "WI A.MmDA",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_text_touches_search_edge",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ":",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ":",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "|",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "-1.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-05-blur",
+      "exact": 3,
+      "total": 5,
+      "eligible": false,
+      "strings": [
+        {
+          "text": ";",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_line_position_conflict",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ":",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_line_position_conflict",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "AVWVT4",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_text_touches_search_edge",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "text": ";",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "=",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "|",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "HDA",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_text_touches_search_edge",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "7",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-05-jpeg",
+      "exact": 2,
+      "total": 5,
+      "eligible": false,
+      "strings": [
+        {
+          "text": ",",
+          "status": "unresolved",
+          "reasons": [
+            "ambiguous_locale_separator",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ";",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_line_position_conflict",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_text_touches_search_edge",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ".",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "aaa",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_text_touches_search_edge",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ";",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "WI AMDA",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_text_touches_search_edge",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "|",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "-",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1.5",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-06-clean",
+      "exact": 5,
+      "total": 5,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-06-blur",
+      "exact": 5,
+      "total": 5,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-06-jpeg",
+      "exact": 5,
+      "total": 5,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "|",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "i",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": ";",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "|",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "i",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-07-clean",
+      "exact": 5,
+      "total": 5,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-07-blur",
+      "exact": 5,
+      "total": 5,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "development-07-jpeg",
+      "exact": 3,
+      "total": 5,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "wae",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "rrr LS",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "ma csr):",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "ae oe",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "a",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "A",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "er ce a",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "ee",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "ee",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "ne",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "outside_bar_span_title_or_caption",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "Pe",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "outside_bar_span_title_or_caption",
+            "unparsed_numeric_tick"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "development-08-clean",
+      "exact": 5,
+      "total": 5,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-08-blur",
+      "exact": 5,
+      "total": 5,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-08-jpeg",
+      "exact": 5,
+      "total": 5,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-09-clean",
+      "exact": 5,
+      "total": 5,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-09-blur",
+      "exact": 5,
+      "total": 5,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-09-jpeg",
+      "exact": 5,
+      "total": 5,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-10-clean",
+      "exact": 7,
+      "total": 7,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-10-blur",
+      "exact": 7,
+      "total": 7,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-10-jpeg",
+      "exact": 7,
+      "total": 7,
+      "eligible": true,
+      "strings": [
+        {
+          "text": "2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-11-clean",
+      "exact": 6,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": ":",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ":",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "text": "PTEN",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "KRAS",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "",
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "text": "",
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "text": "bE Ne",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "outside_bar_span_title_or_caption",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "development-11-blur",
+      "exact": 6,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "\u2018",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "text": "PTEN",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "KRAS",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "",
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "text": "",
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "text": "et",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "outside_bar_span_title_or_caption",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "development-11-jpeg",
+      "exact": 5,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-2",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "-l",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "0",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0 BRAF",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": ":",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": ":",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "PTEN",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "KRAS",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "",
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "text": "",
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "text": "tee Ne",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "outside_bar_span_title_or_caption",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "development-12-clean",
+      "exact": 6,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "away 4",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "TOA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "1OB",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "10D",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "2.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "41",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review"
+          ]
+        },
+        {
+          "text": "\\2",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "8",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review"
+          ]
+        },
+        {
+          "text": "1.66667",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "DH",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "3",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review"
+          ]
+        },
+        {
+          "text": "DRA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-0.666667",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "-1.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-12-blur",
+      "exact": 5,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "THA -",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "TOA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "0B",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "10D",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "1 2.83333",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "numeric_text_touches_search_edge",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "\\2",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "1.66667",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "DH",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "3",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review"
+          ]
+        },
+        {
+          "text": "DRA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-0.666667",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "\u2018A",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-1.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "32",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review"
+          ]
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-12-jpeg",
+      "exact": 6,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "away =",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "TOA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "1OB",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "10D",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "2.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "41",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review"
+          ]
+        },
+        {
+          "text": "\\2",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "R",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "1.66667",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "DH",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "3",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review"
+          ]
+        },
+        {
+          "text": "DRA",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-0.666667",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "-1.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-13-clean",
+      "exact": 6,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1.83333 -0.666667",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-0. 666667",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1.66667",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1.66667 2.83333",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "2.83333",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-13-blur",
+      "exact": 5,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "\u201c1.83333 -0.666667",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-0. 666667",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "05",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0.5 1.66667",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "1.66667",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2.83333",
+          "status": "unresolved",
+          "reasons": [
+            "numeric_text_touches_search_edge"
+          ]
+        },
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-13-jpeg",
+      "exact": 6,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "ak\u201c) cenemiebbbiabiecenaan",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-1.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-1.83333 -0.666667",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "-0. 666667",
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "ee",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1.66667",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1.66667 2.83333",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "2.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "a",
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-14-clean",
+      "exact": 7,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1.66667",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-0.666667",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "-1.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-14-blur",
+      "exact": 7,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1.66667",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-0.666667",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "-1.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": "development-14-jpeg",
+      "exact": 7,
+      "total": 7,
+      "eligible": false,
+      "strings": [
+        {
+          "text": "4",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "2.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "1.66667",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "0.5",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-0.666667",
+          "status": "unresolved",
+          "reasons": [
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "text": "-1.83333",
+          "status": "suggested",
+          "reasons": []
+        },
+        {
+          "text": "-3",
+          "status": "suggested",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "exact": 196,
+    "total": 225,
+    "eligible": 22
+  },
+  "scope": "Conditional known-bar development OCR; not release evidence"
+}

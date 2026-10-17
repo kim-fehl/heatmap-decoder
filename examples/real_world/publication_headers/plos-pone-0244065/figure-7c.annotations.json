@@ -1,0 +1,188 @@
+{
+  "figure": "10.1371/journal.pone.0244065.g007, panel C",
+  "reference_status": "visual_annotation_reference_only",
+  "image": {
+    "path": "figure-7c.png",
+    "width": 1430,
+    "height": 1220,
+    "provenance": "User-supplied panel crop; preserve original pixels"
+  },
+  "n_columns": 18,
+  "n_rows": null,
+  "column_indexing": "zero-based, end-exclusive spans",
+  "column_labels_visible": false,
+  "columns": [
+    {
+      "column_id": "column_001",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_002",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_003",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_004",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_005",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_006",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_007",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_008",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_009",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_010",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_011",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_012",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_013",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_014",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_015",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_016",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_017",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_018",
+      "display_label": null,
+      "geo_sample_id": null
+    }
+  ],
+  "column_annotations": [
+    {
+      "track_id": "track_1",
+      "display_name": null,
+      "inferred_semantics": "plasmid_and_treatment",
+      "segments": [
+        {
+          "start": 0,
+          "end": 3,
+          "label": "CMV"
+        },
+        {
+          "start": 3,
+          "end": 6,
+          "label": "CMV+TGF-β"
+        },
+        {
+          "start": 6,
+          "end": 9,
+          "label": "Col1a1"
+        },
+        {
+          "start": 9,
+          "end": 12,
+          "label": "Col1a1+TGF-β"
+        },
+        {
+          "start": 12,
+          "end": 15,
+          "label": "Con"
+        },
+        {
+          "start": 15,
+          "end": 18,
+          "label": "Con + TGF-β"
+        }
+      ]
+    }
+  ],
+  "colorbar": {
+    "orientation": "vertical",
+    "tick_marks_visible": false,
+    "numeric_labels_top_to_bottom": [
+      2,
+      1,
+      0,
+      -1
+    ],
+    "calibration_anchor": "numeric_label_bbox_center_projected_onto_colorbar_axis",
+    "label_bboxes": null,
+    "endpoint_values": null,
+    "scale_transform": null
+  },
+  "edge_cases": [
+    "dense_gene_rows",
+    "colorbar_without_ticks",
+    "group_text_wider_than_group",
+    "group_lines_shorter_than_intended_column_span",
+    "unnamed_individual_samples"
+  ],
+  "expected_behavior": [
+    "Use numeric label bounding-box centers as colorbar calibration anchors when tick marks are absent.",
+    "Infer numeric direction from label values; do not treat gradient endpoints as the outermost labeled values.",
+    "Match each group label to its nearby line using position and order; do not use text width as membership boundaries.",
+    "Extend or snap each detected group line to intended column boundaries using the matrix grid and neighboring group evidence; partial line overlap must not drop an edge column.",
+    "For this fixture recover six consecutive non-overlapping groups of three columns; do not hard-code equal group sizes for arbitrary figures.",
+    "Keep original label text separate from any normalized treatment names.",
+    "Preserve null sample labels and GEO identities until individually verified."
+  ],
+  "values": null,
+  "unresolved": [
+    "Exact row count and ordered gene list",
+    "Within-group mapping of image columns to GEO sample IDs",
+    "Transformation and scaling from deposited counts/FPKM to displayed colors",
+    "Measured pixel boxes for colorbar labels and group lines"
+  ],
+  "sources": {
+    "article": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0244065",
+    "geo": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE158823",
+    "figure": "https://doi.org/10.1371/journal.pone.0244065.g007"
+  },
+  "license": "CC BY 4.0; Fan et al., 2020"
+}

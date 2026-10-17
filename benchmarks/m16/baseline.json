@@ -1,0 +1,3292 @@
+{
+  "manual_numeric": {
+    "seconds": 0.018723312000020087,
+    "finite": 259,
+    "flagged": 5
+  },
+  "legend": {
+    "seconds": 1.9987752929999942,
+    "result": {
+      "config": {
+        "colourbar_bbox": [
+          18,
+          39,
+          217,
+          103
+        ],
+        "colourbar_orientation": "horizontal",
+        "legend": {
+          "ocr": {
+            "language": "eng",
+            "upscale_factor": 3,
+            "min_confidence": 80.0,
+            "max_axis_offset_fraction": 0.4
+          },
+          "search_pixels": 128,
+          "horizontal_search_pixels": 64,
+          "max_ticks": 16,
+          "max_ocr_pixels": 4000000,
+          "max_ocr_seconds": 60.0,
+          "max_axis_offset_pixels": 6.0,
+          "endpoint_tolerance_pixels": 2.0,
+          "decimal_separator": "."
+        }
+      },
+      "ticks": [
+        {
+          "index": 0,
+          "side": "below",
+          "position": 38.0,
+          "position_source": "stroke",
+          "stroke_bbox": [
+            37.0,
+            103.0,
+            40.0,
+            117.0
+          ],
+          "text_bbox": [
+            19.0,
+            117.0,
+            59.0,
+            148.0
+          ],
+          "raw_text": "_2.",
+          "normalised_text": "_2.",
+          "normalisation_actions": [],
+          "parsed_value": null,
+          "confidence": 15.0,
+          "token_indices": [],
+          "localisation_record_index": 1,
+          "numeric_record_index": 2,
+          "numeric_token_indices": [
+            4
+          ],
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "index": 1,
+          "side": "below",
+          "position": 45.5,
+          "position_source": "text_centre",
+          "stroke_bbox": null,
+          "text_bbox": [
+            16.333333333333332,
+            103.0,
+            74.66666666666667,
+            122.33333333333333
+          ],
+          "raw_text": "es",
+          "normalised_text": "es",
+          "normalisation_actions": [],
+          "parsed_value": null,
+          "confidence": 28.0,
+          "token_indices": [
+            4
+          ],
+          "localisation_record_index": 1,
+          "numeric_record_index": null,
+          "numeric_token_indices": [],
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "index": 2,
+          "side": "above",
+          "position": 54.666666666666664,
+          "position_source": "text_centre",
+          "stroke_bbox": null,
+          "text_bbox": [
+            47.666666666666664,
+            3.3333333333333335,
+            61.666666666666664,
+            23.333333333333332
+          ],
+          "raw_text": "2",
+          "normalised_text": "2",
+          "normalisation_actions": [],
+          "parsed_value": 2.0,
+          "confidence": 58.0,
+          "token_indices": [
+            4
+          ],
+          "localisation_record_index": 0,
+          "numeric_record_index": null,
+          "numeric_token_indices": [],
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review"
+          ]
+        },
+        {
+          "index": 3,
+          "side": "below",
+          "position": 78.0,
+          "position_source": "stroke",
+          "stroke_bbox": [
+            77.0,
+            103.0,
+            80.0,
+            117.0
+          ],
+          "text_bbox": [
+            72.0,
+            117.0,
+            79.66666666666667,
+            147.66666666666666
+          ],
+          "raw_text": "'",
+          "normalised_text": "'",
+          "normalisation_actions": [],
+          "parsed_value": null,
+          "confidence": 21.0,
+          "token_indices": [],
+          "localisation_record_index": 1,
+          "numeric_record_index": 3,
+          "numeric_token_indices": [
+            4
+          ],
+          "status": "unresolved",
+          "reasons": [
+            "unparsed_numeric_tick",
+            "low_numeric_ocr_confidence"
+          ]
+        },
+        {
+          "index": 4,
+          "side": "below",
+          "position": 90.5,
+          "position_source": "stroke",
+          "stroke_bbox": [
+            90.0,
+            103.0,
+            92.0,
+            106.0
+          ],
+          "text_bbox": null,
+          "raw_text": "",
+          "normalised_text": "",
+          "normalisation_actions": [],
+          "parsed_value": null,
+          "confidence": null,
+          "token_indices": [],
+          "localisation_record_index": 1,
+          "numeric_record_index": null,
+          "numeric_token_indices": [],
+          "status": "ambiguous",
+          "reasons": [
+            "ambiguous_tick_text_association"
+          ]
+        },
+        {
+          "index": 5,
+          "side": "above",
+          "position": 99.33333333333333,
+          "position_source": "text_centre",
+          "stroke_bbox": null,
+          "text_bbox": [
+            69.0,
+            8.0,
+            129.66666666666666,
+            23.666666666666668
+          ],
+          "raw_text": "score",
+          "normalised_text": "score",
+          "normalisation_actions": [],
+          "parsed_value": null,
+          "confidence": 78.0,
+          "token_indices": [
+            5
+          ],
+          "localisation_record_index": 0,
+          "numeric_record_index": null,
+          "numeric_token_indices": [],
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "index": 6,
+          "side": "below",
+          "position": 140.66666666666669,
+          "position_source": "text_centre",
+          "stroke_bbox": null,
+          "text_bbox": [
+            129.33333333333334,
+            103.0,
+            152.0,
+            122.33333333333333
+          ],
+          "raw_text": "ee",
+          "normalised_text": "ee",
+          "normalisation_actions": [],
+          "parsed_value": null,
+          "confidence": 26.0,
+          "token_indices": [
+            6
+          ],
+          "localisation_record_index": 1,
+          "numeric_record_index": null,
+          "numeric_token_indices": [],
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "index": 7,
+          "side": "above",
+          "position": 165.83333333333331,
+          "position_source": "text_centre",
+          "stroke_bbox": null,
+          "text_bbox": [
+            137.0,
+            5.0,
+            194.66666666666666,
+            23.666666666666668
+          ],
+          "raw_text": "value",
+          "normalised_text": "value",
+          "normalisation_actions": [],
+          "parsed_value": null,
+          "confidence": 95.0,
+          "token_indices": [
+            6
+          ],
+          "localisation_record_index": 0,
+          "numeric_record_index": null,
+          "numeric_token_indices": [],
+          "status": "unresolved",
+          "reasons": [
+            "unassociated_text_requires_review",
+            "unparsed_numeric_tick"
+          ]
+        },
+        {
+          "index": 8,
+          "side": "below",
+          "position": 196.0,
+          "position_source": "stroke",
+          "stroke_bbox": [
+            195.0,
+            105.0,
+            198.0,
+            108.0
+          ],
+          "text_bbox": [
+            189.66666666666666,
+            129.33333333333334,
+            201.0,
+            148.0
+          ],
+          "raw_text": "2",
+          "normalised_text": "2",
+          "normalisation_actions": [],
+          "parsed_value": 2.0,
+          "confidence": 85.0,
+          "token_indices": [
+            14
+          ],
+          "localisation_record_index": 1,
+          "numeric_record_index": 4,
+          "numeric_token_indices": [
+            4
+          ],
+          "status": "suggested",
+          "reasons": []
+        }
+      ],
+      "ocr_records": [
+        {
+          "side": "above",
+          "crop_bbox": [
+            0,
+            0,
+            281,
+            39
+          ],
+          "purpose": "localisation",
+          "run": {
+            "tokens": [
+              {
+                "text": "",
+                "bbox": [
+                  0.0,
+                  0.0,
+                  843.0,
+                  117.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  143.0,
+                  10.0,
+                  584.0,
+                  71.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  143.0,
+                  10.0,
+                  584.0,
+                  71.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  143.0,
+                  10.0,
+                  584.0,
+                  71.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "2",
+                "bbox": [
+                  143.0,
+                  10.0,
+                  185.0,
+                  70.0
+                ],
+                "confidence": 58.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "score",
+                "bbox": [
+                  207.0,
+                  24.0,
+                  389.0,
+                  71.0
+                ],
+                "confidence": 78.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "value",
+                "bbox": [
+                  411.0,
+                  15.0,
+                  584.0,
+                  71.0
+                ],
+                "confidence": 95.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "engine_version": "5.5.0",
+            "wrapper_version": "0.3.13",
+            "language": "eng",
+            "available_languages": [
+              "eng",
+              "osd"
+            ],
+            "mode": "--oem 1 --psm 11"
+          },
+          "masked_stroke_boxes": []
+        },
+        {
+          "side": "below",
+          "crop_bbox": [
+            0,
+            103,
+            281,
+            167
+          ],
+          "purpose": "localisation",
+          "run": {
+            "tokens": [
+              {
+                "text": "",
+                "bbox": [
+                  0.0,
+                  0.0,
+                  843.0,
+                  192.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  49.0,
+                  0.0,
+                  456.0,
+                  58.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  49.0,
+                  0.0,
+                  657.0,
+                  58.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  49.0,
+                  0.0,
+                  456.0,
+                  58.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "es",
+                "bbox": [
+                  49.0,
+                  0.0,
+                  224.0,
+                  58.0
+                ],
+                "confidence": 28.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "a",
+                "bbox": [
+                  240.0,
+                  0.0,
+                  270.0,
+                  10.0
+                ],
+                "confidence": 7.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "ee",
+                "bbox": [
+                  388.0,
+                  0.0,
+                  456.0,
+                  58.0
+                ],
+                "confidence": 26.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  58.0,
+                  42.0,
+                  469.0,
+                  135.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  2,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  58.0,
+                  42.0,
+                  469.0,
+                  135.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  2,
+                  1,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  58.0,
+                  42.0,
+                  469.0,
+                  135.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  2,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "24101",
+                "bbox": [
+                  58.0,
+                  42.0,
+                  469.0,
+                  135.0
+                ],
+                "confidence": 73.0,
+                "line_id": [
+                  2,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  569.0,
+                  79.0,
+                  603.0,
+                  135.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  3,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  569.0,
+                  79.0,
+                  603.0,
+                  135.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  3,
+                  1,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  569.0,
+                  79.0,
+                  603.0,
+                  135.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  3,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "re",
+                "bbox": [
+                  569.0,
+                  79.0,
+                  603.0,
+                  135.0
+                ],
+                "confidence": 29.0,
+                "line_id": [
+                  3,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "engine_version": "5.5.0",
+            "wrapper_version": "0.3.13",
+            "language": "eng",
+            "available_languages": [
+              "eng",
+              "osd"
+            ],
+            "mode": "--oem 1 --psm 11"
+          },
+          "masked_stroke_boxes": [
+            [
+              37.0,
+              103.0,
+              40.0,
+              117.0
+            ],
+            [
+              77.0,
+              103.0,
+              80.0,
+              117.0
+            ],
+            [
+              90.0,
+              103.0,
+              92.0,
+              106.0
+            ],
+            [
+              195.0,
+              105.0,
+              198.0,
+              108.0
+            ]
+          ]
+        },
+        {
+          "side": "below",
+          "crop_bbox": [
+            18,
+            117,
+            59,
+            167
+          ],
+          "purpose": "numeric_line",
+          "run": {
+            "tokens": [
+              {
+                "text": "",
+                "bbox": [
+                  0.0,
+                  0.0,
+                  123.0,
+                  150.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  3.0,
+                  0.0,
+                  123.0,
+                  93.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  3.0,
+                  0.0,
+                  123.0,
+                  93.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  3.0,
+                  0.0,
+                  123.0,
+                  93.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "_2.",
+                "bbox": [
+                  3.0,
+                  0.0,
+                  123.0,
+                  93.0
+                ],
+                "confidence": 15.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "engine_version": "5.5.0",
+            "wrapper_version": "0.3.13",
+            "language": "eng",
+            "available_languages": [
+              "eng",
+              "osd"
+            ],
+            "mode": "--oem 1 --psm 7"
+          },
+          "masked_stroke_boxes": []
+        },
+        {
+          "side": "below",
+          "crop_bbox": [
+            72,
+            117,
+            85,
+            167
+          ],
+          "purpose": "numeric_line",
+          "run": {
+            "tokens": [
+              {
+                "text": "",
+                "bbox": [
+                  0.0,
+                  0.0,
+                  39.0,
+                  150.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  0.0,
+                  0.0,
+                  23.0,
+                  92.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  0.0,
+                  0.0,
+                  23.0,
+                  92.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  0.0,
+                  0.0,
+                  23.0,
+                  92.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "'",
+                "bbox": [
+                  0.0,
+                  0.0,
+                  23.0,
+                  92.0
+                ],
+                "confidence": 21.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "engine_version": "5.5.0",
+            "wrapper_version": "0.3.13",
+            "language": "eng",
+            "available_languages": [
+              "eng",
+              "osd"
+            ],
+            "mode": "--oem 1 --psm 7"
+          },
+          "masked_stroke_boxes": []
+        },
+        {
+          "side": "below",
+          "crop_bbox": [
+            186,
+            126,
+            204,
+            151
+          ],
+          "purpose": "numeric_line",
+          "run": {
+            "tokens": [
+              {
+                "text": "",
+                "bbox": [
+                  0.0,
+                  0.0,
+                  54.0,
+                  75.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  11.0,
+                  10.0,
+                  45.0,
+                  66.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  0,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  11.0,
+                  10.0,
+                  45.0,
+                  66.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  0
+                ]
+              },
+              {
+                "text": "",
+                "bbox": [
+                  11.0,
+                  10.0,
+                  45.0,
+                  66.0
+                ],
+                "confidence": -1.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "text": "2",
+                "bbox": [
+                  11.0,
+                  10.0,
+                  45.0,
+                  66.0
+                ],
+                "confidence": 85.0,
+                "line_id": [
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "engine_version": "5.5.0",
+            "wrapper_version": "0.3.13",
+            "language": "eng",
+            "available_languages": [
+              "eng",
+              "osd"
+            ],
+            "mode": "--oem 1 --psm 7"
+          },
+          "masked_stroke_boxes": []
+        }
+      ],
+      "fit": null,
+      "status": "unresolved",
+      "reasons": [
+        "unresolved_or_conflicting_plausible_ticks",
+        "scale needs finite distinct values with nonzero range",
+        "text_centres_are_weaker_position_evidence",
+        "M12_scale_gate_closed"
+      ],
+      "development_eligible": false,
+      "automatic_export_allowed": false,
+      "review_sha256": null,
+      "reviewed_anchors": [],
+      "unreviewed_fit": null,
+      "unreviewed_reasons": []
+    }
+  },
+  "labels": {
+    "seconds": 7.992295470999977,
+    "unresolved": 31,
+    "slots": {
+      "rows": [
+        {
+          "raw": "EsTLRd",
+          "status": "low_confidence",
+          "confidence": 18.0
+        },
+        {
+          "raw": "EsPGRFS\nLYsMs",
+          "status": "ambiguous",
+          "confidence": 0.0
+        },
+        {
+          "raw": "EsPGRFS\nLYsMs\nIKBL",
+          "status": "ambiguous",
+          "confidence": 0.0
+        },
+        {
+          "raw": "LYsMs\nIKBL",
+          "status": "ambiguous",
+          "confidence": 17.0
+        },
+        {
+          "raw": "KBRS1",
+          "status": "accepted",
+          "confidence": 80.0
+        },
+        {
+          "raw": "Eskeln",
+          "status": "ambiguous",
+          "confidence": 23.0
+        },
+        {
+          "raw": "Eskeln",
+          "status": "ambiguous",
+          "confidence": 23.0
+        },
+        {
+          "raw": "Ess00",
+          "status": "low_confidence",
+          "confidence": 76.0
+        },
+        {
+          "raw": "TRAFS",
+          "status": "accepted",
+          "confidence": 80.0
+        },
+        {
+          "raw": "EsixBa",
+          "status": "accepted",
+          "confidence": 80.0
+        },
+        {
+          "raw": "TEK1",
+          "status": "low_confidence",
+          "confidence": 11.0
+        },
+        {
+          "raw": "Eslikky |\nEsPGRP2",
+          "status": "ambiguous",
+          "confidence": 27.0
+        },
+        {
+          "raw": "Eslikky |\nEsPGRP2",
+          "status": "ambiguous",
+          "confidence": 27.0
+        },
+        {
+          "raw": "ic Be\nIKK",
+          "status": "ambiguous",
+          "confidence": 28.0
+        },
+        {
+          "raw": "ic Be\nIKK\nEsPGRPS",
+          "status": "ambiguous",
+          "confidence": 28.0
+        },
+        {
+          "raw": "IKK\nEsPGRPS",
+          "status": "ambiguous",
+          "confidence": 33.0
+        },
+        {
+          "raw": "TOLIP",
+          "status": "accepted",
+          "confidence": 84.0
+        },
+        {
+          "raw": "IKKg\nHSPT 1",
+          "status": "ambiguous",
+          "confidence": 0.0
+        },
+        {
+          "raw": "IKKg\nHSPT 1\nMY Des",
+          "status": "ambiguous",
+          "confidence": 0.0
+        },
+        {
+          "raw": "HSPT 1\nMY Des",
+          "status": "ambiguous",
+          "confidence": 0.0
+        },
+        {
+          "raw": "MY Des\nEstialectin\u2019",
+          "status": "ambiguous",
+          "confidence": 0.0
+        },
+        {
+          "raw": "inaka >",
+          "status": "low_confidence",
+          "confidence": 0.0
+        },
+        {
+          "raw": "FeTRALA\nTRAFS",
+          "status": "ambiguous",
+          "confidence": 1.0
+        },
+        {
+          "raw": "FeTRALA\nTRAFS\nTARR",
+          "status": "ambiguous",
+          "confidence": 1.0
+        },
+        {
+          "raw": "TARR\nE<Ti Ga",
+          "status": "ambiguous",
+          "confidence": 20.0
+        },
+        {
+          "raw": "TARR\nE<Ti Ga\nHLACS",
+          "status": "ambiguous",
+          "confidence": 20.0
+        },
+        {
+          "raw": "E<Ti Ga\nHLACS\nceTi G4",
+          "status": "ambiguous",
+          "confidence": 15.0
+        },
+        {
+          "raw": "HLACS\nceTi G4\nTRAE?",
+          "status": "ambiguous",
+          "confidence": 15.0
+        },
+        {
+          "raw": "ceTi G4\nTRAE?\nTART",
+          "status": "ambiguous",
+          "confidence": 15.0
+        },
+        {
+          "raw": "TRAE?\nTART\nTAK\u2019",
+          "status": "ambiguous",
+          "confidence": 31.0
+        },
+        {
+          "raw": "TART\nTAK\u2019",
+          "status": "ambiguous",
+          "confidence": 40.0
+        },
+        {
+          "raw": "FslilRAKS",
+          "status": "low_confidence",
+          "confidence": 31.0
+        },
+        {
+          "raw": "EsTLR?",
+          "status": "low_confidence",
+          "confidence": 34.0
+        }
+      ],
+      "columns": [
+        {
+          "raw": "2",
+          "status": "low_confidence",
+          "confidence": 76.0
+        },
+        {
+          "raw": "6",
+          "status": "accepted",
+          "confidence": 96.0
+        },
+        {
+          "raw": "8",
+          "status": "low_confidence",
+          "confidence": 72.0
+        },
+        {
+          "raw": "10",
+          "status": "accepted",
+          "confidence": 96.0
+        },
+        {
+          "raw": "12",
+          "status": "accepted",
+          "confidence": 93.0
+        },
+        {
+          "raw": "16",
+          "status": "accepted",
+          "confidence": 96.0
+        },
+        {
+          "raw": "18",
+          "status": "accepted",
+          "confidence": 96.0
+        },
+        {
+          "raw": "24",
+          "status": "accepted",
+          "confidence": 84.0
+        }
+      ]
+    }
+  },
+  "auto_roi": {
+    "seconds": 0.695502031999979,
+    "result": {
+      "policy_version": "review-selective.1",
+      "detection": {
+        "candidates": [],
+        "selected": {},
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: no supported candidate; supply manual coordinates",
+          "colourbar: no supported candidate; supply manual coordinates"
+        ],
+        "warnings": [],
+        "associations": [],
+        "count_proposals": [],
+        "selected_counts": {
+          "rows": {
+            "count": 33,
+            "origin": "manual",
+            "proposal_id": null
+          },
+          "columns": {
+            "count": 8,
+            "origin": "manual",
+            "proposal_id": null
+          }
+        },
+        "label_evidence": [],
+        "acceptance": {
+          "decisions": [
+            {
+              "requirement": "heatmap",
+              "status": "unresolved",
+              "reasons": [
+                "no_validated_grid"
+              ],
+              "evidence": {
+                "hypotheses": []
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "colourbar",
+              "status": "unresolved",
+              "reasons": [
+                "no_continuous_bar"
+              ],
+              "evidence": {},
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "association",
+              "status": "unresolved",
+              "reasons": [
+                "nonunique_heatmap_bar_association"
+              ],
+              "evidence": {
+                "hypotheses": []
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "scale",
+              "status": "unresolved",
+              "reasons": [
+                "manual_scale_endpoints_required"
+              ],
+              "evidence": {},
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "rows",
+              "status": "accepted",
+              "reasons": [
+                "development_evidence_passed"
+              ],
+              "evidence": {
+                "origin": "manual",
+                "count": 33,
+                "inference_requested": false
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "columns",
+              "status": "accepted",
+              "reasons": [
+                "development_evidence_passed"
+              ],
+              "evidence": {
+                "origin": "manual",
+                "count": 8,
+                "inference_requested": false
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "numeric_quality",
+              "status": "review_required",
+              "reasons": [
+                "required_geometry_counts_or_scale_unresolved"
+              ],
+              "evidence": {},
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            }
+          ],
+          "overall": {
+            "requirement": "overall",
+            "status": "unresolved",
+            "reasons": [
+              "heatmap:unresolved",
+              "colourbar:unresolved",
+              "association:unresolved",
+              "scale:unresolved",
+              "numeric_quality:review_required"
+            ],
+            "evidence": {
+              "release_gate": "M12_not_established",
+              "mode": "development_only"
+            },
+            "candidate_ids": [],
+            "policy_version": "review-acceptance.4"
+          },
+          "automatic_export_allowed": false,
+          "identifier_verification": "not_requested"
+        },
+        "bar_search_evidence": [
+          {
+            "stage": "component_budget",
+            "eligible_windows": 16,
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              6,
+              199,
+              326,
+              862
+            ],
+            "search_bbox": [
+              0,
+              193,
+              332,
+              868
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 643
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 300
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              16,
+              36,
+              221,
+              123
+            ],
+            "search_bbox": [
+              10,
+              30,
+              227,
+              129
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 75
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 1,
+                "sampled_long_axis": 185
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              18,
+              128,
+              49,
+              149
+            ],
+            "search_bbox": [
+              12,
+              122,
+              55,
+              155
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 33
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              18,
+              128,
+              80,
+              149
+            ],
+            "search_bbox": [
+              12,
+              122,
+              86,
+              155
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 56
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              44,
+              0,
+              64,
+              25
+            ],
+            "search_bbox": [
+              38,
+              0,
+              70,
+              31
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 24
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              44,
+              0,
+              196,
+              25
+            ],
+            "search_bbox": [
+              38,
+              0,
+              202,
+              31
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 132
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              52,
+              128,
+              80,
+              149
+            ],
+            "search_bbox": [
+              46,
+              122,
+              86,
+              155
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 30
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              69,
+              0,
+              196,
+              25
+            ],
+            "search_bbox": [
+              63,
+              0,
+              202,
+              31
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 107
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              332,
+              144,
+              972,
+              866
+            ],
+            "search_bbox": [
+              326,
+              138,
+              978,
+              872
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 1,
+                "sampled_long_axis": 702
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 6,
+                "sampled_long_axis": 620
+              }
+            ],
+            "cores": [
+              {
+                "bbox": [
+                  395,
+                  190,
+                  403,
+                  863
+                ],
+                "orientation": "vertical"
+              },
+              {
+                "bbox": [
+                  335,
+                  187,
+                  855,
+                  190
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  287,
+                  856,
+                  295
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  448,
+                  856,
+                  459
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  553,
+                  856,
+                  561
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  572,
+                  856,
+                  580
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  862,
+                  855,
+                  864
+                ],
+                "orientation": "horizontal"
+              }
+            ],
+            "truncated": false
+          },
+          {
+            "bbox": [
+              395,
+              190,
+              403,
+              863
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 18.262010896483407,
+              "noise_rgb": 18.0,
+              "variation_rgb": 27.39295814351291,
+              "continuity": 0.9940476190476191,
+              "changing_fraction": 0.8348214285714286,
+              "maximum_step_rgb": 43.0,
+              "endpoint_maximum_step_rgb": 82.5,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.010401188707280832
+            }
+          },
+          {
+            "bbox": [
+              335,
+              187,
+              855,
+              190
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 9.646794871794873,
+              "noise_rgb": 24.0,
+              "variation_rgb": 20.643157293746313,
+              "continuity": 0.9942196531791907,
+              "changing_fraction": 0.4026974951830443,
+              "maximum_step_rgb": 29.0,
+              "endpoint_maximum_step_rgb": 29.0,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.09038461538461538
+            }
+          },
+          {
+            "bbox": [
+              335,
+              287,
+              856,
+              295
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 8.905870121561101,
+              "noise_rgb": 8.0,
+              "variation_rgb": 29.809263439247346,
+              "continuity": 0.9903846153846154,
+              "changing_fraction": 0.5326923076923077,
+              "maximum_step_rgb": 72.5,
+              "endpoint_maximum_step_rgb": 72.5,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.044145873320537425
+            }
+          },
+          {
+            "bbox": [
+              335,
+              448,
+              856,
+              459
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 9.733147211074275,
+              "noise_rgb": 8.0,
+              "variation_rgb": 33.66909785753679,
+              "continuity": 0.9903846153846154,
+              "changing_fraction": 0.375,
+              "maximum_step_rgb": 67.0,
+              "endpoint_maximum_step_rgb": 67.0,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.07869481765834933
+            }
+          },
+          {
+            "bbox": [
+              335,
+              553,
+              856,
+              561
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 12.112364043506078,
+              "noise_rgb": 11.0,
+              "variation_rgb": 26.16067194174758,
+              "continuity": 0.9884615384615385,
+              "changing_fraction": 0.41346153846153844,
+              "maximum_step_rgb": 58.5,
+              "endpoint_maximum_step_rgb": 58.5,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.09021113243761997
+            }
+          },
+          {
+            "bbox": [
+              335,
+              572,
+              856,
+              580
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 10.03486884197057,
+              "noise_rgb": 10.0,
+              "variation_rgb": 25.500694835392597,
+              "continuity": 0.9903846153846154,
+              "changing_fraction": 0.42115384615384616,
+              "maximum_step_rgb": 72.0,
+              "endpoint_maximum_step_rgb": 72.0,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.09021113243761997
+            }
+          },
+          {
+            "bbox": [
+              335,
+              862,
+              855,
+              864
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 3.989102564102564,
+              "noise_rgb": 12.0,
+              "variation_rgb": 18.947014791849494,
+              "continuity": 0.9961464354527938,
+              "changing_fraction": 0.4026974951830443,
+              "maximum_step_rgb": 34.5,
+              "endpoint_maximum_step_rgb": 34.5,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.05961538461538462
+            }
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              356,
+              873,
+              377,
+              900
+            ],
+            "search_bbox": [
+              350,
+              867,
+              383,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              423,
+              873,
+              443,
+              900
+            ],
+            "search_bbox": [
+              417,
+              867,
+              449,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 24
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              486,
+              873,
+              504,
+              900
+            ],
+            "search_bbox": [
+              480,
+              867,
+              510,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 24
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              545,
+              873,
+              581,
+              900
+            ],
+            "search_bbox": [
+              539,
+              867,
+              587,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 36
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              560,
+              914,
+              663,
+              943
+            ],
+            "search_bbox": [
+              554,
+              908,
+              669,
+              949
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 87
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              613,
+              873,
+              646,
+              900
+            ],
+            "search_bbox": [
+              607,
+              867,
+              652,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 35
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              676,
+              873,
+              711,
+              900
+            ],
+            "search_bbox": [
+              670,
+              867,
+              717,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 37
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              739,
+              873,
+              775,
+              900
+            ],
+            "search_bbox": [
+              733,
+              867,
+              781,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 36
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              806,
+              873,
+              846,
+              900
+            ],
+            "search_bbox": [
+              800,
+              867,
+              852,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 40
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          }
+        ]
+      },
+      "legend": null,
+      "decisions": [
+        {
+          "requirement": "heatmap",
+          "status": "unresolved",
+          "reasons": [
+            "no_validated_grid"
+          ],
+          "evidence": {
+            "hypotheses": []
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "colourbar",
+          "status": "unresolved",
+          "reasons": [
+            "no_continuous_bar"
+          ],
+          "evidence": {},
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "association",
+          "status": "unresolved",
+          "reasons": [
+            "nonunique_heatmap_bar_association"
+          ],
+          "evidence": {
+            "hypotheses": []
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "rows",
+          "status": "accepted",
+          "reasons": [
+            "development_evidence_passed"
+          ],
+          "evidence": {
+            "origin": "manual",
+            "count": 33,
+            "inference_requested": false
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "columns",
+          "status": "accepted",
+          "reasons": [
+            "development_evidence_passed"
+          ],
+          "evidence": {
+            "origin": "manual",
+            "count": 8,
+            "inference_requested": false
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "scale",
+          "status": "unresolved",
+          "reasons": [
+            "accepted_bar_required_for_tick_scale"
+          ],
+          "evidence": {},
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "numeric_quality",
+          "status": "review_required",
+          "reasons": [
+            "required_capability_unresolved"
+          ],
+          "evidence": {},
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        }
+      ],
+      "complete": {
+        "requirement": "complete",
+        "status": "unresolved",
+        "reasons": [
+          "heatmap:unresolved",
+          "colourbar:unresolved",
+          "association:unresolved",
+          "scale:unresolved",
+          "numeric_quality:review_required"
+        ],
+        "evidence": {
+          "experimental_only": true
+        },
+        "candidate_ids": [],
+        "policy_version": "review-acceptance.4"
+      },
+      "automatic_export_allowed": false,
+      "release_reasons": [
+        "required_per_image_capability_failed"
+      ],
+      "diagnostic_config": null,
+      "legend_diagnostics": [],
+      "experimental_export_requested": true,
+      "export_maturity": "review_only"
+    }
+  },
+  "composed": {
+    "seconds": 0.6748774190000404,
+    "result": {
+      "policy_version": "review-selective.1",
+      "detection": {
+        "candidates": [],
+        "selected": {},
+        "status": "unresolved",
+        "unresolved_requirements": [
+          "heatmap: no supported candidate; supply manual coordinates",
+          "colourbar: no supported candidate; supply manual coordinates",
+          "labels_rows: no supported candidate; supply manual coordinates",
+          "labels_columns: no supported candidate; supply manual coordinates"
+        ],
+        "warnings": [
+          "Label localisation unresolved: no shortlisted heatmap"
+        ],
+        "associations": [],
+        "count_proposals": [],
+        "selected_counts": {
+          "rows": {
+            "count": 33,
+            "origin": "manual",
+            "proposal_id": null
+          },
+          "columns": {
+            "count": 8,
+            "origin": "manual",
+            "proposal_id": null
+          }
+        },
+        "label_evidence": [],
+        "acceptance": {
+          "decisions": [
+            {
+              "requirement": "heatmap",
+              "status": "unresolved",
+              "reasons": [
+                "no_validated_grid"
+              ],
+              "evidence": {
+                "hypotheses": []
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "colourbar",
+              "status": "unresolved",
+              "reasons": [
+                "no_continuous_bar"
+              ],
+              "evidence": {},
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "association",
+              "status": "unresolved",
+              "reasons": [
+                "nonunique_heatmap_bar_association"
+              ],
+              "evidence": {
+                "hypotheses": []
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "scale",
+              "status": "unresolved",
+              "reasons": [
+                "manual_scale_endpoints_required"
+              ],
+              "evidence": {},
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "rows",
+              "status": "accepted",
+              "reasons": [
+                "development_evidence_passed"
+              ],
+              "evidence": {
+                "origin": "manual",
+                "count": 33,
+                "inference_requested": false
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "columns",
+              "status": "accepted",
+              "reasons": [
+                "development_evidence_passed"
+              ],
+              "evidence": {
+                "origin": "manual",
+                "count": 8,
+                "inference_requested": false
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "numeric_quality",
+              "status": "review_required",
+              "reasons": [
+                "required_geometry_counts_or_scale_unresolved"
+              ],
+              "evidence": {},
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "labels_rows",
+              "status": "unresolved",
+              "reasons": [
+                "no_supported_label_region"
+              ],
+              "evidence": {},
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "identifiers_rows",
+              "status": "review_required",
+              "reasons": [
+                "identifier_text_requires_review"
+              ],
+              "evidence": {
+                "heuristic_recognition_is_verification": false
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "labels_columns",
+              "status": "unresolved",
+              "reasons": [
+                "no_supported_label_region"
+              ],
+              "evidence": {},
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            },
+            {
+              "requirement": "identifiers_columns",
+              "status": "review_required",
+              "reasons": [
+                "identifier_text_requires_review"
+              ],
+              "evidence": {
+                "heuristic_recognition_is_verification": false
+              },
+              "candidate_ids": [],
+              "policy_version": "review-acceptance.4"
+            }
+          ],
+          "overall": {
+            "requirement": "overall",
+            "status": "unresolved",
+            "reasons": [
+              "heatmap:unresolved",
+              "colourbar:unresolved",
+              "association:unresolved",
+              "scale:unresolved",
+              "numeric_quality:review_required",
+              "labels_rows:unresolved",
+              "identifiers_rows:review_required",
+              "labels_columns:unresolved",
+              "identifiers_columns:review_required"
+            ],
+            "evidence": {
+              "release_gate": "M12_not_established",
+              "mode": "development_only"
+            },
+            "candidate_ids": [],
+            "policy_version": "review-acceptance.4"
+          },
+          "automatic_export_allowed": false,
+          "identifier_verification": "review_required"
+        },
+        "bar_search_evidence": [
+          {
+            "stage": "component_budget",
+            "eligible_windows": 16,
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              6,
+              199,
+              326,
+              862
+            ],
+            "search_bbox": [
+              0,
+              193,
+              332,
+              868
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 643
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 300
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              16,
+              36,
+              221,
+              123
+            ],
+            "search_bbox": [
+              10,
+              30,
+              227,
+              129
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 75
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 1,
+                "sampled_long_axis": 185
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              18,
+              128,
+              49,
+              149
+            ],
+            "search_bbox": [
+              12,
+              122,
+              55,
+              155
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 33
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              18,
+              128,
+              80,
+              149
+            ],
+            "search_bbox": [
+              12,
+              122,
+              86,
+              155
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 56
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              44,
+              0,
+              64,
+              25
+            ],
+            "search_bbox": [
+              38,
+              0,
+              70,
+              31
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 24
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              44,
+              0,
+              196,
+              25
+            ],
+            "search_bbox": [
+              38,
+              0,
+              202,
+              31
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 132
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              52,
+              128,
+              80,
+              149
+            ],
+            "search_bbox": [
+              46,
+              122,
+              86,
+              155
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 30
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              69,
+              0,
+              196,
+              25
+            ],
+            "search_bbox": [
+              63,
+              0,
+              202,
+              31
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 107
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              332,
+              144,
+              972,
+              866
+            ],
+            "search_bbox": [
+              326,
+              138,
+              978,
+              872
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 1,
+                "sampled_long_axis": 702
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 6,
+                "sampled_long_axis": 620
+              }
+            ],
+            "cores": [
+              {
+                "bbox": [
+                  395,
+                  190,
+                  403,
+                  863
+                ],
+                "orientation": "vertical"
+              },
+              {
+                "bbox": [
+                  335,
+                  187,
+                  855,
+                  190
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  287,
+                  856,
+                  295
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  448,
+                  856,
+                  459
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  553,
+                  856,
+                  561
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  572,
+                  856,
+                  580
+                ],
+                "orientation": "horizontal"
+              },
+              {
+                "bbox": [
+                  335,
+                  862,
+                  855,
+                  864
+                ],
+                "orientation": "horizontal"
+              }
+            ],
+            "truncated": false
+          },
+          {
+            "bbox": [
+              395,
+              190,
+              403,
+              863
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 18.262010896483407,
+              "noise_rgb": 18.0,
+              "variation_rgb": 27.39295814351291,
+              "continuity": 0.9940476190476191,
+              "changing_fraction": 0.8348214285714286,
+              "maximum_step_rgb": 43.0,
+              "endpoint_maximum_step_rgb": 82.5,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.010401188707280832
+            }
+          },
+          {
+            "bbox": [
+              335,
+              187,
+              855,
+              190
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 9.646794871794873,
+              "noise_rgb": 24.0,
+              "variation_rgb": 20.643157293746313,
+              "continuity": 0.9942196531791907,
+              "changing_fraction": 0.4026974951830443,
+              "maximum_step_rgb": 29.0,
+              "endpoint_maximum_step_rgb": 29.0,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.09038461538461538
+            }
+          },
+          {
+            "bbox": [
+              335,
+              287,
+              856,
+              295
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 8.905870121561101,
+              "noise_rgb": 8.0,
+              "variation_rgb": 29.809263439247346,
+              "continuity": 0.9903846153846154,
+              "changing_fraction": 0.5326923076923077,
+              "maximum_step_rgb": 72.5,
+              "endpoint_maximum_step_rgb": 72.5,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.044145873320537425
+            }
+          },
+          {
+            "bbox": [
+              335,
+              448,
+              856,
+              459
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 9.733147211074275,
+              "noise_rgb": 8.0,
+              "variation_rgb": 33.66909785753679,
+              "continuity": 0.9903846153846154,
+              "changing_fraction": 0.375,
+              "maximum_step_rgb": 67.0,
+              "endpoint_maximum_step_rgb": 67.0,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.07869481765834933
+            }
+          },
+          {
+            "bbox": [
+              335,
+              553,
+              856,
+              561
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 12.112364043506078,
+              "noise_rgb": 11.0,
+              "variation_rgb": 26.16067194174758,
+              "continuity": 0.9884615384615385,
+              "changing_fraction": 0.41346153846153844,
+              "maximum_step_rgb": 58.5,
+              "endpoint_maximum_step_rgb": 58.5,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.09021113243761997
+            }
+          },
+          {
+            "bbox": [
+              335,
+              572,
+              856,
+              580
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 10.03486884197057,
+              "noise_rgb": 10.0,
+              "variation_rgb": 25.500694835392597,
+              "continuity": 0.9903846153846154,
+              "changing_fraction": 0.42115384615384616,
+              "maximum_step_rgb": 72.0,
+              "endpoint_maximum_step_rgb": 72.0,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.09021113243761997
+            }
+          },
+          {
+            "bbox": [
+              335,
+              862,
+              855,
+              864
+            ],
+            "rejection": "noncontinuous_or_uniform_core",
+            "measurements": {
+              "transverse_error": 3.989102564102564,
+              "noise_rgb": 12.0,
+              "variation_rgb": 18.947014791849494,
+              "continuity": 0.9961464354527938,
+              "changing_fraction": 0.4026974951830443,
+              "maximum_step_rgb": 34.5,
+              "endpoint_maximum_step_rgb": 34.5,
+              "step_limit_rgb": 24.0,
+              "longest_plateau_fraction": 0.05961538461538462
+            }
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              356,
+              873,
+              377,
+              900
+            ],
+            "search_bbox": [
+              350,
+              867,
+              383,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 25
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              423,
+              873,
+              443,
+              900
+            ],
+            "search_bbox": [
+              417,
+              867,
+              449,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 24
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              486,
+              873,
+              504,
+              900
+            ],
+            "search_bbox": [
+              480,
+              867,
+              510,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 24
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              545,
+              873,
+              581,
+              900
+            ],
+            "search_bbox": [
+              539,
+              867,
+              587,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 36
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              560,
+              914,
+              663,
+              943
+            ],
+            "search_bbox": [
+              554,
+              908,
+              669,
+              949
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 87
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              613,
+              873,
+              646,
+              900
+            ],
+            "search_bbox": [
+              607,
+              867,
+              652,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 35
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              676,
+              873,
+              711,
+              900
+            ],
+            "search_bbox": [
+              670,
+              867,
+              717,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 37
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              739,
+              873,
+              775,
+              900
+            ],
+            "search_bbox": [
+              733,
+              867,
+              781,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 36
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          },
+          {
+            "version": "core-profile.2",
+            "window": [
+              806,
+              873,
+              846,
+              900
+            ],
+            "search_bbox": [
+              800,
+              867,
+              852,
+              906
+            ],
+            "orientations": [
+              {
+                "orientation": "vertical",
+                "coherent_bands": 0,
+                "sampled_long_axis": 31
+              },
+              {
+                "orientation": "horizontal",
+                "coherent_bands": 0,
+                "sampled_long_axis": 40
+              }
+            ],
+            "cores": [],
+            "truncated": false
+          }
+        ]
+      },
+      "legend": null,
+      "decisions": [
+        {
+          "requirement": "heatmap",
+          "status": "unresolved",
+          "reasons": [
+            "no_validated_grid"
+          ],
+          "evidence": {
+            "hypotheses": []
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "colourbar",
+          "status": "unresolved",
+          "reasons": [
+            "no_continuous_bar"
+          ],
+          "evidence": {},
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "association",
+          "status": "unresolved",
+          "reasons": [
+            "nonunique_heatmap_bar_association"
+          ],
+          "evidence": {
+            "hypotheses": []
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "rows",
+          "status": "accepted",
+          "reasons": [
+            "development_evidence_passed"
+          ],
+          "evidence": {
+            "origin": "manual",
+            "count": 33,
+            "inference_requested": false
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "columns",
+          "status": "accepted",
+          "reasons": [
+            "development_evidence_passed"
+          ],
+          "evidence": {
+            "origin": "manual",
+            "count": 8,
+            "inference_requested": false
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "labels_rows",
+          "status": "unresolved",
+          "reasons": [
+            "no_supported_label_region"
+          ],
+          "evidence": {},
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "identifiers_rows",
+          "status": "review_required",
+          "reasons": [
+            "identifier_text_requires_review"
+          ],
+          "evidence": {
+            "heuristic_recognition_is_verification": false
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "labels_columns",
+          "status": "unresolved",
+          "reasons": [
+            "no_supported_label_region"
+          ],
+          "evidence": {},
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "identifiers_columns",
+          "status": "review_required",
+          "reasons": [
+            "identifier_text_requires_review"
+          ],
+          "evidence": {
+            "heuristic_recognition_is_verification": false
+          },
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "scale",
+          "status": "unresolved",
+          "reasons": [
+            "accepted_bar_required_for_tick_scale"
+          ],
+          "evidence": {},
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        },
+        {
+          "requirement": "numeric_quality",
+          "status": "review_required",
+          "reasons": [
+            "required_capability_unresolved"
+          ],
+          "evidence": {},
+          "candidate_ids": [],
+          "policy_version": "review-acceptance.4"
+        }
+      ],
+      "complete": {
+        "requirement": "complete",
+        "status": "unresolved",
+        "reasons": [
+          "heatmap:unresolved",
+          "colourbar:unresolved",
+          "association:unresolved",
+          "labels_rows:unresolved",
+          "identifiers_rows:review_required",
+          "labels_columns:unresolved",
+          "identifiers_columns:review_required",
+          "scale:unresolved",
+          "numeric_quality:review_required"
+        ],
+        "evidence": {
+          "experimental_only": true
+        },
+        "candidate_ids": [],
+        "policy_version": "review-acceptance.4"
+      },
+      "automatic_export_allowed": false,
+      "release_reasons": [
+        "experimental_export_requires_numeric_only"
+      ],
+      "diagnostic_config": null,
+      "legend_diagnostics": [],
+      "experimental_export_requested": true,
+      "export_maturity": "review_only"
+    }
+  }
+}

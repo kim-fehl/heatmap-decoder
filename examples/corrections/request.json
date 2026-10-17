@@ -1,0 +1,17 @@
+{
+  "numeric_only": true,
+  "hints": {
+    "rows": 20,
+    "columns": 6,
+    "requested": [
+      "heatmap",
+      "colourbar"
+    ],
+    "colourbar_start_value": 4,
+    "colourbar_end_value": -4
+  },
+  "scale": {
+    "source": "manual_endpoints",
+    "quantity": "synthetic displayed score"
+  }
+}

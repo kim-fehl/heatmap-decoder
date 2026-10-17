@@ -1,0 +1,37 @@
+{
+  "heatmap_bbox": [
+    228,
+    297,
+    1015,
+    1530
+  ],
+  "rows": 75,
+  "columns": 50,
+  "colourbar_bbox": [
+    24,
+    106,
+    157,
+    123
+  ],
+  "colourbar_orientation": "horizontal",
+  "scale": {
+    "source": "manual_ticks",
+    "anchors": [
+      {
+        "position": 38.5,
+        "value": -2.0,
+        "origin": "reviewed"
+      },
+      {
+        "position": 91.5,
+        "value": 0.0,
+        "origin": "reviewed"
+      },
+      {
+        "position": 143.0,
+        "value": 2.0,
+        "origin": "reviewed"
+      }
+    ]
+  }
+}

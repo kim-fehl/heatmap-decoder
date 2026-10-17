@@ -1,0 +1,30 @@
+{
+  "environment": "/tmp/m19-installed-3tvkwanq/venv",
+  "outside_checkout": true,
+  "results": [
+    {
+      "name": "diagnostic",
+      "exit": 5,
+      "numeric_state": "complete",
+      "identifiers": "not_requested"
+    },
+    {
+      "name": "numeric",
+      "exit": 0,
+      "numeric_state": "complete",
+      "identifiers": "not_requested"
+    },
+    {
+      "name": "partial",
+      "exit": 5,
+      "numeric_state": "partial",
+      "identifiers": "not_requested"
+    },
+    {
+      "name": "composed",
+      "exit": 5,
+      "numeric_state": "complete",
+      "identifiers": "review_required"
+    }
+  ]
+}

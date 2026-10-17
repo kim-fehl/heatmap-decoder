@@ -1,0 +1,5406 @@
+{
+  "scope": "conditional synthetic development evidence; explicit ROI/counts/angle",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "pillow": "12.3.0",
+    "tesseract": "5.5.0",
+    "pytesseract": "0.3.13",
+    "fonts_sha256": {
+      "sans": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+      "serif": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7",
+      "mono": "54bf827eb99404e8f430c330ad30f063334f637eba0109b6a18d4f566a8e9dd8"
+    }
+  },
+  "generator_version": 1,
+  "records": [
+    {
+      "family": "supported",
+      "angle": 90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 8,
+      "accepted_exact": 8,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample Alpha-A",
+          "raw": "Sample Alpha-A",
+          "final": "Sample Alpha-A",
+          "status": "accepted",
+          "bbox": [
+            61.0,
+            158.0,
+            84.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample Bravo-B",
+          "raw": "Sample Bravo-B",
+          "final": "Sample Bravo-B",
+          "status": "accepted",
+          "bbox": [
+            125.0,
+            157.0,
+            148.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample Charlie-C",
+          "raw": "Sample Charlie-C",
+          "final": "Sample Charlie-C",
+          "status": "accepted",
+          "bbox": [
+            189.0,
+            141.33333333333334,
+            212.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample Delta-D",
+          "raw": "Sample Delta-D",
+          "final": "Sample Delta-D",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            161.0,
+            276.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample Echo-E",
+          "raw": "Sample Echo-E",
+          "final": "Sample Echo-E",
+          "status": "accepted",
+          "bbox": [
+            317.0,
+            169.0,
+            340.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample Foxtrot-F",
+          "raw": "Sample Foxtrot-F",
+          "final": "Sample Foxtrot-F",
+          "status": "accepted",
+          "bbox": [
+            381.0,
+            145.33333333333334,
+            404.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample Golf-G",
+          "raw": "Sample Golf-G",
+          "final": "Sample Golf-G",
+          "status": "accepted",
+          "bbox": [
+            445.0,
+            177.0,
+            468.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample Hotel-H",
+          "raw": "Sample Hotel-H",
+          "final": "Sample Hotel-H",
+          "status": "accepted",
+          "bbox": [
+            509.0,
+            162.0,
+            532.0,
+            346.3333333333333
+          ]
+        }
+      ],
+      "seconds": 2.476
+    },
+    {
+      "family": "supported",
+      "angle": 90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "sparse",
+      "total": 8,
+      "raw_exact": 8,
+      "accepted_exact": 8,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample Alpha-A",
+          "raw": "Sample Alpha-A",
+          "final": "Sample Alpha-A",
+          "status": "accepted",
+          "bbox": [
+            61.0,
+            158.0,
+            84.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample Bravo-B",
+          "raw": "Sample Bravo-B",
+          "final": "Sample Bravo-B",
+          "status": "accepted",
+          "bbox": [
+            125.0,
+            157.0,
+            148.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample Charlie-C",
+          "raw": "Sample Charlie-C",
+          "final": "Sample Charlie-C",
+          "status": "accepted",
+          "bbox": [
+            189.0,
+            141.33333333333334,
+            212.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample Delta-D",
+          "raw": "Sample Delta-D",
+          "final": "Sample Delta-D",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            161.0,
+            276.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample Echo-E",
+          "raw": "Sample Echo-E",
+          "final": "Sample Echo-E",
+          "status": "accepted",
+          "bbox": [
+            317.0,
+            169.0,
+            340.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample Foxtrot-F",
+          "raw": "Sample Foxtrot-F",
+          "final": "Sample Foxtrot-F",
+          "status": "accepted",
+          "bbox": [
+            381.0,
+            145.33333333333334,
+            404.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample Golf-G",
+          "raw": "Sample Golf-G",
+          "final": "Sample Golf-G",
+          "status": "accepted",
+          "bbox": [
+            445.0,
+            177.0,
+            468.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample Hotel-H",
+          "raw": "Sample Hotel-H",
+          "final": "Sample Hotel-H",
+          "status": "accepted",
+          "bbox": [
+            509.0,
+            162.0,
+            532.0,
+            346.3333333333333
+          ]
+        }
+      ],
+      "seconds": 0.988
+    },
+    {
+      "family": "supported",
+      "angle": 90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 8,
+      "accepted_exact": 8,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample Alpha-A",
+          "raw": "Sample Alpha-A",
+          "final": "Sample Alpha-A",
+          "status": "accepted",
+          "bbox": [
+            61.0,
+            358.0,
+            84.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample Bravo-B",
+          "raw": "Sample Bravo-B",
+          "final": "Sample Bravo-B",
+          "status": "accepted",
+          "bbox": [
+            125.0,
+            357.0,
+            148.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample Charlie-C",
+          "raw": "Sample Charlie-C",
+          "final": "Sample Charlie-C",
+          "status": "accepted",
+          "bbox": [
+            189.0,
+            341.33333333333337,
+            212.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample Delta-D",
+          "raw": "Sample Delta-D",
+          "final": "Sample Delta-D",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            361.0,
+            276.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample Echo-E",
+          "raw": "Sample Echo-E",
+          "final": "Sample Echo-E",
+          "status": "accepted",
+          "bbox": [
+            317.0,
+            369.0,
+            340.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample Foxtrot-F",
+          "raw": "Sample Foxtrot-F",
+          "final": "Sample Foxtrot-F",
+          "status": "accepted",
+          "bbox": [
+            381.0,
+            345.33333333333337,
+            404.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample Golf-G",
+          "raw": "Sample Golf-G",
+          "final": "Sample Golf-G",
+          "status": "accepted",
+          "bbox": [
+            445.0,
+            377.0,
+            468.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample Hotel-H",
+          "raw": "Sample Hotel-H",
+          "final": "Sample Hotel-H",
+          "status": "accepted",
+          "bbox": [
+            509.0,
+            362.0,
+            532.0,
+            546.3333333333333
+          ]
+        }
+      ],
+      "seconds": 1.778
+    },
+    {
+      "family": "supported",
+      "angle": 90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "sparse",
+      "total": 8,
+      "raw_exact": 8,
+      "accepted_exact": 8,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample Alpha-A",
+          "raw": "Sample Alpha-A",
+          "final": "Sample Alpha-A",
+          "status": "accepted",
+          "bbox": [
+            61.0,
+            358.0,
+            84.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample Bravo-B",
+          "raw": "Sample Bravo-B",
+          "final": "Sample Bravo-B",
+          "status": "accepted",
+          "bbox": [
+            125.0,
+            357.0,
+            148.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample Charlie-C",
+          "raw": "Sample Charlie-C",
+          "final": "Sample Charlie-C",
+          "status": "accepted",
+          "bbox": [
+            189.0,
+            341.33333333333337,
+            212.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample Delta-D",
+          "raw": "Sample Delta-D",
+          "final": "Sample Delta-D",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            361.0,
+            276.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample Echo-E",
+          "raw": "Sample Echo-E",
+          "final": "Sample Echo-E",
+          "status": "accepted",
+          "bbox": [
+            317.0,
+            369.0,
+            340.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample Foxtrot-F",
+          "raw": "Sample Foxtrot-F",
+          "final": "Sample Foxtrot-F",
+          "status": "accepted",
+          "bbox": [
+            381.0,
+            345.33333333333337,
+            404.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample Golf-G",
+          "raw": "Sample Golf-G",
+          "final": "Sample Golf-G",
+          "status": "accepted",
+          "bbox": [
+            445.0,
+            377.0,
+            468.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample Hotel-H",
+          "raw": "Sample Hotel-H",
+          "final": "Sample Hotel-H",
+          "status": "accepted",
+          "bbox": [
+            509.0,
+            362.0,
+            532.0,
+            546.3333333333333
+          ]
+        }
+      ],
+      "seconds": 0.564
+    },
+    {
+      "family": "supported",
+      "angle": -90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 8,
+      "accepted_exact": 8,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample Alpha-A",
+          "raw": "Sample Alpha-A",
+          "final": "Sample Alpha-A",
+          "status": "accepted",
+          "bbox": [
+            60.0,
+            33.666666666666664,
+            83.0,
+            222.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample Bravo-B",
+          "raw": "Sample Bravo-B",
+          "final": "Sample Bravo-B",
+          "status": "accepted",
+          "bbox": [
+            124.0,
+            33.666666666666664,
+            147.0,
+            223.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample Charlie-C",
+          "raw": "Sample Charlie-C",
+          "final": "Sample Charlie-C",
+          "status": "accepted",
+          "bbox": [
+            188.0,
+            33.666666666666664,
+            211.0,
+            238.66666666666666
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample Delta-D",
+          "raw": "Sample Delta-D",
+          "final": "Sample Delta-D",
+          "status": "accepted",
+          "bbox": [
+            252.0,
+            33.666666666666664,
+            275.0,
+            219.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample Echo-E",
+          "raw": "Sample Echo-E",
+          "final": "Sample Echo-E",
+          "status": "accepted",
+          "bbox": [
+            316.0,
+            33.666666666666664,
+            339.0,
+            211.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample Foxtrot-F",
+          "raw": "Sample Foxtrot-F",
+          "final": "Sample Foxtrot-F",
+          "status": "accepted",
+          "bbox": [
+            380.0,
+            33.666666666666664,
+            403.0,
+            234.66666666666666
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample Golf-G",
+          "raw": "Sample Golf-G",
+          "final": "Sample Golf-G",
+          "status": "accepted",
+          "bbox": [
+            444.0,
+            33.666666666666664,
+            467.0,
+            203.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample Hotel-H",
+          "raw": "Sample Hotel-H",
+          "final": "Sample Hotel-H",
+          "status": "accepted",
+          "bbox": [
+            508.0,
+            33.666666666666664,
+            531.0,
+            218.0
+          ]
+        }
+      ],
+      "seconds": 1.285
+    },
+    {
+      "family": "supported",
+      "angle": -90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "sparse",
+      "total": 8,
+      "raw_exact": 8,
+      "accepted_exact": 8,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample Alpha-A",
+          "raw": "Sample Alpha-A",
+          "final": "Sample Alpha-A",
+          "status": "accepted",
+          "bbox": [
+            60.0,
+            33.666666666666664,
+            83.0,
+            222.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample Bravo-B",
+          "raw": "Sample Bravo-B",
+          "final": "Sample Bravo-B",
+          "status": "accepted",
+          "bbox": [
+            124.0,
+            33.666666666666664,
+            147.0,
+            223.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample Charlie-C",
+          "raw": "Sample Charlie-C",
+          "final": "Sample Charlie-C",
+          "status": "accepted",
+          "bbox": [
+            188.0,
+            33.666666666666664,
+            211.0,
+            238.66666666666666
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample Delta-D",
+          "raw": "Sample Delta-D",
+          "final": "Sample Delta-D",
+          "status": "accepted",
+          "bbox": [
+            252.0,
+            33.666666666666664,
+            275.0,
+            219.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample Echo-E",
+          "raw": "Sample Echo-E",
+          "final": "Sample Echo-E",
+          "status": "accepted",
+          "bbox": [
+            316.0,
+            33.666666666666664,
+            339.0,
+            211.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample Foxtrot-F",
+          "raw": "Sample Foxtrot-F",
+          "final": "Sample Foxtrot-F",
+          "status": "accepted",
+          "bbox": [
+            380.0,
+            33.666666666666664,
+            403.0,
+            234.66666666666666
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample Golf-G",
+          "raw": "Sample Golf-G",
+          "final": "Sample Golf-G",
+          "status": "accepted",
+          "bbox": [
+            444.0,
+            33.666666666666664,
+            467.0,
+            203.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample Hotel-H",
+          "raw": "Sample Hotel-H",
+          "final": "Sample Hotel-H",
+          "status": "accepted",
+          "bbox": [
+            508.0,
+            33.666666666666664,
+            531.0,
+            218.0
+          ]
+        }
+      ],
+      "seconds": 0.788
+    },
+    {
+      "family": "supported",
+      "angle": -90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 8,
+      "accepted_exact": 8,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample Alpha-A",
+          "raw": "Sample Alpha-A",
+          "final": "Sample Alpha-A",
+          "status": "accepted",
+          "bbox": [
+            60.0,
+            233.66666666666666,
+            83.0,
+            422.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample Bravo-B",
+          "raw": "Sample Bravo-B",
+          "final": "Sample Bravo-B",
+          "status": "accepted",
+          "bbox": [
+            124.0,
+            233.66666666666666,
+            147.0,
+            423.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample Charlie-C",
+          "raw": "Sample Charlie-C",
+          "final": "Sample Charlie-C",
+          "status": "accepted",
+          "bbox": [
+            188.0,
+            233.66666666666666,
+            211.0,
+            438.66666666666663
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample Delta-D",
+          "raw": "Sample Delta-D",
+          "final": "Sample Delta-D",
+          "status": "accepted",
+          "bbox": [
+            252.0,
+            233.66666666666666,
+            275.0,
+            419.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample Echo-E",
+          "raw": "Sample Echo-E",
+          "final": "Sample Echo-E",
+          "status": "accepted",
+          "bbox": [
+            316.0,
+            233.66666666666666,
+            339.0,
+            411.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample Foxtrot-F",
+          "raw": "Sample Foxtrot-F",
+          "final": "Sample Foxtrot-F",
+          "status": "accepted",
+          "bbox": [
+            380.0,
+            233.66666666666666,
+            403.0,
+            434.66666666666663
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample Golf-G",
+          "raw": "Sample Golf-G",
+          "final": "Sample Golf-G",
+          "status": "accepted",
+          "bbox": [
+            444.0,
+            233.66666666666666,
+            467.0,
+            403.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample Hotel-H",
+          "raw": "Sample Hotel-H",
+          "final": "Sample Hotel-H",
+          "status": "accepted",
+          "bbox": [
+            508.0,
+            233.66666666666666,
+            531.0,
+            418.0
+          ]
+        }
+      ],
+      "seconds": 2.188
+    },
+    {
+      "family": "supported",
+      "angle": -90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "sparse",
+      "total": 8,
+      "raw_exact": 8,
+      "accepted_exact": 8,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample Alpha-A",
+          "raw": "Sample Alpha-A",
+          "final": "Sample Alpha-A",
+          "status": "accepted",
+          "bbox": [
+            60.0,
+            233.66666666666666,
+            83.0,
+            422.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample Bravo-B",
+          "raw": "Sample Bravo-B",
+          "final": "Sample Bravo-B",
+          "status": "accepted",
+          "bbox": [
+            124.0,
+            233.66666666666666,
+            147.0,
+            423.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample Charlie-C",
+          "raw": "Sample Charlie-C",
+          "final": "Sample Charlie-C",
+          "status": "accepted",
+          "bbox": [
+            188.0,
+            233.66666666666666,
+            211.0,
+            438.66666666666663
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample Delta-D",
+          "raw": "Sample Delta-D",
+          "final": "Sample Delta-D",
+          "status": "accepted",
+          "bbox": [
+            252.0,
+            233.66666666666666,
+            275.0,
+            419.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample Echo-E",
+          "raw": "Sample Echo-E",
+          "final": "Sample Echo-E",
+          "status": "accepted",
+          "bbox": [
+            316.0,
+            233.66666666666666,
+            339.0,
+            411.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample Foxtrot-F",
+          "raw": "Sample Foxtrot-F",
+          "final": "Sample Foxtrot-F",
+          "status": "accepted",
+          "bbox": [
+            380.0,
+            233.66666666666666,
+            403.0,
+            434.66666666666663
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample Golf-G",
+          "raw": "Sample Golf-G",
+          "final": "Sample Golf-G",
+          "status": "accepted",
+          "bbox": [
+            444.0,
+            233.66666666666666,
+            467.0,
+            403.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample Hotel-H",
+          "raw": "Sample Hotel-H",
+          "final": "Sample Hotel-H",
+          "status": "accepted",
+          "bbox": [
+            508.0,
+            233.66666666666666,
+            531.0,
+            418.0
+          ]
+        }
+      ],
+      "seconds": 0.861
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-O1",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.66666666666667,
+            141.0,
+            86.33333333333334,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            139.0,
+            149.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.66666666666666,
+            123.66666666666666,
+            214.33333333333334,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            251.66666666666666,
+            144.0,
+            278.3333333333333,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            317.0,
+            150.0,
+            341.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.6666666666667,
+            124.0,
+            406.3333333333333,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample _Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.6666666666667,
+            161.66666666666666,
+            470.3333333333333,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.6666666666667,
+            145.33333333333334,
+            534.3333333333334,
+            346.3333333333333
+          ]
+        }
+      ],
+      "seconds": 2.489
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-O1",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.66666666666667,
+            141.0,
+            86.33333333333334,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            139.0,
+            149.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.66666666666666,
+            123.66666666666666,
+            214.33333333333334,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            251.66666666666666,
+            144.0,
+            278.3333333333333,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            317.0,
+            150.0,
+            341.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.6666666666667,
+            124.0,
+            406.3333333333333,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample _Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.6666666666667,
+            161.66666666666666,
+            470.3333333333333,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.6666666666667,
+            145.33333333333334,
+            534.3333333333334,
+            346.3333333333333
+          ]
+        }
+      ],
+      "seconds": 2.237
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 2,
+      "accepted_exact": 2,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 6,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.33333333333333,
+            140.66666666666666,
+            86.66666666666666,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            124.66666666666667,
+            139.0,
+            149.33333333333334,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample _Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.33333333333334,
+            123.66666666666666,
+            214.66666666666666,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            251.33333333333334,
+            144.0,
+            278.6666666666667,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            316.6666666666667,
+            149.66666666666666,
+            341.3333333333333,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.3333333333333,
+            124.0,
+            406.6666666666667,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample_Golf-07",
+          "final": "Sample_Golf-07",
+          "status": "accepted",
+          "bbox": [
+            444.6666666666667,
+            161.66666666666666,
+            469.3333333333333,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample_Hotel-08",
+          "final": "Sample_Hotel-08",
+          "status": "accepted",
+          "bbox": [
+            508.6666666666667,
+            145.0,
+            533.3333333333334,
+            346.6666666666667
+          ]
+        }
+      ],
+      "seconds": 1.722
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "above",
+      "font": "serif",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 4,
+      "assigned_geometry": 8,
+      "unresolved": 4,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            59.66666666666667,
+            140.0,
+            86.33333333333334,
+            346.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            137.0,
+            148.0,
+            346.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            187.66666666666666,
+            119.33333333333334,
+            214.33333333333334,
+            346.0
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            143.0,
+            277.0,
+            346.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            317.0,
+            147.66666666666666,
+            341.0,
+            346.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            381.0,
+            119.0,
+            404.0,
+            346.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.6666666666667,
+            159.33333333333334,
+            470.3333333333333,
+            346.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.6666666666667,
+            141.0,
+            534.3333333333334,
+            346.0
+          ]
+        }
+      ],
+      "seconds": 1.303
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "above",
+      "font": "serif",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 4,
+      "assigned_geometry": 8,
+      "unresolved": 4,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            59.66666666666667,
+            140.0,
+            86.33333333333334,
+            346.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            137.0,
+            148.0,
+            346.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            187.66666666666666,
+            119.33333333333334,
+            214.33333333333334,
+            346.0
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            143.0,
+            277.0,
+            346.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            317.0,
+            147.66666666666666,
+            341.0,
+            346.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            381.0,
+            119.0,
+            404.0,
+            346.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.6666666666667,
+            159.33333333333334,
+            470.3333333333333,
+            346.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.6666666666667,
+            141.0,
+            534.3333333333334,
+            346.0
+          ]
+        }
+      ],
+      "seconds": 1.569
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "above",
+      "font": "serif",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 8,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            60.66666666666667,
+            140.0,
+            84.33333333333334,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": "Sample Bravo-02",
+          "status": "accepted",
+          "bbox": [
+            124.66666666666667,
+            136.66666666666666,
+            149.33333333333334,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            187.33333333333334,
+            119.66666666666666,
+            214.66666666666666,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.33333333333334,
+            143.0,
+            278.6666666666667,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            316.6666666666667,
+            147.33333333333334,
+            341.3333333333333,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": "Sample Foxtrot-06",
+          "status": "accepted",
+          "bbox": [
+            379.3333333333333,
+            119.0,
+            406.6666666666667,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": "Sample Golf-07",
+          "status": "accepted",
+          "bbox": [
+            443.3333333333333,
+            159.33333333333334,
+            470.6666666666667,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": "Sample Hotel-08",
+          "status": "accepted",
+          "bbox": [
+            507.3333333333333,
+            141.0,
+            534.6666666666666,
+            346.3333333333333
+          ]
+        }
+      ],
+      "seconds": 2.296
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "above",
+      "font": "mono",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            61.0,
+            133.0,
+            85.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-@2",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            133.33333333333334,
+            149.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            189.0,
+            104.33333333333334,
+            213.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            132.66666666666666,
+            277.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            317.0,
+            147.66666666666666,
+            341.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            381.0,
+            104.0,
+            405.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            445.0,
+            147.0,
+            469.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            509.0,
+            133.0,
+            533.0,
+            346.3333333333333
+          ]
+        }
+      ],
+      "seconds": 2.293
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "above",
+      "font": "mono",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            61.0,
+            133.0,
+            85.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            133.33333333333334,
+            149.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            189.0,
+            104.33333333333334,
+            213.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            132.66666666666666,
+            277.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            317.0,
+            147.66666666666666,
+            341.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            381.0,
+            104.0,
+            405.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            445.0,
+            147.0,
+            469.0,
+            346.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            509.0,
+            133.0,
+            533.0,
+            346.3333333333333
+          ]
+        }
+      ],
+      "seconds": 2.398
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "above",
+      "font": "mono",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            60.66666666666667,
+            133.0,
+            85.33333333333334,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            124.66666666666667,
+            133.66666666666666,
+            149.33333333333334,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            188.66666666666666,
+            104.0,
+            213.33333333333334,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            252.66666666666666,
+            132.66666666666666,
+            277.3333333333333,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample _Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            316.6666666666667,
+            147.33333333333334,
+            341.3333333333333,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            380.6666666666667,
+            104.0,
+            405.3333333333333,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            444.6666666666667,
+            147.33333333333334,
+            469.3333333333333,
+            346.6666666666667
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            508.6666666666667,
+            133.0,
+            533.3333333333334,
+            346.6666666666667
+          ]
+        }
+      ],
+      "seconds": 1.995
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-O1",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.66666666666667,
+            341.0,
+            86.33333333333334,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            339.0,
+            149.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.66666666666666,
+            323.66666666666663,
+            214.33333333333334,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            251.66666666666666,
+            344.0,
+            278.3333333333333,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            317.0,
+            350.0,
+            341.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.6666666666667,
+            324.0,
+            406.3333333333333,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample _Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.6666666666667,
+            361.66666666666663,
+            470.3333333333333,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.6666666666667,
+            345.33333333333337,
+            534.3333333333334,
+            546.3333333333333
+          ]
+        }
+      ],
+      "seconds": 1.359
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-O1",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.66666666666667,
+            341.0,
+            86.33333333333334,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            339.0,
+            149.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.66666666666666,
+            323.66666666666663,
+            214.33333333333334,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            251.66666666666666,
+            344.0,
+            278.3333333333333,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            317.0,
+            350.0,
+            341.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.6666666666667,
+            324.0,
+            406.3333333333333,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample _Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.6666666666667,
+            361.66666666666663,
+            470.3333333333333,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.6666666666667,
+            345.33333333333337,
+            534.3333333333334,
+            546.3333333333333
+          ]
+        }
+      ],
+      "seconds": 2.148
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 2,
+      "accepted_exact": 2,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 6,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.33333333333333,
+            340.66666666666663,
+            86.66666666666666,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            124.66666666666667,
+            339.0,
+            149.33333333333334,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample _Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.33333333333334,
+            323.66666666666663,
+            214.66666666666666,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            251.33333333333334,
+            344.0,
+            278.6666666666667,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            316.6666666666667,
+            349.66666666666663,
+            341.3333333333333,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.3333333333333,
+            324.0,
+            406.6666666666667,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample_Golf-07",
+          "final": "Sample_Golf-07",
+          "status": "accepted",
+          "bbox": [
+            444.6666666666667,
+            361.66666666666663,
+            469.3333333333333,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample_Hotel-08",
+          "final": "Sample_Hotel-08",
+          "status": "accepted",
+          "bbox": [
+            508.6666666666667,
+            345.0,
+            533.3333333333334,
+            546.6666666666667
+          ]
+        }
+      ],
+      "seconds": 2.019
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "below",
+      "font": "serif",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 4,
+      "assigned_geometry": 8,
+      "unresolved": 4,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            59.66666666666667,
+            340.0,
+            86.33333333333334,
+            546.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            337.0,
+            148.0,
+            546.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            187.66666666666666,
+            319.33333333333337,
+            214.33333333333334,
+            546.0
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            343.0,
+            277.0,
+            546.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            317.0,
+            347.66666666666663,
+            341.0,
+            546.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            381.0,
+            319.0,
+            404.0,
+            546.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.6666666666667,
+            359.33333333333337,
+            470.3333333333333,
+            546.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.6666666666667,
+            341.0,
+            534.3333333333334,
+            546.0
+          ]
+        }
+      ],
+      "seconds": 2.138
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "below",
+      "font": "serif",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 4,
+      "assigned_geometry": 8,
+      "unresolved": 4,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            59.66666666666667,
+            340.0,
+            86.33333333333334,
+            546.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            337.0,
+            148.0,
+            546.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            187.66666666666666,
+            319.33333333333337,
+            214.33333333333334,
+            546.0
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            343.0,
+            277.0,
+            546.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            317.0,
+            347.66666666666663,
+            341.0,
+            546.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            381.0,
+            319.0,
+            404.0,
+            546.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.6666666666667,
+            359.33333333333337,
+            470.3333333333333,
+            546.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.6666666666667,
+            341.0,
+            534.3333333333334,
+            546.0
+          ]
+        }
+      ],
+      "seconds": 2.545
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "below",
+      "font": "serif",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 8,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            60.66666666666667,
+            340.0,
+            84.33333333333334,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": "Sample Bravo-02",
+          "status": "accepted",
+          "bbox": [
+            124.66666666666667,
+            336.66666666666663,
+            149.33333333333334,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            187.33333333333334,
+            319.66666666666663,
+            214.66666666666666,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.33333333333334,
+            343.0,
+            278.6666666666667,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            316.6666666666667,
+            347.33333333333337,
+            341.3333333333333,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": "Sample Foxtrot-06",
+          "status": "accepted",
+          "bbox": [
+            379.3333333333333,
+            319.0,
+            406.6666666666667,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": "Sample Golf-07",
+          "status": "accepted",
+          "bbox": [
+            443.3333333333333,
+            359.33333333333337,
+            470.6666666666667,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": "Sample Hotel-08",
+          "status": "accepted",
+          "bbox": [
+            507.3333333333333,
+            341.0,
+            534.6666666666666,
+            546.3333333333333
+          ]
+        }
+      ],
+      "seconds": 1.718
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "below",
+      "font": "mono",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            61.0,
+            333.0,
+            85.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-@2",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            333.33333333333337,
+            149.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            189.0,
+            304.33333333333337,
+            213.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            332.66666666666663,
+            277.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            317.0,
+            347.66666666666663,
+            341.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            381.0,
+            304.0,
+            405.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            445.0,
+            347.0,
+            469.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            509.0,
+            333.0,
+            533.0,
+            546.3333333333333
+          ]
+        }
+      ],
+      "seconds": 1.404
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "below",
+      "font": "mono",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            61.0,
+            333.0,
+            85.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            125.0,
+            333.33333333333337,
+            149.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            189.0,
+            304.33333333333337,
+            213.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            253.0,
+            332.66666666666663,
+            277.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            317.0,
+            347.66666666666663,
+            341.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            381.0,
+            304.0,
+            405.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            445.0,
+            347.0,
+            469.0,
+            546.3333333333333
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            509.0,
+            333.0,
+            533.0,
+            546.3333333333333
+          ]
+        }
+      ],
+      "seconds": 1.347
+    },
+    {
+      "family": "punctuation",
+      "angle": 90,
+      "placement": "below",
+      "font": "mono",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            60.66666666666667,
+            333.0,
+            85.33333333333334,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            124.66666666666667,
+            333.66666666666663,
+            149.33333333333334,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            188.66666666666666,
+            304.0,
+            213.33333333333334,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            252.66666666666666,
+            332.66666666666663,
+            277.3333333333333,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample _Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            316.6666666666667,
+            347.33333333333337,
+            341.3333333333333,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            380.6666666666667,
+            304.0,
+            405.3333333333333,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            444.6666666666667,
+            347.33333333333337,
+            469.3333333333333,
+            546.6666666666667
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            508.6666666666667,
+            333.0,
+            533.3333333333334,
+            546.6666666666667
+          ]
+        }
+      ],
+      "seconds": 1.416
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-O1",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            57.666666666666664,
+            33.666666666666664,
+            84.33333333333333,
+            239.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            123.0,
+            33.666666666666664,
+            147.0,
+            241.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            185.66666666666666,
+            33.666666666666664,
+            212.33333333333331,
+            256.33333333333337
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            249.66666666666666,
+            33.666666666666664,
+            276.3333333333333,
+            236.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            315.0,
+            33.666666666666664,
+            339.0,
+            230.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            377.6666666666667,
+            33.666666666666664,
+            404.3333333333333,
+            256.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample _Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            441.6666666666667,
+            33.666666666666664,
+            468.3333333333333,
+            218.33333333333334
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            505.6666666666667,
+            33.666666666666664,
+            532.3333333333334,
+            234.66666666666666
+          ]
+        }
+      ],
+      "seconds": 1.297
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-0O1",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            57.666666666666664,
+            33.333333333333336,
+            84.33333333333333,
+            238.66666666666666
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            121.66666666666666,
+            33.333333333333336,
+            148.33333333333331,
+            241.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            185.66666666666666,
+            33.333333333333336,
+            212.33333333333331,
+            256.33333333333337
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample _ Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            249.66666666666666,
+            33.333333333333336,
+            276.3333333333333,
+            236.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            315.0,
+            33.333333333333336,
+            339.0,
+            230.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            377.6666666666667,
+            33.333333333333336,
+            404.3333333333333,
+            256.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            441.6666666666667,
+            33.333333333333336,
+            468.3333333333333,
+            218.33333333333334
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            505.6666666666667,
+            33.333333333333336,
+            532.3333333333334,
+            234.33333333333334
+          ]
+        }
+      ],
+      "seconds": 1.286
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "above",
+      "font": "sans",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 2,
+      "accepted_exact": 2,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 6,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            57.333333333333336,
+            33.333333333333336,
+            84.66666666666667,
+            239.33333333333334
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            122.66666666666666,
+            33.333333333333336,
+            147.33333333333331,
+            241.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample _Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            185.33333333333334,
+            33.333333333333336,
+            212.66666666666669,
+            256.33333333333337
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            249.33333333333334,
+            33.333333333333336,
+            276.6666666666667,
+            236.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            314.6666666666667,
+            33.333333333333336,
+            339.3333333333333,
+            230.33333333333334
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            377.3333333333333,
+            33.333333333333336,
+            404.6666666666667,
+            256.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample_Golf-07",
+          "final": "Sample_Golf-07",
+          "status": "accepted",
+          "bbox": [
+            442.6666666666667,
+            33.333333333333336,
+            467.3333333333333,
+            218.33333333333334
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample_Hotel-08",
+          "final": "Sample_Hotel-08",
+          "status": "accepted",
+          "bbox": [
+            506.6666666666667,
+            33.333333333333336,
+            531.3333333333334,
+            235.0
+          ]
+        }
+      ],
+      "seconds": 1.612
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "above",
+      "font": "serif",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 4,
+      "assigned_geometry": 8,
+      "unresolved": 4,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            57.666666666666664,
+            34.0,
+            84.33333333333333,
+            240.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            124.0,
+            34.0,
+            147.0,
+            243.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            185.66666666666666,
+            34.0,
+            212.33333333333331,
+            260.66666666666663
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.0,
+            34.0,
+            275.0,
+            237.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            315.0,
+            34.0,
+            339.0,
+            232.33333333333334
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            380.0,
+            34.0,
+            403.0,
+            261.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            441.6666666666667,
+            34.0,
+            468.3333333333333,
+            220.66666666666666
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            505.6666666666667,
+            34.0,
+            532.3333333333334,
+            239.0
+          ]
+        }
+      ],
+      "seconds": 1.564
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "above",
+      "font": "serif",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 4,
+      "assigned_geometry": 8,
+      "unresolved": 4,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            57.666666666666664,
+            34.0,
+            84.33333333333333,
+            240.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            124.0,
+            34.0,
+            147.0,
+            243.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            185.66666666666666,
+            34.0,
+            212.33333333333331,
+            260.66666666666663
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.0,
+            34.0,
+            275.0,
+            237.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            315.0,
+            34.0,
+            339.0,
+            232.66666666666666
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            380.0,
+            34.0,
+            403.0,
+            261.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            441.6666666666667,
+            34.0,
+            468.3333333333333,
+            220.66666666666666
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            505.6666666666667,
+            34.0,
+            532.3333333333334,
+            239.0
+          ]
+        }
+      ],
+      "seconds": 1.742
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "above",
+      "font": "serif",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 8,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            59.666666666666664,
+            33.666666666666664,
+            83.33333333333333,
+            240.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": "Sample Bravo-02",
+          "status": "accepted",
+          "bbox": [
+            122.66666666666666,
+            33.666666666666664,
+            147.33333333333331,
+            243.33333333333334
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            185.33333333333334,
+            33.666666666666664,
+            212.66666666666669,
+            260.33333333333337
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            249.33333333333334,
+            33.666666666666664,
+            276.6666666666667,
+            237.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            314.6666666666667,
+            33.666666666666664,
+            339.3333333333333,
+            232.66666666666666
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": "Sample Foxtrot-06",
+          "status": "accepted",
+          "bbox": [
+            377.3333333333333,
+            33.666666666666664,
+            404.6666666666667,
+            261.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": "Sample Golf-07",
+          "status": "accepted",
+          "bbox": [
+            441.3333333333333,
+            33.666666666666664,
+            468.6666666666667,
+            220.66666666666666
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": "Sample Hotel-08",
+          "status": "accepted",
+          "bbox": [
+            505.3333333333333,
+            33.666666666666664,
+            532.6666666666666,
+            239.0
+          ]
+        }
+      ],
+      "seconds": 1.363
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "above",
+      "font": "mono",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.0,
+            33.666666666666664,
+            83.0,
+            247.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-@2",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            123.0,
+            33.666666666666664,
+            147.0,
+            246.66666666666666
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.0,
+            33.666666666666664,
+            211.0,
+            275.66666666666663
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.0,
+            33.666666666666664,
+            275.0,
+            247.33333333333334
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            315.0,
+            33.666666666666664,
+            339.0,
+            232.33333333333334
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.0,
+            33.666666666666664,
+            403.0,
+            276.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.0,
+            33.666666666666664,
+            467.0,
+            233.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.0,
+            33.666666666666664,
+            531.0,
+            247.0
+          ]
+        }
+      ],
+      "seconds": 1.617
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "above",
+      "font": "mono",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.0,
+            33.333333333333336,
+            83.0,
+            247.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            123.0,
+            33.333333333333336,
+            147.0,
+            246.66666666666666
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.0,
+            33.333333333333336,
+            211.0,
+            276.0
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.0,
+            33.333333333333336,
+            275.0,
+            247.33333333333334
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            315.0,
+            33.333333333333336,
+            339.0,
+            232.66666666666666
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.0,
+            33.333333333333336,
+            403.0,
+            276.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.0,
+            33.333333333333336,
+            467.0,
+            233.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.0,
+            33.333333333333336,
+            531.0,
+            247.0
+          ]
+        }
+      ],
+      "seconds": 1.749
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "above",
+      "font": "mono",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            58.666666666666664,
+            33.333333333333336,
+            83.33333333333333,
+            247.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            122.66666666666666,
+            33.333333333333336,
+            147.33333333333331,
+            246.33333333333334
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            186.66666666666666,
+            33.333333333333336,
+            211.33333333333331,
+            276.0
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            250.66666666666666,
+            33.333333333333336,
+            275.3333333333333,
+            247.33333333333334
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample _Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            314.6666666666667,
+            33.333333333333336,
+            339.3333333333333,
+            232.66666666666666
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            378.6666666666667,
+            33.333333333333336,
+            403.3333333333333,
+            276.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            442.6666666666667,
+            33.333333333333336,
+            467.3333333333333,
+            232.66666666666666
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            506.6666666666667,
+            33.333333333333336,
+            531.3333333333334,
+            247.0
+          ]
+        }
+      ],
+      "seconds": 1.592
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-O1",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            57.666666666666664,
+            233.66666666666666,
+            84.33333333333333,
+            439.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            123.0,
+            233.66666666666666,
+            147.0,
+            441.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            185.66666666666666,
+            233.66666666666666,
+            212.33333333333331,
+            456.33333333333337
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            249.66666666666666,
+            233.66666666666666,
+            276.3333333333333,
+            436.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            315.0,
+            233.66666666666666,
+            339.0,
+            430.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            377.6666666666667,
+            233.66666666666666,
+            404.3333333333333,
+            456.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample _Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            441.6666666666667,
+            233.66666666666666,
+            468.3333333333333,
+            418.33333333333337
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            505.6666666666667,
+            233.66666666666666,
+            532.3333333333334,
+            434.66666666666663
+          ]
+        }
+      ],
+      "seconds": 1.554
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-0O1",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            57.666666666666664,
+            233.33333333333334,
+            84.33333333333333,
+            438.66666666666663
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            121.66666666666666,
+            233.33333333333334,
+            148.33333333333331,
+            441.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            185.66666666666666,
+            233.33333333333334,
+            212.33333333333331,
+            456.33333333333337
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample _ Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            249.66666666666666,
+            233.33333333333334,
+            276.3333333333333,
+            436.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            315.0,
+            233.33333333333334,
+            339.0,
+            430.0
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            377.6666666666667,
+            233.33333333333334,
+            404.3333333333333,
+            456.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            441.6666666666667,
+            233.33333333333334,
+            468.3333333333333,
+            418.33333333333337
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            505.6666666666667,
+            233.33333333333334,
+            532.3333333333334,
+            434.33333333333337
+          ]
+        }
+      ],
+      "seconds": 1.709
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "below",
+      "font": "sans",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 2,
+      "accepted_exact": 2,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 6,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            57.333333333333336,
+            233.33333333333334,
+            84.66666666666667,
+            439.33333333333337
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            122.66666666666666,
+            233.33333333333334,
+            147.33333333333331,
+            441.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample _Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            185.33333333333334,
+            233.33333333333334,
+            212.66666666666669,
+            456.33333333333337
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            249.33333333333334,
+            233.33333333333334,
+            276.6666666666667,
+            436.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            314.6666666666667,
+            233.33333333333334,
+            339.3333333333333,
+            430.33333333333337
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            377.3333333333333,
+            233.33333333333334,
+            404.6666666666667,
+            456.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample_Golf-07",
+          "final": "Sample_Golf-07",
+          "status": "accepted",
+          "bbox": [
+            442.6666666666667,
+            233.33333333333334,
+            467.3333333333333,
+            418.33333333333337
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample_Hotel-08",
+          "final": "Sample_Hotel-08",
+          "status": "accepted",
+          "bbox": [
+            506.6666666666667,
+            233.33333333333334,
+            531.3333333333334,
+            435.0
+          ]
+        }
+      ],
+      "seconds": 1.749
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "below",
+      "font": "serif",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 4,
+      "assigned_geometry": 8,
+      "unresolved": 4,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            57.666666666666664,
+            234.0,
+            84.33333333333333,
+            440.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            124.0,
+            234.0,
+            147.0,
+            443.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            185.66666666666666,
+            234.0,
+            212.33333333333331,
+            460.66666666666663
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.0,
+            234.0,
+            275.0,
+            437.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            315.0,
+            234.0,
+            339.0,
+            432.33333333333337
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            380.0,
+            234.0,
+            403.0,
+            461.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            441.6666666666667,
+            234.0,
+            468.3333333333333,
+            420.66666666666663
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            505.6666666666667,
+            234.0,
+            532.3333333333334,
+            439.0
+          ]
+        }
+      ],
+      "seconds": 1.594
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "below",
+      "font": "serif",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 4,
+      "assigned_geometry": 8,
+      "unresolved": 4,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            57.666666666666664,
+            234.0,
+            84.33333333333333,
+            440.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            124.0,
+            234.0,
+            147.0,
+            443.0
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            185.66666666666666,
+            234.0,
+            212.33333333333331,
+            460.66666666666663
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.0,
+            234.0,
+            275.0,
+            437.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            315.0,
+            234.0,
+            339.0,
+            432.66666666666663
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            380.0,
+            234.0,
+            403.0,
+            461.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            441.6666666666667,
+            234.0,
+            468.3333333333333,
+            420.66666666666663
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            505.6666666666667,
+            234.0,
+            532.3333333333334,
+            439.0
+          ]
+        }
+      ],
+      "seconds": 1.566
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "below",
+      "font": "serif",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 8,
+      "assigned_geometry": 8,
+      "unresolved": 0,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": "Sample Alpha-01",
+          "status": "accepted",
+          "bbox": [
+            59.666666666666664,
+            233.66666666666666,
+            83.33333333333333,
+            440.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": "Sample Bravo-02",
+          "status": "accepted",
+          "bbox": [
+            122.66666666666666,
+            233.66666666666666,
+            147.33333333333331,
+            443.33333333333337
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": "Sample Charlie-03",
+          "status": "accepted",
+          "bbox": [
+            185.33333333333334,
+            233.66666666666666,
+            212.66666666666669,
+            460.33333333333337
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            249.33333333333334,
+            233.66666666666666,
+            276.6666666666667,
+            437.0
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": "Sample Echo-05",
+          "status": "accepted",
+          "bbox": [
+            314.6666666666667,
+            233.66666666666666,
+            339.3333333333333,
+            432.66666666666663
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": "Sample Foxtrot-06",
+          "status": "accepted",
+          "bbox": [
+            377.3333333333333,
+            233.66666666666666,
+            404.6666666666667,
+            461.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": "Sample Golf-07",
+          "status": "accepted",
+          "bbox": [
+            441.3333333333333,
+            233.66666666666666,
+            468.6666666666667,
+            420.66666666666663
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": "Sample Hotel-08",
+          "status": "accepted",
+          "bbox": [
+            505.3333333333333,
+            233.66666666666666,
+            532.6666666666666,
+            439.0
+          ]
+        }
+      ],
+      "seconds": 1.387
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "below",
+      "font": "mono",
+      "variant": "clean",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.0,
+            233.66666666666666,
+            83.0,
+            447.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-@2",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            123.0,
+            233.66666666666666,
+            147.0,
+            446.66666666666663
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.0,
+            233.66666666666666,
+            211.0,
+            475.66666666666663
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.0,
+            233.66666666666666,
+            275.0,
+            447.33333333333337
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            315.0,
+            233.66666666666666,
+            339.0,
+            432.33333333333337
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.0,
+            233.66666666666666,
+            403.0,
+            476.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.0,
+            233.66666666666666,
+            467.0,
+            433.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.0,
+            233.66666666666666,
+            531.0,
+            447.0
+          ]
+        }
+      ],
+      "seconds": 1.258
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "below",
+      "font": "mono",
+      "variant": "jpeg",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 1,
+      "assigned_geometry": 8,
+      "unresolved": 7,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            59.0,
+            233.33333333333334,
+            83.0,
+            447.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            123.0,
+            233.33333333333334,
+            147.0,
+            446.66666666666663
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            187.0,
+            233.33333333333334,
+            211.0,
+            476.0
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": "Sample Delta-04",
+          "status": "accepted",
+          "bbox": [
+            251.0,
+            233.33333333333334,
+            275.0,
+            447.33333333333337
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            315.0,
+            233.33333333333334,
+            339.0,
+            432.66666666666663
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            379.0,
+            233.33333333333334,
+            403.0,
+            476.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            443.0,
+            233.33333333333334,
+            467.0,
+            433.0
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            507.0,
+            233.33333333333334,
+            531.0,
+            447.0
+          ]
+        }
+      ],
+      "seconds": 1.335
+    },
+    {
+      "family": "punctuation",
+      "angle": -90,
+      "placement": "below",
+      "font": "mono",
+      "variant": "blur",
+      "recognition": "slots",
+      "total": 8,
+      "raw_exact": 0,
+      "accepted_exact": 0,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 8,
+      "unresolved": 8,
+      "unmatched_candidates": 0,
+      "slots": [
+        {
+          "index": 0,
+          "expected": "Sample_Alpha-01",
+          "raw": "Sample Alpha-01",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            58.666666666666664,
+            233.33333333333334,
+            83.33333333333333,
+            447.0
+          ]
+        },
+        {
+          "index": 1,
+          "expected": "Sample_Bravo-02",
+          "raw": "Sample Bravo-02",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            122.66666666666666,
+            233.33333333333334,
+            147.33333333333331,
+            446.33333333333337
+          ]
+        },
+        {
+          "index": 2,
+          "expected": "Sample_Charlie-03",
+          "raw": "Sample Charlie-03",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            186.66666666666666,
+            233.33333333333334,
+            211.33333333333331,
+            476.0
+          ]
+        },
+        {
+          "index": 3,
+          "expected": "Sample_Delta-04",
+          "raw": "Sample Delta-04",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            250.66666666666666,
+            233.33333333333334,
+            275.3333333333333,
+            447.33333333333337
+          ]
+        },
+        {
+          "index": 4,
+          "expected": "Sample_Echo-05",
+          "raw": "Sample _Echo-05",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            314.6666666666667,
+            233.33333333333334,
+            339.3333333333333,
+            432.66666666666663
+          ]
+        },
+        {
+          "index": 5,
+          "expected": "Sample_Foxtrot-06",
+          "raw": "Sample _Foxtrot-06",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            378.6666666666667,
+            233.33333333333334,
+            403.3333333333333,
+            476.0
+          ]
+        },
+        {
+          "index": 6,
+          "expected": "Sample_Golf-07",
+          "raw": "Sample Golf-07",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            442.6666666666667,
+            233.33333333333334,
+            467.3333333333333,
+            432.66666666666663
+          ]
+        },
+        {
+          "index": 7,
+          "expected": "Sample_Hotel-08",
+          "raw": "Sample _Hotel-08",
+          "final": null,
+          "status": "low_confidence",
+          "bbox": [
+            506.6666666666667,
+            233.33333333333334,
+            531.3333333333334,
+            447.0
+          ]
+        }
+      ],
+      "seconds": 1.259
+    }
+  ],
+  "summary": {
+    "supported": {
+      "total": 64,
+      "raw_exact": 64,
+      "accepted_exact": 64,
+      "false_text_acceptance": 0,
+      "assigned_geometry": 64,
+      "unresolved": 0,
+      "unmatched_candidates": 0
+    },
+    "punctuation": {
+      "total": 288,
+      "raw_exact": 8,
+      "accepted_exact": 8,
+      "false_text_acceptance": 74,
+      "assigned_geometry": 288,
+      "unresolved": 206,
+      "unmatched_candidates": 0
+    }
+  }
+}

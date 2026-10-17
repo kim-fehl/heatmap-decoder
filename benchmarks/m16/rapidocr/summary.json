@@ -1,0 +1,190 @@
+{
+  "native": {
+    "rows": {
+      "total": 33,
+      "exact": 26,
+      "baseline_exact": 9,
+      "errors": [
+        {
+          "index": 5,
+          "raw": "HSP9O",
+          "reference": "HSP90",
+          "score": 0.8850788831710815
+        },
+        {
+          "index": 9,
+          "raw": "EslkBa",
+          "reference": "EsI\u03baB\u03b1",
+          "score": 0.8841874003410339
+        },
+        {
+          "index": 11,
+          "raw": "EslKKy.",
+          "reference": "EsIKK\u03b3",
+          "score": 0.8128001349312919
+        },
+        {
+          "index": 13,
+          "raw": "B",
+          "reference": "I\u03baB\u03b6",
+          "score": 0.8809553980827332
+        },
+        {
+          "index": 14,
+          "raw": "IKKB",
+          "reference": "IKK\u03b2",
+          "score": 0.8103096336126328
+        },
+        {
+          "index": 17,
+          "raw": "KCK",
+          "reference": "IKK\u03b1",
+          "score": 0.6719588935375214
+        },
+        {
+          "index": 21,
+          "raw": "IRAK42",
+          "reference": "IRAK4_2",
+          "score": 0.9706654449303945
+        }
+      ],
+      "new_exact_indices": [
+        0,
+        1,
+        7,
+        8,
+        16,
+        19,
+        20,
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "lost_exact_indices": []
+    },
+    "columns": {
+      "total": 8,
+      "exact": 8,
+      "baseline_exact": 8,
+      "errors": [],
+      "new_exact_indices": [],
+      "lost_exact_indices": []
+    }
+  },
+  "pad4": {
+    "rows": {
+      "total": 33,
+      "exact": 21,
+      "baseline_exact": 9,
+      "errors": [
+        {
+          "index": 3,
+          "raw": "IKBL_",
+          "reference": "IKBL",
+          "score": 0.8508261442184448
+        },
+        {
+          "index": 5,
+          "raw": "HSP9O",
+          "reference": "HSP90",
+          "score": 0.8848690867424012
+        },
+        {
+          "index": 9,
+          "raw": "EslkBa",
+          "reference": "EsI\u03baB\u03b1",
+          "score": 0.8988857666651408
+        },
+        {
+          "index": 11,
+          "raw": "EsIKKy.",
+          "reference": "EsIKK\u03b3",
+          "score": 0.729751535824367
+        },
+        {
+          "index": 13,
+          "raw": "B",
+          "reference": "I\u03baB\u03b6",
+          "score": 0.9785430431365967
+        },
+        {
+          "index": 14,
+          "raw": "IKKB_.",
+          "reference": "IKK\u03b2",
+          "score": 0.749429518977801
+        },
+        {
+          "index": 17,
+          "raw": "IKK",
+          "reference": "IKK\u03b1",
+          "score": 0.822106937567393
+        },
+        {
+          "index": 19,
+          "raw": "MYD88.",
+          "reference": "MYD88",
+          "score": 0.8366004327932993
+        },
+        {
+          "index": 21,
+          "raw": "IRAK42",
+          "reference": "IRAK4_2",
+          "score": 0.9737149973710378
+        },
+        {
+          "index": 25,
+          "raw": "ESTLR4",
+          "reference": "EsTLR4",
+          "score": 0.8913336793581644
+        },
+        {
+          "index": 29,
+          "raw": "TAB",
+          "reference": "TAB1",
+          "score": 0.8877671360969543
+        },
+        {
+          "index": 30,
+          "raw": "TAKi",
+          "reference": "TAK1",
+          "score": 0.8982835561037064
+        }
+      ],
+      "new_exact_indices": [
+        0,
+        1,
+        7,
+        8,
+        16,
+        20,
+        22,
+        23,
+        24,
+        26,
+        27,
+        28,
+        31,
+        32
+      ],
+      "lost_exact_indices": [
+        3,
+        25
+      ]
+    },
+    "columns": {
+      "total": 8,
+      "exact": 8,
+      "baseline_exact": 8,
+      "errors": [],
+      "new_exact_indices": [],
+      "lost_exact_indices": []
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "figure": "10.1371/journal.pone.0155215.g004, panel A",
+  "reference_status": "visually_checked_annotations_not_biological_numeric_ground_truth",
+  "image": "figure-4a.png",
+  "n_rows": 75,
+  "n_columns": 50,
+  "column_indexing": "zero-based, end-exclusive spans",
+  "column_labels_visible": false,
+  "column_annotations": [
+    {
+      "track_id": "track_1",
+      "display_name": null,
+      "inferred_semantics": "skin_site",
+      "kind": "colored_panel",
+      "segments": [
+        {
+          "start": 0,
+          "end": 16,
+          "label": "Acral"
+        },
+        {
+          "start": 16,
+          "end": 50,
+          "label": "Non-Acral"
+        }
+      ]
+    },
+    {
+      "track_id": "track_2",
+      "display_name": null,
+      "inferred_semantics": "disease_group",
+      "kind": "colored_panel",
+      "segments": [
+        {
+          "start": 0,
+          "end": 7,
+          "label": "Normal"
+        },
+        {
+          "start": 7,
+          "end": 10,
+          "label": "PP",
+          "intended_biological_label": "PPP",
+          "note": "Only PP is visible inside the narrow magenta rectangle; preserve visible text."
+        },
+        {
+          "start": 10,
+          "end": 16,
+          "label": "PPPP"
+        },
+        {
+          "start": 16,
+          "end": 40,
+          "label": "Normal"
+        },
+        {
+          "start": 40,
+          "end": 50,
+          "label": "Psoriasis"
+        }
+      ]
+    }
+  ],
+  "edge_cases": [
+    "white_text_on_gray_magenta_blue_black_and_red_fills",
+    "two_stacked_rectangle_tracks",
+    "white_outlined_upper_rectangles",
+    "repeated_Normal_label_in_disjoint_spans",
+    "clipped_group_label_PP",
+    "colored_row_annotation_not_colorbar"
+  ],
+  "colorbar": {
+    "orientation": "horizontal",
+    "numeric_labels_left_to_right": [
+      -2,
+      0,
+      2
+    ]
+  },
+  "sources": [
+    "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0155215",
+    "https://journals.plos.org/plosone/article/figure?id=10.1371/journal.pone.0155215.g004"
+  ],
+  "license": "CC BY 4.0; Bissonnette et al., 2016",
+  "values": null,
+  "unresolved": [
+    "Individual sample identities and ordering within groups",
+    "Exact biological numeric ground truth",
+    "Complete gene/probe label transcription"
+  ]
+}

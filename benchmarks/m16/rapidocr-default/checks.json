@@ -1,0 +1,18 @@
+{
+  "full_suite": {
+    "passed": 627,
+    "subtests_passed": 18,
+    "real_ocr_enabled": true
+  },
+  "ruff": "passed",
+  "mypy_current_numpy": "passed",
+  "mypy_numpy_1_26_4": "passed",
+  "source_and_wheel_builds": "passed",
+  "isolated_wheel_default_labels_no_ocr_extra": "passed",
+  "label_cli_expected_exit": 4,
+  "native_candidates_match_prior_trial": 41,
+  "numeric_matrix_including_nan": "bit-identical",
+  "finite_cells": 251,
+  "tick_engine": "Tesseract",
+  "default_label_engine": "RapidOCR"
+}

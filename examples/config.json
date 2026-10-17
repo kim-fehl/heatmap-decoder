@@ -1,0 +1,20 @@
+{
+  "heatmap_bbox": [
+    24,
+    32,
+    264,
+    272
+  ],
+  "colourbar_bbox": [
+    292,
+    32,
+    308,
+    544
+  ],
+  "rows": 20,
+  "columns": 20,
+  "colourbar_orientation": "vertical",
+  "colourbar_start_value": 2.0,
+  "colourbar_end_value": -2.0,
+  "sampling_inset_fraction": 0.25
+}

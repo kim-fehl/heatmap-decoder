@@ -1,0 +1,26 @@
+{
+  "scope": "synthetic manual geometry/scale, +90 degree OCR, reference label review",
+  "figure_sha256": "587ecba06496b2607cc1e1afcbd56f79ea3622b1ed15614dfba047d646c4caec",
+  "review_sha256": "22beed4e5fb2d38a69a32c1b517fc5dd81ccd847bcf15b27aa4fdae2779791a0",
+  "matrix_sha256": "98a1e15120a831d4bd9233b33a12dd97da4993f65c12eaf955b7dd3e8cde3051",
+  "column_names": [
+    "Sample_Alpha-01",
+    "Sample_Bravo-02",
+    "Sample_Charlie-03",
+    "Sample_Delta-04",
+    "Sample_Echo-05",
+    "Sample_Foxtrot-06",
+    "Sample_Golf-07",
+    "Sample_Hotel-08"
+  ],
+  "shape": [
+    4,
+    8
+  ],
+  "identical_to_numeric_only": true,
+  "finite_cells": 32,
+  "flagged_cells": 0,
+  "mae_scale_fraction": 0.0010120177103099199,
+  "max_error_scale_fraction": 0.0019607843137254832,
+  "note": "Reference review follows raw OCR; geometry and displayed values stay unchanged."
+}

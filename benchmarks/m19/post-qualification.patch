@@ -1,0 +1,75 @@
+--- frozen/src/heatmap_decoder/automation.py
++++ qualified/src/heatmap_decoder/automation.py
+@@ -11,7 +11,6 @@
+ from .calibration import calibration_evidence, colour_quality_summary, fit_linear_scale
+ from .detection import detect
+ from .detection_policy import ACCEPTANCE_THRESHOLDS as A
+-from .detection_policy import policy_snapshot
+ from .extract import extract, extract_labels
+ from .legend import inspect_legend
+ from .models import (
+@@ -29,12 +28,13 @@
+ 
+ AUTOMATION_POLICY_VERSION = "capability-selective.3"
+ 
+-# Corpus qualification is independent of per-image evidence. These remain closed
+-# until a frozen partition passes; see benchmarks/m19 and docs/progress/M19.md.
++# Frozen M19 clean/negative gates qualify sharp measured grids and linear ticks.
++# Broad degradation coverage failed and remains closed. Qualification never
++# substitutes for the per-image checks; see benchmarks/m19/validation-final.json.
+ M19_QUALIFICATION = {
+     "inferred_counts": False,
+-    "sharp_measured_counts": False,
+-    "linear_ocr_scale": False,
++    "sharp_measured_counts": True,
++    "linear_ocr_scale": True,
+ }
+ 
+ 
+@@ -427,14 +427,7 @@
+         {"experimental_only": True},
+         unresolved=any(d.status == "unresolved" for d in decisions),
+     )
+-    policy = policy_snapshot()
+-    release = ["M12_release_gates_not_met"] if not policy["automatic_roi_enabled"] else []
+-    if hints.infer_rows and hints.rows is None and not policy["automatic_rows_enabled"]:
+-        release.append("inferred_rows_review_required")
+-    if hints.infer_columns and hints.columns is None and not policy["automatic_columns_enabled"]:
+-        release.append("inferred_columns_review_required")
+-    if scale is not None and scale.source == "ocr_ticks":
+-        release.append("OCR_scale_release_gate_not_met")
++    release = ["experimental_export_not_requested", "stable_release_not_enabled"]
+     scope_reasons = []
+     if (hints.rows is None or hints.columns is None) and not M19_QUALIFICATION["inferred_counts"]:
+         if not (
+@@ -447,8 +440,29 @@
+         and not M19_QUALIFICATION["linear_ocr_scale"]
+     ):
+         scope_reasons.append("experimental_OCR_scale_export_not_validated")
+-    if hints.detector != DetectorOptions():
++    geometry_options = (
++        "max_analysis_size",
++        "max_candidates",
++        "max_components",
++        "background_distance",
++        "gridline_gap",
++        "min_score",
++        "max_count",
++        "max_count_candidates",
++    )
++    defaults = DetectorOptions()
++    if any(getattr(hints.detector, key) != getattr(defaults, key) for key in geometry_options):
+         scope_reasons.append("experimental_export_requires_default_detector")
++    if scale is not None and scale.source == "ocr_ticks":
++        ocr = scale.legend.ocr
++        if (
++            ocr.engine != "tesseract"
++            or ocr.language != "eng"
++            or ocr.upscale_factor != 3
++            or ocr.min_confidence < 80
++            or scale.legend.max_axis_offset_pixels > 6
++        ):
++            scope_reasons.append("experimental_OCR_settings_outside_validated_scope")
+     retained = experimental_export and not scope_reasons and concrete is not None
+     allowed = retained and complete.status == "accepted" and numeric_complete.status == "accepted"
+     numeric_state = (

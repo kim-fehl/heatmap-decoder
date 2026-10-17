@@ -1,0 +1,139 @@
+{
+  "scope": "Frozen synthetic validation; no real/publication-image generalisation claim",
+  "summary": {
+    "1": {
+      "ordinary": 72,
+      "complete": 33,
+      "coverage": 0.4583333333333333,
+      "distinct_accepted_bases": 15,
+      "wrong_complete": 0,
+      "negative_attempts": 8,
+      "negative_complete": 0,
+      "experimental_exports": 33,
+      "negative_experimental_exports": 0,
+      "heatmap_passes": 72,
+      "bar_passes": 66,
+      "statuses": {
+        "inadequate_palette_coverage": 2,
+        "required_capability_unresolved": 8,
+        "excessive_colour_matching_flags": 23,
+        "competing_bars": 5,
+        "missing_or_ambiguous_numeric_cells": 8,
+        "bar_extent_or_clipping_unverified": 1
+      },
+      "worst_mae": 0.0031319459827693907,
+      "worst_error": 0.01858690966572807,
+      "median_seconds": 0.8848691939983837
+    },
+    "2": {
+      "ordinary": 72,
+      "complete": 3,
+      "coverage": 0.041666666666666664,
+      "distinct_accepted_bases": 3,
+      "wrong_complete": 0,
+      "negative_attempts": 7,
+      "negative_complete": 0,
+      "experimental_exports": 0,
+      "negative_experimental_exports": 0,
+      "heatmap_passes": 9,
+      "bar_passes": 66,
+      "statuses": {
+        "no_validated_grid": 39,
+        "insufficient_independent_count_support": 64,
+        "required_capability_unresolved": 63,
+        "competing_panels_or_bounds": 22,
+        "inadequate_palette_coverage": 2,
+        "nonunique_heatmap_bar_association": 14,
+        "competing_bars": 5,
+        "excessive_colour_matching_flags": 6,
+        "bar_extent_or_clipping_unverified": 1,
+        "competing_count_lattices": 3,
+        "counts_unresolved_for_grid_validation": 2
+      },
+      "worst_mae": 0.002237551131635152,
+      "worst_error": 0.007294358842800201,
+      "median_seconds": 5.048036628499176
+    },
+    "3": {
+      "ordinary": 72,
+      "complete": 16,
+      "coverage": 0.2222222222222222,
+      "distinct_accepted_bases": 8,
+      "wrong_complete": 0,
+      "negative_attempts": 11,
+      "negative_complete": 0,
+      "experimental_exports": 0,
+      "negative_experimental_exports": 0,
+      "heatmap_passes": 72,
+      "bar_passes": 66,
+      "statuses": {
+        "inadequate_palette_coverage": 2,
+        "required_capability_unresolved": 42,
+        "scale anchors must be strictly monotonic": 1,
+        "excessive_colour_matching_flags": 9,
+        "competing_bars": 5,
+        "accepted_bar_required_for_tick_scale": 6,
+        "unresolved_or_conflicting_plausible_ticks": 33,
+        "bar_extent_or_clipping_unverified": 1,
+        "missing_or_ambiguous_numeric_cells": 5
+      },
+      "worst_mae": 0.0033355427012474693,
+      "worst_error": 0.018372805500388112,
+      "median_seconds": 2.1645446170005016
+    },
+    "4": {
+      "ordinary": 72,
+      "complete": 2,
+      "coverage": 0.027777777777777776,
+      "distinct_accepted_bases": 2,
+      "wrong_complete": 0,
+      "negative_attempts": 10,
+      "negative_complete": 0,
+      "experimental_exports": 0,
+      "negative_experimental_exports": 0,
+      "heatmap_passes": 9,
+      "bar_passes": 66,
+      "statuses": {
+        "no_validated_grid": 39,
+        "insufficient_independent_count_support": 64,
+        "required_capability_unresolved": 66,
+        "competing_panels_or_bounds": 22,
+        "inadequate_palette_coverage": 2,
+        "nonunique_heatmap_bar_association": 14,
+        "scale anchors must be strictly monotonic": 1,
+        "competing_bars": 5,
+        "accepted_bar_required_for_tick_scale": 6,
+        "unresolved_or_conflicting_plausible_ticks": 33,
+        "excessive_colour_matching_flags": 4,
+        "bar_extent_or_clipping_unverified": 1,
+        "competing_count_lattices": 3,
+        "counts_unresolved_for_grid_validation": 2
+      },
+      "worst_mae": 0.0008841030006219002,
+      "worst_error": 0.0042613669553885165,
+      "median_seconds": 6.489729700999305
+    }
+  },
+  "conditional_ocr": {
+    "annotated": {
+      "images": 72,
+      "expected": 342,
+      "strokes": 342,
+      "localised": 342,
+      "exact": 306,
+      "sign_errors": 10,
+      "eligible": 34
+    },
+    "unique_detected": {
+      "images": 72,
+      "expected": 342,
+      "strokes": 342,
+      "localised": 342,
+      "exact": 306,
+      "sign_errors": 10,
+      "eligible": 34
+    }
+  },
+  "report_sha256": "75503b48fb496959c4d808fa078414635d59943f78fd4065930cb101d529f956",
+  "policy_freeze_sha256": "f12136a394e0affb010578b8a160de71869528f5255f994886e0edc5dfbc28dc"
+}

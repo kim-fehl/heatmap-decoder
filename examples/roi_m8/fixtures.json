@@ -1,0 +1,130 @@
+{
+  "vertical_sequential": {
+    "split": "development",
+    "heatmap_bbox": [
+      130,
+      100,
+      370,
+      280
+    ],
+    "colourbar_bbox": [
+      410,
+      100,
+      424,
+      280
+    ],
+    "orientation": "vertical",
+    "rows": 6,
+    "columns": 8,
+    "licence": "MIT",
+    "edge_tolerance_pixels": 1
+  },
+  "horizontal_diverging": {
+    "split": "development",
+    "heatmap_bbox": [
+      130,
+      100,
+      370,
+      280
+    ],
+    "colourbar_bbox": [
+      130,
+      40,
+      370,
+      54
+    ],
+    "orientation": "horizontal",
+    "rows": 6,
+    "columns": 8,
+    "licence": "MIT",
+    "edge_tolerance_pixels": 1
+  },
+  "left_grayscale": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      130,
+      100,
+      370,
+      280
+    ],
+    "colourbar_bbox": [
+      65,
+      100,
+      79,
+      280
+    ],
+    "orientation": "vertical",
+    "rows": 6,
+    "columns": 8,
+    "licence": "MIT",
+    "edge_tolerance_pixels": 1
+  },
+  "below_sequential": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      130,
+      100,
+      370,
+      280
+    ],
+    "colourbar_bbox": [
+      130,
+      330,
+      370,
+      344
+    ],
+    "orientation": "horizontal",
+    "rows": 6,
+    "columns": 8,
+    "licence": "MIT",
+    "edge_tolerance_pixels": 1
+  },
+  "count_complete": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      25,
+      25,
+      185,
+      145
+    ],
+    "rows": 6,
+    "columns": 8,
+    "licence": "MIT"
+  },
+  "count_omitted": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      25,
+      25,
+      185,
+      145
+    ],
+    "rows": 6,
+    "columns": 8,
+    "licence": "MIT"
+  },
+  "count_merged": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      25,
+      25,
+      185,
+      145
+    ],
+    "rows": 6,
+    "columns": 8,
+    "licence": "MIT"
+  },
+  "count_uniform": {
+    "split": "held_out",
+    "heatmap_bbox": [
+      25,
+      25,
+      185,
+      145
+    ],
+    "rows": 6,
+    "columns": 8,
+    "licence": "MIT"
+  }
+}

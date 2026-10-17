@@ -1,0 +1,15 @@
+display_index	display_label	genotype	diet	group_ordinal	ordinal_kind	sheet	source_column
+0	BMAd-Pnpla2+/+__Ad libitum__01	BMAd-Pnpla2+/+	Ad libitum	1	display_position_within_group	Figure 5E	C
+1	BMAd-Pnpla2+/+__Ad libitum__02	BMAd-Pnpla2+/+	Ad libitum	2	display_position_within_group	Figure 5E	D
+2	BMAd-Pnpla2+/+__Ad libitum__03	BMAd-Pnpla2+/+	Ad libitum	3	display_position_within_group	Figure 5E	E
+3	BMAd-Pnpla2+/+__Ad libitum__04	BMAd-Pnpla2+/+	Ad libitum	4	display_position_within_group	Figure 5E	F
+4	BMAd-Pnpla2+/+__CR__01	BMAd-Pnpla2+/+	CR	1	display_position_within_group	Figure 5E	H
+5	BMAd-Pnpla2+/+__CR__02	BMAd-Pnpla2+/+	CR	2	display_position_within_group	Figure 5E	I
+6	BMAd-Pnpla2+/+__CR__03	BMAd-Pnpla2+/+	CR	3	display_position_within_group	Figure 5E	J
+7	BMAd-Pnpla2+/+__CR__04	BMAd-Pnpla2+/+	CR	4	display_position_within_group	Figure 5E	K
+8	BMAd-Pnpla2-/-__Ad libitum__01	BMAd-Pnpla2-/-	Ad libitum	1	display_position_within_group	Figure 5E	M
+9	BMAd-Pnpla2-/-__Ad libitum__02	BMAd-Pnpla2-/-	Ad libitum	2	display_position_within_group	Figure 5E	N
+10	BMAd-Pnpla2-/-__Ad libitum__03	BMAd-Pnpla2-/-	Ad libitum	3	display_position_within_group	Figure 5E	O
+11	BMAd-Pnpla2-/-__CR__01	BMAd-Pnpla2-/-	CR	1	display_position_within_group	Figure 5E	Q
+12	BMAd-Pnpla2-/-__CR__02	BMAd-Pnpla2-/-	CR	2	display_position_within_group	Figure 5E	R
+13	BMAd-Pnpla2-/-__CR__03	BMAd-Pnpla2-/-	CR	3	display_position_within_group	Figure 5E	S

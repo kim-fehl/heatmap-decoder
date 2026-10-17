@@ -1,0 +1,9 @@
+NC1
+NC2
+NC3
+Dormancy1
+Dormancy2
+Dormancy3
+Reactivation1
+Reactivation2
+Reactivation3

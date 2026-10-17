@@ -1,0 +1,33 @@
+{
+  "summary": {
+    "clean": {
+      "attempts": 42,
+      "explicit_correct": 42,
+      "automatic_correct": 42
+    },
+    "jpeg": {
+      "attempts": 42,
+      "explicit_correct": 42,
+      "automatic_correct": 42
+    },
+    "blur": {
+      "attempts": 42,
+      "explicit_correct": 42,
+      "automatic_correct": 42
+    }
+  },
+  "gates": {
+    "explicit_clean": true,
+    "auto_clean": true,
+    "no_wrong_accepted": true,
+    "no_wrong_negative_acceptance": true
+  },
+  "spelling": {
+    "tesseract_raw_exact": 56,
+    "tesseract_total": 56,
+    "rapidocr_raw_exact": 2,
+    "rapidocr_total": 16,
+    "rapidocr_wrong_high_heuristic_confidence": 14,
+    "automatically_authorised_identifiers": 0
+  }
+}

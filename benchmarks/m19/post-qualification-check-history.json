@@ -1,0 +1,16 @@
+{
+  "first_full_check": {
+    "passed": 834,
+    "failed": 3,
+    "reason": "Old M17 assertions required inferred export to remain blocked. M19 explicitly qualifies their sharp measured scope; positive assertions updated to require eligible export. No negative or numerical assertion weakened."
+  },
+  "corrected_full_check": {
+    "passed": 837,
+    "subtests": 18,
+    "seconds": 126.81
+  },
+  "final_cli_wording_check": {
+    "passed": 9,
+    "seconds": 2.91
+  }
+}

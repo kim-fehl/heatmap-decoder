@@ -1,0 +1,42 @@
+{
+  "heatmap_bbox": [
+    144,
+    92,
+    1277,
+    1220
+  ],
+  "rows": 100,
+  "columns": 18,
+  "colourbar_bbox": [
+    1387,
+    91,
+    1410,
+    374
+  ],
+  "colourbar_orientation": "vertical",
+  "scale": {
+    "source": "manual_ticks",
+    "anchors": [
+      {
+        "position": 131.5,
+        "value": 2.0,
+        "origin": "reviewed"
+      },
+      {
+        "position": 199.0,
+        "value": 1.0,
+        "origin": "reviewed"
+      },
+      {
+        "position": 267.0,
+        "value": 0.0,
+        "origin": "reviewed"
+      },
+      {
+        "position": 334.5,
+        "value": -1.0,
+        "origin": "reviewed"
+      }
+    ]
+  }
+}

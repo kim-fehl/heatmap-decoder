@@ -1,0 +1,52 @@
+{
+  "heatmap_bbox": [
+    240,
+    360,
+    697,
+    497
+  ],
+  "rows": 4,
+  "columns": 4,
+  "labels": null,
+  "rows_segments": [
+    {
+      "start": 360.0,
+      "end": 420.0,
+      "count": 2
+    },
+    {
+      "start": 437.0,
+      "end": 497.0,
+      "count": 2
+    }
+  ],
+  "columns_segments": [
+    {
+      "start": 240.0,
+      "end": 460.0,
+      "count": 2
+    },
+    {
+      "start": 477.0,
+      "end": 697.0,
+      "count": 2
+    }
+  ],
+  "colourbar_bbox": [
+    40,
+    360,
+    54,
+    541
+  ],
+  "colourbar_orientation": "vertical",
+  "colourbar_start_value": 0.0,
+  "colourbar_end_value": 1.0,
+  "scale": null,
+  "sampling_inset_fraction": 0.25,
+  "max_colour_distance": 10.0,
+  "ambiguity_colour_tolerance": 1.0,
+  "ambiguity_position_fraction": 0.05,
+  "minimum_valid_fraction": 0.5,
+  "missing_colours": [],
+  "missing_colour_tolerance": 3.0
+}

@@ -1,0 +1,34 @@
+{
+  "heatmap_bbox": [
+    220,
+    140,
+    1000,
+    460
+  ],
+  "rows": 4,
+  "columns": 3,
+  "labels": {
+    "rows": {
+      "source": "ocr",
+      "bbox": [
+        10,
+        140,
+        210,
+        460
+      ]
+    },
+    "columns": {
+      "source": "ocr",
+      "bbox": [
+        220,
+        60,
+        1000,
+        125
+      ]
+    },
+    "ocr": {
+      "engine": "tesseract",
+      "upscale_factor": 3
+    }
+  }
+}

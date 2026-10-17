@@ -1,0 +1,63 @@
+{
+  "heatmap_bbox": [
+    89,
+    119,
+    710,
+    1118
+  ],
+  "rows": 49,
+  "columns": 14,
+  "colourbar_bbox": [
+    829,
+    122,
+    847,
+    533
+  ],
+  "colourbar_orientation": "vertical",
+  "scale": {
+    "source": "manual_ticks",
+    "quantity": "displayed z-score",
+    "anchors": [
+      {
+        "position": 134.5,
+        "value": 3.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 221.5,
+        "value": 2.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 308.5,
+        "value": 1.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 395.5,
+        "value": 0.0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 482.0,
+        "value": -1.0,
+        "origin": "manual",
+        "status": "reviewed"
+      }
+    ]
+  },
+  "labels": {
+    "rows": {
+      "source": "file",
+      "path": "rows.txt"
+    },
+    "columns": {
+      "source": "file",
+      "path": "columns.txt"
+    }
+  }
+}

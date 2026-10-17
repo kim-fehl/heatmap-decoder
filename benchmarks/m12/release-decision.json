@@ -1,0 +1,254 @@
+{
+  "test_sha256": "ab5c1529746e03f22bbe30ed46546534973d56c4f431d2786d50576e42c20c7c",
+  "selective_policy_version": "m12-selective.1",
+  "policy": {
+    "version": "m10-development.1",
+    "mode": "review_only",
+    "automatic_roi_enabled": false,
+    "automatic_rows_enabled": false,
+    "automatic_columns_enabled": false,
+    "reason": "M10 decisions are experimental; M12 release gates are not established",
+    "required_complete_layouts": 30,
+    "required_layout_families": 3,
+    "maximum_heatmap_edge_error_cell_pitch": 0.1,
+    "required_exact_count_examples_per_axis": 10,
+    "required_independent_count_signals": 2,
+    "negative_auto_acceptances_allowed": 0,
+    "minimum_ordinary_acceptance_coverage": 0.7,
+    "acceptance_thresholds": {
+      "max_image_pixels": 16000000,
+      "max_shortlisted_heatmaps": 3,
+      "maximum_edge_shift_pitch": 0.1,
+      "minimum_pitch": 6.0,
+      "minimum_equal_grid": 0.9,
+      "minimum_piecewise_constant": 0.95,
+      "minimum_boundary_contrast": 12.0,
+      "minimum_phase_alignment": 0.95,
+      "perturbation_threshold_factors": [
+        0.85,
+        1.0,
+        1.15
+      ],
+      "maximum_bar_noise": 4.0,
+      "maximum_bar_step": 12.0,
+      "bar_noise_multiplier": 3.0,
+      "maximum_plateau_fraction": 0.12,
+      "minimum_association_coverage": 0.9,
+      "minimum_count_alignment": 0.98,
+      "minimum_count_coverage": 0.95,
+      "maximum_numeric_cells": 65536,
+      "maximum_flagged_fraction": 0.01,
+      "maximum_missing_or_ambiguous_fraction": 0.0,
+      "maximum_association_pairs": 36,
+      "maximum_total_ocr_pixels": 16000000
+    }
+  },
+  "gate_source": "preregister.json; complete correctness includes QC",
+  "scope": "Synthetic base figures only; shared renderer/layouts limit independence",
+  "runtime_enablement": "Recommendations cannot enable runtime export",
+  "modes": {
+    "1": {
+      "checks": {
+        "distinct_bases": false,
+        "layout_families": false,
+        "ordinary_coverage": false,
+        "correct_complete": true,
+        "challenge_abstention": false
+      },
+      "failed": [
+        "distinct_bases",
+        "layout_families",
+        "ordinary_coverage",
+        "challenge_abstention"
+      ],
+      "measured_release_eligible": false,
+      "recommendation": "experimental_review_only",
+      "observed": {
+        "ordinary_attempts": 135,
+        "accepted": 11,
+        "distinct_accepted_bases": 11,
+        "accepted_families": [
+          "horizontal_cap",
+          "vertical_flank"
+        ],
+        "coverage": 0.08148148148148149,
+        "wrong_accepted": 0,
+        "challenge_attempts": 6,
+        "challenge_accepted": 1,
+        "measured_gate_passed": false,
+        "count_gates": {
+          "rows": {
+            "exact_accepted_bases": 11,
+            "families": [
+              "horizontal_cap",
+              "vertical_flank"
+            ]
+          },
+          "columns": {
+            "exact_accepted_bases": 11,
+            "families": [
+              "horizontal_cap",
+              "vertical_flank"
+            ]
+          }
+        },
+        "automatic_exports": 0,
+        "ticks_observed": 0,
+        "exact_tick_values": 0,
+        "tick_sign_errors": 0,
+        "median_seconds": 0.7842683290000423,
+        "maximum_seconds": 2.218120982000073,
+        "zero_error_95pct_upper_bound": 0.2384041903808527
+      }
+    },
+    "2": {
+      "checks": {
+        "distinct_bases": false,
+        "layout_families": false,
+        "ordinary_coverage": false,
+        "correct_complete": true,
+        "challenge_abstention": true,
+        "exact_inferred_rows": false,
+        "exact_inferred_columns": false
+      },
+      "failed": [
+        "distinct_bases",
+        "layout_families",
+        "ordinary_coverage",
+        "exact_inferred_rows",
+        "exact_inferred_columns"
+      ],
+      "measured_release_eligible": false,
+      "recommendation": "experimental_review_only",
+      "observed": {
+        "ordinary_attempts": 135,
+        "accepted": 0,
+        "distinct_accepted_bases": 0,
+        "accepted_families": [],
+        "coverage": 0.0,
+        "wrong_accepted": 0,
+        "challenge_attempts": 5,
+        "challenge_accepted": 0,
+        "measured_gate_passed": false,
+        "count_gates": {
+          "rows": {
+            "exact_accepted_bases": 0,
+            "families": []
+          },
+          "columns": {
+            "exact_accepted_bases": 0,
+            "families": []
+          }
+        },
+        "automatic_exports": 0,
+        "ticks_observed": 0,
+        "exact_tick_values": 0,
+        "tick_sign_errors": 0,
+        "median_seconds": 3.327049457000612,
+        "maximum_seconds": 10.686432149000211,
+        "zero_error_95pct_upper_bound": null
+      }
+    },
+    "3": {
+      "checks": {
+        "distinct_bases": false,
+        "layout_families": false,
+        "ordinary_coverage": false,
+        "correct_complete": true,
+        "challenge_abstention": true
+      },
+      "failed": [
+        "distinct_bases",
+        "layout_families",
+        "ordinary_coverage"
+      ],
+      "measured_release_eligible": false,
+      "recommendation": "experimental_review_only",
+      "observed": {
+        "ordinary_attempts": 135,
+        "accepted": 8,
+        "distinct_accepted_bases": 8,
+        "accepted_families": [
+          "horizontal_cap",
+          "vertical_flank"
+        ],
+        "coverage": 0.05925925925925926,
+        "wrong_accepted": 0,
+        "challenge_attempts": 10,
+        "challenge_accepted": 0,
+        "measured_gate_passed": false,
+        "count_gates": {
+          "rows": {
+            "exact_accepted_bases": 8,
+            "families": [
+              "horizontal_cap",
+              "vertical_flank"
+            ]
+          },
+          "columns": {
+            "exact_accepted_bases": 8,
+            "families": [
+              "horizontal_cap",
+              "vertical_flank"
+            ]
+          }
+        },
+        "automatic_exports": 0,
+        "ticks_observed": 67,
+        "exact_tick_values": 45,
+        "tick_sign_errors": 1,
+        "median_seconds": 0.813705495999784,
+        "maximum_seconds": 6.3172543419996146,
+        "zero_error_95pct_upper_bound": 0.31234397806636793
+      }
+    },
+    "4": {
+      "checks": {
+        "distinct_bases": false,
+        "layout_families": false,
+        "ordinary_coverage": false,
+        "correct_complete": true,
+        "challenge_abstention": true,
+        "exact_inferred_rows": false,
+        "exact_inferred_columns": false
+      },
+      "failed": [
+        "distinct_bases",
+        "layout_families",
+        "ordinary_coverage",
+        "exact_inferred_rows",
+        "exact_inferred_columns"
+      ],
+      "measured_release_eligible": false,
+      "recommendation": "experimental_review_only",
+      "observed": {
+        "ordinary_attempts": 135,
+        "accepted": 0,
+        "distinct_accepted_bases": 0,
+        "accepted_families": [],
+        "coverage": 0.0,
+        "wrong_accepted": 0,
+        "challenge_attempts": 9,
+        "challenge_accepted": 0,
+        "measured_gate_passed": false,
+        "count_gates": {
+          "rows": {
+            "exact_accepted_bases": 0,
+            "families": []
+          },
+          "columns": {
+            "exact_accepted_bases": 0,
+            "families": []
+          }
+        },
+        "automatic_exports": 0,
+        "ticks_observed": 67,
+        "exact_tick_values": 45,
+        "tick_sign_errors": 1,
+        "median_seconds": 3.4366397289995803,
+        "maximum_seconds": 14.221567367000716,
+        "zero_error_95pct_upper_bound": null
+      }
+    }
+  }
+}

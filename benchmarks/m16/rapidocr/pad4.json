@@ -1,0 +1,1025 @@
+{
+  "schema_version": 1,
+  "operation": "experimental_label_candidates",
+  "input": {
+    "filename": "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg",
+    "sha256": "085e6a625e36abeea8e239c842b78599a932434e53456bf492b0da1ce228d4ef"
+  },
+  "config": {
+    "heatmap_bbox": [
+      335,
+      189,
+      854,
+      861
+    ],
+    "rows": 33,
+    "columns": 8,
+    "labels": {
+      "rows": {
+        "source": "ocr",
+        "bbox": [
+          858,
+          189,
+          980,
+          861
+        ],
+        "recognition": "slots",
+        "text_rotation_degrees": 0,
+        "crop_padding_pixels": 1,
+        "white_padding_pixels": 1,
+        "crop_right_padding_pixels": 4
+      },
+      "columns": {
+        "source": "ocr",
+        "bbox": [
+          335,
+          868,
+          854,
+          904
+        ],
+        "recognition": "slots",
+        "text_rotation_degrees": 0,
+        "crop_padding_pixels": 1,
+        "white_padding_pixels": 1
+      },
+      "ocr": {
+        "language": "eng",
+        "upscale_factor": 3,
+        "min_confidence": 80.0,
+        "max_axis_offset_fraction": 0.4
+      }
+    }
+  },
+  "preprocessing": {
+    "grayscale": "Pillow L",
+    "external_upscale": 1,
+    "white_padding_before_scale_units": 4,
+    "padding_order": "after external resizing",
+    "note": "Overrides configured OCR upscaling/white padding only"
+  },
+  "engine": {
+    "name": "RapidOCR",
+    "detector": false,
+    "orientation_classifier": false,
+    "intra_op_threads": 1,
+    "inter_op_threads": 1,
+    "packages": {
+      "rapidocr-onnxruntime": "1.4.4",
+      "onnxruntime": "1.31.0",
+      "numpy": "2.5.4",
+      "Pillow": "12.3.0",
+      "opencv-python": "5.0.0.93"
+    },
+    "model_sha256": {
+      "ch_PP-OCRv4_rec_infer.onnx": "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b",
+      "ch_ppocr_mobile_v2.0_cls_infer.onnx": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c",
+      "ch_PP-OCRv4_det_infer.onnx": "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+    }
+  },
+  "geometry": "crop_bbox is a source field, not a detected glyph box",
+  "records": [
+    {
+      "axis": "rows",
+      "index": 0,
+      "crop_bbox": [
+        857,
+        188,
+        985,
+        211
+      ],
+      "raw_text": "EsTLR3",
+      "recognizer_score": 0.956236720085144,
+      "raw_result": [
+        [
+          "EsTLR3",
+          0.956236720085144
+        ]
+      ],
+      "engine_elapsed": [
+        0.10702013969421387
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 1,
+      "crop_bbox": [
+        857,
+        208,
+        985,
+        231
+      ],
+      "raw_text": "EsPGRP5",
+      "recognizer_score": 0.9354736975261143,
+      "raw_result": [
+        [
+          "EsPGRP5",
+          0.9354736975261143
+        ]
+      ],
+      "engine_elapsed": [
+        0.14890146255493164
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 2,
+      "crop_bbox": [
+        857,
+        228,
+        985,
+        252
+      ],
+      "raw_text": "LYSM3",
+      "recognizer_score": 0.985228157043457,
+      "raw_result": [
+        [
+          "LYSM3",
+          0.985228157043457
+        ]
+      ],
+      "engine_elapsed": [
+        0.03889799118041992
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 3,
+      "crop_bbox": [
+        857,
+        249,
+        985,
+        272
+      ],
+      "raw_text": "IKBL_",
+      "recognizer_score": 0.8508261442184448,
+      "raw_result": [
+        [
+          "IKBL_",
+          0.8508261442184448
+        ]
+      ],
+      "engine_elapsed": [
+        0.02243781089782715
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 4,
+      "crop_bbox": [
+        857,
+        269,
+        985,
+        292
+      ],
+      "raw_text": "KBRS1",
+      "recognizer_score": 0.990439486503601,
+      "raw_result": [
+        [
+          "KBRS1",
+          0.990439486503601
+        ]
+      ],
+      "engine_elapsed": [
+        0.026572227478027344
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 5,
+      "crop_bbox": [
+        857,
+        289,
+        985,
+        313
+      ],
+      "raw_text": "HSP9O",
+      "recognizer_score": 0.8848690867424012,
+      "raw_result": [
+        [
+          "HSP9O",
+          0.8848690867424012
+        ]
+      ],
+      "engine_elapsed": [
+        0.09631967544555664
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 6,
+      "crop_bbox": [
+        857,
+        310,
+        985,
+        333
+      ],
+      "raw_text": "EsRelA",
+      "recognizer_score": 0.9536861181259155,
+      "raw_result": [
+        [
+          "EsRelA",
+          0.9536861181259155
+        ]
+      ],
+      "engine_elapsed": [
+        0.0787663459777832
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 7,
+      "crop_bbox": [
+        857,
+        330,
+        985,
+        353
+      ],
+      "raw_text": "EsSOD",
+      "recognizer_score": 0.977695906162262,
+      "raw_result": [
+        [
+          "EsSOD",
+          0.977695906162262
+        ]
+      ],
+      "engine_elapsed": [
+        0.03845620155334473
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 8,
+      "crop_bbox": [
+        857,
+        350,
+        985,
+        374
+      ],
+      "raw_text": "TRAF3",
+      "recognizer_score": 0.9941424131393433,
+      "raw_result": [
+        [
+          "TRAF3",
+          0.9941424131393433
+        ]
+      ],
+      "engine_elapsed": [
+        0.03828167915344238
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 9,
+      "crop_bbox": [
+        857,
+        371,
+        985,
+        394
+      ],
+      "raw_text": "EslkBa",
+      "recognizer_score": 0.8988857666651408,
+      "raw_result": [
+        [
+          "EslkBa",
+          0.8988857666651408
+        ]
+      ],
+      "engine_elapsed": [
+        0.0489199161529541
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 10,
+      "crop_bbox": [
+        857,
+        391,
+        985,
+        414
+      ],
+      "raw_text": "TBK1",
+      "recognizer_score": 0.8920122683048248,
+      "raw_result": [
+        [
+          "TBK1",
+          0.8920122683048248
+        ]
+      ],
+      "engine_elapsed": [
+        0.07153487205505371
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 11,
+      "crop_bbox": [
+        857,
+        412,
+        985,
+        435
+      ],
+      "raw_text": "EsIKKy.",
+      "recognizer_score": 0.729751535824367,
+      "raw_result": [
+        [
+          "EsIKKy.",
+          0.729751535824367
+        ]
+      ],
+      "engine_elapsed": [
+        0.08025097846984863
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 12,
+      "crop_bbox": [
+        857,
+        432,
+        985,
+        455
+      ],
+      "raw_text": "EsPGRP2",
+      "recognizer_score": 0.9875417096274239,
+      "raw_result": [
+        [
+          "EsPGRP2",
+          0.9875417096274239
+        ]
+      ],
+      "engine_elapsed": [
+        0.21332716941833496
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 13,
+      "crop_bbox": [
+        857,
+        452,
+        985,
+        476
+      ],
+      "raw_text": "B",
+      "recognizer_score": 0.9785430431365967,
+      "raw_result": [
+        [
+          "B",
+          0.9785430431365967
+        ]
+      ],
+      "engine_elapsed": [
+        0.07666277885437012
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 14,
+      "crop_bbox": [
+        857,
+        473,
+        985,
+        496
+      ],
+      "raw_text": "IKKB_.",
+      "recognizer_score": 0.749429518977801,
+      "raw_result": [
+        [
+          "IKKB_.",
+          0.749429518977801
+        ]
+      ],
+      "engine_elapsed": [
+        0.05189847946166992
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 15,
+      "crop_bbox": [
+        857,
+        493,
+        985,
+        516
+      ],
+      "raw_text": "EsPGRP3",
+      "recognizer_score": 0.9700825129236493,
+      "raw_result": [
+        [
+          "EsPGRP3",
+          0.9700825129236493
+        ]
+      ],
+      "engine_elapsed": [
+        0.11733078956604004
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 16,
+      "crop_bbox": [
+        857,
+        513,
+        985,
+        537
+      ],
+      "raw_text": "TOLIP",
+      "recognizer_score": 0.9696689009666443,
+      "raw_result": [
+        [
+          "TOLIP",
+          0.9696689009666443
+        ]
+      ],
+      "engine_elapsed": [
+        0.07194185256958008
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 17,
+      "crop_bbox": [
+        857,
+        534,
+        985,
+        557
+      ],
+      "raw_text": "IKK",
+      "recognizer_score": 0.822106937567393,
+      "raw_result": [
+        [
+          "IKK",
+          0.822106937567393
+        ]
+      ],
+      "engine_elapsed": [
+        0.042530059814453125
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 18,
+      "crop_bbox": [
+        857,
+        554,
+        985,
+        577
+      ],
+      "raw_text": "HSP71",
+      "recognizer_score": 0.9898615837097168,
+      "raw_result": [
+        [
+          "HSP71",
+          0.9898615837097168
+        ]
+      ],
+      "engine_elapsed": [
+        0.03865361213684082
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 19,
+      "crop_bbox": [
+        857,
+        574,
+        985,
+        598
+      ],
+      "raw_text": "MYD88.",
+      "recognizer_score": 0.8366004327932993,
+      "raw_result": [
+        [
+          "MYD88.",
+          0.8366004327932993
+        ]
+      ],
+      "engine_elapsed": [
+        0.022536516189575195
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 20,
+      "crop_bbox": [
+        857,
+        595,
+        985,
+        618
+      ],
+      "raw_text": "EsGalectin1",
+      "recognizer_score": 0.9395326267589222,
+      "raw_result": [
+        [
+          "EsGalectin1",
+          0.9395326267589222
+        ]
+      ],
+      "engine_elapsed": [
+        0.02252364158630371
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 21,
+      "crop_bbox": [
+        857,
+        615,
+        985,
+        638
+      ],
+      "raw_text": "IRAK42",
+      "recognizer_score": 0.9737149973710378,
+      "raw_result": [
+        [
+          "IRAK42",
+          0.9737149973710378
+        ]
+      ],
+      "engine_elapsed": [
+        0.0232696533203125
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 22,
+      "crop_bbox": [
+        857,
+        636,
+        985,
+        659
+      ],
+      "raw_text": "EsTRAF6",
+      "recognizer_score": 0.915191650390625,
+      "raw_result": [
+        [
+          "EsTRAF6",
+          0.915191650390625
+        ]
+      ],
+      "engine_elapsed": [
+        0.02791285514831543
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 23,
+      "crop_bbox": [
+        857,
+        656,
+        985,
+        679
+      ],
+      "raw_text": "TRAF4",
+      "recognizer_score": 0.9805086374282836,
+      "raw_result": [
+        [
+          "TRAF4",
+          0.9805086374282836
+        ]
+      ],
+      "engine_elapsed": [
+        0.028388261795043945
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 24,
+      "crop_bbox": [
+        857,
+        676,
+        985,
+        700
+      ],
+      "raw_text": "TAB3",
+      "recognizer_score": 0.979450598359108,
+      "raw_result": [
+        [
+          "TAB3",
+          0.979450598359108
+        ]
+      ],
+      "engine_elapsed": [
+        0.021619081497192383
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 25,
+      "crop_bbox": [
+        857,
+        697,
+        985,
+        720
+      ],
+      "raw_text": "ESTLR4",
+      "recognizer_score": 0.8913336793581644,
+      "raw_result": [
+        [
+          "ESTLR4",
+          0.8913336793581644
+        ]
+      ],
+      "engine_elapsed": [
+        0.02206110954284668
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 26,
+      "crop_bbox": [
+        857,
+        717,
+        985,
+        740
+      ],
+      "raw_text": "NLRC3",
+      "recognizer_score": 0.8552523493766785,
+      "raw_result": [
+        [
+          "NLRC3",
+          0.8552523493766785
+        ]
+      ],
+      "engine_elapsed": [
+        0.021597862243652344
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 27,
+      "crop_bbox": [
+        857,
+        737,
+        985,
+        761
+      ],
+      "raw_text": "EsTLR1",
+      "recognizer_score": 0.8746742308139801,
+      "raw_result": [
+        [
+          "EsTLR1",
+          0.8746742308139801
+        ]
+      ],
+      "engine_elapsed": [
+        0.020698070526123047
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 28,
+      "crop_bbox": [
+        857,
+        758,
+        985,
+        781
+      ],
+      "raw_text": "TRAF2",
+      "recognizer_score": 0.9545927286148072,
+      "raw_result": [
+        [
+          "TRAF2",
+          0.9545927286148072
+        ]
+      ],
+      "engine_elapsed": [
+        0.022914409637451172
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 29,
+      "crop_bbox": [
+        857,
+        778,
+        985,
+        801
+      ],
+      "raw_text": "TAB",
+      "recognizer_score": 0.8877671360969543,
+      "raw_result": [
+        [
+          "TAB",
+          0.8877671360969543
+        ]
+      ],
+      "engine_elapsed": [
+        0.02162313461303711
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 30,
+      "crop_bbox": [
+        857,
+        798,
+        985,
+        822
+      ],
+      "raw_text": "TAKi",
+      "recognizer_score": 0.8982835561037064,
+      "raw_result": [
+        [
+          "TAKi",
+          0.8982835561037064
+        ]
+      ],
+      "engine_elapsed": [
+        0.02251291275024414
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 31,
+      "crop_bbox": [
+        857,
+        819,
+        985,
+        842
+      ],
+      "raw_text": "EsIRAK4",
+      "recognizer_score": 0.936324383531298,
+      "raw_result": [
+        [
+          "EsIRAK4",
+          0.936324383531298
+        ]
+      ],
+      "engine_elapsed": [
+        0.02215576171875
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "rows",
+      "index": 32,
+      "crop_bbox": [
+        857,
+        839,
+        985,
+        862
+      ],
+      "raw_text": "EsTLR2",
+      "recognizer_score": 0.9289218485355377,
+      "raw_result": [
+        [
+          "EsTLR2",
+          0.9289218485355377
+        ]
+      ],
+      "engine_elapsed": [
+        0.022097110748291016
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "columns",
+      "index": 0,
+      "crop_bbox": [
+        334,
+        867,
+        401,
+        905
+      ],
+      "raw_text": "2",
+      "recognizer_score": 0.9912462830543518,
+      "raw_result": [
+        [
+          "2",
+          0.9912462830543518
+        ]
+      ],
+      "engine_elapsed": [
+        0.022928953170776367
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "columns",
+      "index": 1,
+      "crop_bbox": [
+        398,
+        867,
+        466,
+        905
+      ],
+      "raw_text": "6",
+      "recognizer_score": 0.96324223279953,
+      "raw_result": [
+        [
+          "6",
+          0.96324223279953
+        ]
+      ],
+      "engine_elapsed": [
+        0.03865218162536621
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "columns",
+      "index": 2,
+      "crop_bbox": [
+        463,
+        867,
+        531,
+        905
+      ],
+      "raw_text": "8",
+      "recognizer_score": 0.9675689339637756,
+      "raw_result": [
+        [
+          "8",
+          0.9675689339637756
+        ]
+      ],
+      "engine_elapsed": [
+        0.02618265151977539
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "columns",
+      "index": 3,
+      "crop_bbox": [
+        528,
+        867,
+        596,
+        905
+      ],
+      "raw_text": "10",
+      "recognizer_score": 0.9975912272930145,
+      "raw_result": [
+        [
+          "10",
+          0.9975912272930145
+        ]
+      ],
+      "engine_elapsed": [
+        0.02516627311706543
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "columns",
+      "index": 4,
+      "crop_bbox": [
+        593,
+        867,
+        661,
+        905
+      ],
+      "raw_text": "12",
+      "recognizer_score": 0.9980362355709076,
+      "raw_result": [
+        [
+          "12",
+          0.9980362355709076
+        ]
+      ],
+      "engine_elapsed": [
+        0.022068023681640625
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "columns",
+      "index": 5,
+      "crop_bbox": [
+        658,
+        867,
+        726,
+        905
+      ],
+      "raw_text": "16",
+      "recognizer_score": 0.9970091879367828,
+      "raw_result": [
+        [
+          "16",
+          0.9970091879367828
+        ]
+      ],
+      "engine_elapsed": [
+        0.02195882797241211
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "columns",
+      "index": 6,
+      "crop_bbox": [
+        723,
+        867,
+        791,
+        905
+      ],
+      "raw_text": "18",
+      "recognizer_score": 0.9980073273181915,
+      "raw_result": [
+        [
+          "18",
+          0.9980073273181915
+        ]
+      ],
+      "engine_elapsed": [
+        0.021291732788085938
+      ],
+      "status": "needs_review",
+      "final_text": null
+    },
+    {
+      "axis": "columns",
+      "index": 7,
+      "crop_bbox": [
+        788,
+        867,
+        855,
+        905
+      ],
+      "raw_text": "24",
+      "recognizer_score": 0.9996520280838013,
+      "raw_result": [
+        [
+          "24",
+          0.9996520280838013
+        ]
+      ],
+      "engine_elapsed": [
+        0.022429943084716797
+      ],
+      "status": "needs_review",
+      "final_text": null
+    }
+  ]
+}

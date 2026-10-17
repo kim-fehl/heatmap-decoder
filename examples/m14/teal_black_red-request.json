@@ -1,0 +1,13 @@
+{
+  "numeric_only": true,
+  "hints": {
+    "rows": 24,
+    "columns": 12,
+    "colourbar_start_value": -3,
+    "colourbar_end_value": 5,
+    "requested": [
+      "heatmap",
+      "colourbar"
+    ]
+  }
+}

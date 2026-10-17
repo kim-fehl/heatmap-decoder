@@ -1,0 +1,2503 @@
+{
+  "labels": {
+    "config": {
+      "heatmap_bbox": [
+        240,
+        360,
+        697,
+        497
+      ],
+      "rows": 4,
+      "columns": 4,
+      "labels": {
+        "rows": {
+          "source": "ocr",
+          "bbox": [
+            110,
+            360,
+            235,
+            497
+          ],
+          "recognition": "slots",
+          "crop_padding_pixels": 0,
+          "crop_right_padding_pixels": 0,
+          "white_padding_pixels": 0,
+          "text_rotation_degrees": 0.0,
+          "attachment_endpoint": "nearest",
+          "max_attachment_distance_pixels": 40.0
+        },
+        "columns": {
+          "source": "ocr",
+          "bbox": [
+            100,
+            20,
+            907,
+            358
+          ],
+          "recognition": "lines",
+          "crop_padding_pixels": 0,
+          "crop_right_padding_pixels": 0,
+          "white_padding_pixels": 0,
+          "text_rotation_degrees": 30.0,
+          "attachment_endpoint": "nearest",
+          "max_attachment_distance_pixels": 40.0
+        },
+        "character_policy": "latin_greek",
+        "ocr": {
+          "engine": "rapidocr",
+          "language": "eng",
+          "upscale_factor": 1,
+          "min_confidence": 80.0,
+          "high_confidence": 90.0,
+          "retry_variants": [],
+          "max_axis_offset_fraction": 0.4
+        }
+      },
+      "rows_segments": [
+        {
+          "start": 360.0,
+          "end": 420.0,
+          "count": 2
+        },
+        {
+          "start": 437.0,
+          "end": 497.0,
+          "count": 2
+        }
+      ],
+      "columns_segments": [
+        {
+          "start": 240.0,
+          "end": 460.0,
+          "count": 2
+        },
+        {
+          "start": 477.0,
+          "end": 697.0,
+          "count": 2
+        }
+      ]
+    },
+    "axes": [
+      {
+        "axis": "rows",
+        "slots": [
+          {
+            "index": 0,
+            "raw_text": "BRCA1",
+            "final_text": null,
+            "confidence": 74.63609874248505,
+            "bbox": [
+              110.0,
+              360.0,
+              235.0,
+              390.0
+            ],
+            "source": "ocr",
+            "status": "low_confidence",
+            "candidate_indices": [
+              0
+            ],
+            "duplicate": false,
+            "issues": [],
+            "suggested_text": null
+          },
+          {
+            "index": 1,
+            "raw_text": "P53",
+            "final_text": null,
+            "confidence": 59.42424237728119,
+            "bbox": [
+              110.0,
+              390.0,
+              235.0,
+              420.0
+            ],
+            "source": "ocr",
+            "status": "low_confidence",
+            "candidate_indices": [
+              1
+            ],
+            "duplicate": false,
+            "issues": [],
+            "suggested_text": null
+          },
+          {
+            "index": 2,
+            "raw_text": "EGFR",
+            "final_text": null,
+            "confidence": 74.34606030583382,
+            "bbox": [
+              110.0,
+              437.0,
+              235.0,
+              467.0
+            ],
+            "source": "ocr",
+            "status": "low_confidence",
+            "candidate_indices": [
+              2
+            ],
+            "duplicate": false,
+            "issues": [],
+            "suggested_text": null
+          },
+          {
+            "index": 3,
+            "raw_text": "MYC",
+            "final_text": null,
+            "confidence": 65.31220450997353,
+            "bbox": [
+              110.0,
+              467.0,
+              235.0,
+              497.0
+            ],
+            "source": "ocr",
+            "status": "low_confidence",
+            "candidate_indices": [
+              3
+            ],
+            "duplicate": false,
+            "issues": [],
+            "suggested_text": null
+          }
+        ],
+        "tokens": [
+          {
+            "text": "BRCA1",
+            "bbox": [
+              110.0,
+              360.0,
+              235.0,
+              390.0
+            ],
+            "confidence": 74.63609874248505,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": []
+          },
+          {
+            "text": " P53",
+            "bbox": [
+              110.0,
+              390.0,
+              235.0,
+              420.0
+            ],
+            "confidence": 59.42424237728119,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": []
+          },
+          {
+            "text": "EGFR",
+            "bbox": [
+              110.0,
+              437.0,
+              235.0,
+              467.0
+            ],
+            "confidence": 74.34606030583382,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": []
+          },
+          {
+            "text": " MYC",
+            "bbox": [
+              110.0,
+              467.0,
+              235.0,
+              497.0
+            ],
+            "confidence": 65.31220450997353,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": []
+          }
+        ],
+        "candidates": [
+          {
+            "text": "BRCA1",
+            "bbox": [
+              110.0,
+              360.0,
+              235.0,
+              390.0
+            ],
+            "confidence": 74.63609874248505,
+            "token_indices": [
+              0
+            ],
+            "slot_index": 0,
+            "polygon": [],
+            "baseline": [],
+            "attachment": null,
+            "geometry_issues": []
+          },
+          {
+            "text": "P53",
+            "bbox": [
+              110.0,
+              390.0,
+              235.0,
+              420.0
+            ],
+            "confidence": 59.42424237728119,
+            "token_indices": [
+              1
+            ],
+            "slot_index": 1,
+            "polygon": [],
+            "baseline": [],
+            "attachment": null,
+            "geometry_issues": []
+          },
+          {
+            "text": "EGFR",
+            "bbox": [
+              110.0,
+              437.0,
+              235.0,
+              467.0
+            ],
+            "confidence": 74.34606030583382,
+            "token_indices": [
+              2
+            ],
+            "slot_index": 2,
+            "polygon": [],
+            "baseline": [],
+            "attachment": null,
+            "geometry_issues": []
+          },
+          {
+            "text": "MYC",
+            "bbox": [
+              110.0,
+              467.0,
+              235.0,
+              497.0
+            ],
+            "confidence": 65.31220450997353,
+            "token_indices": [
+              3
+            ],
+            "slot_index": 3,
+            "polygon": [],
+            "baseline": [],
+            "attachment": null,
+            "geometry_issues": []
+          }
+        ],
+        "unmatched_candidate_indices": [],
+        "geometry_evidence": null
+      },
+      {
+        "axis": "columns",
+        "slots": [
+          {
+            "index": 0,
+            "raw_text": "Sample_1 long 51",
+            "final_text": null,
+            "confidence": 96.06197774410248,
+            "bbox": [
+              293.79422863405995,
+              276.1614502078112,
+              407.3153532995459,
+              349.78580586079335
+            ],
+            "source": "ocr",
+            "status": "unreviewed",
+            "candidate_indices": [
+              0
+            ],
+            "duplicate": false,
+            "issues": [
+              "identifier_review_required"
+            ],
+            "suggested_text": null
+          },
+          {
+            "index": 1,
+            "raw_text": "Sample_2 long 51",
+            "final_text": null,
+            "confidence": 95.17270438373089,
+            "bbox": [
+              403.56664199358164,
+              276.29284741595535,
+              517.0877666590676,
+              349.91720306893745
+            ],
+            "source": "ocr",
+            "status": "unreviewed",
+            "candidate_indices": [
+              1
+            ],
+            "duplicate": false,
+            "issues": [
+              "identifier_review_required"
+            ],
+            "suggested_text": null
+          },
+          {
+            "index": 2,
+            "raw_text": "Sample_3 long 51",
+            "final_text": null,
+            "confidence": 95.59766985476017,
+            "bbox": [
+              531.6954618136543,
+              276.2184732581594,
+              645.2165864791402,
+              349.84282891114157
+            ],
+            "source": "ocr",
+            "status": "unreviewed",
+            "candidate_indices": [
+              2
+            ],
+            "duplicate": false,
+            "issues": [
+              "identifier_review_required"
+            ],
+            "suggested_text": null
+          },
+          {
+            "index": 3,
+            "raw_text": "Sample_4 long 51",
+            "final_text": null,
+            "confidence": 94.97511610388756,
+            "bbox": [
+              641.467875173176,
+              276.3498704663035,
+              754.9889998386619,
+              349.97422611928573
+            ],
+            "source": "ocr",
+            "status": "unreviewed",
+            "candidate_indices": [
+              3
+            ],
+            "duplicate": false,
+            "issues": [
+              "identifier_review_required"
+            ],
+            "suggested_text": null
+          }
+        ],
+        "tokens": [
+          {
+            "text": "Sample_1 long 51",
+            "bbox": [
+              291.06217782649105,
+              273.42939940024235,
+              410.0474041071148,
+              352.51785666836224
+            ],
+            "confidence": 96.06197774410248,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": [
+              [
+                291.06217782649105,
+                336.92939940024235
+              ],
+              [
+                401.0474041071148,
+                273.42939940024235
+              ],
+              [
+                410.0474041071148,
+                289.01785666836224
+              ],
+              [
+                300.06217782649105,
+                352.51785666836224
+              ]
+            ]
+          },
+          {
+            "text": "Sample_2 long 51",
+            "bbox": [
+              400.83459118601274,
+              273.56079660838645,
+              519.8198174666364,
+              352.64925387650635
+            ],
+            "confidence": 95.17270438373089,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": [
+              [
+                400.83459118601274,
+                337.06079660838645
+              ],
+              [
+                510.81981746663644,
+                273.56079660838645
+              ],
+              [
+                519.8198174666364,
+                289.14925387650635
+              ],
+              [
+                409.83459118601274,
+                352.64925387650635
+              ]
+            ]
+          },
+          {
+            "text": "Sample_3 long 51",
+            "bbox": [
+              528.9634110060854,
+              273.48642245059057,
+              647.9486372867092,
+              352.5748797187104
+            ],
+            "confidence": 95.59766985476017,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": [
+              [
+                528.9634110060854,
+                336.9864224505905
+              ],
+              [
+                638.9486372867092,
+                273.48642245059057
+              ],
+              [
+                647.9486372867092,
+                289.07487971871046
+              ],
+              [
+                537.9634110060854,
+                352.5748797187104
+              ]
+            ]
+          },
+          {
+            "text": "Sample_4 long 51",
+            "bbox": [
+              638.7358243656071,
+              273.6178196587347,
+              757.7210506462308,
+              352.70627692685457
+            ],
+            "confidence": 94.97511610388756,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": [
+              [
+                638.7358243656071,
+                337.1178196587347
+              ],
+              [
+                748.7210506462308,
+                273.6178196587347
+              ],
+              [
+                757.7210506462308,
+                289.20627692685457
+              ],
+              [
+                647.7358243656071,
+                352.70627692685457
+              ]
+            ]
+          }
+        ],
+        "candidates": [
+          {
+            "text": "Sample_1 long 51",
+            "bbox": [
+              293.79422863405995,
+              276.1614502078112,
+              407.3153532995459,
+              349.78580586079335
+            ],
+            "confidence": 96.06197774410248,
+            "token_indices": [
+              0
+            ],
+            "slot_index": 0,
+            "polygon": [
+              [
+                293.79422863405995,
+                337.6614502078112
+              ],
+              [
+                400.3153532995459,
+                276.1614502078112
+              ],
+              [
+                407.3153532995459,
+                288.28580586079335
+              ],
+              [
+                300.79422863405995,
+                349.78580586079335
+              ]
+            ],
+            "baseline": [
+              [
+                297.29422863405995,
+                343.7236280343023
+              ],
+              [
+                403.8153532995459,
+                282.2236280343023
+              ]
+            ],
+            "attachment": [
+              297.29422863405995,
+              343.7236280343023
+            ],
+            "geometry_issues": []
+          },
+          {
+            "text": "Sample_2 long 51",
+            "bbox": [
+              403.56664199358164,
+              276.29284741595535,
+              517.0877666590676,
+              349.91720306893745
+            ],
+            "confidence": 95.17270438373089,
+            "token_indices": [
+              1
+            ],
+            "slot_index": 1,
+            "polygon": [
+              [
+                403.56664199358164,
+                337.79284741595535
+              ],
+              [
+                510.0877666590676,
+                276.29284741595535
+              ],
+              [
+                517.0877666590676,
+                288.41720306893745
+              ],
+              [
+                410.56664199358164,
+                349.91720306893745
+              ]
+            ],
+            "baseline": [
+              [
+                407.06664199358164,
+                343.8550252424464
+              ],
+              [
+                513.5877666590676,
+                282.3550252424464
+              ]
+            ],
+            "attachment": [
+              407.06664199358164,
+              343.8550252424464
+            ],
+            "geometry_issues": []
+          },
+          {
+            "text": "Sample_3 long 51",
+            "bbox": [
+              531.6954618136543,
+              276.2184732581594,
+              645.2165864791402,
+              349.84282891114157
+            ],
+            "confidence": 95.59766985476017,
+            "token_indices": [
+              2
+            ],
+            "slot_index": 2,
+            "polygon": [
+              [
+                531.6954618136543,
+                337.7184732581594
+              ],
+              [
+                638.2165864791402,
+                276.2184732581594
+              ],
+              [
+                645.2165864791402,
+                288.3428289111416
+              ],
+              [
+                538.6954618136543,
+                349.84282891114157
+              ]
+            ],
+            "baseline": [
+              [
+                535.1954618136543,
+                343.78065108465046
+              ],
+              [
+                641.7165864791402,
+                282.28065108465046
+              ]
+            ],
+            "attachment": [
+              535.1954618136543,
+              343.78065108465046
+            ],
+            "geometry_issues": []
+          },
+          {
+            "text": "Sample_4 long 51",
+            "bbox": [
+              641.467875173176,
+              276.3498704663035,
+              754.9889998386619,
+              349.97422611928573
+            ],
+            "confidence": 94.97511610388756,
+            "token_indices": [
+              3
+            ],
+            "slot_index": 3,
+            "polygon": [
+              [
+                641.467875173176,
+                337.8498704663035
+              ],
+              [
+                747.9889998386619,
+                276.3498704663035
+              ],
+              [
+                754.9889998386619,
+                288.47422611928573
+              ],
+              [
+                648.467875173176,
+                349.97422611928573
+              ]
+            ],
+            "baseline": [
+              [
+                644.967875173176,
+                343.9120482927947
+              ],
+              [
+                751.4889998386619,
+                282.4120482927947
+              ]
+            ],
+            "attachment": [
+              644.967875173176,
+              343.9120482927947
+            ],
+            "geometry_issues": []
+          }
+        ],
+        "unmatched_candidate_indices": [],
+        "geometry_evidence": {
+          "status": "accepted",
+          "side": "above",
+          "matrix_boundary": 360,
+          "method": "matrix-side endpoint; original x; no spelling evidence",
+          "resolved_lines": 4,
+          "missing_slots": [],
+          "complete": true,
+          "lines": [
+            {
+              "index": 0,
+              "normalised_bbox": [
+                178,
+                372,
+                301,
+                386
+              ],
+              "polygon": [
+                [
+                  293.79422863405995,
+                  337.6614502078112
+                ],
+                [
+                  400.3153532995459,
+                  276.1614502078112
+                ],
+                [
+                  407.3153532995459,
+                  288.28580586079335
+                ],
+                [
+                  300.79422863405995,
+                  349.78580586079335
+                ]
+              ],
+              "baseline": [
+                [
+                  297.29422863405995,
+                  343.7236280343023
+                ],
+                [
+                  403.8153532995459,
+                  282.2236280343023
+                ]
+              ],
+              "attachment": [
+                297.29422863405995,
+                343.7236280343023
+              ],
+              "attachment_interpretation": "matrix_side_start",
+              "slot_index": 0,
+              "issues": []
+            },
+            {
+              "index": 1,
+              "normalised_bbox": [
+                273,
+                427,
+                396,
+                441
+              ],
+              "polygon": [
+                [
+                  403.56664199358164,
+                  337.79284741595535
+                ],
+                [
+                  510.0877666590676,
+                  276.29284741595535
+                ],
+                [
+                  517.0877666590676,
+                  288.41720306893745
+                ],
+                [
+                  410.56664199358164,
+                  349.91720306893745
+                ]
+              ],
+              "baseline": [
+                [
+                  407.06664199358164,
+                  343.8550252424464
+                ],
+                [
+                  513.5877666590676,
+                  282.3550252424464
+                ]
+              ],
+              "attachment": [
+                407.06664199358164,
+                343.8550252424464
+              ],
+              "attachment_interpretation": "matrix_side_start",
+              "slot_index": 1,
+              "issues": []
+            },
+            {
+              "index": 2,
+              "normalised_bbox": [
+                384,
+                491,
+                507,
+                505
+              ],
+              "polygon": [
+                [
+                  531.6954618136543,
+                  337.7184732581594
+                ],
+                [
+                  638.2165864791402,
+                  276.2184732581594
+                ],
+                [
+                  645.2165864791402,
+                  288.3428289111416
+                ],
+                [
+                  538.6954618136543,
+                  349.84282891114157
+                ]
+              ],
+              "baseline": [
+                [
+                  535.1954618136543,
+                  343.78065108465046
+                ],
+                [
+                  641.7165864791402,
+                  282.28065108465046
+                ]
+              ],
+              "attachment": [
+                535.1954618136543,
+                343.78065108465046
+              ],
+              "attachment_interpretation": "matrix_side_start",
+              "slot_index": 2,
+              "issues": []
+            },
+            {
+              "index": 3,
+              "normalised_bbox": [
+                479,
+                546,
+                602,
+                560
+              ],
+              "polygon": [
+                [
+                  641.467875173176,
+                  337.8498704663035
+                ],
+                [
+                  747.9889998386619,
+                  276.3498704663035
+                ],
+                [
+                  754.9889998386619,
+                  288.47422611928573
+                ],
+                [
+                  648.467875173176,
+                  349.97422611928573
+                ]
+              ],
+              "baseline": [
+                [
+                  644.967875173176,
+                  343.9120482927947
+                ],
+                [
+                  751.4889998386619,
+                  282.4120482927947
+                ]
+              ],
+              "attachment": [
+                644.967875173176,
+                343.9120482927947
+              ],
+              "attachment_interpretation": "matrix_side_start",
+              "slot_index": 3,
+              "issues": []
+            }
+          ],
+          "grid_sha256": "568349c74ecc560c5f67f88d6e4453521fb74752fa9cbe05c736d40a31a5cf39",
+          "reading_direction_evidence": {
+            "status": "upright",
+            "model": "shared glyph baseline with varying top edges",
+            "records": [
+              {
+                "line": 0,
+                "glyphs": 13,
+                "top_dispersion": 2.0,
+                "bottom_dispersion": 0.0,
+                "direction": "upright",
+                "typical_height": 10.0
+              },
+              {
+                "line": 1,
+                "glyphs": 13,
+                "top_dispersion": 2.0,
+                "bottom_dispersion": 0.0,
+                "direction": "upright",
+                "typical_height": 10.0
+              },
+              {
+                "line": 2,
+                "glyphs": 13,
+                "top_dispersion": 2.0,
+                "bottom_dispersion": 0.0,
+                "direction": "upright",
+                "typical_height": 10.0
+              },
+              {
+                "line": 3,
+                "glyphs": 13,
+                "top_dispersion": 2.0,
+                "bottom_dispersion": 0.0,
+                "direction": "upright",
+                "typical_height": 10.0
+              }
+            ],
+            "score_kind": "geometric edge dispersion; not spelling confidence"
+          },
+          "segmentation": {
+            "policy": {
+              "version": "oriented-attachments.1",
+              "maximum_pixels": 16000000,
+              "maximum_calls": 128,
+              "maximum_seconds": 60.0,
+              "maximum_lines": 128,
+              "ink_luminance": 175,
+              "component_minimum_pixels": 3,
+              "glyph_gap_height_fraction": 2.0,
+              "line_padding_pixels": 2
+            },
+            "transform": {
+              "bbox": [
+                100,
+                20,
+                907,
+                358
+              ],
+              "angle": 30.0,
+              "upscale_factor": 1,
+              "white_padding_pixels": 0,
+              "crop_size": [
+                868,
+                697
+              ],
+              "forward_affine": [
+                0.8660254037844481,
+                -0.5,
+                92.3974596215561,
+                0.5,
+                0.8660254037844339,
+                -67.32050807568876
+              ],
+              "inverse_affine": [
+                0.8660254037844481,
+                0.5,
+                -46.358293239570116,
+                -0.5,
+                0.8660254037844339,
+                104.49999999999997
+              ],
+              "interpolation": "Pillow affine bicubic; expanded white canvas"
+            },
+            "source_bbox": [
+              100,
+              20,
+              907,
+              358
+            ],
+            "segmentation_pixels": 604996,
+            "status": "measured",
+            "glyph_height": 10.0,
+            "join_width": 20,
+            "observed_lines": 4
+          },
+          "text_angle": 30.0,
+          "budget_remaining": {
+            "calls": 124,
+            "pixels": 15385860,
+            "seconds": 59.87834891999955
+          }
+        }
+      }
+    ],
+    "ocr_runs": [],
+    "unreviewed_axes": null,
+    "review_sha256": null,
+    "review_filename": null,
+    "slot_ocr_runs": [
+      [
+        "rows",
+        0,
+        [
+          110,
+          360,
+          235,
+          390
+        ],
+        {
+          "tokens": [
+            {
+              "text": "BRCA1",
+              "bbox": [
+                0.0,
+                0.0,
+                125.0,
+                30.0
+              ],
+              "confidence": 74.63609874248505,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-field",
+          "preprocessing": "original",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        }
+      ],
+      [
+        "rows",
+        1,
+        [
+          110,
+          390,
+          235,
+          420
+        ],
+        {
+          "tokens": [
+            {
+              "text": " P53",
+              "bbox": [
+                0.0,
+                0.0,
+                125.0,
+                30.0
+              ],
+              "confidence": 59.42424237728119,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-field",
+          "preprocessing": "original",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        }
+      ],
+      [
+        "rows",
+        2,
+        [
+          110,
+          437,
+          235,
+          467
+        ],
+        {
+          "tokens": [
+            {
+              "text": "EGFR",
+              "bbox": [
+                0.0,
+                0.0,
+                125.0,
+                30.0
+              ],
+              "confidence": 74.34606030583382,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-field",
+          "preprocessing": "original",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        }
+      ],
+      [
+        "rows",
+        3,
+        [
+          110,
+          467,
+          235,
+          497
+        ],
+        {
+          "tokens": [
+            {
+              "text": " MYC",
+              "bbox": [
+                0.0,
+                0.0,
+                125.0,
+                30.0
+              ],
+              "confidence": 65.31220450997353,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-field",
+          "preprocessing": "original",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        }
+      ]
+    ],
+    "skipped_ocr_attempts": [],
+    "oriented_ocr_records": [
+      {
+        "line": {
+          "index": 0,
+          "normalised_bbox": [
+            178,
+            372,
+            301,
+            386
+          ],
+          "polygon": [
+            [
+              293.79422863405995,
+              337.6614502078112
+            ],
+            [
+              400.3153532995459,
+              276.1614502078112
+            ],
+            [
+              407.3153532995459,
+              288.28580586079335
+            ],
+            [
+              300.79422863405995,
+              349.78580586079335
+            ]
+          ],
+          "baseline": [
+            [
+              297.29422863405995,
+              343.7236280343023
+            ],
+            [
+              403.8153532995459,
+              282.2236280343023
+            ]
+          ],
+          "attachment": [
+            297.29422863405995,
+            343.7236280343023
+          ],
+          "attachment_interpretation": "matrix_side_start",
+          "slot_index": 0,
+          "issues": []
+        },
+        "variant": "original",
+        "run": {
+          "tokens": [
+            {
+              "text": "Sample_1 long 51",
+              "bbox": [
+                0.0,
+                0.0,
+                127.0,
+                18.0
+              ],
+              "confidence": 96.06197774410248,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-field",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        },
+        "original_tokens": [
+          {
+            "text": "Sample_1 long 51",
+            "bbox": [
+              291.06217782649105,
+              273.42939940024235,
+              410.0474041071148,
+              352.51785666836224
+            ],
+            "confidence": 96.06197774410248,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": [
+              [
+                291.06217782649105,
+                336.92939940024235
+              ],
+              [
+                401.0474041071148,
+                273.42939940024235
+              ],
+              [
+                410.0474041071148,
+                289.01785666836224
+              ],
+              [
+                300.06217782649105,
+                352.51785666836224
+              ]
+            ]
+          }
+        ],
+        "normalised_line_crop": [
+          176,
+          370,
+          303,
+          388
+        ],
+        "source_transform": {
+          "bbox": [
+            100,
+            20,
+            907,
+            358
+          ],
+          "angle": 30.0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0,
+          "crop_size": [
+            868,
+            697
+          ],
+          "forward_affine": [
+            0.8660254037844481,
+            -0.5,
+            92.3974596215561,
+            0.5,
+            0.8660254037844339,
+            -67.32050807568876
+          ],
+          "inverse_affine": [
+            0.8660254037844481,
+            0.5,
+            -46.358293239570116,
+            -0.5,
+            0.8660254037844339,
+            104.49999999999997
+          ],
+          "interpolation": "Pillow affine bicubic; expanded white canvas"
+        },
+        "ocr_pixels": 2286,
+        "ocr_seconds": 0.020582043000104022,
+        "heuristic_text_acceptance": true,
+        "identifier_status": "unreviewed",
+        "grid_sha256": "568349c74ecc560c5f67f88d6e4453521fb74752fa9cbe05c736d40a31a5cf39"
+      },
+      {
+        "line": {
+          "index": 1,
+          "normalised_bbox": [
+            273,
+            427,
+            396,
+            441
+          ],
+          "polygon": [
+            [
+              403.56664199358164,
+              337.79284741595535
+            ],
+            [
+              510.0877666590676,
+              276.29284741595535
+            ],
+            [
+              517.0877666590676,
+              288.41720306893745
+            ],
+            [
+              410.56664199358164,
+              349.91720306893745
+            ]
+          ],
+          "baseline": [
+            [
+              407.06664199358164,
+              343.8550252424464
+            ],
+            [
+              513.5877666590676,
+              282.3550252424464
+            ]
+          ],
+          "attachment": [
+            407.06664199358164,
+            343.8550252424464
+          ],
+          "attachment_interpretation": "matrix_side_start",
+          "slot_index": 1,
+          "issues": []
+        },
+        "variant": "original",
+        "run": {
+          "tokens": [
+            {
+              "text": "Sample_2 long 51",
+              "bbox": [
+                0.0,
+                0.0,
+                127.0,
+                18.0
+              ],
+              "confidence": 95.17270438373089,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-field",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        },
+        "original_tokens": [
+          {
+            "text": "Sample_2 long 51",
+            "bbox": [
+              400.83459118601274,
+              273.56079660838645,
+              519.8198174666364,
+              352.64925387650635
+            ],
+            "confidence": 95.17270438373089,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": [
+              [
+                400.83459118601274,
+                337.06079660838645
+              ],
+              [
+                510.81981746663644,
+                273.56079660838645
+              ],
+              [
+                519.8198174666364,
+                289.14925387650635
+              ],
+              [
+                409.83459118601274,
+                352.64925387650635
+              ]
+            ]
+          }
+        ],
+        "normalised_line_crop": [
+          271,
+          425,
+          398,
+          443
+        ],
+        "source_transform": {
+          "bbox": [
+            100,
+            20,
+            907,
+            358
+          ],
+          "angle": 30.0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0,
+          "crop_size": [
+            868,
+            697
+          ],
+          "forward_affine": [
+            0.8660254037844481,
+            -0.5,
+            92.3974596215561,
+            0.5,
+            0.8660254037844339,
+            -67.32050807568876
+          ],
+          "inverse_affine": [
+            0.8660254037844481,
+            0.5,
+            -46.358293239570116,
+            -0.5,
+            0.8660254037844339,
+            104.49999999999997
+          ],
+          "interpolation": "Pillow affine bicubic; expanded white canvas"
+        },
+        "ocr_pixels": 2286,
+        "ocr_seconds": 0.020344351998573984,
+        "heuristic_text_acceptance": true,
+        "identifier_status": "unreviewed",
+        "grid_sha256": "568349c74ecc560c5f67f88d6e4453521fb74752fa9cbe05c736d40a31a5cf39"
+      },
+      {
+        "line": {
+          "index": 2,
+          "normalised_bbox": [
+            384,
+            491,
+            507,
+            505
+          ],
+          "polygon": [
+            [
+              531.6954618136543,
+              337.7184732581594
+            ],
+            [
+              638.2165864791402,
+              276.2184732581594
+            ],
+            [
+              645.2165864791402,
+              288.3428289111416
+            ],
+            [
+              538.6954618136543,
+              349.84282891114157
+            ]
+          ],
+          "baseline": [
+            [
+              535.1954618136543,
+              343.78065108465046
+            ],
+            [
+              641.7165864791402,
+              282.28065108465046
+            ]
+          ],
+          "attachment": [
+            535.1954618136543,
+            343.78065108465046
+          ],
+          "attachment_interpretation": "matrix_side_start",
+          "slot_index": 2,
+          "issues": []
+        },
+        "variant": "original",
+        "run": {
+          "tokens": [
+            {
+              "text": "Sample_3 long 51",
+              "bbox": [
+                0.0,
+                0.0,
+                127.0,
+                18.0
+              ],
+              "confidence": 95.59766985476017,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-field",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        },
+        "original_tokens": [
+          {
+            "text": "Sample_3 long 51",
+            "bbox": [
+              528.9634110060854,
+              273.48642245059057,
+              647.9486372867092,
+              352.5748797187104
+            ],
+            "confidence": 95.59766985476017,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": [
+              [
+                528.9634110060854,
+                336.9864224505905
+              ],
+              [
+                638.9486372867092,
+                273.48642245059057
+              ],
+              [
+                647.9486372867092,
+                289.07487971871046
+              ],
+              [
+                537.9634110060854,
+                352.5748797187104
+              ]
+            ]
+          }
+        ],
+        "normalised_line_crop": [
+          382,
+          489,
+          509,
+          507
+        ],
+        "source_transform": {
+          "bbox": [
+            100,
+            20,
+            907,
+            358
+          ],
+          "angle": 30.0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0,
+          "crop_size": [
+            868,
+            697
+          ],
+          "forward_affine": [
+            0.8660254037844481,
+            -0.5,
+            92.3974596215561,
+            0.5,
+            0.8660254037844339,
+            -67.32050807568876
+          ],
+          "inverse_affine": [
+            0.8660254037844481,
+            0.5,
+            -46.358293239570116,
+            -0.5,
+            0.8660254037844339,
+            104.49999999999997
+          ],
+          "interpolation": "Pillow affine bicubic; expanded white canvas"
+        },
+        "ocr_pixels": 2286,
+        "ocr_seconds": 0.02050492899979872,
+        "heuristic_text_acceptance": true,
+        "identifier_status": "unreviewed",
+        "grid_sha256": "568349c74ecc560c5f67f88d6e4453521fb74752fa9cbe05c736d40a31a5cf39"
+      },
+      {
+        "line": {
+          "index": 3,
+          "normalised_bbox": [
+            479,
+            546,
+            602,
+            560
+          ],
+          "polygon": [
+            [
+              641.467875173176,
+              337.8498704663035
+            ],
+            [
+              747.9889998386619,
+              276.3498704663035
+            ],
+            [
+              754.9889998386619,
+              288.47422611928573
+            ],
+            [
+              648.467875173176,
+              349.97422611928573
+            ]
+          ],
+          "baseline": [
+            [
+              644.967875173176,
+              343.9120482927947
+            ],
+            [
+              751.4889998386619,
+              282.4120482927947
+            ]
+          ],
+          "attachment": [
+            644.967875173176,
+            343.9120482927947
+          ],
+          "attachment_interpretation": "matrix_side_start",
+          "slot_index": 3,
+          "issues": []
+        },
+        "variant": "original",
+        "run": {
+          "tokens": [
+            {
+              "text": "Sample_4 long 51",
+              "bbox": [
+                0.0,
+                0.0,
+                127.0,
+                18.0
+              ],
+              "confidence": 94.97511610388756,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-field",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        },
+        "original_tokens": [
+          {
+            "text": "Sample_4 long 51",
+            "bbox": [
+              638.7358243656071,
+              273.6178196587347,
+              757.7210506462308,
+              352.70627692685457
+            ],
+            "confidence": 94.97511610388756,
+            "line_id": [
+              1,
+              1,
+              1
+            ],
+            "polygon": [
+              [
+                638.7358243656071,
+                337.1178196587347
+              ],
+              [
+                748.7210506462308,
+                273.6178196587347
+              ],
+              [
+                757.7210506462308,
+                289.20627692685457
+              ],
+              [
+                647.7358243656071,
+                352.70627692685457
+              ]
+            ]
+          }
+        ],
+        "normalised_line_crop": [
+          477,
+          544,
+          604,
+          562
+        ],
+        "source_transform": {
+          "bbox": [
+            100,
+            20,
+            907,
+            358
+          ],
+          "angle": 30.0,
+          "upscale_factor": 1,
+          "white_padding_pixels": 0,
+          "crop_size": [
+            868,
+            697
+          ],
+          "forward_affine": [
+            0.8660254037844481,
+            -0.5,
+            92.3974596215561,
+            0.5,
+            0.8660254037844339,
+            -67.32050807568876
+          ],
+          "inverse_affine": [
+            0.8660254037844481,
+            0.5,
+            -46.358293239570116,
+            -0.5,
+            0.8660254037844339,
+            104.49999999999997
+          ],
+          "interpolation": "Pillow affine bicubic; expanded white canvas"
+        },
+        "ocr_pixels": 2286,
+        "ocr_seconds": 0.020185297000352875,
+        "heuristic_text_acceptance": true,
+        "identifier_status": "unreviewed",
+        "grid_sha256": "568349c74ecc560c5f67f88d6e4453521fb74752fa9cbe05c736d40a31a5cf39"
+      }
+    ]
+  },
+  "legend": {
+    "config": {
+      "colourbar_bbox": [
+        40,
+        360,
+        54,
+        541
+      ],
+      "colourbar_orientation": "vertical",
+      "legend": {
+        "ocr": {
+          "engine": "rapidocr",
+          "language": "eng",
+          "upscale_factor": 1,
+          "min_confidence": 80.0,
+          "high_confidence": 90.0,
+          "retry_variants": [],
+          "max_axis_offset_fraction": 0.4
+        },
+        "search_pixels": 64,
+        "horizontal_search_pixels": 64,
+        "max_ticks": 16,
+        "max_ocr_pixels": 4000000,
+        "max_ocr_seconds": 60.0,
+        "max_axis_offset_pixels": 6.0,
+        "endpoint_tolerance_pixels": 2.0,
+        "decimal_separator": ".",
+        "align_tick_fields": false,
+        "retry_unconstrained_numeric": false,
+        "retry_white_padding_pixels": [],
+        "crop_padding_pixels": 0,
+        "white_padding_pixels": 2
+      },
+      "scale_model": "linear"
+    },
+    "ticks": [
+      {
+        "index": 0,
+        "side": "right",
+        "position": 360.0,
+        "position_source": "stroke",
+        "stroke_bbox": [
+          54.0,
+          360.0,
+          61.0,
+          361.0
+        ],
+        "text_bbox": [
+          69.0,
+          351.0,
+          87.0,
+          368.0
+        ],
+        "raw_text": "-3",
+        "normalised_text": "-3",
+        "normalisation_actions": [],
+        "parsed_value": -3.0,
+        "confidence": 99.21242594718933,
+        "token_indices": [
+          0
+        ],
+        "localisation_record_index": 1,
+        "numeric_record_index": 2,
+        "numeric_token_indices": [
+          0
+        ],
+        "ocr_bbox": [
+          66,
+          348,
+          90,
+          371
+        ],
+        "field_evidence": null,
+        "numeric_alternatives": [
+          {
+            "record_index": 2,
+            "raw_text": "-3",
+            "parsed_value": -3.0,
+            "confidence": 99.21242594718933,
+            "text_bbox": [
+              69.0,
+              351.0,
+              87.0,
+              368.0
+            ],
+            "white_padding_pixels": 2,
+            "normalisation_actions": [],
+            "numeric_characters_only": false
+          }
+        ],
+        "status": "suggested",
+        "reasons": []
+      },
+      {
+        "index": 1,
+        "side": "right",
+        "position": 450.0,
+        "position_source": "stroke",
+        "stroke_bbox": [
+          54.0,
+          450.0,
+          61.0,
+          451.0
+        ],
+        "text_bbox": [
+          70.0,
+          443.0,
+          81.0,
+          458.0
+        ],
+        "raw_text": "0",
+        "normalised_text": "0",
+        "normalisation_actions": [],
+        "parsed_value": 0.0,
+        "confidence": 97.68118262290955,
+        "token_indices": [
+          1
+        ],
+        "localisation_record_index": 1,
+        "numeric_record_index": 3,
+        "numeric_token_indices": [
+          0
+        ],
+        "ocr_bbox": [
+          67,
+          440,
+          84,
+          461
+        ],
+        "field_evidence": null,
+        "numeric_alternatives": [
+          {
+            "record_index": 3,
+            "raw_text": "0",
+            "parsed_value": 0.0,
+            "confidence": 97.68118262290955,
+            "text_bbox": [
+              70.0,
+              443.0,
+              81.0,
+              458.0
+            ],
+            "white_padding_pixels": 2,
+            "normalisation_actions": [],
+            "numeric_characters_only": false
+          }
+        ],
+        "status": "suggested",
+        "reasons": []
+      },
+      {
+        "index": 2,
+        "side": "right",
+        "position": 540.0,
+        "position_source": "stroke",
+        "stroke_bbox": [
+          54.0,
+          540.0,
+          61.0,
+          541.0
+        ],
+        "text_bbox": [
+          70.0,
+          532.0,
+          81.0,
+          548.0
+        ],
+        "raw_text": "3",
+        "normalised_text": "3",
+        "normalisation_actions": [],
+        "parsed_value": 3.0,
+        "confidence": 99.90467429161072,
+        "token_indices": [
+          2
+        ],
+        "localisation_record_index": 1,
+        "numeric_record_index": 4,
+        "numeric_token_indices": [
+          0
+        ],
+        "ocr_bbox": [
+          67,
+          529,
+          84,
+          551
+        ],
+        "field_evidence": null,
+        "numeric_alternatives": [
+          {
+            "record_index": 4,
+            "raw_text": "3",
+            "parsed_value": 3.0,
+            "confidence": 99.90467429161072,
+            "text_bbox": [
+              70.0,
+              532.0,
+              81.0,
+              548.0
+            ],
+            "white_padding_pixels": 2,
+            "normalisation_actions": [],
+            "numeric_characters_only": false
+          }
+        ],
+        "status": "suggested",
+        "reasons": []
+      }
+    ],
+    "ocr_records": [
+      {
+        "side": "left",
+        "crop_bbox": [
+          0,
+          296,
+          40,
+          605
+        ],
+        "purpose": "localisation",
+        "run": {
+          "tokens": [],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-detect-recognize",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "detected_text",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "right",
+        "crop_bbox": [
+          54,
+          296,
+          118,
+          605
+        ],
+        "purpose": "localisation",
+        "run": {
+          "tokens": [
+            {
+              "text": "-3",
+              "bbox": [
+                15.0,
+                55.0,
+                33.0,
+                72.0
+              ],
+              "confidence": 98.78665804862976,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            },
+            {
+              "text": "0",
+              "bbox": [
+                16.0,
+                147.0,
+                27.0,
+                162.0
+              ],
+              "confidence": 92.34144687652588,
+              "line_id": [
+                1,
+                2,
+                1
+              ],
+              "polygon": []
+            },
+            {
+              "text": "3",
+              "bbox": [
+                16.0,
+                236.0,
+                27.0,
+                252.0
+              ],
+              "confidence": 99.8544454574585,
+              "line_id": [
+                1,
+                3,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-detect-recognize",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "detected_text",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        },
+        "masked_stroke_boxes": [
+          [
+            54.0,
+            360.0,
+            61.0,
+            361.0
+          ],
+          [
+            54.0,
+            450.0,
+            61.0,
+            451.0
+          ],
+          [
+            54.0,
+            540.0,
+            61.0,
+            541.0
+          ]
+        ]
+      },
+      {
+        "side": "right",
+        "crop_bbox": [
+          66,
+          348,
+          90,
+          371
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "-3",
+              "bbox": [
+                2.0,
+                2.0,
+                26.0,
+                25.0
+              ],
+              "confidence": 99.21242594718933,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-numeric-field-unconstrained",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 2,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "right",
+        "crop_bbox": [
+          67,
+          440,
+          84,
+          461
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "0",
+              "bbox": [
+                2.0,
+                2.0,
+                19.0,
+                23.0
+              ],
+              "confidence": 97.68118262290955,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-numeric-field-unconstrained",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 2,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "right",
+        "crop_bbox": [
+          67,
+          529,
+          84,
+          551
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "3",
+              "bbox": [
+                2.0,
+                2.0,
+                19.0,
+                24.0
+              ],
+              "confidence": 99.90467429161072,
+              "line_id": [
+                1,
+                1,
+                1
+              ],
+              "polygon": []
+            }
+          ],
+          "engine_version": "PP-OCRv4 eng / ONNX Runtime 1.31.0",
+          "wrapper_version": "1.4.4",
+          "language": "eng",
+          "available_languages": [
+            "eng"
+          ],
+          "mode": "rapidocr-recognize-numeric-field-unconstrained",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 2,
+          "engine_name": "RapidOCR",
+          "geometry_kind": "source_field",
+          "score_kind": "uncalibrated_mean_character_score_x100",
+          "model_sha256": [
+            [
+              "ch_PP-OCRv4_det_infer.onnx",
+              "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+            ],
+            [
+              "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+              "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+            ],
+            [
+              "en_PP-OCRv4_rec_infer.onnx",
+              "e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318"
+            ]
+          ]
+        },
+        "masked_stroke_boxes": []
+      }
+    ],
+    "fit": {
+      "slope": 6.000000000000002,
+      "intercept": -2.999999999999999,
+      "normalised_positions": [
+        0.0,
+        0.5,
+        1.0
+      ],
+      "value_residuals": [
+        -8.881784197001252e-16,
+        -1.7763568394002505e-15,
+        -2.6645352591003757e-15
+      ],
+      "position_residuals_pixels": [
+        -2.664535259100375e-14,
+        -5.32907051820075e-14,
+        -7.993605777301125e-14
+      ],
+      "recognised_span": [
+        0.0,
+        1.0
+      ],
+      "condition_number": 3.1529468617358813,
+      "tests_linearity": true,
+      "endpoint_coverage": true,
+      "within_residual_limits": true
+    },
+    "status": "review_required",
+    "reasons": [
+      "M12_scale_gate_closed"
+    ],
+    "development_eligible": true,
+    "automatic_export_allowed": false,
+    "review_sha256": null,
+    "reviewed_anchors": [],
+    "unreviewed_fit": null,
+    "unreviewed_reasons": [],
+    "calibration_evidence": null
+  }
+}

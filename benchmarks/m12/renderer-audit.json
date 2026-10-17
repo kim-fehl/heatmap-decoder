@@ -1,0 +1,550 @@
+{
+  "note": "Independent truth audit; no exclusions or changes to preregistered denominators",
+  "summary": {
+    "development": {
+      "bases": 15,
+      "tick_overlap_bases": 0,
+      "tick_identity_overlap_bases": 2,
+      "clipped_tick_bases": 0
+    },
+    "validation": {
+      "bases": 15,
+      "tick_overlap_bases": 0,
+      "tick_identity_overlap_bases": 2,
+      "clipped_tick_bases": 0
+    },
+    "test": {
+      "bases": 45,
+      "tick_overlap_bases": 2,
+      "tick_identity_overlap_bases": 7,
+      "clipped_tick_bases": 0
+    }
+  },
+  "bases": [
+    {
+      "base_id": "development-00",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-01",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-02",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-03",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-04",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-05",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-06",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-07",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-08",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-09",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-10",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-11",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-12",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-13",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "development-14",
+      "split": "development",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-00",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-01",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-02",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-03",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-04",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-05",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-06",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-07",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-08",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-09",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-10",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-11",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-12",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-13",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "validation-14",
+      "split": "validation",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-00",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-01",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-02",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-03",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-04",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-05",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-06",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-07",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-08",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-09",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-10",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-11",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-12",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-13",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-14",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-15",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-16",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-17",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-18",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-19",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-20",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-21",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-22",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-23",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-24",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-25",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-26",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-27",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-28",
+      "split": "test",
+      "tick_box_overlaps": 2,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-29",
+      "split": "test",
+      "tick_box_overlaps": 7,
+      "tick_identity_overlaps": 2,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-30",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-31",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-32",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-33",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-34",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-35",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-36",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-37",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-38",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-39",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-40",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-41",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 1,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-42",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-43",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    },
+    {
+      "base_id": "test-44",
+      "split": "test",
+      "tick_box_overlaps": 0,
+      "tick_identity_overlaps": 0,
+      "clipped_tick_boxes": 0
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "policy_version": "capability-selective.3",
+  "report": "validation-final.json",
+  "report_sha256": "1306b46754ade312b99df18a34e47276bd149e9e3bb6809210df4e5d9ec088b6",
+  "sharp_measured_counts": {
+    "qualified": true,
+    "criteria": "Accepted pixel-boundary/common-pitch count evidence with selected maximum transition width <=1px; full ROI/association/QC still required.",
+    "validation": "40/40 clean bases; each gap family10/10; zero negative complete12/12. Derivative coverage target failed, not excluded."
+  },
+  "linear_ocr_scale": {
+    "qualified": true,
+    "criteria": "Tesseract eng, upscale3, confidence>=80, association offset<=6px, all anchors linear, >=3 physical ticks; no implicit extrapolation.",
+    "validation": "39/40 clean bases;104/120 supplied geometry/count OCR attempts accurate/complete; zero wrong complete."
+  },
+  "broad_inferred_counts": {
+    "qualified": false,
+    "reason": "54/120 versus70% derivative target"
+  },
+  "stable_release": false,
+  "publication_generalisation": false,
+  "policy_change": "After frozen per-image evaluation; enables passing bounded scopes only. No numeric, geometry, fit, ambiguity or error threshold changed."
+}

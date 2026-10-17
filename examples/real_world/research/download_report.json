@@ -1,0 +1,92 @@
+{
+  "checked_at_utc": "2026-10-14T21:19:25.172523+00:00",
+  "note": "File integrity only; table contents and figure order remain unverified.",
+  "assets": [
+    {
+      "candidate": "elife-17290",
+      "url": "https://cdn.elifesciences.org/articles/17290/elife-17290-fig2-data2-v1.xlsx",
+      "filename": "elife-17290-fig2-data2-v1.xlsx",
+      "status": "local_file_validated",
+      "sha256": "e58b933c9eb91c73ebc20afc4cd9a11ebd44b58fe64f589a19544586ba4ee52f",
+      "bytes": 49580
+    },
+    {
+      "candidate": "elife-17290",
+      "url": "https://cdn.elifesciences.org/articles/17290/elife-17290-fig2-data1-v1.xlsx",
+      "filename": "elife-17290-fig2-data1-v1.xlsx",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "candidate": "elife-17290",
+      "url": "https://cdn.elifesciences.org/elife-articles/17290/figures-pdf/elife17290-figures.pdf",
+      "filename": "elife17290-figures.pdf",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "candidate": "elife-78496",
+      "url": "https://cdn.elifesciences.org/articles/78496/elife-78496-fig5-data1-v2.xlsx",
+      "filename": "elife-78496-fig5-data1-v2.xlsx",
+      "status": "local_file_validated",
+      "sha256": "9bd972443aa26d12e132e634984c426582451c49e2da7c583ed58d9b342aa95c",
+      "bytes": 235930
+    },
+    {
+      "candidate": "elife-78496",
+      "url": "https://cdn.elifesciences.org/articles/78496/elife-78496-v2.pdf",
+      "filename": "elife-78496-v2.pdf",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "candidate": "elife-97830",
+      "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-fig2-data1-v1.xlsx",
+      "filename": "elife-97830-fig2-data1-v1.xlsx",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "candidate": "elife-97830",
+      "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-fig3-data1-v1.xlsx",
+      "filename": "elife-97830-fig3-data1-v1.xlsx",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "candidate": "elife-97830",
+      "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-fig4-data1-v1.xlsx",
+      "filename": "elife-97830-fig4-data1-v1.xlsx",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "candidate": "elife-97830",
+      "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-supp1-v1.xlsx",
+      "filename": "elife-97830-supp1-v1.xlsx",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "candidate": "elife-97830",
+      "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-supp2-v1.xlsx",
+      "filename": "elife-97830-supp2-v1.xlsx",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "candidate": "elife-97830",
+      "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-supp3-v1.xlsx",
+      "filename": "elife-97830-supp3-v1.xlsx",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "candidate": "elife-97830",
+      "url": "https://cdn.elifesciences.org/articles/97830/elife-97830-v1.pdf",
+      "filename": "elife-97830-v1.pdf",
+      "status": "failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ]
+}

@@ -44,6 +44,31 @@ than treating the default scaffold as the complete repository.
   is not implementation. Clearly identify work that remains unimplemented or
   unverified. Keep reproducible extraction results separate from ground truth.
 
+The supported package is `heatmap_decoder` and the command is `heatmap-decoder`.
+Do not restore the removed `heatmap2matrix` package, CLI, or compatibility aliases.
+
+## Maintain tests by functionality
+
+- Read [the test ownership table](docs/testing.md) before adding or changing tests.
+  Update the existing file for the affected behavior in `tests/unit`,
+  `tests/pipeline`, `tests/ocr`, or `tests/qualification`.
+- Do not add milestone-, issue-, review-, or date-specific test files for behavior
+  already owned by an existing file. Temporary development test files are allowed,
+  but move their lasting coverage into the owning files and delete the temporary
+  files before finishing the change.
+- Create a new permanent test file only for a distinct capability with no existing
+  owner. Name it after the behavior and update the ownership table in the same change.
+- Reuse constructors in `tests/support/synthetic.py` and the domain helpers under
+  `tests/support`. Keep inputs fresh per test; do not import helpers from test modules
+  or duplicate example/benchmark renderers. Preserve frozen benchmark evidence.
+- Keep real engine calls in `tests/ocr`; mock engines in unit/pipeline tests. Keep
+  benchmark integrity, evaluation gates, and publication reference checks in
+  `tests/qualification`. Execution tiers and the OCR opt-in are assigned centrally
+  in `tests/conftest.py`.
+- Compare inputs, assertions, failure modes, and public interfaces before deleting
+  an apparently duplicate test. Similar names or shared fixtures alone are not
+  evidence of duplicate coverage. Preserve parameter matrices and property tests.
+
 ## Verify and publish
 
 - Follow the project's locked environment and checks in

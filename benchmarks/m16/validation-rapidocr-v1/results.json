@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "freeze_sha256": "913e7e3126391cb495c81c1073a30b240f6c857e5e227857289002690534d3c4",
+  "acceptance_passed": true,
+  "policy": {
+    "mae_fraction": 0.02,
+    "max_fraction": 0.05,
+    "finite_fraction": 1,
+    "maximum_flagged_fraction": 0.01,
+    "minimum_complete_fraction": 0.8,
+    "maximum_wrong_complete": 0,
+    "maximum_negative_complete": 0
+  },
+  "summary": {
+    "attempts": 48,
+    "bases": 16,
+    "complete": 43,
+    "complete_accurate": 43,
+    "wrong_complete": 0,
+    "numeric_export_allowed": 43,
+    "wrong_numeric_export": 0,
+    "negative_attempts": 6,
+    "negative_complete": 0,
+    "negative_export_allowed": 0,
+    "worst_finite_mae_fraction": 0.005135995370370371,
+    "worst_finite_max_fraction": 0.035869565217391375,
+    "labels": {
+      "sparse": {
+        "slots": 720,
+        "raw_exact": 512,
+        "accepted": 624,
+        "accepted_exact": 512,
+        "false_acceptance": 112,
+        "unresolved": 96,
+        "slots_without_spatial_issue": 720,
+        "calls": 96,
+        "identifier_export_allowed": 0,
+        "seconds": 194.33352010498493
+      },
+      "slots": {
+        "slots": 720,
+        "raw_exact": 672,
+        "accepted": 592,
+        "accepted_exact": 592,
+        "false_acceptance": 0,
+        "unresolved": 128,
+        "slots_without_spatial_issue": 720,
+        "calls": 720,
+        "identifier_export_allowed": 0,
+        "seconds": 24.674729984988517
+      }
+    },
+    "seconds": 229.309100683
+  },
+  "observations_file": "results.jsonl",
+  "negatives": [
+    {
+      "seed": 176317,
+      "challenge": "plateau",
+      "vertical": false,
+      "numeric": {
+        "normalising_range": 8.0,
+        "mae_fraction": 0.0,
+        "max_fraction": 0.0,
+        "finite_fraction": 0.6964285714285714,
+        "flagged_fraction": 0.30357142857142855,
+        "bound_cells": 0,
+        "complete": false,
+        "accurate": false,
+        "experimental_numeric_export_allowed": false,
+        "gate_status": "review_required",
+        "gate_reasons": [
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "excessive_colour_matching_flags",
+          "missing_or_ambiguous_numeric_cells"
+        ],
+        "extraction_seconds": 0.008492942000884796,
+        "gate_seconds": 0.08971905900034471
+      }
+    },
+    {
+      "seed": 176318,
+      "challenge": "plateau",
+      "vertical": true,
+      "numeric": {
+        "normalising_range": 8.0,
+        "mae_fraction": 0.0,
+        "max_fraction": 0.0,
+        "finite_fraction": 0.625,
+        "flagged_fraction": 0.375,
+        "bound_cells": 0,
+        "complete": false,
+        "accurate": false,
+        "experimental_numeric_export_allowed": false,
+        "gate_status": "review_required",
+        "gate_reasons": [
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "excessive_colour_matching_flags",
+          "missing_or_ambiguous_numeric_cells"
+        ],
+        "extraction_seconds": 0.00814877099764999,
+        "gate_seconds": 0.10249733399905381
+      }
+    },
+    {
+      "seed": 176319,
+      "challenge": "repeated",
+      "vertical": false,
+      "numeric": {
+        "normalising_range": 8.0,
+        "mae_fraction": 0.0,
+        "max_fraction": 0.0,
+        "finite_fraction": 0.6785714285714286,
+        "flagged_fraction": 0.32142857142857145,
+        "bound_cells": 0,
+        "complete": false,
+        "accurate": false,
+        "experimental_numeric_export_allowed": false,
+        "gate_status": "review_required",
+        "gate_reasons": [
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "excessive_colour_matching_flags",
+          "missing_or_ambiguous_numeric_cells"
+        ],
+        "extraction_seconds": 0.01549473000341095,
+        "gate_seconds": 0.0996639770019101
+      }
+    },
+    {
+      "seed": 176320,
+      "challenge": "repeated",
+      "vertical": true,
+      "numeric": {
+        "normalising_range": 8.0,
+        "mae_fraction": 0.0,
+        "max_fraction": 0.0,
+        "finite_fraction": 0.6428571428571429,
+        "flagged_fraction": 0.35714285714285715,
+        "bound_cells": 0,
+        "complete": false,
+        "accurate": false,
+        "experimental_numeric_export_allowed": false,
+        "gate_status": "review_required",
+        "gate_reasons": [
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "excessive_colour_matching_flags",
+          "missing_or_ambiguous_numeric_cells"
+        ],
+        "extraction_seconds": 0.007270018999406602,
+        "gate_seconds": 0.08161815799758187
+      }
+    },
+    {
+      "seed": 176321,
+      "challenge": "edges",
+      "vertical": false,
+      "numeric": {
+        "normalising_range": 6.4,
+        "mae_fraction": 0.0,
+        "max_fraction": 0.0,
+        "finite_fraction": 0.75,
+        "flagged_fraction": 0.25,
+        "bound_cells": 0,
+        "complete": false,
+        "accurate": false,
+        "experimental_numeric_export_allowed": false,
+        "gate_status": "review_required",
+        "gate_reasons": [
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "unsupported_calibration_span",
+          "required_capability_unresolved"
+        ],
+        "extraction_seconds": 0.009254808999685338,
+        "gate_seconds": 0.0948150500007614
+      }
+    },
+    {
+      "seed": 176322,
+      "challenge": "edges",
+      "vertical": true,
+      "numeric": {
+        "normalising_range": 6.4,
+        "mae_fraction": 0.0,
+        "max_fraction": 0.0,
+        "finite_fraction": 0.75,
+        "flagged_fraction": 0.25,
+        "bound_cells": 0,
+        "complete": false,
+        "accurate": false,
+        "experimental_numeric_export_allowed": false,
+        "gate_status": "review_required",
+        "gate_reasons": [
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "development_evidence_passed",
+          "unsupported_calibration_span",
+          "required_capability_unresolved"
+        ],
+        "extraction_seconds": 0.01261873999828822,
+        "gate_seconds": 0.04858268899988616
+      }
+    }
+  ],
+  "limitations": [
+    "Supplied geometry and reviewed numeric anchors only.",
+    "Correlated derivatives and shared synthetic generator.",
+    "No identifiers or inferred counts exported.",
+    "No held-out publication generalisation claim.",
+    "Runtime is wall time, with model warm-up included in the first OCR call."
+  ],
+  "observations_sha256": "958eb379cccb83ea5ff76adfcf155dad1028ac8731379f751bda8297ab46abab"
+}

@@ -1,0 +1,13 @@
+{
+  "rows": [
+    "TP53",
+    "HLA-DRA",
+    "Gapdh",
+    "BRCA2"
+  ],
+  "columns": [
+    "Control-1",
+    "Tumor_2",
+    "Sample A"
+  ]
+}

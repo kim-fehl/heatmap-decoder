@@ -1,0 +1,24 @@
+{
+  "doi": "10.7554/eLife.97830.3",
+  "panel": "Figure 4E",
+  "status": "image_only_source_matrix_missing",
+  "image_sha256": "2a44ee291f66aafeddd70af22267c58835a258532975386a1128aa5585a7a53f",
+  "source_matrix_available": false,
+  "independent_numeric_truth_available": false,
+  "needed": "elife-97830-fig4-data1-v1.xlsx plus exact sample ordering",
+  "column_group_order_verified": true,
+  "sample_identity": "generated group plus display ordinal, not original sample ID",
+  "license": "CC BY",
+  "attribution": "B\u00e6k, Muk et al., eLife 13:RP97830",
+  "image_origin": "User-supplied default (1).jpg crop",
+  "column_count": 26,
+  "row_count": 25,
+  "row_order_verified": true,
+  "row_source": "visually reviewed top to bottom",
+  "source_url": "https://cdn.elifesciences.org/articles/97830/elife-97830-fig4-data1-v1.xlsx",
+  "numeric_estimates": "decoded_estimates.tsv; excluded from ground truth",
+  "groups": {
+    "High_SE": 13,
+    "Low_SE": 13
+  }
+}

@@ -1,0 +1,677 @@
+[
+  {
+    "threshold": 80,
+    "margin": 0,
+    "box": [
+      864,
+      601,
+      971,
+      614
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "pe os Cha",
+    "confidence": 17.0
+  },
+  {
+    "threshold": 80,
+    "margin": 0,
+    "box": [
+      864,
+      601,
+      971,
+      614
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Eetjndectin 1",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 80,
+    "margin": 0,
+    "box": [
+      864,
+      601,
+      971,
+      614
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EaGjaiectin\u2019",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 80,
+    "margin": 1,
+    "box": [
+      863,
+      600,
+      972,
+      615
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "",
+    "confidence": null
+  },
+  {
+    "threshold": 80,
+    "margin": 1,
+    "box": [
+      863,
+      600,
+      972,
+      615
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estijadectin",
+    "confidence": 34.0
+  },
+  {
+    "threshold": 80,
+    "margin": 1,
+    "box": [
+      863,
+      600,
+      972,
+      615
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EstGjadectin 1",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 80,
+    "margin": 2,
+    "box": [
+      862,
+      599,
+      973,
+      616
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "el i alertin |",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 80,
+    "margin": 2,
+    "box": [
+      862,
+      599,
+      973,
+      616
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estialectin 1",
+    "confidence": 14.0
+  },
+  {
+    "threshold": 80,
+    "margin": 2,
+    "box": [
+      862,
+      599,
+      973,
+      616
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGabectin",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 100,
+    "margin": 0,
+    "box": [
+      864,
+      601,
+      971,
+      614
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "pe os Cha",
+    "confidence": 17.0
+  },
+  {
+    "threshold": 100,
+    "margin": 0,
+    "box": [
+      864,
+      601,
+      971,
+      614
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Eetjndectin 1",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 100,
+    "margin": 0,
+    "box": [
+      864,
+      601,
+      971,
+      614
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EaGjaiectin\u2019",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 100,
+    "margin": 1,
+    "box": [
+      863,
+      600,
+      972,
+      615
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "",
+    "confidence": null
+  },
+  {
+    "threshold": 100,
+    "margin": 1,
+    "box": [
+      863,
+      600,
+      972,
+      615
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estijadectin",
+    "confidence": 34.0
+  },
+  {
+    "threshold": 100,
+    "margin": 1,
+    "box": [
+      863,
+      600,
+      972,
+      615
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EstGjadectin 1",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 100,
+    "margin": 2,
+    "box": [
+      862,
+      599,
+      973,
+      616
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "el i alertin |",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 100,
+    "margin": 2,
+    "box": [
+      862,
+      599,
+      973,
+      616
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estialectin 1",
+    "confidence": 14.0
+  },
+  {
+    "threshold": 100,
+    "margin": 2,
+    "box": [
+      862,
+      599,
+      973,
+      616
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGabectin",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 120,
+    "margin": 0,
+    "box": [
+      863,
+      601,
+      971,
+      614
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "pe os Che",
+    "confidence": 4.0
+  },
+  {
+    "threshold": 120,
+    "margin": 0,
+    "box": [
+      863,
+      601,
+      971,
+      614
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estjndectin 1",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 120,
+    "margin": 0,
+    "box": [
+      863,
+      601,
+      971,
+      614
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGiakectin\u2019",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 120,
+    "margin": 1,
+    "box": [
+      862,
+      600,
+      972,
+      615
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "",
+    "confidence": null
+  },
+  {
+    "threshold": 120,
+    "margin": 1,
+    "box": [
+      862,
+      600,
+      972,
+      615
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Es(ijadectin 1",
+    "confidence": 10.0
+  },
+  {
+    "threshold": 120,
+    "margin": 1,
+    "box": [
+      862,
+      600,
+      972,
+      615
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGadiectin'",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 120,
+    "margin": 2,
+    "box": [
+      861,
+      599,
+      973,
+      616
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "+ eoljmdectin 1",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 120,
+    "margin": 2,
+    "box": [
+      861,
+      599,
+      973,
+      616
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGaiectin 1",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 120,
+    "margin": 2,
+    "box": [
+      861,
+      599,
+      973,
+      616
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGatectin\u2019",
+    "confidence": 8.0
+  },
+  {
+    "threshold": 160,
+    "margin": 0,
+    "box": [
+      861,
+      598,
+      971,
+      616
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "+ ol jadectin |",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 160,
+    "margin": 0,
+    "box": [
+      861,
+      598,
+      971,
+      616
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estialectin'|",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 160,
+    "margin": 0,
+    "box": [
+      861,
+      598,
+      971,
+      616
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGatectin'",
+    "confidence": 19.0
+  },
+  {
+    "threshold": 160,
+    "margin": 1,
+    "box": [
+      860,
+      597,
+      972,
+      617
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estiakectin |",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 160,
+    "margin": 1,
+    "box": [
+      860,
+      597,
+      972,
+      617
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGaiectin",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 160,
+    "margin": 1,
+    "box": [
+      860,
+      597,
+      972,
+      617
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGatectin\u2019",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 160,
+    "margin": 2,
+    "box": [
+      859,
+      596,
+      973,
+      618
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estialectin1",
+    "confidence": 24.0
+  },
+  {
+    "threshold": 160,
+    "margin": 2,
+    "box": [
+      859,
+      596,
+      973,
+      618
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGatectin\u2019",
+    "confidence": 25.0
+  },
+  {
+    "threshold": 160,
+    "margin": 2,
+    "box": [
+      859,
+      596,
+      973,
+      618
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGakectin'",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 200,
+    "margin": 0,
+    "box": [
+      861,
+      598,
+      972,
+      616
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "+ ol jaiectin |",
+    "confidence": 3.0
+  },
+  {
+    "threshold": 200,
+    "margin": 0,
+    "box": [
+      861,
+      598,
+      972,
+      616
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estialectin 1",
+    "confidence": 49.0
+  },
+  {
+    "threshold": 200,
+    "margin": 0,
+    "box": [
+      861,
+      598,
+      972,
+      616
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGatectin'",
+    "confidence": 1.0
+  },
+  {
+    "threshold": 200,
+    "margin": 1,
+    "box": [
+      860,
+      597,
+      973,
+      617
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estiaiectin 1",
+    "confidence": 39.0
+  },
+  {
+    "threshold": 200,
+    "margin": 1,
+    "box": [
+      860,
+      597,
+      973,
+      617
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGatectin",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 200,
+    "margin": 1,
+    "box": [
+      860,
+      597,
+      973,
+      617
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGakectin\u2019",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 200,
+    "margin": 2,
+    "box": [
+      859,
+      596,
+      974,
+      618
+    ],
+    "pad": 0,
+    "scale": 5,
+    "psm": 7,
+    "raw": "Estialectin1",
+    "confidence": 32.0
+  },
+  {
+    "threshold": 200,
+    "margin": 2,
+    "box": [
+      859,
+      596,
+      974,
+      618
+    ],
+    "pad": 2,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGatectin'",
+    "confidence": 0.0
+  },
+  {
+    "threshold": 200,
+    "margin": 2,
+    "box": [
+      859,
+      596,
+      974,
+      618
+    ],
+    "pad": 8,
+    "scale": 5,
+    "psm": 7,
+    "raw": "EsGakectin\u2019",
+    "confidence": 0.0
+  }
+]

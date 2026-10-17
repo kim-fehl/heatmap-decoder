@@ -1,0 +1,597 @@
+{
+  "axis": "columns",
+  "complete": true,
+  "name_kind": "category_combination_plus_display_ordinal",
+  "original_sample_ids_recovered": false,
+  "legend_labels_are_reviewed_inputs": true,
+  "records": [
+    {
+      "index": 0,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            186,
+            584,
+            207,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.9829931972789115,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__01"
+    },
+    {
+      "index": 1,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            221,
+            584,
+            243,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__02"
+    },
+    {
+      "index": 2,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            257,
+            584,
+            279,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__03"
+    },
+    {
+      "index": 3,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            293,
+            584,
+            314,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__04"
+    },
+    {
+      "index": 4,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            329,
+            584,
+            350,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__05"
+    },
+    {
+      "index": 5,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            364,
+            584,
+            386,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__06"
+    },
+    {
+      "index": 6,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            400,
+            584,
+            422,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__07"
+    },
+    {
+      "index": 7,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            436,
+            584,
+            457,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__08"
+    },
+    {
+      "index": 8,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            472,
+            584,
+            493,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__09"
+    },
+    {
+      "index": 9,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            508,
+            584,
+            529,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__10"
+    },
+    {
+      "index": 10,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            543,
+            584,
+            565,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__11"
+    },
+    {
+      "index": 11,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            579,
+            584,
+            601,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 1.0,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__12"
+    },
+    {
+      "index": 12,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            615,
+            584,
+            636,
+            598
+          ],
+          "category": "High_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.95578231292517,
+            "Low_SE": 0.0
+          }
+        }
+      ],
+      "generated_name": "High_SE__13"
+    },
+    {
+      "index": 13,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            651,
+            584,
+            672,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__01"
+    },
+    {
+      "index": 14,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            686,
+            584,
+            708,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__02"
+    },
+    {
+      "index": 15,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            722,
+            584,
+            744,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__03"
+    },
+    {
+      "index": 16,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            758,
+            584,
+            779,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__04"
+    },
+    {
+      "index": 17,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            794,
+            584,
+            815,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__05"
+    },
+    {
+      "index": 18,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            829,
+            584,
+            851,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__06"
+    },
+    {
+      "index": 19,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            865,
+            584,
+            887,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__07"
+    },
+    {
+      "index": 20,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            901,
+            584,
+            922,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__08"
+    },
+    {
+      "index": 21,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            937,
+            584,
+            958,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__09"
+    },
+    {
+      "index": 22,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            973,
+            584,
+            994,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__10"
+    },
+    {
+      "index": 23,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            1008,
+            584,
+            1030,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__11"
+    },
+    {
+      "index": 24,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            1044,
+            584,
+            1066,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__12"
+    },
+    {
+      "index": 25,
+      "tracks": [
+        {
+          "track": "infection_glucose_group",
+          "sample_bbox": [
+            1080,
+            584,
+            1101,
+            598
+          ],
+          "category": "Low_SE",
+          "status": "matched",
+          "category_fractions": {
+            "High_SE": 0.0,
+            "Low_SE": 1.0
+          }
+        }
+      ],
+      "generated_name": "Low_SE__13"
+    }
+  ],
+  "input_sha256": "2a44ee291f66aafeddd70af22267c58835a258532975386a1128aa5585a7a53f",
+  "request": {
+    "axis": "columns",
+    "start": 178,
+    "end": 1108,
+    "count": 26,
+    "segments": null,
+    "tracks": [
+      {
+        "name": "infection_glucose_group",
+        "bbox": [
+          178,
+          578,
+          1108,
+          604
+        ],
+        "swatches": [
+          {
+            "label": "High_SE",
+            "bbox": [
+              1120,
+              53,
+              1129,
+              61
+            ]
+          },
+          {
+            "label": "Low_SE",
+            "bbox": [
+              1120,
+              73,
+              1129,
+              81
+            ]
+          }
+        ]
+      }
+    ],
+    "max_colour_distance": 12.0,
+    "min_colour_margin": 3.0,
+    "minimum_match_fraction": 0.8
+  }
+}

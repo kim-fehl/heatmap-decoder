@@ -1,0 +1,3995 @@
+{
+  "scope": "Known-grid development OCR; identity requires human review",
+  "summary": {
+    "sparse": {
+      "rows": {
+        "exact": 224,
+        "total": 225,
+        "engine_accepted": 224,
+        "wrong_engine_accepted": 0
+      },
+      "columns": {
+        "exact": 52,
+        "total": 72,
+        "engine_accepted": 30,
+        "wrong_engine_accepted": 1
+      }
+    },
+    "slots": {
+      "rows": {
+        "exact": 224,
+        "total": 225,
+        "engine_accepted": 224,
+        "wrong_engine_accepted": 0
+      },
+      "columns": {
+        "exact": 49,
+        "total": 72,
+        "engine_accepted": 31,
+        "wrong_engine_accepted": 4
+      }
+    }
+  },
+  "attempts": [
+    {
+      "id": "development-00-clean",
+      "strategy": "sparse",
+      "axes": {
+        "rows": {
+          "exact": 20,
+          "total": 20,
+          "engine_accepted": 20,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 94.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 4,
+          "total": 6,
+          "engine_accepted": 2,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 60.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S_02",
+              "status": "low_confidence",
+              "confidence": 66.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 78.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S 04",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 87.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-00-clean",
+      "strategy": "slots",
+      "axes": {
+        "rows": {
+          "exact": 20,
+          "total": 20,
+          "engine_accepted": 20,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 94.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 4,
+          "total": 6,
+          "engine_accepted": 2,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 60.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S_02",
+              "status": "low_confidence",
+              "confidence": 66.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 78.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S 04",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 87.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-00-blur",
+      "strategy": "sparse",
+      "axes": {
+        "rows": {
+          "exact": 20,
+          "total": 20,
+          "engine_accepted": 20,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 96.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 5,
+          "total": 6,
+          "engine_accepted": 2,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S_01",
+              "status": "low_confidence",
+              "confidence": 79.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 74.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S_04",
+              "status": "low_confidence",
+              "confidence": 54.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 81.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 88.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-00-blur",
+      "strategy": "slots",
+      "axes": {
+        "rows": {
+          "exact": 20,
+          "total": 20,
+          "engine_accepted": 20,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 96.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 4,
+          "total": 6,
+          "engine_accepted": 3,
+          "wrong_engine_accepted": 1,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "accepted",
+              "confidence": 86.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 74.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S_04",
+              "status": "low_confidence",
+              "confidence": 54.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 81.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 89.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-00-jpeg",
+      "strategy": "sparse",
+      "axes": {
+        "rows": {
+          "exact": 20,
+          "total": 20,
+          "engine_accepted": 20,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 93.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 4,
+          "total": 6,
+          "engine_accepted": 2,
+          "wrong_engine_accepted": 1,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S_02",
+              "status": "low_confidence",
+              "confidence": 62.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 71.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S 04",
+              "status": "low_confidence",
+              "confidence": 40.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 86.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "low_confidence",
+              "confidence": 78.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-00-jpeg",
+      "strategy": "slots",
+      "axes": {
+        "rows": {
+          "exact": 20,
+          "total": 20,
+          "engine_accepted": 20,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 93.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 4,
+          "total": 6,
+          "engine_accepted": 2,
+          "wrong_engine_accepted": 1,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S_02",
+              "status": "low_confidence",
+              "confidence": 62.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 71.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S 04",
+              "status": "low_confidence",
+              "confidence": 40.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 86.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "low_confidence",
+              "confidence": 78.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-03-clean",
+      "strategy": "sparse",
+      "axes": {
+        "rows": {
+          "exact": 25,
+          "total": 25,
+          "engine_accepted": 25,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 90.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 6,
+          "total": 8,
+          "engine_accepted": 4,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 60.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S_02",
+              "status": "low_confidence",
+              "confidence": 66.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 78.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S 04",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "accepted",
+              "confidence": 84.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-03-clean",
+      "strategy": "slots",
+      "axes": {
+        "rows": {
+          "exact": 25,
+          "total": 25,
+          "engine_accepted": 25,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 90.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 6,
+          "total": 8,
+          "engine_accepted": 4,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 60.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S_02",
+              "status": "low_confidence",
+              "confidence": 66.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 78.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S 04",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "accepted",
+              "confidence": 84.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-03-blur",
+      "strategy": "sparse",
+      "axes": {
+        "rows": {
+          "exact": 25,
+          "total": 25,
+          "engine_accepted": 25,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 92.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 7,
+          "total": 8,
+          "engine_accepted": 4,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S_01",
+              "status": "low_confidence",
+              "confidence": 79.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 74.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S_04",
+              "status": "low_confidence",
+              "confidence": 54.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 81.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 83.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "accepted",
+              "confidence": 87.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-03-blur",
+      "strategy": "slots",
+      "axes": {
+        "rows": {
+          "exact": 25,
+          "total": 25,
+          "engine_accepted": 25,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 92.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 6,
+          "total": 8,
+          "engine_accepted": 4,
+          "wrong_engine_accepted": 1,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "accepted",
+              "confidence": 86.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 74.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S_04",
+              "status": "low_confidence",
+              "confidence": 54.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 81.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 83.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "low_confidence",
+              "confidence": 76.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-03-jpeg",
+      "strategy": "sparse",
+      "axes": {
+        "rows": {
+          "exact": 24,
+          "total": 25,
+          "engine_accepted": 24,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TPS3",
+              "status": "low_confidence",
+              "confidence": 73.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 94.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 91.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 5,
+          "total": 8,
+          "engine_accepted": 3,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 66.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 60.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 67.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S04",
+              "status": "low_confidence",
+              "confidence": 10.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 86.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "low_confidence",
+              "confidence": 78.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "accepted",
+              "confidence": 84.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-03-jpeg",
+      "strategy": "slots",
+      "axes": {
+        "rows": {
+          "exact": 24,
+          "total": 25,
+          "engine_accepted": 24,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TPS3",
+              "status": "low_confidence",
+              "confidence": 73.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 94.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 91.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 5,
+          "total": 8,
+          "engine_accepted": 3,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 66.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 60.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 67.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S04",
+              "status": "low_confidence",
+              "confidence": 10.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 86.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "low_confidence",
+              "confidence": 78.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "accepted",
+              "confidence": 84.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-08-clean",
+      "strategy": "sparse",
+      "axes": {
+        "rows": {
+          "exact": 30,
+          "total": 30,
+          "engine_accepted": 30,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "JUN",
+              "raw": "JUN",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "FOS",
+              "raw": "FOS",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "BCL2",
+              "raw": "BCL2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BAX",
+              "raw": "BAX",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MTOR",
+              "raw": "MTOR",
+              "status": "accepted",
+              "confidence": 96.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 7,
+          "total": 10,
+          "engine_accepted": 5,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 60.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S_02",
+              "status": "low_confidence",
+              "confidence": 66.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 78.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S 04",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_09",
+              "raw": "S_09",
+              "status": "accepted",
+              "confidence": 86.0
+            },
+            {
+              "expected": "S_10",
+              "raw": "S10",
+              "status": "low_confidence",
+              "confidence": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-08-clean",
+      "strategy": "slots",
+      "axes": {
+        "rows": {
+          "exact": 30,
+          "total": 30,
+          "engine_accepted": 30,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "JUN",
+              "raw": "JUN",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "FOS",
+              "raw": "FOS",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "BCL2",
+              "raw": "BCL2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BAX",
+              "raw": "BAX",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MTOR",
+              "raw": "MTOR",
+              "status": "accepted",
+              "confidence": 96.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 7,
+          "total": 10,
+          "engine_accepted": 5,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 60.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S_02",
+              "status": "low_confidence",
+              "confidence": 66.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 78.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S 04",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_09",
+              "raw": "S_09",
+              "status": "accepted",
+              "confidence": 86.0
+            },
+            {
+              "expected": "S_10",
+              "raw": "S10",
+              "status": "low_confidence",
+              "confidence": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-08-blur",
+      "strategy": "sparse",
+      "axes": {
+        "rows": {
+          "exact": 30,
+          "total": 30,
+          "engine_accepted": 30,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "JUN",
+              "raw": "JUN",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "FOS",
+              "raw": "FOS",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "BCL2",
+              "raw": "BCL2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BAX",
+              "raw": "BAX",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "MTOR",
+              "raw": "MTOR",
+              "status": "accepted",
+              "confidence": 96.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 9,
+          "total": 10,
+          "engine_accepted": 4,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S_01",
+              "status": "low_confidence",
+              "confidence": 79.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 74.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S_04",
+              "status": "low_confidence",
+              "confidence": 54.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 81.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 83.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "low_confidence",
+              "confidence": 76.0
+            },
+            {
+              "expected": "S_09",
+              "raw": "S_09",
+              "status": "low_confidence",
+              "confidence": 76.0
+            },
+            {
+              "expected": "S_10",
+              "raw": "S_10",
+              "status": "accepted",
+              "confidence": 85.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-08-blur",
+      "strategy": "slots",
+      "axes": {
+        "rows": {
+          "exact": 30,
+          "total": 30,
+          "engine_accepted": 30,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "JUN",
+              "raw": "JUN",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "FOS",
+              "raw": "FOS",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "BCL2",
+              "raw": "BCL2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BAX",
+              "raw": "BAX",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MTOR",
+              "raw": "MTOR",
+              "status": "accepted",
+              "confidence": 96.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 8,
+          "total": 10,
+          "engine_accepted": 4,
+          "wrong_engine_accepted": 1,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "accepted",
+              "confidence": 86.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 36.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 74.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S_04",
+              "status": "low_confidence",
+              "confidence": 54.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 81.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S_07",
+              "status": "accepted",
+              "confidence": 83.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "low_confidence",
+              "confidence": 76.0
+            },
+            {
+              "expected": "S_09",
+              "raw": "S_09",
+              "status": "low_confidence",
+              "confidence": 76.0
+            },
+            {
+              "expected": "S_10",
+              "raw": "S_10",
+              "status": "low_confidence",
+              "confidence": 78.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-08-jpeg",
+      "strategy": "sparse",
+      "axes": {
+        "rows": {
+          "exact": 30,
+          "total": 30,
+          "engine_accepted": 30,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 85.0
+            },
+            {
+              "expected": "JUN",
+              "raw": "JUN",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "FOS",
+              "raw": "FOS",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "BCL2",
+              "raw": "BCL2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BAX",
+              "raw": "BAX",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MTOR",
+              "raw": "MTOR",
+              "status": "accepted",
+              "confidence": 96.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 5,
+          "total": 10,
+          "engine_accepted": 4,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 61.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 41.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 70.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S04",
+              "status": "low_confidence",
+              "confidence": 4.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S 07",
+              "status": "low_confidence",
+              "confidence": 22.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "S_09",
+              "raw": "S_09",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "S_10",
+              "raw": "S10",
+              "status": "low_confidence",
+              "confidence": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "development-08-jpeg",
+      "strategy": "slots",
+      "axes": {
+        "rows": {
+          "exact": 30,
+          "total": 30,
+          "engine_accepted": 30,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "HSP70A",
+              "raw": "HSP70A",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "HSP70B",
+              "raw": "HSP70B",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HSP70D",
+              "raw": "HSP70D",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "TP53",
+              "raw": "TP53",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BRCA1",
+              "raw": "BRCA1",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "BRCA2",
+              "raw": "BRCA2",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "EGFR",
+              "raw": "EGFR",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MYC",
+              "raw": "MYC",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "PTEN",
+              "raw": "PTEN",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "KRAS",
+              "raw": "KRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "NRAS",
+              "raw": "NRAS",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "BRAF",
+              "raw": "BRAF",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "AKT1",
+              "raw": "AKT1",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "GAPDH",
+              "raw": "GAPDH",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "ACTB",
+              "raw": "ACTB",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "HLA-DRA",
+              "raw": "HLA-DRA",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD4",
+              "raw": "CD4",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "CD8A",
+              "raw": "CD8A",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "IL6",
+              "raw": "IL6",
+              "status": "accepted",
+              "confidence": 92.0
+            },
+            {
+              "expected": "TNF",
+              "raw": "TNF",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "VEGFA",
+              "raw": "VEGFA",
+              "status": "accepted",
+              "confidence": 90.0
+            },
+            {
+              "expected": "ESR1",
+              "raw": "ESR1",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "ERBB2",
+              "raw": "ERBB2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "MAPK1",
+              "raw": "MAPK1",
+              "status": "accepted",
+              "confidence": 89.0
+            },
+            {
+              "expected": "STAT3",
+              "raw": "STAT3",
+              "status": "accepted",
+              "confidence": 85.0
+            },
+            {
+              "expected": "JUN",
+              "raw": "JUN",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "FOS",
+              "raw": "FOS",
+              "status": "accepted",
+              "confidence": 95.0
+            },
+            {
+              "expected": "BCL2",
+              "raw": "BCL2",
+              "status": "accepted",
+              "confidence": 91.0
+            },
+            {
+              "expected": "BAX",
+              "raw": "BAX",
+              "status": "accepted",
+              "confidence": 96.0
+            },
+            {
+              "expected": "MTOR",
+              "raw": "MTOR",
+              "status": "accepted",
+              "confidence": 96.0
+            }
+          ]
+        },
+        "columns": {
+          "exact": 5,
+          "total": 10,
+          "engine_accepted": 4,
+          "wrong_engine_accepted": 0,
+          "strings": [
+            {
+              "expected": "S_01",
+              "raw": "S 01",
+              "status": "low_confidence",
+              "confidence": 61.0
+            },
+            {
+              "expected": "S_02",
+              "raw": "S 02",
+              "status": "low_confidence",
+              "confidence": 41.0
+            },
+            {
+              "expected": "S_03",
+              "raw": "S_03",
+              "status": "low_confidence",
+              "confidence": 70.0
+            },
+            {
+              "expected": "S_04",
+              "raw": "S04",
+              "status": "low_confidence",
+              "confidence": 4.0
+            },
+            {
+              "expected": "S_05",
+              "raw": "S_05",
+              "status": "accepted",
+              "confidence": 84.0
+            },
+            {
+              "expected": "S_06",
+              "raw": "S_06",
+              "status": "accepted",
+              "confidence": 88.0
+            },
+            {
+              "expected": "S_07",
+              "raw": "S 07",
+              "status": "low_confidence",
+              "confidence": 22.0
+            },
+            {
+              "expected": "S_08",
+              "raw": "S_08",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "S_09",
+              "raw": "S_09",
+              "status": "accepted",
+              "confidence": 87.0
+            },
+            {
+              "expected": "S_10",
+              "raw": "S10",
+              "status": "low_confidence",
+              "confidence": 0.0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

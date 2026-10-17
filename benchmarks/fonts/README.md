@@ -1,0 +1,1 @@
+These unmodified DejaVu 2.37 fonts are bundled for deterministic benchmark and test rendering on Linux, macOS, and Windows. They match the fonts used by the frozen Linux reports. See LICENSE.txt for redistribution terms.

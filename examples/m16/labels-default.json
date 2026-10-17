@@ -1,0 +1,44 @@
+{
+  "heatmap_bbox": [
+    335,
+    189,
+    854,
+    861
+  ],
+  "rows": 33,
+  "columns": 8,
+  "labels": {
+    "rows": {
+      "source": "ocr",
+      "bbox": [
+        858,
+        189,
+        980,
+        861
+      ],
+      "recognition": "slots",
+      "text_rotation_degrees": 0,
+      "crop_padding_pixels": 1,
+      "white_padding_pixels": 0,
+      "crop_right_padding_pixels": 4
+    },
+    "columns": {
+      "source": "ocr",
+      "bbox": [
+        335,
+        868,
+        854,
+        904
+      ],
+      "recognition": "slots",
+      "text_rotation_degrees": 0,
+      "crop_padding_pixels": 1,
+      "white_padding_pixels": 0
+    },
+    "ocr": {
+      "language": "eng",
+      "min_confidence": 80.0,
+      "max_axis_offset_fraction": 0.4
+    }
+  }
+}

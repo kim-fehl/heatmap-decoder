@@ -1,0 +1,217 @@
+{
+  "figure": "10.1371/journal.ppat.1012368.g001, panel C",
+  "reference_status": "annotation_reference_only",
+  "n_columns": 31,
+  "column_indexing": "zero-based, end-exclusive spans",
+  "column_labels_visible": false,
+  "columns": [
+    {
+      "column_id": "column_001",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_002",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_003",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_004",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_005",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_006",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_007",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_008",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_009",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_010",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_011",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_012",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_013",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_014",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_015",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_016",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_017",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_018",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_019",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_020",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_021",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_022",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_023",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_024",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_025",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_026",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_027",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_028",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_029",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_030",
+      "display_label": null,
+      "geo_sample_id": null
+    },
+    {
+      "column_id": "column_031",
+      "display_label": null,
+      "geo_sample_id": null
+    }
+  ],
+  "column_annotations": [
+    {
+      "track_id": "track_1",
+      "display_name": null,
+      "inferred_semantics": "disease_status",
+      "segments": [
+        {
+          "start": 0,
+          "end": 16,
+          "label": "Severe Covid-19"
+        },
+        {
+          "start": 16,
+          "end": 24,
+          "label": "Mild Covid-19"
+        },
+        {
+          "start": 24,
+          "end": 31,
+          "label": "HC"
+        }
+      ]
+    },
+    {
+      "track_id": "track_2",
+      "display_name": null,
+      "inferred_semantics": "cell_fraction",
+      "segments": [
+        {
+          "start": 0,
+          "end": 6,
+          "label": "LDG"
+        },
+        {
+          "start": 6,
+          "end": 31,
+          "label": "PMN"
+        }
+      ]
+    }
+  ],
+  "values": null,
+  "value_scale_label": "Row Z-score",
+  "unresolved": [
+    "GEO sample subset after purity filtering",
+    "Sample order within each block",
+    "Expression normalization/transformation before row scaling",
+    "Exact numeric Heatmapper input"
+  ],
+  "sources": [
+    "https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1012368",
+    "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272381"
+  ]
+}

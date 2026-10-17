@@ -1,0 +1,104 @@
+{
+  "hints": {
+    "rows": 8,
+    "columns": 6,
+    "infer_rows": false,
+    "infer_columns": false,
+    "requested": [],
+    "heatmap_bbox": [
+      32,
+      32,
+      158,
+      176
+    ],
+    "colourbar_bbox": [
+      32,
+      188,
+      213,
+      200
+    ],
+    "colourbar_orientation": "horizontal",
+    "colourbar_start_value": null,
+    "colourbar_end_value": null,
+    "labels": null,
+    "rows_segments": [
+      {
+        "start": 32.0,
+        "end": 66.0,
+        "count": 2
+      },
+      {
+        "start": 74.0,
+        "end": 176.0,
+        "count": 6
+      }
+    ],
+    "columns_segments": [
+      {
+        "start": 32.0,
+        "end": 70.0,
+        "count": 2
+      },
+      {
+        "start": 82.0,
+        "end": 158.0,
+        "count": 4
+      }
+    ],
+    "detector": {
+      "max_analysis_size": 512,
+      "max_candidates": 12,
+      "max_components": 64,
+      "background_distance": 12.0,
+      "gridline_gap": 3,
+      "min_score": 0.65,
+      "max_count": 128,
+      "max_count_candidates": 8,
+      "label_search_pixels": 256,
+      "label_padding_pixels": 4,
+      "max_ocr_pixels": 4000000,
+      "count_label_geometry": false,
+      "propose_column_rotations": false,
+      "propose_arbitrary_column_angles": false,
+      "column_attachment_endpoint": "nearest",
+      "max_label_ocr_calls": 12,
+      "max_label_ocr_seconds": 60.0
+    }
+  },
+  "numeric_only": true,
+  "scale": {
+    "model": "linear",
+    "source": "ocr_ticks",
+    "anchors": [],
+    "legend": {
+      "ocr": {
+        "engine": "tesseract",
+        "language": "eng",
+        "upscale_factor": 3,
+        "min_confidence": 80.0,
+        "high_confidence": 90.0,
+        "retry_variants": [],
+        "max_axis_offset_fraction": 0.4
+      },
+      "search_pixels": 128,
+      "horizontal_search_pixels": 64,
+      "max_ticks": 16,
+      "max_ocr_pixels": 4000000,
+      "max_ocr_seconds": 60.0,
+      "max_axis_offset_pixels": 6.0,
+      "endpoint_tolerance_pixels": 2.0,
+      "decimal_separator": ".",
+      "align_tick_fields": false,
+      "retry_unconstrained_numeric": true,
+      "retry_white_padding_pixels": [
+        1,
+        2
+      ],
+      "crop_padding_pixels": 0,
+      "white_padding_pixels": 0
+    },
+    "quantity": "displayed colourbar values",
+    "max_value_residual_fraction": 0.01,
+    "max_position_residual_pixels": 2.0
+  }
+}

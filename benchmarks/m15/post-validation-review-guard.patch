@@ -1,0 +1,19 @@
+--- a/src/heatmap_decoder/io.py
++++ b/src/heatmap_decoder/io.py
+@@ -967,6 +967,16 @@
+         candidate = candidates.get(identifier)
+         if candidate is None or candidate.kind != kind:
+             raise ValueError(f"unknown {kind} candidate ID or wrong region kind")
++        if kind.startswith("labels_"):
++            label_axis = kind.removeprefix("labels_")
++            configured_source = (payload.get("labels") or {}).get(label_axis)
++            if (
++                configured_source is not None
++                and configured_source.get("source") == "ocr"
++                and configured_source.get("text_rotation_degrees", 0)
++                != candidate.text_rotation_degrees
++            ):
++                raise ValueError(f"review conflicts with configured labels.{label_axis} angle")
+         _apply_roi_region(payload, kind, candidate.bbox)
+         if kind.startswith("labels_"):
+             label_axis = kind.removeprefix("labels_")

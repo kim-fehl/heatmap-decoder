@@ -1,0 +1,309 @@
+{
+  "iscience-108897": {
+    "image": "figure-4a.jpg",
+    "image_sha256": "637bb9b6d04609b511d989ada0f39f2e468bc2b0ecf02204e2e64762a5340eaf",
+    "image_dimensions": [
+      898,
+      1280
+    ],
+    "geometry_source": "explicit_reviewed_image_boxes_and_counts",
+    "groups_complete": false,
+    "groups": [
+      {
+        "track": "cluster",
+        "segments": []
+      }
+    ],
+    "sample_names": null,
+    "numeric_ground_truth": false,
+    "resolution_limited": true,
+    "article_inferred_total": 1237,
+    "individual_columns_resolved": false,
+    "header_candidates": [
+      "cluster1",
+      "cluster2",
+      "cluster3"
+    ]
+  },
+  "omtn-2021-07-019": {
+    "image": "figure-3a.jpg",
+    "image_sha256": "4b613f7642909253764a75aaf41173cbf28180aa0c4367647d4e2d8e568c1b84",
+    "image_dimensions": [
+      939,
+      3039
+    ],
+    "geometry_source": "explicit_reviewed_image_boxes_and_counts",
+    "groups_complete": true,
+    "groups": [
+      {
+        "track": "track_1",
+        "segments": [
+          {
+            "label": "A",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "label": "C",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "label": "B",
+            "start": 6,
+            "end": 9
+          }
+        ]
+      }
+    ],
+    "sample_names": [
+      "NC1",
+      "NC2",
+      "NC3",
+      "Dormancy1",
+      "Dormancy2",
+      "Dormancy3",
+      "Reactivation1",
+      "Reactivation2",
+      "Reactivation3"
+    ],
+    "numeric_ground_truth": false,
+    "shape": [
+      128,
+      9
+    ],
+    "finite_cells": 1138,
+    "total_cells": 1152,
+    "median_colour_distance": 0.4511402614915968,
+    "scale_source": "reviewed_visual_anchors",
+    "ocr": {
+      "rows": {
+        "reference": "genes.txt",
+        "reference_sha256": "4efd90b2ab2bc8dce0595c47e3ed7c95258e9b486d3dd5cfcdbd820769df0aaa",
+        "total": 128,
+        "exact": 87,
+        "wrong": 41,
+        "missing": 0,
+        "accepted": 0,
+        "require_review": true
+      },
+      "columns": {
+        "reference": "samples.txt",
+        "reference_sha256": "aa74729576e34071dde4d280446633a8fefb0533d15d62b7711da55e191a2773",
+        "total": 9,
+        "exact": 9,
+        "wrong": 0,
+        "missing": 0,
+        "accepted": 9,
+        "require_review": false
+      }
+    }
+  },
+  "plos-pone-0155215": {
+    "image": "figure-4a.png",
+    "image_sha256": "c86edc1c996c6fe8cd8d1415477b5ed2f6ff0ff4e1967a9e62c5a48cb1bff173",
+    "image_dimensions": [
+      1217,
+      1534
+    ],
+    "geometry_source": "explicit_reviewed_image_boxes_and_counts",
+    "groups_complete": true,
+    "groups": [
+      {
+        "track": "track_1",
+        "segments": [
+          {
+            "label": "Acral",
+            "start": 0,
+            "end": 16
+          },
+          {
+            "label": "Non-Acral",
+            "start": 16,
+            "end": 50
+          }
+        ]
+      },
+      {
+        "track": "track_2",
+        "segments": [
+          {
+            "label": "Normal",
+            "start": 0,
+            "end": 7
+          },
+          {
+            "label": "PP",
+            "start": 7,
+            "end": 10
+          },
+          {
+            "label": "PPPP",
+            "start": 10,
+            "end": 16
+          },
+          {
+            "label": "Normal",
+            "start": 16,
+            "end": 40
+          },
+          {
+            "label": "Psoriasis",
+            "start": 40,
+            "end": 50
+          }
+        ]
+      }
+    ],
+    "sample_names": null,
+    "numeric_ground_truth": false,
+    "shape": [
+      75,
+      50
+    ],
+    "finite_cells": 3750,
+    "total_cells": 3750,
+    "median_colour_distance": 0.0,
+    "scale_source": "reviewed_visual_anchors"
+  },
+  "plos-pone-0244065": {
+    "image": "figure-7c.png",
+    "image_sha256": "1888cb684d4451ef5f13b3e0388602835db52d1bd9330bad095f9be051131c67",
+    "image_dimensions": [
+      1430,
+      1220
+    ],
+    "geometry_source": "explicit_reviewed_image_boxes_and_counts",
+    "groups_complete": true,
+    "groups": [
+      {
+        "track": "track_1",
+        "segments": [
+          {
+            "label": "CMV",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "label": "CMV+TGF-B",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "label": "Col1a1",
+            "start": 6,
+            "end": 9
+          },
+          {
+            "label": "Col1a1+TGF-B",
+            "start": 9,
+            "end": 12
+          },
+          {
+            "label": "Con",
+            "start": 12,
+            "end": 15
+          },
+          {
+            "label": "Con + TGF-B",
+            "start": 15,
+            "end": 18
+          }
+        ]
+      }
+    ],
+    "sample_names": null,
+    "numeric_ground_truth": false,
+    "shape": [
+      100,
+      18
+    ],
+    "finite_cells": 1800,
+    "total_cells": 1800,
+    "median_colour_distance": 0.0,
+    "scale_source": "reviewed_visual_anchors",
+    "legend": {
+      "status": "unresolved",
+      "development_eligible": false,
+      "anchors": [
+        {
+          "value": 2.0,
+          "position": 131.5,
+          "source": "text_centre"
+        },
+        {
+          "value": 1.0,
+          "position": 199.0,
+          "source": "text_centre"
+        },
+        {
+          "value": 0.0,
+          "position": 267.0,
+          "source": "text_centre"
+        },
+        {
+          "value": -1.0,
+          "position": 335.0,
+          "source": "text_centre"
+        }
+      ]
+    }
+  },
+  "plos-ppat-1012368": {
+    "image": "figure-1c.png",
+    "image_sha256": "abb0cff104e6ce53945e79a8264c3514fb4fa60b06d22c6c34642c7b744d0b5a",
+    "image_dimensions": [
+      1583,
+      1354
+    ],
+    "geometry_source": "explicit_reviewed_image_boxes_and_counts",
+    "groups_complete": true,
+    "groups": [
+      {
+        "track": "track_1",
+        "segments": [
+          {
+            "label": "Severe Covid-19",
+            "start": 0,
+            "end": 16
+          },
+          {
+            "label": "Mild Covid-19",
+            "start": 16,
+            "end": 24
+          },
+          {
+            "label": "HC",
+            "start": 24,
+            "end": 31
+          }
+        ]
+      },
+      {
+        "track": "track_2",
+        "segments": [
+          {
+            "label": "LDG",
+            "start": 0,
+            "end": 6
+          },
+          {
+            "label": "PMN",
+            "start": 6,
+            "end": 31
+          }
+        ]
+      }
+    ],
+    "sample_names": null,
+    "numeric_ground_truth": false,
+    "shape": [
+      46,
+      31
+    ],
+    "finite_cells": 1426,
+    "total_cells": 1426,
+    "median_colour_distance": 0.17989471162336917,
+    "scale_source": "reviewed_visual_anchors"
+  }
+}

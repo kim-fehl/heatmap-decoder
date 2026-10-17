@@ -1,0 +1,164 @@
+{
+  "families": {
+    "none": {
+      "clean": {
+        "bases": 10,
+        "explicit_accurate": 10,
+        "automatic_accurate": 10
+      },
+      "jpeg": {
+        "bases": 10,
+        "explicit_accurate": 8,
+        "automatic_accurate": 4
+      },
+      "blur": {
+        "bases": 10,
+        "explicit_accurate": 8,
+        "automatic_accurate": 3
+      }
+    },
+    "horizontal": {
+      "clean": {
+        "bases": 10,
+        "explicit_accurate": 10,
+        "automatic_accurate": 10
+      },
+      "jpeg": {
+        "bases": 10,
+        "explicit_accurate": 10,
+        "automatic_accurate": 4
+      },
+      "blur": {
+        "bases": 10,
+        "explicit_accurate": 6,
+        "automatic_accurate": 0
+      }
+    },
+    "vertical": {
+      "clean": {
+        "bases": 10,
+        "explicit_accurate": 10,
+        "automatic_accurate": 10
+      },
+      "jpeg": {
+        "bases": 10,
+        "explicit_accurate": 8,
+        "automatic_accurate": 3
+      },
+      "blur": {
+        "bases": 10,
+        "explicit_accurate": 8,
+        "automatic_accurate": 0
+      }
+    },
+    "both": {
+      "clean": {
+        "bases": 10,
+        "explicit_accurate": 10,
+        "automatic_accurate": 10
+      },
+      "jpeg": {
+        "bases": 10,
+        "explicit_accurate": 10,
+        "automatic_accurate": 3
+      },
+      "blur": {
+        "bases": 10,
+        "explicit_accurate": 7,
+        "automatic_accurate": 0
+      }
+    }
+  },
+  "gates": {
+    "explicit_clean": true,
+    "auto_clean_none": true,
+    "auto_clean_horizontal": true,
+    "auto_clean_vertical": true,
+    "auto_clean_both": true,
+    "auto_derivatives": false,
+    "zero_wrong_complete": true,
+    "zero_negative_complete": true
+  },
+  "bases": 40,
+  "correlated_attempts": 120,
+  "negative_bases": 12,
+  "automatic_complete_accurate": 57,
+  "wrong_complete": 0,
+  "negative_complete": 0,
+  "earliest_blockers": {
+    "accepted": 57,
+    "heatmap:full_grid_bounds_unverified": 8,
+    "numeric_quality:excessive_colour_matching_flags": 1,
+    "heatmap:rows_broad_boundary_peaks": 2,
+    "heatmap:counts_unresolved_for_grid_validation": 2,
+    "heatmap:columns_broad_boundary_peaks": 1,
+    "heatmap:no_validated_grid": 49
+  },
+  "baseline": {
+    "before": [
+      [
+        "examples/figure.png",
+        false,
+        "accepted"
+      ],
+      [
+        "examples/figure.png",
+        true,
+        "accepted"
+      ],
+      [
+        "examples/m14/viridis.png",
+        false,
+        "accepted"
+      ],
+      [
+        "examples/m14/viridis.png",
+        true,
+        "accepted"
+      ],
+      [
+        "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg",
+        false,
+        "unresolved"
+      ],
+      [
+        "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg",
+        true,
+        "review_required"
+      ]
+    ],
+    "after": [
+      [
+        "examples/figure.png",
+        false,
+        "accepted"
+      ],
+      [
+        "examples/figure.png",
+        true,
+        "accepted"
+      ],
+      [
+        "examples/m14/viridis.png",
+        false,
+        "accepted"
+      ],
+      [
+        "examples/m14/viridis.png",
+        true,
+        "accepted"
+      ],
+      [
+        "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg",
+        false,
+        "unresolved"
+      ],
+      [
+        "examples/real_world/10.1038__s41598-024-53477-3__fig4.jpg",
+        true,
+        "review_required"
+      ]
+    ]
+  },
+  "current_report": "validation-verified.json"
+}

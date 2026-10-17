@@ -1,0 +1,961 @@
+{
+  "scope": "Policy freeze before new-seed evaluation",
+  "source_sha256": {
+    "src/heatmap_decoder/__init__.py": "f6833fa726e69d7b58f6865b8c6a31be05221d90c5ca3233bb5b36a0e4eef797",
+    "src/heatmap_decoder/__main__.py": "93b604b2d73ba758ff637179c8e45093d32489ee162a63f2e1ea71a6331d5ce7",
+    "src/heatmap_decoder/acceptance.py": "ffbb6a4e34b24a0950dd72f75c1c748c6279d409fd8ca5c66b1fc5768935ffea",
+    "src/heatmap_decoder/automation.py": "86d0f8ea330dadf29250f0193e3b75afdb5d04470a942d9ac2ec6df19591311a",
+    "src/heatmap_decoder/bar_cores.py": "57f0db82fc2b9acd84dc3e39b2ea361822a8e7d46e56c2e5628109a744911e08",
+    "src/heatmap_decoder/calibration.py": "40259532b1670cd634215453ef86e579f05e6aa936bc2093b7322201d142e43e",
+    "src/heatmap_decoder/cli.py": "83e7fd1f9ac2345397c1a0e38a22ab3b5e116f4a796447c065839e42fb4f5b15",
+    "src/heatmap_decoder/detection.py": "54789c94895aba7099ecba59b95dfe618471dbf7c8a173ac032e9d60d2cdf108",
+    "src/heatmap_decoder/detection_policy.py": "e90a0f2a2c7f881e13425ec725ad7b78f21f70d53b25d5cbc8d1c6b06342968b",
+    "src/heatmap_decoder/diagnostics.py": "acc4fb0af0b477f9285dcc10bad4b266d39f867bace235826ddffbd557b1230a",
+    "src/heatmap_decoder/edge_profiles.py": "c5a5b05e95258e267d2156a53c7c89e274cfe084719531ccc15a43621bfa6a14",
+    "src/heatmap_decoder/extract.py": "d12f879bbcfb960aaa3ef8511f085f779c6d88a4e79a1357ad580ebc5d95d2bf",
+    "src/heatmap_decoder/geometry.py": "6a6e7f06da3ab23a77380ca3583c27add3b5aaf35fd52f8dd96d6f47161826d5",
+    "src/heatmap_decoder/io.py": "3c339a85d6bf26f99ed68e29e8520bd90f5d218d3643509d339c304d6c7d3dc5",
+    "src/heatmap_decoder/labels.py": "699f6a59b85087c0858258c3fdc7b7fbb1aa79ad7139fd1eaf50da4a16a7c3ae",
+    "src/heatmap_decoder/lattice.py": "0b622dd82976aa04b136c5b9b04c7626a923d2d6bc7dcac8e5ec0eaad7846aed",
+    "src/heatmap_decoder/legend.py": "5ba767b50441b0f1299dc720f7a1e34dd4e9f4ecf8fa1393a9452554ddfe0dae",
+    "src/heatmap_decoder/models.py": "8a3d1c89363be159459c7a9414a3b01d986ea672cade93942eb0c7c2e366c788",
+    "src/heatmap_decoder/ocr.py": "9c08e48ad689943843a5a4f153973980abfa63b81f68667366ad2c9bdb4776da",
+    "src/heatmap_decoder/sampling.py": "c709cfa63c75a1c47c1afd92896d4c39118ca91a2fc53a8b6e8d340caa6131df",
+    "src/heatmap_decoder/version.py": "fbcd96443027ffe7e6324e62f7a79702a6045cdea7416f7fba72883f51c9bcc5",
+    "benchmarks/m14/fixtures.py": "fe95273d47cc9194a00a5c444eb39c45bf03d91437c80e89d681e1238da1b6ca",
+    "benchmarks/m14/evaluate.py": "9831f904c9c7b9393d2f7ab8fd80706ab037ce80fce00fbb9d88b4c1e7db5687",
+    "benchmarks/m14/repair/evaluate.py": "def390c5b24df89e9753946335b1a546dfd8bb102ad0413f52755e2b9b7e7b2a"
+  },
+  "new_cases": [
+    {
+      "id": "repair-check-viridis-0-clean",
+      "base_id": "repair-check-viridis-0",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-0-jpeg",
+      "base_id": "repair-check-viridis-0",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 0,
+      "variant": "jpeg",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-0-blur",
+      "base_id": "repair-check-viridis-0",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 0,
+      "variant": "blur",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-1-clean",
+      "base_id": "repair-check-viridis-1",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 1,
+      "variant": "clean",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-1-jpeg",
+      "base_id": "repair-check-viridis-1",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 1,
+      "variant": "jpeg",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-1-blur",
+      "base_id": "repair-check-viridis-1",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 1,
+      "variant": "blur",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-2-clean",
+      "base_id": "repair-check-viridis-2",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 2,
+      "variant": "clean",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-2-jpeg",
+      "base_id": "repair-check-viridis-2",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 2,
+      "variant": "jpeg",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-2-blur",
+      "base_id": "repair-check-viridis-2",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 2,
+      "variant": "blur",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-3-clean",
+      "base_id": "repair-check-viridis-3",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 3,
+      "variant": "clean",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-3-jpeg",
+      "base_id": "repair-check-viridis-3",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 3,
+      "variant": "jpeg",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-viridis-3-blur",
+      "base_id": "repair-check-viridis-3",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 3,
+      "variant": "blur",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-0-clean",
+      "base_id": "repair-check-magma-0",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-0-jpeg",
+      "base_id": "repair-check-magma-0",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 0,
+      "variant": "jpeg",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-0-blur",
+      "base_id": "repair-check-magma-0",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 0,
+      "variant": "blur",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-1-clean",
+      "base_id": "repair-check-magma-1",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 1,
+      "variant": "clean",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-1-jpeg",
+      "base_id": "repair-check-magma-1",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 1,
+      "variant": "jpeg",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-1-blur",
+      "base_id": "repair-check-magma-1",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 1,
+      "variant": "blur",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-2-clean",
+      "base_id": "repair-check-magma-2",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 2,
+      "variant": "clean",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-2-jpeg",
+      "base_id": "repair-check-magma-2",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 2,
+      "variant": "jpeg",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-2-blur",
+      "base_id": "repair-check-magma-2",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 2,
+      "variant": "blur",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-3-clean",
+      "base_id": "repair-check-magma-3",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 3,
+      "variant": "clean",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-3-jpeg",
+      "base_id": "repair-check-magma-3",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 3,
+      "variant": "jpeg",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-magma-3-blur",
+      "base_id": "repair-check-magma-3",
+      "split": "repair-check",
+      "palette": "magma",
+      "layout": 3,
+      "variant": "blur",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-0-clean",
+      "base_id": "repair-check-cividis-0",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-0-jpeg",
+      "base_id": "repair-check-cividis-0",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 0,
+      "variant": "jpeg",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-0-blur",
+      "base_id": "repair-check-cividis-0",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 0,
+      "variant": "blur",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-1-clean",
+      "base_id": "repair-check-cividis-1",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 1,
+      "variant": "clean",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-1-jpeg",
+      "base_id": "repair-check-cividis-1",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 1,
+      "variant": "jpeg",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-1-blur",
+      "base_id": "repair-check-cividis-1",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 1,
+      "variant": "blur",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-2-clean",
+      "base_id": "repair-check-cividis-2",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 2,
+      "variant": "clean",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-2-jpeg",
+      "base_id": "repair-check-cividis-2",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 2,
+      "variant": "jpeg",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-2-blur",
+      "base_id": "repair-check-cividis-2",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 2,
+      "variant": "blur",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-3-clean",
+      "base_id": "repair-check-cividis-3",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 3,
+      "variant": "clean",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-3-jpeg",
+      "base_id": "repair-check-cividis-3",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 3,
+      "variant": "jpeg",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-cividis-3-blur",
+      "base_id": "repair-check-cividis-3",
+      "split": "repair-check",
+      "palette": "cividis",
+      "layout": 3,
+      "variant": "blur",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-0-clean",
+      "base_id": "repair-check-grayscale-0",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-0-jpeg",
+      "base_id": "repair-check-grayscale-0",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 0,
+      "variant": "jpeg",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-0-blur",
+      "base_id": "repair-check-grayscale-0",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 0,
+      "variant": "blur",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-1-clean",
+      "base_id": "repair-check-grayscale-1",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 1,
+      "variant": "clean",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-1-jpeg",
+      "base_id": "repair-check-grayscale-1",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 1,
+      "variant": "jpeg",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-1-blur",
+      "base_id": "repair-check-grayscale-1",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 1,
+      "variant": "blur",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-2-clean",
+      "base_id": "repair-check-grayscale-2",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 2,
+      "variant": "clean",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-2-jpeg",
+      "base_id": "repair-check-grayscale-2",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 2,
+      "variant": "jpeg",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-2-blur",
+      "base_id": "repair-check-grayscale-2",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 2,
+      "variant": "blur",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-3-clean",
+      "base_id": "repair-check-grayscale-3",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 3,
+      "variant": "clean",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-3-jpeg",
+      "base_id": "repair-check-grayscale-3",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 3,
+      "variant": "jpeg",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-grayscale-3-blur",
+      "base_id": "repair-check-grayscale-3",
+      "split": "repair-check",
+      "palette": "grayscale",
+      "layout": 3,
+      "variant": "blur",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-0-clean",
+      "base_id": "repair-check-blue_white_red-0",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-0-jpeg",
+      "base_id": "repair-check-blue_white_red-0",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 0,
+      "variant": "jpeg",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-0-blur",
+      "base_id": "repair-check-blue_white_red-0",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 0,
+      "variant": "blur",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-1-clean",
+      "base_id": "repair-check-blue_white_red-1",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 1,
+      "variant": "clean",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-1-jpeg",
+      "base_id": "repair-check-blue_white_red-1",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 1,
+      "variant": "jpeg",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-1-blur",
+      "base_id": "repair-check-blue_white_red-1",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 1,
+      "variant": "blur",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-2-clean",
+      "base_id": "repair-check-blue_white_red-2",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 2,
+      "variant": "clean",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-2-jpeg",
+      "base_id": "repair-check-blue_white_red-2",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 2,
+      "variant": "jpeg",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-2-blur",
+      "base_id": "repair-check-blue_white_red-2",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 2,
+      "variant": "blur",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-3-clean",
+      "base_id": "repair-check-blue_white_red-3",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 3,
+      "variant": "clean",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-3-jpeg",
+      "base_id": "repair-check-blue_white_red-3",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 3,
+      "variant": "jpeg",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-blue_white_red-3-blur",
+      "base_id": "repair-check-blue_white_red-3",
+      "split": "repair-check",
+      "palette": "blue_white_red",
+      "layout": 3,
+      "variant": "blur",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-0-clean",
+      "base_id": "repair-check-teal_black_red-0",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-0-jpeg",
+      "base_id": "repair-check-teal_black_red-0",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 0,
+      "variant": "jpeg",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-0-blur",
+      "base_id": "repair-check-teal_black_red-0",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 0,
+      "variant": "blur",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-1-clean",
+      "base_id": "repair-check-teal_black_red-1",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 1,
+      "variant": "clean",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-1-jpeg",
+      "base_id": "repair-check-teal_black_red-1",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 1,
+      "variant": "jpeg",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-1-blur",
+      "base_id": "repair-check-teal_black_red-1",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 1,
+      "variant": "blur",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-2-clean",
+      "base_id": "repair-check-teal_black_red-2",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 2,
+      "variant": "clean",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-2-jpeg",
+      "base_id": "repair-check-teal_black_red-2",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 2,
+      "variant": "jpeg",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-2-blur",
+      "base_id": "repair-check-teal_black_red-2",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 2,
+      "variant": "blur",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-3-clean",
+      "base_id": "repair-check-teal_black_red-3",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 3,
+      "variant": "clean",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-3-jpeg",
+      "base_id": "repair-check-teal_black_red-3",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 3,
+      "variant": "jpeg",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-teal_black_red-3-blur",
+      "base_id": "repair-check-teal_black_red-3",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 3,
+      "variant": "blur",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-0-clean",
+      "base_id": "repair-check-asymmetric-0",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-0-jpeg",
+      "base_id": "repair-check-asymmetric-0",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 0,
+      "variant": "jpeg",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-0-blur",
+      "base_id": "repair-check-asymmetric-0",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 0,
+      "variant": "blur",
+      "seed": 714000,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-1-clean",
+      "base_id": "repair-check-asymmetric-1",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 1,
+      "variant": "clean",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-1-jpeg",
+      "base_id": "repair-check-asymmetric-1",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 1,
+      "variant": "jpeg",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-1-blur",
+      "base_id": "repair-check-asymmetric-1",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 1,
+      "variant": "blur",
+      "seed": 714001,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-2-clean",
+      "base_id": "repair-check-asymmetric-2",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 2,
+      "variant": "clean",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-2-jpeg",
+      "base_id": "repair-check-asymmetric-2",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 2,
+      "variant": "jpeg",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-2-blur",
+      "base_id": "repair-check-asymmetric-2",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 2,
+      "variant": "blur",
+      "seed": 714002,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-3-clean",
+      "base_id": "repair-check-asymmetric-3",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 3,
+      "variant": "clean",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-3-jpeg",
+      "base_id": "repair-check-asymmetric-3",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 3,
+      "variant": "jpeg",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-asymmetric-3-blur",
+      "base_id": "repair-check-asymmetric-3",
+      "split": "repair-check",
+      "palette": "asymmetric",
+      "layout": 3,
+      "variant": "blur",
+      "seed": 714003,
+      "negative": null
+    },
+    {
+      "id": "repair-check-challenge-repeated",
+      "base_id": "repair-check-challenge-repeated",
+      "split": "repair-check",
+      "palette": "repeated",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 814000,
+      "negative": "repeated"
+    },
+    {
+      "id": "repair-check-challenge-plateau",
+      "base_id": "repair-check-challenge-plateau",
+      "split": "repair-check",
+      "palette": "plateau",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 814000,
+      "negative": "plateau"
+    },
+    {
+      "id": "repair-check-challenge-categorical",
+      "base_id": "repair-check-challenge-categorical",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 814000,
+      "negative": "categorical"
+    },
+    {
+      "id": "repair-check-challenge-competing_bars",
+      "base_id": "repair-check-challenge-competing_bars",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 814000,
+      "negative": "competing_bars"
+    },
+    {
+      "id": "repair-check-challenge-off_bar",
+      "base_id": "repair-check-challenge-off_bar",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 814000,
+      "negative": "off_bar"
+    },
+    {
+      "id": "repair-check-challenge-quantised",
+      "base_id": "repair-check-challenge-quantised",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 814000,
+      "negative": "quantised"
+    },
+    {
+      "id": "repair-check-challenge-black_border",
+      "base_id": "repair-check-challenge-black_border",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 814000,
+      "negative": "black_border"
+    },
+    {
+      "id": "repair-check-challenge-dark_band",
+      "base_id": "repair-check-challenge-dark_band",
+      "split": "repair-check",
+      "palette": "teal_black_red",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 814000,
+      "negative": "dark_band"
+    },
+    {
+      "id": "repair-check-challenge-clipped",
+      "base_id": "repair-check-challenge-clipped",
+      "split": "repair-check",
+      "palette": "viridis",
+      "layout": 0,
+      "variant": "clean",
+      "seed": 814000,
+      "negative": "clipped"
+    }
+  ]
+}

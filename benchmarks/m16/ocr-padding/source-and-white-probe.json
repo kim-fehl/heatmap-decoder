@@ -1,0 +1,3308 @@
+[
+  {
+    "kind": "ticks_aligned",
+    "padding": 0,
+    "position": 38.5,
+    "box": [
+      19,
+      127,
+      59,
+      149
+    ],
+    "words": [
+      [
+        "sate",
+        19.0
+      ],
+      [
+        "i",
+        61.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 0,
+    "position": 78,
+    "box": [
+      59,
+      127,
+      98,
+      149
+    ],
+    "words": [
+      [
+        "|",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 0,
+    "position": 117,
+    "box": [
+      98,
+      127,
+      137,
+      149
+    ],
+    "words": [
+      [
+        "0)",
+        20.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 0,
+    "position": 157,
+    "box": [
+      138,
+      127,
+      177,
+      149
+    ],
+    "words": [
+      [
+        "|",
+        20.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 0,
+    "position": 196,
+    "box": [
+      177,
+      127,
+      216,
+      149
+    ],
+    "words": [
+      [
+        "a",
+        86.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 1,
+    "position": 38.5,
+    "box": [
+      18,
+      126,
+      60,
+      150
+    ],
+    "words": [
+      [
+        "\u20142",
+        34.0
+      ],
+      [
+        ".",
+        84.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 1,
+    "position": 78,
+    "box": [
+      58,
+      126,
+      99,
+      150
+    ],
+    "words": [
+      [
+        "-",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 1,
+    "position": 117,
+    "box": [
+      97,
+      126,
+      138,
+      150
+    ],
+    "words": [
+      [
+        "Oo",
+        64.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 1,
+    "position": 157,
+    "box": [
+      137,
+      126,
+      178,
+      150
+    ],
+    "words": [
+      [
+        "1",
+        87.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 1,
+    "position": 196,
+    "box": [
+      176,
+      126,
+      217,
+      150
+    ],
+    "words": [
+      [
+        "2",
+        93.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 2,
+    "position": 38.5,
+    "box": [
+      17,
+      125,
+      61,
+      151
+    ],
+    "words": [
+      [
+        "alll",
+        40.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 2,
+    "position": 78,
+    "box": [
+      57,
+      125,
+      100,
+      151
+    ],
+    "words": [
+      [
+        "\u2014'|",
+        25.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 2,
+    "position": 117,
+    "box": [
+      96,
+      125,
+      139,
+      151
+    ],
+    "words": [
+      [
+        "1",
+        64.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 2,
+    "position": 157,
+    "box": [
+      136,
+      125,
+      179,
+      151
+    ],
+    "words": [
+      [
+        "1",
+        89.0
+      ]
+    ]
+  },
+  {
+    "kind": "ticks_aligned",
+    "padding": 2,
+    "position": 196,
+    "box": [
+      175,
+      125,
+      218,
+      151
+    ],
+    "words": [
+      [
+        "2",
+        82.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 0,
+    "box": [
+      858,
+      189,
+      980,
+      210
+    ],
+    "words": [
+      [
+        "EsTLRd",
+        18.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 1,
+    "box": [
+      858,
+      209,
+      980,
+      230
+    ],
+    "words": [
+      [
+        "EsPGRFS",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 2,
+    "box": [
+      858,
+      229,
+      980,
+      251
+    ],
+    "words": [
+      [
+        "LYsMs",
+        17.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 3,
+    "box": [
+      858,
+      250,
+      980,
+      271
+    ],
+    "words": [
+      [
+        "IKBL",
+        71.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 4,
+    "box": [
+      858,
+      270,
+      980,
+      291
+    ],
+    "words": [
+      [
+        "KBRS1",
+        80.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 5,
+    "box": [
+      858,
+      290,
+      980,
+      312
+    ],
+    "words": []
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 6,
+    "box": [
+      858,
+      311,
+      980,
+      332
+    ],
+    "words": [
+      [
+        "Eskeln",
+        23.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 7,
+    "box": [
+      858,
+      331,
+      980,
+      352
+    ],
+    "words": [
+      [
+        "Ess00",
+        76.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 8,
+    "box": [
+      858,
+      351,
+      980,
+      373
+    ],
+    "words": [
+      [
+        "TRAFS",
+        80.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 9,
+    "box": [
+      858,
+      372,
+      980,
+      393
+    ],
+    "words": [
+      [
+        "EsixBa",
+        80.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 10,
+    "box": [
+      858,
+      392,
+      980,
+      413
+    ],
+    "words": [
+      [
+        "TEK1",
+        11.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 11,
+    "box": [
+      858,
+      413,
+      980,
+      434
+    ],
+    "words": [
+      [
+        "Eslikky",
+        27.0
+      ],
+      [
+        "|",
+        41.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 12,
+    "box": [
+      858,
+      433,
+      980,
+      454
+    ],
+    "words": [
+      [
+        "EsPGRP2",
+        33.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 13,
+    "box": [
+      858,
+      453,
+      980,
+      475
+    ],
+    "words": [
+      [
+        "ic",
+        28.0
+      ],
+      [
+        "Be",
+        28.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 14,
+    "box": [
+      858,
+      474,
+      980,
+      495
+    ],
+    "words": [
+      [
+        "IKK",
+        33.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 15,
+    "box": [
+      858,
+      494,
+      980,
+      515
+    ],
+    "words": [
+      [
+        "EsPGRPS",
+        58.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 16,
+    "box": [
+      858,
+      514,
+      980,
+      536
+    ],
+    "words": [
+      [
+        "TOLIP",
+        84.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 17,
+    "box": [
+      858,
+      535,
+      980,
+      556
+    ],
+    "words": [
+      [
+        "IKKg",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 18,
+    "box": [
+      858,
+      555,
+      980,
+      576
+    ],
+    "words": [
+      [
+        "HSPT",
+        72.0
+      ],
+      [
+        "1",
+        74.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 19,
+    "box": [
+      858,
+      575,
+      980,
+      597
+    ],
+    "words": [
+      [
+        "MY",
+        0.0
+      ],
+      [
+        "Des",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 20,
+    "box": [
+      858,
+      596,
+      980,
+      617
+    ],
+    "words": [
+      [
+        "Estialectin\u2019",
+        32.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 21,
+    "box": [
+      858,
+      616,
+      980,
+      637
+    ],
+    "words": [
+      [
+        "inaka",
+        0.0
+      ],
+      [
+        ">",
+        48.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 22,
+    "box": [
+      858,
+      637,
+      980,
+      658
+    ],
+    "words": [
+      [
+        "FeTRALA",
+        1.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 23,
+    "box": [
+      858,
+      657,
+      980,
+      678
+    ],
+    "words": [
+      [
+        "TRAFS",
+        37.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 24,
+    "box": [
+      858,
+      677,
+      980,
+      699
+    ],
+    "words": [
+      [
+        "TARR",
+        23.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 25,
+    "box": [
+      858,
+      698,
+      980,
+      719
+    ],
+    "words": [
+      [
+        "E<Ti",
+        20.0
+      ],
+      [
+        "Ga",
+        63.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 26,
+    "box": [
+      858,
+      718,
+      980,
+      739
+    ],
+    "words": [
+      [
+        "HLACS",
+        54.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 27,
+    "box": [
+      858,
+      738,
+      980,
+      760
+    ],
+    "words": [
+      [
+        "ceTi",
+        37.0
+      ],
+      [
+        "G4",
+        15.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 28,
+    "box": [
+      858,
+      759,
+      980,
+      780
+    ],
+    "words": [
+      [
+        "TRAE?",
+        31.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 29,
+    "box": [
+      858,
+      779,
+      980,
+      800
+    ],
+    "words": [
+      [
+        "TART",
+        57.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 30,
+    "box": [
+      858,
+      799,
+      980,
+      821
+    ],
+    "words": [
+      [
+        "TAK\u2019",
+        40.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 31,
+    "box": [
+      858,
+      820,
+      980,
+      841
+    ],
+    "words": [
+      [
+        "FslilRAKS",
+        31.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "baseline",
+    "padding": 0,
+    "row": 32,
+    "box": [
+      858,
+      840,
+      980,
+      861
+    ],
+    "words": [
+      [
+        "EsTLR?",
+        34.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 0,
+    "box": [
+      857,
+      188,
+      981,
+      211
+    ],
+    "words": [
+      [
+        "EsTLRd",
+        42.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 1,
+    "box": [
+      857,
+      208,
+      981,
+      231
+    ],
+    "words": [
+      [
+        "EsPGRPS",
+        55.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 2,
+    "box": [
+      857,
+      228,
+      981,
+      252
+    ],
+    "words": [
+      [
+        "LYSM3",
+        76.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 3,
+    "box": [
+      857,
+      249,
+      981,
+      272
+    ],
+    "words": [
+      [
+        "IKBL",
+        86.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 4,
+    "box": [
+      857,
+      269,
+      981,
+      292
+    ],
+    "words": [
+      [
+        "KBRS1",
+        83.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 5,
+    "box": [
+      857,
+      289,
+      981,
+      313
+    ],
+    "words": []
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 6,
+    "box": [
+      857,
+      310,
+      981,
+      333
+    ],
+    "words": [
+      [
+        "EsRalA",
+        33.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 7,
+    "box": [
+      857,
+      330,
+      981,
+      353
+    ],
+    "words": [
+      [
+        "Ess00",
+        32.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 8,
+    "box": [
+      857,
+      350,
+      981,
+      374
+    ],
+    "words": [
+      [
+        "TRAFS",
+        83.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 9,
+    "box": [
+      857,
+      371,
+      981,
+      394
+    ],
+    "words": [
+      [
+        "EsixBa",
+        85.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 10,
+    "box": [
+      857,
+      391,
+      981,
+      414
+    ],
+    "words": [
+      [
+        "TBKi",
+        48.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 11,
+    "box": [
+      857,
+      412,
+      981,
+      435
+    ],
+    "words": [
+      [
+        "EslkKy",
+        12.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 12,
+    "box": [
+      857,
+      432,
+      981,
+      455
+    ],
+    "words": [
+      [
+        "EsPGRPF2",
+        48.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 13,
+    "box": [
+      857,
+      452,
+      981,
+      476
+    ],
+    "words": [
+      [
+        "ic",
+        2.0
+      ],
+      [
+        "Be",
+        2.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 14,
+    "box": [
+      857,
+      473,
+      981,
+      496
+    ],
+    "words": [
+      [
+        "IKKG",
+        65.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 15,
+    "box": [
+      857,
+      493,
+      981,
+      516
+    ],
+    "words": [
+      [
+        "EsPGRPS",
+        55.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 16,
+    "box": [
+      857,
+      513,
+      981,
+      537
+    ],
+    "words": [
+      [
+        "TOU",
+        4.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 17,
+    "box": [
+      857,
+      534,
+      981,
+      557
+    ],
+    "words": [
+      [
+        "iKKe",
+        33.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 18,
+    "box": [
+      857,
+      554,
+      981,
+      577
+    ],
+    "words": [
+      [
+        "HSP71",
+        51.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 19,
+    "box": [
+      857,
+      574,
+      981,
+      598
+    ],
+    "words": [
+      [
+        "Ay",
+        49.0
+      ],
+      [
+        "Ce",
+        39.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 20,
+    "box": [
+      857,
+      595,
+      981,
+      618
+    ],
+    "words": [
+      [
+        "Estialectin\u2019",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 21,
+    "box": [
+      857,
+      615,
+      981,
+      638
+    ],
+    "words": [
+      [
+        "iIRAKA",
+        19.0
+      ],
+      [
+        "2",
+        61.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 22,
+    "box": [
+      857,
+      636,
+      981,
+      659
+    ],
+    "words": [
+      [
+        "FeTRAA",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 23,
+    "box": [
+      857,
+      656,
+      981,
+      679
+    ],
+    "words": [
+      [
+        "TRAFS",
+        26.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 24,
+    "box": [
+      857,
+      676,
+      981,
+      700
+    ],
+    "words": [
+      [
+        "TARR",
+        27.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 25,
+    "box": [
+      857,
+      697,
+      981,
+      720
+    ],
+    "words": [
+      [
+        "Ec<Ti",
+        10.0
+      ],
+      [
+        "Ra",
+        61.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 26,
+    "box": [
+      857,
+      717,
+      981,
+      740
+    ],
+    "words": [
+      [
+        "NLRCR",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 27,
+    "box": [
+      857,
+      737,
+      981,
+      761
+    ],
+    "words": [
+      [
+        "EeTi",
+        0.0
+      ],
+      [
+        "G4",
+        29.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 28,
+    "box": [
+      857,
+      758,
+      981,
+      781
+    ],
+    "words": [
+      [
+        "TRAE?",
+        78.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 29,
+    "box": [
+      857,
+      778,
+      981,
+      801
+    ],
+    "words": [
+      [
+        "TART",
+        57.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 30,
+    "box": [
+      857,
+      798,
+      981,
+      822
+    ],
+    "words": [
+      [
+        "TAK",
+        21.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 31,
+    "box": [
+      857,
+      819,
+      981,
+      842
+    ],
+    "words": [
+      [
+        "EsiRAK4",
+        55.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 1,
+    "row": 32,
+    "box": [
+      857,
+      839,
+      981,
+      862
+    ],
+    "words": [
+      [
+        "EsTLR2",
+        42.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 0,
+    "box": [
+      856,
+      187,
+      982,
+      212
+    ],
+    "words": [
+      [
+        "EsTLR",
+        77.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 1,
+    "box": [
+      856,
+      207,
+      982,
+      232
+    ],
+    "words": [
+      [
+        "EsPGRPS",
+        88.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 2,
+    "box": [
+      856,
+      227,
+      982,
+      253
+    ],
+    "words": [
+      [
+        "LYSM3",
+        81.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 3,
+    "box": [
+      856,
+      248,
+      982,
+      273
+    ],
+    "words": [
+      [
+        "iKBL",
+        38.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 4,
+    "box": [
+      856,
+      268,
+      982,
+      293
+    ],
+    "words": [
+      [
+        "KBRS1",
+        91.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 5,
+    "box": [
+      856,
+      288,
+      982,
+      314
+    ],
+    "words": []
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 6,
+    "box": [
+      856,
+      309,
+      982,
+      334
+    ],
+    "words": [
+      [
+        "EsRelA",
+        56.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 7,
+    "box": [
+      856,
+      329,
+      982,
+      354
+    ],
+    "words": [
+      [
+        "Essoo0",
+        15.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 8,
+    "box": [
+      856,
+      349,
+      982,
+      375
+    ],
+    "words": [
+      [
+        "TRAFS",
+        76.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 9,
+    "box": [
+      856,
+      370,
+      982,
+      395
+    ],
+    "words": [
+      [
+        "EslxBa",
+        34.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 10,
+    "box": [
+      856,
+      390,
+      982,
+      415
+    ],
+    "words": []
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 11,
+    "box": [
+      856,
+      411,
+      982,
+      436
+    ],
+    "words": [
+      [
+        "EslkKy",
+        34.0
+      ],
+      [
+        "\u2014",
+        34.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 12,
+    "box": [
+      856,
+      431,
+      982,
+      456
+    ],
+    "words": [
+      [
+        "EsPGRP2",
+        89.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 13,
+    "box": [
+      856,
+      451,
+      982,
+      477
+    ],
+    "words": [
+      [
+        "in",
+        19.0
+      ],
+      [
+        "Be",
+        19.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 14,
+    "box": [
+      856,
+      472,
+      982,
+      497
+    ],
+    "words": [
+      [
+        "iIKKG",
+        1.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 15,
+    "box": [
+      856,
+      492,
+      982,
+      517
+    ],
+    "words": [
+      [
+        "EsPGRP3",
+        52.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 16,
+    "box": [
+      856,
+      512,
+      982,
+      538
+    ],
+    "words": [
+      [
+        "TOUrF",
+        40.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 17,
+    "box": [
+      856,
+      533,
+      982,
+      558
+    ],
+    "words": [
+      [
+        "IKK",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 18,
+    "box": [
+      856,
+      553,
+      982,
+      578
+    ],
+    "words": [
+      [
+        "HSPT1",
+        61.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 19,
+    "box": [
+      856,
+      573,
+      982,
+      599
+    ],
+    "words": []
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 20,
+    "box": [
+      856,
+      594,
+      982,
+      619
+    ],
+    "words": [
+      [
+        "EsGalectin\u2019",
+        18.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 21,
+    "box": [
+      856,
+      614,
+      982,
+      639
+    ],
+    "words": [
+      [
+        "iRAKA",
+        18.0
+      ],
+      [
+        "2",
+        73.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 22,
+    "box": [
+      856,
+      635,
+      982,
+      660
+    ],
+    "words": [
+      [
+        "EsTRAPS",
+        21.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 23,
+    "box": [
+      856,
+      655,
+      982,
+      680
+    ],
+    "words": [
+      [
+        "TR",
+        88.0
+      ],
+      [
+        "\u2019",
+        27.0
+      ],
+      [
+        "7",
+        32.0
+      ],
+      [
+        "ihe",
+        44.0
+      ],
+      [
+        "al",
+        45.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 24,
+    "box": [
+      856,
+      675,
+      982,
+      701
+    ],
+    "words": [
+      [
+        "TAR",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 25,
+    "box": [
+      856,
+      696,
+      982,
+      721
+    ],
+    "words": [
+      [
+        "EsTLR4",
+        68.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 26,
+    "box": [
+      856,
+      716,
+      982,
+      741
+    ],
+    "words": [
+      [
+        "HLRCS",
+        48.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 27,
+    "box": [
+      856,
+      736,
+      982,
+      762
+    ],
+    "words": [
+      [
+        "E\u00abTLEY",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 28,
+    "box": [
+      856,
+      757,
+      982,
+      782
+    ],
+    "words": [
+      [
+        "TRAE?",
+        37.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 29,
+    "box": [
+      856,
+      777,
+      982,
+      802
+    ],
+    "words": [
+      [
+        "TABI",
+        52.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 30,
+    "box": [
+      856,
+      797,
+      982,
+      823
+    ],
+    "words": [
+      [
+        "TAK",
+        2.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 31,
+    "box": [
+      856,
+      818,
+      982,
+      843
+    ],
+    "words": [
+      [
+        "EsiIRAKA",
+        36.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "source",
+    "padding": 2,
+    "row": 32,
+    "box": [
+      856,
+      838,
+      982,
+      863
+    ],
+    "words": [
+      [
+        "EsTLR?",
+        47.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 0,
+    "box": [
+      858,
+      189,
+      980,
+      210
+    ],
+    "words": [
+      [
+        "EsTLRd",
+        41.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 1,
+    "box": [
+      858,
+      209,
+      980,
+      230
+    ],
+    "words": [
+      [
+        "EsPGRPS",
+        68.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 2,
+    "box": [
+      858,
+      229,
+      980,
+      251
+    ],
+    "words": [
+      [
+        "LYSM3",
+        69.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 3,
+    "box": [
+      858,
+      250,
+      980,
+      271
+    ],
+    "words": [
+      [
+        "IKBL",
+        89.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 4,
+    "box": [
+      858,
+      270,
+      980,
+      291
+    ],
+    "words": [
+      [
+        "KBRS1",
+        85.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 5,
+    "box": [
+      858,
+      290,
+      980,
+      312
+    ],
+    "words": []
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 6,
+    "box": [
+      858,
+      311,
+      980,
+      332
+    ],
+    "words": [
+      [
+        "EsRelA",
+        62.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 7,
+    "box": [
+      858,
+      331,
+      980,
+      352
+    ],
+    "words": [
+      [
+        "Ess00",
+        46.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 8,
+    "box": [
+      858,
+      351,
+      980,
+      373
+    ],
+    "words": [
+      [
+        "TRAFS",
+        78.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 9,
+    "box": [
+      858,
+      372,
+      980,
+      393
+    ],
+    "words": [
+      [
+        "EsixBa",
+        87.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 10,
+    "box": [
+      858,
+      392,
+      980,
+      413
+    ],
+    "words": [
+      [
+        "TEK1",
+        54.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 11,
+    "box": [
+      858,
+      413,
+      980,
+      434
+    ],
+    "words": [
+      [
+        "Esikky",
+        22.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 12,
+    "box": [
+      858,
+      433,
+      980,
+      454
+    ],
+    "words": [
+      [
+        "EsPGRP2",
+        52.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 13,
+    "box": [
+      858,
+      453,
+      980,
+      475
+    ],
+    "words": [
+      [
+        "ick",
+        0.0
+      ],
+      [
+        "Be",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 14,
+    "box": [
+      858,
+      474,
+      980,
+      495
+    ],
+    "words": [
+      [
+        "IKKG",
+        51.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 15,
+    "box": [
+      858,
+      494,
+      980,
+      515
+    ],
+    "words": [
+      [
+        "EsPGRPS",
+        55.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 16,
+    "box": [
+      858,
+      514,
+      980,
+      536
+    ],
+    "words": [
+      [
+        "TOLIP",
+        61.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 17,
+    "box": [
+      858,
+      535,
+      980,
+      556
+    ],
+    "words": [
+      [
+        "IKKg",
+        29.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 18,
+    "box": [
+      858,
+      555,
+      980,
+      576
+    ],
+    "words": [
+      [
+        "HSP71",
+        57.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 19,
+    "box": [
+      858,
+      575,
+      980,
+      597
+    ],
+    "words": [
+      [
+        "MY",
+        9.0
+      ],
+      [
+        "Des",
+        9.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 20,
+    "box": [
+      858,
+      596,
+      980,
+      617
+    ],
+    "words": [
+      [
+        "Estialectin1",
+        24.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 21,
+    "box": [
+      858,
+      616,
+      980,
+      637
+    ],
+    "words": [
+      [
+        "iR\u00e9AkadA",
+        20.0
+      ],
+      [
+        ">",
+        39.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 22,
+    "box": [
+      858,
+      637,
+      980,
+      658
+    ],
+    "words": [
+      [
+        "FeTRAFA",
+        27.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 23,
+    "box": [
+      858,
+      657,
+      980,
+      678
+    ],
+    "words": [
+      [
+        "TRAFS",
+        48.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 24,
+    "box": [
+      858,
+      677,
+      980,
+      699
+    ],
+    "words": [
+      [
+        "TABS",
+        40.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 25,
+    "box": [
+      858,
+      698,
+      980,
+      719
+    ],
+    "words": [
+      [
+        "E<TLR4",
+        25.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 26,
+    "box": [
+      858,
+      718,
+      980,
+      739
+    ],
+    "words": [
+      [
+        "NLRC",
+        18.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 27,
+    "box": [
+      858,
+      738,
+      980,
+      760
+    ],
+    "words": [
+      [
+        "EsTLBi",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 28,
+    "box": [
+      858,
+      759,
+      980,
+      780
+    ],
+    "words": [
+      [
+        "TRAE?",
+        68.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 29,
+    "box": [
+      858,
+      779,
+      980,
+      800
+    ],
+    "words": [
+      [
+        "TAR.",
+        27.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 30,
+    "box": [
+      858,
+      799,
+      980,
+      821
+    ],
+    "words": [
+      [
+        "TAK",
+        3.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 31,
+    "box": [
+      858,
+      820,
+      980,
+      841
+    ],
+    "words": [
+      [
+        "EsiR",
+        76.0
+      ],
+      [
+        "Aka",
+        37.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 1,
+    "row": 32,
+    "box": [
+      858,
+      840,
+      980,
+      861
+    ],
+    "words": [
+      [
+        "EsTLR?",
+        71.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 0,
+    "box": [
+      858,
+      189,
+      980,
+      210
+    ],
+    "words": [
+      [
+        "EsTLR?",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 1,
+    "box": [
+      858,
+      209,
+      980,
+      230
+    ],
+    "words": [
+      [
+        "EsPGRPS",
+        60.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 2,
+    "box": [
+      858,
+      229,
+      980,
+      251
+    ],
+    "words": [
+      [
+        "LYSM3",
+        74.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 3,
+    "box": [
+      858,
+      250,
+      980,
+      271
+    ],
+    "words": [
+      [
+        "IKBL",
+        78.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 4,
+    "box": [
+      858,
+      270,
+      980,
+      291
+    ],
+    "words": [
+      [
+        "KBRS1",
+        91.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 5,
+    "box": [
+      858,
+      290,
+      980,
+      312
+    ],
+    "words": []
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 6,
+    "box": [
+      858,
+      311,
+      980,
+      332
+    ],
+    "words": [
+      [
+        "EshelA",
+        58.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 7,
+    "box": [
+      858,
+      331,
+      980,
+      352
+    ],
+    "words": [
+      [
+        "Essoo0",
+        18.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 8,
+    "box": [
+      858,
+      351,
+      980,
+      373
+    ],
+    "words": [
+      [
+        "TRAFS",
+        78.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 9,
+    "box": [
+      858,
+      372,
+      980,
+      393
+    ],
+    "words": [
+      [
+        "EsixBa",
+        34.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 10,
+    "box": [
+      858,
+      392,
+      980,
+      413
+    ],
+    "words": [
+      [
+        "TBK1",
+        64.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 11,
+    "box": [
+      858,
+      413,
+      980,
+      434
+    ],
+    "words": [
+      [
+        "Eslkky",
+        22.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 12,
+    "box": [
+      858,
+      433,
+      980,
+      454
+    ],
+    "words": [
+      [
+        "EsPGRP2",
+        66.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 13,
+    "box": [
+      858,
+      453,
+      980,
+      475
+    ],
+    "words": [
+      [
+        "in",
+        21.0
+      ],
+      [
+        "B\u00e9",
+        21.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 14,
+    "box": [
+      858,
+      474,
+      980,
+      495
+    ],
+    "words": [
+      [
+        "IKKB",
+        63.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 15,
+    "box": [
+      858,
+      494,
+      980,
+      515
+    ],
+    "words": [
+      [
+        "EsPGRPS",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 16,
+    "box": [
+      858,
+      514,
+      980,
+      536
+    ],
+    "words": [
+      [
+        "TOUP",
+        47.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 17,
+    "box": [
+      858,
+      535,
+      980,
+      556
+    ],
+    "words": [
+      [
+        "IKKe",
+        33.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 18,
+    "box": [
+      858,
+      555,
+      980,
+      576
+    ],
+    "words": [
+      [
+        "HSPTi",
+        16.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 19,
+    "box": [
+      858,
+      575,
+      980,
+      597
+    ],
+    "words": [
+      [
+        "MY",
+        42.0
+      ],
+      [
+        "Des.",
+        37.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 20,
+    "box": [
+      858,
+      596,
+      980,
+      617
+    ],
+    "words": [
+      [
+        "EsGalectin\u2019",
+        2.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 21,
+    "box": [
+      858,
+      616,
+      980,
+      637
+    ],
+    "words": [
+      [
+        "iRAKA",
+        43.0
+      ],
+      [
+        "2",
+        71.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 22,
+    "box": [
+      858,
+      637,
+      980,
+      658
+    ],
+    "words": [
+      [
+        "EsTRAPSG",
+        9.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 23,
+    "box": [
+      858,
+      657,
+      980,
+      678
+    ],
+    "words": [
+      [
+        "TRAFS",
+        38.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 24,
+    "box": [
+      858,
+      677,
+      980,
+      699
+    ],
+    "words": [
+      [
+        "TARR",
+        12.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 25,
+    "box": [
+      858,
+      698,
+      980,
+      719
+    ],
+    "words": [
+      [
+        "EsTLR4",
+        81.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 26,
+    "box": [
+      858,
+      718,
+      980,
+      739
+    ],
+    "words": [
+      [
+        "HLRCS",
+        37.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 27,
+    "box": [
+      858,
+      738,
+      980,
+      760
+    ],
+    "words": [
+      [
+        "EsTLA1",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 28,
+    "box": [
+      858,
+      759,
+      980,
+      780
+    ],
+    "words": [
+      [
+        "TRAE?",
+        65.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 29,
+    "box": [
+      858,
+      779,
+      980,
+      800
+    ],
+    "words": [
+      [
+        "TABI",
+        64.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 30,
+    "box": [
+      858,
+      799,
+      980,
+      821
+    ],
+    "words": [
+      [
+        "TAK",
+        0.0
+      ],
+      [
+        "1",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 31,
+    "box": [
+      858,
+      820,
+      980,
+      841
+    ],
+    "words": [
+      [
+        "EsiIR.AKA",
+        0.0
+      ]
+    ]
+  },
+  {
+    "kind": "rows",
+    "mode": "white",
+    "padding": 2,
+    "row": 32,
+    "box": [
+      858,
+      840,
+      980,
+      861
+    ],
+    "words": [
+      [
+        "EsTLR2",
+        41.0
+      ]
+    ]
+  }
+]

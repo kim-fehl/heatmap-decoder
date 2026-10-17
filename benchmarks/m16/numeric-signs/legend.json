@@ -1,0 +1,2170 @@
+{
+  "schema_version": 1,
+  "operation": "legend",
+  "software_version": "0.3.0",
+  "input": {
+    "filename": "10.1038__s41598-024-53477-3__fig4.jpg",
+    "sha256": "085e6a625e36abeea8e239c842b78599a932434e53456bf492b0da1ce228d4ef"
+  },
+  "policy": {
+    "version": "m16-numeric-signs.1",
+    "automatic_scale_enabled": false,
+    "required_ticks_for_development_eligibility": 3,
+    "stroke_dark_rgb_threshold": 110,
+    "stroke_zone_pixels": 14,
+    "maximum_stroke_width_pixels": 4,
+    "maximum_numeric_text_length": 256,
+    "maximum_localised_text_tokens": 256,
+    "ocr_modes": [
+      "--oem 1 --psm 11",
+      "--oem 1 --psm 7"
+    ],
+    "maximum_fit_value_residual_fraction": 0.01,
+    "maximum_fit_position_residual_pixels": 2.0,
+    "maximum_fit_condition_number": 1000,
+    "reason": "OCR linear scales require review until the independent M12 gate"
+  },
+  "result": {
+    "config": {
+      "colourbar_bbox": [
+        18,
+        39,
+        217,
+        103
+      ],
+      "colourbar_orientation": "horizontal",
+      "legend": {
+        "ocr": {
+          "language": "eng",
+          "upscale_factor": 3,
+          "min_confidence": 80.0,
+          "high_confidence": 90.0,
+          "retry_variants": [],
+          "max_axis_offset_fraction": 0.4
+        },
+        "search_pixels": 128,
+        "horizontal_search_pixels": 64,
+        "max_ticks": 16,
+        "max_ocr_pixels": 4000000,
+        "max_ocr_seconds": 60.0,
+        "max_axis_offset_pixels": 6.0,
+        "endpoint_tolerance_pixels": 2.0,
+        "decimal_separator": ".",
+        "align_tick_fields": true,
+        "retry_unconstrained_numeric": true,
+        "retry_white_padding_pixels": [
+          0
+        ],
+        "crop_padding_pixels": 2,
+        "white_padding_pixels": 2
+      },
+      "scale_model": "piecewise_linear"
+    },
+    "ticks": [
+      {
+        "index": 0,
+        "side": "below",
+        "position": 27.666666666666668,
+        "position_source": "text_centre",
+        "stroke_bbox": null,
+        "text_bbox": [
+          15.0,
+          103.0,
+          40.333333333333336,
+          122.66666666666667
+        ],
+        "raw_text": "~ T",
+        "normalised_text": "~ T",
+        "normalisation_actions": [],
+        "parsed_value": null,
+        "confidence": 0.0,
+        "token_indices": [
+          4,
+          5
+        ],
+        "localisation_record_index": 1,
+        "numeric_record_index": null,
+        "numeric_token_indices": [],
+        "ocr_bbox": null,
+        "field_evidence": null,
+        "numeric_alternatives": [],
+        "status": "unresolved",
+        "reasons": [
+          "unassociated_text_requires_review",
+          "unparsed_numeric_tick"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "below",
+        "position": 38.5,
+        "position_source": "stroke",
+        "stroke_bbox": [
+          38.0,
+          103.0,
+          40.0,
+          117.0
+        ],
+        "text_bbox": [
+          19.333333333333332,
+          129.33333333333334,
+          46.0,
+          148.0
+        ],
+        "raw_text": "-2",
+        "normalised_text": "-2",
+        "normalisation_actions": [],
+        "parsed_value": -2.0,
+        "confidence": 73.0,
+        "token_indices": [],
+        "localisation_record_index": 1,
+        "numeric_record_index": 2,
+        "numeric_token_indices": [
+          4
+        ],
+        "ocr_bbox": [
+          19,
+          128,
+          47,
+          150
+        ],
+        "field_evidence": {
+          "assumption": "shared_top",
+          "source": "observed_ink_projection",
+          "reason": null,
+          "cross_band": [
+            130,
+            148
+          ],
+          "glyph_gap_pixels": 6,
+          "dark_luminance_threshold": 140,
+          "clusters": [
+            [
+              21,
+              45
+            ],
+            [
+              56,
+              77
+            ],
+            [
+              109,
+              119
+            ],
+            [
+              153,
+              156
+            ],
+            [
+              190,
+              201
+            ]
+          ],
+          "matched_fields": 5
+        },
+        "numeric_alternatives": [
+          {
+            "record_index": 2,
+            "raw_text": "-2",
+            "parsed_value": -2.0,
+            "confidence": 73.0,
+            "text_bbox": [
+              19.333333333333332,
+              129.33333333333334,
+              46.0,
+              148.0
+            ],
+            "white_padding_pixels": 2,
+            "normalisation_actions": [],
+            "numeric_characters_only": true
+          },
+          {
+            "record_index": 3,
+            "token_indices": [
+              4
+            ],
+            "raw_text": ",",
+            "parsed_value": null,
+            "confidence": 0.0,
+            "normalisation_actions": [],
+            "numeric_characters_only": true,
+            "white_padding_pixels": 0,
+            "text_bbox": [
+              19.0,
+              129.33333333333334,
+              46.0,
+              148.0
+            ]
+          }
+        ],
+        "status": "ambiguous",
+        "reasons": [
+          "low_numeric_ocr_confidence",
+          "conflicting_numeric_readings"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "below",
+        "position": 48.33333333333333,
+        "position_source": "text_centre",
+        "stroke_bbox": null,
+        "text_bbox": [
+          19.333333333333332,
+          129.33333333333334,
+          77.33333333333333,
+          148.0
+        ],
+        "raw_text": "-2-1",
+        "normalised_text": "-2-1",
+        "normalisation_actions": [],
+        "parsed_value": null,
+        "confidence": 38.0,
+        "token_indices": [
+          16
+        ],
+        "localisation_record_index": 1,
+        "numeric_record_index": null,
+        "numeric_token_indices": [],
+        "ocr_bbox": null,
+        "field_evidence": null,
+        "numeric_alternatives": [],
+        "status": "unresolved",
+        "reasons": [
+          "unassociated_text_requires_review",
+          "unparsed_numeric_tick"
+        ]
+      },
+      {
+        "index": 3,
+        "side": "above",
+        "position": 54.666666666666664,
+        "position_source": "text_centre",
+        "stroke_bbox": null,
+        "text_bbox": [
+          47.666666666666664,
+          3.3333333333333335,
+          61.666666666666664,
+          23.333333333333332
+        ],
+        "raw_text": "2",
+        "normalised_text": "2",
+        "normalisation_actions": [],
+        "parsed_value": 2.0,
+        "confidence": 58.0,
+        "token_indices": [
+          4
+        ],
+        "localisation_record_index": 0,
+        "numeric_record_index": null,
+        "numeric_token_indices": [],
+        "ocr_bbox": null,
+        "field_evidence": null,
+        "numeric_alternatives": [],
+        "status": "unresolved",
+        "reasons": [
+          "unassociated_text_requires_review"
+        ]
+      },
+      {
+        "index": 4,
+        "side": "below",
+        "position": 78.0,
+        "position_source": "stroke",
+        "stroke_bbox": [
+          77.0,
+          103.0,
+          80.0,
+          117.0
+        ],
+        "text_bbox": [
+          55.666666666666664,
+          130.66666666666666,
+          77.33333333333333,
+          147.66666666666666
+        ],
+        "raw_text": "—1",
+        "normalised_text": "-1",
+        "normalisation_actions": [
+          "observed_dash_to_minus:U+2014"
+        ],
+        "parsed_value": -1.0,
+        "confidence": 35.0,
+        "token_indices": [
+          6
+        ],
+        "localisation_record_index": 1,
+        "numeric_record_index": 4,
+        "numeric_token_indices": [
+          4
+        ],
+        "ocr_bbox": [
+          54,
+          128,
+          79,
+          150
+        ],
+        "field_evidence": {
+          "assumption": "shared_top",
+          "source": "observed_ink_projection",
+          "reason": null,
+          "cross_band": [
+            130,
+            148
+          ],
+          "glyph_gap_pixels": 6,
+          "dark_luminance_threshold": 140,
+          "clusters": [
+            [
+              21,
+              45
+            ],
+            [
+              56,
+              77
+            ],
+            [
+              109,
+              119
+            ],
+            [
+              153,
+              156
+            ],
+            [
+              190,
+              201
+            ]
+          ],
+          "matched_fields": 5
+        },
+        "numeric_alternatives": [
+          {
+            "record_index": 4,
+            "raw_text": "—1",
+            "parsed_value": -1.0,
+            "confidence": 35.0,
+            "text_bbox": [
+              55.666666666666664,
+              130.66666666666666,
+              77.33333333333333,
+              147.66666666666666
+            ],
+            "white_padding_pixels": 2,
+            "normalisation_actions": [
+              "observed_dash_to_minus:U+2014"
+            ],
+            "numeric_characters_only": true
+          },
+          {
+            "record_index": 5,
+            "token_indices": [
+              4
+            ],
+            "raw_text": "—1",
+            "parsed_value": -1.0,
+            "confidence": 0.0,
+            "normalisation_actions": [
+              "observed_dash_to_minus:U+2014"
+            ],
+            "numeric_characters_only": true,
+            "white_padding_pixels": 0,
+            "text_bbox": [
+              55.666666666666664,
+              131.0,
+              77.33333333333333,
+              147.66666666666666
+            ]
+          }
+        ],
+        "status": "unresolved",
+        "reasons": [
+          "numeric_text_touches_search_edge",
+          "low_numeric_ocr_confidence"
+        ]
+      },
+      {
+        "index": 5,
+        "side": "above",
+        "position": 99.33333333333333,
+        "position_source": "text_centre",
+        "stroke_bbox": null,
+        "text_bbox": [
+          69.0,
+          8.0,
+          129.66666666666666,
+          23.666666666666668
+        ],
+        "raw_text": "score",
+        "normalised_text": "score",
+        "normalisation_actions": [],
+        "parsed_value": null,
+        "confidence": 78.0,
+        "token_indices": [
+          5
+        ],
+        "localisation_record_index": 0,
+        "numeric_record_index": null,
+        "numeric_token_indices": [],
+        "ocr_bbox": null,
+        "field_evidence": null,
+        "numeric_alternatives": [],
+        "status": "unresolved",
+        "reasons": [
+          "unassociated_text_requires_review",
+          "unparsed_numeric_tick"
+        ]
+      },
+      {
+        "index": 6,
+        "side": "below",
+        "position": 117.0,
+        "position_source": "stroke",
+        "stroke_bbox": [
+          116.0,
+          103.0,
+          119.0,
+          117.0
+        ],
+        "text_bbox": [
+          108.0,
+          129.33333333333334,
+          120.66666666666667,
+          148.0
+        ],
+        "raw_text": "0",
+        "normalised_text": "0",
+        "normalisation_actions": [],
+        "parsed_value": 0.0,
+        "confidence": 76.0,
+        "token_indices": [],
+        "localisation_record_index": 1,
+        "numeric_record_index": 8,
+        "numeric_token_indices": [
+          4
+        ],
+        "ocr_bbox": [
+          107,
+          128,
+          121,
+          150
+        ],
+        "field_evidence": {
+          "assumption": "shared_top",
+          "source": "observed_ink_projection",
+          "reason": null,
+          "cross_band": [
+            130,
+            148
+          ],
+          "glyph_gap_pixels": 6,
+          "dark_luminance_threshold": 140,
+          "clusters": [
+            [
+              21,
+              45
+            ],
+            [
+              56,
+              77
+            ],
+            [
+              109,
+              119
+            ],
+            [
+              153,
+              156
+            ],
+            [
+              190,
+              201
+            ]
+          ],
+          "matched_fields": 5
+        },
+        "numeric_alternatives": [
+          {
+            "record_index": 6,
+            "raw_text": "",
+            "parsed_value": null,
+            "confidence": 0,
+            "text_bbox": null,
+            "white_padding_pixels": 2,
+            "normalisation_actions": [],
+            "numeric_characters_only": true
+          },
+          {
+            "record_index": 7,
+            "token_indices": [],
+            "raw_text": "",
+            "parsed_value": null,
+            "confidence": 0,
+            "normalisation_actions": [],
+            "numeric_characters_only": true,
+            "white_padding_pixels": 0,
+            "text_bbox": null
+          },
+          {
+            "record_index": 8,
+            "token_indices": [
+              4
+            ],
+            "raw_text": "0",
+            "parsed_value": 0.0,
+            "confidence": 76.0,
+            "normalisation_actions": [],
+            "numeric_characters_only": false,
+            "white_padding_pixels": 2,
+            "text_bbox": [
+              108.0,
+              129.33333333333334,
+              120.66666666666667,
+              148.0
+            ]
+          }
+        ],
+        "status": "unresolved",
+        "reasons": [
+          "unparsed_numeric_tick",
+          "low_numeric_ocr_confidence",
+          "padding_retry_proposal_requires_review"
+        ]
+      },
+      {
+        "index": 7,
+        "side": "below",
+        "position": 126.66666666666666,
+        "position_source": "text_centre",
+        "stroke_bbox": null,
+        "text_bbox": [
+          117.66666666666667,
+          103.0,
+          135.66666666666666,
+          122.33333333333333
+        ],
+        "raw_text": "—",
+        "normalised_text": "—",
+        "normalisation_actions": [],
+        "parsed_value": null,
+        "confidence": 0.0,
+        "token_indices": [
+          10
+        ],
+        "localisation_record_index": 1,
+        "numeric_record_index": null,
+        "numeric_token_indices": [],
+        "ocr_bbox": null,
+        "field_evidence": null,
+        "numeric_alternatives": [],
+        "status": "unresolved",
+        "reasons": [
+          "unassociated_text_requires_review",
+          "unparsed_numeric_tick"
+        ]
+      },
+      {
+        "index": 8,
+        "side": "below",
+        "position": 157.0,
+        "position_source": "stroke",
+        "stroke_bbox": [
+          156.0,
+          103.0,
+          159.0,
+          117.0
+        ],
+        "text_bbox": [
+          151.0,
+          131.66666666666666,
+          156.33333333333334,
+          147.66666666666666
+        ],
+        "raw_text": "1",
+        "normalised_text": "1",
+        "normalisation_actions": [],
+        "parsed_value": 1.0,
+        "confidence": 84.0,
+        "token_indices": [
+          11
+        ],
+        "localisation_record_index": 1,
+        "numeric_record_index": 10,
+        "numeric_token_indices": [
+          4
+        ],
+        "ocr_bbox": [
+          151,
+          128,
+          158,
+          150
+        ],
+        "field_evidence": {
+          "assumption": "shared_top",
+          "source": "observed_ink_projection",
+          "reason": null,
+          "cross_band": [
+            130,
+            148
+          ],
+          "glyph_gap_pixels": 6,
+          "dark_luminance_threshold": 140,
+          "clusters": [
+            [
+              21,
+              45
+            ],
+            [
+              56,
+              77
+            ],
+            [
+              109,
+              119
+            ],
+            [
+              153,
+              156
+            ],
+            [
+              190,
+              201
+            ]
+          ],
+          "matched_fields": 5
+        },
+        "numeric_alternatives": [
+          {
+            "record_index": 9,
+            "raw_text": "",
+            "parsed_value": null,
+            "confidence": 0,
+            "text_bbox": [
+              153.0,
+              103.0,
+              156.0,
+              108.33333333333333
+            ],
+            "white_padding_pixels": 2,
+            "normalisation_actions": [],
+            "numeric_characters_only": true
+          },
+          {
+            "record_index": 10,
+            "token_indices": [
+              4
+            ],
+            "raw_text": "1",
+            "parsed_value": 1.0,
+            "confidence": 84.0,
+            "normalisation_actions": [],
+            "numeric_characters_only": true,
+            "white_padding_pixels": 0,
+            "text_bbox": [
+              151.0,
+              131.66666666666666,
+              156.33333333333334,
+              147.66666666666666
+            ]
+          }
+        ],
+        "status": "unresolved",
+        "reasons": [
+          "unparsed_numeric_tick",
+          "numeric_text_touches_search_edge",
+          "low_numeric_ocr_confidence",
+          "padding_retry_proposal_requires_review"
+        ]
+      },
+      {
+        "index": 9,
+        "side": "above",
+        "position": 165.83333333333331,
+        "position_source": "text_centre",
+        "stroke_bbox": null,
+        "text_bbox": [
+          137.0,
+          5.0,
+          194.66666666666666,
+          23.666666666666668
+        ],
+        "raw_text": "value",
+        "normalised_text": "value",
+        "normalisation_actions": [],
+        "parsed_value": null,
+        "confidence": 95.0,
+        "token_indices": [
+          6
+        ],
+        "localisation_record_index": 0,
+        "numeric_record_index": null,
+        "numeric_token_indices": [],
+        "ocr_bbox": null,
+        "field_evidence": null,
+        "numeric_alternatives": [],
+        "status": "unresolved",
+        "reasons": [
+          "unassociated_text_requires_review",
+          "unparsed_numeric_tick"
+        ]
+      },
+      {
+        "index": 10,
+        "side": "below",
+        "position": 196.0,
+        "position_source": "stroke",
+        "stroke_bbox": [
+          195.0,
+          105.0,
+          198.0,
+          108.0
+        ],
+        "text_bbox": [
+          189.66666666666666,
+          129.33333333333334,
+          201.0,
+          148.0
+        ],
+        "raw_text": "2",
+        "normalised_text": "2",
+        "normalisation_actions": [],
+        "parsed_value": 2.0,
+        "confidence": 22.0,
+        "token_indices": [],
+        "localisation_record_index": 1,
+        "numeric_record_index": 11,
+        "numeric_token_indices": [
+          4
+        ],
+        "ocr_bbox": [
+          188,
+          128,
+          203,
+          150
+        ],
+        "field_evidence": {
+          "assumption": "shared_top",
+          "source": "observed_ink_projection",
+          "reason": null,
+          "cross_band": [
+            130,
+            148
+          ],
+          "glyph_gap_pixels": 6,
+          "dark_luminance_threshold": 140,
+          "clusters": [
+            [
+              21,
+              45
+            ],
+            [
+              56,
+              77
+            ],
+            [
+              109,
+              119
+            ],
+            [
+              153,
+              156
+            ],
+            [
+              190,
+              201
+            ]
+          ],
+          "matched_fields": 5
+        },
+        "numeric_alternatives": [
+          {
+            "record_index": 11,
+            "raw_text": "2",
+            "parsed_value": 2.0,
+            "confidence": 22.0,
+            "text_bbox": [
+              189.66666666666666,
+              129.33333333333334,
+              201.0,
+              148.0
+            ],
+            "white_padding_pixels": 2,
+            "normalisation_actions": [],
+            "numeric_characters_only": true
+          },
+          {
+            "record_index": 12,
+            "token_indices": [],
+            "raw_text": "",
+            "parsed_value": null,
+            "confidence": 0,
+            "normalisation_actions": [],
+            "numeric_characters_only": true,
+            "white_padding_pixels": 0,
+            "text_bbox": null
+          }
+        ],
+        "status": "unresolved",
+        "reasons": [
+          "low_numeric_ocr_confidence"
+        ]
+      },
+      {
+        "index": 11,
+        "side": "below",
+        "position": 205.5,
+        "position_source": "text_centre",
+        "stroke_bbox": null,
+        "text_bbox": [
+          191.66666666666666,
+          103.0,
+          219.33333333333334,
+          122.33333333333333
+        ],
+        "raw_text": "fe",
+        "normalised_text": "fe",
+        "normalisation_actions": [],
+        "parsed_value": null,
+        "confidence": 0.0,
+        "token_indices": [
+          12
+        ],
+        "localisation_record_index": 1,
+        "numeric_record_index": null,
+        "numeric_token_indices": [],
+        "ocr_bbox": null,
+        "field_evidence": null,
+        "numeric_alternatives": [],
+        "status": "unresolved",
+        "reasons": [
+          "unassociated_text_requires_review",
+          "unparsed_numeric_tick"
+        ]
+      }
+    ],
+    "ocr_records": [
+      {
+        "side": "above",
+        "crop_bbox": [
+          0,
+          0,
+          281,
+          39
+        ],
+        "purpose": "localisation",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                843.0,
+                117.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                143.0,
+                10.0,
+                584.0,
+                71.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                143.0,
+                10.0,
+                584.0,
+                71.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                143.0,
+                10.0,
+                584.0,
+                71.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "2",
+              "bbox": [
+                143.0,
+                10.0,
+                185.0,
+                70.0
+              ],
+              "confidence": 58.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "score",
+              "bbox": [
+                207.0,
+                24.0,
+                389.0,
+                71.0
+              ],
+              "confidence": 78.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "value",
+              "bbox": [
+                411.0,
+                15.0,
+                584.0,
+                71.0
+              ],
+              "confidence": 95.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 11",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          0,
+          103,
+          281,
+          167
+        ],
+        "purpose": "localisation",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                843.0,
+                192.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                45.0,
+                0.0,
+                231.0,
+                59.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                45.0,
+                0.0,
+                231.0,
+                59.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                45.0,
+                0.0,
+                231.0,
+                59.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "~",
+              "bbox": [
+                45.0,
+                0.0,
+                75.0,
+                59.0
+              ],
+              "confidence": 37.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "T",
+              "bbox": [
+                108.0,
+                0.0,
+                121.0,
+                55.0
+              ],
+              "confidence": 0.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "4",
+              "bbox": [
+                212.0,
+                0.0,
+                231.0,
+                16.0
+              ],
+              "confidence": 0.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                353.0,
+                0.0,
+                658.0,
+                58.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                2,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                353.0,
+                0.0,
+                658.0,
+                58.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                2,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                353.0,
+                0.0,
+                658.0,
+                58.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                2,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "—",
+              "bbox": [
+                353.0,
+                0.0,
+                407.0,
+                58.0
+              ],
+              "confidence": 0.0,
+              "line_id": [
+                2,
+                1,
+                1
+              ]
+            },
+            {
+              "text": ".",
+              "bbox": [
+                459.0,
+                0.0,
+                468.0,
+                16.0
+              ],
+              "confidence": 0.0,
+              "line_id": [
+                2,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "fe",
+              "bbox": [
+                575.0,
+                0.0,
+                658.0,
+                58.0
+              ],
+              "confidence": 0.0,
+              "line_id": [
+                2,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                58.0,
+                79.0,
+                232.0,
+                135.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                3,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                58.0,
+                79.0,
+                232.0,
+                135.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                3,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                58.0,
+                79.0,
+                232.0,
+                135.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                3,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "-2-1",
+              "bbox": [
+                58.0,
+                79.0,
+                232.0,
+                135.0
+              ],
+              "confidence": 38.0,
+              "line_id": [
+                3,
+                1,
+                1
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 11",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0
+        },
+        "masked_stroke_boxes": [
+          [
+            38.0,
+            103.0,
+            40.0,
+            117.0
+          ],
+          [
+            77.0,
+            103.0,
+            80.0,
+            117.0
+          ],
+          [
+            116.0,
+            103.0,
+            119.0,
+            117.0
+          ],
+          [
+            156.0,
+            103.0,
+            159.0,
+            117.0
+          ],
+          [
+            195.0,
+            105.0,
+            198.0,
+            108.0
+          ]
+        ]
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          19,
+          128,
+          47,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                96.0,
+                78.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                7.0,
+                10.0,
+                87.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                7.0,
+                10.0,
+                87.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                7.0,
+                10.0,
+                87.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "-2",
+              "bbox": [
+                7.0,
+                10.0,
+                87.0,
+                66.0
+              ],
+              "confidence": 73.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 2
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          19,
+          128,
+          47,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                84.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                4.0,
+                81.0,
+                60.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                4.0,
+                81.0,
+                60.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                4.0,
+                81.0,
+                60.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": ",",
+              "bbox": [
+                0.0,
+                4.0,
+                81.0,
+                60.0
+              ],
+              "confidence": 0.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          54,
+          128,
+          79,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                87.0,
+                78.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                11.0,
+                14.0,
+                76.0,
+                65.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                11.0,
+                14.0,
+                76.0,
+                65.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                11.0,
+                14.0,
+                76.0,
+                65.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "—1",
+              "bbox": [
+                11.0,
+                14.0,
+                76.0,
+                65.0
+              ],
+              "confidence": 35.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 2
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          54,
+          128,
+          79,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                75.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                5.0,
+                9.0,
+                70.0,
+                59.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                5.0,
+                9.0,
+                70.0,
+                59.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                5.0,
+                9.0,
+                70.0,
+                59.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "—1",
+              "bbox": [
+                5.0,
+                9.0,
+                70.0,
+                59.0
+              ],
+              "confidence": 0.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          107,
+          128,
+          121,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                54.0,
+                78.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 2
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          107,
+          128,
+          121,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                42.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          107,
+          128,
+          121,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                54.0,
+                78.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                9.0,
+                10.0,
+                47.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                9.0,
+                10.0,
+                47.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                9.0,
+                10.0,
+                47.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "0",
+              "bbox": [
+                9.0,
+                10.0,
+                47.0,
+                66.0
+              ],
+              "confidence": 76.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 2
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          151,
+          128,
+          158,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                33.0,
+                78.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 2
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          151,
+          128,
+          158,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                21.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                11.0,
+                16.0,
+                59.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                11.0,
+                16.0,
+                59.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                11.0,
+                16.0,
+                59.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "1",
+              "bbox": [
+                0.0,
+                11.0,
+                16.0,
+                59.0
+              ],
+              "confidence": 84.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          188,
+          128,
+          203,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                57.0,
+                78.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                11.0,
+                10.0,
+                45.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                11.0,
+                10.0,
+                45.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "text": "",
+              "bbox": [
+                11.0,
+                10.0,
+                45.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "text": "2",
+              "bbox": [
+                11.0,
+                10.0,
+                45.0,
+                66.0
+              ],
+              "confidence": 22.0,
+              "line_id": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 2
+        },
+        "masked_stroke_boxes": []
+      },
+      {
+        "side": "below",
+        "crop_bbox": [
+          188,
+          128,
+          203,
+          150
+        ],
+        "purpose": "numeric_line",
+        "run": {
+          "tokens": [
+            {
+              "text": "",
+              "bbox": [
+                0.0,
+                0.0,
+                45.0,
+                66.0
+              ],
+              "confidence": -1.0,
+              "line_id": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "language": "eng",
+          "available_languages": [
+            "eng",
+            "osd"
+          ],
+          "mode": "--oem 1 --psm 7 -c tessedit_char_whitelist=0123456789+-.,eE^−–—‒‐‑―",
+          "preprocessing": "grayscale_bicubic",
+          "white_padding_pixels": 0
+        },
+        "masked_stroke_boxes": []
+      }
+    ],
+    "fit": null,
+    "status": "unresolved",
+    "reasons": [
+      "unresolved_or_conflicting_plausible_ticks",
+      "scale anchors must be strictly monotonic",
+      "text_centres_are_weaker_position_evidence",
+      "M12_scale_gate_closed"
+    ],
+    "development_eligible": false,
+    "automatic_export_allowed": false,
+    "review_sha256": null,
+    "reviewed_anchors": [],
+    "unreviewed_fit": null,
+    "unreviewed_reasons": [],
+    "calibration_evidence": null
+  },
+  "sample_position_convention": "first top/left pixel = 0; last bottom/right pixel = 1; no axial inset; transverse central-half sampling",
+  "ocr_coordinate_frame": "raw tokens in upscaled crop; tick/text boxes in original image",
+  "review": {
+    "sha256": null
+  },
+  "limitations": "Line residuals and OCR confidence do not certify tick values, biological meaning, original counts or measurement uncertainty."
+}

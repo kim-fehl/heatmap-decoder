@@ -1,0 +1,434 @@
+[
+  {
+    "extra_right": 0,
+    "row": 0,
+    "box": [
+      857,
+      188,
+      981,
+      211
+    ],
+    "raw": "EsTLR?",
+    "confidence": 0.0
+  },
+  {
+    "extra_right": 0,
+    "row": 5,
+    "box": [
+      857,
+      289,
+      981,
+      313
+    ],
+    "raw": "",
+    "confidence": null
+  },
+  {
+    "extra_right": 0,
+    "row": 12,
+    "box": [
+      857,
+      432,
+      981,
+      455
+    ],
+    "raw": "EsPGRP2",
+    "confidence": 88.0
+  },
+  {
+    "extra_right": 0,
+    "row": 20,
+    "box": [
+      857,
+      595,
+      981,
+      618
+    ],
+    "raw": "EsGalectin",
+    "confidence": 2.0
+  },
+  {
+    "extra_right": 0,
+    "row": 21,
+    "box": [
+      857,
+      615,
+      981,
+      638
+    ],
+    "raw": "iRAKA 2",
+    "confidence": 33.0
+  },
+  {
+    "extra_right": 0,
+    "row": 30,
+    "box": [
+      857,
+      798,
+      981,
+      822
+    ],
+    "raw": "TAK",
+    "confidence": 22.0
+  },
+  {
+    "extra_right": 2,
+    "row": 0,
+    "box": [
+      857,
+      188,
+      983,
+      211
+    ],
+    "raw": "EsTLR?",
+    "confidence": 0.0
+  },
+  {
+    "extra_right": 2,
+    "row": 5,
+    "box": [
+      857,
+      289,
+      983,
+      313
+    ],
+    "raw": "",
+    "confidence": null
+  },
+  {
+    "extra_right": 2,
+    "row": 12,
+    "box": [
+      857,
+      432,
+      983,
+      455
+    ],
+    "raw": "EsPGRP2",
+    "confidence": 88.0
+  },
+  {
+    "extra_right": 2,
+    "row": 20,
+    "box": [
+      857,
+      595,
+      983,
+      618
+    ],
+    "raw": "EsGalectin",
+    "confidence": 2.0
+  },
+  {
+    "extra_right": 2,
+    "row": 21,
+    "box": [
+      857,
+      615,
+      983,
+      638
+    ],
+    "raw": "iRAKA 2",
+    "confidence": 33.0
+  },
+  {
+    "extra_right": 2,
+    "row": 30,
+    "box": [
+      857,
+      798,
+      983,
+      822
+    ],
+    "raw": "TAK",
+    "confidence": 22.0
+  },
+  {
+    "extra_right": 4,
+    "row": 0,
+    "box": [
+      857,
+      188,
+      985,
+      211
+    ],
+    "raw": "EsTLR?",
+    "confidence": 0.0
+  },
+  {
+    "extra_right": 4,
+    "row": 5,
+    "box": [
+      857,
+      289,
+      985,
+      313
+    ],
+    "raw": "",
+    "confidence": null
+  },
+  {
+    "extra_right": 4,
+    "row": 12,
+    "box": [
+      857,
+      432,
+      985,
+      455
+    ],
+    "raw": "EsPGRP2",
+    "confidence": 88.0
+  },
+  {
+    "extra_right": 4,
+    "row": 20,
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "raw": "EsGalectin",
+    "confidence": 2.0
+  },
+  {
+    "extra_right": 4,
+    "row": 21,
+    "box": [
+      857,
+      615,
+      985,
+      638
+    ],
+    "raw": "iRAKA 2",
+    "confidence": 33.0
+  },
+  {
+    "extra_right": 4,
+    "row": 30,
+    "box": [
+      857,
+      798,
+      985,
+      822
+    ],
+    "raw": "TAK",
+    "confidence": 22.0
+  },
+  {
+    "extra_right": 6,
+    "row": 0,
+    "box": [
+      857,
+      188,
+      987,
+      211
+    ],
+    "raw": "EsTLR?",
+    "confidence": 0.0
+  },
+  {
+    "extra_right": 6,
+    "row": 5,
+    "box": [
+      857,
+      289,
+      987,
+      313
+    ],
+    "raw": "",
+    "confidence": null
+  },
+  {
+    "extra_right": 6,
+    "row": 12,
+    "box": [
+      857,
+      432,
+      987,
+      455
+    ],
+    "raw": "EsPGRP2",
+    "confidence": 88.0
+  },
+  {
+    "extra_right": 6,
+    "row": 20,
+    "box": [
+      857,
+      595,
+      987,
+      618
+    ],
+    "raw": "EsGalectin",
+    "confidence": 2.0
+  },
+  {
+    "extra_right": 6,
+    "row": 21,
+    "box": [
+      857,
+      615,
+      987,
+      638
+    ],
+    "raw": "iRAKA 2",
+    "confidence": 33.0
+  },
+  {
+    "extra_right": 6,
+    "row": 30,
+    "box": [
+      857,
+      798,
+      987,
+      822
+    ],
+    "raw": "TAK",
+    "confidence": 22.0
+  },
+  {
+    "extra_right": 8,
+    "row": 0,
+    "box": [
+      857,
+      188,
+      989,
+      211
+    ],
+    "raw": "EsTLR?",
+    "confidence": 0.0
+  },
+  {
+    "extra_right": 8,
+    "row": 5,
+    "box": [
+      857,
+      289,
+      989,
+      313
+    ],
+    "raw": "",
+    "confidence": null
+  },
+  {
+    "extra_right": 8,
+    "row": 12,
+    "box": [
+      857,
+      432,
+      989,
+      455
+    ],
+    "raw": "EsPGRP2",
+    "confidence": 88.0
+  },
+  {
+    "extra_right": 8,
+    "row": 20,
+    "box": [
+      857,
+      595,
+      989,
+      618
+    ],
+    "raw": "EsGalectin",
+    "confidence": 2.0
+  },
+  {
+    "extra_right": 8,
+    "row": 21,
+    "box": [
+      857,
+      615,
+      989,
+      638
+    ],
+    "raw": "iRAKA 2",
+    "confidence": 33.0
+  },
+  {
+    "extra_right": 8,
+    "row": 30,
+    "box": [
+      857,
+      798,
+      989,
+      822
+    ],
+    "raw": "TAK",
+    "confidence": 22.0
+  },
+  {
+    "extra_right": 12,
+    "row": 0,
+    "box": [
+      857,
+      188,
+      993,
+      211
+    ],
+    "raw": "EsTLR?",
+    "confidence": 0.0
+  },
+  {
+    "extra_right": 12,
+    "row": 5,
+    "box": [
+      857,
+      289,
+      993,
+      313
+    ],
+    "raw": "",
+    "confidence": null
+  },
+  {
+    "extra_right": 12,
+    "row": 12,
+    "box": [
+      857,
+      432,
+      993,
+      455
+    ],
+    "raw": "EsPGRP2",
+    "confidence": 88.0
+  },
+  {
+    "extra_right": 12,
+    "row": 20,
+    "box": [
+      857,
+      595,
+      993,
+      618
+    ],
+    "raw": "EsGalectin",
+    "confidence": 2.0
+  },
+  {
+    "extra_right": 12,
+    "row": 21,
+    "box": [
+      857,
+      615,
+      993,
+      638
+    ],
+    "raw": "iRAKA 2",
+    "confidence": 33.0
+  },
+  {
+    "extra_right": 12,
+    "row": 30,
+    "box": [
+      857,
+      798,
+      993,
+      822
+    ],
+    "raw": "TAK",
+    "confidence": 22.0
+  }
+]

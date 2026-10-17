@@ -1,0 +1,62 @@
+{
+  "baseline_commit": "452c8c0",
+  "baseline_suite": {
+    "passed": 602,
+    "skipped": 33,
+    "subtests": 18
+  },
+  "focused_m17": {
+    "command": "uv run pytest tests/test_m17.py -q",
+    "passed": 39
+  },
+  "full_suite": {
+    "command": "HEATMAP_DECODER_OCR_TESTS=1 uv run pytest -q",
+    "passed": 674,
+    "skipped": 0,
+    "subtests": 18,
+    "seconds": 116.22
+  },
+  "real_ocr_focused": {
+    "command": "HEATMAP_DECODER_OCR_TESTS=1 uv run pytest tests/test_ocr_integration.py tests/test_m13_ocr.py tests/test_m15_ocr.py tests/test_rapid_ocr.py -q",
+    "passed": 36
+  },
+  "ruff": {
+    "command": "uv run ruff check src tests benchmarks/m17",
+    "status": "passed"
+  },
+  "mypy": {
+    "command": "uv run mypy src",
+    "status": "passed",
+    "strict": true,
+    "source_files": 30
+  },
+  "examples": {
+    "extract_exit": 0,
+    "detect_exit": 5,
+    "automate_exit": 4,
+    "matrix_shape": [
+      10,
+      8
+    ],
+    "flagged_cells": 0
+  },
+  "distribution": {
+    "build": "passed",
+    "isolated_wheel_existing_smoke": "passed",
+    "installed_wheel_blocked_extraction": "passed",
+    "matrix_shape": [
+      10,
+      8
+    ],
+    "all_finite": true,
+    "both_axis_gaps_and_hash": true
+  },
+  "freeze_source_and_runtime": "verified unchanged",
+  "validation_report": "validation-verified.json",
+  "limitations": [
+    "ordinary-derivative gate failed (57/120 below 70%)",
+    "no fresh held-out publication qualification",
+    "one-manual-field recovery rate not measured",
+    "M18 and M19 pending"
+  ]
+}

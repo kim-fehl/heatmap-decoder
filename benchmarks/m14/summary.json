@@ -1,0 +1,1206 @@
+{
+  "scope": "synthetic conditional/manual and supplied-count/scale selective evaluation",
+  "development_input_hashes_unchanged": true,
+  "before": {
+    "ordinary": 84,
+    "complete": 29,
+    "coverage": 0.34523809523809523,
+    "wrong_complete": 0,
+    "negative_attempts": 7,
+    "negative_exports": 0,
+    "maximum_accepted_mae": 0.00454948061199933,
+    "maximum_accepted_error": 0.02134911897935965,
+    "per_palette": {
+      "viridis": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 6,
+        "numeric_qc": 6,
+        "complete": 6,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.001079077233568713,
+            "maximum": 0.004463213534687704,
+            "nearest_maximum": 0.004463213534687704,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6113664642613902
+          },
+          {
+            "mae": 0.0012245177092781983,
+            "maximum": 0.0036316612900816336,
+            "nearest_maximum": 0.0036316612900816336,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8539914029160045
+          },
+          {
+            "mae": 0.0011130536711718231,
+            "maximum": 0.004874267464136994,
+            "nearest_maximum": 0.004874267464136994,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6113664642613902
+          },
+          {
+            "mae": 0.001287725359321319,
+            "maximum": 0.006688263392670424,
+            "nearest_maximum": 0.006688263392670424,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7951337460720117
+          }
+        ]
+      },
+      "magma": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 6,
+        "association": 8,
+        "numeric_qc": 3,
+        "complete": 3,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0009572851132131367,
+            "maximum": 0.0040404153517408226,
+            "nearest_maximum": 0.0040404153517408226,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7974965377741858
+          },
+          {
+            "mae": 0.0012470937619032088,
+            "maximum": 0.0036316612900816336,
+            "nearest_maximum": 0.0036316612900816336,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7948354335824788
+          },
+          {
+            "mae": 0.0008376193736664278,
+            "maximum": 0.0037513149603977114,
+            "nearest_maximum": 0.0037513149603977114,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7931643997241584
+          },
+          {
+            "mae": 0.001215087014272735,
+            "maximum": 0.003679986573067451,
+            "nearest_maximum": 0.003679986573067451,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8482120642807375
+          }
+        ]
+      },
+      "cividis": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 6,
+        "numeric_qc": 6,
+        "complete": 6,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0011274153386339272,
+            "maximum": 0.005781416336697265,
+            "nearest_maximum": 0.005781416336697265,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7070483300194519
+          },
+          {
+            "mae": 0.0012801259968224813,
+            "maximum": 0.006129569273405355,
+            "nearest_maximum": 0.006129569273405355,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9563662379295615
+          },
+          {
+            "mae": 0.0010720599375573386,
+            "maximum": 0.003658928554028107,
+            "nearest_maximum": 0.003658928554028107,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7097472495153112
+          },
+          {
+            "mae": 0.0012863890869008697,
+            "maximum": 0.005414207210996835,
+            "nearest_maximum": 0.005414207210996835,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9563662379295615
+          }
+        ]
+      },
+      "grayscale": {
+        "attempts": 12,
+        "heatmap": 9,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 7,
+        "complete": 7,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0019176788164135357,
+            "maximum": 0.007433259402714332,
+            "nearest_maximum": 0.007433259402714332,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          },
+          {
+            "mae": 0.0018930038343625308,
+            "maximum": 0.007306300417602385,
+            "nearest_maximum": 0.007306300417602385,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          },
+          {
+            "mae": 0.002008796479420469,
+            "maximum": 0.007303337316226816,
+            "nearest_maximum": 0.007303337316226816,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          },
+          {
+            "mae": 0.00197509880394233,
+            "maximum": 0.006866440322828571,
+            "nearest_maximum": 0.006866440322828571,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          }
+        ]
+      },
+      "blue_white_red": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 10,
+        "association": 4,
+        "numeric_qc": 4,
+        "complete": 4,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0009404088154452975,
+            "maximum": 0.0037239949322169785,
+            "nearest_maximum": 0.0037239949322169785,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6896414915351309
+          },
+          {
+            "mae": 0.001351482944889244,
+            "maximum": 0.004133931607832431,
+            "nearest_maximum": 0.004133931607832431,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7705955483162381
+          },
+          {
+            "mae": 0.0009070227097352422,
+            "maximum": 0.00418299231033728,
+            "nearest_maximum": 0.00418299231033728,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6902671383414003
+          },
+          {
+            "mae": 0.001294728523741986,
+            "maximum": 0.003679986573067451,
+            "nearest_maximum": 0.003679986573067451,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7705955483162381
+          }
+        ]
+      },
+      "teal_black_red": {
+        "attempts": 12,
+        "heatmap": 6,
+        "bar": 6,
+        "association": 6,
+        "numeric_qc": 3,
+        "complete": 3,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0009434677625662608,
+            "maximum": 0.0044959439391982214,
+            "nearest_maximum": 0.0044959439391982214,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6232740991532078
+          },
+          {
+            "mae": 0.0012237562790017335,
+            "maximum": 0.003503410790170025,
+            "nearest_maximum": 0.003503410790170025,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8124880689639532
+          },
+          {
+            "mae": 0.0008916598403447613,
+            "maximum": 0.0038516623898570135,
+            "nearest_maximum": 0.0038516623898570135,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7742540831869963
+          },
+          {
+            "mae": 0.0012600562651768688,
+            "maximum": 0.005682130500512694,
+            "nearest_maximum": 0.005682130500512694,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8011329360955548
+          }
+        ]
+      },
+      "asymmetric": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 6,
+        "numeric_qc": 0,
+        "complete": 0,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0010434601791232145,
+            "maximum": 0.011460817022118763,
+            "nearest_maximum": 0.011460817022118763,
+            "finite_fraction": 0.9965277777777778,
+            "flagged_fraction": 0.003472222222222222,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.003472222222222222,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9197887359784064
+          },
+          {
+            "mae": 0.001305101047986872,
+            "maximum": 0.024363477386998622,
+            "nearest_maximum": 0.024363477386998622,
+            "finite_fraction": 0.9826388888888888,
+            "flagged_fraction": 0.017361111111111112,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.017361111111111112,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9238777694427917
+          },
+          {
+            "mae": 0.0011323161317984588,
+            "maximum": 0.022468764316779966,
+            "nearest_maximum": 0.022468764316779966,
+            "finite_fraction": 0.9895833333333334,
+            "flagged_fraction": 0.010416666666666666,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.010416666666666666,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9226606275084497
+          },
+          {
+            "mae": 0.001314423945388006,
+            "maximum": 0.025073340805438826,
+            "nearest_maximum": 0.025073340805438826,
+            "finite_fraction": 0.9756944444444444,
+            "flagged_fraction": 0.024305555555555556,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.024305555555555556,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 1.2725728198300372
+          }
+        ]
+      }
+    }
+  },
+  "development": {
+    "ordinary": 84,
+    "complete": 34,
+    "coverage": 0.40476190476190477,
+    "wrong_complete": 0,
+    "negative_attempts": 7,
+    "negative_exports": 0,
+    "maximum_accepted_mae": 0.00454948061199933,
+    "maximum_accepted_error": 0.02134911897935965,
+    "per_palette": {
+      "viridis": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 7,
+        "complete": 7,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.001079077233568713,
+            "maximum": 0.004463213534687704,
+            "nearest_maximum": 0.004463213534687704,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6113664642613902
+          },
+          {
+            "mae": 0.0012245177092781983,
+            "maximum": 0.0036316612900816336,
+            "nearest_maximum": 0.0036316612900816336,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8539914029160045
+          },
+          {
+            "mae": 0.0011130536711718231,
+            "maximum": 0.004874267464136994,
+            "nearest_maximum": 0.004874267464136994,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6113664642613902
+          },
+          {
+            "mae": 0.001287725359321319,
+            "maximum": 0.006688263392670424,
+            "nearest_maximum": 0.006688263392670424,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7951337460720117
+          }
+        ]
+      },
+      "magma": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 6,
+        "association": 12,
+        "numeric_qc": 3,
+        "complete": 3,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0009572851132131367,
+            "maximum": 0.0040404153517408226,
+            "nearest_maximum": 0.0040404153517408226,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7974965377741858
+          },
+          {
+            "mae": 0.0012470937619032088,
+            "maximum": 0.0036316612900816336,
+            "nearest_maximum": 0.0036316612900816336,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7948354335824788
+          },
+          {
+            "mae": 0.0008376193736664278,
+            "maximum": 0.0037513149603977114,
+            "nearest_maximum": 0.0037513149603977114,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7931643997241584
+          },
+          {
+            "mae": 0.001215087014272735,
+            "maximum": 0.003679986573067451,
+            "nearest_maximum": 0.003679986573067451,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8482120642807375
+          }
+        ]
+      },
+      "cividis": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 7,
+        "complete": 7,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0011274153386339272,
+            "maximum": 0.005781416336697265,
+            "nearest_maximum": 0.005781416336697265,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7070483300194519
+          },
+          {
+            "mae": 0.0012801259968224813,
+            "maximum": 0.006129569273405355,
+            "nearest_maximum": 0.006129569273405355,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9563662379295615
+          },
+          {
+            "mae": 0.0010720599375573386,
+            "maximum": 0.003658928554028107,
+            "nearest_maximum": 0.003658928554028107,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7097472495153112
+          },
+          {
+            "mae": 0.0012863890869008697,
+            "maximum": 0.005414207210996835,
+            "nearest_maximum": 0.005414207210996835,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9563662379295615
+          }
+        ]
+      },
+      "grayscale": {
+        "attempts": 12,
+        "heatmap": 9,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 7,
+        "complete": 7,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0019176788164135357,
+            "maximum": 0.007433259402714332,
+            "nearest_maximum": 0.007433259402714332,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          },
+          {
+            "mae": 0.0018930038343625308,
+            "maximum": 0.007306300417602385,
+            "nearest_maximum": 0.007306300417602385,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          },
+          {
+            "mae": 0.002008796479420469,
+            "maximum": 0.007303337316226816,
+            "nearest_maximum": 0.007303337316226816,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          },
+          {
+            "mae": 0.00197509880394233,
+            "maximum": 0.006866440322828571,
+            "nearest_maximum": 0.006866440322828571,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          }
+        ]
+      },
+      "blue_white_red": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 6,
+        "complete": 6,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0009404088154452975,
+            "maximum": 0.0037239949322169785,
+            "nearest_maximum": 0.0037239949322169785,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6896414915351309
+          },
+          {
+            "mae": 0.001351482944889244,
+            "maximum": 0.004133931607832431,
+            "nearest_maximum": 0.004133931607832431,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7705955483162381
+          },
+          {
+            "mae": 0.0009070227097352422,
+            "maximum": 0.00418299231033728,
+            "nearest_maximum": 0.00418299231033728,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6902671383414003
+          },
+          {
+            "mae": 0.001294728523741986,
+            "maximum": 0.003679986573067451,
+            "nearest_maximum": 0.003679986573067451,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7705955483162381
+          }
+        ]
+      },
+      "teal_black_red": {
+        "attempts": 12,
+        "heatmap": 6,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 4,
+        "complete": 4,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0009434677625662608,
+            "maximum": 0.0044959439391982214,
+            "nearest_maximum": 0.0044959439391982214,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6232740991532078
+          },
+          {
+            "mae": 0.0012237562790017335,
+            "maximum": 0.003503410790170025,
+            "nearest_maximum": 0.003503410790170025,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8124880689639532
+          },
+          {
+            "mae": 0.0008916598403447613,
+            "maximum": 0.0038516623898570135,
+            "nearest_maximum": 0.0038516623898570135,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7742540831869963
+          },
+          {
+            "mae": 0.0012600562651768688,
+            "maximum": 0.005682130500512694,
+            "nearest_maximum": 0.005682130500512694,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8011329360955548
+          }
+        ]
+      },
+      "asymmetric": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 0,
+        "complete": 0,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0010434601791232145,
+            "maximum": 0.011460817022118763,
+            "nearest_maximum": 0.011460817022118763,
+            "finite_fraction": 0.9965277777777778,
+            "flagged_fraction": 0.003472222222222222,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.003472222222222222,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9197887359784064
+          },
+          {
+            "mae": 0.001305101047986872,
+            "maximum": 0.024363477386998622,
+            "nearest_maximum": 0.024363477386998622,
+            "finite_fraction": 0.9826388888888888,
+            "flagged_fraction": 0.017361111111111112,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.017361111111111112,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9238777694427917
+          },
+          {
+            "mae": 0.0011323161317984588,
+            "maximum": 0.022468764316779966,
+            "nearest_maximum": 0.022468764316779966,
+            "finite_fraction": 0.9895833333333334,
+            "flagged_fraction": 0.010416666666666666,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.010416666666666666,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9226606275084497
+          },
+          {
+            "mae": 0.001314423945388006,
+            "maximum": 0.025073340805438826,
+            "nearest_maximum": 0.025073340805438826,
+            "finite_fraction": 0.9756944444444444,
+            "flagged_fraction": 0.024305555555555556,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.024305555555555556,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 1.2725728198300372
+          }
+        ]
+      }
+    }
+  },
+  "validation": {
+    "ordinary": 84,
+    "complete": 33,
+    "coverage": 0.39285714285714285,
+    "wrong_complete": 0,
+    "negative_attempts": 7,
+    "negative_exports": 0,
+    "maximum_accepted_mae": 0.004252839262319421,
+    "maximum_accepted_error": 0.021792031446255522,
+    "per_palette": {
+      "viridis": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 7,
+        "complete": 7,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0011715337232934245,
+            "maximum": 0.0057301463562573485,
+            "nearest_maximum": 0.0057301463562573485,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6113664642613902
+          },
+          {
+            "mae": 0.001302189691439835,
+            "maximum": 0.006048033695495447,
+            "nearest_maximum": 0.006048033695495447,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7724438982807191
+          },
+          {
+            "mae": 0.0010392405313711939,
+            "maximum": 0.004918326433464015,
+            "nearest_maximum": 0.004918326433464015,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6113664642613902
+          },
+          {
+            "mae": 0.0012093027929688852,
+            "maximum": 0.0063344367375105515,
+            "nearest_maximum": 0.0063344367375105515,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7951337460720117
+          }
+        ]
+      },
+      "magma": {
+        "attempts": 12,
+        "heatmap": 6,
+        "bar": 6,
+        "association": 12,
+        "numeric_qc": 3,
+        "complete": 3,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0009361727727807967,
+            "maximum": 0.004608974183020753,
+            "nearest_maximum": 0.004608974183020753,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7974965377741858
+          },
+          {
+            "mae": 0.001248534034108853,
+            "maximum": 0.003640401909251967,
+            "nearest_maximum": 0.003640401909251967,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8097272099415481
+          },
+          {
+            "mae": 0.0009056529860325278,
+            "maximum": 0.0046235012290646305,
+            "nearest_maximum": 0.0046235012290646305,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7974965377741858
+          },
+          {
+            "mae": 0.0012107833009528202,
+            "maximum": 0.0036153894420932753,
+            "nearest_maximum": 0.0036153894420932753,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 1.1928327410961534
+          }
+        ]
+      },
+      "cividis": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 7,
+        "complete": 7,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0012280856543957777,
+            "maximum": 0.005883553160067556,
+            "nearest_maximum": 0.005883553160067556,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7176226917645703
+          },
+          {
+            "mae": 0.0012671528659381804,
+            "maximum": 0.003856860896791603,
+            "nearest_maximum": 0.003856860896791603,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7119336864274859
+          },
+          {
+            "mae": 0.001129837235315519,
+            "maximum": 0.00607609965158229,
+            "nearest_maximum": 0.00607609965158229,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6997678690758454
+          },
+          {
+            "mae": 0.0012571421487080625,
+            "maximum": 0.004829160898292939,
+            "nearest_maximum": 0.004829160898292939,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9563662379295615
+          }
+        ]
+      },
+      "grayscale": {
+        "attempts": 12,
+        "heatmap": 9,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 7,
+        "complete": 7,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.002076556213536182,
+            "maximum": 0.00730774723408123,
+            "nearest_maximum": 0.00730774723408123,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          },
+          {
+            "mae": 0.001855620005614939,
+            "maximum": 0.00626554289292236,
+            "nearest_maximum": 0.00626554289292236,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          },
+          {
+            "mae": 0.001905692970208068,
+            "maximum": 0.007618073401051306,
+            "nearest_maximum": 0.007618073401051306,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          },
+          {
+            "mae": 0.0018564194064604968,
+            "maximum": 0.0069218971085226455,
+            "nearest_maximum": 0.0069218971085226455,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.0
+          }
+        ]
+      },
+      "blue_white_red": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 6,
+        "complete": 6,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.000951059530924329,
+            "maximum": 0.004324661828110227,
+            "nearest_maximum": 0.004324661828110227,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6896414915351309
+          },
+          {
+            "mae": 0.0013981272848370462,
+            "maximum": 0.004336811280951813,
+            "nearest_maximum": 0.004336811280951813,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7724549940084463
+          },
+          {
+            "mae": 0.0009008611872931329,
+            "maximum": 0.003627010959909749,
+            "nearest_maximum": 0.003627010959909749,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.6896414915351309
+          },
+          {
+            "mae": 0.0012921866799297677,
+            "maximum": 0.004442626910803105,
+            "nearest_maximum": 0.004442626910803105,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7656317000310189
+          }
+        ]
+      },
+      "teal_black_red": {
+        "attempts": 12,
+        "heatmap": 3,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 3,
+        "complete": 3,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0009723081691824608,
+            "maximum": 0.004608974183020753,
+            "nearest_maximum": 0.004608974183020753,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.5706568548084711
+          },
+          {
+            "mae": 0.0013178099965381667,
+            "maximum": 0.0036897370043286193,
+            "nearest_maximum": 0.0036897370043286193,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.8124880689639532
+          },
+          {
+            "mae": 0.0009097885461814603,
+            "maximum": 0.004683572401918024,
+            "nearest_maximum": 0.004683572401918024,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7790228125348111
+          },
+          {
+            "mae": 0.0011799088453869832,
+            "maximum": 0.0034495058054818672,
+            "nearest_maximum": 0.0034495058054818672,
+            "finite_fraction": 1.0,
+            "flagged_fraction": 0.0,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.0,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.7742540831869963
+          }
+        ]
+      },
+      "asymmetric": {
+        "attempts": 12,
+        "heatmap": 7,
+        "bar": 12,
+        "association": 12,
+        "numeric_qc": 0,
+        "complete": 0,
+        "wrong_complete": 0,
+        "clean_manual": [
+          {
+            "mae": 0.0010249478982724222,
+            "maximum": 0.004603345902338241,
+            "nearest_maximum": 0.004603345902338241,
+            "finite_fraction": 0.9861111111111112,
+            "flagged_fraction": 0.013888888888888888,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.013888888888888888,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9197887359784064
+          },
+          {
+            "mae": 0.0012238979052546163,
+            "maximum": 0.006883378597740297,
+            "nearest_maximum": 0.006883378597740297,
+            "finite_fraction": 0.9965277777777778,
+            "flagged_fraction": 0.003472222222222222,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.003472222222222222,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 1.2725728198300372
+          },
+          {
+            "mae": 0.0011778384965112328,
+            "maximum": 0.034421754558087214,
+            "nearest_maximum": 0.034421754558087214,
+            "finite_fraction": 0.9965277777777778,
+            "flagged_fraction": 0.003472222222222222,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.003472222222222222,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 0.9226606275084497
+          },
+          {
+            "mae": 0.0013959881167584524,
+            "maximum": 0.03672230648433128,
+            "nearest_maximum": 0.03672230648433128,
+            "finite_fraction": 0.9930555555555556,
+            "flagged_fraction": 0.006944444444444444,
+            "poor_match_fraction": 0.0,
+            "ambiguous_fraction": 0.006944444444444444,
+            "missing_fraction": 0.0,
+            "maximum_delta_e76": 1.0458804150567251
+          }
+        ]
+      }
+    }
+  },
+  "corrections_regression": {
+    "ordinary": 72,
+    "before_complete": 33,
+    "complete": 34,
+    "newly_complete": 1,
+    "lost_complete": 0,
+    "wrong_complete": 0,
+    "negative_attempts": 8,
+    "negative_complete": 0,
+    "negative_exports": 0
+  }
+}

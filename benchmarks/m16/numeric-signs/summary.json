@@ -1,0 +1,78 @@
+{
+  "tick_proposals": [
+    {
+      "raw_text": "-2",
+      "normalised_text": "-2",
+      "parsed_value": -2.0,
+      "status": "ambiguous",
+      "normalisation_actions": []
+    },
+    {
+      "raw_text": "—1",
+      "normalised_text": "-1",
+      "parsed_value": -1.0,
+      "status": "unresolved",
+      "normalisation_actions": [
+        "observed_dash_to_minus:U+2014"
+      ]
+    },
+    {
+      "raw_text": "0",
+      "normalised_text": "0",
+      "parsed_value": 0.0,
+      "status": "unresolved",
+      "normalisation_actions": []
+    },
+    {
+      "raw_text": "1",
+      "normalised_text": "1",
+      "parsed_value": 1.0,
+      "status": "unresolved",
+      "normalisation_actions": []
+    },
+    {
+      "raw_text": "2",
+      "normalised_text": "2",
+      "parsed_value": 2.0,
+      "status": "unresolved",
+      "normalisation_actions": []
+    }
+  ],
+  "row_right_expansion_pixels": 4,
+  "galectin_suffix_recovered": false,
+  "note": "Conditional inspected crop; original transcription is evaluation-only. Right expansion 2..12 pixels and resize/contrast/threshold variants did not recover the Galectin suffix.",
+  "rows": {
+    "attempts": 33,
+    "raw_exact": 9,
+    "accepted": 4,
+    "accepted_exact": 3
+  },
+  "columns": {
+    "attempts": 8,
+    "raw_exact": 8,
+    "accepted": 8,
+    "accepted_exact": 8
+  },
+  "galectin_slot": {
+    "bbox": [
+      861.0,
+      598.0,
+      971.6666666666666,
+      616.0
+    ],
+    "candidate_indices": [
+      19
+    ],
+    "confidence": 2.0,
+    "duplicate": false,
+    "final_text": null,
+    "index": 20,
+    "issues": [],
+    "raw_text": "EsGalectin",
+    "source": "ocr",
+    "status": "low_confidence"
+  },
+  "tick_ocr_calls": 13,
+  "export_allowed": false,
+  "numeric_matrix": "bit-identical including NaNs; 251/264 finite cells"
+}

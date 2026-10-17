@@ -1,0 +1,1250 @@
+[
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "original",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGaiectin'",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "original",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "original",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "contrast",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGatectin\u2019",
+    "confidence": 11.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "contrast",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "contrast",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "threshold120",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "eid ord |",
+    "confidence": 33.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "threshold120",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cEstiarctinT",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "threshold120",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cEstiarctinT",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "threshold160",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "F sCseeciint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "threshold160",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGatectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "threshold160",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGatectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "threshold200",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "Esisadectin\u2019",
+    "confidence": 28.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "threshold200",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cEsGotectini",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "threshold200",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cEsGotectini",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "bold",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGiakectin'",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "bold",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "bold",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "nearest",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EstGialectin1",
+    "confidence": 3.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "nearest",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cEsGalectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "nearest",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cEsGalectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "wide",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EC stiaiectin 4",
+    "confidence": 28.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "wide",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "(EsGatectini \u2014",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      857,
+      595,
+      985,
+      618
+    ],
+    "variant": "wide",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "(EsGatectini \u2014",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "original",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 3.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "original",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 21.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "original",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 21.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "contrast",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 16.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "contrast",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 27.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "contrast",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 27.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "threshold120",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "eid ord |",
+    "confidence": 33.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "threshold120",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "bata",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "threshold120",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "bata",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "threshold160",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "tsCseeciin",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "threshold160",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "(fsGaecin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "threshold160",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "(fsGaecin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "threshold200",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "Esisadectin\u2019",
+    "confidence": 30.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "threshold200",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGetectina",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "threshold200",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGetectina",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "bold",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGiakectin'",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "bold",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 8.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "bold",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 8.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "nearest",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EstGialectin1",
+    "confidence": 18.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "nearest",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 14.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "nearest",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 14.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "wide",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "Ee stiaiectin 4",
+    "confidence": 23.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "wide",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "(EsGatectini",
+    "confidence": 56.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      617
+    ],
+    "variant": "wide",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "(EsGatectini",
+    "confidence": 56.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "original",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EstGialectin |",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "original",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "original",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "contrast",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGiadectin |",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "contrast",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "contrast",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "threshold120",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "eid ort 1",
+    "confidence": 38.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "threshold120",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cbatia rsdn",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "threshold120",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cbatia rsdn",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "threshold160",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "\u00a3sCseeciint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "threshold160",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cEsGatectin",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "threshold160",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cEsGatectin",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "threshold200",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "Esiiatectin\u2019",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "threshold200",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EeGasectint",
+    "confidence": 8.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "threshold200",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EeGasectint",
+    "confidence": 8.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "bold",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "Estialectin1",
+    "confidence": 6.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "bold",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "bold",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "nearest",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin",
+    "confidence": 7.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "nearest",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "nearest",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "wide",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "\u00a9 stiadectin 1",
+    "confidence": 44.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "wide",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "(EsGatectini",
+    "confidence": 36.0
+  },
+  {
+    "box": [
+      859,
+      597,
+      976,
+      615
+    ],
+    "variant": "wide",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "(EsGatectini",
+    "confidence": 36.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "original",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGatectin",
+    "confidence": 11.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "original",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "original",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "contrast",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGatectin1",
+    "confidence": 21.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "contrast",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "contrast",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "threshold120",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "eid ord |",
+    "confidence": 33.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "threshold120",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cbalia rsdn",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "threshold120",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u201cbalia rsdn",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "threshold160",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "t sCseeciin",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "threshold160",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "fsGaecin",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "threshold160",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "fsGaecin",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "threshold200",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "Esisadectin\u2019",
+    "confidence": 19.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "threshold200",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EeGedectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "threshold200",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EeGedectint",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "bold",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGalectin'",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "bold",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "bold",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "nearest",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "EsGialectin1",
+    "confidence": 10.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "nearest",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "nearest",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "\u2018EsGalectin1",
+    "confidence": 0.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "wide",
+    "psm": 7,
+    "white_border_output_pixels": 40,
+    "raw": "Estiaiectin 4",
+    "confidence": 7.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "wide",
+    "psm": 8,
+    "white_border_output_pixels": 40,
+    "raw": "(EsGatectin1",
+    "confidence": 8.0
+  },
+  {
+    "box": [
+      859,
+      598,
+      976,
+      616
+    ],
+    "variant": "wide",
+    "psm": 13,
+    "white_border_output_pixels": 40,
+    "raw": "(EsGatectin1",
+    "confidence": 8.0
+  }
+]

@@ -1,0 +1,354 @@
+{
+  "packages": {
+    "heatmap-decoder": "0.3.0",
+    "numpy": "2.5.4",
+    "Pillow": "12.3.0",
+    "scikit-image": "0.26.0",
+    "rapidocr-onnxruntime": "1.4.4"
+  },
+  "panels": {
+    "elife-78496-fig5e": {
+      "shape": [
+        49,
+        14
+      ],
+      "independent_truth_available": true,
+      "image_sha256": "6fe9f9d7928c2f8a4d5b896e78e0bc001e90bb50baa12e6da5df3de39f0e46bf",
+      "numeric": {
+        "config.json": {
+          "finite_cells": 618,
+          "total_cells": 686,
+          "flag_counts": {
+            "MISSING": 0,
+            "POOR_MATCH": 0,
+            "AMBIGUOUS": 13,
+            "UNCALIBRATED": 55
+          },
+          "calibration": "reviewed ticks only; no extrapolation",
+          "mae": 0.04085411522467078,
+          "rmse": 0.05160724990034706,
+          "max_absolute_error": 0.15027430173410383,
+          "correlation": 0.9992014845113495
+        },
+        "config-linear.json": {
+          "finite_cells": 673,
+          "total_cells": 686,
+          "flag_counts": {
+            "MISSING": 0,
+            "POOR_MATCH": 0,
+            "AMBIGUOUS": 13,
+            "UNCALIBRATED": 0
+          },
+          "calibration": "affine fit to visible ticks; extrapolates to bar edges",
+          "mae": 0.04107774842748371,
+          "rmse": 0.051801567584192514,
+          "max_absolute_error": 0.1488218246612012,
+          "correlation": 0.9992379078343189
+        }
+      },
+      "row_ocr": {
+        "exact_correct": 44,
+        "raw_exact_correct": 46,
+        "accepted_wrong": 3,
+        "total": 49,
+        "unresolved": 2,
+        "mismatches": [
+          {
+            "index": 9,
+            "expected": "Slc9b2",
+            "raw": "S/c9b2",
+            "final": "S/c9b2",
+            "status": "accepted"
+          },
+          {
+            "index": 13,
+            "expected": "Nfib",
+            "raw": "Nfib",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 24,
+            "expected": "Pth1r",
+            "raw": "Pthir",
+            "final": "Pthir",
+            "status": "accepted"
+          },
+          {
+            "index": 31,
+            "expected": "Vdr",
+            "raw": "Vdr",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 33,
+            "expected": "Chrd",
+            "raw": "Chrd.",
+            "final": "Chrd.",
+            "status": "accepted"
+          }
+        ]
+      }
+    },
+    "elife-97830-fig4e": {
+      "shape": [
+        25,
+        26
+      ],
+      "independent_truth_available": false,
+      "image_sha256": "2a44ee291f66aafeddd70af22267c58835a258532975386a1128aa5585a7a53f",
+      "numeric": {
+        "config.json": {
+          "finite_cells": 645,
+          "total_cells": 650,
+          "flag_counts": {
+            "MISSING": 0,
+            "POOR_MATCH": 0,
+            "AMBIGUOUS": 2,
+            "UNCALIBRATED": 3
+          },
+          "calibration": "reviewed ticks only; no extrapolation"
+        },
+        "config-linear.json": {
+          "finite_cells": 648,
+          "total_cells": 650,
+          "flag_counts": {
+            "MISSING": 0,
+            "POOR_MATCH": 0,
+            "AMBIGUOUS": 2,
+            "UNCALIBRATED": 0
+          },
+          "calibration": "affine fit to visible ticks; extrapolates to bar edges"
+        }
+      },
+      "row_ocr": {
+        "exact_correct": 25,
+        "raw_exact_correct": 25,
+        "accepted_wrong": 0,
+        "total": 25,
+        "unresolved": 0,
+        "mismatches": []
+      },
+      "source_data": {
+        "doi": "10.7554/eLife.97830.3",
+        "panel": "Figure 4E",
+        "attribution": "B\u00e6k/Muk et al., eLife 13:RP97830",
+        "license": "CC BY",
+        "source_workbook": "elife-97830-fig4-data1-v1.xlsx",
+        "source_workbook_sha256": "d695ff1a55761980f882d37bb4b5841199e6c331f6f50db476f8daf44bcef64b",
+        "source_expression_sha256": "2a3a12ce1da5f1ecd635a2414bd0760bd215bb78f5124de2f0e390b5358ccbbe",
+        "shape": [
+          25,
+          39
+        ],
+        "display_shape": [
+          25,
+          26
+        ],
+        "status": "source_expression_available_display_transform_and_order_unverified",
+        "row_order_verified": true,
+        "column_order_verified": false,
+        "additional_transformation": "none; source expression is not plotted z-score truth",
+        "note": "All 25 genes matched uniquely; 13 HIGH_SE and 14 LOW_SE samples available, but image shows 13 per group. Low-group selection, within-group image order and plotted transformation are not supplied by the workbook. No color-fitted ordering is treated as independent truth."
+      },
+      "group_labels": {
+        "complete": true,
+        "count": 26,
+        "names": [
+          "High_SE__01",
+          "High_SE__02",
+          "High_SE__03",
+          "High_SE__04",
+          "High_SE__05",
+          "High_SE__06",
+          "High_SE__07",
+          "High_SE__08",
+          "High_SE__09",
+          "High_SE__10",
+          "High_SE__11",
+          "High_SE__12",
+          "High_SE__13",
+          "Low_SE__01",
+          "Low_SE__02",
+          "Low_SE__03",
+          "Low_SE__04",
+          "Low_SE__05",
+          "Low_SE__06",
+          "Low_SE__07",
+          "Low_SE__08",
+          "Low_SE__09",
+          "Low_SE__10",
+          "Low_SE__11",
+          "Low_SE__12",
+          "Low_SE__13"
+        ],
+        "original_sample_ids_recovered": false
+      }
+    },
+    "elife-17290-fig2": {
+      "shape": [
+        20,
+        3
+      ],
+      "independent_truth_available": true,
+      "image_sha256": "fbc95c91690ec02d5a050e179b6c1d2486f614bbab053d34fbf499989f26e278",
+      "numeric": {
+        "config.json": {
+          "finite_cells": 60,
+          "total_cells": 60,
+          "flag_counts": {
+            "MISSING": 0,
+            "POOR_MATCH": 0,
+            "AMBIGUOUS": 0,
+            "UNCALIBRATED": 0
+          },
+          "calibration": "manual endpoint fit (0\u20136); bar positions estimated",
+          "mae": 0.1667679926335184,
+          "rmse": 0.176221105025692,
+          "max_absolute_error": 0.3253149171270726,
+          "correlation": 0.9994439382931164
+        },
+        "config-linear.json": {
+          "finite_cells": 60,
+          "total_cells": 60,
+          "flag_counts": {
+            "MISSING": 0,
+            "POOR_MATCH": 0,
+            "AMBIGUOUS": 0,
+            "UNCALIBRATED": 0
+          },
+          "calibration": "manual endpoint fit (0\u20136); bar positions estimated",
+          "mae": 0.1667679926335184,
+          "rmse": 0.176221105025692,
+          "max_absolute_error": 0.3253149171270726,
+          "correlation": 0.9994439382931164
+        }
+      },
+      "row_ocr": {
+        "exact_correct": 9,
+        "raw_exact_correct": 18,
+        "accepted_wrong": 0,
+        "total": 20,
+        "unresolved": 11,
+        "mismatches": [
+          {
+            "index": 0,
+            "expected": "ATG9A",
+            "raw": "ATG9A",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 1,
+            "expected": "RB1CC1",
+            "raw": "RB1CC1",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 3,
+            "expected": "ATG7",
+            "raw": "ATG7",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 4,
+            "expected": "ATG3",
+            "raw": "ATG3",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 5,
+            "expected": "ATG5",
+            "raw": "ATG5",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 8,
+            "expected": "WIPI2",
+            "raw": "IPI2",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 9,
+            "expected": "ATG14",
+            "raw": "ATG14",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 10,
+            "expected": "WDR45",
+            "raw": "WDR45",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 13,
+            "expected": "RAB1A",
+            "raw": "RAB1A",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 15,
+            "expected": "SBDS",
+            "raw": "BDS",
+            "final": null,
+            "status": "low_confidence"
+          },
+          {
+            "index": 19,
+            "expected": "TSC2",
+            "raw": "TSC2",
+            "final": null,
+            "status": "low_confidence"
+          }
+        ]
+      },
+      "row_ocr_upscale_comparison": {
+        "2": {
+          "exact_correct": 10,
+          "raw_exact_correct": 18,
+          "unresolved": 10,
+          "accepted_wrong": 0
+        },
+        "3": {
+          "exact_correct": 10,
+          "raw_exact_correct": 18,
+          "unresolved": 10,
+          "accepted_wrong": 0
+        }
+      }
+    },
+    "elife-78496-fig5-supp3a": {
+      "independent_truth_available": false,
+      "group_labels": {
+        "complete": true,
+        "count": 14,
+        "names": [
+          "AL__Pnpla2+/+__01",
+          "AL__Pnpla2+/+__02",
+          "AL__Pnpla2+/+__03",
+          "AL__Pnpla2+/+__04",
+          "CR__Pnpla2+/+__01",
+          "CR__Pnpla2+/+__02",
+          "CR__Pnpla2+/+__03",
+          "CR__Pnpla2+/+__04",
+          "AL__Pnpla2-/-__01",
+          "AL__Pnpla2-/-__02",
+          "AL__Pnpla2-/-__03",
+          "CR__Pnpla2-/-__01",
+          "CR__Pnpla2-/-__02",
+          "CR__Pnpla2-/-__03"
+        ],
+        "original_sample_ids_recovered": false
+      }
+    }
+  }
+}

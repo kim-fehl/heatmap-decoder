@@ -1,0 +1,14 @@
+AL__Pnpla2+/+__01
+AL__Pnpla2+/+__02
+AL__Pnpla2+/+__03
+AL__Pnpla2+/+__04
+CR__Pnpla2+/+__01
+CR__Pnpla2+/+__02
+CR__Pnpla2+/+__03
+CR__Pnpla2+/+__04
+AL__Pnpla2-/-__01
+AL__Pnpla2-/-__02
+AL__Pnpla2-/-__03
+CR__Pnpla2-/-__01
+CR__Pnpla2-/-__02
+CR__Pnpla2-/-__03

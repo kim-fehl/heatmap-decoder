@@ -1,0 +1,52 @@
+{
+  "heatmap_bbox": [
+    320,
+    140,
+    450,
+    998
+  ],
+  "rows": 20,
+  "columns": 3,
+  "colourbar_bbox": [
+    242,
+    80,
+    424,
+    109
+  ],
+  "colourbar_orientation": "horizontal",
+  "scale": {
+    "source": "manual_ticks",
+    "quantity": "Log2 FC",
+    "anchors": [
+      {
+        "position": 242,
+        "value": 0,
+        "origin": "manual",
+        "status": "reviewed"
+      },
+      {
+        "position": 423,
+        "value": 6,
+        "origin": "manual",
+        "status": "reviewed"
+      }
+    ],
+    "model": "linear"
+  },
+  "labels": {
+    "rows": {
+      "source": "ocr",
+      "bbox": [
+        107,
+        140,
+        316,
+        998
+      ],
+      "recognition": "slots"
+    },
+    "ocr": {
+      "engine": "rapidocr",
+      "upscale_factor": 1
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "scope": "Formative candidate manifest; user will add real-world figures to the repository",
+  "sources": [
+    {
+      "doi": "10.1371/journal.pone.0277952",
+      "publication_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0277952",
+      "title": "The integrated transcriptome bioinformatics analysis identifies key genes and cellular components for proliferative diabetic retinopathy",
+      "attribution": "Gao et al. (2022)",
+      "figure_id": "g003",
+      "panel": null,
+      "image_url": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0277952.g003",
+      "licence": {
+        "article": "Creative Commons Attribution",
+        "verified_at": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0277952",
+        "verified_date": "2026-10-12",
+        "condition": "credit original authors and source; mark changes",
+        "panel_specific_credit_check": "pending image/caption inspection"
+      },
+      "status": "awaiting_user_supplied_assets",
+      "source_dimensions": null,
+      "preprocessing": [],
+      "annotation": null,
+      "annotation_audit": null,
+      "numeric_truth": "not established; manual digitisation would measure workflow agreement",
+      "redistributed": false
+    },
+    {
+      "doi": "10.1371/journal.pone.0111988",
+      "publication_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111988",
+      "title": "HemI: A Toolkit for Illustrating Heatmaps",
+      "attribution": "Deng et al. (2014)",
+      "figure_id": "g002",
+      "panel": null,
+      "image_url": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0111988.g002",
+      "licence": {
+        "article": "Creative Commons Attribution",
+        "verified_at": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111988",
+        "verified_date": "2026-10-12",
+        "condition": "credit original authors and source; mark changes",
+        "panel_specific_credit_check": "pending image/caption inspection"
+      },
+      "status": "awaiting_user_supplied_assets",
+      "source_dimensions": null,
+      "preprocessing": [],
+      "annotation": null,
+      "annotation_audit": null,
+      "numeric_truth": "not established; manual digitisation would measure workflow agreement",
+      "redistributed": false
+    },
+    {
+      "doi": "10.1371/journal.pbio.3002820",
+      "publication_url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3002820",
+      "title": "Transcriptomic analysis of the 12 major human breast cell types reveals mechanisms of cell and tissue function",
+      "attribution": "Del Toro et al. (2024)",
+      "figure_id": null,
+      "panel": null,
+      "image_url": null,
+      "licence": {
+        "article": "Creative Commons Attribution",
+        "verified_at": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3002820",
+        "verified_date": "2026-10-12",
+        "condition": "credit original authors and source; mark changes",
+        "panel_specific_credit_check": "pending image/caption inspection"
+      },
+      "status": "awaiting_user_supplied_assets",
+      "source_dimensions": null,
+      "preprocessing": [],
+      "annotation": null,
+      "annotation_audit": null,
+      "numeric_truth": "not established; manual digitisation would measure workflow agreement",
+      "redistributed": false
+    }
+  ],
+  "blocked_hosts": [
+    "journals.plos.org",
+    "www.ebi.ac.uk"
+  ],
+  "selection": "heatmap captions and source licences reviewed before image recognition; images not selected by decoder success",
+  "user_steering": "Publication-host access will not be enabled; await user-supplied repo assets"
+}

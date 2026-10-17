@@ -1,0 +1,126 @@
+[
+  {
+    "path": "elife-17290-fig2-data2-v1(1).xlsx",
+    "sha256": "e58b933c9eb91c73ebc20afc4cd9a11ebd44b58fe64f589a19544586ba4ee52f",
+    "sheets": [
+      {
+        "name": "high versus low",
+        "rows": 604,
+        "columns": 10
+      }
+    ]
+  },
+  {
+    "path": "elife-78496-fig5-data1-v2(1).xlsx",
+    "sha256": "9bd972443aa26d12e132e634984c426582451c49e2da7c583ed58d9b342aa95c",
+    "sheets": [
+      {
+        "name": "Figure 5B",
+        "rows": 1028,
+        "columns": 18
+      },
+      {
+        "name": "Figure 5D",
+        "rows": 36,
+        "columns": 20
+      },
+      {
+        "name": "Figure 5E",
+        "rows": 51,
+        "columns": 22
+      },
+      {
+        "name": "Figure 5F",
+        "rows": 35,
+        "columns": 22
+      }
+    ]
+  },
+  {
+    "path": "elife-97830-fig2-data1-v1(1).xlsx",
+    "sha256": "55e70f9034b3fedb58562d90ad848fe0370f633c43fd7bcf9e70e16c98ffd9ed",
+    "sheets": [
+      {
+        "name": "DEG_HighvslowLiver",
+        "rows": 5592,
+        "columns": 46
+      },
+      {
+        "name": "SEhvslsingleplot",
+        "rows": 38,
+        "columns": 5592
+      },
+      {
+        "name": "DEG_CONHighvsLow",
+        "rows": 5591,
+        "columns": 46
+      },
+      {
+        "name": "HighSEvsHighCON",
+        "rows": 5591,
+        "columns": 46
+      },
+      {
+        "name": "overlapped",
+        "rows": 1486,
+        "columns": 11
+      },
+      {
+        "name": "PEforoverlap",
+        "rows": 275,
+        "columns": 29
+      },
+      {
+        "name": "LowSEvsLowCon",
+        "rows": 4701,
+        "columns": 46
+      },
+      {
+        "name": "Sheet2",
+        "rows": 27,
+        "columns": 5591
+      },
+      {
+        "name": "Sheet3",
+        "rows": 5172,
+        "columns": 20
+      }
+    ]
+  },
+  {
+    "path": "elife-97830-fig4-data1-v1.xlsx",
+    "sha256": "d695ff1a55761980f882d37bb4b5841199e6c331f6f50db476f8daf44bcef64b",
+    "sheets": [
+      {
+        "name": "overview",
+        "rows": 9,
+        "columns": 2
+      },
+      {
+        "name": "DEGSEhighvsLow",
+        "rows": 685,
+        "columns": 48
+      },
+      {
+        "name": "CONhighvslow",
+        "rows": 55,
+        "columns": 48
+      },
+      {
+        "name": "HighCONvsSE",
+        "rows": 5376,
+        "columns": 48
+      },
+      {
+        "name": "LOWconvsSE",
+        "rows": 5901,
+        "columns": 48
+      },
+      {
+        "name": "labelcode",
+        "rows": 40,
+        "columns": 2
+      }
+    ]
+  }
+]

@@ -1,0 +1,422 @@
+{
+  "detector_version": "m8.1",
+  "bar_attempts": {
+    "vertical_sequential/clean": {
+      "split": "development",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "colourbar-001",
+        "bbox": [
+          410,
+          100,
+          424,
+          280
+        ],
+        "iou": 1.0,
+        "max_edge_pixels": 0
+      },
+      "recall_within_1px": true,
+      "correct_bar_association_offered": true,
+      "automatically_accepted": false
+    },
+    "vertical_sequential/blur": {
+      "split": "development",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_within_1px": false,
+      "correct_bar_association_offered": false,
+      "automatically_accepted": false
+    },
+    "vertical_sequential/jpeg": {
+      "split": "development",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_within_1px": false,
+      "correct_bar_association_offered": false,
+      "automatically_accepted": false
+    },
+    "horizontal_diverging/clean": {
+      "split": "development",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "colourbar-001",
+        "bbox": [
+          130,
+          40,
+          370,
+          54
+        ],
+        "iou": 1.0,
+        "max_edge_pixels": 0
+      },
+      "recall_within_1px": true,
+      "correct_bar_association_offered": true,
+      "automatically_accepted": false
+    },
+    "horizontal_diverging/blur": {
+      "split": "development",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_within_1px": false,
+      "correct_bar_association_offered": false,
+      "automatically_accepted": false
+    },
+    "horizontal_diverging/jpeg": {
+      "split": "development",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_within_1px": false,
+      "correct_bar_association_offered": false,
+      "automatically_accepted": false
+    },
+    "left_grayscale/clean": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "colourbar-001",
+        "bbox": [
+          65,
+          100,
+          79,
+          280
+        ],
+        "iou": 1.0,
+        "max_edge_pixels": 0
+      },
+      "recall_within_1px": true,
+      "correct_bar_association_offered": true,
+      "automatically_accepted": false
+    },
+    "left_grayscale/blur": {
+      "split": "held_out",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_within_1px": false,
+      "correct_bar_association_offered": false,
+      "automatically_accepted": false
+    },
+    "left_grayscale/jpeg": {
+      "split": "held_out",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_within_1px": false,
+      "correct_bar_association_offered": false,
+      "automatically_accepted": false
+    },
+    "below_sequential/clean": {
+      "split": "held_out",
+      "status": "review_required",
+      "candidates": 1,
+      "best_top3": {
+        "id": "colourbar-001",
+        "bbox": [
+          130,
+          330,
+          370,
+          344
+        ],
+        "iou": 1.0,
+        "max_edge_pixels": 0
+      },
+      "recall_within_1px": true,
+      "correct_bar_association_offered": true,
+      "automatically_accepted": false
+    },
+    "below_sequential/blur": {
+      "split": "held_out",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_within_1px": false,
+      "correct_bar_association_offered": false,
+      "automatically_accepted": false
+    },
+    "below_sequential/jpeg": {
+      "split": "held_out",
+      "status": "unresolved",
+      "candidates": 0,
+      "best_top3": null,
+      "recall_within_1px": false,
+      "correct_bar_association_offered": false,
+      "automatically_accepted": false
+    }
+  },
+  "count_attempts": {
+    "complete/rows": {
+      "truth": 6,
+      "proposals": [
+        6,
+        12,
+        18,
+        24,
+        30,
+        36
+      ],
+      "status": "ambiguous",
+      "candidate_recall": true,
+      "rank1_exact": true,
+      "rank1_off_by_one": false,
+      "rank1_integer_multiple_error": false,
+      "abstained_proposals": false,
+      "automatically_accepted": false
+    },
+    "complete/columns": {
+      "truth": 8,
+      "proposals": [
+        8,
+        16,
+        24,
+        32,
+        40,
+        48
+      ],
+      "status": "ambiguous",
+      "candidate_recall": true,
+      "rank1_exact": true,
+      "rank1_off_by_one": false,
+      "rank1_integer_multiple_error": false,
+      "abstained_proposals": false,
+      "automatically_accepted": false
+    },
+    "omitted/rows": {
+      "truth": 6,
+      "proposals": [
+        6,
+        12,
+        18,
+        24,
+        30,
+        36
+      ],
+      "status": "ambiguous",
+      "candidate_recall": true,
+      "rank1_exact": true,
+      "rank1_off_by_one": false,
+      "rank1_integer_multiple_error": false,
+      "abstained_proposals": false,
+      "automatically_accepted": false
+    },
+    "omitted/columns": {
+      "truth": 8,
+      "proposals": [
+        8,
+        16,
+        24,
+        32,
+        40,
+        48
+      ],
+      "status": "ambiguous",
+      "candidate_recall": true,
+      "rank1_exact": true,
+      "rank1_off_by_one": false,
+      "rank1_integer_multiple_error": false,
+      "abstained_proposals": false,
+      "automatically_accepted": false
+    },
+    "merged/rows": {
+      "truth": 6,
+      "proposals": [
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        21,
+        24
+      ],
+      "status": "ambiguous",
+      "candidate_recall": true,
+      "rank1_exact": false,
+      "rank1_off_by_one": false,
+      "rank1_integer_multiple_error": true,
+      "abstained_proposals": false,
+      "automatically_accepted": false
+    },
+    "merged/columns": {
+      "truth": 8,
+      "proposals": [
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32
+      ],
+      "status": "ambiguous",
+      "candidate_recall": true,
+      "rank1_exact": false,
+      "rank1_off_by_one": false,
+      "rank1_integer_multiple_error": true,
+      "abstained_proposals": false,
+      "automatically_accepted": false
+    },
+    "uniform/rows": {
+      "truth": 6,
+      "proposals": [],
+      "status": "unresolved",
+      "candidate_recall": false,
+      "rank1_exact": false,
+      "rank1_off_by_one": false,
+      "rank1_integer_multiple_error": false,
+      "abstained_proposals": true,
+      "automatically_accepted": false
+    },
+    "uniform/columns": {
+      "truth": 8,
+      "proposals": [],
+      "status": "unresolved",
+      "candidate_recall": false,
+      "rank1_exact": false,
+      "rank1_off_by_one": false,
+      "rank1_integer_multiple_error": false,
+      "abstained_proposals": true,
+      "automatically_accepted": false
+    }
+  },
+  "confounded_bar_attempts": {
+    "absent": {
+      "status": "unresolved",
+      "candidates": 0,
+      "associations": 0,
+      "automatically_accepted": false
+    },
+    "categorical_only": {
+      "status": "unresolved",
+      "candidates": 0,
+      "associations": 0,
+      "automatically_accepted": false
+    },
+    "two_bars": {
+      "status": "ambiguous",
+      "candidates": 2,
+      "associations": 2,
+      "automatically_accepted": false
+    }
+  },
+  "label_attempts": {
+    "reconstruction.png": {
+      "status": "review_required",
+      "candidates": [
+        "labels_rows-left",
+        "labels_columns-above"
+      ],
+      "warnings": [],
+      "axes": {
+        "rows": {
+          "slots": 4,
+          "region_metrics": {
+            "id": "labels_rows-left",
+            "bbox": [
+              42,
+              164,
+              180,
+              434
+            ],
+            "iou": 0.9141170155662909,
+            "max_edge_pixels": 4
+          },
+          "annotated_edge_tolerance_pixels": 6,
+          "exact_accepted": 4,
+          "raw_exact": 4,
+          "unresolved": 0,
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "preprocessing": {
+            "language": "eng",
+            "upscale_factor": 3,
+            "min_confidence": 80.0,
+            "max_axis_offset_fraction": 0.4
+          },
+          "region_proposed": true
+        },
+        "columns": {
+          "slots": 3,
+          "region_metrics": {
+            "id": "labels_columns-above",
+            "bbox": [
+              278,
+              75,
+              945,
+              113
+            ],
+            "iou": 0.7788211157579105,
+            "max_edge_pixels": 5
+          },
+          "annotated_edge_tolerance_pixels": 6,
+          "exact_accepted": 3,
+          "raw_exact": 3,
+          "unresolved": 0,
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "preprocessing": {
+            "language": "eng",
+            "upscale_factor": 3,
+            "min_confidence": 80.0,
+            "max_axis_offset_fraction": 0.4
+          },
+          "region_proposed": true
+        }
+      },
+      "automatically_accepted": false
+    },
+    "reconstruction_unreadable.png": {
+      "status": "unresolved",
+      "candidates": [],
+      "warnings": [],
+      "axes": {
+        "rows": {
+          "slots": 4,
+          "region_metrics": null,
+          "annotated_edge_tolerance_pixels": 6,
+          "exact_accepted": 0,
+          "raw_exact": 0,
+          "unresolved": 4,
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "preprocessing": {
+            "language": "eng",
+            "upscale_factor": 3,
+            "min_confidence": 80.0,
+            "max_axis_offset_fraction": 0.4
+          },
+          "region_proposed": false
+        },
+        "columns": {
+          "slots": 3,
+          "region_metrics": null,
+          "annotated_edge_tolerance_pixels": 6,
+          "exact_accepted": 0,
+          "raw_exact": 0,
+          "unresolved": 3,
+          "engine_version": "5.5.0",
+          "wrapper_version": "0.3.13",
+          "preprocessing": {
+            "language": "eng",
+            "upscale_factor": 3,
+            "min_confidence": 80.0,
+            "max_axis_offset_fraction": 0.4
+          },
+          "region_proposed": false
+        }
+      },
+      "automatically_accepted": false
+    }
+  },
+  "automatic_accepted_coverage": 0,
+  "automatic_correct_acceptance_rate": null,
+  "automatic_false_acceptances": 0,
+  "independent_count_acceptance": "not implemented"
+}

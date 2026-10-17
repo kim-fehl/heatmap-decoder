@@ -1,0 +1,4527 @@
+{
+  "config": {
+    "heatmap_bbox": [
+      335,
+      189,
+      854,
+      861
+    ],
+    "rows": 33,
+    "columns": 8,
+    "labels": {
+      "rows": {
+        "source": "ocr",
+        "bbox": [
+          858,
+          189,
+          980,
+          861
+        ],
+        "recognition": "slots",
+        "text_rotation_degrees": 0,
+        "crop_padding_pixels": 0,
+        "white_padding_pixels": 0
+      },
+      "columns": {
+        "source": "ocr",
+        "bbox": [
+          335,
+          868,
+          854,
+          904
+        ],
+        "recognition": "slots",
+        "text_rotation_degrees": 0,
+        "crop_padding_pixels": 0,
+        "white_padding_pixels": 0
+      },
+      "ocr": {
+        "language": "eng",
+        "upscale_factor": 3,
+        "min_confidence": 80.0,
+        "max_axis_offset_fraction": 0.4
+      }
+    }
+  },
+  "axes": [
+    {
+      "axis": "rows",
+      "slots": [
+        {
+          "index": 0,
+          "raw_text": "EsTLRd",
+          "final_text": null,
+          "confidence": 18.0,
+          "bbox": [
+            861.0,
+            189.66666666666666,
+            937.0,
+            206.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            0
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 1,
+          "raw_text": "EsPGRFS",
+          "final_text": null,
+          "confidence": 0.0,
+          "bbox": [
+            861.0,
+            210.66666666666666,
+            956.0,
+            230.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            1
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 2,
+          "raw_text": "LYsMs",
+          "final_text": null,
+          "confidence": 17.0,
+          "bbox": [
+            861.0,
+            229.0,
+            927.0,
+            251.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            2
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 3,
+          "raw_text": "IKBL",
+          "final_text": null,
+          "confidence": 71.0,
+          "bbox": [
+            861.3333333333334,
+            250.0,
+            906.0,
+            266.6666666666667
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            3
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 4,
+          "raw_text": "KBRS1",
+          "final_text": "KBRS1",
+          "confidence": 80.0,
+          "bbox": [
+            861.0,
+            271.6666666666667,
+            927.0,
+            288.0
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            4
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 5,
+          "raw_text": null,
+          "final_text": null,
+          "confidence": null,
+          "bbox": null,
+          "source": "ocr",
+          "status": "missing",
+          "candidate_indices": [],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 6,
+          "raw_text": "Eskeln",
+          "final_text": null,
+          "confidence": 23.0,
+          "bbox": [
+            861.0,
+            311.0,
+            932.0,
+            327.3333333333333
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            5
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 7,
+          "raw_text": "Ess00",
+          "final_text": null,
+          "confidence": 76.0,
+          "bbox": [
+            861.0,
+            332.0,
+            931.6666666666666,
+            348.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            6
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 8,
+          "raw_text": "TRAFS",
+          "final_text": "TRAFS",
+          "confidence": 80.0,
+          "bbox": [
+            861.0,
+            355.3333333333333,
+            927.0,
+            371.6666666666667
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            7
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 9,
+          "raw_text": "EsixBa",
+          "final_text": "EsixBa",
+          "confidence": 80.0,
+          "bbox": [
+            861.0,
+            374.3333333333333,
+            927.0,
+            391.6666666666667
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            8
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 10,
+          "raw_text": "TEK1",
+          "final_text": null,
+          "confidence": 11.0,
+          "bbox": [
+            861.0,
+            395.0,
+            911.0,
+            411.3333333333333
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            9
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 11,
+          "raw_text": "Eslikky |",
+          "final_text": null,
+          "confidence": 27.0,
+          "bbox": [
+            861.0,
+            413.0,
+            953.0,
+            434.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            10
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 12,
+          "raw_text": "EsPGRP2",
+          "final_text": null,
+          "confidence": 33.0,
+          "bbox": [
+            861.0,
+            433.0,
+            956.0,
+            450.3333333333333
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            11
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 13,
+          "raw_text": "ic Be",
+          "final_text": null,
+          "confidence": 28.0,
+          "bbox": [
+            861.3333333333334,
+            455.6666666666667,
+            900.6666666666666,
+            475.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            12
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 14,
+          "raw_text": "IKK",
+          "final_text": null,
+          "confidence": 33.0,
+          "bbox": [
+            861.3333333333334,
+            474.0,
+            907.6666666666666,
+            495.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            13
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 15,
+          "raw_text": "EsPGRPS",
+          "final_text": null,
+          "confidence": 58.0,
+          "bbox": [
+            861.0,
+            494.0,
+            956.0,
+            513.6666666666666
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            14
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 16,
+          "raw_text": "TOLIP",
+          "final_text": "TOLIP",
+          "confidence": 84.0,
+          "bbox": [
+            861.0,
+            516.3333333333334,
+            921.3333333333334,
+            534.6666666666666
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            15
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 17,
+          "raw_text": "IKKg",
+          "final_text": null,
+          "confidence": 0.0,
+          "bbox": [
+            861.3333333333334,
+            537.6666666666666,
+            903.0,
+            556.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            16
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 18,
+          "raw_text": "HSPT 1",
+          "final_text": null,
+          "confidence": 72.0,
+          "bbox": [
+            861.0,
+            555.0,
+            924.6666666666666,
+            576.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            17
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 19,
+          "raw_text": "MY Des",
+          "final_text": null,
+          "confidence": 0.0,
+          "bbox": [
+            861.0,
+            575.3333333333334,
+            932.0,
+            597.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            18
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 20,
+          "raw_text": "Estialectin\u2019",
+          "final_text": null,
+          "confidence": 32.0,
+          "bbox": [
+            861.0,
+            598.0,
+            971.6666666666666,
+            616.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            19
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 21,
+          "raw_text": "inaka >",
+          "final_text": null,
+          "confidence": 0.0,
+          "bbox": [
+            861.3333333333334,
+            621.6666666666666,
+            945.0,
+            637.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            20
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 22,
+          "raw_text": "FeTRALA",
+          "final_text": null,
+          "confidence": 1.0,
+          "bbox": [
+            861.0,
+            637.0,
+            952.3333333333334,
+            658.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            21
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 23,
+          "raw_text": "TRAFS",
+          "final_text": null,
+          "confidence": 37.0,
+          "bbox": [
+            861.3333333333334,
+            657.0,
+            932.0,
+            677.3333333333334
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            22
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 24,
+          "raw_text": "TARR",
+          "final_text": null,
+          "confidence": 23.0,
+          "bbox": [
+            861.3333333333334,
+            677.0,
+            923.3333333333334,
+            699.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            23
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 25,
+          "raw_text": "E<Ti Ga",
+          "final_text": null,
+          "confidence": 20.0,
+          "bbox": [
+            861.0,
+            698.0,
+            938.6666666666666,
+            719.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            24
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 26,
+          "raw_text": "HLACS",
+          "final_text": null,
+          "confidence": 54.0,
+          "bbox": [
+            861.0,
+            718.0,
+            935.0,
+            739.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            25
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 27,
+          "raw_text": "ceTi G4",
+          "final_text": null,
+          "confidence": 15.0,
+          "bbox": [
+            861.0,
+            738.0,
+            935.0,
+            760.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            26
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 28,
+          "raw_text": "TRAE?",
+          "final_text": null,
+          "confidence": 31.0,
+          "bbox": [
+            861.0,
+            759.0,
+            934.3333333333334,
+            780.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            27
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 29,
+          "raw_text": "TART",
+          "final_text": null,
+          "confidence": 57.0,
+          "bbox": [
+            861.0,
+            779.0,
+            908.3333333333334,
+            800.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            28
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 30,
+          "raw_text": "TAK\u2019",
+          "final_text": null,
+          "confidence": 40.0,
+          "bbox": [
+            861.0,
+            799.0,
+            908.3333333333334,
+            819.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            29
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 31,
+          "raw_text": "FslilRAKS",
+          "final_text": null,
+          "confidence": 31.0,
+          "bbox": [
+            861.0,
+            824.3333333333334,
+            945.3333333333334,
+            840.3333333333334
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            30
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 32,
+          "raw_text": "EsTLR?",
+          "final_text": null,
+          "confidence": 34.0,
+          "bbox": [
+            861.0,
+            843.0,
+            937.0,
+            861.0
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            31
+          ],
+          "duplicate": false,
+          "issues": []
+        }
+      ],
+      "tokens": [
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            2.0,
+            237.0,
+            51.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            2.0,
+            237.0,
+            51.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            2.0,
+            237.0,
+            51.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "EsTLRd",
+          "bbox": [
+            861.0,
+            189.66666666666666,
+            937.0,
+            206.0
+          ],
+          "confidence": 18.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            5.0,
+            294.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            5.0,
+            294.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            5.0,
+            294.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "EsPGRFS",
+          "bbox": [
+            861.0,
+            210.66666666666666,
+            956.0,
+            230.0
+          ],
+          "confidence": 0.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            207.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            207.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            207.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "LYsMs",
+          "bbox": [
+            861.0,
+            229.0,
+            927.0,
+            251.0
+          ],
+          "confidence": 17.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            144.0,
+            50.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            144.0,
+            50.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            144.0,
+            50.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "IKBL",
+          "bbox": [
+            861.3333333333334,
+            250.0,
+            906.0,
+            266.6666666666667
+          ],
+          "confidence": 71.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            5.0,
+            207.0,
+            54.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            5.0,
+            207.0,
+            54.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            5.0,
+            207.0,
+            54.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "KBRS1",
+          "bbox": [
+            861.0,
+            271.6666666666667,
+            927.0,
+            288.0
+          ],
+          "confidence": 80.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            222.0,
+            49.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            222.0,
+            49.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            222.0,
+            49.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "Eskeln",
+          "bbox": [
+            861.0,
+            311.0,
+            932.0,
+            327.3333333333333
+          ],
+          "confidence": 23.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            3.0,
+            221.0,
+            51.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            3.0,
+            221.0,
+            51.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            3.0,
+            221.0,
+            51.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "Ess00",
+          "bbox": [
+            861.0,
+            332.0,
+            931.6666666666666,
+            348.0
+          ],
+          "confidence": 76.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            13.0,
+            207.0,
+            62.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            13.0,
+            207.0,
+            62.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            13.0,
+            207.0,
+            62.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "TRAFS",
+          "bbox": [
+            861.0,
+            355.3333333333333,
+            927.0,
+            371.6666666666667
+          ],
+          "confidence": 80.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            7.0,
+            207.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            7.0,
+            207.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            7.0,
+            207.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "EsixBa",
+          "bbox": [
+            861.0,
+            374.3333333333333,
+            927.0,
+            391.6666666666667
+          ],
+          "confidence": 80.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            9.0,
+            159.0,
+            58.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            9.0,
+            159.0,
+            58.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            9.0,
+            159.0,
+            58.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "TEK1",
+          "bbox": [
+            861.0,
+            395.0,
+            911.0,
+            411.3333333333333
+          ],
+          "confidence": 11.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            285.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            285.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            285.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "Eslikky",
+          "bbox": [
+            861.0,
+            413.0,
+            929.6666666666666,
+            434.0
+          ],
+          "confidence": 27.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "|",
+          "bbox": [
+            950.0,
+            432.3333333333333,
+            953.0,
+            434.0
+          ],
+          "confidence": 41.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            294.0,
+            52.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            294.0,
+            52.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            294.0,
+            52.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "EsPGRP2",
+          "bbox": [
+            861.0,
+            433.0,
+            956.0,
+            450.3333333333333
+          ],
+          "confidence": 33.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            8.0,
+            128.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            8.0,
+            128.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            8.0,
+            128.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "ic",
+          "bbox": [
+            861.3333333333334,
+            456.0,
+            875.6666666666666,
+            472.0
+          ],
+          "confidence": 28.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "Be",
+          "bbox": [
+            878.6666666666666,
+            455.6666666666667,
+            900.6666666666666,
+            475.0
+          ],
+          "confidence": 28.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            149.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            149.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            149.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "IKK",
+          "bbox": [
+            861.3333333333334,
+            474.0,
+            907.6666666666666,
+            495.0
+          ],
+          "confidence": 33.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            294.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            294.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            294.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "EsPGRPS",
+          "bbox": [
+            861.0,
+            494.0,
+            956.0,
+            513.6666666666666
+          ],
+          "confidence": 58.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            7.0,
+            190.0,
+            62.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            7.0,
+            190.0,
+            62.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            7.0,
+            190.0,
+            62.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "TOLIP",
+          "bbox": [
+            861.0,
+            516.3333333333334,
+            921.3333333333334,
+            534.6666666666666
+          ],
+          "confidence": 84.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            8.0,
+            135.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            8.0,
+            135.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            8.0,
+            135.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "IKKg",
+          "bbox": [
+            861.3333333333334,
+            537.6666666666666,
+            903.0,
+            556.0
+          ],
+          "confidence": 0.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            199.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            199.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            199.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "HSPT",
+          "bbox": [
+            861.0,
+            555.0,
+            924.3333333333334,
+            574.6666666666666
+          ],
+          "confidence": 72.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "1",
+          "bbox": [
+            915.6666666666666,
+            555.0,
+            924.6666666666666,
+            576.0
+          ],
+          "confidence": 74.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            6.0,
+            222.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            6.0,
+            222.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            6.0,
+            222.0,
+            59.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "MY",
+          "bbox": [
+            861.0,
+            575.3333333333334,
+            888.6666666666666,
+            597.0
+          ],
+          "confidence": 0.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "Des",
+          "bbox": [
+            895.6666666666666,
+            575.3333333333334,
+            932.0,
+            597.0
+          ],
+          "confidence": 0.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            6.0,
+            341.0,
+            60.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            6.0,
+            341.0,
+            60.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            6.0,
+            341.0,
+            60.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "Estialectin\u2019",
+          "bbox": [
+            861.0,
+            598.0,
+            971.6666666666666,
+            616.0
+          ],
+          "confidence": 32.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            17.0,
+            261.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            17.0,
+            261.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            17.0,
+            261.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "inaka",
+          "bbox": [
+            861.3333333333334,
+            621.6666666666666,
+            921.3333333333334,
+            637.0
+          ],
+          "confidence": 0.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": ">",
+          "bbox": [
+            934.3333333333334,
+            622.0,
+            945.0,
+            637.0
+          ],
+          "confidence": 48.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            283.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            283.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            283.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "FeTRALA",
+          "bbox": [
+            861.0,
+            637.0,
+            952.3333333333334,
+            658.0
+          ],
+          "confidence": 1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            278.0,
+            61.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            278.0,
+            61.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            278.0,
+            61.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "TRAFS",
+          "bbox": [
+            861.3333333333334,
+            657.0,
+            932.0,
+            677.3333333333334
+          ],
+          "confidence": 37.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            196.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            196.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            10.0,
+            0.0,
+            196.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "TARR",
+          "bbox": [
+            861.3333333333334,
+            677.0,
+            923.3333333333334,
+            699.0
+          ],
+          "confidence": 23.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            237.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            237.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            237.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "E<Ti",
+          "bbox": [
+            861.0,
+            698.0,
+            907.0,
+            719.0
+          ],
+          "confidence": 20.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "Ga",
+          "bbox": [
+            915.6666666666666,
+            698.0,
+            938.6666666666666,
+            719.0
+          ],
+          "confidence": 63.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            231.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            231.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            231.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "HLACS",
+          "bbox": [
+            861.0,
+            718.0,
+            935.0,
+            739.0
+          ],
+          "confidence": 54.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            229.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            229.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            229.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "ceTi",
+          "bbox": [
+            861.0,
+            738.0,
+            934.3333333333334,
+            760.0
+          ],
+          "confidence": 37.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "G4",
+          "bbox": [
+            914.6666666666666,
+            738.0,
+            935.0,
+            760.0
+          ],
+          "confidence": 15.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            229.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            229.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            229.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "TRAE?",
+          "bbox": [
+            861.0,
+            759.0,
+            934.3333333333334,
+            780.0
+          ],
+          "confidence": 31.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            205.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            205.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            205.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "TART",
+          "bbox": [
+            861.0,
+            779.0,
+            908.3333333333334,
+            800.0
+          ],
+          "confidence": 57.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            66.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            151.0,
+            60.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            151.0,
+            60.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            0.0,
+            151.0,
+            60.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "TAK\u2019",
+          "bbox": [
+            861.0,
+            799.0,
+            908.3333333333334,
+            819.0
+          ],
+          "confidence": 40.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            13.0,
+            262.0,
+            61.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            13.0,
+            262.0,
+            61.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            13.0,
+            262.0,
+            61.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "FslilRAKS",
+          "bbox": [
+            861.0,
+            824.3333333333334,
+            945.3333333333334,
+            840.3333333333334
+          ],
+          "confidence": 31.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            366.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            9.0,
+            237.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            9.0,
+            237.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            9.0,
+            9.0,
+            237.0,
+            63.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "EsTLR?",
+          "bbox": [
+            861.0,
+            843.0,
+            937.0,
+            861.0
+          ],
+          "confidence": 34.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "text": "EsTLRd",
+          "bbox": [
+            861.0,
+            189.66666666666666,
+            937.0,
+            206.0
+          ],
+          "confidence": 18.0,
+          "token_indices": [
+            4
+          ],
+          "slot_index": 0
+        },
+        {
+          "text": "EsPGRFS",
+          "bbox": [
+            861.0,
+            210.66666666666666,
+            956.0,
+            230.0
+          ],
+          "confidence": 0.0,
+          "token_indices": [
+            9
+          ],
+          "slot_index": 1
+        },
+        {
+          "text": "LYsMs",
+          "bbox": [
+            861.0,
+            229.0,
+            927.0,
+            251.0
+          ],
+          "confidence": 17.0,
+          "token_indices": [
+            14
+          ],
+          "slot_index": 2
+        },
+        {
+          "text": "IKBL",
+          "bbox": [
+            861.3333333333334,
+            250.0,
+            906.0,
+            266.6666666666667
+          ],
+          "confidence": 71.0,
+          "token_indices": [
+            19
+          ],
+          "slot_index": 3
+        },
+        {
+          "text": "KBRS1",
+          "bbox": [
+            861.0,
+            271.6666666666667,
+            927.0,
+            288.0
+          ],
+          "confidence": 80.0,
+          "token_indices": [
+            24
+          ],
+          "slot_index": 4
+        },
+        {
+          "text": "Eskeln",
+          "bbox": [
+            861.0,
+            311.0,
+            932.0,
+            327.3333333333333
+          ],
+          "confidence": 23.0,
+          "token_indices": [
+            30
+          ],
+          "slot_index": 6
+        },
+        {
+          "text": "Ess00",
+          "bbox": [
+            861.0,
+            332.0,
+            931.6666666666666,
+            348.0
+          ],
+          "confidence": 76.0,
+          "token_indices": [
+            35
+          ],
+          "slot_index": 7
+        },
+        {
+          "text": "TRAFS",
+          "bbox": [
+            861.0,
+            355.3333333333333,
+            927.0,
+            371.6666666666667
+          ],
+          "confidence": 80.0,
+          "token_indices": [
+            40
+          ],
+          "slot_index": 8
+        },
+        {
+          "text": "EsixBa",
+          "bbox": [
+            861.0,
+            374.3333333333333,
+            927.0,
+            391.6666666666667
+          ],
+          "confidence": 80.0,
+          "token_indices": [
+            45
+          ],
+          "slot_index": 9
+        },
+        {
+          "text": "TEK1",
+          "bbox": [
+            861.0,
+            395.0,
+            911.0,
+            411.3333333333333
+          ],
+          "confidence": 11.0,
+          "token_indices": [
+            50
+          ],
+          "slot_index": 10
+        },
+        {
+          "text": "Eslikky |",
+          "bbox": [
+            861.0,
+            413.0,
+            953.0,
+            434.0
+          ],
+          "confidence": 27.0,
+          "token_indices": [
+            55,
+            56
+          ],
+          "slot_index": 11
+        },
+        {
+          "text": "EsPGRP2",
+          "bbox": [
+            861.0,
+            433.0,
+            956.0,
+            450.3333333333333
+          ],
+          "confidence": 33.0,
+          "token_indices": [
+            61
+          ],
+          "slot_index": 12
+        },
+        {
+          "text": "ic Be",
+          "bbox": [
+            861.3333333333334,
+            455.6666666666667,
+            900.6666666666666,
+            475.0
+          ],
+          "confidence": 28.0,
+          "token_indices": [
+            66,
+            67
+          ],
+          "slot_index": 13
+        },
+        {
+          "text": "IKK",
+          "bbox": [
+            861.3333333333334,
+            474.0,
+            907.6666666666666,
+            495.0
+          ],
+          "confidence": 33.0,
+          "token_indices": [
+            72
+          ],
+          "slot_index": 14
+        },
+        {
+          "text": "EsPGRPS",
+          "bbox": [
+            861.0,
+            494.0,
+            956.0,
+            513.6666666666666
+          ],
+          "confidence": 58.0,
+          "token_indices": [
+            77
+          ],
+          "slot_index": 15
+        },
+        {
+          "text": "TOLIP",
+          "bbox": [
+            861.0,
+            516.3333333333334,
+            921.3333333333334,
+            534.6666666666666
+          ],
+          "confidence": 84.0,
+          "token_indices": [
+            82
+          ],
+          "slot_index": 16
+        },
+        {
+          "text": "IKKg",
+          "bbox": [
+            861.3333333333334,
+            537.6666666666666,
+            903.0,
+            556.0
+          ],
+          "confidence": 0.0,
+          "token_indices": [
+            87
+          ],
+          "slot_index": 17
+        },
+        {
+          "text": "HSPT 1",
+          "bbox": [
+            861.0,
+            555.0,
+            924.6666666666666,
+            576.0
+          ],
+          "confidence": 72.0,
+          "token_indices": [
+            92,
+            93
+          ],
+          "slot_index": 18
+        },
+        {
+          "text": "MY Des",
+          "bbox": [
+            861.0,
+            575.3333333333334,
+            932.0,
+            597.0
+          ],
+          "confidence": 0.0,
+          "token_indices": [
+            98,
+            99
+          ],
+          "slot_index": 19
+        },
+        {
+          "text": "Estialectin\u2019",
+          "bbox": [
+            861.0,
+            598.0,
+            971.6666666666666,
+            616.0
+          ],
+          "confidence": 32.0,
+          "token_indices": [
+            104
+          ],
+          "slot_index": 20
+        },
+        {
+          "text": "inaka >",
+          "bbox": [
+            861.3333333333334,
+            621.6666666666666,
+            945.0,
+            637.0
+          ],
+          "confidence": 0.0,
+          "token_indices": [
+            109,
+            110
+          ],
+          "slot_index": 21
+        },
+        {
+          "text": "FeTRALA",
+          "bbox": [
+            861.0,
+            637.0,
+            952.3333333333334,
+            658.0
+          ],
+          "confidence": 1.0,
+          "token_indices": [
+            115
+          ],
+          "slot_index": 22
+        },
+        {
+          "text": "TRAFS",
+          "bbox": [
+            861.3333333333334,
+            657.0,
+            932.0,
+            677.3333333333334
+          ],
+          "confidence": 37.0,
+          "token_indices": [
+            120
+          ],
+          "slot_index": 23
+        },
+        {
+          "text": "TARR",
+          "bbox": [
+            861.3333333333334,
+            677.0,
+            923.3333333333334,
+            699.0
+          ],
+          "confidence": 23.0,
+          "token_indices": [
+            125
+          ],
+          "slot_index": 24
+        },
+        {
+          "text": "E<Ti Ga",
+          "bbox": [
+            861.0,
+            698.0,
+            938.6666666666666,
+            719.0
+          ],
+          "confidence": 20.0,
+          "token_indices": [
+            130,
+            131
+          ],
+          "slot_index": 25
+        },
+        {
+          "text": "HLACS",
+          "bbox": [
+            861.0,
+            718.0,
+            935.0,
+            739.0
+          ],
+          "confidence": 54.0,
+          "token_indices": [
+            136
+          ],
+          "slot_index": 26
+        },
+        {
+          "text": "ceTi G4",
+          "bbox": [
+            861.0,
+            738.0,
+            935.0,
+            760.0
+          ],
+          "confidence": 15.0,
+          "token_indices": [
+            141,
+            142
+          ],
+          "slot_index": 27
+        },
+        {
+          "text": "TRAE?",
+          "bbox": [
+            861.0,
+            759.0,
+            934.3333333333334,
+            780.0
+          ],
+          "confidence": 31.0,
+          "token_indices": [
+            147
+          ],
+          "slot_index": 28
+        },
+        {
+          "text": "TART",
+          "bbox": [
+            861.0,
+            779.0,
+            908.3333333333334,
+            800.0
+          ],
+          "confidence": 57.0,
+          "token_indices": [
+            152
+          ],
+          "slot_index": 29
+        },
+        {
+          "text": "TAK\u2019",
+          "bbox": [
+            861.0,
+            799.0,
+            908.3333333333334,
+            819.0
+          ],
+          "confidence": 40.0,
+          "token_indices": [
+            157
+          ],
+          "slot_index": 30
+        },
+        {
+          "text": "FslilRAKS",
+          "bbox": [
+            861.0,
+            824.3333333333334,
+            945.3333333333334,
+            840.3333333333334
+          ],
+          "confidence": 31.0,
+          "token_indices": [
+            162
+          ],
+          "slot_index": 31
+        },
+        {
+          "text": "EsTLR?",
+          "bbox": [
+            861.0,
+            843.0,
+            937.0,
+            861.0
+          ],
+          "confidence": 34.0,
+          "token_indices": [
+            167
+          ],
+          "slot_index": 32
+        }
+      ],
+      "unmatched_candidate_indices": []
+    },
+    {
+      "axis": "columns",
+      "slots": [
+        {
+          "index": 0,
+          "raw_text": "2",
+          "final_text": null,
+          "confidence": 76.0,
+          "bbox": [
+            358.6666666666667,
+            874.3333333333334,
+            374.3333333333333,
+            898.3333333333334
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            0
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 1,
+          "raw_text": "6",
+          "final_text": "6",
+          "confidence": 96.0,
+          "bbox": [
+            424.0,
+            874.3333333333334,
+            440.3333333333333,
+            898.3333333333334
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            1
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 2,
+          "raw_text": "8",
+          "final_text": null,
+          "confidence": 72.0,
+          "bbox": [
+            487.0,
+            874.3333333333334,
+            503.0,
+            898.3333333333334
+          ],
+          "source": "ocr",
+          "status": "low_confidence",
+          "candidate_indices": [
+            2
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 3,
+          "raw_text": "10",
+          "final_text": "10",
+          "confidence": 96.0,
+          "bbox": [
+            548.0,
+            874.3333333333334,
+            579.3333333333334,
+            898.3333333333334
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            3
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 4,
+          "raw_text": "12",
+          "final_text": "12",
+          "confidence": 93.0,
+          "bbox": [
+            613.6666666666666,
+            874.3333333333334,
+            645.0,
+            898.3333333333334
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            4
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 5,
+          "raw_text": "16",
+          "final_text": "16",
+          "confidence": 96.0,
+          "bbox": [
+            677.0,
+            874.3333333333334,
+            710.6666666666666,
+            898.3333333333334
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            5
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 6,
+          "raw_text": "18",
+          "final_text": "18",
+          "confidence": 96.0,
+          "bbox": [
+            742.0,
+            874.3333333333334,
+            774.0,
+            898.3333333333334
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            6
+          ],
+          "duplicate": false,
+          "issues": []
+        },
+        {
+          "index": 7,
+          "raw_text": "24",
+          "final_text": "24",
+          "confidence": 84.0,
+          "bbox": [
+            810.6666666666666,
+            874.3333333333334,
+            844.6666666666666,
+            898.0
+          ],
+          "source": "ocr",
+          "status": "accepted",
+          "candidate_indices": [
+            7
+          ],
+          "duplicate": false,
+          "issues": []
+        }
+      ],
+      "tokens": [
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            195.0,
+            108.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            71.0,
+            19.0,
+            118.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            71.0,
+            19.0,
+            118.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            71.0,
+            19.0,
+            118.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "2",
+          "bbox": [
+            358.6666666666667,
+            874.3333333333334,
+            374.3333333333333,
+            898.3333333333334
+          ],
+          "confidence": 76.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            198.0,
+            108.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            75.0,
+            19.0,
+            124.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            75.0,
+            19.0,
+            124.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            75.0,
+            19.0,
+            124.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "6",
+          "bbox": [
+            424.0,
+            874.3333333333334,
+            440.3333333333333,
+            898.3333333333334
+          ],
+          "confidence": 96.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            198.0,
+            108.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            69.0,
+            19.0,
+            117.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            69.0,
+            19.0,
+            117.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            69.0,
+            19.0,
+            117.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "8",
+          "bbox": [
+            487.0,
+            874.3333333333334,
+            503.0,
+            898.3333333333334
+          ],
+          "confidence": 72.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            198.0,
+            108.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            57.0,
+            19.0,
+            151.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            57.0,
+            19.0,
+            151.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            57.0,
+            19.0,
+            151.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "10",
+          "bbox": [
+            548.0,
+            874.3333333333334,
+            579.3333333333334,
+            898.3333333333334
+          ],
+          "confidence": 96.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            198.0,
+            108.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            59.0,
+            19.0,
+            153.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            59.0,
+            19.0,
+            153.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            59.0,
+            19.0,
+            153.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "12",
+          "bbox": [
+            613.6666666666666,
+            874.3333333333334,
+            645.0,
+            898.3333333333334
+          ],
+          "confidence": 93.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            198.0,
+            108.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            54.0,
+            19.0,
+            155.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            54.0,
+            19.0,
+            155.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            54.0,
+            19.0,
+            155.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "16",
+          "bbox": [
+            677.0,
+            874.3333333333334,
+            710.6666666666666,
+            898.3333333333334
+          ],
+          "confidence": 96.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            198.0,
+            108.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            54.0,
+            19.0,
+            150.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            54.0,
+            19.0,
+            150.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            54.0,
+            19.0,
+            150.0,
+            91.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "18",
+          "bbox": [
+            742.0,
+            874.3333333333334,
+            774.0,
+            898.3333333333334
+          ],
+          "confidence": 96.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            0.0,
+            0.0,
+            195.0,
+            108.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            65.0,
+            19.0,
+            167.0,
+            90.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            65.0,
+            19.0,
+            167.0,
+            90.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            65.0,
+            19.0,
+            167.0,
+            90.0
+          ],
+          "confidence": -1.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "text": "24",
+          "bbox": [
+            810.6666666666666,
+            874.3333333333334,
+            844.6666666666666,
+            898.0
+          ],
+          "confidence": 84.0,
+          "line_id": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "text": "2",
+          "bbox": [
+            358.6666666666667,
+            874.3333333333334,
+            374.3333333333333,
+            898.3333333333334
+          ],
+          "confidence": 76.0,
+          "token_indices": [
+            4
+          ],
+          "slot_index": 0
+        },
+        {
+          "text": "6",
+          "bbox": [
+            424.0,
+            874.3333333333334,
+            440.3333333333333,
+            898.3333333333334
+          ],
+          "confidence": 96.0,
+          "token_indices": [
+            9
+          ],
+          "slot_index": 1
+        },
+        {
+          "text": "8",
+          "bbox": [
+            487.0,
+            874.3333333333334,
+            503.0,
+            898.3333333333334
+          ],
+          "confidence": 72.0,
+          "token_indices": [
+            14
+          ],
+          "slot_index": 2
+        },
+        {
+          "text": "10",
+          "bbox": [
+            548.0,
+            874.3333333333334,
+            579.3333333333334,
+            898.3333333333334
+          ],
+          "confidence": 96.0,
+          "token_indices": [
+            19
+          ],
+          "slot_index": 3
+        },
+        {
+          "text": "12",
+          "bbox": [
+            613.6666666666666,
+            874.3333333333334,
+            645.0,
+            898.3333333333334
+          ],
+          "confidence": 93.0,
+          "token_indices": [
+            24
+          ],
+          "slot_index": 4
+        },
+        {
+          "text": "16",
+          "bbox": [
+            677.0,
+            874.3333333333334,
+            710.6666666666666,
+            898.3333333333334
+          ],
+          "confidence": 96.0,
+          "token_indices": [
+            29
+          ],
+          "slot_index": 5
+        },
+        {
+          "text": "18",
+          "bbox": [
+            742.0,
+            874.3333333333334,
+            774.0,
+            898.3333333333334
+          ],
+          "confidence": 96.0,
+          "token_indices": [
+            34
+          ],
+          "slot_index": 6
+        },
+        {
+          "text": "24",
+          "bbox": [
+            810.6666666666666,
+            874.3333333333334,
+            844.6666666666666,
+            898.0
+          ],
+          "confidence": 84.0,
+          "token_indices": [
+            39
+          ],
+          "slot_index": 7
+        }
+      ],
+      "unmatched_candidate_indices": []
+    }
+  ]
+}

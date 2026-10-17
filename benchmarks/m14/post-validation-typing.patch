@@ -1,0 +1,26 @@
+--- a/src/heatmap_decoder/io.py
++++ b/src/heatmap_decoder/io.py
+@@ -94,6 +94,11 @@
+             header + (["row_label", "column_label"] if result.labels is not None else [])
+         )
+         for row, column in np.ndindex(result.values.shape):
++            colour_evidence = (
++                result.colour_evidence[row * result.config.columns + column]
++                if result.colour_evidence is not None
++                else None
++            )
+             writer.writerow(
+                 [
+                     row,
+@@ -109,10 +114,7 @@
+                     else "possible_lower_bound"
+                     if result.range_limit is not None and result.range_limit[row, column] == 1
+                     else "estimate",
+-                    json.dumps(asdict(result.colour_evidence[row * result.config.columns + column]))
+-                    if result.colour_evidence is not None
+-                    and result.colour_evidence[row * result.config.columns + column] is not None
+-                    else "",
++                    json.dumps(asdict(colour_evidence)) if colour_evidence is not None else "",
+                 ]
+                 + (
+                     [

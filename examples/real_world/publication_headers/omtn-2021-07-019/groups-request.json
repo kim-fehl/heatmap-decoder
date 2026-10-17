@@ -1,0 +1,73 @@
+{
+  "start": 162,
+  "end": 851,
+  "count": 9,
+  "grid": {
+    "heatmap_bbox": [
+      162,
+      48,
+      851,
+      2677
+    ],
+    "rows": 128,
+    "columns": 9,
+    "labels": {
+      "columns": {
+        "source": "ocr",
+        "bbox": [
+          162,
+          2680,
+          851,
+          3023
+        ],
+        "recognition": "slots",
+        "text_rotation_degrees": 90,
+        "white_padding_pixels": 2,
+        "trim_whitespace": true
+      },
+      "ocr": {
+        "engine": "rapidocr",
+        "upscale_factor": 3
+      }
+    }
+  },
+  "tracks": [
+    {
+      "bbox": [
+        162,
+        20,
+        851,
+        37
+      ],
+      "swatches": [
+        {
+          "label": "A",
+          "bbox": [
+            16,
+            193,
+            36,
+            217
+          ]
+        },
+        {
+          "label": "B",
+          "bbox": [
+            16,
+            234,
+            36,
+            258
+          ]
+        },
+        {
+          "label": "C",
+          "bbox": [
+            16,
+            276,
+            36,
+            299
+          ]
+        }
+      ]
+    }
+  ]
+}

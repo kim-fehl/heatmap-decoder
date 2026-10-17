@@ -1,0 +1,108 @@
+{
+  "full_suite": {
+    "command": "HEATMAP_DECODER_OCR_TESTS=1 uv run pytest -q",
+    "passed": 837,
+    "subtests": 18,
+    "skipped": 0,
+    "seconds": 126.81
+  },
+  "final_cli_wording_focused": {
+    "passed": 9,
+    "seconds": 2.91
+  },
+  "ruff": "passed",
+  "strict_mypy": {
+    "status": "passed",
+    "source_files": 32
+  },
+  "numeric_baselines": {
+    "figures": 3,
+    "values_and_flags_unchanged": true
+  },
+  "cli_and_installed_wheel": {
+    "environment": "/tmp/m19-installed-3tvkwanq/venv",
+    "outside_checkout": true,
+    "results": [
+      {
+        "name": "diagnostic",
+        "exit": 5,
+        "numeric_state": "complete",
+        "identifiers": "not_requested"
+      },
+      {
+        "name": "numeric",
+        "exit": 0,
+        "numeric_state": "complete",
+        "identifiers": "not_requested"
+      },
+      {
+        "name": "partial",
+        "exit": 5,
+        "numeric_state": "partial",
+        "identifiers": "not_requested"
+      },
+      {
+        "name": "composed",
+        "exit": 5,
+        "numeric_state": "complete",
+        "identifiers": "review_required"
+      }
+    ]
+  },
+  "distribution": {
+    "build": "passed",
+    "existing_isolated_wheel_smoke": "passed",
+    "m19_installed_wheel_smoke": "passed",
+    "tested_python_entry_sha256": {
+      "heatmap2matrix/__init__.py": "ef511579883a1c76d772b76cc31434f6f1319f42235592d9eb2de4e3ca9282a5",
+      "heatmap2matrix/__main__.py": "dacacc03eb8b975a43c35ca500666787bb3aa5e68c2f8f715aa4a47a90d434c7",
+      "heatmap2matrix/cli.py": "7eb455bebe39c4540efcc593ed873e30e120181ca74cff010a20a10947ef953c",
+      "heatmap_decoder/__init__.py": "f6833fa726e69d7b58f6865b8c6a31be05221d90c5ca3233bb5b36a0e4eef797",
+      "heatmap_decoder/__main__.py": "93b604b2d73ba758ff637179c8e45093d32489ee162a63f2e1ea71a6331d5ce7",
+      "heatmap_decoder/acceptance.py": "fe2640a28e47d9b3215e3d56dc121046a88d91d94b4d537cd06dcb510a8d975c",
+      "heatmap_decoder/angle_search.py": "448f5188f9ebedb2e648840ea86f90139a5bd7f48839c9c426ae7d26cedd0877",
+      "heatmap_decoder/automation.py": "55277836b7214446661ddc6fe189bf980ca783f48837346595e6832cf54d7e08",
+      "heatmap_decoder/bar_cores.py": "57f0db82fc2b9acd84dc3e39b2ea361822a8e7d46e56c2e5628109a744911e08",
+      "heatmap_decoder/blocks.py": "dd6d73cc016b651f881a89ce035e3430a1f62d18f8a82050117a3453930875fe",
+      "heatmap_decoder/calibration.py": "c8ebbf9e491fbd0b559c6f0ee1f68fb7366de1e59b6a3edb91abdb82079c669a",
+      "heatmap_decoder/cli.py": "42b173a6e8dfbb6a8e6f24accd2310a93462f53e7af9a637974985acb408a432",
+      "heatmap_decoder/detection.py": "cddaf9f94bec0e4c6e31cfde61458bf261b9eb893c98f85233337aed9329e635",
+      "heatmap_decoder/detection_policy.py": "bb01d815622b6a63edefac32bd14729730ef032032fd2b69f57543a1c3312e2c",
+      "heatmap_decoder/diagnostic_style.py": "a2e7051769296994d880d484a24fae32856e4bf3938845230a97e9921a44cae5",
+      "heatmap_decoder/diagnostics.py": "ff41b84c54477173a8048944ff55246baf3354eeae44d83b7eee0126a1e6c948",
+      "heatmap_decoder/edge_profiles.py": "c5a5b05e95258e267d2156a53c7c89e274cfe084719531ccc15a43621bfa6a14",
+      "heatmap_decoder/extract.py": "c6a5059ea2701d6173a9a51fad8f95898d23d82c8b798ba9d920dabe38a7ad80",
+      "heatmap_decoder/geometry.py": "ed148ce0580ac4fc776cd900d0d5e2c81ff2f9c8bbe5a28bf4dc08a9ffc44159",
+      "heatmap_decoder/gradient.py": "99d6428e922cf1086af2ecff3dd5e8ce94d716d6dc5140afb3fcf128e6c14bd1",
+      "heatmap_decoder/io.py": "96741f11c9961d6088b85ce547ca16a928abdd2ff97a2c9befbff013ca839e47",
+      "heatmap_decoder/labels.py": "f860e70a3085f707827bd1e159dc347bd23cc0f7f6aa2f0a0e53a7b13f6d0817",
+      "heatmap_decoder/lattice.py": "0b622dd82976aa04b136c5b9b04c7626a923d2d6bc7dcac8e5ec0eaad7846aed",
+      "heatmap_decoder/legend.py": "e6e0400baf08249c2b1e78c6af4e7bdf067fdfc2fa8cd305987a167e78d26336",
+      "heatmap_decoder/models.py": "a85724ec5b2197d0e72e8184d2869d10efb71018245564de3a88b0ac9481c134",
+      "heatmap_decoder/ocr.py": "2a87536d246d3361718df6a692deae48ce2abdf9d2926adcb900ae8f6160cd54",
+      "heatmap_decoder/ocr_fields.py": "4d5ad0213e55b669f3c31bd33ba7b2c587c2606d96820b15e2439428affde62c",
+      "heatmap_decoder/orientation.py": "cb3a38718c2c92705aef7d7ae76d2f163adf68ec4dd2fa2b7908a774f71519de",
+      "heatmap_decoder/oriented_labels.py": "43734d171e3ea8a722dd0b47036e8c139a537cfda99b024fb8d9ddae8ef53786",
+      "heatmap_decoder/rapid_ocr.py": "783e62f14d1af5c80bb96bbc55c55083288bbfcf0dc9e270365c719fe9ef2f7a",
+      "heatmap_decoder/sampling.py": "c709cfa63c75a1c47c1afd92896d4c39118ca91a2fc53a8b6e8d340caa6131df",
+      "heatmap_decoder/version.py": "fbcd96443027ffe7e6324e62f7a79702a6045cdea7416f7fba72883f51c9bcc5"
+    }
+  },
+  "final_validation": {
+    "bases": 40,
+    "correlated_attempts": 120,
+    "negative_bases": 12,
+    "summary": "summary.json",
+    "initial_failures_retained": true
+  },
+  "qualification": "qualification.json",
+  "verification": "verification.json",
+  "stable_release": false,
+  "pending": [
+    "Broad ordinary derivative geometry coverage54/120 (target>=70%)",
+    "Six distinct publications/three held-out unavailable",
+    "Whole-figure label composition and one-field manual recovery accounting"
+  ],
+  "history": "post-qualification-check-history.json",
+  "final_source_snapshot": "freeze-qualified.json"
+}

@@ -1,0 +1,18 @@
+{
+  "full_suite": {
+    "passed": 606,
+    "subtests": 18,
+    "real_ocr": true,
+    "seconds": 181.91
+  },
+  "focused": {
+    "passed": 134,
+    "skipped": 1
+  },
+  "ruff": "passed",
+  "mypy": "passed current and NumPy 1.26.4, 28 modules",
+  "packaging": "source/wheel and isolated CLI passed",
+  "tick_proposals": "all five canonical numeric values correct; raw/conflicting readings retained and review-required",
+  "galectin": "four extra right pixels did not recover suffix; failure retained",
+  "numeric_matrix": "bit-identical including NaNs"
+}

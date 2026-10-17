@@ -1,0 +1,57 @@
+{
+  "heatmap_bbox": [
+    162,
+    48,
+    851,
+    2677
+  ],
+  "rows": 128,
+  "columns": 9,
+  "colourbar_bbox": [
+    5,
+    406,
+    30,
+    946
+  ],
+  "colourbar_orientation": "vertical",
+  "scale": {
+    "source": "manual_ticks",
+    "anchors": [
+      {
+        "position": 410,
+        "value": 4,
+        "origin": "reviewed"
+      },
+      {
+        "position": 541.5,
+        "value": 2,
+        "origin": "reviewed"
+      },
+      {
+        "position": 673,
+        "value": 0,
+        "origin": "reviewed"
+      },
+      {
+        "position": 804,
+        "value": -2,
+        "origin": "reviewed"
+      },
+      {
+        "position": 935.5,
+        "value": -4,
+        "origin": "reviewed"
+      }
+    ]
+  },
+  "labels": {
+    "columns": {
+      "source": "file",
+      "path": "samples.txt"
+    },
+    "rows": {
+      "source": "file",
+      "path": "genes.txt"
+    }
+  }
+}
