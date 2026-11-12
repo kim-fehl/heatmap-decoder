@@ -1,75 +1,104 @@
 # heatmap-decoder
 
-Recover approximate tables from raster heatmaps when the original matrix is
-unavailable. The decoder matches cell colours against the observed colourbar and
-recovers values on the **displayed scale**, such as a z-score—not original
-expression counts.
+**Turn scientific heatmap images into machine-readable data.**
 
-It supports explicitly configured regular or blocked PNG/JPEG heatmaps, continuous sequential or diverging
-colourbars, reviewed linear or piecewise-linear scales, and gene/sample label OCR.
-RapidOCR with an English recognition model is the default label engine; sample labels support explicit finite angles
-and complete-line attachment geometry. Arbitrary-angle identifiers require review.
-Automation reports numeric completion separately from label review and can retain
-positional numeric results. Linear OCR ticks use only their measured calibration
-span. Automatic region/count detection remains experimental with bounded export gates.
+`heatmap-decoder` is an open-source Python toolkit for recovering approximate plotted values, labels and categorical annotations from raster heatmaps, especially gene expression figures, when the underlying matrix is unavailable. It combines image segmentation, colourbar calibration, optical character recognition (OCR) and explicit quality checks.
+
+Built with NumPy, scikit-image, SciPy, Pillow and local RapidOCR, it runs without a hosted vision API.
+
+## Helping AI agents read scientific figures
+
+Scientific papers are increasingly searched and analysed with AI tools, but data-rich figures remain difficult to read precisely:
+
+- An article may be available only as a PDF with low-resolution raster images.
+- Supplementary files may omit the filtered, clustered or normalised matrix actually plotted.
+- Reconstructing a display from deposited data may require undocumented gene selection, sample ordering or scaling.
+- Captions alone rarely capture which genes vary together or which samples share patterns.
+
+Heatmaps also vary widely in layout: multiple colourbars, annotation tracks, rotated labels, dendrograms and gaps complicate extraction. `heatmap-decoder` treats extraction as structured reconstruction, with diagnostics that expose ambiguous results for review.
+
+## How it works
+
+1. Uses configured regions or proposes matrix and legend locations.
+2. Resolves the grid, including configured gaps and unequal blocks.
+3. Matches cell colours to the observed colourbar and calibrates the plotted scale.
+4. Recovers identifiers and annotations, including rotated sample labels.
+5. Writes an approximate matrix, per-cell quality flags, provenance and diagnostic overlays, preserving unresolved values and labels for review.
+
+![Diagnostic view showing blocked cells, rotated labels, attachment points and OCR results](docs/images/recognition-latest.png)
+
+*Reproducible [synthetic example](examples/diagnostic/README.md) with supplied regions, grid dimensions and sample-label angle. Actual OCR results, including errors, remain visible.*
 
 ## Quick start
 
-From a checkout, install with [uv](https://docs.astral.sh/uv/) and run the bundled
-synthetic example:
+Requires **Python 3.11+** and [uv](https://docs.astral.sh/uv/).
 
 ```bash
+git clone https://github.com/kim-fehl/heatmap-decoder.git
+cd heatmap-decoder
 uv sync --locked
+
 uv run heatmap-decoder extract examples/figure.png \
-  --config examples/config.json --out work/example --fail-on-qc
+  --config examples/config.json \
+  --out results/example \
+  --fail-on-qc
 ```
 
-Outputs include `matrix.csv`, per-cell `quality.csv`, diagnostic images and
-`provenance.json`. For your own figure, supply or review the grid, colourbar,
-scale and label regions using the [usage guide](docs/usage.md).
+The bundled synthetic example has known reference values. Extraction writes `matrix.csv`, `quality.csv`, `provenance.json` and diagnostic images. For your own figure, review the matrix boundaries, dimensions, colourbar, scale and labels using the [usage guide](docs/usage.md).
 
-## Review the result
+### Python API
 
-Compression, repeated colours, saturation and unreadable labels can make recovery
-ambiguous. Unsupported or unreliable values receive flags or NaN. Inspect the
-quality report and every identifier; OCR confidence does not verify gene identity.
-Numeric tick OCR now also defaults to bundled English RapidOCR. Tesseract is an
-optional fallback for other language packs and legacy comparisons.
-RapidOCR can read all five ticks in the inspected publication with padded crops;
-see the [OCR/blur diagnosis and tuning experiment](benchmarks/ocr-review/README.md)
-for current failures, the endpoint-crop fix and numeric-engine comparisons.
+```python
+from pathlib import Path
+from heatmap_decoder import ExtractionConfig, extract_file
 
-![Decoder view: blocked cells, rotated sample labels, attachment points, and three OCR tables](docs/images/recognition-latest.png)
+config = ExtractionConfig.model_validate_json(Path("config.json").read_text())
+result = extract_file("figure.png", config, "results/")
+```
 
-This [reproducible synthetic example](examples/diagnostic/README.md) uses supplied
-regions/counts and a +30° sample angle. The overlay shows resolved cells and the
-row-group and column-group gaps; tables show actual row, column and colourbar OCR, including errors.
-Heuristic acceptance and high scores do not mean identifiers have been reviewed.
+## Capabilities and limits
 
-## Documentation
+| Area | Current scope |
+| --- | --- |
+| Continuous colourbars | Sequential and diverging palettes; configured or reviewed linear and piecewise-linear scales |
+| Grid geometry | Configured regular or blocked grids; experimental region and count proposals |
+| Gene and sample labels | Local OCR and review; biological identity requires verification |
+| Rotated sample labels | Quarter-turn and configured finite angles; arbitrary-angle identifiers require review |
+| Categorical annotations | Reviewed row/column tracks, group labels and legend categories |
+| Expression ranges | Reviewed value brackets, including open-ended ranges, without inventing point estimates |
+| Competing panels or legends | Ambiguity diagnostics and review |
+| Automatic extraction | Diagnostics by default; experimental numeric export under capability-specific constraints |
+| Publication figures | General automatic reconstruction remains unvalidated across diverse held-out publications |
 
-- [Usage and installation](docs/usage.md)
+Dense or selectively labelled heatmaps may lack enough information to resolve individual cells or attach labels reliably. [Real-world examples](examples/real_world/README.md) document practical results and reference-data limitations.
+
+The repository includes reproducible benchmarks, automated tests, strict type checks and CI configured across Linux, macOS, Windows and Python 3.11–3.14. [Validation reports](benchmarks/README.md) distinguish accuracy on accepted cases from overall coverage.
+
+### Interpreting recovered data
+
+- **Normalisation limits recovery.** Row z-scores cannot recover original expression counts or absolute differences between genes. Provenance records the recovered quantity.
+- **Clipping limits precision.** Values beyond the displayed range may be saturated. `quality.csv` marks endpoint matches as possible bounds.
+- **Image degradation creates ambiguity.** Quantisation, JPEG artefacts, blur and interpolation can produce flags or missing values. Matching errors are diagnostics, not calibrated uncertainty intervals.
+- **OCR needs review.** Similar identifiers such as `HSP70A`, `HSP70B` and `HSP70D` can be confused. Identifiers are never silently corrected.
+
+## Towards an AI-agent skill
+
+The CLI, Python API and structured outputs provide a basis for a specialist tool in literature-reading workflows. An agent could request extraction, inspect the diagnostics and seek review where geometry, scale or identifiers remain unresolved. A packaged agent skill and autonomous integration are future goals.
+
+## Documentation and examples
+
+- [Installation, configuration and outputs](docs/usage.md)
 - [Automation and review](docs/automation.md)
-- [Capability decisions and positional numeric results](docs/confident-automation.md)
-- [Arbitrary-angle sample labels](docs/arbitrary-angle-labels.md)
-- [Blocked grid configuration](docs/blocked-grids.md)
-- [OCR language and identifier character policy](docs/ocr-language.md)
-- [Categorical group labels and published source tables](examples/real_world/README.md)
-- [Grid tolerance and mild-blur diagnosis](docs/grid-tolerance.md)
-- [Scale calibration](docs/nonlinear-calibration.md)
-- [TPM ranges and independent gene categories](docs/range-scales.md)
-- [Worked examples](examples/README.md)
-- [Validation evidence and limitations](benchmarks/README.md)
-- [Documentation index](docs/README.md)
+- [Blocked grids](docs/blocked-grids.md) and [rotated labels](docs/arbitrary-angle-labels.md)
+- [Scale calibration](docs/nonlinear-calibration.md) and [range-valued extraction](docs/range-scales.md)
+- [Real-world examples](examples/real_world/README.md)
+- [Benchmarks and qualification](benchmarks/README.md)
+- [Testing guide](docs/testing.md)
 
-MIT-licensed code. Input figures retain their owners' copyright.
+## Contributing
 
-## Publication header examples
+Contributions are welcome: licensed publication figures with independent reference data, detection and OCR improvements, palette support and agent interfaces. Reproducible failures are as useful as successful demonstrations.
 
-The existing `group-labels`, `labels`, `legend`, and `extract` workflows support
-unnamed samples, multiple annotation tracks, tickless colorbars, short grouping
-rules, and light/dark text in colored headers. See [usage and limits](docs/publication-headers.md)
-and the [five additional real figures](docs/real-world-examples.md).
+## Licence
 
-Test categories, file ownership, and execution commands are documented in
-[the testing guide](docs/testing.md).
+Code: [MIT](LICENSE). Input figures retain their original copyright and licence terms.
