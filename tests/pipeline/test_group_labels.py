@@ -196,7 +196,9 @@ def test_cli_outputs_and_stale_names_removed_on_explicit_overwrite(tmp_path):
     args = ["group-labels", str(figure), "--request", str(request), "--out", str(out)]
     runner = CliRunner()
     assert runner.invoke(app, args).exit_code == 0
-    assert (out / "columns.txt").read_text().splitlines()[0] == "High_SE__01"
+    assert (out / "columns.txt").read_bytes() == (
+        b"High_SE__01\nHigh_SE__02\nLow_SE__01\nLow_SE__02\n"
+    )
     assert runner.invoke(app, args).exit_code == 2
     image[0:10, 0:20] = [0, 0, 255]
     Image.fromarray(image).save(figure)

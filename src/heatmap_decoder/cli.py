@@ -175,6 +175,7 @@ def group_labels_command(
             label_path.write_text(
                 "\n".join(r["display_name"] for r in result["records"]) + "\n",
                 encoding="utf-8",
+                newline="\n",
             )
         elif label_path.exists():
             label_path.unlink()  # Remove a stale complete file on an explicit overwrite.
