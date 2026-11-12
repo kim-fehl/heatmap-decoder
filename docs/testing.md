@@ -52,6 +52,11 @@ do not requalify the current production implementation or rewrite historical
 hashes. Full qualification remains an explicitly registered run of the relevant
 `benchmarks/` evaluator; see [the evidence index](../benchmarks/README.md).
 
+Detection regression tests use the `bundled_fixture_fonts` fixture to resolve
+legacy renderer font names against `benchmarks/fonts`. This keeps those tests
+independent of system font installation on macOS and Windows without modifying
+the frozen example generators or benchmark evidence.
+
 ## File ownership
 
 Paths below are relative to `tests/`. Where a capability spans tiers, the engine

@@ -4,8 +4,25 @@ import os
 from pathlib import Path
 
 import pytest
+from PIL import ImageFont
 
 TIERS = {"unit", "pipeline", "ocr", "qualification"}
+
+
+@pytest.fixture
+def bundled_fixture_fonts(monkeypatch):
+    """Resolve legacy renderer font names without depending on installed fonts."""
+    font_directory = Path(__file__).resolve().parents[1] / "benchmarks" / "fonts"
+    truetype = ImageFont.truetype
+
+    def load_font(font, *args, **kwargs):
+        if isinstance(font, str) and Path(font).name == font:
+            bundled = font_directory / font
+            if bundled.is_file():
+                font = str(bundled)
+        return truetype(font, *args, **kwargs)
+
+    monkeypatch.setattr(ImageFont, "truetype", load_font)
 
 
 def pytest_collection_modifyitems(items: list[pytest.Item]) -> None:

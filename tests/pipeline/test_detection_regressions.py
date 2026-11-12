@@ -16,6 +16,8 @@ from heatmap_decoder.models import CountProposal, CountSignal, DetectionResult, 
 from tests.support import ROOT, load_script
 from tests.support.synthetic import layout_fixture, scale_fixture
 
+pytestmark = pytest.mark.usefixtures("bundled_fixture_fonts")
+
 QA = load_script(str(ROOT / "examples/corrections/generate.py"))
 
 
